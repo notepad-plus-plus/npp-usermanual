@@ -1,0 +1,1 @@
+If you want more information or help for Notepad++, or want to submit some feedback, these are some possibilities.
