@@ -1,5 +1,5 @@
 # Summary
 
-* [Introduction] (README.md)
+* [Introduction](README.md)
 * [File management](file_management.md)
 
