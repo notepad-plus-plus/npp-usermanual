@@ -1,1 +1,0 @@
-See the sub-sections to see the methods to manage your files.
