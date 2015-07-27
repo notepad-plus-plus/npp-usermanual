@@ -18,6 +18,6 @@
 * [Command Line](command-line.md)
 * [Control Files](control-files.md)
 * [Shell Extension](shell-extension.md)
-* [Further Help](further-help.md)
 * [Upgrading](upgrading.md)
+* [Further Help](further-help.md)
 
