@@ -1,0 +1,1 @@
+The main Notepad++ view consists of a few GUI elements. These sections elaborate a bit on them. Their names will display as a tooltip as the mouse hovers over the corresponding clickable areas on the big picture:
