@@ -10,7 +10,7 @@
 * [Macros](macros.md)
 * [Commands](commands.md)
 * [Windows Dialog](windows-dialog.md)
-* [GUI Elements](gUI-elements.md)
+* [GUI Elements](gui-elements.md)
 * [Switching between Documents](switching-between-documents.md)
 * [Languages](languages.md)
 * [Settings](settings.md)
