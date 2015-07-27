@@ -1,4 +1,6 @@
-# Notepad++ User Manual
+Notepad++ User Manual
+=======
+
 Notepad++ User Manual
 This document is dedicated to the countless lost hours of both people having to search for simple answers, and people having to answer questions that shouldn't have to be asked in the first place. Documentation is always hard to get, good documentation nearly impossible.
 
