@@ -1,7 +1,7 @@
 Notepad++ User Manual
 =======
 
-Notepad++ User Manual
+Notepad++ User Manual:
 This document is dedicated to the countless lost hours of both people having to search for simple answers, and people having to answer questions that shouldn't have to be asked in the first place. Documentation is always hard to get, good documentation nearly impossible.
 
 This markup is based in the default appearance of Microsoft Windows. This can be different on your own system, but the names (text) should always the same. This is especially important on the screenshots. They are only for reference, your appearance of Notepad++ can be quite different.
