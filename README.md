@@ -3,17 +3,16 @@ Notepad++ User Manual
 
 ***Documentation is like sex, when it's good, it's very, very good; when it's bad, it's better than nothing.***
 
-It's not our goal to make a bad document, but you've got the point.
+Of course, it's not our goal to create a bad documentation, but we are sure you've got the point to where we are heading.
 
-**Notepad++ User Manual** is built collaboratively, and your contribution is very welcome. Before doing any pull request (PR), please check the [rule of contribution](CONTRIBUTION.md) to prevent your PR from being rejecting.
+**Notepad++ User Manual** is built collaboratively, and your contribution is very welcome. Before submitting a pull request (PR), please check our [contribution rules](CONTRIBUTION.md) to prevent your PR from being rejected.
 
 
 
 Summary
 =======
 
-* [Introduction](README.md)
-* [Getting start](content/getting-start/_index.en.md)
+* [Getting started](content/getting-started/_index.en.md)
 * [Programing Languages](content/programing-languages/_index.en.md)
 * [User Defined Language System](content/user-defined-language-system/_index.en.md)
 * [Searching](content/searching/_index.en.md)
