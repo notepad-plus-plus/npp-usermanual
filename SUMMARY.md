@@ -15,5 +15,5 @@
 * [Command Line](command-line.md)
 * [Shell Extension](shell-extension.md)
 * [Binary Translation](binary-translation.md)
-* [Updating](updating.md)
+* [Upgrading](content/upgrading/_index.en.md)
 
