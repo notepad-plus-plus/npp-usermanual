@@ -1,0 +1,5 @@
+For switching between documents the foremost method is by using the tab bar. However, you can also use the keyboard or mouse to do so. By default, you can switch to the next document by depressing the Ctrl key and then pressing Tab once for each next document. Pressing shift as well will select the previous document. To use the mouse, depress the right mouse button and use the scroll wheel. Scrolling up will select the previous document, scrolling down the next. The order of the documents is derived from the tab bar. See Tab Bar or Windows Dialog for information on how to change it.
+
+Documents will by default be cyclically selected, meaning that if you select the document past the last one, the first will be selected. If two views are visible, the first document of the other view will be selected.
+
+Selecting the document previous to the first document will select the last document (if two views are visible that will be the last document of the other view).
