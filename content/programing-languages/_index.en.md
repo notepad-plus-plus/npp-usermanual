@@ -1,3 +1,8 @@
+---
+title: Programming Languages
+weight: 10
+---
+
 Notepad++ can distinguish between different languages source code can be written in. This is useful to allow certain modifications and visual aids to be applied specifically designed for that language. For example, a language could distinguish certain keywords that have to be differently interpreted, and as such it can be useful to distinguish these keywords using another color or font. The language also determines the folding behavior (see Folding) and how to handle comments (see Commenting).
 
 Notepad++ offers a lot of languages that can be selected, and has a few methods to add your own as will be discussed.

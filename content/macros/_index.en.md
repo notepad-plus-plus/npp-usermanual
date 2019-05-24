@@ -1,3 +1,8 @@
+---
+title: Macros
+weight: 60
+---
+
 Notepad++ is capable of recording some of your actions you perform while editing a document, and replaying those later on to avoid having to repeat that sequence of actions. This is called a macro and can save a great deal of time. Macro's can be played once, or multiple times, even as long as is required to run through an entire document. You can save them for later use and assign keystrokes to them for fast access (See Shortcut Mapper). Macro's are sensitive to the current position of the cursor and will (normally speaking) operate relative on it.
 
 To record a macro, select Macro->Start Recording or press the  button on the toolbar. Notepad++ will now keep track of the changes you make on a document or certain actions you perform.

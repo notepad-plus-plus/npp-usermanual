@@ -1,3 +1,8 @@
+---
+title: Plugins
+weight: 90
+---
+
 Notepad++ is very extensible using so called plugins. Plugins are small or big additions to Notepad++ to enhance its functionality. Notepad++ comes bundled with a few plugins (when using the installer, you can choose which ones to add), but you can always add your own or remove some. The plugins are located in the Plugins directory in the main Notepad++ installation directory. They are DLL files and simply removing or adding them is enough.
 
 When Notepad++ starts, it looks into its Plugins configuration folder and loads whatever dll it finds. Later, you can add plugins using the Settings -> Import -> Import plugins menu. Be careful to make sure your version of Notepad++ is up-to-date enough for new plugins and that the plugin is compatible with Notepad++ (some very old plugins will not work with newer versions of Notepad++, it is up to the developer of the plugin to add support or not).

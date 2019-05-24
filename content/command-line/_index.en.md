@@ -1,3 +1,8 @@
+---
+title: Command Line
+weight: 120
+---
+
 Notepad++.exe [-multiInst] [-noPlugin] [-ro] [-nosession] [-notabbar] [-n##] [-l$$$] [FILES]
 Notepad++ supports a few command line parameters to control its startup. The following options are supported (they are case sensitive):
 

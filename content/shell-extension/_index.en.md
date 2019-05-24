@@ -1,3 +1,8 @@
+---
+title: Shell Extension
+weight: 130
+---
+
 By default the Notepad++ installer comes with a Shell extension. This is not really part of the Notepad++ program but very useful. If you choose to install it, then any file you rightclick on will show an entry named “Edit with Notepad++” with the Notepad++ icon.
 
 Please note that to install or remove the extension, it sometimes is required to restart the Explorer process. For this you can reboot, logout and log back in or use the task manager to kill explorer (Windows NT and up) and restart it again. You can do this by hitting Ctrl+Alt+Shift+Del.

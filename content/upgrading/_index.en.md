@@ -1,3 +1,8 @@
+---
+title: Upgrading
+weight: 150
+---
+
 Notepad++ is an actively maintained piece of software, and new versions come fast. There are basically three ways to keep abreast of changes:
 
 Enabling the Auto Update feature. When a new version is released, and after some delay - 15 days, you will be notified that a new version is available, and presented with the option of installing that newer version.
