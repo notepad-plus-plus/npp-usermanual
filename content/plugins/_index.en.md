@@ -8,7 +8,12 @@ Notepad++ is very extensible using so called plugins. Plugins are small or big a
 
 
 ## How to install a plugin
-The plugin (in the DLL form) should be placed in the \plugins subfolder of the Notepad++ Install Folder, under the subfolder with the same name of plugin binary name without file extension.
+
+### Install using Plugins Admin
+The Plugins Admin allows you to easily install plugins that are in the Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to install, then select Install.
+
+### Install plugin manually
+If the plugin you want to install is not listed in the Plugins Admin, you may still install it manually.  The plugin (in the DLL form) should be placed in the \plugins subfolder of the Notepad++ Install Folder, under the subfolder with the same name of plugin binary name without file extension.
 For example, if the plugin you want to install named `myAwesomePlugin.dll`, you should install it with the following path:
 `%PROGRAMFILES(x86)%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll`
 
