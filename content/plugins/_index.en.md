@@ -48,9 +48,29 @@ You can use [Plugin development forum](https://notepad-plus-plus.org/community/c
 * [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
 
 
-
 ## Plugins Admin
 Built-in **Plugins Admin** shows the list of available plugins, allows users to install new plugins and to update/remove installed plugins.
+It needs **Plugin List** (see next section) to work.
+
+## Plugin List
 A list in JSON format wrapped in a dll contains the most poplular Notepad++ plugins. This list which is maintained by the team, is also an open source project hosted in the GitHub: https://github.com/notepad-plus-plus/nppPluginList/ 
 Any plugin is welcome to join in the list.
+
+### Test your plugins' installation/update locally
+For testing your plugin for listing, installation, removal and update under Plugin Admin, you need Notepad++ binary in debug mode [32-bit](https://notepad-plus-plus.org/pluginListTestTools/notepad++.debug.x86.zip) or [64-bit](https://notepad-plus-plus.org/pluginListTestTools/notepad++.debug.x64.zip), the latest version of wingup [32-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x32.zip) or [64-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x64.zip) and nppPluginList.json (you should rename it from pl.x64.json or pl.x86.json, according your plugin's architecture). Replace notepad++.exe and GUP.exe of your Notepad++ installation by downloaded ones, copy `pl.x64.json` or `pl.x86.json` to `%PROGRAMDATA%\Notepad++\plugins\Config\nppPluginList.json` (or `<NPP_INST_DIR>\plugins\Config\nppPluginList.json` - see New Plugins Home), then you're all set - the menu item "Plugin Admin" will be under menu "Plugin" of your debug mode notepad++.exe. Launch this command will launch the Plugin Admin dialog and the rest should be intuitive.
+
+### Rules for adding your plugins into list
+
+1. Architecture: your 32-bits plugin should be added to [pl.x86.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x86.json), 64-bits plugin should be added to [pl.x64.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x64.json).
+2. Unicity: the value of **folder-name** of your plugin should be unique in the list. it means if there's already another same name plugin in the list, you have to rename your plugin's folder-name (and your plugin). Keep in mind that your plugin binary name (w/o the extension .dll) should be always the same as the folder-name, otherwise your plugins won't be loaded.
+3. Security: the value of **id** is plugin package's (zip file) finger print in SHA-256. This id is checked with the downloaded dll to avoid [MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). You can use Notepad++ to get your plugin's SHA-256 hash (Menu: `Tools->SHA-256>Generate from files...`) or some online sha256 generators.
+4. Update info: the value of **version** is exact the version of your plugin binary version which you want to be deployed. This version will compare with installed plugin's version to decide if update should be applied. Please check [Microsoft's document about binary version](https://docs.microsoft.com/en-us/windows/desktop/menurc/versioninfo-resource) for setting the version correctly onto your DLL.
+5. Download location: the value of **repository** is the URL where Plugin Admin can download the plugin to install/update it.
+6. Packaging: Only zip package is supported. Your plugin (DLL) should have the same name as the **folder-name** and the plugin DLL file should be placed at the root level of the ZIP file. Otherwise Plugin Admin won't install it. Any additionals files (dll or data) can be placed at the root level or in an arbitrary subfolder.
+
+### Do your PR to join plugin list
+Once your test has been done, and everything is ok, you can fork and do your PR on: https://github.com/notepad-plus-plus/nppPluginList/. Only the json part you should modify. The json file will be built into the a binary (nppPluginList.dll), which will be signed (for thes sake of security) and be included in the official distribution. 
+
+### Questions & support
+Ask your questions here: https://notepad-plus-plus.org/community/topic/16789/support-for-plugins-admin-npppluginlist-round-2
 
