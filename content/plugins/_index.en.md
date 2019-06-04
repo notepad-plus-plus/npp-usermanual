@@ -25,11 +25,11 @@ Once you installed the plugin, you can use (and you may configure) it via the me
 
 Here are the instructions to make your first Notepad++ plugin in less 10 minutes, by following 6 steps:
 
-1. Download and unzip [Notepad++ Plugin Template](https://github.com/npp-plugins/plugintemplate/archive/v3.zip).
-2. Open NppPluginTemplate.vcproj in your Visual Studio.
-3. Define your plugin name in PluginDefinition.h
-4. Define your plugin commands number in PluginDefinition.h
-5. Customize plugin commands names and associated function name (and the other stuff, optional) in PluginDefinition.cpp.
+1. Download and unzip the latest release of [Notepad++ Plugin Template](https://github.com/npp-plugins/plugintemplate/releases).
+2. Open `NppPluginTemplate.vcproj` in your Visual Studio.
+3. Define your plugin name in `PluginDefinition.h`
+4. Define your plugin commands number in `PluginDefinition.h`
+5. Customize plugin commands names and associated function name (and the other stuff, optional) in `PluginDefinition.cpp`.
 6. Define the associated functions.
 You are guided by the following comments in both [PluginDefinition.h](https://github.com/npp-plugins/plugintemplate/blob/master/src/PluginDefinition.h) and [PluginDefinition.cpp](https://github.com/npp-plugins/plugintemplate/blob/master/src/PluginDefinition.cpp) files:
 
@@ -49,7 +49,7 @@ You can use [Plugin development forum](https://notepad-plus-plus.org/community/c
 ### In other languages
 
 * [Delphi](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
-* [C#](http://sourceforge.net/projects/sourcecookifier/files/other%20plugins/NppPlugin.NET.v0.5.zip/download)
+* [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
 * [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
 
 
