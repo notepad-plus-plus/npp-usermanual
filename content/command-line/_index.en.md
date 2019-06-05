@@ -3,40 +3,58 @@ title: Command Line
 weight: 120
 ---
 
-Notepad++.exe [-multiInst] [-noPlugin] [-ro] [-nosession] [-notabbar] [-n##] [-l$$$] [FILES]
-Notepad++ supports a few command line parameters to control its startup. The following options are supported (they are case sensitive):
+Notepad++ supports a few command line parameters to control its startup. The syntax is (case sensitive):
 
--nline number
-Line number to go to for each file opened.
--c
-Start editing in Column mode.
---help
-Displays this list, i.e. all the command line switches
--loadingTime
-Displays the loading time of all files Notepad++ is started with. The result is displayed in a message box, with a 0.01 second resolution.
--multiInst
-allow Notepad++ to start more than one instance. By default, if Notepad++ is already started files wil lbe opened in that instance, but this option will start a new one.
--noPlugin
-Do not load any plugins. If you suspect a defunct plugin or you just do not wish to load them, add this option.
--ro
-Any file now opened will be opened in Read only mode.
--nosession
-Do not load the previous session if Notepad++ is started. Do not save the session on exit either.
--notabbar
-Hide the Tab Bar, even if the settings say otherwise.
--systemtray
-Start Notepad++ minimised in the system tray, aka notification area
--xline number
-Specify the horizontal position (in pixels) at which Notepad++ main window is to open.
--yline number
-Specify the vertical position (in pixels) at which Notepad++ main window is to open.
--llanguage short name
-Language to set for each file opened. $$$ is a short identifier string, of which the following are allowed:
+notepad++ [**--help**] [**-multiInst**] [**-noPlugin**] [**-l***Language*] [**-n***LineNumber*] [**-c***ColumnNumber*] [**-p***Position*] [**-x***LeftPos*] [**-y***TopPos*] [**-nosession**] [**-notabbar**] [**-ro**] [**-systemtray**] [**-loadingTime**] [**-alwaysOnTop**] [**-openSession**] [**-r**] [**-qn***EasterEggName* | **-qt***Text* | **-qf***ContentFileName*] [**-qSpeed**1|2|3] [**-quickPrint**] [***`filePath`***]
 
-normal, php, c, cpp, cs, objc, d, java, rc, html, xml, makefile, pascal, batch, ini, nfo, asp, sql, vb, javascript, css, perl, python, lua, tex, cobol, fortran, bash, actionscript, nsis, tcl, lisp, scheme, asm, diff, props, postscript, ruby, smalltalk, vhdl, kix, autoit, Gui4Cli, powershell, caml, ada, verilog, matlab, haskell, inno, cmake, yaml,r, jsp
-Files
-Anything else will be interpreted as a filename. Always quote your filename to allow the path to contain spaces, otherwise Notepad++ will split the single path into multiple paths at each space.
- 
+
+Here are the options :
+**--help** : The help message for command line arguments. It will be shown before Notepad++'s launch.
+
+**-multiInst** : Launch another Notepad++ instance, so user can have several Notepad++ simultaneously.
+
+**-noPlugin** : Launch Notepad++ without loading any plugin.
+
+**-l** : Open file or display ghost typing with syntax highlighting of choice. *Language* is a short identifier string, of which the following are allowed: normal, php, c, cpp, cs, objc, d, java, rc, html, xml, makefile, pascal, batch, ini, nfo, asp, sql, vb, javascript, css, perl, python, lua, tex, cobol, fortran, bash, actionscript, nsis, tcl, lisp, scheme, asm, diff, props, postscript, ruby, smalltalk, vhdl, kix, autoit, Gui4Cli, powershell, caml, ada, verilog, matlab, haskell, inno, cmake, yaml, r and jsp.
+
+**-n** : Scroll to indicated line (*LineNumber*) on ***`filePath`***.
+
+**-c** : Scroll to indicated column (*ColumnNumber*) on ***`filePath`***.
+
+**-p** : Scroll to indicated 0 base position (*Position*) on ***`filePath`***.
+
+**-x** : Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
+
+**-y** : Move Notepad++ to indicated top position (*TopPos*) on the screen.
+
+**-nosession** : Launch Notepad++ without previous session.
+
+**-notabbar** : Launch Notepad++ without tabbar.
+
+**-ro** : Make the ****`filePath`**** read only.
+
+**-systemtray** : Launch Notepad++ directly in system tray.
+
+**-loadingTime** : Display Notepad++ loading time.
+
+**-alwaysOnTop** : Make Notepad++ always on top.
+
+**-openSession** : Open a session. ***`filePath`*** must be a session file.
+
+**-r** : Open files recursively. This argument will be ignored if ***`filePath`*** contain no wildcard character.
+
+**-qn** : Launch ghost typing to display easter egg via its *EasterEggName*.
+
+**-qt** : Launch ghost typing to display a text via the given *Text*
+
+**-qf** : Launch ghost typing to display a file content via the file path *ContentFileName*
+
+**-qSpeed** : Ghost typing speed. Value from 1 to 3 for slow, fast and fastest
+
+**-quickPrint** : Print the file given as argument ***`filePath`*** then quit Notepad++
+
+***`filePath`*** : file or folder name to open (absolute or relative path name)
+
 
 The order of the options is not important.
 
