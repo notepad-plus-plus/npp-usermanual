@@ -27,3 +27,4 @@ Summary
 * [Shell Extension](content/shell-extension/_index.en.md)
 * [Binary Translation](content/binary-translation/_index.en.md)
 * [Upgrading](content/upgrading/_index.en.md)
+* [Other Resources](content/other-resources/_index.en.md)
