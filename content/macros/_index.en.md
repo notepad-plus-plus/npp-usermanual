@@ -1,5 +1,6 @@
 ---
-title: Macros
+title: Task automation with macros
+linktitle: Macros
 weight: 60
 ---
 
