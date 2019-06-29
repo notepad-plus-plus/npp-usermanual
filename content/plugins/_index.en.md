@@ -4,8 +4,6 @@ linktitle: Plugins
 weight: 90
 ---
 
-## What is a plugin
-
 Notepad++ is very extensible using so called plugins. Plugins are small or big
 additions to Notepad++ to enhance its functionality. Notepad++ comes bundled
 with a few plugins (when using the installer, you can choose which ones to add),
@@ -36,7 +34,7 @@ Once you installed the plugin, you can use (and you may configure) it via the me
 
 ## How to develop a plugin
 
-### Getting started - Make your plugin in less 10 minutes (C++)
+### Getting started
 
 Here are the instructions to make your first Notepad++ plugin in less 10 minutes,
 by following 6 steps:
@@ -91,7 +89,7 @@ This list which is maintained by the team, is also an open source project hosted
 in the GitHub: https://github.com/notepad-plus-plus/nppPluginList/.
 Any plugin is welcome to join in the list.
 
-### Test your plugins' installation/update locally
+### Test your plugins locally
 
 For testing your plugin for listing, installation, removal and update under
 Plugin Admin, you need Notepad++ binary in debug mode
