@@ -1,5 +1,6 @@
 ---
-title: Plugins
+title: Extend functionality with plugins
+linktitle: Plugins
 weight: 90
 ---
 
