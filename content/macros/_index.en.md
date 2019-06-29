@@ -4,8 +4,6 @@ linktitle: Macros
 weight: 60
 ---
 
-## What is macro
-
 Notepad++ is capable of recording some of your actions you perform while editing
 a document, and replaying those later on to avoid having to repeat that sequence
 of actions. This is called a macro and can save a great deal of time. Macro's
