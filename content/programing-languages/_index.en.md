@@ -28,11 +28,11 @@ Almost 80 Programming Languages are supported by Notepad++:
 
 
 Notepad++ supports for their syntax highlighting(customizable), syntax folding,
-[auto-completion](../auto-completion/_index.en.md) (customizable),
-[function list](../function-list/_index.en.md) (customizable via PCRE in xml file).
+[auto-completion](../auto-completion/) (customizable),
+[function list](../function-list/) (customizable via PCRE in xml file).
 
 If your beloved language is not in the list above, you can define it by your
 own easily, by using
-[User Defined Languages System](../user-defined-language-system/_index.en.md).
+[User Defined Languages System](../user-defined-language-system/).
 
 
