@@ -62,7 +62,7 @@ The Close button will close the dialog box.
 
 ### Configuration file: `shortcuts.xml`
 
-If you prefer to edit XML instead of using the GUI to modify shortcuts, you may edit the `shortcuts.xml` file.  The keyboard shortcuts are defined as attributes of the `<macro>`, `<command>`, `<plugincommand>`, and `<scintkey>` tags.  The `Key=` attribute is the decimal value for the keycode associated with the key you want to hit.  The `Ctrl=`, `Alt=`, `Shift=` attributes have values of either "yes" or "no", and either enable or disable the modifier for that key.
+If you prefer to edit XML instead of using the GUI to modify shortcuts, you may edit the `shortcuts.xml` file.  The keyboard shortcuts are defined as attributes of the `<Macro>`, `<Command>`, `<PluginCommand>`, and `<ScintKey>` tags.  The `Key=` attribute is the decimal value for the keycode associated with the key you want to hit.  The `Ctrl=`, `Alt=`, `Shift=` attributes have values of either "yes" or "no", and either enable or disable the modifier for that key.
 
 ### Common Shortcut Mapper Problems
 
