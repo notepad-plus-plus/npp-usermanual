@@ -11,15 +11,127 @@ The Shortcut Mapper is a list of keyboard shortcuts to everything that can have 
 
 ### General
 
+These affect the user interface (localization, toolbar, tab bar, and more).
+
 * **Localization**:
     * [pulldown]: Set the lanugage for the Notepad++ user interface
 * **Toolbar**:
-    * `☐ Hide`: If enabled, the icon-based toolbar will be hidden
+    * `☐ Hide`: the icon-based toolbar will be hidden
     * `Small icons` / `Big icons` / `Standard icons`: will change the icon size
 * **Document List Panel**:
-    * `☐ Show`: If enabled, will show the Doc Switcher panel, which can be used to quickly switch between documents
+    * `☐ Show`: will show the Doc Switcher panel, which can be used to quickly switch between documents
     * `☐ Disable extension column`: If enabled, the Doc Switcher panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
-* `☐ Show status bar`: If enabled, there will be a Status Bar along the bottom of the Notepad++ window, showing file type, cursor location, line-ending style, encoding, and INS/DEL mode.
+* **Tab Bar**:
+    * `☐ Hide`: the tab bar for the open files will not be visible
+    * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
+    * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
+    * `☐ Reduce`: make the tab bar vertical region and font size smaller
+    * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
+    * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
+    * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a coloured bar
+    * `☐ Show close button on each tab`: add the close button to each tab's entry on the tab bar
+    * `☐ Double click to close document`: allows double-clicking on the tab to close the file
+    * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
+* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, cursor location, line-ending style, encoding, and INS/DEL mode.
+* `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
+
+### Editing
+
+These influence editing (carets, code-folding, line wrapping, and more).
+
+### New Document
+
+These define properties of new documents (end-of-line format, encoding, and syntax language).
+
+* **Format (Line ending)**:
+    * `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
+* **Encoding**
+    * `ANSI`: characters are represented by a single 8-bit byte, and there are only 256 available code points
+    * `UTF-8`: this can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters
+        * `☐ Apply to opened ANSI files`: if you open an ANSI file, this allows it to be "upgraded" to UTF-8
+    * `UTF-8 with BOM`: this is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file
+    * `UCS-2 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)
+    * `UCS-2 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first)
+    * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
+* **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules
+
+### Default Directory
+
+These affect open and save operations.
+
+* **Default Directory**:
+    * `Follow current document`: open/save dialogs will default to the current directory for the current file
+    * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog, and remain there (regardless of where the current file is located)
+    * `___ ...`: this allows you to browse to a default directory, and all open/save dialogs will start in that directory
+* `☐ Use new style dialog (without file extension feature & Unix style path capacity)`: Windows allows for two styles of open/save dialogs.
+    * "old style" has "Quick Access", "Desktop", and others as icon-buttons along the left; it will auto-apply the selected file-type's extension to the file (so typing a filename of `blah` when a file type of "Normal text file (.txt)" is selected will save `blah.txt`); it will also allow using Unix-style backslashes as a path separator, rather than Windows-style forward slashes.
+    * "new style" does not have the icon-buttons (instead, Windows presents those in the tree, similar to other drives and folders); even when a file-type is selected, the user is required to specify the desired file extension (thus the file-type selector is primarily for filtering what existing files are listed in the directory listing); and it will not understand Unix-style backslashes as path separators.
+* `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when enabled, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when disabled, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
+
+### Recent Files History
+
+These change how the list of recent files is displayed in the File menu
+
+### File Association
+
+This allows associating certain file types to be always opened (by Windows double-click, and similar) by Notepad++.
+
+### Language
+
+This affects the display of the main Language menu, and also affects the per-language tab settings.
+
+* **Language Menu**:
+    * `☐ Make language menu compact` will make submenus for languages that start with the same letter (so Perl and Python syntax highlighting would be selected through **Language > P** submenu, rather than directly from the language menu; this makes the list of items in the **Language** menu much shorter
+    * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list
+* **Tab settings**:
+    * `[Default]` sets the tab behavior for the "default" condition
+    * `normal` sets the tab behavior for plain text
+    * other selections will choose which syntax-language the tab settings are being changed
+    * `☐ Use default value`: not visible on the `[Default]` selection.  For other languages, will use the values from the `[Default]` selection for that particular language
+    * `Tab size : ___`: sets the width of the tab character, or the number of spaces to use instead of a tab
+    * `☐ Replace by space`: when set, hitting TAB will insert that number of spaces; when not set, TAB will insert the literal ASCII TAB character
+
+### Highlighting
+
+Affects highlighting of selected text.
+
+### Print
+
+Affects how the text is formatted when sent to the printer
+
+### Backup
+
+Defines whether or not to perform saving sessions, periodic backup, and backup on save.
+
+### Auto-Completion
+
+Sets options for auto-completion of text, including word completion, syntax completion, and automatically pairing certain punctuation pairs and html/xml tags
+
+### Multi-Instance
+
+Determines whether multiple instances of Notepad++ can be run simultaneously.
+
+* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session
+* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++
+* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance
+
+**WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
+
+### Delimiter
+
+Sets the characters that are considered part of a "word" for quick selections using double-click and similar
+
+### Cloud
+
+Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.
+
+### Search Engine
+
+Set your search engine for "Search on Internet" command
+
+### MISC.
+
+A variety of settings that didn't fit elsewhere
 
 ## Style Configurator
 
