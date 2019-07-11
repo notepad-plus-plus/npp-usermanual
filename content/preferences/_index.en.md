@@ -9,9 +9,21 @@ The Shortcut Mapper is a list of keyboard shortcuts to everything that can have 
 
 ## Preferences
 
+### General
+
+* **Localization**:
+    * [pulldown]: Set the lanugage for the Notepad++ user interface
+* **Toolbar**:
+    * `☐ Hide`: If enabled, the icon-based toolbar will be hidden
+    * `Small icons` / `Big icons` / `Standard icons`: will change the icon size
+* **Document List Panel**:
+    * `☐ Show`: If enabled, will show the Doc Switcher panel, which can be used to quickly switch between documents
+    * `☐ Disable extension column`: If enabled, the Doc Switcher panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
+* `☐ Show status bar`: If enabled, there will be a Status Bar along the bottom of the Notepad++ window, showing file type, cursor location, line-ending style, encoding, and INS/DEL mode.
+
 ## Style Configurator
 
-The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style defition.  
+The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style defition.
 
 The "Select theme:" pulldown allows you to select which theme you want.  [Themes](../themes/_index.en.md) are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.
 
@@ -25,7 +37,7 @@ The Save & Close button will save the settings and close the dialog.  The Cancel
 
 ### Configuration file: `stylers.xml`
 
-If you prefer to edit XML instead of using the GUI, you may use the `stylers.xml` configuration file to edit the default theme, or `themes\blah.xml` to edit theme "blah".  
+If you prefer to edit XML instead of using the GUI, you may use the `stylers.xml` configuration file to edit the default theme, or `themes\blah.xml` to edit theme "blah".
 
 The `<LexerStyles>` contains a `<LexerType>` for each programming language -- where the `desc=` attribute matches the name in the list of Languages from the GUI.  Each of those contains one or more `<WordsStyle>` tags, where teh `Name=` attribute matches the entries in the GUI's list of Styles for that language; the WordsStyle are usually empty tags (`<WordsStyle .../>`), but can contain values (`<WordsStyle...>user1 user2 ...</WordsStyle>`) if there is an associated list of user-defined keywords for that style.  There is also a `<GlobalStyles>` section, with `<WidgetStyle>` entries, corresponding to the elements of the "Global Styles" in the GUI.
 
@@ -37,18 +49,18 @@ If you change a color in your Style Configurator, but the color doesn't change i
 
 ## Shortcut Mapper
 
-The Shortcut Mapper dialog presents five tabs: 
+The Shortcut Mapper dialog presents five tabs:
 1. `Main menu`: used for items in the main Notepad++ menu items, like File, Edit, Search, View, Encoding, Language, Settings, Run, and ? (Help/About) menus.
 2. `Macros`: used for items in the Macros menu
 3. `Run commands`: used for user-added items in the Run menu.  (The **Run...** menu entry shortcut is defined in the `Main Menu` tab)
 4. `Plugin commands`: used for actions from the Plugins menu.
 5. `Scintilla commands`: used for all the Scintilla actions, thus allowing editing of shortcuts for all the editor commands.
 
-Each tab consists of an area for selecting the command to shortcut, a message area, a Filter input, and buttons to Modify, Clear, Delete, and Close.  
+Each tab consists of an area for selecting the command to shortcut, a message area, a Filter input, and buttons to Modify, Clear, Delete, and Close.
 
 When selecting the command, there are generally two columns: Name and Shortcut.  The Name matches the menu item (or the name of the Scintilla message).  The Shortcut shows the current-assigned shortcut (if any).  The `Main menu` tab has an additional Category column, which tells which menu category the command falls under.  The `Plugin commands` tab has an additional Plugin column, which tells which plugin DLL the shortcut applies to.
 
-The message area will tell you if there are "no shortcut conflicts for this item" (when the shortcut for the selected action is not used anywhere else; or it will give you the name of the tab, followed by the Name for the action, which uses the same shortcut as the currently-selected action.  
+The message area will tell you if there are "no shortcut conflicts for this item" (when the shortcut for the selected action is not used anywhere else; or it will give you the name of the tab, followed by the Name for the action, which uses the same shortcut as the currently-selected action.
 
 The Filter input allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  There are no regular expression or wildcard syntax interpretations in the Filter.
 
