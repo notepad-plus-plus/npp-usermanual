@@ -9,6 +9,8 @@ The Shortcut Mapper is a list of keyboard shortcuts to everything that can have 
 
 ## Preferences
 
+For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is enabled.  (For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is.)
+
 ### General
 
 These affect the user interface (localization, toolbar, tab bar, and more).
@@ -76,6 +78,10 @@ These change how the list of recent files is displayed in the File menu
 
 This allows associating certain file types to be always opened (by Windows double-click, and similar) by Notepad++.
 
+Select the name of the filetype in the left column; select one of the extensions in the middle column; use the right arrow `→` to add the extension to the Registered Extensions list on the right.  (You can only do one extension at a time.)
+
+To unregister an extension, click it in the right column, and use the left arrow `←` to remove it from the Registered Extensions column.
+
 ### Language
 
 This affects the display of the main Language menu, and also affects the per-language tab settings.
@@ -95,9 +101,41 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 Affects highlighting of selected text.
 
+* **Smart Highlighting**
+    * `☐ Enable`: if you select a piece of text, Smart Highlighting will color all matching pieces of text.  It will use the style defined in **Style Configurator > Global Styles > Smart Highlighting**
+    * `☐ Match case`: Smart Highlighting will be case-sensitive
+    * `☐ Match whole word only`: Smart Highlighting will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
+    * `☐ Use Find dialog settings`
+    * `☐ Highlight another view`: Smart Highlighting will also apply to the other "view" (when you have documents open in both of Notepad++ view panes)
+* **Highlight Matching Tags**
+    * `☐ Enable`: in HTML/XML files, clicking in or highlighting in an opening or closing tag (between the angle brackets) will highlight both the opening and closing tag.  It will use the style defined in **Style Configurator > Global Styles > Tags match highlighting**
+    * `☐ Highlight tag attributes`: any attributes inside the active tag will be highlighted using the style defined in **Style Configurator > Global Styles > Tags attribute**
+    * `☐ Highlight comment/php/asp zone`
+
+
 ### Print
 
 Affects how the text is formatted when sent to the printer
+
+* `☐ Print line number`: will include line numbers when printed
+* **Colour Options**
+    * `☐ WYSIWYG`: same colours will apply to printing as you see in the editor
+    * `☐ Invert`: black prints as white, light colour prints as dark, and vice versa
+    * `☐ Black on White`: prints black text on white background, no highlighting
+    * `☐ No background colour`: same as WYSIWYG, except no background colour is printed
+* **Margin Setting (Unit:mm)**: define the page margins, in mm
+* **Header and Footer**: define what will be printed in each page's header and footer sections
+    * Click in one of the `Left part`, `middle part`, or `right part` for header or footer;
+    * either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current cursor position
+        * Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `c:\path\to\file.txt`
+        * Add **File name** ⇒ `$(FILE_NAME)` in the input box ⇒ will print something like `file.txt`
+        * Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `c:\path\to`
+        * Add **Page** ⇒ `$(CURRENT_PRINTING_PAGE)` in the input box ⇒ will print the current page number.  (Sorry, there is no total-number-of-pages variable, so you cannot do `page # of #`.)
+        * Add **Short date format** ⇒ `$(SHORT_DATE)` in the input box ⇒ will print something like `m/dd/yyyy` (possibly locale-dependent)
+        * Add **Long date format** ⇒ `$(LONG_DATE)` in the input box ⇒ will print something like `Day, Month ##, YYYY` (possibly locale-dependent)
+        * Add **Time** ⇒ `$(TIME)` in the input box ⇒ will print something like `HH:MM AM` (possibly locale-dependent)
+* `☐`
+* `☐`
 
 ### Backup
 
