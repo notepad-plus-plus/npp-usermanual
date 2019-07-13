@@ -134,12 +134,38 @@ Affects how the text is formatted when sent to the printer
         * Add **Short date format** ⇒ `$(SHORT_DATE)` in the input box ⇒ will print something like `m/dd/yyyy` (possibly locale-dependent)
         * Add **Long date format** ⇒ `$(LONG_DATE)` in the input box ⇒ will print something like `Day, Month ##, YYYY` (possibly locale-dependent)
         * Add **Time** ⇒ `$(TIME)` in the input box ⇒ will print something like `HH:MM AM` (possibly locale-dependent)
-* `☐`
-* `☐`
+    * Font pulldown: use selected font for the header or footer (if left blank, use document's default font)
+    * Font size pulldown: define font size for header or footer
 
 ### Backup
 
 Defines whether or not to perform saving sessions, periodic backup, and backup on save.
+
+* **Session snapshot and periodic backup**
+    * `☐ Remember current session for next launch`: the current session is the current list of open files.  The next time you run Notepad++, it will open with that same list of files
+    * `☐ Enable session snapshot and periodic backup`: this will auto-save your changed file once every N seconds to the listed directory (default to `%AppData%\Notepad++\backup\`).
+        * It is not possible to select this option without `☐ Remember current session ...` also being active
+        * This is also how you enable Notepad++ to remember unsaved changes
+        * This will allow you to exit Notepad++ and resume, remembering changes to files that hadn't been intentionally saved
+        * When you exit Notepad++ with unsaved changes, Notepad++ will _not_ ask you to save changes.  It will just keep the periodic backup file, and reload from there rather than from the normal disk location for the file
+        * If you want Notepad++ to ask to you save edited files every time you close the file or exit Notepad++, do not enable this option.
+        * This is _not_ a long-term backup option.
+          * Every time you do a manual save, or close the file while leaving Notepad++ open, this periodic backup of the file will be deleted
+          * If there is a Notepad++ crash or Windows crash, it is possible for you to lose data
+* **Backup on save**
+    * `☐ None`: no additional backup will be performed when the file is saved
+    * `☐ Simple backup`: it will save a copy of the file, with the same name and extension, but with `.bak` appended.
+    * `☐ Verbose backup`: it will save a copy of the file, with a date-and-timestamp added to the filename as well as the `.bak` extension.
+        * if no `Custom Backup Directory` is defined, it will save it in `.\nppBackup\` subdirectory of the file's current directory, so `c:\path\to\file.txt` will create a backup `c:\path\to\nppBackup\file.txt.yyyy-mm-dd_hhmmss.bak`
+    * `☐ Custom Backup Directory`: leave blank to put the backup in the same directory as the file; set to a directory to have all files backed up to one directory
+
+#### Important backup information
+
+This bears repeating: with `☐ Enable session snapshot and periodic backup` on, Notepad++ will allow you to exit with unsaved changes without asking you to save, and unless an error occurs, the next time you run Notepad++, your unsaved changes will still be there.  Notepad++ has been coded in such a way as to make this periodic backup as reliable as possible.  However, there are crashes and errors possible outside of Notepad++'s control, and there is no guarantee or warranty that your unsaved data will remain after a crash or other major system error.  Once you manually save, the periodic backup is deleted.  The builtin periodic backup should not be considered a long-term backup option, and unsaved changes in files should always be considered as volatile and unsaved.
+
+Backup on save is the long-term backup solution built into Notepad++; simple backup will just keep one copy that matches the most recent save of the file; verbose backup keeps multiple copies with date stamps.
+
+If you are editing mission-critical files: Always use dedicated backup software.  You may want to look into the AutoSave plugin (available through **Plugins > Plugins Admin**) for better control of automated-saving while changes are being made.  Using cloud-based folders may provide backup and/or revision history.  A dedicated revision control system, such as git or subversion, will provide control over your version history.
 
 ### Auto-Completion
 
