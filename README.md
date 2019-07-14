@@ -23,7 +23,7 @@ Summary
 * [Plugins](content/plugins/_index.en.md)
 * [Preferences](content/preferences/_index.en.md)
 * [Themes](content/themes/_index.en.md)
-* [Command Line](content/command-line/_index.en.md)
+* [Command Line Arguments](content/command-prompt/_index.en.md)
 * [Shell Extension](content/shell-extension/_index.en.md)
 * [Binary Translation](content/binary-translation/_index.en.md)
 * [Upgrading](content/upgrading/_index.en.md)
