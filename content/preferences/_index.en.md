@@ -41,6 +41,32 @@ These affect the user interface (localization, toolbar, tab bar, and more).
 
 These influence editing (carets, code-folding, line wrapping, and more).
 
+* **Caret Settings**: sets the width (in pixels) of the typing caret, as well as how fast it blinks
+* **Multi-Editing Settings**: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s)
+* **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
+    * `☐ simple`: shows a `-` if that section is not folded, or a `+` if it is.
+    * `☐ arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
+    * `☐ circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
+    * `☐ box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+* **Vertical Edge Settings**
+    * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
+    * `☐ Line mode`: the vertical edge is indicated by a solid vertical line, styled with the **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
+    * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge with the colour from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
+    * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
+* **Border Width**
+    * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
+    * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
+* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is enabled)
+    * `☐ Default`: wraps from the last visible column to the first visible column column
+    * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
+    * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
+* `☐ Display line number`: shows the line numbers to the left of the text
+* `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
+* `☐ Enable current line highlighting`: will change the styling of the current line of text to **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour` (ignoring the `Foreground colour` for that style)
+* `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
+* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (Disabled, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
+* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
+
 ### New Document
 
 These define properties of new documents (end-of-line format, encoding, and syntax language).
@@ -73,6 +99,13 @@ These affect open and save operations.
 ### Recent Files History
 
 These change how the list of recent files is displayed in the File menu
+
+* `☐ Don't check at launch time`
+* `Max number of entries`: show the _n_ most recent files in the list
+* `☐ In Submenu`: will show the recent files in a "Recent Files" submenu of the File menu, rather than directly in the file menu
+* `☐ Only File Name`: will show just the file name, without the drive or path
+* `☐ Full File Name Path`: will show the full path, including drive, path, and file name
+* `☐ Customize Maximum Length`: will only list the first _n_ characters from the full file path
 
 ### File Association
 
@@ -171,6 +204,24 @@ If you are editing mission-critical files: Always use dedicated backup software.
 
 Sets options for auto-completion of text, including word completion, syntax completion, and automatically pairing certain punctuation pairs and html/xml tags
 
+* **Auto-Completion**
+    * `☐ Enable auto-completion on each input`: a dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion
+        * `☐ Function completion`: will auto-complete function names only
+        * `☐ Word completion`: will auto-complete words only
+        * `☐ Function and word completion`: will auto-complete both function names and words
+        * `From the _n_th character`: must type at least _n_ characters before the auto
+        * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
+    * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
+* **Auto-Insert**
+    * Will automatically insert the closing item for any of the enabled default pairs, or the three manually-chosen matched pairs
+        * `☐ ()`
+        * `☐ []`
+        * `☐ {}`
+        * `☐ ""`
+        * `☐ ''`
+        * `☐ html/xml close tag`
+        * `Matched pair [1,2,3]: __ __`: define the open and close character(s) for three user-defined pairs
+
 ### Multi-Instance
 
 Determines whether multiple instances of Notepad++ can be run simultaneously.
@@ -185,17 +236,52 @@ Determines whether multiple instances of Notepad++ can be run simultaneously.
 
 Sets the characters that are considered part of a "word" for quick selections using double-click and similar
 
+* **Word character list**
+    * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Find dialog, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
+    * `☐ Add yuor character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
+* **Delimiter selection settings**
+    * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
+    * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
+
 ### Cloud
 
 Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.
+* `☐ No Cloud`: saves settings in the normal location
+* `☐ Set your cloud location path here`: settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider
+
 
 ### Search Engine
 
-Set your search engine for "Search on Internet" command
+Set your search engine for "Search on Internet" command (found in the **Edit > On Selection** menu, or in the right-click context menu).  It will search for the word under the cursor (or for the whole selection, if a selection is made).
+
+If you want to specify a search engine not listed, type the full URL, with the text `$(CURRENT_WORD)` as the placeholder for the search term (as shown in the example in the Preferences dialog box)
 
 ### MISC.
 
 A variety of settings that didn't fit elsewhere
+
+* **Document Switcher**
+    * `☐ Enable`: hitting Ctrl+TAB will allow you to easily switch through all the open documents
+    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file in the Ctrl+TAB list
+* **Document Peeker**
+    * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
+    * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
+* **Clickable Link Settings**
+    * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
+    * `☐ No underline`: will remove the underline normally present on a link
+* **File Status Auto-Detection**
+    * [dropdown]
+        * `Enable`: for the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++
+        * `Enable for all open files`: for all active files, check periodically to see if the file has been updated on disk
+        * `Disable`: will not check to see if the file has been updated on disk
+    * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
+    * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
+* `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
+* `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
+* `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
+* `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
+* `☐ Treat bakslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
+* `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
 
 ## Style Configurator
 
@@ -254,4 +340,4 @@ If you prefer to edit XML instead of using the GUI to modify shortcuts, you may 
 
 ### Common Shortcut Mapper Problems
 
-With the introduction of the message area<!-- TODO: "in v7.5.xxx" or whenever it was introduced -->, it is easy to see when a conflict exists between shortcuts.  All you have to do is pick the entry that you _don't_ want to use the conflicted shortcut, and either Clear or Modify the shortcut so there is no longer a conflict.
+With the introduction of the message area, it is easy to see when a conflict exists between shortcuts.  All you have to do is pick the entry that you _don't_ want to use the conflicted shortcut, and either Clear or Modify the shortcut so there is no longer a conflict.
