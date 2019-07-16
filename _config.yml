@@ -7,4 +7,4 @@ include:
   - CONTRIBUTING.md
   - README.md
 
-theme: jekyll-theme-slate
+theme: jekyll-theme-leap-day
