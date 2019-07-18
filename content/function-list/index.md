@@ -35,7 +35,7 @@ In function node it contains:
 
 - className: define a or several RE to get the class name from the result of "mainExpr".
     - nameExpr: 1..N
-      - expr: here you define the RE to find the function name.
+        - expr: here you define the RE to find the function name.
     
 Both functionName and className nodes are optional.
 If functionName and className are absent, then the found string by mainExpr RE will be processed as function name, and the class name won't be used.
@@ -48,7 +48,7 @@ If the function parser find the first result by mainExpr attribute, then it will
 In classRange node it contains:
 - mainExr: the main whole string to serach
 - displayMode: reserved for future use.
-- openSymbole & closeSymbole: they are optional. if defined, then the parser will determinate the zone of this class. It find first openSymbole from the first character of found string by mainExpr attribute. then it determinates the end of class by closeSymbole found. The algorithm deals with the several levels of imbrication. for example: {{{}{}}{}}
+- openSymbole & closeSymbole: they are optional. if defined, then the parser will determinate the zone of this class. It find first openSymbole from the first character of found string by mainExpr attribute. then it determinates the end of class by closeSymbole found. The algorithm deals with the several levels of imbrication. for example: `{{{}{}}{}}`
 - className: 1 (or more) nameExpr node for determinating class name (from the result of mainExpr searching).
 - function: search in the class zone by using mainExpr attribute and the functionName nodes.
 
