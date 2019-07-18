@@ -48,7 +48,7 @@ If the function parser find the first result by mainExpr attribute, then it will
 In classRange node it contains:
 - mainExr: the main whole string to serach
 - displayMode: reserved for future use.
-- openSymbole & closeSymbole: they are optional. if defined, then the parser will determinate the zone of this class. It find first openSymbole from the first character of found string by mainExpr attribute. then it determinates the end of class by closeSymbole found. The algorithm deals with the several levels of imbrication. for example: `{{{}{}}{}}`
+- openSymbole & closeSymbole: they are optional. if defined, then the parser will determinate the zone of this class. It find first openSymbole from the first character of found string by mainExpr attribute. then it determinates the end of class by closeSymbole found. The algorithm deals with the several levels of imbrication. for example: \{\{\{\}\{\}\}\{\}\}
 - className: 1 (or more) nameExpr node for determinating class name (from the result of mainExpr searching).
 - function: search in the class zone by using mainExpr attribute and the functionName nodes.
 
