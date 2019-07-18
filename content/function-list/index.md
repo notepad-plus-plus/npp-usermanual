@@ -11,6 +11,19 @@ Function list contains a search engin (by using regular expression) and a panel 
 In order to make function list work for your language (if not supported), you should modify `functionList.xml`. It can be found in %APPDATA%\notepad++\ or in Notepad++ installed directory if you use zip package.
 
 ## How to customize function list
+In parser node it contains:
+- id: uniq ID for this parser
+- displayName: reserved for future use.
+- comment: Optional. you can make a RE in this attribute in order to identify comment zones. The identified zones will be ignored by search.
+
+There are 3 kinds of parsers: function parser, class parser and mix parser.
+Define a function parser if the language has only functions to parse (for example C).
+Define a class parser if the language has functions "defined" in a class, but no function defined outside of a class (for example Java).
+Define a mix parser if you have function "defined" both inside and ouside of a class in a file (for example C++).
+
+A function parser contains only a function node.
+A class parser contains only a classRange node.
+A mix parser contains both function and classRange nodes.
 
 ### Function parser
 In function node it contains:
