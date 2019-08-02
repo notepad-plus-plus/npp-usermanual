@@ -316,11 +316,11 @@ Anchors match a position in the line, rather than a particular character.
 
 * **\B** ⇒ Not a word boundary.
 
-* **\A** or **\' ** ⇒ The start of the matching string.
+* **\A** or **\\'** ⇒ The start of the matching string.
 
-* **\z** or **\`** ⇒ The end of the matching string.
+* **\z** or **\\`** ⇒ The end of the matching string.
 
-* **\Z** ⇒ Matches like **\z** with an optional sequence of newlines before it. This is equivalent to (?=\v*\z), which departs from the traditional Perl meaning for this escape.
+* **\Z** ⇒ Matches like **\z** with an optional sequence of newlines before it. This is equivalent to **(?=\v*\z)**, which departs from the traditional Perl meaning for this escape.
 
 
 
@@ -330,11 +330,11 @@ Anchors match a position in the line, rather than a particular character.
 
 * **(?&lt;_some name_&gt;...)** or **(?'_some name_'...)** or **(?(_some name_)...)** ⇒ Names this group _some name_.
 
-* **\gn** or **\g{n}** ⇒ The _n_-th subexpression, aka parenthesised group. Uing the second form has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n' is negative, groups are counted backwards, so that **\g-2** is the second last matched group._
+* **\g**__n__ or **\g{**_n_**}** ⇒ The _n_-th subexpression, aka parenthesised group. Uing the second form has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n' is negative, groups are counted backwards, so that **\g-2** is the second last matched group._
 
 * **\g{_something_}** or **\k&lt;_something_&gt;** ⇒ The string matching the subexpression named _something_.
 
-* **\**_digit_ ⇒ _Backreference:_ **\1** matches an additional occurence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \_n_ is a synonym for **\g_n_**, but doesn't support the extension syntax for the latter.
+* **\**_digit_ ⇒ _Backreference:_ **\1** matches an additional occurence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \\_n_ is a synonym for **\g**_n_, but doesn't support the extension syntax for the latter.
 
 
 #### Readability enhancements
@@ -364,19 +364,17 @@ The following constructs control how matches condition other matches, or otherwi
 
 * **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
 
-    * ⇒ For example, you get the following subexpressioncounter values:
+    * For example, you get the following subexpressioncounter values:
 
 ~~~
 # before  ---------------branch-reset----------- after
 / ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z ) /x
 
 # 1            2         2  3        2     3     4
-
 ~~~
 
-    * ⇒ Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
 
-
+    * Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
 
 ### Control flow
 Normally, a regular expression parses from left to right linerly. But you may need to change this behaviour.
@@ -384,19 +382,15 @@ Normally, a regular expression parses from left to right linerly. But you may ne
 
 * **|** ⇒ The alternation operator, which allows matching either of a number of options, like in&nbsp;: one|two|three to match either of "one", "two" or "three". Matches are attempted from left to right. Use **(?:)** to match an empty string in such a construct.
 
-
-
-*  _(?_n_)** or **_**(?_signed-n_)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
+*  **(?**_n_**)** or **_(?**_signed-n_**)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
 
 *  **(?0)** or **(?R)** ⇒ Backtrack to start of pattern.
 
 *  **(?&amp;_name_)** ⇒ Backtrack to subexpression named _name_.
 
-*  **(?_assertion_yes-pattern|_no-pattern_)** ⇒ Mathes _yes-pattern_ if assertion is true, and _no-pattern_ otherwise if provided. Supported assertions are:
+*  **(?**__assertion__yes-pattern_**|**_no-pattern_**)** ⇒ Mathes _yes-pattern_ if assertion is true, and _no-pattern_ otherwise if provided. Supported assertions are:
 
-
-
-*  **(?=_assert_)** (positive lookahead)
+*  **(?=**_assert_**)** (positive lookahead)
 
 *  **(?!_assert_)**  (negative lookahead)
 
