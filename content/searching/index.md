@@ -81,7 +81,7 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * When Bookmark line is checked, a single bookmark is dropped on each line a hit took place.
 
-* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Styler Configurator -&gt; Global Styles , Find Mark Style setting.
+* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Styler Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
 
 In either case, the Mark All button will perform the marking.
 
@@ -89,7 +89,7 @@ To control whether highlighting or bookmarks accumulate over successive searches
 
 Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Styler Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
-## Dialog free search/mark actions
+## Dialog-free search/mark actions
 
 ### Searching
 
@@ -107,8 +107,8 @@ Please note that "selected" refers to the contents of the active stream selectio
 
 ### Highlighting
 
-Use the Mark All or Unmark All submenus of the Search menu to mark all occurrences of the word the caret is in. The settings for each of the 5 available styles are [Settings -&gt; Styler Configurator -&gt; Global Styles , Mark style #](../preferences/#style-configurator). You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Styler Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
-You enable smart highlighting through [Settings -&gt; Preferences -&gt; MISC -&gt; Smart highlighting, Enable smart highlighting](../preferences/#highlighting). By default, the highlighting is case insensitive, which may be a problem sometimes. Then just toggle Settings -&gt; Preferences -&gt; MISC -&gt; Highlighting is case sensitive on.
+Use the Mark All or Unmark All submenus of the Search menu to mark all occurrences of the word the caret is in. The settings for each of the 5 available styles are Settings -&gt; Styler Configurator -&gt; Global Styles , Mark style #. You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Styler Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
+You enable smart highlighting through Settings -&gt; Preferences -&gt; MISC -&gt; Smart highlighting, Enable smart highlighting. By default, the highlighting is case insensitive, which may be a problem sometimes. Then just toggle Settings -&gt; Preferences -&gt; MISC -&gt; Highlighting is case sensitive on.  (See also [Style Configurator](../preferences/#style-configurator) and [Preferences](../preferences/#preferences).)
 
 
 ## Finding characters in a specific range
@@ -121,7 +121,16 @@ Search may proceed up or down, and optionally wraps around. Hit Find to perform 
 
 ## Incremental Search
 
-Incremental search is similar to the searching capabilities found in your favorite web browser (like Firefox or Chrome).  You can launch it from the **Search > Incremental Search** menu, or the keyboard shortcut (Ctrl+Alt+I).  Issue the Incremental Search command will show a small region at the bottom of the Notepad++, which has a few simple features.  The **✗** allows you to close out of Incremental Search.  The **Find** box is where you type your literal search term.  The **<** and **>** buttons navigate backward and forward thourgh the search results (wrapping around when it reaches the end or start of the document).  If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted. If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.  To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes colour.
+Incremental search is similar to the searching capabilities found in your favorite web browser (like Firefox or Chrome).  You can launch it from the **Search > Incremental Search** menu, or the keyboard shortcut (Ctrl+Alt+I).
+
+This command will show a small region at the bottom of the Notepad++, which has a few simple features.
+
+* The **✗** allows you to close out of Incremental Search.
+* The **Find** box is where you type your literal search term.
+* The **<** and **>** buttons navigate backward and forward thourgh the search results (wrapping around when it reaches the end or start of the document).
+* If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
+* If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.
+* To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes colour.
 
 ## Comparison between "Select and Find Next" and "Find Next (Volatile)"
 
@@ -152,23 +161,21 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 * `\x`:  the hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
 * `\u`:  The hexadecimal representation of a two byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character. In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
 
-NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
+†NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
 ## Regular Expressions
-
-This tutorial was based on an earlier, far more limited regular expression syntax. The examples are still the same at the date of writing, they require additions or upgrading to the new ways.
 
 Notepad++ regular expressions use the Boost regular expression library v1.55, which is based on PCRE (Perl Compatible Regular Expression) syntax, only departing from it in very minor ways. Complete documentation on the precise implementation is to be found on the Boost pages for [search syntax](http://www.boost.org/doc/libs/1_55_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html) and [replacement syntax](http://www.boost.org/doc/libs/1_55_0/libs/regex/doc/html/boost_regex/format/boost_format_syntax.html)
 
 The Notepad++ Community has a [FAQ on other resources for regular expressions](https://notepad-plus-plus.org/community/topic/15765/faq-desk-where-to-find-regex-documentation).
 
-## Regex Special Characters
+### Regex Special Characters
 
 In a regular expression (shortened into regex throughout), special characters interpreted are:
 
 #### Single-character matches
 
-* **.** or **\c** ⇒ Matches any character. If you check the box which says ". matches newline", the dot will indeed do that, enabling the "any" character to run over multiple lines. With the option unchecked, then **.** will only match characters within a line, and not the line ending characters (**\r** and **\n**)
+* **.** or **\C** ⇒ Matches any character. If you check the box which says ". matches newline", the dot will indeed do that, enabling the "any" character to run over multiple lines. With the option unchecked, then **.** will only match characters within a line, and not the line ending characters (**\r** and **\n**)
 
 * **\X** ⇒ Matches a single non-combining characer followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.
 
@@ -179,7 +186,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **\x**_nn_ ⇒ Specify a single chracter with code _**nn**_. What this stands for depends on the text encoding. For instance, **\xE9** may match an é or a θ depending on the code page in an ANSI encoded document.
 
-* **\x**_nnnn_ ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
+* **\x{**_nnnn_**}** ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
 
 * **\O**_nnn_ ⇒ A single byte character whose code in octal is _nnn_.  (That's an uppercase letter O, not the number 0)
 
@@ -205,9 +212,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **\t** ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
-*  **\C_character_** ⇒ The control character obtained from _character_ by stripping all but its 6 lowest order bits. For instance, **\C1**, **\CA** and **\Ca** all stand for the SOH control character 0x01.
-
-
+*  **\c**_character_ ⇒ The control character obtained from _character_ by stripping all but its 6 lowest order bits. For instance, **\c1**, **\cA** and **\ca** all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so "\cA" is the character you would get from hitting Ctrl+A in a terminal.
 
 #### Ranges or kinds of characters
 
@@ -217,41 +222,24 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **[[:_name_:]]** ⇒ The whole character class named _name_.  Most of the time, there is a single letter escape sequence for them - see below. ⇒ Recognised classes are:
 
+    *  alnum&nbsp;: ASCII letters and digits
+    *  alpha&nbsp;: ASCII letters
+    *  blank&nbsp;: spacing which is not a line terminator
+    *  cntrl&nbsp;: control characters
+    *  d , digit&nbsp;: decimal digits
+    *  graph&nbsp;: graphical character
+    *  l , lower&nbsp;: lowercase letters
+    *  print&nbsp;: printable characters
+    *  punct&nbsp;: punctuation characters: , " ' ? ! ; : # $ % &amp; ( ) * + - / &lt; &gt; = @ [ ] \ ^ _ { } | ~
+    *  s , space&nbsp;: whitespace
+    *  u , upper&nbsp;: uppercase letters
+    *  unicode&nbsp;: any character with code point above 255
+    *  w , word&nbsp;: word character
+    *  xdigit&nbsp;: hexadecimal digits
 
+*  **\p**_short name_ or **\p{**_name_**}** ⇒ Same as **[[:_name_:]]**. For instance, **\pd** and **\p{digit}** both stand for a digit, **\d**.
 
-*  alnum&nbsp;: ASCII letters and digits
-
-*  alpha&nbsp;: ASCII letters
-
-*  blank&nbsp;: spacing which is not a line terminator
-
-*  cntrl&nbsp;: control characters
-
-*  d , digit&nbsp;: decimal digits
-
-*  graph&nbsp;: graphical character
-
-*  l , lower&nbsp;: lowercase letters
-
-*  print&nbsp;: printable characters
-
-*  punct&nbsp;: punctuation characters: , " ' ? ! ; : # $ % &amp; ( ) * + - / &lt; &gt; = @ [ ] \ ^ _ { } | ~
-
-*  s , space&nbsp;: whitespace
-
-*  u , upper&nbsp;: uppercase letters
-
-*  unicode&nbsp;: any character with code point above 255
-
-*  w , word&nbsp;: word character
-
-*  xdigit&nbsp;: hexadecimal digits
-
-
-
-*  **\p_short name_**,**\p{_name_}** ⇒ Same as **[[:_name_:]]**. For instance, **\pd** and **\p{digit}** both stand for a digit, **\d**.
-
-*  **\P_short name_**,**\P{_name_]** ⇒ Same as **[^[:_name_:]]** (not belonging to the class _name_). ⇒ Note that Unicode categories like in \p{Sc} or \p{Currency_Symbol}, they are flagged as an invalid regex in v6.6.6. This is because support would draw a large library in, which would have other uses.
+*  **\P**_short name_ or **\P{**_name_**}** ⇒ Same as **[^[:_name_:]]** (not belonging to the class _name_). ⇒ Note that Unicode categories like in \p{Sc} or \p{Currency_Symbol}, they are flagged as an invalid regex in v6.6.6. This is because support would draw a large library in, which would have other uses.
 
 * **\d** ⇒ A digit in the 0-9 range, same as **[[:digit:]]**.
 
@@ -281,7 +269,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **\V** ⇒ Not vertical whitespace.
 
-* **[[=_primary key_=]]** ⇒ All characters that differ from _primary key_ by case, accent or similar alteration only. For example **[[=a=]]** matches any of the characters: a, À, Á, Â, Ã, Ä, Å, A, à, á, â, ã, ä and å.
+* **[[=**_primary key_**=]]** ⇒ All characters that differ from _primary key_ by case, accent or similar alteration only. For example **[[=a=]]** matches any of the characters: a, À, Á, Â, Ã, Ä, Å, A, à, á, â, ã, ä and å.
 
 
 
@@ -303,21 +291,14 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **{_m_,_n_**} ⇒ Matches _m_ to _n_ copies of the element it applies to, as much it can.
 
-* **{_n_,}?**,_{_m_,_n_**}?**_ ⇒ Like the above, but match as few copies as they can. Compare with ***?** and friends.
+* **{**_n_**,}?** or **{**_m_**,**_n_**}?** ⇒ Like the above, but match as few copies as they can. Compare with **&#x2a;?** and friends.
 
-* **&#x2a;+**,**?+**,**++**,**{_n_,}+**,**{_m_,_n_**}+ ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. ⇒ Example: matching ".*" against _"abc"x_ will find "abc", because
-
-
-
-*  " then abc"x then $ fails
-
-*  " then abc" then x fails
-
-*  " then abc then " succeeds.
-
+* **&#x2a;+** or **?+** or **++** or **{**_n_**,}+** or **{**_m_**,**_n_**}+** ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. ⇒ Example: matching ".*" against _"abc"x_ will find "abc", because
+    *  " then abc"x then $ fails
+    *  " then abc" then x fails
+    *  " then abc then " succeeds.
 
 However, matching "*+" against _"abc"x_ will fail, because the possessive repeat factor prevented backtracking.
-
 
 #### Anchors
 Anchors match a position in the line, rather than a particular character.
@@ -327,17 +308,17 @@ Anchors match a position in the line, rather than a particular character.
 
 * **$**  ⇒ This matches the end of a line.
 
-* **\&lt;**  ⇒ This matches the start of a word using Scintilla's definitions of words.
+* **\\&lt;**  ⇒ This matches the start of a word using Scintilla's definitions of words.
 
-* **\&gt;**  ⇒ This matches the end of a word using Scintilla's definition of words.
+* **\\&gt;**  ⇒ This matches the end of a word using Scintilla's definition of words.
 
 * **\b** ⇒ Matches either the start or end of a word.
 
 * **\B** ⇒ Not a word boundary.
 
-* **\A**,&nbsp;**\' ** ⇒ The start of the matching string.
+* **\A** or **\' ** ⇒ The start of the matching string.
 
-* **\z**,&nbsp;**\`** ⇒ The end of the matching string.
+* **\z** or **\`** ⇒ The end of the matching string.
 
 * **\Z** ⇒ Matches like **\z** with an optional sequence of newlines before it. This is equivalent to (?=\v*\z), which departs from the traditional Perl meaning for this escape.
 
@@ -347,13 +328,14 @@ Anchors match a position in the line, rather than a particular character.
 
 * **(**...**)** ⇒ &lt;Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses **( )** can be re-used as a backreference or as part of a replace operation; see Substitutions, below.  ⇒ Groups may be nested.
 
-* **(?&lt;_some name_&gt;...)**, **(?'_some name_'...)**,**(?(_some name_)...)** ⇒ Names this group _some name_.
+* **(?&lt;_some name_&gt;...)** or **(?'_some name_'...)** or **(?(_some name_)...)** ⇒ Names this group _some name_.
 
-* **\gn** , **\g{n}** ⇒ The _n_-th subexpression, aka parenthesised group. Uing the second form has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n' is negative, groups are counted backwards, so that **\g-2** is the second last matched group._
+* **\gn** or **\g{n}** ⇒ The _n_-th subexpression, aka parenthesised group. Uing the second form has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n' is negative, groups are counted backwards, so that **\g-2** is the second last matched group._
 
-* **\g{_something_}**,**\k&lt;_something_&gt;** ⇒ The string matching the subexpression named _something_.
+* **\g{_something_}** or **\k&lt;_something_&gt;** ⇒ The string matching the subexpression named _something_.
 
 * **\**_digit_ ⇒ _Backreference:_ **\1** matches an additional occurence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \_n_ is a synonym for **\g_n_**, but doesn't support the extension syntax for the latter.
+    * In the **Replace With**, **$**_digit_ is also a valid backreference.
 
 
 
@@ -375,22 +357,14 @@ The following constructs control how matches condition other matches, or otherwi
 
 * **\E** ⇒ Ends verbatim mode. Ths, "\Q\*+\Ea+" matches "\*+aaaa".
 
-* **(?:_flags_-_not-flags_ ...)**, **(?:_flags_-_not-flags_:...)** ⇒ Applies flags and not-flags to search inside the parentheses. Such a construct may have flags and may have not-flags - if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
+* **(?:_flags_-_not-flags_ ...)** or **(?:_flags_-_not-flags_:...)** ⇒ Applies flags and not-flags to search inside the parentheses. Such a construct may have flags and may have not-flags - if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
 
-
-&nbsp;&nbsp;&nbsp;**i**&nbsp;: case insensitive (default: off)
-
-&nbsp;&nbsp;&nbsp;**m**&nbsp;: ^ and $ match embedded newlines (default: as per ". matches newline")
-
-&nbsp;&nbsp;&nbsp; **s**:  dot matches newline (default: as per ". matches newline")
-
-&nbsp;&nbsp;&nbsp; **x**: Ignore unescaped whitespace in regex (default: off)
-
+    * **i**&nbsp;: case insensitive (default: off)
+    * **m**&nbsp;: ^ and $ match embedded newlines (default: as per ". matches newline")
+    * **s**:  dot matches newline (default: as per ". matches newline")
+    * **x**: Ignore unescaped whitespace in regex (default: off)
 
 * **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that. ⇒ For example, you get the following subexpressioncounter values:
-
-
-
 
 ~~~
 # before  ---------------branch-reset----------- after
@@ -400,7 +374,7 @@ The following constructs control how matches condition other matches, or otherwi
 
 ~~~
 
- ⇒ Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
+⇒ Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
 
 
 
@@ -412,9 +386,9 @@ Normally, a regular expression parses from left to right linerly. But you may ne
 
 
 
-*  _(?_n_)**, **_**(?_signed-n_)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
+*  _(?_n_)** or **_**(?_signed-n_)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
 
-*  **(?0)**, **(?R)** ⇒ Backtrack to start of pattern.
+*  **(?0)** or **(?R)** ⇒ Backtrack to start of pattern.
 
 *  **(?&amp;_name_)** ⇒ Backtrack to subexpression named _name_.
 
@@ -479,7 +453,7 @@ These special groups consume no characters. Their successful matching counts, bu
 
 *  **\a**,**\e**,**\f**,**\n**,**\r**,**\t**,**\v** ⇒ The corresponding control character, respectively BEL, ESC, FF, LF, CR, TAB and VT.
 
-*  **\C_character_"**, **\x_nn_**,**\x{nnnn&lt;/i&gt;}** ⇒ Like in search patterns, respectively the control character with the same low order bits, the character with code 'nn_ and the character with code _nnnn_ (requires Unicode encoding)._
+*  **\C**_character_" or **\x**_nn_ or **\x**_nnnn_ ⇒ Like in search patterns, respectively the control character with the same low order bits, the character with code __nn_ and the character with code _nnnn_ (requires Unicode encoding).
 
 *  **\l** ⇒ Causes next character to output in lowercase
 
@@ -513,11 +487,6 @@ These special groups consume no characters. Their successful matching counts, bu
 While, in normal or extended mode, there would be no point in looking for text of length 0, this can very normally happen with regula expressions. For instance, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
 
 Notepad++ would select the match, bt there is no sensible way to select a stretch zero character long. Whe this happens, a tooltip very similar to function call tips is displayed instea, with a caret pointing upwards to the empty match.
-
-A match was found at the first column of line 5.
-
-
-
 
 
 ### Examples
