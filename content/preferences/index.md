@@ -202,7 +202,7 @@ If you are editing mission-critical files: Always use dedicated backup software.
 
 ### Auto-Completion
 
-Sets options for auto-completion of text, including word completion, syntax completion, and automatically pairing certain punctuation pairs and html/xml tags
+Sets options for [auto-completion](../auto-completion/) of text, including word completion, syntax completion, and automatically pairing certain punctuation pairs and html/xml tags.
 
 * **Auto-Completion**
     * `☐ Enable auto-completion on each input`: a dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion
@@ -234,7 +234,7 @@ Determines whether multiple instances of Notepad++ can be run simultaneously.
 
 ### Delimiter
 
-Sets the characters that are considered part of a "word" for quick selections using double-click and similar
+Sets the characters that are considered part of a "word" for quick selections using double-click and similar.  It is also used for [auto-completion](../auto-completion/#create-auto-completion-definition-files).
 
 * **Word character list**
     * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Find dialog, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
