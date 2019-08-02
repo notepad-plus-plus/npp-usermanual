@@ -335,8 +335,6 @@ Anchors match a position in the line, rather than a particular character.
 * **\g{_something_}** or **\k&lt;_something_&gt;** ⇒ The string matching the subexpression named _something_.
 
 * **\**_digit_ ⇒ _Backreference:_ **\1** matches an additional occurence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \_n_ is a synonym for **\g_n_**, but doesn't support the extension syntax for the latter.
-    * In the **Replace With**, **$**_digit_ is also a valid backreference.
-
 
 
 #### Readability enhancements
@@ -364,7 +362,9 @@ The following constructs control how matches condition other matches, or otherwi
     * **s**:  dot matches newline (default: as per ". matches newline")
     * **x**: Ignore unescaped whitespace in regex (default: off)
 
-* **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that. ⇒ For example, you get the following subexpressioncounter values:
+* **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
+
+    * ⇒ For example, you get the following subexpressioncounter values:
 
 ~~~
 # before  ---------------branch-reset----------- after
@@ -374,7 +374,7 @@ The following constructs control how matches condition other matches, or otherwi
 
 ~~~
 
-⇒ Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
+    * ⇒ Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
 
 
 
@@ -402,22 +402,17 @@ Normally, a regular expression parses from left to right linerly. But you may ne
 
 *  **(?(R))**   (true if inside a recursion)
 
-*  **(?(R_n_)  (true if in a recursion to subexpression numbered _n_**
+*  **(?(R**_n_**)**  (true if in a recursion to subexpression numbered _n_)
 
 
 PCRE doesn't treat recursion expressions like Perl does:
-
-
 
 ~~~
 In PCRE (like Python, but unlike Perl), a recursive subpattern call  is
 always treated as an atomic group. That is, once it has matched some of
 the subject string, it is never re-entered, even if it contains untried
 alternatives  and  there  is a subsequent matching failure.
-
 ~~~
-
-
 
 *  **\K** ⇒ Resets matched text at this point. For instance, matching "foo\Kbar" will not match bar". It will match "foobar", but will pretend that only "bar" matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
 
@@ -427,23 +422,24 @@ alternatives  and  there  is a subsequent matching failure.
 These special groups consume no characters. Their successful matching counts, but when they are done, matching starts over where it left.
 
 
-* **(?=_pattern_)** ⇒ If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes. ⇒ For instance,
-
-
-
+* **(?=_pattern_)** ⇒ If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes.
+    * For instance,
 
 ~~~
 (?=.*[[:lower:]])(?=.*[[:upper:]]).{6,}
 
 ~~~
 
- ⇒ tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.  ⇒ '"q(?=u)i" doesn't match "quit", because, as matching 'u' consumes 0 characters, matching "i" in the pattern fails at "u" i the subject.
+    * tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.
+
+    * '"q(?=u)i" doesn't match "quit", because, as matching 'u' consumes 0 characters, matching "i" in the pattern fails at "u" i the subject.
 
 * **(?!_pattern_)** ⇒ Matches if _pattern_ didn't match.
 
 * **(?&lt;=_pattern_)** ⇒ Asserts that _pattern_ matches before some token.
 
-*  (?&lt;_pattern_) ⇒ Asserts that _pattern_ does not match before some token. ⇒ NOTE: _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.
+*  (?&lt;_pattern_) ⇒ Asserts that _pattern_ does not match before some token.
+    * NOTE: _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.
 
 *  **(?&gt;_pattern_)** ⇒ Match pattern independently of surrounding patterns, and don't backtrack into it. Failure to match will cause the whole subject not to match.
 
@@ -493,11 +489,7 @@ Notepad++ would select the match, bt there is no sensible way to select a stretc
 These examples come from an earlier version of this page:
 Notepad++ RegExp Help, by Author&nbsp;: Georg Dembowski
 
-
-
-_ Add more examples using advanced features of PCRE_
-
-
+_Add more examples using advanced features of PCRE_
 
 **IMPORTANT**
 
