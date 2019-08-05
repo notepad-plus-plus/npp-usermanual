@@ -69,7 +69,7 @@ The **Find what** and **Replace with** edit boxes have a dropdown arrow which al
 
 The **In selection** option will automatically be chosen by Notepad++ if a Find dialog window is opened when more than 1024 characters occur in the active selection.  The selected text will also be placed in the **Find what** box.  Running a **Count** or **Replace All** action without making other changes to the search parameters will result in *Count: 1 match* or *Replace All: 1 occurrence was replaced*, respectively, which is likely not what was intended.  The proper resolution for this situation is to change the **Find what** text if the intention is to search within-selection, or deselect **In selection** if the intention is to search for a fairly long block of text.
 
-The status bar area of the Find dialog keeps the user informed of what occurred during an action.  For example, it might say *Mark: 1 match* or *FInd: Invalid regular expression*.  Colors are used in the status bar for emphasis:  red for some sort of error; green or blue for various success or general information.
+The status bar area of the Find dialog keeps the user informed of what occurred during an action.  For example, it might say *Mark: 1 match* or *Find: Invalid regular expression*.  Colors are used in the status bar for emphasis:  red for some sort of error; green or blue for various success or general information.
 
 Notepad++ uses a flashing of the Find dialog window and the main Notepad++ window itself (when the Find dialog is not open) to indicate that search text has not been found (or possibly that a **Wrap around** in the search has occurred).  In general, if a search results in no matches, and the Find dialog window is open, that window will flash briefly as a failure indication.  If the Find dialog window is NOT open, and a failed search is initiated (e.g. via **Find Next** on the **Search** menu), the main Notepad++ window will flash briefly, again, as an indicator of the lack of success.  With the Find dialog window closed, but with **Wrap around** previously activated, a search that causes a wrap at an end of the file to occur will also cause the Notepad++ main window to flash.  In addition, the system error bell will sound if a **Find Next** or **Replace** action results in the **Find what** text not being encountered; the bell is not disableable.
 
@@ -783,3 +783,107 @@ Now let's add some commenting
 beginning of the regex")(?R) \) )* [^()]* )
 
 ~~~
+
+## Searching actions when recorded as macros
+
+The Find family of actions can be recorded in a macro to make them easy to name and later replay via the **Macro** menu or an assigned keycombination.  Somewhat unfortunately, **Find what** and **Replace with** text is hardwired into the macro when it is created, and isn't something the user can change when the macro runs, but often this isn't a significant limitation.
+
+Note, however, that Find-related actions are recorded a bit differently than other Notepad++ actions, so we'll discuss them a bit more in-depth here.  Typically, Notepad++ will record a step in a macro every time a user does something in the Notepad++ user interface.  The Find family of actions is more "coordinated" where macro recording is concerned.
+
+The macro recorder only records when an actual Find family action (e.g. **Replace**, **Find All in Current Document**, etc.) occurs.  Thus you can tweak a future action's parameters (e.g. **Match case**, **Wrap around**, etc.) all you'd like, and all of that fiddling doesn't get remembered.  At the point where you peform an action, then a snapshot is taken of all of the parameters and the action, and this is logged in the macro memory as a proper macro sequence.
+
+While the user can simply record and use Find family macros, one can also edit those macros later to change or add to their functionality, so it is helpful to know the details of the macro sequences that were previously recorded.  While the details of how macros in general are recorded and stored in *shortcuts.xml* is discussed elsewhere, here are the details of what happens when Notepad++ saves a recorded Find family macro:
+
+First comes a **1700** message which carries out some initialization of the Find engine:
+
+`<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />`
+
+Next is a **1601** message with the **Find what** text in the **sParam** field; in this example we search for "it":
+
+`<Action type="3" message="1601" wParam="0" lParam="0" sParam="it" />`
+
+Following that is a **1625** message with the **Search mode** in **lParam**, with possible values of 0=**Normal** / 1=**Extended** / 2=**Regular expression**; let's show **Regular expression** in this example:
+
+`<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />`
+
+After that, if a type of replacement operation is being performed, is a **1602** message with **sParam** holding the **Replace with** text; here we'll make that "IT":
+
+`<Action type="3" message="1602" wParam="0" lParam="0" sParam="IT" />`
+
+Moving on, next, if performing a **Find All** (really a Find-in-Files) or a **Replace in Files**, is a **1653** message containing the base **Directory** for the search in **sParam**:
+
+`<Action type="3" message="1653" wParam="0" lParam="0" sParam="C:\Program Files\Notepad++\" />`
+
+Also when doing a **Find All** or a **Replace in Files**, will be a **1652** message containing the **Filters** for the search in **sParam**:
+
+`<Action type="3" message="1652" wParam="0" lParam="0" sParam="*.*" />`
+
+Next will be a **1702** message that contains a bit-weighted number in **lParam** that represents the "checkbox" option parameters for the action (more on this later, for now we will just use 515 in the example, and present the bit-weight table):
+
+`<Action type="3" message="1702" wParam="0" lParam="515" sParam="" />`
+
+| 1702-Bit-Weight |Binary-Bit-Weight | Meaning (equivalent option ticked) |
+|-----------------|------------------|------------------------------------|
+| 1               |0000000001        | Match whole word only              |
+| 2               |0000000010        | Match case                         |
+| 4               |0000000100        | Purge for each search              |
+| 16              |0000010000        | Bookmark line                      |
+| 32              |0000100000        | In all sub-folders                 |
+| 64              |0001000000        | In hidden folders                  |
+| 128             |0010000000        | In selection                       |
+| 256             |0100000000        | Wrap around                        |
+| 512             |1000000000        | Backward direction (unticked!)     |
+
+Finally appears a **1701** message which encodes the Find family action to perform in **lParam**, which, when executed will conduct the action using all of the information encoded in the prior messages; let's do a **Replace in Files**, which has an integer value of 1660, for purposes of an example:
+
+`<Action type="3" message="1701" wParam="0" lParam="1660" sParam="" />`
+
+| 1701-Value | Meaning (equivalent button press)   |
+|------------|-------------------------------------|
+| 1          | Find Next                           |
+| 1608       | Replace                             |
+| 1609       | Replace All                         |
+| 1614       | Count                               |
+| 1615       | Mark All                            |
+| 1633       | Clear all marks                     |
+| 1635       | Replace All in All Opened Documents |
+| 1636       | Find All in All Opened Documents    |
+| 1641       | Find All in Current Document        |
+| 1656       | Find All (in Files)                 |
+| 1660       | Replace in Files                    |
+
+So really the only tricky part is the 1702 message and how its encoding works.
+
+Let's see how the example value 515 used above is decoded:
+
+lParam="515" (decimal) = 203 (hex) = 10 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
+
+Finally, let's present a complete example (that could occur in *shortcuts.xml*) and how it is interpreted:
+
+    <Macro name='Book Mark lines NOT containing ABC' Ctrl="no" Alt="no" Shift="no" Key="0">
+        <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+        <Action type="3" message="1601" wParam="0" lParam="0" sParam="^(?-s)(?!.*ABC).*" />
+        <Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+        <Action type="3" message="1702" wParam="0" lParam="786" sParam="" />
+        <Action type="3" message="1701" wParam="0" lParam="1615" sParam="" />
+    </Macro>
+
+First we have our initializing 1700 message.
+
+Following that in the 1601 message's sParam field is a regular expression that will match lines that do not contain "ABC": `^(?-s)(?!.*ABC).*`
+
+The search type for "Regular expression" appears next as lParam="2" in the 1625 message.
+
+Skipping the 1702 message for the moment, the 1701 message has lParam="1615" which, from the 1701 table, means "Mark All".
+
+Finally, let's consider the 1702 message.  Its pertinent part is lParam="786".  The best way to break that down into its component parts is to convert the number to binary and then determine how the one-bits in the binary contribute to the meaning.  786 in binary is 1100010010, which breaks down as follows, and then reading the 1702 table from earlier we get the contributors to functionality:
+
+* `1000000000` - not Backward direction (thus forward direction from caret toward bottom end of file)
+
+* `0100000000` - Wrap around
+
+* `0000010000` - Bookmark line
+
+* `0000000010` - Match case
+
+Note that in this example we seem to have conflicting search parameters:  We have a direction encoded, as well as a Wrap around, which nullifies the need for a direction.  This is not a problem, as the Wrap around option will take precedence, just like in a non-macro'd interactive searching operation.
