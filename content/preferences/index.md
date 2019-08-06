@@ -238,10 +238,14 @@ Sets the characters that are considered part of a "word" for quick selections us
 
 * **Word character list**
     * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Find dialog, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
-    * `☐ Add yuor character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
+    * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
+        * The value should be a string consisting of all the additinal characters you would like to be included as a "word character".
+        * Spaces, tabs, and newlines are never valid word characters, and should not be present in this entry.
 * **Delimiter selection settings**
     * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
     * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
+
+(As of Notepad++ v6.5.2, these additional Delimiter characters were still documented as not working for auto-completion.  Even as of v7.7.1, they still may not behave as you might hope.  In general, it is best to assume that keyword recognition stops on non-word characters, even if extra characters are defined in the preferences.)
 
 ### Cloud
 
