@@ -234,10 +234,11 @@ Determines whether multiple instances of Notepad++ can be run simultaneously.
 
 ### Delimiter
 
-Sets the characters that are considered part of a "word" for quick selections using double-click and similar.  It is also used for [auto-completion](../auto-completion/#create-auto-completion-definition-files).
+Sets the characters that are considered part of a "word" for quick selections using double-click, [Smart Highlighting](#highlighting), or the "match whole word only" in a normal search expression.  It is also used for [auto-completion](../auto-completion/#create-auto-completion-definition-files).  This setting does _not_ affect a [regular expression](../searching/#regular-expressions)'s interpretation of a word character or word boundary.
 
 * **Word character list**
-    * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Find dialog, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
+    * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Normal search mode in the Find and Replace dialogs, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
+        * The default "word characters" are "A"-"Z", "a"-"z", the digits "0"-"9", and "_".
     * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
         * The value should be a string consisting of all the additinal characters you would like to be included as a "word character".
         * Spaces, tabs, and newlines are never valid word characters, and should not be present in this entry.
