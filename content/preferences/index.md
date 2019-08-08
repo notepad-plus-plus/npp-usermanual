@@ -238,15 +238,15 @@ Sets the characters that are considered part of a "word" for quick selections us
 
 * **Word character list**
     * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Normal search mode in the Find and Replace dialogs, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
-        * The default "word characters" are "A"-"Z", "a"-"z", the digits "0"-"9", and "_".
+        * The default "word characters" inlcude anything that Unicode considers alphanumeric, plus the underscore "_" character.
+            * Includes: standard Latin characters, accented characters, letterlike symbols, superscript digits, and enclosed (circled) digits
+            * Excludes: punctuation, mathematical operators, box drawing, arrows, emoji, or other such sybols.
     * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
-        * The value should be a string consisting of all the additinal characters you would like to be included as a "word character".
-        * Spaces, tabs, and newlines are never valid word characters, and should not be present in this entry.
+        * The value should be a string consisting of all the additional characters you would like to be included as a "word character".
+        * Spaces are liable to cause problems, and are not recommended to be present in this entry.  If you try to add a space, the dialog box will show a warning message.
 * **Delimiter selection settings**
     * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
     * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
-
-(As of Notepad++ v6.5.2, these additional Delimiter characters were still documented as not working for auto-completion.  Even as of v7.7.1, they still may not behave as you might hope.  In general, it is best to assume that keyword recognition stops on non-word characters, even if extra characters are defined in the preferences.)
 
 ### Cloud
 
