@@ -113,7 +113,7 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 In either case, the Mark All button will perform the marking.
 
-To control whether highlighting or bookmarks accumulate over successive searches, use the Clear all marks button to remove marks, or check Purge for each search for this action to be performed automatically on each search.
+To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
 Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Styler Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
