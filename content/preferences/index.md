@@ -228,9 +228,9 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 
 Determines whether multiple instances of Notepad++ can be run simultaneously.
 
-* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session
+* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension.
 * `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++
-* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance
+* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
 
@@ -289,6 +289,8 @@ A variety of settings that didn't fit elsewhere
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Treat bakslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
+* `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
+* `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showingand editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
 ## Style Configurator
 
