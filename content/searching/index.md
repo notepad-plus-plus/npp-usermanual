@@ -107,7 +107,7 @@ The extra features from the Find All... command are not available while Finding 
 
 The Mark tab from the Find/Replace dialog will perform searches similar to the Find tab, in the current document or selection:
 
-* When Bookmark line is checked, a single bookmark is dropped on each line a hit took place.
+* When **Bookmark line** is checked, a bookmark is dropped on each line where an individual hit occurs.  In the case where an individual hit spans multiple lines, each line in the span will receive the bookmark.
 
 * Otherwise, the matched pattern is highlighted according to the Settings -&gt; Styler Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
 
@@ -116,8 +116,6 @@ In either case, the Mark All button will perform the marking.
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
 Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Styler Configurator -&gt; Global Styles , Incremental Highlighting instead.
-
-When using a marking action with **Bookmark line** enabled, only the *FIRST* line of a multi-line match will receive the bookmark, although all of the matching text will be redmarked.
 
 ## Dialog-free search/mark actions
 
