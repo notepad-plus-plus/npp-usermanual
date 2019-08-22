@@ -98,7 +98,7 @@ These affect open and save operations.
 
 ### Recent Files History
 
-These change how the list of recent files ("MRU") is displayed in the File menu
+These change how the list of recent files (also knows as the most-recently-used list, or "MRU" for short) is displayed in the File menu
 
 * `☐ Don't check at launch time`: will skip checking whether files in the MRU exist at launch time.
     * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the MRU
@@ -269,7 +269,7 @@ A variety of settings that didn't fit elsewhere
 
 * **Document Switcher**
     * `☐ Enable`: hitting Ctrl+TAB will allow you to easily switch through all the open documents
-    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file in the Ctrl+TAB list
+    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file (or "MRU", for short) in the Ctrl+TAB list
 * **Document Peeker**
     * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
     * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
