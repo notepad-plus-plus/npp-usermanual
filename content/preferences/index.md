@@ -290,7 +290,7 @@ A variety of settings that didn't fit elsewhere
 * `☐ Treat bakslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
-* `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showingand editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
+* `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
 ## Style Configurator
 
