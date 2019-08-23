@@ -98,7 +98,7 @@ These affect open and save operations.
 
 ### Recent Files History
 
-These change how the list of recent files (also knows as the most-recently-used list, or "MRU" for short) is displayed in the File menu
+These change how the list of recent files (also known as the Most Recently Used list, or "MRU") is displayed in the File menu
 
 * `☐ Don't check at launch time`: will skip checking whether files in the MRU exist at launch time.
     * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the MRU
