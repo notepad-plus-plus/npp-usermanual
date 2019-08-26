@@ -98,9 +98,11 @@ These affect open and save operations.
 
 ### Recent Files History
 
-These change how the list of recent files is displayed in the File menu
+These change how the list of recent files (also known as the Most Recently Used list, or "MRU") is displayed in the File menu
 
-* `☐ Don't check at launch time`
+* `☐ Don't check at launch time`: will skip checking whether files in the MRU exist at launch time.
+    * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the MRU
+    * this is also useful if you like knowing what files were previously edited, even after you've deleted those files from the folder
 * `Max number of entries`: show the _n_ most recent files in the list
 * `☐ In Submenu`: will show the recent files in a "Recent Files" submenu of the File menu, rather than directly in the file menu
 * `☐ Only File Name`: will show just the file name, without the drive or path
@@ -226,9 +228,9 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 
 Determines whether multiple instances of Notepad++ can be run simultaneously.
 
-* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session
+* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension.
 * `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++
-* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance
+* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
 
@@ -267,7 +269,7 @@ A variety of settings that didn't fit elsewhere
 
 * **Document Switcher**
     * `☐ Enable`: hitting Ctrl+TAB will allow you to easily switch through all the open documents
-    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file in the Ctrl+TAB list
+    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file (or "MRU", for short) in the Ctrl+TAB list
 * **Document Peeker**
     * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
     * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
@@ -287,6 +289,8 @@ A variety of settings that didn't fit elsewhere
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Treat bakslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
+* `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
+* `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
 ## Style Configurator
 
