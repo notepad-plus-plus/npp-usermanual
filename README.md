@@ -5,7 +5,7 @@ Notepad++ User Manual
 
 Of course, it's not our goal to create bad documentation, but you get what we mean.
 
-**Notepad++ User Manual** is built collaboratively, and your contribution is very welcome. Before submitting a pull request (PR), please check our [contribution rules](CONTRIBUTION.md) to prevent your PR from being rejected.
+[**Notepad++ User Manual**](https://npp-user-manual.org) is built collaboratively, and your contribution is very welcome. Before submitting a pull request (PR), please check our [contribution rules](CONTRIBUTION.md) to prevent your PR from being rejected.
 
 
 
@@ -40,7 +40,7 @@ Go to the root of Notepad++ User Manual repository under your bash shell (use `G
 ```bash
 donh@MYPC MINGW64 /c/husbandIsNotATM/npp-usermanual (adapt_hugo_book_theme)
 $ /c/tmp/hugo/hugo_ext/hugo.exe server --minify --theme book
-Building sites Ö
+Building sites ‚Ä¶
                    | EN
 +------------------+----+
   Pages            | 23
@@ -63,4 +63,4 @@ Press Ctrl+C to stop
 
 ```
 
-Type [http://localhost:1313/](http://localhost:1313/) on the adress bar of your browser et voil‡!
+Type [http://localhost:1313/](http://localhost:1313/) on the adress bar of your browser et voil√†!
