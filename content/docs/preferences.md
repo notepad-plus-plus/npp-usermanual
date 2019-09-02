@@ -308,7 +308,7 @@ The Save & Close button will save the settings and close the dialog.  The Cancel
 
 ### Global Styles
 
-Unlike the other "languages", which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
+Unlike most of the other items listed in the "Languages" column, which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
 
 Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
 
@@ -341,6 +341,19 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Active tab text [foreground only] ⇒ Selects the colour to be used for the filename displayed in the titlebar of the active tab.
 * Inactive tabs [background and foreground] ⇒ Selects the colour to be used for the filename displayed in the titlebars of all inactive tabs.
 * URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your cursor is hovering over a URL, the URL's foreground colour will follow this setting.
+
+### Search result styles
+
+The "Search result" styles is another set of styles which are not language or file-type specific.  Instead, they are the styles that are applied in the **Search > Search Results Window**.
+
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
+
+* Search Header [background and foreground] ⇒ The first line of every group of search results tells what the search term was used, how many matches there were, and how many of the searched files contain matches are listed in this style.
+* File Header [background and foreground] ⇒ For each file in a group of search results, the file name and how many matches were in that file are listed in this style.
+* Line Number [background and foreground] ⇒ For each line with a match, the line number of that match will be formatted according to this style.
+* Hit Word [background and foreground] ⇒ The matching word will be formatted using this style inside the search results.
+* Selected Line [background and foreground] ⇒ <!-- This appears to not affect things in v7.7.1; should this be filed as a bug; this was discussed in a recent forum post, though I cannot find it right now -->
+* Current line background [background only] ⇒ As you click on lines in the search results window, this style will be used to set the background colour of the search-result-window line that was clicked.
 
 ### Configuration file: `stylers.xml`
 
