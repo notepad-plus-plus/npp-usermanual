@@ -1,5 +1,5 @@
 ---
-title: Edition
+title: Editing
 weight: 30
 ---
 
