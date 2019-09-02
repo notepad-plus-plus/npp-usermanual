@@ -15,7 +15,7 @@ Summary
 * [Getting started](content/docs/getting-started.md)
 * [Programing Languages](content/docs/programing-languages.md)
 * [User Defined Language System](content/docs/user-defined-language-system.md)
-* [Edition](content/docs/edition.md)
+* [Editing](content/docs/editing.md)
 * [Searching](content/docs/searching.md)
 * [Session](content/docs/session.md)
 * [Macros](content/docs/macros.md)
