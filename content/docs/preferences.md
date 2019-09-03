@@ -306,6 +306,55 @@ Some language/style combinations (like Perl > INSTRUCTION WORD) will additionall
 
 The Save & Close button will save the settings and close the dialog.  The Cancel button will exit the dialog without updating the style settings.  The Transparency checkbox will allow you apply transparency to the Style Configurator dialog box.
 
+### Global Styles
+
+Unlike most of the other items listed in the "Languages" column, which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
+
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
+
+* Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are enabled will override even the per-language settings; any that are not enabled will not use the global-override settings for that attribute.
+* Default style [background and foreground] ⇒ This sets the base font and colours for all languages -- so any unstyled text will use these settings.
+* Indent guideline style [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is enabled, there will be a thin dotted line every for every level of indent.  The foreground sets the colour of the dots; the background sets the colour of the non-dot portion.
+* Brace highlight style [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the cursor onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
+* Bad brace colour [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the cursor at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
+* Current line background colour [background only] ⇒ The line containing the active editing cursor will be marked using this background style.
+* Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is enabled, the "Smart Highlighting" style (below) will be coloured overtop of the "Selected Text Colour".
+* Caret colour [foreground only] ⇒ This sets the colour for the current-text-position cursor ("caret"), which will either be `|` for insert mode or `_` for overwrite mode.
+* Edge colour [foreground only] ⇒ Colour for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are enabled as Background Mode, this style's "foreground" colour will be used as the background colour for text that's beyond the edge.
+* Line number margin [background and foreground] ⇒ If "Display line number" is enabled in [Preferences > Editing](#editing), this sets the style for those line numbers.
+* Fold [background and foreground] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the cursor is _not_ inside that folding-area
+* Fold active [foreground only] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the cursor _is_ inside that folding-area
+* Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colours for the margin-region; it will be coloured with a checkerboard-like pattern (a dense version of `░`)
+* White space symbol [foreground only] ⇒ If **View > Show Symbol** settings have whitespace shown, then the tabs and whitespace symbols will use this foreground colour.
+* Smart Highlighting [background only] ⇒ If [Smart Highlighting](#highlighting) is enabled and active, this colour will be applied to all matches.  This background colour has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact colour seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual colour will be RGB=[155,255,155].)
+* Find Mark Style [background only] ⇒ If you have used the **Search > Mark** dialog to mark text, this style will be applied to the background.  Like the "Smart Highlighting" style, this background has about 60% transparency, so the exact colour seen will depend on other styles for this text, combined with this setting.
+* Mark Style 1 [background only] ⇒ If you select text, then use **Search > Mark All > Using 1st Style**, it will use this background colour for all text matching the current selection.
+* Mark Style 2 [background only] ⇒ If you select text, then use **Search > Mark All > Using 2nd Style**, it will use this background colour for all text matching the current selection.
+* Mark Style 3 [background only] ⇒ If you select text, then use **Search > Mark All > Using 3rd Style**, it will use this background colour for all text matching the current selection.
+* Mark Style 4 [background only] ⇒ If you select text, then use **Search > Mark All > Using 4th Style**, it will use this background colour for all text matching the current selection.
+* Mark Style 5 [background only] ⇒ If you select text, then use **Search > Mark All > Using 5th Style**, it will use this background colour for all text matching the current selection.
+* Incremental highlighting all [background only] ⇒ If you use the "Highlight all" feature of the **Search > Incremental Search**, the results will be coloured based on this style.
+* Tags match highlighting [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is enabled, this background colour will be used for the opening and closing HTML/XML tags.
+* Tag attribute [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is enabled, this background colour will be used for attributes inside the HTML/XML tags.
+* Active tab focused indicator [foreground only] ⇒  If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is enabled, this foreground colour will be used for drawing a thick bar along the long edge of the tab name of the active tab in the active view, to emphasize active tab
+* Active tab unfocused indicator [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is enabled, and if both editor views are visible, this foreground colour will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
+* Active tab text [foreground only] ⇒ Selects the colour to be used for the filename displayed in the titlebar of the active tab.
+* Inactive tabs [background and foreground] ⇒ Selects the colour to be used for the filename displayed in the titlebars of all inactive tabs.
+* URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your cursor is hovering over a URL, the URL's foreground colour will follow this setting.
+
+### Search result styles
+
+The "Search result" styles is another set of styles which are not language or file-type specific.  Instead, they are the styles that are applied in the **Search > Search Results Window**.
+
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
+
+* Search Header [background and foreground] ⇒ The first line of every group of search results tells what the search term was used, how many matches there were, and how many of the searched files contain matches are listed in this style.
+* File Header [background and foreground] ⇒ For each file in a group of search results, the file name and how many matches were in that file are listed in this style.
+* Line Number [background and foreground] ⇒ For each line with a match, the line number of that match will be formatted according to this style.
+* Hit Word [background and foreground] ⇒ The matching word will be formatted using this style inside the search results.
+* Selected Line [background and foreground] ⇒ <!-- This appears to not affect things in v7.7.1; should this be filed as a bug; this was discussed in a recent forum post, though I cannot find it right now -->
+* Current line background [background only] ⇒ As you click on lines in the search results window, this style will be used to set the background colour of the search-result-window line that was clicked.
+
 ### Configuration file: `stylers.xml`
 
 If you prefer to edit XML instead of using the GUI, you may use the `stylers.xml` configuration file to edit the default theme, or `themes\blah.xml` to edit theme "blah".
