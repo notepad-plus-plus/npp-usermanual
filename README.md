@@ -27,6 +27,7 @@ Summary
 * [Command Line Arguments](content/docs/command-prompt.md)
 * [Shell Extension](content/docs/shell-extension.md)
 * [Binary Translation](content/docs/binary-translation.md)
+* [Ghost Typing](content/docs/binary-translation.md)
 * [Upgrading](content/docs/upgrading.md)
 * [Other Resources](content/docs/other-resources.md)
 
