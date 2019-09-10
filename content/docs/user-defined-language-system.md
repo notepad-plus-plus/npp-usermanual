@@ -18,7 +18,7 @@ The main pulldowns and buttons are available, whichever configuration tab is act
 * **Create New** will copy the default **User Defined Language** stylings and rules to a new name.
 * **Save As** will copy the currently-selected UDL, with all its stylings and rules, to a new name.
 * **Import...** will [import](#import-a-udl) a UDL XML file into your current instance ([see below](#import-a-udl)).
-* **Export...** will save the UDL XML file to a location of your choosing; you can then share this with others, so that they can [import](#import-a-udl) your UDL for their own use.
+* **Export...** will save a UDL XML file to a location of your choosing; you can then share this with others, so that they can [import](#import-a-udl) your UDL for their own use.
 * **Dock** or **Undock** will toggle whether the UDL dialog is a standalone dialog, or docked in the Notepad++ window.
 * **☐ Ignore Case** will make the various keywords ignore case while matching.
 * **☐ Transparency** (when not docked) will make the dialog box semi-transparent; the slider bar changes from virtually invisible (all the way to the left) to mostly opaque (all the way to the right); if you want it completely opaque (no transparency), uncheck the box.
@@ -26,11 +26,11 @@ The main pulldowns and buttons are available, whichever configuration tab is act
 When a UDL other than the default **User Defined Language** is seelcted in the pulldown, the following will also be available:
 * **Rename** will rename the currently-selected UDL.
 * **Remove** will delete the currently-selected UDL.
-* **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.
+* **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.  For example **Ext.: `md mkdn`** will associate `file.mkdn` or `something.md` with your selected UDL.
 
 ### UDL Configuration Tabs
 
-Ivan Radić has created the definitive guide to the nuts and bolts of UDL version 2.1, which is available at [https://ivan-radic.github.io/udl-documentation/]().  He explains the details of what each of the tabs in the **User Defined Language** dialog box will do, and how to use them to style your various keywords.  However, these descriptions will give you an overview of what each tab is for.
+Ivan Radić has created the definitive guide to the nuts and bolts of UDL version 2.1, which is available at [https://ivan-radic.github.io/udl-documentation/](https://ivan-radic.github.io/udl-documentation/).  He explains the details of what each of the tabs in the **User Defined Language** dialog box will do, and how to use them to style your various keywords.  However, these descriptions will give you an overview of what each tab is for.
 
 * The **Folder & Default** tab allows setting the default style, setting up keywords (or characters) that will allow code folding, and setting up styles for those keywords.  The **Open**, **Middle**, and **Close** boxes under each folding-type define the triggers for the start, middle, and end of folding.  For example, with `if`, `else`, and `endif`, it will define fold regions so that you can fold from `if` to `else`, from `else` to `endif`, and (assuming there is no `else` clause) from `if` to `endif`.  **Folding in comment** allows comments to include folding; **Folding in code 1 style** allows the triggers to be touching something else (so with a trigger of `{`, it will match `if{` or `if {`), whereas **Folding in code 2 style** requires there be whitespace around the trigger (so `if{` would _not_ match an **Open**-trigger of `{`).
 
@@ -39,12 +39,15 @@ Ivan Radić has created the definitive guide to the nuts and bolts of UDL versio
     As a point of interest, you shouldn't have a given keyword in more than one keyword-group _or_ folder-group.  If you want `if`/`else`/`endif` to cause block-folding, do not also put them in one of your keyword-groups.
 
 * The **Comment & Number** tab allows setting styles for comments and for numbers.  
-    * **Line Comment Position** allows you to decide whether "line comments" can start anywhere on the line, must start at the beginning, or can only start after whitespace.
+    * **Line Comment Position** allows you to decide whether "line comments" can start anywhere on the line, must start at the beginning, or can start anywhere on the line as long as it's only whitespace before the comment.
     * **☐ Allow folding of comments** will enable comments to be foldable.
     * **Comment line style** defines the style  for "line comments" -- comments that proceed from the opening-trigger to the end of the line.
     * **Comment style** defines the style for multiline-comments.
-    * **Number style** defines the style for numbers
-        ... TODO ... how much detail to I want to replicate from Ivan here?
+    * **Number style** defines the style for numbers.  The various **Prefix**es, **Suffix**es, and **Extra**s allow you to define extra numeric representations (useful for hexadecimal, binary, octal and similar representations, as well as for defining currency as a number).  The **Range** allows you to define a syntax for ranges, so that two numbers with a listed token in between will still be treated as a number.  (However, there may be conflicts if the **Range** setting matches one from **Operators & Delimiters**
+    
+* The **Operators & Delimiters** tab allows setting styles for operators and for delimiter pairs
+    * **Operators 1** and **Operators 2** define two groups of operators (usually math and math-like operators).  The first defines operators that will be matched even if they are touching other characters (allowing `1+2`), whereas the second defines operators that must contain spaces to be recognized (like `1 + 2`).
+    * The various **Delimiter** styles are pairs of **Open** and **Close** characters, where those characters and whatever comes between them will be styled per the rules defined for that entry.  This is useful for styling strings, parenthesized parameter lists, bracketed expressions, and anything else where it can have a .  The **Escape** entry allows defining a way of "escaping" the character so that the delimiter pair is not prematurely closed (such as `"` / `\` / `"` allowing `"this \" is an embedded quote character inside a string, escaped by the backslash"`).
 
 ### Import a UDL
 
@@ -53,6 +56,8 @@ The internet has plenty of Notepad++ UDL xml files.  Once you have the XML, you 
 1. Copy the XML into the [appropriate `userDefineLangs` subfolder](#udl-file-locations). Exit all instances of Notepad++ and reload, then the new UDL will be available.
 
 2. Use the **Import...** button, navigate to the source XML, and the UDL will be immediately available.
+
+The differences between those two methods are when the UDL will be available to Notepad++, and which config file will hold that UDL, per [UDL File Locations](#udl-file-locations).
 
 ## UDL File Locations
 
@@ -68,7 +73,9 @@ If you created or imported a UDL using the **User Defined Languages** dialog ins
 
 ## UDL and Themes
 
-... TODO ...
+The User Defined Languages are _not_ affected by your [active theme](./preferences/style-configurator).  
+
+However, since you can set the colors of a UDL to whatever you want, you can manually make it match your theme.  If you want to define multiple UDL using the same basic color scheme, you can start by setting the colors of the default **User Defined Language**, then **Create New** for each UDL that you want to match that scheme, customizing the rules for each new UDL.  
 
 <!--
 ## shared UDL files
