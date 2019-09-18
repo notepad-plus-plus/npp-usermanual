@@ -11,9 +11,15 @@ All keyboard shortcuts mentioned below are the default values, but are configura
 
 ## Dialog-based Searching
 
-The most powerful set of searching features is found in the standard dialog-based Find / Replace / Find In Files / Mark dialog.  This dialog has one tab for each of the forementioned searching-related features.
+The most powerful set of searching features is found in the standard dialog-based Find / Replace / Find In Files / Mark dialog.  This dialog is generically known as the "Find" dialog or window.  The dialog has one tab for each of the forementioned searching-related features.
 
 The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ctrl+F) gives access to searching and counting.  The **Replace** tab (**Search > Replace** or Ctrl+H) is similar, but allows you to also replace the matched text after it's found.  The **Find in Files** tab (**Search > Find in Files** or Ctrl+Shift+F) allows you to search and replace in multiple files with one action.  The **Mark** tab (**Search > Mark...**) allows you to apply redmarking (a red background to matched text) to certain sections of text and/or "bookmarks" to the lines that matched text is found upon.
+
+*Note:*  Although a keyboard command can open and/or move input focus to one of the four tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard command then invoked
+
+*Note:*  Use of some "Find" family features can cause the window to close.  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by editing `config.xml` and looking for the `dlgAlwaysVisible=` parameter.  It defaults to `dlgAlwaysVisible="no"` but may be set to `dlgAlwaysVisible="yes"` to keep the "Find" window open and always available for user interaction.
+
+*Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
 ### Find / Replace
 
@@ -32,7 +38,7 @@ All the dialog-based have certain features in common, though some are disabled u
     * **☐ Normal**: all text is treated literally.
     * **☐ Extended (\n, \r, \t, \0, \x...)**: use certain "wildcards", as described in [Extended Search Mode (below)](#extended-search-mode)
     * **☐ Regular Expression**: uses the Boost regular expression engine to perform very power search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions)
-        * **☐ . matches newline**: in regular expressions, with this disabled, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this enabled, `.` also matches the line-ending characters.
+        * **☐ . matches newline**: in regular expressions, with this disabled, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this enabled, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
 
 * **☐ Transparency**: these settings affect the dialog box.  Normally, the dialog box is opaque (can't see the text beneath), but with these settings, it can be made semi-transparent (can partially see the text beneath)
     * **☐ On losing focus**: if this is chosen, the dialog will be opaque when you are actively in the dialog box, but if you click in the Notepad++ window, the dialog will become semi-transparent
@@ -65,7 +71,7 @@ A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A
 
 Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become deselected and disabled.  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
-The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  The default number of search/replace terms retained is 10, but this may be changed by editing a configuration file.  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.
+The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  The default number of search/replace terms retained is 10, but this may be changed by editing a configuration file.  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse, or by using the down (and/or up) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an up or down arrow key when they really mean to press left or right arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.
 
 The **In selection** option will automatically be chosen by Notepad++ if a Find dialog window is opened when more than 1024 characters occur in the active selection.  The selected text will also be placed in the **Find what** box.  Running a **Count** or **Replace All** action without making other changes to the search parameters will result in *Count: 1 match* or *Replace All: 1 occurrence was replaced*, respectively, which is likely not what was intended.  The proper resolution for this situation is to change the **Find what** text if the intention is to search within-selection, or deselect **In selection** if the intention is to search for a fairly long block of text.
 
@@ -75,19 +81,39 @@ Notepad++ uses a flashing of the Find dialog window and the main Notepad++ windo
 
 If a search action is invoked by keyboard command with the Find dialog window open and input focus in the editing window, an unsuccessful search will result in input focus being changed to the Find window.  Presumably, the user would want to conduct a different search at this point?
 
+*Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "Fileseek", "Everything" and many others.
+
 #### "Find result" Window
 
-When using **Find all in ...** commands, a new **Find result** window appears.  (It can also be opened using **Search > Search Results Window** or the F7 keyboard shortcut, though that menu command will appear to not do anything if there haven't been any **Find all...** commands run since Notepad++ was opened.)
+After running one or more **Find All in ...** commands, a new **Find result** window appears, and within it is placed a **Find result** tab.  The **Find result** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the F7 keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
 
-From this type of search, three types of sections are added to the Find result window.  First is a line describing what was searched for, how many total matches occurred, and how many files had matches.  Second is a line that shows the filename with the match(es) and the count of matches for that file (this type will be repeated if the search found multiple files with matches).  Last comes the details about the matches found, including line number and the line contents with the matched text emphasized.  The default emphasis is red text on a yellow background, but this may be changed in the Style Configurator's "Search result" Language area.
+*Definition:*  **Find All in ...** commands include:
 
-When Notepad++ populates the **Find result** window, it does so using one line for each match found by the search.  Note that this can and often does end with the same source file line being repeated multiple times in the output.  An example of this would be if you are searching for "the" in the line of text that reads "Now is the time for all good men to come to the aid of their country", the Find result window would list the line twice, once with the word "the" called out in red text with a yellow background, and a second time with "the" in "their" similarly emphasized.
+|*Which **Find All in ...** command*| *Find window owner tab*|
+|-----------------------------------|------------------------|
+|Find All in All Opened Documents   | **Find**               |
+|Find All in Current Document       | **Find**               |
+|Find All                           | **Find in Files**      |
 
-Use the up and down arrows to navigate within the **Find result** window when it has input focus.  Double-clicking with the mouse or hitting ENTER when input focus is on a specific match will move the editor window to that match and cause it to be selected.
+The **Find result** window by default appears docked at the bottom of the Notepad++ main window.  Like other such windows, it can be moved or even be a free-floating window.
+
+From **Find All in ...** searches, three types of sections are added to the Find result window.  First is a line describing what was searched for, how many total matches (known as "hits") occurred (this is also shown in the title bar for the window, for the most recently-occurring search), and how many files had matches.  Second is a line that shows the filename with the matches and the count of matches for that file (this type will be repeated if the search found multiple files with matches).  Last comes the details about the matches found, including line number and the line contents with the matched text emphasized.  The default emphasis is red text on a yellow background, but this may be changed in the Style Configurator's "Search result" Language area.
+
+When Notepad++ populates the **Find result** window, it does so using one line for each match found by the search.  Note that this can and often does end with the same source file line being repeated multiple times in the output.  An example of this would be if you are searching for "the" in the line of text that reads "Now is the time for all good men to come to the aid of their country"; the **Find result** window would list the line twice, once with the word "the" called out in red text with a yellow background, and a second time with "the" in "their" similarly emphasized.
+
+When the **Find result** window has input focus, the currently active line has a different background color, much like how the main editor window does by default.  Unlike the main editor window, where the current-line background feature may be turned off, the **Find result** window always has a background highlight for its active line.
+
+Use the up and down arrows to navigate within the **Find result** window when it has input focus.  Double-clicking with the mouse or hitting ENTER when input focus is on a specific match will move the editor window to that match and cause its text to be selected.
 
 Other ways to navigate back to an editor window via the **Find result** window matches include the **Search** menu items **Next Search Result** (keyboard: F4) and **Previous Search Result** (keyboard: Shift+F4).  These can be invoked regardless of where input focus is in Notepad++.
 
-The "Delete" key can be used to delete individual results, file matches or whole search matches in the **Find result** window, depending on which type of line is active when the key is pressed.
+The *Delete* key can be used to delete individual results, file matches or whole search matches in the **Find result** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing *Delete* when in a higher-level element of the tree removes that whole branch.  Thus:
+
+|*Pressing Delete when **Find result** active line starts with...*| *What is removed*                                                                              |
+|-----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+|the text: "Search"                                               | that "Search" line, all pathname lines under it, and all "Line" lines under the pathname lines |
+|a pathname                                                       | that pathame line and all "Line" lines under it                                                |
+|the text: "Line"                                                 | only that line                                                                                 |
 
 Multiple searches will be listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
 
@@ -95,13 +121,69 @@ If the source file lines are judged by Notepad++ to be too long when they are co
 
 If a search is conducted such that a match which spans two or more lines occurs, only the contents of the *FIRST* line of that match will be copied into the **Find result** window.  However, using a method to return to the editor window (e.g. pressing Enter) will result in the correct selection of multi-line matching text there.
 
+##### *RightClick* commands in the client area of a **Find result** window's tab
+
+###### Copying text from the **Find result** window
+
+There are two ways to copy text from the **Find result** window:  Make sure input focus is in the **Find result** window by selecting some text and use the keyboard's *Ctrl+c* or the mouse's *RightClick* to invoke the context menu and select **Copy** from that.  Somewhat surprisingly, these two copy mechanisms produce vastly different results.
+
+When *Ctrl+c* is used, it is very straightforward:  Whatever text is selected is copied, simply and exactly.  If nothing is selected when *Ctrl+c* is pressed (and the **Find result** window has input focus of course), nothing is copied to the clipboard.
+
+When the mouse's *RightClick* > **Copy** is used, however, it is more complicated.  Basically, this type of copy can be thought of as a "Copy Special".  It copies the text of ENTIRE LINES from the results, WITHOUT any search information (called "metadata") being included in what is copied.
+
+Here's a more detailed description of what happens for *RightClick* > **Copy**:
+
+First, if the user makes a selection of text in the **Find result** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathame, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is *RightClick*'ed upon:
+
+|*RightClick*'ed item     |What gets copied when *RightClick* > **Copy** is run |
+|-----------------------|-----------------------------------------------------------------------------------------------------|
+|a line with line # info|the entire line of the *RightClick* but without line number text                                     |
+|a pathname header line |all the lines for that single file without pathname or line number text                              |
+|a "search" header line |all the lines for that search (1 or more files) without search header, pathname or line number text  |
+
+*Tip*:  It is possible to select and copy a rectangular selection of data from the **Find result** window.  This is done using the usual Shift+Alt+arrow keys or via Alt+LeftClick->drag with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; RightClick > **Copy** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
+
+###### Other commands
+
+There are some commands that don't need a lot of explanation; these are:
+
+* **Collapse all**
+* **Uncollapse all**
+* **Select all**
+* **Clear all**
+* **Open all**
+
+The **Find result** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the *Delete* key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Find result** tab that have previously had hits.  If the search history in **Find result** is really long, it may not be desireable to open all files listed there, so using **Clear all** before doing some new searches (with the intent to **Open all** afterwards) may be the thing to do.
+
+The **Select all** command is self-explanatory:  *ALL* text in the **Find result** tab will be selected
+
+The contents of the **Find result** tab are in the form of a tree.  When Notepad++ adds to the result history, it does so in an uncollapsed way, that is, the user can see all of the information from the recently-added search.  However, before adding new results, Notepad++ will collapse all previous result data; perhaps it is deciding that the most-recent search is the most important?
+
+The user can collapse/uncollapse "branches" of this tree.  To collapse, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be collapsed (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To uncollapse an individual item that has previously been collapsed (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and again shown.
+
+The **Collapse all** and **Uncollapse all** commands perform the corresponding actions on *ALL* elements of the entire result history in the **Find result** window at once.  Perhaps a better name for **Uncollapse all** would have been the more-conventional "Expand all"?
+
+###### Searching in previously-found results (secondary searching)
+
+Perhaps you have done a search and your results are in a tab in athe **Find result** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by *RightClick*'ing the **Find result** window client area and selecting **Find in this found results...**.
+
+Selecting **Find in this found results...** will cause a window to pop up, and this window looks much like the standard **Find** window, but is stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Find result** tab will open (in the **Find result** window) with the results of the "refined" search.
+
+The popup window has a parameter not available in the searches decribed earlier:  **☐ Search only in found lines**.  Checking this box limits the search to lines that appear in matched files in the parent **Find result** window.  Unchecking the box will cause the new search to examine previously matched files in their entirety.  When a search has been limited to previously-found lines, its results will indicate this by using this type of output:  `Search "___" (__ hits in __ files - Line Filter Mode: only display the filtered results)` as opposed to the normally seen:  `Search "___" (__ hits in __ files)`
+
+*Tip:*  Use the *RightClick* option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in this found results...** search will look in files matched by ALL previous searches whose results are still present in the parent **Find result** tab.
+
+*Tip:*  Since the newly opened **Find result** window also has a *RightClick* menu, you may do another **Find in this found results...** based upon the new results, focusing your search for some bit of data even more.  This type of refinement may be repeated as much as desired.  [Note that the title bar of the window does *not* show the hit count of the currently active tab, but rather shows the hit count of the *first* **Find result** tab of the window.]
+
+*Note:*  The commands that switch input focus to the **Find result** window always activate the *first* **Find result** tab, not any additional **Find result** tabs that may have been created.
+
+*Note:*  The contents of the **Find result** window are discarded upon Notepad++ shutdown.  If there is data of importance there it should be copied, using one of the methods above, and saved in a more-permanent location.
+
 ### Find in Files
 
 Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like "*.doc", "*.*" or "foo.*". Note however that the PathMatchSpec() Windows API is being used, as its behaviour departs from cmd.exe wildcard parsing sometimes.
 
 How the default filter and folder change is controlled by the fifFilterFollowsDoc and fifFolderFollowsDoc settings in config.xml. There is a Follow current doc checkbox to set both parameters to both true or both false.
-
-The extra features from the Find All... command are not available while Finding in files. Search options are remembered across invocations, but the actual match results are discarded on Notepad++ shutdown.
 
 ### Highlighting and bookmarking
 
