@@ -11,3 +11,5 @@ Notepad++ User Manual
 Of course, it's not our goal to create bad documentation, but you get what we mean.
 
 **Notepad++ User Manual** is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual).
+
+If you want to check out [Notepad++](https://notepad-plus-plus.org/), you can download it from the webpage, but I guess you are there.
