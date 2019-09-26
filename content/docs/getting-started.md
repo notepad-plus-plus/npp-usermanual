@@ -10,7 +10,7 @@ Notepad++ is available under [GPL](http://www.gnu.org/licenses/gpl-3.0.html) and
 
 
 ## Download Notepad++
-Download the latest version of Notepad++ from https://notepad-plus-plus.org/download/
+Download the latest version of Notepad++ from https://notepad-plus-plus.org/downloads/
 
 Choose 32 or 64 bit Notepad++ build according to your operating system, then choose the package you want to download. Most users use the installer as it's the easiest route, however Notepad++ is also available in 7z and zip formats.
 
