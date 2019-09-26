@@ -8,6 +8,7 @@ weight: 1
 Notepad++ is a text editor and source code editor for use under Microsoft Windows. It supports around 80 programming languages with syntax highlighting and code folding. It allows working with multiple open files in a single window, thanks to its tabbed editing interface.
 Notepad++ is available under [GPL](http://www.gnu.org/licenses/gpl-3.0.html) and distributed as [free software](https://www.fsf.org/).
 
+You may visit the Notepad++ website at https://notepad-plus-plus.org/
 
 ## Download Notepad++
 Download the latest version of Notepad++ from https://notepad-plus-plus.org/downloads/
