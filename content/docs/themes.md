@@ -4,7 +4,7 @@ weight: 110
 ---
 
 
-Themes are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.  You may choose your theme using the [**Preferences > Style Configurator** dialog](./preferences/#style-configurator).
+Themes are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.  You may choose your theme using the [**Preferences > Style Configurator** dialog](../preferences/#style-configurator).
 
 Notepad++ comes packaged with a default theme and a number of other themes to start with.  You may customize any of those themes using the Style Configurator dialog, or by editing the underlying XML files.
 
