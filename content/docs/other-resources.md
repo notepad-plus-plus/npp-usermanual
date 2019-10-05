@@ -22,7 +22,7 @@ reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Executi
 ## Notepad++ Cheat sheet
 ### Tab
 - Tab navigation
-  - To switch between first and last tab, use <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to fist tab while down will take to last tab.  
+  - To switch between first and last tab, use <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.  
   ![FirstAndLast](https://user-images.githubusercontent.com/14791461/35479755-b37a09fc-0424-11e8-9a5c-905bf18b957e.gif)
   
   
