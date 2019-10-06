@@ -11,7 +11,7 @@ Notepad++ supports a few command line parameters to control its startup. The syn
 ```
 notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
   [-p<pos>] [-x<left-pos>] [-y<TopPos>] [-nosession] [-notabbar] [-ro]
-  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-r]
+  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-openFoldersAsWorkspace] [-r]
   [-qn<EasterEggName> | -qt<Text> | -qf<ContentFileName>]
   [-qSpeed(1|2|3)] [-quickPrint]
   [filepath]
@@ -43,6 +43,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
 * `-loadingTime`: Display Notepad++ loading time.
 * `-alwaysOnTop`: Make Notepad++ always on top.
 * `-openSession`: Open a session. `filepath` must be a session file.
+* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
 * `-r`: Open files recursively. This argument will be ignored if
   `filepath` contain no wildcard character.
 * `-qn`: Launch ghost typing to display easter egg via its *EasterEggName*.
