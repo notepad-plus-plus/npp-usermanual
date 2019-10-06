@@ -59,7 +59,7 @@ and [PluginDefinition.cpp](https://github.com/npp-plugins/plugintemplate/blob/ma
 
 A good sample illustrates better the whole picture than a detailed documentation.
 You can check [Notepad++ Plugin Demo](https://github.com/npp-plugins/plugindemo/releases)
-to learn how to make some commands more complex. 
+to learn how to make some commands more complex.
 
 However, the knowledge of Notepad++ plugin system is required, if you want to
 accomplish some sophisticated plugin commands.
@@ -99,13 +99,13 @@ the latest version of wingup
 [32-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x32.zip)
 or
 [64-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x64.zip)
-and nppPluginList.json (you should rename it from pl.x64.json or pl.x86.json,
-according your plugin's architecture). Replace notepad++.exe and GUP.exe of your
+and nppPluginList.json (you should rename it from `pl.x64.json` or `pl.x86.json`,
+according your plugin's architecture). Replace `notepad++.exe` and `GUP.exe` of your
 Notepad++ installation by downloaded ones, copy `pl.x64.json` or `pl.x86.json` to
 `%PROGRAMDATA%\Notepad++\plugins\Config\nppPluginList.json`
 (or `<NPP_INST_DIR>\plugins\Config\nppPluginList.json` - see New Plugins Home), then
-you're all set - the menu item "Plugin Admin" will be under menu "Plugin" of your
-debug mode notepad++.exe. Launch this command will launch the Plugin Admin dialog
+you're all set - the menu item **Plugins Admin** will be under menu **Plugins** of your
+debug mode notepad++.exe. Launch this command will launch the **Plugins Admin** dialog
 and the rest should be intuitive.
 
 ### Rules for adding your plugins into list
@@ -122,7 +122,7 @@ and the rest should be intuitive.
    SHA-256. This id is checked with the downloaded dll to avoid
    [MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
    You can use Notepad++ to get your plugin's SHA-256 hash
-   (Menu: `Tools->SHA-256>Generate from files...`) or some online sha256 generators.
+   (Menu: **Tools > SHA-256 > Generate from files...**) or some online sha256 generators.
 4. Update info: the value of **version** is exact the version of your plugin binary
    version which you want to be deployed. This version will compare with installed
    plugin's version to decide if update should be applied.
@@ -133,14 +133,14 @@ and the rest should be intuitive.
 6. Packaging: Only zip package is supported. Your plugin (DLL) should have the same
    name as the **folder-name** and the plugin DLL file should be placed at the root
    level of the ZIP file. Otherwise Plugin Admin won't install it. Any additionals
-   files (dll or data) can be placed at the root level or in an arbitrary subfolder.
+   files (DLL or data) can be placed at the root level or in an arbitrary subfolder.
 
 ### Do your PR to join plugin list
 
 Once your test has been done, and everything is ok, you can fork and do your PR on:
 https://github.com/notepad-plus-plus/nppPluginList/. Only the json part you should
-modify. The json file will be built into the a binary (nppPluginList.dll), which will
-be signed (for thes sake of security) and be included in the official distribution. 
+modify. The json file will be built into the a binary (`nppPluginList.dll`), which will
+be signed (for thes sake of security) and be included in the official distribution.
 
 ### Questions & support
 
