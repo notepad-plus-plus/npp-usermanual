@@ -11,7 +11,7 @@ Notepad++ supports a few command line parameters to control its startup. The syn
 ```
 notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
   [-p<pos>] [-x<left-pos>] [-y<TopPos>] [-nosession] [-notabbar] [-ro]
-  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-r]
+  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-openFoldersAsWorkspace] [-r]
   [-qn<EasterEggName> | -qt<Text> | -qf<ContentFileName>]
   [-qSpeed(1|2|3)] [-quickPrint]
   [filepath]
