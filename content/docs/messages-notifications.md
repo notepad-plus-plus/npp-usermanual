@@ -4,25 +4,22 @@ linktitle: messages-notifications
 weight: 112
 ---
 
+## Messages and Notifications
+
 When writing a [plugin](../plugins/), or when editing [macros](../macros/), or when using one of the scripting plugins, you need to communicate with the Notepad++ application, to get information from it or instruct it to do some task.  This is done using messages and notifications.
 
 ## Why messages <i>and</i> notifications?
 
-<p>Basically, a message may have a return value, and is usually thought as a query. A notification simply informs of some event, and is more usually thought as a command. However, a notification is brought by a Windows message, WM_NOTIFY.
-</p><p>While the meaning of the two parameters a message can carry – known as wParam and lParam – depend on the message, things are much clearer for a notification. The WM_NOTIFY message holds the sender's control ID in its wParam, and a pointer to a notification parameter block in its lParam. The first three integers of the latter are as follows:
-</p>
-<ul>
-<li> Handle of sender
-</li>
-<li> Control ID of sender (duplicates wParam for historical reasons)
-</li>
-<li> Notification code
-</li>
-</ul>
-<p>Extra information, dependent on the notification code, may follow in the parameter block pointed to by lParam. Such information is documented in the Description field, if present.
-</p>
+Basically, a message may have a return value, and is usually thought as a query, though it can also command actions inside Notepad++. A notification simply informs of some event, and is more usually thought as a command.  However, a notification is sent using a Windows message, [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify), so the interface is similar.
 
 ## Notepad++ messages
+
+When a message is sent to Notepad++, you send the message ID, and two parameters – known as wParam and lParam. The values placed in those two parameters depend on the message, and are explained below.
+
+The message IDs for each of these named messages can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
+
+You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h).
+
 <table border="1" width="100%">
 
 <tbody><tr>
@@ -1474,6 +1471,16 @@ L_USER and L_EXTERNAL are not supported.
 </td></tr></tbody></table>
 
 ## Notepad++ notifications
+
+A notification is sent using a WM_NOTIFY message.  It holds the sender's control ID in its wParam, and a pointer to a notification parameter block in its lParam. The parameter block is a structure consisting of at least 3 integers, which indicate:
+
+1. Handle of sender
+2. Control ID of sender (duplicates wParam for historical reasons)
+3. Notification code
+
+Extra information, dependent on the notification code, may follow in the parameter block pointed to by lParam. Such information is documented in the Description field, if present.
+
+The notification IDs for each of these named notifications can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
 
 <table class="notifications" rules="rows" width="100%">
 <tr>
