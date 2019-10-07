@@ -8,6 +8,7 @@ Your pull requests are welcome; however, they may not be accepted for various re
 
 ### Guidelines for pull requests
 
+0. KISS - Keep It Simple, Stupid.
 1. Respect Notepad++ User Manuel style.
 2. Create a new branch for each PR.
 
