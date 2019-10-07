@@ -24,6 +24,7 @@ Summary
 * [Plugins](content/docs/plugins.md)
 * [Preferences](content/docs/preferences.md)
 * [Themes](content/docs/themes.md)
+* [Syntax for the XML-based Configuration Files](content/docs/config-syntax.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
 * [Shell Extension](content/docs/shell-extension.md)
 * [Binary Translation](content/docs/binary-translation.md)
