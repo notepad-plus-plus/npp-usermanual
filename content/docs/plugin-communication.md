@@ -1,7 +1,7 @@
 ---
 title: Plugin Communication
 linktitle: plugin-communication
-weight: 112
+weight: 92
 ---
 
 ## Plugin Communication: Messages and Notifications
