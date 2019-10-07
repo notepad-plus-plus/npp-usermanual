@@ -1,16 +1,18 @@
 ---
-title: Plugin Development: Messages and Notifications
-linktitle: messages-notifications
+title: Plugin Communication
+linktitle: plugin-communication
 weight: 112
 ---
 
-## Plugin Development: Messages and Notifications
+## Plugin Communication: Messages and Notifications
 
-When writing a [plugin](../plugins/), or when editing [macros](../macros/), or when using one of the scripting plugins, you need to communicate with the Notepad++ application, to get information from it or instruct it to do some task.  This is done using messages and notifications.
+When writing a [plugin](../plugins/), you need to communicate with the Notepad++ application, to get information from it or instruct it to do some task.  This is done using messages and notifications.
 
-## Why messages <i>and</i> notifications?
+These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).
 
-Basically, a message may have a return value, and is usually thought as a query, though it can also command actions inside Notepad++. A notification simply informs of some event, and is more usually thought as a command.  However, a notification is sent using a Windows message, [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify), so the interface is similar.
+### Why both messages <i>and</i> notifications?
+
+Basically, a message may have a return value, and is usually thought as a query, though it can also command actions inside Notepad++. A notification simply informs of some event, and is more usually thought as a command.  However, a notification is sent using a Windows message, [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify), so the interface is similar.  The extra content of the messages and notifications are different from each other, and are described in their respective sections, below.
 
 ## Notepad++ messages
 
