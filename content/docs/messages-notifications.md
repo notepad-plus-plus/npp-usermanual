@@ -1,10 +1,10 @@
 ---
-title: Messages and Notifications
+title: Plugin Development: Messages and Notifications
 linktitle: messages-notifications
 weight: 112
 ---
 
-## Messages and Notifications
+## Plugin Development: Messages and Notifications
 
 When writing a [plugin](../plugins/), or when editing [macros](../macros/), or when using one of the scripting plugins, you need to communicate with the Notepad++ application, to get information from it or instruct it to do some task.  This is done using messages and notifications.
 
