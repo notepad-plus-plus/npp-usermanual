@@ -1,12 +1,12 @@
 ---
-title: Configuration File Syntax
+title: Syntax for the XML-based Configuration Files
 linktitle: config-files
 weight: 115
 ---
 
-# Configuration File Syntax
+# Syntax for the XML-based Configuration Files
 
-Notepad++ offers a comprehensive user interface to review or change most of its settings. However, there are some special cases, among which:
+Notepad++ offers a comprehensive user interface to review or change most of its settings. However, there are some special cases where it is worthwhile to edit the configuration files directly, including:
 
 * Using synthesized macros to send commands with parameters to a Scintilla component
 * Adding keywords to a language, because the new language version isn't matched yet
