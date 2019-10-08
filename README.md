@@ -22,6 +22,7 @@ Summary
 * [Auto-completion](content/docs/auto-completion.md)
 * [Function List](content/docs/function-list.md)
 * [Plugins](content/docs/plugins.md)
+* [Plugin Communication](content/docs/plugin-communication.md)
 * [Preferences](content/docs/preferences.md)
 * [Themes](content/docs/themes.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
