@@ -1,5 +1,5 @@
 ---
-title: Syntax for the XML-based Configuration Files
+title: Configuration Files Syntax
 linktitle: config-files
 weight: 115
 ---
@@ -8,11 +8,9 @@ weight: 115
 
 Notepad++ offers a comprehensive user interface to review or change most of its settings. However, there are some special cases where it is worthwhile to edit the configuration files directly, including:
 
-* Using synthesized macros to send commands with parameters to a Scintilla component
+* Customizing the Context Menu
+* Editing previously-recorded macros, or crafting new macros manually
 * Adding keywords to a language, because the new language version isn't matched yet
-* Some settings have been left out of the user interface
-* You'd like to edit a session file so as to quick add/remove a file
-* You wish to customise the Context Menu
 
 ## Editing Configuration Files
 
@@ -29,846 +27,96 @@ If changes are made in the Notepad++ UI to settings which are stored in configur
 7. The changes will now be in effect.
 
 
-## General format considerations
+## User Interface settings: `config.xml`
 
-Configuration files are xml files. An xml file is made of nodes, which may contain nodes recursively, which may contain tags. Both nodes and tags may have attributes. **Their order and capitalisation must be kept strictly**. The ordering of tags usually doesn't matter, except when it orders menu items, in which case the ordering is part of the configuration. It also happens that some ordering must be identical across different files.
+The following sections are defined:
 
-Nodes and tags come in two forms: a short `<Node/>` form and a long `<Node>`...`</Node>` form. The former is to be used if and only if the node is empty or the tag has no content - there may be attributes though.
-
-All configuration files xml structure is contained in a single `<NotepadPlus>` node. There must be exactly one such node per file, and it should be topmost.
-
-All integer attribute values are written between double quotes, like in "15". Since xml only knows about strings, anything must be written as a string, which is delimited by double quotes.
-
-
-### Valid keys
-
-The use of the Windows key as a modifier is not supported by Scintilla.
-
-The complete list of base virtual key code is to be found on [keys.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/keys.h). Because of this reliance on OS defined virtual keys, various letters obtained by combining diacritics with a main key (like the german ß or spanish ñ) cannot be used.
-
-Left and right versions of modifiers are not distinguished. A special case is the AltGr key on various european keyboards, which translates to Ctrl+Alt rather than plain Alt.
-
-Keys producing double byte character codes are not supported if they don't fit in the virtual key list.
-
-
-## User interface settings: config.xml
-
-Syntax highlighting will be covered in the specific section with this name.
-
-Below the standard `<NotepadPlus>` node, the following sections are defined:
-
-1. `<GUIConfigs>`: user interface settings
+1. `<GUIConfigs>`: user interface settings (usually set in the [**Settings > Preferences**](../preferences/#preferences).
 2. `<FindHistory>`: most of the latest state of the Find/Replace dialog box.
 3. `<History>`: the list of recently used files.
+3. `<ProjectPanels>`: associates workspace files with a given project panel
 
-### `<GUIConfigs>`
 
-This area contains most of the items that can be adjusted from the Preferences dialog. It is thoroughly commented for the most part.
+## Keyboard shortcuts: `shortcuts.xml`
 
-There could be two reasons to edit this section:
-
-1. it may contain settings that are not yet configurable from a dialog. This would happen for intermediate or candidate releases.
-2. it may be useful to run a script for custom installation of Notepad++ by a system administrator.
-
-
-The tag contains a large number of `<GUIConfig>` tags. All of them have a "name" attribute. Any other contents or extra attributes they may have is controlled by the "name" attribute, as discussed in the individual sections below. Each section lists attributes and their possible values, then contents if applicable. Usually, thee is no need for extra explanation, as the name / attribute pair closely match the corresponding Preferences widget caption.
-
-GUIConfig tags without contents may be auto-closing or not, this seems to be immaterial.
-
-
-#### ToolBar
-
-1. "visible": "yes"/"no" attribute
-2. "show": any of "hide","standard", "large" and "small".
-
-#### StatusBar
-
-Contents are either of show or hide.
-
-
-#### TabBar
-
-A sequence of "yes"/"no" attributes:
-
-1. dragAndDrop
-2. drawTopBar
-3. drawInactiveTab
-4. reduce
-5. closeButton
-6. doubleClick2Close
-7. vertical
-8. multiline
-9. hide
-
-#### ScintillaViewSplitter
-
-Contents are either of horizontal or vertical.
-
-
-#### UserDefineDlg
-
-1. "position" is either of docked or undocked
-
-Contents are either of show or hide.
-
-#### TabSetting
-
-This is the default value for all languages not receiving special treatment through **Settings &gt; Preferences &gt; Language  &gt; Tab Settings**.
-
-1. "tabSize": conversion factor
-2. replaceBySpaces": "yes"/"no"
-
-#### AppPosition
-
-1. "x"
-2. "y"
-3. "width"
-4. "height"
-5. "isMaximized": "yes"/"no", other are numbers of pixels.
-
-#### ScintillaPrimaryView
-
-1. "lineNumberMargin": either of show or hide
-2. "bookmarkMargin": either of show or hide
-3. "folderMarkStyle": either of single, arrow, circle or box
-4. "indentGuideLine": either of show or hide
-5. "currentLineHilitingShow": either of show or hide
-1. "Wrap": "yes" / "no"
-1. "edge": "yes" / "no"
-1. "edgNbColumn": number of columns&gt;
-1. "wrapSymbolShow": either of show or hide
-1. "zoom": a signed integer, the number of points to add for current magnification.
-1. "whiteSpaceShow": either of show or hide
-1. "eolShow": either of show or hide
-1. "disableAdvancedScrolling": either of "yes" or "no" (default)
-1. "borderWidth": width in pixels.
-
-
-#### ScintillaSecundaryView
-
-This setting is no longer in use, as version 5.7.1 has removed individual view options.
-
-
-#### Auto-detection
-
-Contents either yes or `<tt/>`n`</tt>`.
-
-
-#### CheckHistoryFiles
-
-Contents either yes or `<tt/>`n`</tt>`.
-
-
-#### TrayIcon
-
-Contents either yes or `<tt/>`n`</tt>`.
-
-
-#### RememberLastSession
-
-Contents either yes or `<tt/>`n`</tt>`.
-
-
-#### NewDocDefaultSettings
-
-1. "format": either of 0 (CR+LF for DOS/Windows), 1 (LF for Unix/Mac OSX) or 2 (CR for Mac OD 9 and earlier).
-1. "encoding": either of 0 (ANSI), 1 (UTF-8 with BOM), 2 (UCS-2 BE with BOM), 3 (UCS2 LE with BOM), 4 (UTF-8 without BOM), 5 (7-bit ASCII), 6 (UCS-2 BE without BOM) or 7 (UCS-2 LE without BOM).
-1. "lang": the 0-based lexer number for the default language. As a result, this cannot be an user defined language, use the extension instead. The number follows the list as displayed in the corresponding tab: 0 for normal text, 1 for PHP, 2 for C and so on.
-1. "openAnsiAsUTF8": "yes" / "no"
-
-
-#### langExcluded
-
-The various gr`<n>` attributes are byte masks. Supported languages seem to be arranged by groups of 8, and the mask summarises which languages in each group are excluded.
-
-1. "gr0":
-1. "gr1":
-1. "gr2":
-1. "gr3":
-1. "gr4":
-1. "gr5":
-1. "gr6":
-1. "gr7":
-1. "langMenuCompact": "yes" / "no"
-
-
-#### Print
-
-1. "lineNumber": "yes" / "no"
-1. printOption": either of 0 (WYSIWYG), 1 (invert colour), 2 (B &amp; W) or 3 (WYSIWYG without a background)
-1. "headerLeft": text for the designated area
-1. "headerMiddle": text for the designated area
-1. "headerRight": text for the designated area
-1. "headerFontName": name of font
-1. "headerFontStyle": as per style font flags
-1. "headerFontSize": size of font
-1. "footerLeft": text for the designated area
-1. "footerMiddle": text for the designated area
-1. "footerRight": text for the designated area
-1. "footerFontName": name of font
-1. "footerFontStyle": as per style font flags
-1. "footerFontSize": size of font
-1. "marginLeft": size in centimeters
-1. "marginTop": size in centimeters
-1. "marginRight": size in centimeters
-1. "marginBottom": size in millimeters
-
-
-#### Backup
-
-1. "action": either of 0 (none), 1 (simple) or 2 (verbose).
-1. "useCustumDir": "yes" / "no"
-1. "dir": directory name
-1. "isSnapshotMode": "yes" / "no". Defaults to yes.
-1. "snapshotBackupTiming": number of milliseconds between snapshots (default is 7,000).
-
-
-#### TaskList
-
-Contents are "yes" / "no".
-
-
-#### SaveOpenFileInSameDir
-
-Contents are "yes" / "no".
-
-
-#### noUpdate
-
-1. "intervaDays": number of days to wait to update to next version
-1. "nextUpateDate": yyyymmdd representation of date to fire auto-update
-
-<p>Contents are "yes" / "no"
-
-
-#### MaitainIndent
-
-Contents are "yes" / "no". This flag controls whether any indent is to be copied from the current line when Enter is hit.
-
-
-#### MRU
-
-Contents are "yes" / "no".
-
-
-#### URL
-
-Contents are either of 0 (don't enable clickable links), 1 (enable with underline) or 2 (enable without underline).
-
-
-#### globalOverride
-
-1. "fg": "yes" / "no"
-1. "bg": "yes" / "no"
-1. "font": "yes" / "no"
-1. "fontSize": "yes" / "no"
-1. "bold"yes" / "no"
-1. "italic"yes" / "no"
-1. "underline"yes" / "no"
-
-
-#### auto-completion
-
-1. "autoCAction": either of 0 (disabled), 1 (enabled for functions),  2 (enabled for words) or 3 (both words and functions).
-1. "triggerFromNbChar": number of characters after which the list will pop up
-1. "funcParams": "yes" / "no" (enable call tips)
-
-
-#### sessionExt
-
-Contents are the extension, if any.
-
-
-#### SmartHighLight
-
-Contents are "yes" / "no".
-
-
-#### SmartHighLightCaseSensitive
-
-Contents are "yes" / "no".
-
-
-#### TagsMatchHighLight
-
-1. "TagAttrHighLight": "yes" / "no"
-1. "HighLightNonHtmlZone": "yes" / "no"
-
-<p>Contents are "yes" / "no".
-
-
-#### MenuBar
-
-Contents are either of show or hide.
-
-
-#### Caret
-
-1. "width": in pixels
-1. "blinkRate": an integer, the number of milliseconds during which the caret is shown, then hidden. The two intervals are equal.
-
-
-#### ScintillaGlobalSettings
-
-1. "enableMultipleSelection": "yes" / "no"
-
-
-#### openSaveDir
-
-1. "value": 0 to disable, 1 to enable.
-1. "defaultDirPath": fixed starting path for open/save dialogs
-
-
-#### titleBar
-
-1. "short": "yes" / "no"
-
-
-#### styleTheme
-
-1. "path": path to current theme file
-
-
-#### delimiterSelection
-
-1. "leftmostDelimiter": ASCII code of the character limiting the selection on the left (default is 40 for '(')
-1. "rightmostDelimiter": ASCII code of the character limiting the selection on the right (drfault is 41 for ')')
-1. "delimiterSelectionOnEntireDocument": "yes" to alow text on multiple contiuous lines to be selected, otherwise "no" (default).
-
-
-#### MISC
-
-1. "fileSwitcherWithoutExtColumn": "yas"/"no" (default).
-1. "backslashEscapeCharacterFprSQL"&nbsp;: "yes" / "no" (default is yes).
-
-
-#### DockingManager
-
-The following values are the width of left/right side windows and the height of top/bottom window will take:
-
-1. "leftWidth": size in pixels, 0 is allowed
-1. "rightWidth": size in pixels, 0 is allowed
-1. "topHeight": size in pixels, 0 is allowed
-1. "bottomHeight": size in pixels, 0 is allowed
-
-<p>Contents are a possibly empty sequence of `<FloatingWindow>` auto-closed tags, followed by a possibly empty sequence of `<PluginDlg>` tags, followed by at least 4 auto-closed `<ActiveTabs>` tags, one for each of the 4 predefined positions, plus one for each undocked window.
-
-A `<FloatingWindow>` tag defines the position, width and height of a detached (floating) window&nbsp;:
-
-1. "cont": a container identifier, matching the one for an `<ActiveTabs>` subsequent tag.
-1. "x": position x in pixels
-1. "y": position y in pixels
-1. "width": in pixels
-1. "height": in pixels
-
-<p>A `<PluginDlg>` tag has no contents and the following attributes:
-
-1. "pluginName": the name of the plugin. Seems to be "dummy" for the search results window, and "Notepad++::InternalFunction" for other dockable windows.
-1. "id": command id of the command to run at startup for the plugin, -1 if none. The dock manager records this information whenever a plugin opens a dockable window. "id" is 44070 for the vertical file switcher, 44084 for Function List and 44081/2/3 for the project panels.
-1. "curr": current docking position
-1. "prev": previous docking position, -1 if none
-1. "isVisible": "yes" / "no".
-
-<p>An `<ActiveTabs>` tag has the following attributes:
-
-1. "cont": either 0 (left), 1 (top), 2 (right), 3 (bottom) or anything above 4 (undocked, corresponds to a `<FloatingWindow>` tag).
-1. "ActiveTab": the cont attribute actually refers to a tabbed container for possibly several windows. The value is -1 when container is empty. Otherwise, it is the active tab for the container.
-
-
-### `<FindHistory>`
-
-Here are the attributes of the node:
-
-
- Attributes for the `<FindHistory>` node
-
-
- Position
-
- Name
-
- Value format
-
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> nbMaxFindHistoryPath </td>
-<td> integer </td>
-<td> Maximal number of search folders being remembered
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> nbMaxFindHistoryFilter </td>
-<td> integer </td>
-<td> Maximum number of filter strings remembered
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> nbMaxFindHistoryFind </td>
-<td> integer</td>
-<td>  Maximum number of search patterns being remembered
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> nbMaxFindHistoryReplace </td>
-<td> integer </td>
-<td> Maximum number of replace patterns being remembered
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> matchWord= "</td>
-<td> "yes"/"no" </td>
-<td> State of the Whole words checkbox ("yes" = checked)
-</td></tr>
-<tr>
-<td> 6 </td>
-<td> matchCase </td>
-<td>"yes"/"no" </td>
-<td> State of the Match case checkbox ("yes" = checked)
-</td></tr>
-<tr>
-<td> 7 </td>
-<td> wrap </td>
-<td>"yes"/"no" </td>
-<td> State of the Wrap around  checkbox ("yes" = checked)
-</td></tr>
-<tr>
-<td> 8 </td>
-<td> directionDown </td>
-<td>"yes"/"no" </td>
-<td> Search direction ("yes" = the Down radio button is checked)
-</td></tr>
-<tr>
-<td> 9 </td>
-<td> fifRecuisive </td>
-<td>"yes"/"no" </td>
-<td> State of the In all subfolders checkbox ("yes" = checked)
-</td></tr>
-<tr>
-<td> 10 </td>
-<td> fifInHiddenFolder </td>
-<td>"yes"/"no" </td>
-<td> State of the In hidden folders checkbox ("yes" = checked)
-</td></tr>
-<tr>
-<td> 11 </td>
-<td> dlgAlwaysVisible </td>
-<td>"yes"/"no" </td>
-<td> "yes" if the dialog cannot be obscured, else "no"
-</td></tr>
-<tr>
-<td> 12 </td>
-<td> fifFilterFollowsDoc </td>
-<td> "yes"/"no" </td>
-<td> "yes" if the search filter should change with the active document, else "no"
-</td></tr>
-<tr>
-<td> 13 </td>
-<td> fifFolderFollowsDoc </td>
-<td> "yes"/"no" </td>
-<td> "yes" if the search path should change with the active document, else "no"
-</td></tr>
-<tr>
-<td> 14 </td>
-<td> searchMode </td>
-<td> integer </td>
-<td> <p>
-
-* 0 for Normal mode
-* 1 for Extended mode
-* 2 for Regular expression mode
-
-<p>
-</td></tr>
-<tr>
-<td> 15 </td>
-<td> transparencyMode </td>
-<td> integer </td>
-<td> <p>
-
-* 0 if the Transparency checkbox is clear
-* 1 if it is checked, and the On lose focus radio button is checked
-* 2 if it is checked, and the Always radio button is checked
-
-<p>
-</td></tr>
-<tr>
-<td> 16 </td>
-<td> transparency </td>
-<td> integer </td>
-<td> In the 1..255 range. The smaller it is, the less visible the dialog box is when transparency applies.
-</td></tr></tbody></table>
-<p>Note that, as of 6.6.6, the attributes 11 to 13 are not individually configurable through user interface. The "Follow Doc" checkbox allows to set 12 and 13 to a common value however. Also note that the state of the Mark line, Style found token , Purge for each search and In selection checkboxes is not remembered in this file - they are not persistent.
-
-Inside this node are tags that describe the contents of the 4 combo boxes in the dialog. They are all short tags with a name attribute. They appear in the following order:
-
-1. `<Path>` tags
-1. `<Filter>` tags
-1. `<Find>` tags
-1. `<Replace>` tags
-
-<p>The lists are simply contiguous. The number of `<Path>` tags should not be greater than the nbMaxFindHistoryPath enclosing attribute, and similarly for the other tags.
-
-
-### `<History>`
-
-This node has a nbMaxFile integer attribute, the maximal number of files being remembered. The node is short, i.e. auto-closed, if there is no remembered file (new documents don't count). Otherwise, it has `<File>` tags with a filename attribute. Again, their number should not exceed the nbMaxFile enclosing attribute.
-
-
-### `<ProjectPanels>`
-
-Yhis tag contains `<ProjectPanel>` tags. `<ProjectPanel>` is autoclosing and has two mandatory attributes:
-
-1. <i>id</i>: the number of the panel. Valid values are 1, 2 and 3. Each of the valid IDs must be mentioned only once.
-1. <i>workspaceFile</i>: the absolute path to the worspace file holding the corresponding panel's contents, or "" if not in use.
-
-
-### `<FileEditViewHistory>`
-
-This is used to keep fold and bookmark states so as torestore them upon re-opening the file. Attribute are:
-
-1. FileEditViewHistoryRestoreEnabled: "True" or "False".
-1. nbMaxFile: 20 by default
-1. activeMainIndex: 0 (not fully implemented)
-
-<p>Follow `<File>` tags similar to those in the session file. However fold state is not recorded there.
-
-Please note that the (invisible as of 6.6.6) checkbox for enabling view restore for individual files should not be checked wihile "Remember last session" is.
-
-## Keyboard shortcuts: shortcuts.xml
+Defines keyboard shortcuts for various types of commands.  The shortcuts are most-easily defined in the various tabs of the [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper).
 
 This file has the following nodes:
 
-1. `<InternalCommands>`: Notepad++ menu commands that were remapped
-1. `<Macros>`: Current macro set as it appears in the lower part of the Macro menu
-1. `<UserDefinedCommands>`: Contents of the Run menu
-1. `<PluginCommands>`: plugin commands that were remapped.
-1. `<ScintillaKeys>`: basic Scintilla commands, most of which relate to selecting text and moving around in the editor.
+1. `<InternalCommands>`: Keyboard shortcuts for Notepad++ menu commands that have been remapped by the.  (Commands that use their default shortcuts are not listed here.)
+1. `<Macros>`: Keyboard shortcuts for the macros listed in the lower part of the [**Macro**](../macros/) menu.  Also defines what commands those macros execute.
+1. `<UserDefinedCommands>`: Keyboard shortcuts for the Run menu entries.  Also defines what actions those entries take.
+1. `<PluginCommands>`: Keyboard shortcuts for plugin commands that have been remapped.  (Commands that use their default shortcuts are not listed here.)
+1. `<ScintillaKeys>`: Keyboard shorcuts for Scintilla commands, most of which relate to selecting text and moving around in the editor. (Commands that use their default shortcuts are not listed here.)
 
-<p>The format of the contents of these nodes is detailed below. The user interface provided by Notepad++ is such that only the `<Macros>` section might need editing, under normal circumstances.
+The definitions of the `<Macros>` and `<UserDefinedCommands>` are generally all that benefit from manual editing of the `shortcuts.xml`.  It is much safer to edit the shortcuts using the [**Shortcut Mapper**](../preferences/#shortcut-mapper)
 
+### Virtual Key Number
 
-### `<InternalCommands>`
-
-When not empty, the node contains `<Shortcut>` tags, the order of which doesn't matter.
-
-
- Attributes for the `<Shortcut>` node
-
-
- Position
-
- Name
-
- Value format
-
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> id </td>
-<td> integer </td>
-<td> The command id associated with the menu entry. The complete list of these is to be found in the menuCmdIds.h source file.
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> Ctrl </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Control modifier
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> Alt </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Alt modifier
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> Shift </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Shift modifier
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> Key </td>
-<td> integer </td>
-<td> The base virtual key number, in the 1.255 range
-</td></tr></tbody></table>
+All the types of commands in `shortcuts.xml` have a `key` attribute, which uses the Windows virtual key number as the value.  This is _not_ necessarily the same as the ASCII code or Unicode codepoint.  In standard English locales, the virtual key usually lines up with the ASCII code for the character, but that is not universally true.  The complete list of base virtual key code is to be found on [keys.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/keys.h). Because of this reliance on OS-defined virtual keys, many letters in your native alphabet cannot be used, though for characters that are entered directly with a key on your keyboard, it may be possible (with some effort) to determine the virtual key number for the key.  (Some hints are given in the Notepad++ Community Forum at [this post](https://community.notepad-plus-plus.org/post/43733) and [this other post](https://community.notepad-plus-plus.org/post/43888).)
 
 ### `<Macros>`
 
 When not empty, this node is made of `<Macro>` nodes, each of which represents an individual macro. Each `<Macro>` holds a nonempty list of `<Action>` tags which represent individual macro steps. These steps are either Scintilla commands or Notepad++ commands, not raw keystrokes. For more details on macro recording, see [Macros](../macros/).
 
-The order of `<Macro>` nodes is reflected in the lower part of the Macro menu, and is otherwise not important. Order of `<Action>` tags, in contrast, is usually crucial.
+**Attributes for the `<Macro>` node**
+
+Position | Name | Value format | Meaning
+:--------|:-----|:-------------|:---
+1  | name | string       | The name of the macro. Several macros may have the same name
+2  |  Ctrl  |  "yes"/"no"  |  The key being mapped to has the Control modifier
+3  |  Alt  |  "yes"/"no"  |  The key being mapped to has the Alt modifier
+4  |  Shift  |  "yes"/"no"  |  The key being mapped to has the Shift modifier
+5  |  Key  |  integer  |  The base virtual key number, in the 1..255 range
+
+Although it is possible for several macros to share the same name or shortcut, this practice is highly discouraged.
+
+**Attributes for the `<Action>` tag**
 
 
- Attributes for the `<Macro>` node
+Position | Name | Value format | Meaning
+:--------|:-----|:-------------|:---
+1  | type  |  integer  | `0` for Scintilla messages that do not pass a string as second parameter
+   |       |           | `1` for Scintilla messages that pass a string as second parameter
+   |       |           | `2` for Notepad++ defined commands
+   |       |           | `3` for search and replace recording
+2  | message  |  integer  | `0` if type=2, otherwise use the message id.
+3  | wParam  |  integer  |  Command id when type=2 or type=3, else actual first parameter of the message. Use `0` if the message or command doesn't require a wParam used.
+4  | lParam  |  integer |  `0` unless type=0 and the second parameter of the message is actually used, or scalar value used when type=3.
+5  | sParam  |  string  |  `""` unless type=1 or type=3, in which case this is the string pointed by the second parameter of the message
 
+The full list of Scintilla messages for `type=0` and `type=1`, as well as a concise documentation, can be found in [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface).  More details on those messages can be found in the [Scintilla Docs](https://scintilla.org/ScintillaDoc.html).
 
- Position
+The `wParam` command IDs for `type=1` can be found as the `IDM` constants in the source file [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/trunk/PowerEditor/src/menuCmdID.h), or you can look at the `localization\English.xml` (or your language of choice), which lists the `<Item id="...">` next to the text of the command; the value of the `id` attribute is the "command ID".
 
- Name
+You can use any Scintilla or Windows message that does not return a value, that passes an integer in wParam, and either an integer or string in lParam.  There are some messages that require strings in the wParam, or various data structures; those will not work in a macro.
 
- Value format
+For more on the messaging system, see [Plugin Communication](../plugin-communication/).
 
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> name </td>
-<td> string </td>
-<td> The name of the macro. Several macros may have the same name
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> Ctrl </td>
-<td> "yes"/"no" </td>
-<td> The key being mapped to has the Control modifier
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> Alt </td>
-<td> "yes"/"no" </td>
-<td> The key being mapped to has the Alt modifier
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> Shift </td>
-<td> "yes"/"no" </td>
-<td> The key being mapped to has the Shift modifier
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> Key </td>
-<td> integer </td>
-<td> The base virtual key number, in the 1..255 range
-</td></tr></tbody></table>
-<p>Although it is possible for several macros to share the same shortcut, this practice is highly discouraged.
-
-
- Attributes for the `<Action>` tag
-
-
- Position
-
- Name
-
- Value format
-
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> type </td>
-<td> integer </td>
-<td> <p>
-* 0 for Scintilla messages that do not pass a string as second parameter
-* 1 for Scintilla messages that pass a string as second parameter
-* 2 for Notepad++ defined commands
-* 3 for search and replace recording
-
-<p>
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> message </td>
-<td> integer </td>
-<td> 0 if type=2, else message id. The complete list of message ids can be found in the [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface) source file.
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> wParam </td>
-<td> integer </td>
-<td> Command id when type=2 or 3, else actual first parameter of the message. Use 0 if not used.
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> lParam </td>
-<td> integer</td>
-<td> 0 unless type=0 and the second parameter of the message is actually used, or scalar value used when type is 3.
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> sParam </td>
-<td> string </td>
-<td> "" unless type=1 or 3, in which case this is the string pointed by the second parameter of the message
-</td></tr></tbody></table>
-<p>Thus, global properties cannot be modified in this manner, because the corresponding messages pass a string in the first parameter. Any Scintilla or Windows message that does not return a value, passes an integer in wParam and either an integer or string in lParam will do. The full list of Scintilla messages, as well as a concise documentation, can be found in `<source folder>`\Scintilla/include/Scintillla.iface.
-
-
-#### Search / Replace encoding
-
-Single search and replace operations are encoded as a series of actions with type = 3. These are described in ["Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
-
+For type=3 search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
 
 ### `<UserDefinedCommands>`
 
 When not empty, this node contains `<Command>` tags, which have the command string as contents. Their order is reflected in the Run menu, otherwise it doesn't matter.
 
 
- Attributes for the `<Command>` tag
+**Attributes for the `<Command>` tag**
 
 
- Position
+Position | Name | Value format | Meaning
+:--------|:-----|:-------------|:---
+1  |  name  |  string  |  The name of the Run command.
+2  |  Ctrl  |  "yes"/"no"  |  The key mapped to has the Control modifier
+3  |  Alt  |  "yes"/"no"  |  The key mapped to has the Alt modifier
+4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
+5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
 
- Name
+Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
- Value format
+The run command is any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  Thus, if you enter a URL, Windows will launch your default browser with that URL.
+The commands use the same syntax and helper environment variables as explained in [TBD](#404-Not-Found "TBD: was External Programs NppWiki++ page; need to incorporate that in the new docset").  Use the concatenation characters as appropriate to have the OS execute several commands in a row.
 
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> name </td>
-<td> string </td>
-<td> The name of the Run command. Several commands may have the same name
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> Ctrl </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Control modifier
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> Alt </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Alt modifier
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> Shift </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Shift modifier
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> Key </td>
-<td> integer </td>
-<td> The base virtual key number, in the 1.255 range
-</td></tr></tbody></table>
-<p>Use the ^ or | concatenation character as appropriate to have the OS execute several commands in a row. The commands use the same syntax and helper environment variables as explained in [External Programs](#404-Not-Found "TBD").
-
-
-### `<PluginCommands>`
-
-When not empty, this node is made of auto-closed `<PluginCommand>` tags. Their order doesn't matter.
-
-
- Attributes for the `<PluginCommmand>` tag
-
-
- Position
-
- Name
-
- Value format
-
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> moduleName </td>
-<td> string </td>
-<td> The name with extension of the dll that contains the plugin
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> internalID </td>
-<td> integer </td>
-<td> The command number in the plugin. This can be assessed by counting the position of the corresponding menu item in the plugin submenu (separators count for one entry). Then substract 1 as ID's start at zero.
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> Ctrl </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Control modifier
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> Alt </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Alt modifier
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> Shift </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Shift modifier
-</td></tr>
-<tr>
-<td> 6 </td>
-<td> Key </td>
-<td> integer </td>
-<td> The base virtual key number, in the 1.255 range
-</td></tr></tbody></table>
-<p>The order in which TextFX functions are loaded is not obvious from the menu layout. However, you can compute the internalID of a function as follows:
-
-1. Go to **Settings &gt; Shortcut Mapper &gt; Plugin commands**
-1. Note the index of the function you are after
-1. Substract the index for I:TEXTFX NULL FUNCTION. This depends on what plugins you have and in which order they were loaded.
-1. Add 2 to the result to get the correct internalID.
-
-<p>A similar method will work for other plugins, but the value to substract is the index of the first entry for the plugin, and you must not add any correction. Remember that a separator is just another entry.
-
-
-### `<ScintillaKeys>`
-
-When it is not empty, this node contains `<ScintKey>` and `<NextKey>`  tags. Each `<ScintKey>` tag correspond to a Scintilla command being remapped. The order of these tags doesn't matter.
-
-When a Scintilla command has several keyboard bindings, the first one to be defined is stored in a `<ScintKey>` tag. The extra bindings are stored in `<NextKey>` tags that follow the main `<ScintKey>`, in the order defined by the list on the left of the Modify dialog for the entry.
-
-
- Attributes for the `<ScintKey>` tag
-
-
- Position
-
- Name
-
- Value format
-
- Meaning
-<table border="1"><tbody><tr></tr>
-<tr>
-<td> 1 </td>
-<td> ScintId </td>
-<td> integer </td>
-<td> The id of the message being remapped
-</td></tr>
-<tr>
-<td> 2 </td>
-<td> menuCmdID </td>
-<td> integer </td>
-<td> The command number associated to the message, if there is any. Use 0 if this message is not a Notepad++ menu command
-</td></tr>
-<tr>
-<td> 3 </td>
-<td> Ctrl </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Control modifier
-</td></tr>
-<tr>
-<td> 4 </td>
-<td> Alt </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Alt modifier
-</td></tr>
-<tr>
-<td> 5 </td>
-<td> Shift </td>
-<td> "yes"/"no" </td>
-<td> The key mapped to has the Shift modifier
-</td></tr>
-<tr>
-<td> 6 </td>
-<td> Key </td>
-<td> integer </td>
-<td> The base virtual key number, in the 1.255 range
-</td></tr></tbody></table>
-<p>`<NextKey>` tags have the same structure as a `<ScintKey>`, except that the first two attributes are not defined - they would be redundant.
-
+# PETER HERE #
 
 ## Built-in language features
 
