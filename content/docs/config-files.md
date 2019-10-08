@@ -1,5 +1,5 @@
 ---
-title: Configuration Files
+title: Configuration Files Details
 linktitle: config-files
 weight: 115
 ---
@@ -125,8 +125,23 @@ Position | Name | Value format | Meaning
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
-The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  Thus, if you enter a URL, Windows will launch your default browser with that URL.
-The commands use the same syntax and helper environment variables as explained in [TBD](#404-Not-Found "TBD: was External Programs NppWiki++ page; need to incorporate that in the new docset").  Use the concatenation characters as appropriate to have the OS execute several commands in a row.
+The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command.  If it's not in your path, then you _should_ specify the full path.  Note that Windows will launch your default browser if you put a URL in this If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environement).  For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.
+
+There are a number of variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry.
+
+Variable            | Description                       | Example
+--------------------|:---                               |:---
+FULL_CURRENT_PATH   | The full path to the active file  | `E:\My Web\main\welcome.html`
+CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
+FILE_NAME           | The active file's name            | `welcome.html`
+NAME_PART           | The filename without extension    | `welcome`
+EXT_PART            | The extension                     | `html`
+SYS._var_           | the _var_ system environment variable | `$(SYS.PATH)` will expand to your `%PATH%` environment variable
+CURRENT_WORD        | the active selection in Notepad++, or the word under the cursor |
+CURRENT_LINE        | the line number where the cursor is currently located in the editor window | `1`
+CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
+NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
+NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
 
 ## User Interface settings: `config.xml`
 
@@ -165,10 +180,48 @@ Each lexer type has it's own `<LexerType>` section, with multiple `<WordsStyle>`
 
 If you have added user-defined keywords in the [**Settings > Style Configurator**](../preferences/#style-configurator), they will be stored as the contents of the `<WordsStyle>`, as a space-separated list (for example, `<WordsStyle>fancyKeyword1 fancyKeyword2</WordsStyle>`).
 
+## `functionList.xml`
+
+Defines what counts as a "function" for **View > Function List**.  There are some comments in the file, and lots of examples of the builtin languages, which you can customize.
+
+If you want to add **Function List** capability for your User Defined Language (UDL), you can.  You need to add two groups of information:
+
+1. In the `<associationMap>` section, you need to add lines like the following
+
+        <association id="fn_udl_example"          userDefinedLangName="ExampleUDL"     />
+        <association id="fn_udl_example"          ext=".ex"                            />
+        <association id="fn_udl_example"          ext=".exudl"                         />
+
+    where `fn_udl_example` is a name unique to this UDL.  It is best to define it both
+    based on `userDefinedLangName=...` (which must match the name you saved for your UDL) and on extension `ext=...` (which must match the extension(s) of your UDL type, with one extension per entry).
+
+2. In the `<parsers>` section, add a parser, with a similar format to all the builtin parsers shown.  An example would be
+
+        <parser
+            id="fn_udl_example"
+            displayName="Example UDL Name (UDL)"
+            commentExpr="((--.*?$))"
+        >
+            <function
+                mainExpr="^[\s]*(private[\s]+)?(procedure|function)[\s]*[\w_]+"
+                displayMode="$functionName"
+            >
+                <functionName>
+                    <nameExpr expr="^[\s]*(private[\s]+)?(procedure|function)[\s]*[\w_]+" />
+                </functionName>
+            </function>
+        </parser>
+
+    where the `fn_udl_example` must match the `<association id>`.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).
+
 ## Other Configuration Files
 
-* `userDefineLang.xml`: see [in the User-defined Languages doc](../user-defined-language-system/).
+* `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).
 
-* Autocompletion, aka API, files: see [Auto-completion: Auto-completion File Format](http://localhost:1313/docs/auto-completion/#auto-completion-file-format)
+* `doLocalConf.xml`: this will only exist on local installations of Notepad++ (when you tell the installer to not use `%AppData%`, or when you install from the zipfile).  This is a zero-byte file that is just used as an indicator to `notepad++.exe` to not go looking for `%AppData%`.
 
-* `session.xml`: stores session information
+* `nativeLang.xml`: if you make a selection in the [**Settings > Preferences > General > Localization**](../preferences/#general), Notepad++ will copy the appropriate `localization\*.xml` to `nativeLang.xml`.
+
+* `session.xml`: stores the current [session](../session/) information.  Overwritten on every exit of Notepad++ if [**Settings > Preferences > Backup > Remember current session for next launch**](../preferences/#backup) is enabled.  If you want sessions that you control, use **File > Save Session...** to save it; the file is safe to edit; and you can reload that session at any time using **File > Load Session...**.
+
+* `userDefineLang.xml`: see [the **User Defined Languages** doc](../user-defined-language-system/).
