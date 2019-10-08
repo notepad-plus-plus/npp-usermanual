@@ -1,10 +1,10 @@
 ---
-title: Configuration Files Syntax
+title: Configuration Files
 linktitle: config-files
 weight: 115
 ---
 
-# Syntax for the XML-based Configuration Files
+# Configuration Files
 
 Notepad++ offers a comprehensive user interface to review or change most of its settings. However, there are some special cases where it is worthwhile to edit the configuration files directly, including:
 
@@ -12,7 +12,7 @@ Notepad++ offers a comprehensive user interface to review or change most of its 
 * Editing previously-recorded macros, or crafting new macros manually
 * Adding keywords to a language, because the new language version isn't matched yet
 
-These files are all found in `%AppData%\notepad++\` (or, for zip-based local installations, in the notepad++ executable directory) unless otherwise noted.
+The underlying XML files are all found in `%AppData%\notepad++\` (or, for zip-based local installations, in the notepad++ executable directory) unless otherwise noted.
 
 ## Editing Configuration Files
 
@@ -30,9 +30,24 @@ If changes are made in the Notepad++ UI to settings which are stored in configur
 
 ## The context menu: `contextMenu.xml`
 
-### !!!!NEED TO DEFINE!!!!!
+<!-- http://web.archive.org/web/20190518131311/http://docs.notepad-plus-plus.org/index.php/Context_Menu -->
 
-The way to customise the context menu:
+The context menu does not have a GUI-based editor; you just need to edit the file.  As a result, the **Settings > Edit Popup Context Menu** entry exists to make it easy for you to access this config file.
+
+All menu commands can be added to the Context Menu, including plugin commands:
+
+* To add a built-in command, you need to provide the main menu name (as it appears in the main menu bar) as the value of the MenuEntryName attribute and the command's item name (as it appears in the menu) as the value of the MenuItemName attribute. The MenuEntryName attribute must reference an entry on the main menu bar and must be an ancestor of the MenuItemName attribute, regardless of its depth.
+* To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.
+
+Note that the value you add should be in English, not in a translated language. The Shortcut Mapper will help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands. If you wish to use IDs, they can be found in [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/trunk/PowerEditor/src/menuCmdID.h), or can be found in your localization file.
+
+### Grouping items into sub-menus
+
+If you add a `FolderName="name_of_submenu"` attribute to consecutive items, they will be grouped into a sub-menu with that name. Specifying "" is the same as leaving the FolderName attribute out. Note that sub-menus do not nest - you cannot add a sub-menu to a sub-menu. Non-Latin characters are supported.
+
+### Overriding a menu item name
+
+If you add an `ItemNameAs="new_name_for_the_item"` attribute, the new name will be displayed instead of the standard one, which you'd get from the menu bar or its sub-menus. This is useful when the name is lengthy, as it makes the Context Menu unwieldy otherwise. Non-Latin characters are supported.
 
 ## Keyboard shortcuts: `shortcuts.xml`
 
@@ -77,20 +92,20 @@ Position | Name | Value format | Meaning
    |       |           | `1` for Scintilla messages that pass a string as second parameter
    |       |           | `2` for Notepad++ defined commands
    |       |           | `3` for search and replace recording
-2  | message  |  integer  | `0` if type=2, otherwise use the message id.
-3  | wParam  |  integer  |  Command id when type=2 or type=3, else actual first parameter of the message. Use `0` if the message or command doesn't require a wParam used.
-4  | lParam  |  integer |  `0` unless type=0 and the second parameter of the message is actually used, or scalar value used when type=3.
-5  | sParam  |  string  |  `""` unless type=1 or type=3, in which case this is the string pointed by the second parameter of the message
+2  | message  |  integer  | `0` if `type=2`, otherwise use the message id
+3  | wParam  |  integer  |  Command id when `type=2` or `type=3`, else actual first parameter of the message. Use `0` if the message or command doesn't require a wParam.
+4  | lParam  |  integer |  `0` unless `type=0` and the second parameter of the message is actually used, or scalar value used when `type=3`.
+5  | sParam  |  string  |  `""` unless `type=1` or `type=3`, in which case this is the string pointed by the second parameter of the message.
 
 The full list of Scintilla messages for `type=0` and `type=1`, as well as a concise documentation, can be found in [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface).  More details on those messages can be found in the [Scintilla Docs](https://scintilla.org/ScintillaDoc.html).
 
 The `wParam` command IDs for `type=1` can be found as the `IDM` constants in the source file [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/trunk/PowerEditor/src/menuCmdID.h), or you can look at the `localization\English.xml` (or your language of choice), which lists the `<Item id="...">` next to the text of the command; the value of the `id` attribute is the "command ID".
 
-You can use any Scintilla or Windows message that does not return a value, that passes an integer in wParam, and either an integer or string in lParam.  There are some messages that require strings in the wParam, or various data structures; those will not work in a macro.
+For `type=3` search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
+
+You can use any Scintilla or Windows message that does not return a value, that passes an integer in `wParam`, and either an integer or string in `lParam`.  There are some messages that require strings in the `wParam`, or various data structures: those will not work in a macro.
 
 For more on the messaging system, see [Plugin Communication](../plugin-communication/).
-
-For type=3 search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
 
 ### `<UserDefinedCommands>`
 
@@ -110,14 +125,14 @@ Position | Name | Value format | Meaning
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
-The run command is any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  Thus, if you enter a URL, Windows will launch your default browser with that URL.
+The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  Thus, if you enter a URL, Windows will launch your default browser with that URL.
 The commands use the same syntax and helper environment variables as explained in [TBD](#404-Not-Found "TBD: was External Programs NppWiki++ page; need to incorporate that in the new docset").  Use the concatenation characters as appropriate to have the OS execute several commands in a row.
 
 ## User Interface settings: `config.xml`
 
 The following sections are defined:
 
-1. `<GUIConfigs>`: user interface settings (usually set in the [**Settings > Preferences**](../preferences/#preferences).
+1. `<GUIConfigs>`: user interface settings (usually set in the [**Settings > Preferences**](../preferences/#preferences)).
 2. `<FindHistory>`: most of the latest state of the Find/Replace dialog box.
 3. `<History>`: the list of recently used files.
 3. `<ProjectPanels>`: associates workspace files with a given project panel
