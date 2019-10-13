@@ -1457,7 +1457,7 @@ L_USER and L_EXTERNAL are not supported.
 <table border="1" width="100%">
 
 <tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETGETCURRENTVIEW
+<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTVIEW
 </td>
 <td width="10%" style="background:khaki"> wParam:
 </td>
