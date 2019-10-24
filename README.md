@@ -25,6 +25,7 @@ Summary
 * [Plugin Communication](content/docs/plugin-communication.md)
 * [Preferences](content/docs/preferences.md)
 * [Themes](content/docs/themes.md)
+* [Configuration Files Details](content/docs/config-files.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
 * [Shell Extension](content/docs/shell-extension.md)
 * [Binary Translation](content/docs/binary-translation.md)
