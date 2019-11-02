@@ -71,9 +71,10 @@ for any technical questions/answers and the announcement your new plugin.
 
 ### In other languages
 
-* [Delphi](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
-* [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
 * [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
+* [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
+* [D](https://gitlab.com/dokutoku/npp-api)
+* [Delphi](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
 
 
 ## Plugins Admin

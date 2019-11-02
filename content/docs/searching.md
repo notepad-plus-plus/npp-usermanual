@@ -28,7 +28,7 @@ All the dialog-based have certain features in common, though some are disabled u
 * **Find what** edit box with dropdown history: this is the text you are searching for
 * **Replace with** edit box with dropdown history: this is the text that will replace what was matched
 
-* **☐ In selection**: If you have a region of text selected, and **In selection** is enabled, it will only search-and-replace / count / mark within that selection of text, rather than in the whole document
+* **☐ In selection**: If you have a region of text selected, and **In selection** is enabled, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
 * **☐ Backward direction**: normally, searches go forward (down the page); with this option, they will go backward (up the page)
 * **☐ Match whole word only**: if enabled, searches will only match if the result is a whole word (so "it" will not be found inside "hitch")
 * **☐ Match case**: if enabled, searches must match in case (so a search for "it" will not find "It" or "IT")

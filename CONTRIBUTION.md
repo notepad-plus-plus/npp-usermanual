@@ -8,6 +8,7 @@ Your pull requests are welcome; however, they may not be accepted for various re
 
 ### Guidelines for pull requests
 
+0. KISS - Keep It Simple, Stupid.
 1. Respect Notepad++ User Manuel style.
 2. Create a new branch for each PR.
 
@@ -25,4 +26,4 @@ Your pull requests are welcome; however, they may not be accepted for various re
 
 ## Cross-Links
 
-To properly link from one page in the user-manual docs to another, use the syntax `[link name](../page/)` to link to the top level, or `[link name](../page/#anchor)` to link to an anchor (like a heading) in another document.  Note that `page` does _not_ include the `.md` extension.  The anchor names are the lower-case version of the section headers, with spaces replaced by hyphens.  Thus, from the [Themes](content/docs/themes/) page, link to the [**Preferences > Style Configurator**](content/docs/preferences/#style-configurator) using the syntax `[**Preferences > Style Configurator**](../preferences/#style-configurator)
+To properly link from one page in the user-manual docs to another, use the syntax `[link name](../page/)` to link to the top level, or `[link name](../page/#anchor)` to link to an anchor (like a heading) in another document.  Note that `page` does _not_ include the `.md` extension.  The anchor names are the lower-case version of the section headers, with spaces replaced by hyphens.  Thus, from the [Themes](content/docs/themes/) page, link to the [**Preferences > Style Configurator**](content/docs/preferences/#style-configurator) using the syntax `[**Preferences > Style Configurator**](../preferences/#style-configurator)`.

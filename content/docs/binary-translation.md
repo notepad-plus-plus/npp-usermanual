@@ -25,19 +25,19 @@ For modifying an existing xml files, here is the way to visualize your modificat
 
 <div>
 
-<div align="center"align="center" style="margin: 20px; display: inline-block;">
+<div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/chinese.xml" target="_blank"> <img src="/docs/images/flags/fTaiwan.png" alt="" border="0" /><br /> Chinese</a>
 </div>
 
-<div align="center"align="center" style="margin: 20px; display: inline-block;">
+<div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/french.xml" target="_blank"><img src="/docs/images/flags/fFrance.png" alt="" border="0" /><br /> French</a>
 </div>
 
-<div align="center"align="center" style="margin: 20px; display: inline-block;">
+<div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/spanish.xml" target="_blank"><img src="/docs/images/flags/fSpain.png" alt="" border="0" /><br /> Spanish</a>
 </div>
 
-<div align="center"align="center" style="margin: 20px; display: inline-block;">
+<div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/hungarian.xml" target="_blank"><img src="/docs/images/flags/fHungary.png" alt="" border="0" /><br /> Hungarian</a>
 </div>
 
@@ -282,7 +282,7 @@ For modifying an existing xml files, here is the way to visualize your modificat
 </div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
-<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/uyghur.xml" target="_blank"><img src="/docs/images/flags/fChina.png" alt="" border="0" /><br /> Uyghur</a>
+<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/uyghur.xml" target="_blank"><img src="/docs/images/flags/fEastTurkestan.png" alt="" border="0" /><br /> Uyghur</a>
 </div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
