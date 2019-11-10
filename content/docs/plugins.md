@@ -94,12 +94,12 @@ Any plugin is welcome to join in the list.
 
 For testing your plugin for listing, installation, removal and update under
 Plugin Admin, you need Notepad++ binary in debug mode
-[32-bit](https://notepad-plus-plus.org/pluginListTestTools/notepad++.debug.x86.zip)
-or [64-bit](https://notepad-plus-plus.org/pluginListTestTools/notepad++.debug.x64.zip),
+[32-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x32.zip)
+or [64-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x64.zip),
 the latest version of wingup
-[32-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x32.zip)
+[32-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/wingup.release.x32.zip)
 or
-[64-bit](https://notepad-plus-plus.org/pluginListTestTools/wingup.release.x64.zip)
+[64-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/wingup.release.x64.zip)
 and nppPluginList.json (you should rename it from `pl.x64.json` or `pl.x86.json`,
 according your plugin's architecture). Replace `notepad++.exe` and `GUP.exe` of your
 Notepad++ installation by downloaded ones, copy `pl.x64.json` or `pl.x86.json` to
