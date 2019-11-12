@@ -289,7 +289,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **\X** ⇒ Matches a single non-combining characer followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.
 
-* **\_Г_**  ⇒ This allows you to use a character _Г_ that would otherwise have a special meaning. For example, **\[** would be interpreted as _[_ and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, **\d** stands for "a digit", while "d" is just an ordinary letter.
+* **\\_Г_**  ⇒ This allows you to use a character _Г_ that would otherwise have a special meaning. For example, **\\[** would be interpreted as _[_ and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, **\d** stands for "a digit", while "d" is just an ordinary letter.
 
 
 ##### Non ASCII characters
@@ -432,6 +432,8 @@ Anchors match a position in the line, rather than a particular character.
 
 * **\Z** ⇒ Matches like **\z** with an optional sequence of newlines before it. This is equivalent to **(?=\v*\z)**, which departs from the traditional Perl meaning for this escape.
 
+* **\\G** ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current cursor position, or the start of the highlighted text.
+
 
 
 #### Groups
@@ -458,12 +460,11 @@ Using the x flag modifier (see section below) is also a good way to improve read
 
 
 #### Search modifiers
-The following constructs control how matches condition other matches, or otherwise alter the way search is performed. For those readers familiar with Perl, \G is not supported.
+The following constructs control how matches condition other matches, or otherwise alter the way search is performed.
 
+* **\\Q** ⇒ Starts verbatim mode (Perl calls it "quoted"). In this mode, all characters are treated as-is, the only exception being the **\\E** end verbatim mode sequence.
 
-* **\Q** ⇒ Starts verbatim mode (Perl calls it "quoted"). In this mode, all characters are treated as-is, the only exception being the **\E** end verbatim mode sequence.
-
-* **\E** ⇒ Ends verbatim mode. Ths, "\Q\*+\Ea+" matches "\*+aaaa".
+* **\\E** ⇒ Ends verbatim mode. Ths, "\\Q\\*+\\Ea+" matches "\\*+aaaa".
 
 * **(?:_flags_-_not-flags_ ...)** or **(?:_flags_-_not-flags_:...)** ⇒ Applies flags and not-flags to search inside the parentheses. Such a construct may have flags and may have not-flags - if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
 
