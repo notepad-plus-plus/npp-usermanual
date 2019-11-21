@@ -287,131 +287,128 @@ In a regular expression (shortened into regex throughout), special characters in
 
 #### Single-character matches
 
-* **.** or **\C** ⇒ Matches any character. If you check the box which says ". matches newline", the dot will indeed do that, enabling the "any" character to run over multiple lines. With the option unchecked, then **.** will only match characters within a line, and not the line ending characters (**\r** or **\n**)
+* ``.`` or ``\C`` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot match any character, including newline sequences.  With the option unchecked, then `.` will only match characters within a line, and not the newline sequences (``\r`` or ``\n``).
 
-* **\X** ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
+* `\X` ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
 
-* **\\_Г_**  ⇒ This allows you to search for a literal character _Г_, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, **\\[** would be interpreted as _[_ and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, **\d** stands for "a digit", while "d" is just an ordinary letter.  (Please note: `Г` here was chosen as a placeholder for the character you want to escape.)
+* ``\☒``  ⇒ This allows you to search for a literal character ☒, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, ``\[`` would be interpreted as literal `[` and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, ``\d`` stands for "a digit", while `d` is just an ordinary letter.  (Please note: `☒` here was chosen as a placeholder for the character you want to escape.)
 
 
 ##### Non ASCII characters
 
-* **\x**_nn_ ⇒ Specify a single character with code _**nn**_. What this stands for depends on the text encoding. For instance, **\xE9** may match an é or a θ depending on the code page in an ANSI encoded document.
+* ``\xℕℕ`` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. For instance, ``\xE9`` may match an `é` or a `θ` depending on the code page in an ANSI encoded document.
 
-* **\x{**_nnnn_**}** ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
+* ``\x{ℕℕℕℕ}`` ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
 
-* **\0**_nnn_ ⇒ A single byte character whose code in octal is _nnn_.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
+* ``\0ℕℕℕ`` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
 
-*  **[[._collating sequence_.]]** ⇒ The character the _collating sequence_ stands for. For instance, in Spanish, "ch" is a single letter, though it is written using two characters. That letter would be represented as **[[.ch.]]**. This trick also works with symbolic names of control characters, like **[[.BEL.]]** for the character of code 0x07. See also the discussion on character ranges.
+*  ``[[.☒☒.]]`` ⇒ The character the ☒☒ "collating sequence" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as ``[[.ch.]]``. This trick also works with symbolic names of control characters, like ``[[.BEL.]]`` for the character of code 0x07. See also the discussion on character ranges.
 
 
 
 ##### Control characters
 
-* **\a** ⇒ The BEL control character 0x07 (alarm).
+* ``\a`` ⇒ The BEL control character 0x07 (alarm).
 
-*  **\b** ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
+* ``\b`` ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
 
-*  **\e** ⇒ The ESC control character 0x1B.
+* ``\e`` ⇒ The ESC control character 0x1B.
 
-*  **\f** ⇒ The FF control character 0x0C (form feed).
+* ``\f`` ⇒ The FF control character 0x0C (form feed).
 
-*  **\n** ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
+* ``\n`` ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
 
-*  **\r** ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
+* ``\r`` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
 
-*  **\R** ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
+* ``\R`` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
 
-* **\t** ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
+* ``\t`` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
-*  **\c**_character_ ⇒ The control character obtained from _character_ by stripping all but its 6 lowest order bits. For instance, **\c1**, **\cA** and **\ca** all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so "\cA" is the character you would get from hitting Ctrl+A in a terminal.
+* ``\c☒`` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, ``\c1``, ``\cA`` and ``\ca`` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so ``\cA`` is the character you would get from hitting Ctrl+A in a terminal.
 
 #### Ranges or kinds of characters
 
-* **[**...**]**  ⇒ This indicates a set of characters, for example, **[abc]** means any of the characters _a_, _b_ or _c_. You can also use ranges, for example **[a-z]** for any lower case character.  You can use a collating sequence in character ranges, like in **[[.ch.]-[.ll.]]** (these are collating sequence in Spanish).
+##### Character Classes
 
-* **[^**...**]**  ⇒ The complement of the characters in the set. For example, **[^A-Za-z]** means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence **[^ABC]*** will match until the first A,B or C (or a, b or c if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. **[^ABC\r\n]**.
+* ``[☒☒☒]``  ⇒ This indicates a set of characters, for example, ``[abc]`` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example ``[a-z]`` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in ``[[.ch.]-[.ll.]]`` (these are collating sequence in Spanish).
 
-* **[:_name_:]** ⇒ The whole character class named _name_, which must be part of a character class.  Most of the time, there is a single letter escape sequence for them - see below. ⇒ Recognized classes are:
+* ``[^☒☒☒]``  ⇒ The complement of the characters in the set. For example, ``[^A-Za-z]`` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence ``[^ABC]*`` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. ``[^ABC\r\n]``.
 
-    *  alnum&nbsp;: letters (including accented letters) and digits
-    *  alpha&nbsp;: letters (including accented letters)
-    *  h, blank&nbsp;: spacing which is not a line terminator, so the character class `[\t\x20\xA0]`.
-    *  cntrl&nbsp;: control characters, so the character class `[\x00-\x1F\x7F\x81\x8D\x8F\x90\x9D]`
-    *  d , digit&nbsp;: decimal digits, so the character class `[0-9¹²³]`
-    *  graph&nbsp;: graphical character, so essentially any character except for control chars and the \x7F and \x80 ( € ) chars.
-    *  l , lower&nbsp;: lowercase letters (including accented letters)
-    *  print&nbsp;: printable characters, so the character class `[\s[:graph:]]`
-    *  punct&nbsp;: punctuation characters, so the character class ```[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]```
-    *  s , space&nbsp;: whitespace ( word or line separator ), so the character class [\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]
-    *  u , upper&nbsp;: uppercase letters (including accented letters)
-    *  unicode&nbsp;: any character with code point above 255, so the character class `[\x{0100}-\x{FFFF}]`
-    *  w , word&nbsp;: word character, so the character class `[_\d\l\u]`
-    *  xdigit&nbsp;: hexadecimal digits, so the character class `[0-9A-Fa-f]`
+* ``[:name:]`` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
 
-    Note that those character class names may be written in upper or lower case without changing the results.  So **[:alnum:]** is the same as **[:ALNUM:]** or **[:AlNum:]**.
+    | short | full name      | description | equivalent character class |
+    |:-----:|:--------------:|:------------|----------------------------|
+    |       | alnum          | letters and digits | |
+    |       | alpha          | letters | |
+    | h     | blank          | spacing which is not a line terminator | `[\t\x20\xA0]`|
+    |       | cntrl          | control characters | `[\x00-\x1F\x7F\x81\x8D\x8F\x90\x9D]` |
+    | d     | digit          | digits | |
+    |       | graph          | graphical character, so essentially any character except for control chars, `\0x7F`, `\x80` | |
+    | l     | lower          | lowercase letters | |
+    |       | print          | printable characters | `[\s[:graph:]]` |
+    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]` |
+    | s     | space          | whitespace (word or line separator) | `[\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]` |
+    | u     | upper          | uppercase letters |  |
+    |       | unicode        | any character with code point above 255 | `[\x{0100}-\x{FFFF}]` |
+    | w     | word           | word characters | `[_\d\l\u]` |
+    |       | xdigit         | hexadecimal digits | `[0-9A-Fa-f]` |
 
-*  **\p**_short\_name_ or **\p{**_name_**}** ⇒ Same as **[[:_short\_name_:]]** or **[[:_name_:]]**. For instance, **\pd** and **\p{digit}** both stand for a digit, **\d**.  (_short\_name_ is the short version of the character class name above; _name_ is the longer version of the character class name above.)  This syntax will not work inside a character class.
+    Note that letters include any unicode letters (ASCII letters, accented letters, and letters from a variety of other writing systems); digits include ASCII numeric digits, and anything else in Unicode that's classified as a digit (like superscript numbers ¹²³...).
 
-*  **\P**_short\_name_ or **\P{**_name_**}** ⇒ Same as **[^[:_short\_name_:]]** or **[^[:_name_:]]** (not belonging to the class _name_).  This syntax will not work inside a character class.
+    Note that those character class names may be written in upper or lower case without changing the results.  So `[:alnum:]` is the same as `[:ALNUM:]` or the mixed-case `[:AlNuM:]`.
 
-* **\d** ⇒ A digit in the 0-9 range, same as **[[:digit:]]** or **[[:d:]]**.
+##### Character Properties
 
-* **\D** ⇒ Not a digit. Same as **[^[:digit]]** or **[^[:d:]]**.
+These properties behave similar to named character classes, but cannot be contained inside a character class.
 
-* **\l** ⇒ A lowercase letter (including accented letters). Same as **[[:lower:]]** or **[[:l:]]**. ⇒ _NOTE_: this will fall back on "a word character" if the "Match case" search option is off.
+*  `\p☒` or `\p{name}` ⇒ Same as `[[:☒:]]` or `[[:name:]]`, where ☒ stands for one of the short names from the table above, and _name_ stands for one of the full names from above. For instance, `\pd` and `\p{digit}` both stand for a digit, just like the escape sequence `\d` does.
 
-* **\L** ⇒ Not a lower case letter. Same as **[^[:lower:]]** or **[^[:l:]]**.  See note above.
+*  `P☒` or `\P{name}` ⇒ Same as `[^[:☒:]]` or `[^[:name:]]` (not belonging to the class _name_).
 
-* **\u** ⇒ An uppercase letter (including accented letters). Same as **[[:upper:]]** or **[[:u:]]**. See note about lower case letters.
+##### Character escape sequences
 
-* **\U** ⇒ Not an uppercase letter. Same as **[^[:upper:]]** or **[^[:u:]]**. Same note applies.
+These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
 
-*  **\w** ⇒ A word character, which is a letter, digit or underscore. This appears not to depend on what the Scintilla component considers as word characters. Same as **[[:word:]]** or **[[:w:]]**.
+| Description]     | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
+|:-----------------|:----------------|:---------------|:-------------------------|:---------------|
+| digits           | `\d`            | `[[:digit:]]`  | `\D`                     | `[^[:digit:]]` |
+| lowercase        | `\l`            | `[[:lower:]]`  | `\L`                     | `[^[:lower:]]` |
+| space chars      | `\s`            | `[[:space:]]`  | `\S`                     | `[^[:space:]]` |
+| uppercase        | `\u`            | `[[:upper:]]`  | `\U`                     | `[^[:upper:]]` |
+| word chars       | `\w`            | `[[:word:]]`   | `\W`                     | `[^[:word:]]`  |
+| horizontal space | `\h`            | `[[:blank:]]`  | `\H`                     | `[^[:blank:]]` |
+| vertical space   | `\v`            | see below      | `\V`                     |                |
 
-* **\W** ⇒ Not a word character. Same as **[^[:word:]]** or **[^[:w:]]**.
+> Vertical space: This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
 
-* **\s** ⇒ A spacing character: space, EOLs and tabs count. Same as **[[:space:]]** or **[[:s:]]**.
+##### Equivalence Classes
 
-* **\S** ⇒ Not a space. Same as **[^[:space:]]** or **[^[:s:]]**.
-
-* **\h** ⇒ Horizontal spacing. This only matches space, tab and the non-breaking space.  Same as **[[:blank:]]** or **[[:h:]]** or **[\t\x20\xA0]**
-
-* **\H** ⇒ Not horizontal whitespace.  Same as **[^[:blank:]]** or **[^[:h:]]**.
-
-* **\v** ⇒ Vertical whitespace. This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).
-
-* **\V** ⇒ Not vertical whitespace.  Same as **[^[:v:]]**.
-
-The 14 escape sequences above (from **\d** thru **\V**) can be used either inside or outside of a character class.
-
-* **[[=**_primary key_**=]]** ⇒ All characters that differ from _primary key_ by case, accent or similar alteration only. For example **[[=a=]]** matches any of the characters: a, À, Á, Â, Ã, Ä, Å, A, à, á, â, ã, ä and å.
-
+* `[[=☒=]]` ⇒ All characters that differ from ☒ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `a`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `A`, `à`, `á`, `â`, `ã`, `ä` and `å`.
 
 
 #### Multiplying operators
 
-* **+**  ⇒ This matches 1 or more instances of the previous character, as many as it can. For example, **Sa+m** matches _Sam_, _Saam_, _Saaam_, and so on.  **[aeiou]+** matches consecutive strings of vowels.
+* `+`  ⇒ This matches 1 or more instances of the previous character, as many as it can. For example, `Sa+m` matches `Sam`, `Saam`, `Saaam`, and so on.  `[aeiou]+` matches consecutive strings of vowels.
 
-* **&#x2a;**  ⇒ This matches 0 or more instances of the previous character, as many as it can. For example, **Sa&#x2a;m** matches _Sm_, _Sam_, _Saam_, and so on.
+* `*`  ⇒ This matches 0 or more instances of the previous character, as many as it can. For example, `Sa*m` matches `Sm`, `Sam`, `Saam`, and so on.
 
-* **?** ⇒ Zero or one of the last character. Thus **Sa?m** matches _Sm_ and _Sam_, but not _Saam_.
+* `?` ⇒ Zero or one of the last character. Thus `Sa?m` matches `Sm` and `Sam`, but not `Saam`.
 
-* **&#x2a;?** ⇒ Zero or more of the previous group, but minimally: the shortest matching string, rather than the longest string as with the "greedy" operator. Thus, **m.*?o** applied to the text _margin-bottom: 0;_ will match _margin-bo_, whereas **m.*o** will match _margin-botto_.
+* `*?` ⇒ Zero or more of the previous group, but minimally: the shortest matching string, rather than the longest string as with the "greedy" operator. Thus, `m.*?o` applied to the text `margin-bottom: 0;` will match `margin-bo`, whereas `m.*o` will match `margin-botto`.
 
-* **+?** ⇒ One or more of the previous group, but minimally.
+* `+?` ⇒ One or more of the previous group, but minimally.
 
-* **{_n_}** ⇒ Matches _n_ copies of the element it applies to.
+* `{ℕ}` ⇒ Matches ℕ copies of the element it applies to (where ℕ is any decimal number).
 
-* **{_n_,**} ⇒ Matches _n_ or more copies of the element it applies to.
+* `{ℕ,}` ⇒ Matches ℕ or more copies of the element it applies to.
 
-* **{_m_,_n_**} ⇒ Matches _m_ to _n_ copies of the element it applies to, as much it can.
+* `{ℕ,ℙ}` ⇒ Matches ℕ to ℙ copies of the element it applies to, as much it can (where ℙ ≥ ℕ).
 
-* **{**_n_**,}?** or **{**_m_**,**_n_**}?** ⇒ Like the above, but match as few copies as they can. Compare with **&#x2a;?** and friends.
+* `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but mimimally.
 
-* **&#x2a;+** or **?+** or **++** or **{**_n_**,}+** or **{**_m_**,**_n_**}+** ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. ⇒ Example:
+* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example:
 
-    When regex “.*” is run against the text “abc”x :
+    When regex `“.*”` is run against the text `“abc”x` :
 
         “  matches “
         .* matches abc”x
@@ -425,48 +422,48 @@ The 14 escape sequences above (from **\d** thru **\V**) can be used either insid
         .* matches abc
         ”  matches ” => 1 overall match “abc”
 
-    When regex “.*+”, with a possessive quantifier, is run against the text “abc”x :
+    When regex `“.*+”`, with a possessive quantifier, is run against the text `“abc”x` :
 
         “   matches “
         .*+ matches abc”x ( catches all remaining characters )
         ” cannot match $ ( End of line )
 
-    ⇒ No match at all, because the possessive repeat factor prevents from backtracking to a possible solution
+    Notice there is no match at all for the possive version, because the possessive repeat factor prevents from backtracking to a possible solution
 
 
 #### Anchors
 Anchors match a zero-length position in the line, rather than a particular character.
 
 
-* **^** ⇒ This matches the start of a line (except when used inside a set, see above).
+* `^` ⇒ This matches the start of a line (except when used inside a set, see above).
 
-* **$**  ⇒ This matches the end of a line.
+* `$`  ⇒ This matches the end of a line.
 
-* **\\&lt;**  ⇒ This matches the start of a word using Scintilla's definitions of words.
+* `\<`  ⇒ This matches the start of a word using Scintilla's definitions of words.
 
-* **\\&gt;**  ⇒ This matches the end of a word using Scintilla's definition of words.
+* `\>`  ⇒ This matches the end of a word using Scintilla's definition of words.
 
-* **\b** ⇒ Matches either the start or end of a word.
+* `\b` ⇒ Matches either the start or end of a word.
 
-* **\B** ⇒ Not a word boundary.  So it represents any location between two word characters or between two non-word characters.
+* `\B` ⇒ Not a word boundary. It represents any location between two word characters or between two non-word characters.
 
-* **\A** or **\\'** ⇒ The start of the matching string.
+* `\A` or `\'` ⇒ The start of the matching string.
 
-* **\z** or **\\`** ⇒ The end of the matching string.
+* `\z` or ``\` `` ⇒ The end of the matching string.
 
-* **\Z** ⇒ Matches like **\z** with an optional sequence of newlines before it. This is equivalent to **(?=\v*\z)**, which departs from the traditional Perl meaning for this escape.
+* `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
-* **\\G** ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current cursor position, or the start of the highlighted text.
+* `\G` ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current cursor position, or the start of the highlighted text.
 
 
 
 #### Groups
 
-* **(**...**)** ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses **( )** can be re-used as a backreference or as part of a replace operation; see Substitutions, below.  ⇒ Groups may be nested.
+* `(☒☒☒)` ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses (indicated by ☒☒☒ in this example) can be re-used as a backreference or as part of a replace operation; see Substitutions, below. Groups may be nested.
 
-* **(?&lt;_name_&gt;...)** or **(?'_name_'...)** or **(?(_name_)...)** ⇒ Names this group _name_.  Please note that group names are case-sensitive.
+* `(?<name>☒☒☒)` or `(?'name'☒☒☒)` or `(?(name)☒☒☒)` ⇒ Names this group _name_.  Please note that group names are case-sensitive.
 
-* **\g_n_**, **\g{_n_}**, **\g<_n_>**, **\g'_n_'**, **\k_n_**, **\k{_n_}**, **\k<_n_>** or **\k'_n_'** ⇒ The _n_-th subexpression, aka parenthesized group. Using a form other than **\gn** and **\kn** has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n_ is negative, groups are counted backwards, so that **\g-2** is the second last matched group.
+* `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ The ℕ-th subexpression, aka parenthesized group. Using a form other than `\gℕ*` and `\kℕ` has some small benefits, like ℕ being more than 9, or disambiguating when ℕ might be followed by digits. When ℕ is negative, groups are counted backwards, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
 
     Please, note the difference between absolute and relative backreferences. For instance, an exact four-letters word palindrome can be matched with :
 
@@ -475,17 +472,16 @@ Anchors match a zero-length position in the line, rather than a particular chara
     * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative coordinates
 
 
-* **\g{_something_}**, **\g<_something_>**, **\g'_something_'**, **\k{_something_}**, **\k<_something_>** or **\k'_something_'** ⇒ The string matching the subexpression named _something_.
+* `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ The string matching the subexpression named _name_.
 
-* **\\_digit_** ⇒ _Backreference:_ **\1** matches an additional occurrence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \\_n_ is a synonym for **\g**_n_, but doesn't support the extension syntax for the latter.  For instance, the **\n** syntax is only allowed from **\1** to **\9**.
+* `\ℕ` ⇒ _Backreference:_ `\1` matches an additional occurrence of a text matched by an earlier part of the regex. Example: This regular expression:  `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.  A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So `\ℕ` is a synonym for `\gℕ`, but only for `\1` through `\9`: `\10` means "the contents of the first group `\1` followed by the literal character `0`, _not_ "the contents of the 10th group".
 
 
 #### Readability enhancements
 
-* **(:**...**)** ⇒ A grouping construct that doesn't count as a subexpression, just grouping things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.
+* `(?:...)` ⇒ A grouping construct that doesn't count as a subexpression, just grouping things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.  (The ... is a placeholder for the contents of that group.)
 
-* **(?#**...**)** ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
-
+* `(?#...)` ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
 
 Using the x flag modifier (see section below) is also a good way to improve readability in complex regular expressions.
 
@@ -493,30 +489,36 @@ Using the x flag modifier (see section below) is also a good way to improve read
 #### Search modifiers
 The following constructs control how matches condition other matches, or otherwise alter the way search is performed.
 
-* **\\Q** ⇒ Starts verbatim mode (Perl calls it "quoted"). In this mode, all characters are treated as-is, the only exception being the **\\E** end verbatim mode sequence.
+* `\Q` ⇒ Starts verbatim mode (Perl calls it "quoted"). In this mode, all characters are treated as-is, the only exception being the `\E` end verbatim mode sequence.
 
-* **\\E** ⇒ Ends verbatim mode. Thus, "\\Q\\*+\\Ea+" matches "\\*+aaaa".
+* `\E` ⇒ Ends verbatim mode. Thus, `\Q\*+\Ea+` matches `\*+aaaa`.
 
-* **(?:_flags_-_notFlags_ ...)** or **(?_flags_-_notFlags_:...)** ⇒ Applies flags and notFlags to search inside the parentheses. Such a construct may have flags and may have notFlags; if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
+* `(?flags-notFlags)` or `(?flags-notFlags:subpattern)` ⇒ There are four flags, described below, which can be applied to a regex or subgroup.  The flags listed next to the `?` will be _enabled_; the flags listed after the `-` will be disabled.  If there is a subpattern, then the flags only apply for the contents of the subpattern; without a subpattern, the flags apply for the remainder of the current regex, or until the next flags are set.
 
-    * **i**&nbsp;: case insensitive (default: set by **Match case** dialog option)
-    * **m**&nbsp;: ^ and $ match embedded newlines (default: on)
-    * **s**:  dot matches newline (default: as per **. matches newline** dialog option)
-    * **x**: Ignore non-escaped whitespace in regex (default: off)
+    * `i` ⇒ case insensitive (default: set by **☐ Match case** dialog option)
+    * `m` ⇒ ^ and $ match embedded newlines (default: on)
+    * `s` ⇒ dot matches newline (default: as per **☐ . matches newline** dialog option)
+    * `x` ⇒ Ignore non-escaped whitespace in regex (default: off)
 
-* **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
+    Examples:
 
-    * For example, you get the following subexpression counter values:
+    * `blah(?i-s)foobar` ⇒ enables case insensitivity and disables dot-matches-newline for the rest of the regular expression: thus expression `blah` is run under the default rules (set by the dialog), whereas expression `foobar` will be case-insensitive and dot will not match newline.
+    * `(?i-s:subpattern)` ⇒ enables case insensitivity and disables dot-matches-newline, but just for the `subpattern`
+    * `(?-i)caseSensitive(?i)cAsE inSenSitive` ⇒ disables case insensitivity (makes it case-sensitive) for the portion of the regex indicated by `caseSensitive`, and re-enables case-insensitive matching for the rest of the regex
+    * `(?m:justHere)` ⇒ `^` and `$` will match on embedded newlines, but just for the contents of this subgroup `justHere`
+
+* `(?|expression)` ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
+
+    For example, you get the following subexpression counter values:
 
 ~~~
 #      before  ---------------branch-reset----------- after
 / (?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
-
 #      1            2         2  3        2     3     4
 ~~~
 
 
-    * Without that construction, `(y)` would be group #3, and `(p(q)r)` would be group #4, and `(t)` would be group #5. With that constuction, they both report as group #2.
+    Without the branch reset, `(y)` would be group #3, and `(p(q)r)` would be group #4, and `(t)` would be group #5. With the branch reset, they both report as group #2.
 
 ### Control flow
 Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
