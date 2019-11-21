@@ -11,11 +11,11 @@ All keyboard shortcuts mentioned below are the default values, but are configura
 
 ## Dialog-based Searching
 
-The most powerful set of searching features is found in the standard dialog-based Find / Replace / Find In Files / Mark dialog.  This dialog is generically known as the "Find" dialog or window.  The dialog has one tab for each of the forementioned searching-related features.
+The most powerful set of searching features is found in the standard dialog-based Find / Replace / Find In Files / Mark dialog.  This dialog is generically known as the "Find" dialog or window.  The dialog has one tab for each of the aforementioned searching-related features.
 
-The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ctrl+F) gives access to searching and counting.  The **Replace** tab (**Search > Replace** or Ctrl+H) is similar, but allows you to also replace the matched text after it's found.  The **Find in Files** tab (**Search > Find in Files** or Ctrl+Shift+F) allows you to search and replace in multiple files with one action.  The **Mark** tab (**Search > Mark...**) allows you to apply redmarking (a red background to matched text) to certain sections of text and/or "bookmarks" to the lines that matched text is found upon.
+The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ctrl+F) gives access to searching and counting.  The **Replace** tab (**Search > Replace** or Ctrl+H) is similar, but allows you to also replace the matched text after it's found.  The **Find in Files** tab (**Search > Find in Files** or Ctrl+Shift+F) allows you to search and replace in multiple files with one action.  The **Mark** tab (**Search > Mark...**) allows you to apply red-marking (a red background to matched text; see (**Preferences > Style Configurator > Global Styles > Find Mark style**](../preferences/#global-styles)) to certain sections of text, and to add "bookmarks" to the lines that matched text is found upon.
 
-*Note:*  Although a keyboard command can open and/or move input focus to one of the four tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard command then invoked
+*Note:*  Although a keyboard command can open and/or move input focus to one of the four tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
 
 *Note:*  Use of some "Find" family features can cause the window to close.  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by editing `config.xml` and looking for the `dlgAlwaysVisible=` parameter.  It defaults to `dlgAlwaysVisible="no"` but may be set to `dlgAlwaysVisible="yes"` to keep the "Find" window open and always available for user interaction.
 
@@ -31,8 +31,8 @@ All the dialog-based have certain features in common, though some are disabled u
 * **☐ In selection**: If you have a region of text selected, and **In selection** is enabled, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
 * **☐ Backward direction**: normally, searches go forward (down the page); with this option, they will go backward (up the page)
 * **☐ Match whole word only**: if enabled, searches will only match if the result is a whole word (so "it" will not be found inside "hitch")
-* **☐ Match case**: if enabled, searches must match in case (so a search for "it" will not find "It" or "IT")
-* **☐ Wrap Around**: if enabled, if the search reaches the end of the document, it will wrap around to the beginning and continue searching
+* **☐ Match case**: if enabled, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
+* **☐ Wrap Around**: if enabled, when the search reaches the end of the document, it will wrap around to the beginning and continue searching
 
 * **Search Mode**: this determines how the text in the **Find what** and **Replace with** will be treated
     * **☐ Normal**: all text is treated literally.
@@ -58,30 +58,32 @@ The various action buttons available include:
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
 * **Replace All**: Replaces all matches from the active location onward (following the **Backward direction** and **Wrap around** settings as appropriate).
-    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in some programming-languages' regular expression engines.
+    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in the regular expression engines of some programming-languages.
 * **Replace All in All Opened Documents**: same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
-The above actions may be initiated via mouse by pressing the appropriate button, or via special Alt keycombinations.  With focus on one of the Find dialog windows, press and release the Alt key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be ticked/unticked via pressing its Alt key command.
+The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  With focus on one of the Find dialog windows, press and release the `Alt` key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be ticked/unticked via pressing its Alt key command.
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing Enter when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing Shift+Enter when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use Shift+Enter to search in the opposite direction* as a reminder of this capability.
 
-When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the caret (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior is not disableable; it always happens.  To avoid this in a limited way, use the mouse ONLY to move input focus from an editing tab buffer to an already-open Find dialog, or make sure your caret is not "touching" a word and that there is no active selection when invoking the find-family command.  Aside:  This auto-copy feature can be exploited to get multi-line data into the **Find what** edit box, something that it is not possible to do via only typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  The line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
+When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the caret (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the mouse ONLY to move input focus from an editing tab buffer to an already-open Find dialog, or make sure your caret is not "touching" a word and that there is no active selection when invoking the find-family command.  Aside:  This auto-copy feature can be exploited to get multi-line data into the **Find what** edit box, something that it is not possible to do via only typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  The line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
 
 A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A valid **Replace with** edit box entry length ranges from 0 to 2046 characters.  Any text entered/pasted into these boxes beyond the 2046th character is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.
 
 Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become deselected and disabled.  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
-The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  The default number of search/replace terms retained is 10, but this may be changed by editing a configuration file.  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse, or by using the down (and/or up) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an up or down arrow key when they really mean to press left or right arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.
+The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  For a given run of Notepad++, the search history can grow rather large; when Notepad++ is exited, it only saves the last 10 items in the history by default; number of search/replace terms retained may be changed by editing the `config.xml` configuration file.  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse, or by using the down (and/or up) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an up or down arrow key when they really mean to press left or right arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.
 
 The **In selection** option will automatically be chosen by Notepad++ if a Find dialog window is opened when more than 1024 characters occur in the active selection.  The selected text will also be placed in the **Find what** box.  Running a **Count** or **Replace All** action without making other changes to the search parameters will result in *Count: 1 match* or *Replace All: 1 occurrence was replaced*, respectively, which is likely not what was intended.  The proper resolution for this situation is to change the **Find what** text if the intention is to search within-selection, or deselect **In selection** if the intention is to search for a fairly long block of text.
 
 The status bar area of the Find dialog keeps the user informed of what occurred during an action.  For example, it might say *Mark: 1 match* or *Find: Invalid regular expression*.  Colors are used in the status bar for emphasis:  red for some sort of error; green or blue for various success or general information.
 
-Notepad++ uses a flashing of the Find dialog window and the main Notepad++ window itself (when the Find dialog is not open) to indicate that search text has not been found (or possibly that a **Wrap around** in the search has occurred).  In general, if a search results in no matches, and the Find dialog window is open, that window will flash briefly as a failure indication.  If the Find dialog window is NOT open, and a failed search is initiated (e.g. via **Find Next** on the **Search** menu), the main Notepad++ window will flash briefly, again, as an indicator of the lack of success.  With the Find dialog window closed, but with **Wrap around** previously activated, a search that causes a wrap at an end of the file to occur will also cause the Notepad++ main window to flash.  In addition, the system error bell will sound if a **Find Next** or **Replace** action results in the **Find what** text not being encountered; the bell is not disableable.
+**Important remark**: When the regular expression search mode is invoked, the red alert error message "Find: Invalid regular expression" appears **ONLY** when you hit the **Find Next** button. All other possible actions lead to simply notify you that no result occurs, whereas, in fact, your search regular expression is just malformed. So, always do a **Find Next** search first, to test the validity of your regular expression input.
+
+Notepad++ uses a flashing of the Find dialog window and the main Notepad++ window itself (when the Find dialog is not open) to indicate that search text has not been found (or possibly that a **Wrap around** in the search has occurred).  In general, if a search results in no matches, and the Find dialog window is open, that window will flash briefly as a failure indication.  If the Find dialog window is NOT open, and a failed search is initiated (e.g. via **Find Next** on the **Search** menu), the main Notepad++ window will flash briefly, again, as an indicator of the lack of success.  With the Find dialog window closed, but with **Wrap around** previously activated, a search that causes a wrap at an end of the file to occur will also cause the Notepad++ main window to flash.  In addition, the system error bell will sound if a **Find Next** or **Replace** action results in the **Find what** text not being encountered; the bell cannot be disabled.
 
 If a search action is invoked by keyboard command with the Find dialog window open and input focus in the editing window, an unsuccessful search will result in input focus being changed to the Find window.  Presumably, the user would want to conduct a different search at this point?
 
-*Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "Fileseek", "Everything" and many others.
+*Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "FileSeek", "Everything" and many others.
 
 #### "Find result" Window
 
@@ -112,7 +114,7 @@ The *Delete* key can be used to delete individual results, file matches or whole
 |*Pressing Delete when **Find result** active line starts with...*| *What is removed*                                                                              |
 |-----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 |the text: "Search"                                               | that "Search" line, all pathname lines under it, and all "Line" lines under the pathname lines |
-|a pathname                                                       | that pathame line and all "Line" lines under it                                                |
+|a pathname                                                       | that pathname line and all "Line" lines under it                                                |
 |the text: "Line"                                                 | only that line                                                                                 |
 
 Multiple searches will be listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
@@ -133,15 +135,15 @@ When the mouse's *RightClick* > **Copy** is used, however, it is more complicate
 
 Here's a more detailed description of what happens for *RightClick* > **Copy**:
 
-First, if the user makes a selection of text in the **Find result** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathame, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is *RightClick*'ed upon:
+First, if the user makes a selection of text in the **Find result** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is *RightClick*ed upon:
 
-|*RightClick*'ed item     |What gets copied when *RightClick* > **Copy** is run |
+|*RightClick*ed item     |What gets copied when *RightClick* > **Copy** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
 |a line with line # info|the entire line of the *RightClick* but without line number text                                     |
 |a pathname header line |all the lines for that single file without pathname or line number text                              |
 |a "search" header line |all the lines for that search (1 or more files) without search header, pathname or line number text  |
 
-*Tip*:  It is possible to select and copy a rectangular selection of data from the **Find result** window.  This is done using the usual Shift+Alt+arrow keys or via Alt+LeftClick->drag with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; RightClick > **Copy** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
+*Tip*:  It is possible to select and copy a rectangular selection of data from the **Find result** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
 
 ###### Other commands
 
@@ -153,7 +155,7 @@ There are some commands that don't need a lot of explanation; these are:
 * **Clear all**
 * **Open all**
 
-The **Find result** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the *Delete* key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Find result** tab that have previously had hits.  If the search history in **Find result** is really long, it may not be desireable to open all files listed there, so using **Clear all** before doing some new searches (with the intent to **Open all** afterwards) may be the thing to do.
+The **Find result** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the *Delete* key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Find result** tab that have previously had hits.  If the search history in **Find result** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches (with the intent to **Open all** afterwards) may be the thing to do.
 
 The **Select all** command is self-explanatory:  *ALL* text in the **Find result** tab will be selected
 
@@ -165,11 +167,11 @@ The **Collapse all** and **Uncollapse all** commands perform the corresponding a
 
 ###### Searching in previously-found results (secondary searching)
 
-Perhaps you have done a search and your results are in a tab in athe **Find result** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by *RightClick*'ing the **Find result** window client area and selecting **Find in this found results...**.
+Perhaps you have done a search and your results are in a tab in the **Find result** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by *RightClick*ing the **Find result** window client area and selecting **Find in this found results...**.
 
 Selecting **Find in this found results...** will cause a window to pop up, and this window looks much like the standard **Find** window, but is stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Find result** tab will open (in the **Find result** window) with the results of the "refined" search.
 
-The popup window has a parameter not available in the searches decribed earlier:  **☐ Search only in found lines**.  Checking this box limits the search to lines that appear in matched files in the parent **Find result** window.  Unchecking the box will cause the new search to examine previously matched files in their entirety.  When a search has been limited to previously-found lines, its results will indicate this by using this type of output:  `Search "___" (__ hits in __ files - Line Filter Mode: only display the filtered results)` as opposed to the normally seen:  `Search "___" (__ hits in __ files)`
+The popup window has a parameter not available in the searches described earlier:  **☐ Search only in found lines**.  Checking this box limits the search to lines that appear in matched files in the parent **Find result** window.  Unchecking the box will cause the new search to examine previously matched files in their entirety.  When a search has been limited to previously-found lines, its results will indicate this by using this type of output:  `Search "___" (__ hits in __ files - Line Filter Mode: only display the filtered results)` as opposed to the normally seen:  `Search "___" (__ hits in __ files)`
 
 *Tip:*  Use the *RightClick* option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in this found results...** search will look in files matched by ALL previous searches whose results are still present in the parent **Find result** tab.
 
@@ -181,9 +183,9 @@ The popup window has a parameter not available in the searches decribed earlier:
 
 ### Find in Files
 
-Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like "*.doc", "*.*" or "foo.*". Note however that the PathMatchSpec() Windows API is being used, as its behaviour departs from cmd.exe wildcard parsing sometimes.
+Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like "*.doc", "*.*" or "foo.*". Note however that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
 
-How the default filter and folder change is controlled by the fifFilterFollowsDoc and fifFolderFollowsDoc settings in config.xml. There is a Follow current doc checkbox to set both parameters to both true or both false.
+How the default folder changes is controlled by the `fifFolderFollowsDoc` settings in `config.xml`, which is set by the **Follow current doc** checkbox in the dialog.
 
 ### Highlighting and bookmarking
 
@@ -211,7 +213,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 * Find (volatile) Next / Find (volatile) Previous attempt to find the word the caret is in, or the selected text, down or up. Note that this does not interfere with ordinary search - it is really volatile.
 
-* Select and Find Next / Select and Find Previous select the word the caret is in if no text is selected, and then find the next/previous occurence of selected text. This will also set this word as the current search target, so that Find Next or Find Previous will lose its previous target and look for the selected word again.  However, other search parameters, e.g. Match case or Wrap around, will remain in force as last set.
+* Select and Find Next / Select and Find Previous select the word the caret is in if no text is selected, and then find the next/previous occurrence of selected text. This will also set this word as the current search target, so that Find Next or Find Previous will lose its previous target and look for the selected word again.  However, other search parameters, e.g. Match case or Wrap around, will remain in force as last set.
 
 Please note that "selected" refers to the contents of the active stream selection. This also applies to the selected part of the caret line when a rectangular area is selected.
 
@@ -237,10 +239,10 @@ This command will show a small region at the bottom of the Notepad++, which has 
 
 * The **✗** allows you to close out of Incremental Search.
 * The **Find** box is where you type your literal search term.
-* The **<** and **>** buttons navigate backward and forward thourgh the search results (wrapping around when it reaches the end or start of the document).
+* The **<** and **>** buttons navigate backward and forward through the search results (wrapping around when it reaches the end or start of the document).
 * If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
 * If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.
-* To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes colour.
+* To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
 
 ## Comparison between "Select and Find Next" and "Find Next (Volatile)"
 
@@ -252,7 +254,7 @@ However, there is a slight difference between these 2 commands: "Select and Find
 
 Here's an example:
 
-If you do "Select and Find Next" command for word word1 then you can always use "Find Next" command (F3) or "Find Previous" command (Shif+F3) to search word1, even the caret is on word2.
+If you do "Select and Find Next" command for word word1 then you can always use "Find Next" command (F3) or "Find Previous" command (Shift+F3) to search word1, even the caret is on word2.
 
 If your caret is on word word2, "Find Next (Volatile)" will search the next word2. Now if you move your caret on word word3 and do "Find Next (Volatile)", it will search next word3, and word2 is forgotten.
 
@@ -263,13 +265,13 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 * `\n`:  the Line Feed control character LF (ASCII 0x0A)
 * `\r`:  The Carriage Return control character CR (ASCII 0x0D)
 * `\t`:  the TAB control character (ASCII 0x09)
-* `\0`:  the NUL control character (ASCII 0x00) †
+* `\0`:  the NUL control character (ASCII 0x00)
 * `\\`:  the literal backalash character (ASCII 0x05C)
 * `\b`:  the binary representation of a byte, made of 8 digits which are either 1's or 0's. †
 * `\o`:  the octal representation of a byte, made of 3 digits in the 0-7 range
 * `\d`:  the decimal representation of a byte, made of 3 digits in the 0-9 range
 * `\x`:  the hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
-* `\u`:  The hexadecimal representation of a two byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character. In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
+* `\u`:  The hexadecimal representation of a two byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character (for instance, `\u2020` matches the `†` char, in an UTF-8 encoded file). In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
 
 †NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
@@ -285,20 +287,20 @@ In a regular expression (shortened into regex throughout), special characters in
 
 #### Single-character matches
 
-* **.** or **\C** ⇒ Matches any character. If you check the box which says ". matches newline", the dot will indeed do that, enabling the "any" character to run over multiple lines. With the option unchecked, then **.** will only match characters within a line, and not the line ending characters (**\r** and **\n**)
+* **.** or **\C** ⇒ Matches any character. If you check the box which says ". matches newline", the dot will indeed do that, enabling the "any" character to run over multiple lines. With the option unchecked, then **.** will only match characters within a line, and not the line ending characters (**\r** or **\n**)
 
-* **\X** ⇒ Matches a single non-combining characer followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.
+* **\X** ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
 
-* **\\_Г_**  ⇒ This allows you to use a character _Г_ that would otherwise have a special meaning. For example, **\\[** would be interpreted as _[_ and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, **\d** stands for "a digit", while "d" is just an ordinary letter.
+* **\\_Г_**  ⇒ This allows you to search for a literal character _Г_, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, **\\[** would be interpreted as _[_ and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, **\d** stands for "a digit", while "d" is just an ordinary letter.  (Please note: `Г` here was chosen as a placeholder for the character you want to escape.)
 
 
 ##### Non ASCII characters
 
-* **\x**_nn_ ⇒ Specify a single chracter with code _**nn**_. What this stands for depends on the text encoding. For instance, **\xE9** may match an é or a θ depending on the code page in an ANSI encoded document.
+* **\x**_nn_ ⇒ Specify a single character with code _**nn**_. What this stands for depends on the text encoding. For instance, **\xE9** may match an é or a θ depending on the code page in an ANSI encoded document.
 
 * **\x{**_nnnn_**}** ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
 
-* **\O**_nnn_ ⇒ A single byte character whose code in octal is _nnn_.  (That's an uppercase letter O, not the number 0)
+* **\0**_nnn_ ⇒ A single byte character whose code in octal is _nnn_.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
 
 *  **[[._collating sequence_.]]** ⇒ The character the _collating sequence_ stands for. For instance, in Spanish, "ch" is a single letter, though it is written using two characters. That letter would be represented as **[[.ch.]]**. This trick also works with symbolic names of control characters, like **[[.BEL.]]** for the character of code 0x07. See also the discussion on character ranges.
 
@@ -316,9 +318,9 @@ In a regular expression (shortened into regex throughout), special characters in
 
 *  **\n** ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
 
-*  **\r** ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use \n.
+*  **\r** ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
 
-*  **\R** ⇒ Any newline character.
+*  **\R** ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
 
 * **\t** ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
@@ -330,54 +332,58 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **[^**...**]**  ⇒ The complement of the characters in the set. For example, **[^A-Za-z]** means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence **[^ABC]*** will match until the first A,B or C (or a, b or c if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. **[^ABC\r\n]**.
 
-* **[[:_name_:]]** ⇒ The whole character class named _name_.  Most of the time, there is a single letter escape sequence for them - see below. ⇒ Recognised classes are:
+* **[:_name_:]** ⇒ The whole character class named _name_, which must be part of a character class.  Most of the time, there is a single letter escape sequence for them - see below. ⇒ Recognized classes are:
 
-    *  alnum&nbsp;: ASCII letters and digits
-    *  alpha&nbsp;: ASCII letters
-    *  blank&nbsp;: spacing which is not a line terminator
-    *  cntrl&nbsp;: control characters
-    *  d , digit&nbsp;: decimal digits
-    *  graph&nbsp;: graphical character
-    *  l , lower&nbsp;: lowercase letters
-    *  print&nbsp;: printable characters
-    *  punct&nbsp;: punctuation characters: , " ' ? ! ; : # $ % &amp; ( ) * + - / &lt; &gt; = @ [ ] \ ^ _ { } | ~
-    *  s , space&nbsp;: whitespace
-    *  u , upper&nbsp;: uppercase letters
-    *  unicode&nbsp;: any character with code point above 255
-    *  w , word&nbsp;: word character
-    *  xdigit&nbsp;: hexadecimal digits
+    *  alnum&nbsp;: letters (including accented letters) and digits
+    *  alpha&nbsp;: letters (including accented letters)
+    *  h, blank&nbsp;: spacing which is not a line terminator, so the character class `[\t\x20\xA0]`.
+    *  cntrl&nbsp;: control characters, so the character class `[\x00-\x1F\x7F\x81\x8D\x8F\x90\x9D]`
+    *  d , digit&nbsp;: decimal digits, so the character class `[0-9¹²³]`
+    *  graph&nbsp;: graphical character, so essentially any character except for control chars and the \x7F and \x80 ( € ) chars.
+    *  l , lower&nbsp;: lowercase letters (including accented letters)
+    *  print&nbsp;: printable characters, so the character class `[\s[:graph:]]`
+    *  punct&nbsp;: punctuation characters, so the character class ```[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]```
+    *  s , space&nbsp;: whitespace ( word or line separator ), so the character class [\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]
+    *  u , upper&nbsp;: uppercase letters (including accented letters)
+    *  unicode&nbsp;: any character with code point above 255, so the character class `[\x{0100}-\x{FFFF}]`
+    *  w , word&nbsp;: word character, so the character class `[_\d\l\u]`
+    *  xdigit&nbsp;: hexadecimal digits, so the character class `[0-9A-Fa-f]`
 
-*  **\p**_short name_ or **\p{**_name_**}** ⇒ Same as **[[:_name_:]]**. For instance, **\pd** and **\p{digit}** both stand for a digit, **\d**.
+    Note that those character class names may be written in upper or lower case without changing the results.  So **[:alnum:]** is the same as **[:ALNUM:]** or **[:AlNum:]**.
 
-*  **\P**_short name_ or **\P{**_name_**}** ⇒ Same as **[^[:_name_:]]** (not belonging to the class _name_). ⇒ Note that Unicode categories like in \p{Sc} or \p{Currency_Symbol}, they are flagged as an invalid regex in v6.6.6. This is because support would draw a large library in, which would have other uses.
+*  **\p**_short\_name_ or **\p{**_name_**}** ⇒ Same as **[[:_short\_name_:]]** or **[[:_name_:]]**. For instance, **\pd** and **\p{digit}** both stand for a digit, **\d**.  (_short\_name_ is the short version of the character class name above; _name_ is the longer version of the character class name above.)  This syntax will not work inside a character class.
 
-* **\d** ⇒ A digit in the 0-9 range, same as **[[:digit:]]**.
+*  **\P**_short\_name_ or **\P{**_name_**}** ⇒ Same as **[^[:_short\_name_:]]** or **[^[:_name_:]]** (not belonging to the class _name_).  This syntax will not work inside a character class.
 
-* **\D** ⇒ Not a digit. Same as **[^[:digit]]**.
+* **\d** ⇒ A digit in the 0-9 range, same as **[[:digit:]]** or **[[:d:]]**.
 
-* **\l** ⇒ A lowercase letter. Same as [a-z] or [[:lower:]]. ⇒ _NOTE_: this will fall back on "a word character" if the "Match case" search option is off.
+* **\D** ⇒ Not a digit. Same as **[^[:digit]]** or **[^[:d:]]**.
 
-* **\L** ⇒ Not a lower case letter. See note above.
+* **\l** ⇒ A lowercase letter (including accented letters). Same as **[[:lower:]]** or **[[:l:]]**. ⇒ _NOTE_: this will fall back on "a word character" if the "Match case" search option is off.
 
-* **\u** ⇒ An uppercase letter. Same as **[[:uper:]]**. See note about lower case letters.
+* **\L** ⇒ Not a lower case letter. Same as **[^[:lower:]]** or **[^[:l:]]**.  See note above.
 
-* **\U** ⇒ Not an uppercase letter. Same note applies.
+* **\u** ⇒ An uppercase letter (including accented letters). Same as **[[:upper:]]** or **[[:u:]]**. See note about lower case letters.
 
-*  **\w** ⇒ A word character, which is a letter, digit or underscore. This appears not to depend on what the Scintilla component considers as word characters. Same as **[[:word:]]**.
+* **\U** ⇒ Not an uppercase letter. Same as **[^[:upper:]]** or **[^[:u:]]**. Same note applies.
 
-* **\W** ⇒ Not a word character. Same as&nbsp;:alnum: with the addition of the underscore.
+*  **\w** ⇒ A word character, which is a letter, digit or underscore. This appears not to depend on what the Scintilla component considers as word characters. Same as **[[:word:]]** or **[[:w:]]**.
 
-* **\s** ⇒ A spacing character: space, EOLs and tabs count. Same as **[[:space:]]**.
+* **\W** ⇒ Not a word character. Same as **[^[:word:]]** or **[^[:w:]]**.
 
-* **\S** ⇒ Not a space.
+* **\s** ⇒ A spacing character: space, EOLs and tabs count. Same as **[[:space:]]** or **[[:s:]]**.
 
-* **\h** ⇒ Horizontal spacing. This only matches space, tab and line feed.
+* **\S** ⇒ Not a space. Same as **[^[:space:]]** or **[^[:s:]]**.
 
-* **\H** ⇒ Not horizontal whitespace.
+* **\h** ⇒ Horizontal spacing. This only matches space, tab and the non-breaking space.  Same as **[[:blank:]]** or **[[:h:]]** or **[\t\x20\xA0]**
 
-* **\v** ⇒ Vertical whitespace. This encompasses the The VT, FF and CR control characters: 0x0B (vertical tab), 0x0D (carriage return) and 0x0C (form feed).
+* **\H** ⇒ Not horizontal whitespace.  Same as **[^[:blank:]]** or **[^[:h:]]**.
 
-* **\V** ⇒ Not vertical whitespace.
+* **\v** ⇒ Vertical whitespace. This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).
+
+* **\V** ⇒ Not vertical whitespace.  Same as **[^[:v:]]**.
+
+The 14 escape sequences above (from **\d** thru **\V**) can be used either inside or outside of a character class.
 
 * **[[=**_primary key_**=]]** ⇒ All characters that differ from _primary key_ by case, accent or similar alteration only. For example **[[=a=]]** matches any of the characters: a, À, Á, Â, Ã, Ä, Å, A, à, á, â, ã, ä and å.
 
@@ -391,27 +397,45 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * **?** ⇒ Zero or one of the last character. Thus **Sa?m** matches _Sm_ and _Sam_, but not _Saam_.
 
-* **&#x2a;?** ⇒ Zero or more of the previous group, but minimally: the shortest matching string, rather than the longest string as with the "greedy" ***** operator. Thus, **m.*?o** applied to the text _margin-bottom: 0;_ will match _margin-bo_, whereas **m.*o** will match _margin-botto_.
+* **&#x2a;?** ⇒ Zero or more of the previous group, but minimally: the shortest matching string, rather than the longest string as with the "greedy" operator. Thus, **m.*?o** applied to the text _margin-bottom: 0;_ will match _margin-bo_, whereas **m.*o** will match _margin-botto_.
 
 * **+?** ⇒ One or more of the previous group, but minimally.
 
 * **{_n_}** ⇒ Matches _n_ copies of the element it applies to.
 
-* **{_n_,**} ⇒ Matches _n' or more copies of the element it applies to._
+* **{_n_,**} ⇒ Matches _n_ or more copies of the element it applies to.
 
 * **{_m_,_n_**} ⇒ Matches _m_ to _n_ copies of the element it applies to, as much it can.
 
 * **{**_n_**,}?** or **{**_m_**,**_n_**}?** ⇒ Like the above, but match as few copies as they can. Compare with **&#x2a;?** and friends.
 
-* **&#x2a;+** or **?+** or **++** or **{**_n_**,}+** or **{**_m_**,**_n_**}+** ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. ⇒ Example: matching ".*" against _"abc"x_ will find "abc", because
-    *  " then abc"x then $ fails
-    *  " then abc" then x fails
-    *  " then abc then " succeeds.
+* **&#x2a;+** or **?+** or **++** or **{**_n_**,}+** or **{**_m_**,**_n_**}+** ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. ⇒ Example:
 
-However, matching "*+" against _"abc"x_ will fail, because the possessive repeat factor prevented backtracking.
+    When regex “.*” is run against the text “abc”x :
+
+        “  matches “
+        .* matches abc”x
+        ”  cannot match $ ( End of line ) => Backtracking
+
+        “  matches “
+        .* matches abc”
+        ”  cannot match letter x => Backtracking
+
+        “  matches “
+        .* matches abc
+        ”  matches ” => 1 overall match “abc”
+
+    When regex “.*+”, with a possessive quantifier, is run against the text “abc”x :
+
+        “   matches “
+        .*+ matches abc”x ( catches all remaining characters )
+        ” cannot match $ ( End of line )
+
+    ⇒ No match at all, because the possessive repeat factor prevents from backtracking to a possible solution
+
 
 #### Anchors
-Anchors match a position in the line, rather than a particular character.
+Anchors match a zero-length position in the line, rather than a particular character.
 
 
 * **^** ⇒ This matches the start of a line (except when used inside a set, see above).
@@ -424,7 +448,7 @@ Anchors match a position in the line, rather than a particular character.
 
 * **\b** ⇒ Matches either the start or end of a word.
 
-* **\B** ⇒ Not a word boundary.
+* **\B** ⇒ Not a word boundary.  So it represents any location between two word characters or between two non-word characters.
 
 * **\A** or **\\'** ⇒ The start of the matching string.
 
@@ -438,20 +462,27 @@ Anchors match a position in the line, rather than a particular character.
 
 #### Groups
 
-* **(**...**)** ⇒ &lt;Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses **( )** can be re-used as a backreference or as part of a replace operation; see Substitutions, below.  ⇒ Groups may be nested.
+* **(**...**)** ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses **( )** can be re-used as a backreference or as part of a replace operation; see Substitutions, below.  ⇒ Groups may be nested.
 
-* **(?&lt;_some name_&gt;...)** or **(?'_some name_'...)** or **(?(_some name_)...)** ⇒ Names this group _some name_.
+* **(?&lt;_name_&gt;...)** or **(?'_name_'...)** or **(?(_name_)...)** ⇒ Names this group _name_.  Please note that group names are case-sensitive.
 
-* **\g**__n__ or **\g{**_n_**}** ⇒ The _n_-th subexpression, aka parenthesised group. Uing the second form has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n' is negative, groups are counted backwards, so that **\g-2** is the second last matched group._
+* **\g_n_**, **\g{_n_}**, **\g<_n_>**, **\g'_n_'**, **\k_n_**, **\k{_n_}**, **\k<_n_>** or **\k'_n_'** ⇒ The _n_-th subexpression, aka parenthesized group. Using a form other than **\gn** and **\kn** has some small benefits, like _n_ being more than 9, or disambiguating when _n_ might be followed by digits. When _n_ is negative, groups are counted backwards, so that **\g-2** is the second last matched group.
 
-* **\g{_something_}** or **\k&lt;_something_&gt;** ⇒ The string matching the subexpression named _something_.
+    Please, note the difference between absolute and relative backreferences. For instance, an exact four-letters word palindrome can be matched with :
 
-* **\**_digit_ ⇒ _Backreference:_ **\1** matches an additional occurence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \\_n_ is a synonym for **\g**_n_, but doesn't support the extension syntax for the latter.
+    * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute coordinates
+
+    * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative coordinates
+
+
+* **\g{_something_}**, **\g<_something_>**, **\g'_something_'**, **\k{_something_}**, **\k<_something_>** or **\k'_something_'** ⇒ The string matching the subexpression named _something_.
+
+* **\\_digit_** ⇒ _Backreference:_ **\1** matches an additional occurrence of a text matched by an earlier part of the regex. Example: This regular expression:  **([Cc][Aa][Ss][Ee]).*\1** would match a line such as _Case matches Case_ but not _Case doesn't match cASE_.  A regex can have multiple subgroups, so **\2**, **\3**, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So \\_n_ is a synonym for **\g**_n_, but doesn't support the extension syntax for the latter.  For instance, the **\n** syntax is only allowed from **\1** to **\9**.
 
 
 #### Readability enhancements
 
-* **(:**...**)** ⇒ A grouping construct that doesn't count as a subexpression, just grouping things for easier reading of the regex.
+* **(:**...**)** ⇒ A grouping construct that doesn't count as a subexpression, just grouping things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.
 
 * **(?#**...**)** ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
 
@@ -464,87 +495,111 @@ The following constructs control how matches condition other matches, or otherwi
 
 * **\\Q** ⇒ Starts verbatim mode (Perl calls it "quoted"). In this mode, all characters are treated as-is, the only exception being the **\\E** end verbatim mode sequence.
 
-* **\\E** ⇒ Ends verbatim mode. Ths, "\\Q\\*+\\Ea+" matches "\\*+aaaa".
+* **\\E** ⇒ Ends verbatim mode. Thus, "\\Q\\*+\\Ea+" matches "\\*+aaaa".
 
-* **(?:_flags_-_not-flags_ ...)** or **(?:_flags_-_not-flags_:...)** ⇒ Applies flags and not-flags to search inside the parentheses. Such a construct may have flags and may have not-flags - if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
+* **(?:_flags_-_notFlags_ ...)** or **(?_flags_-_notFlags_:...)** ⇒ Applies flags and notFlags to search inside the parentheses. Such a construct may have flags and may have notFlags; if it has neither, it is just a non-marking group, which is just a readability enhancer. The following flags are known:
 
-    * **i**&nbsp;: case insensitive (default: off)
-    * **m**&nbsp;: ^ and $ match embedded newlines (default: as per ". matches newline")
-    * **s**:  dot matches newline (default: as per ". matches newline")
-    * **x**: Ignore unescaped whitespace in regex (default: off)
+    * **i**&nbsp;: case insensitive (default: set by **Match case** dialog option)
+    * **m**&nbsp;: ^ and $ match embedded newlines (default: on)
+    * **s**:  dot matches newline (default: as per **. matches newline** dialog option)
+    * **x**: Ignore non-escaped whitespace in regex (default: off)
 
 * **(?|_expression using the alternation | operator_)** ⇒ If an alternation expression has subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
 
-    * For example, you get the following subexpressioncounter values:
+    * For example, you get the following subexpression counter values:
 
 ~~~
-# before  ---------------branch-reset----------- after
-/ ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z ) /x
+#      before  ---------------branch-reset----------- after
+/ (?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
 
-# 1            2         2  3        2     3     4
+#      1            2         2  3        2     3     4
 ~~~
 
 
-    * Without the construct, (p(q)r) would be group #3, and (t) group #5. With the constuct, they both report as group #2.
+    * Without that construction, `(y)` would be group #3, and `(p(q)r)` would be group #4, and `(t)` would be group #5. With that constuction, they both report as group #2.
 
 ### Control flow
-Normally, a regular expression parses from left to right linerly. But you may need to change this behaviour.
+Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
 
 
 * **|** ⇒ The alternation operator, which allows matching either of a number of options, like in&nbsp;: one|two|three to match either of "one", "two" or "three". Matches are attempted from left to right. Use **(?:)** to match an empty string in such a construct.
 
 *  **(?**_n_**)** or **_(?**_signed-n_**)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
 
+    Please, note the difference between subexpressions and back-references. For instance, using a similar structure to the one, when searching for a four-letters word being a palindrome, this time, both regexes just find a four-letters word, because each subexpression, signed or not, refers to the regex itself, enclosed in each group and NOT to the present value of each group !
+
+    * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a FOUR letters word, when using absolute coordinates
+
+    * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a FOUR letters word, when using relative coordinates
+
+    Actually, these two regexes could be simplified to `(?-i)\b(\w)(\w)\w\w\b`, assuming that group 1 and 2 are still needed in replacement
+
 *  **(?0)** or **(?R)** ⇒ Backtrack to start of pattern.
 
-*  **(?&amp;_name_)** ⇒ Backtrack to subexpression named _name_.
+*  **(?&amp;_name_)** or **(?P>name)** ⇒ Backtrack to subexpression named _name_.
 
-*  **(?**__assertion__yes-pattern_**|**_no-pattern_**)** ⇒ Mathes _yes-pattern_ if assertion is true, and _no-pattern_ otherwise if provided. Supported assertions are:
+    * If a non-signed subexpression is located OUTSIDE the parentheses of the group to which it refers, it is called a subroutine call
 
-*  **(?=**_assert_**)** (positive lookahead)
+    * If a non-signed subexpression is located INSIDE the parentheses of the group to which it refers, it is called a recursive call
 
-*  **(?!_assert_)**  (negative lookahead)
+*  **(?**assertion_yes-pattern_**|**_no-pattern_**)** ⇒ Matches _yes-pattern_ if assertion is true, and _no-pattern_ otherwise if provided.
 
-*  **(?(R))**   (true if inside a recursion)
+    Supported syntax for _assertion_ include:
 
-*  **(?(R**_n_**)**  (true if in a recursion to subexpression numbered _n_)
+    * **(_n_)** ⇒ true if Nth unnamed group previously defined
+
+    * **(?<_name_>)** or **(?'_name_')** ⇒ true if Nth unnamed group previously defined
+
+    *  **(?=**_assert_**)** ⇒ true if positive lookahead matches
+
+    *  **(?!_assert_)** ⇒ true if negative lookahead matches
+
+    *  **(?&lt;=**_assert_**)** ⇒ true if positive lookbehind matches
+
+    *  **(?&lt;!_assert_)** ⇒ true if negative lookbehind matches
+
+    *  **(?\(R))** ⇒ true if inside a recursion
+
+    *  **(?(R**_n_**)** ⇒ true if in a recursion to subexpression numbered _n_
+
+    *  **(?(R&amp;**_name_**)** ⇒ true if in a recursion to named subexpression _name_
+
+    Note: These are all still _inside_ the conditional expression.
 
 
 PCRE doesn't treat recursion expressions like Perl does:
 
-~~~
-In PCRE (like Python, but unlike Perl), a recursive subpattern call  is
+> In PCRE (like Python, but unlike Perl), a recursive subpattern call  is
 always treated as an atomic group. That is, once it has matched some of
 the subject string, it is never re-entered, even if it contains untried
 alternatives  and  there  is a subsequent matching failure.
-~~~
 
-*  **\K** ⇒ Resets matched text at this point. For instance, matching "foo\Kbar" will not match bar". It will match "foobar", but will pretend that only "bar" matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
+*  **\K** ⇒ Resets matched text at this point. For instance, matching "foo\Kbar" will not match "bar". It will match "foobar", but will pretend that only "bar" matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
 
-
+It is also useful if you would need a look-behind assertion which would contain a non-fixed length pattern (see further on). As variable-length lookbehind is not allowed in Boost's regular expressions, you can use the **\K** syntax, instead. For instance, the non-allowed syntax `(?-i)(?<=\d+)abc` can be replaced with the correct syntax `(?-i)\d+\Kabc` which matches the exact string `abc` only if preceded by, at least, one digit.
 
 #### Assertions
 These special groups consume no characters. Their successful matching counts, but when they are done, matching starts over where it left.
 
 
-* **(?=_pattern_)** ⇒ If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes.
+* **(?=_pattern_)** ⇒ positive lookahead: If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes.
     * For instance,
 
 ~~~
 (?=.*[[:lower:]])(?=.*[[:upper:]]).{6,}
-
 ~~~
 
-    * tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.
+        tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.
 
     * '"q(?=u)i" doesn't match "quit", because, as matching 'u' consumes 0 characters, matching "i" in the pattern fails at "u" i the subject.
 
-* **(?!_pattern_)** ⇒ Matches if _pattern_ didn't match.
+* **(?!_pattern_)** ⇒ negative lookahead: Matches if _pattern_ didn't match.
 
-* **(?&lt;=_pattern_)** ⇒ Asserts that _pattern_ matches before some token.
+* **(?&lt;=_pattern_)** ⇒ positive lookbehind: Asserts that _pattern_ matches before some token.
 
-*  (?&lt;_pattern_) ⇒ Asserts that _pattern_ does not match before some token.
-    * NOTE: _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.
+* **(?&lt;!_pattern_)** ⇒ negative lookbehind: Asserts that _pattern_ does not match before some token.
+
+    * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Use **\K** (above) for the equivalent of variable-length lookbehind.
 
 *  **(?&gt;_pattern_)** ⇒ Match pattern independently of surrounding patterns, and don't backtrack into it. Failure to match will cause the whole subject not to match.
 
@@ -554,7 +609,7 @@ These special groups consume no characters. Their successful matching counts, bu
 
 *  **\a**,**\e**,**\f**,**\n**,**\r**,**\t**,**\v** ⇒ The corresponding control character, respectively BEL, ESC, FF, LF, CR, TAB and VT.
 
-*  **\C**_character_" or **\x**_nn_ or **\x**_nnnn_ ⇒ Like in search patterns, respectively the control character with the same low order bits, the character with code __nn_ and the character with code _nnnn_ (requires Unicode encoding).
+*  **\c**_character_" or **\x**_nn_ or **\x{**_nnnn_**}** ⇒ Like in search patterns, respectively the control character with the same low order bits, the character with code _nn_ and the character with code _nnnn_ (requires Unicode encoding).
 
 *  **\l** ⇒ Causes next character to output in lowercase
 
@@ -566,28 +621,28 @@ These special groups consume no characters. Their successful matching counts, bu
 
 *  **\E** ⇒ Puts an end to forced case mode initiated by **\L** or **\U**.
 
-*  **$&amp;**, **$MATCH**, **${^MATCH}** ⇒ The whole matched text.
+*  **$&amp;**, **$MATCH**, **${^MATCH}**, **$0**, **${0}** ⇒ The whole matched text.
 
 *  **$`**, **$PREMATCH**, **${^PREMATCH}** ⇒ The text between the previous and current match, or the text before the match if this is the first one.
 
-*  **$"**, $POSTMATCH, ${$POSTMATCH} ⇒ Everything that follows current match.
+*  **$'**, **$POSTMATCH**, **${^POSTMATCH}** ⇒ Everything that follows current match.
 
-*  **$LAST_SUBMATCH_RESULT**, **$^N** ⇒ Returns what the last matching subexpression matched.
+*  **$^N**, **$LAST_SUBMATCH_RESULT**, **${^LAST_SUBMATCH_RESULT}** ⇒ Returns what the last matching subexpression matched.
 
-*  **$+**, **$LAST_PAREN_MATCH** ⇒ Returns what matched the last subexpression in the pattern.
+*  **$+**, **$LAST_PAREN_MATCH**, **${^LAST_PAREN_MATCH}** ⇒ Returns what matched the last subexpression in the pattern, if that subexpression is currently matched by the regex engine.
 
-*  **$$** ⇒ Returns $.
+*  **$$** or **\\$** ⇒ Returns literal `$` character.
 
-*  **$_n_**, **${_n_}**, **\_n_** ⇒ Returns what matched the subexpression numbered _n_. Negative indices are not alowed.
+*  **$_n_**, **${_n_}**, **\\_n_** ⇒ Returns what matched the subexpression numbered _n_. Negative indices are not allowed.
 
 *  **$+{_name_}** ⇒ Returns what matched subexpression named _name_.
 
 
 
 ### Zero length matches
-While, in normal or extended mode, there would be no point in looking for text of length 0, this can very normally happen with regula expressions. For instance, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
+While, in normal or extended mode, there would be no point in looking for text of length 0, this can very normally happen with regular expressions. For instance, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
 
-Notepad++ would select the match, bt there is no sensible way to select a stretch zero character long. Whe this happens, a tooltip very similar to function call tips is displayed instea, with a caret pointing upwards to the empty match.
+Notepad++ would select the match, but there is no sensible way to select a stretch zero character long. When this happens, a tooltip very similar to function call tips is displayed instead, with a caret pointing upwards to the empty match.
 
 
 ### Examples
@@ -600,7 +655,7 @@ _Add more examples using advanced features of PCRE_
 
 *  You have to check the box "regular expression" in search &amp; replace dialog
 
-*  When copying the strings out of here, pay close attention not to have additional spaces in front of them! Then the RegExp will not work!
+*  When copying the strings out of here, pay close attention not to have additional spaces before or after them! Otherwise, the tested regex will not match anything!
 
 #### Example 0
 How to replace/delete full lines according to a regex pattern?
@@ -629,19 +684,15 @@ Remember that .* gobbles everything to the end of line if ". matches newline" is
 
 Well, why is **appears** above in bold letters? Because this expression assumes each line ends with an end of line sequence. This is almost always true, and may fail for the last line in the file. It won't match and won't be deleted.
 
-But the remedy is fairly simle: we translate in regex parlance that the newline should match if it is there. So the correct expression actually is:
-
-
+But the remedy is fairly simple: we translate in regex parlance that the newline should match if it is there. So the correct expression actually is:
 
 ~~~
 ^.*?unused.*?$\R?
-
 ~~~
 
 
-
 #### Example 1
-You use a MediaWiki (e.g. Wikipedia, Wikitravel) and want to make all headings one "level higher", so a H2 becomes a H1 etc.
+You use a MediaWiki (like Wikipedia) and want to make all headings one level higher, so a H2 becomes a H1 etc.
 
 *  Search ^=(=)
 
@@ -649,8 +700,7 @@ You use a MediaWiki (e.g. Wikipedia, Wikitravel) and want to make all headings o
 
 *  Click "Replace all"
 
-You do this to find all headings2...9 (two equal sign characters are required) which begin at line beginning (^) and to replace the two equal sign characters by only the last of the two, so eleminating one and having one remaining.
-
+You do this to find all headings2...9 (two equal sign characters are required) which begin at line beginning (^) and to replace the two equal sign characters by only the last of the two, so eliminating one and having one remaining.
 
 
 *  Search =(=)$
@@ -659,36 +709,40 @@ You do this to find all headings2...9 (two equal sign characters are required) w
 
 *  Click "Replace all"
 
-You do this to find all headings2...9 (two equal sign characters are required) which end at line ending ($) and to replace the two equal sign characters by only the last of the two, so eleminating one and having one remaining.
+You do this to find all headings2...9 (two equal sign characters are required) which end at line ending ($) and to replace the two equal sign characters by only the last of the two, so eliminating one and having one remaining.
 
 
 
-== title == became = title =, you're done&nbsp;:-)
+== title == became = title =
+
+You're done&nbsp;:-)
 
 
 #### Example 2
-You have a document with a lot of dates, which are in German date format (dd.mm.yy) and you'd like to transform them to sortable format (yy-mm-dd). Don't be afraid by the length of the search term – it's long, but consiting of pretty easy and short parts.
+You have a document with a lot of dates, which are in date format (dd.mm.yy) and you'd like to transform them to sortable format (yy-mm-dd). Don't be afraid by the length of the search term – it's long, but consisting of pretty easy and short parts.
 
 Do the following:
 
 
-*  Search ([^0-9])([0123][0-9])\.([01][0-9])\.([0-9][0-9])([^0-9])
+*  Search `([^0-9.])([0123][0-9])\.([01][0-9])\.([0-9][0-9])([^0-9.])` or
+
+   Search `(\s)([0123][0-9])\.([01][0-9])\.([0-9][0-9])(\s)`
 
 *  Replace with \1\4-\3-\2\5
 
 *  Click "Replace all"
 
 
-You do this to fetch
+You do this to fetch:
 
 
 *  the day, whose first number can only be 0, 1, 2 or 3
 
 *  the month, whose first number can only be 0 or 1
 
-*  but only if the separator is . and not 'any character' ( . versus \. )
+*  but only if the separator is a literal dot and not any standard character ( `\.` versus `.` )
 
-*  but only if no numbers are sourrounding the date, as then it might be an IP address instead of a date
+*  but only if no numbers are surrounding the date, as then it might be an IP address instead of a date
 
 
 and to write all of this in the opposite order, except for the surroundings. Pay attention: Whatever SEARCH matches will be deleted and only replaced by the stuff in the REPLACE field, thus it is mandatory to have the surroundings in the REPLACE field as well!
@@ -707,7 +761,7 @@ You're done&nbsp;:-)
 
 
 #### Example 3
-You have printed in windows a file list using dir /b/s &gt;filelist.txt to the file filelist.txt and want to make local URLs out of them.
+You have printed in windows a file list using `dir /a-d /b/s /-p > filelist.txt` to the file filelist.txt and want to make local URLs out of them.
 
 *  Open filelist.txt with Notepad++
 
@@ -718,24 +772,29 @@ You have printed in windows a file list using dir /b/s &gt;filelist.txt to the f
 *  Click "Replace all" to change windows path separator char \  into URL path separator char /
 
 
-*  Search ^(.*)$
+* Search \x20
 
-*  Replace with file:///\1
+* Replace %20
 
-*  Click "Replace all" to add file:/// in the beginning of all lines
+* Click “Replace all” to change any space character into the %20 syntax
+
+According on your requirements,change any possible symbol ! # $ % & ' ( ) + , - ; = @ [ ] ^ { } ~ with the appropriate %nn expression
 
 
+*  Search ^(?=.)$
 
-According on your requirements, preceed to escape some characters like space to&nbsp;%20 etc.
-C:\!\aktuell.csv became file:///C:/!/aktuell.csv
+*  Replace with file:///
+
+*  Click "Replace all" to add file:/// to the beginning of all non-empty lines
+
+After this, `C:\!\Test A.csv` became `file:///C:/!/Test%20A.csv`.
 
 You're done&nbsp;:-)
 
 
 #### Example 4
-Another Search Replace Example
 
-
+Let’s suppose you need a comma delimited table from the table, below :
 
 ~~~
 [Data]
@@ -753,23 +812,19 @@ SA AR ARG 032 Argentina, Argentine Republic
 AS AM ARM 051 Armenia
 NA AW ABW 533 Aruba
 OC AU AUS 036 Australia, Commonwealth of
-
 ~~~
 
+Then use the following regex S/R :
 
+*  Search for: `(?-i)[\u\d]\K\x20(?=[\u\d])`
 
-*  Search for: ([A-Z]+) ([A-Z]+) ([A-Z]+) ([0-9]+) (.*)
-
-*  Replace with: \1,\2,\3,\4,\5
+*  Replace with: `,`
 
 *  Hit "Replace All"
 
 
-Final Data:
-
-
-
 ~~~
+[Final Data]
 AS,AF,AFG,004,Afghanistan
 EU,AX,ALA,248,Åland Islands
 EU,AL,ALB,008,Albania, People's Socialist Republic of
@@ -784,94 +839,138 @@ SA,AR,ARG,032,Argentina, Argentine Republic
 AS,AM,ARM,051,Armenia
 NA,AW,ABW,533,Aruba
 OC,AU,AUS,036,Australia, Commonwealth of
-
 ~~~
 
+You’re done :-)
 
 
 #### Example 5
 How to recognize a balanced expression, in mathematics or in programming?
 
-Let's first explicitly describe what we wish to match. An expression is balanced if and only if all areas delineatd by parentheses contain a balanced expression. Like in: 1+f(x+g())-h(2).
-
-This leads to define the following kinds of groups:
-_balanced_&nbsp;::= _no_paren_ _paren_ ... _no_paren_
-
-_no_paren_ = **[^()]*** -- a possibly empty group of characters without a single parenthesis
-
-_paren_&nbsp;::= **(** _balanced_ **)**
-
-Can we represent this as a regex? We cannot as-is.
-
-The first hurdle is that there is no primitive construct to represent an alternating sequence of tokens. A common trick then is to represent the sequence as a repetition of the repeating pattern - here, _no_paren_ followed by _paren_ -, with any odd stuff at the end added.
-
-So we have a more manageable, although slightly more complex, representation:
-
-_balanced_&nbsp;::= _simple_***** _no_paren_
-
-_simple_&nbsp;::= _no_paren_ _paren_
-
-_no_paren_&nbsp;::= **[^()]***
-
-_paren_ = **(** _balanced_ **)**
-
-
-
-A second hurdle is that parentheses are not ordinary characters. That's ok, we'll escape them as **\(** and **\)** respectively.
-
-The third one is more interesting. How do we represent the whole of an expression inside a nested sub-expression? This smacks of recursion. PCRE has recursion. The simplest form of it is tgoing back to the start of the search pattern - not the searched text! - and doing it again. It writes as **(?R)**. You remember seeing this one in the main list, right?
-
-So:
-
-
-*  we know how to match a _no_paren_. It will be nicer to give it an explicit name. This we'll do in the embelishments section below.
-
-*  we jusrtr discovered how to write a _paren_: **\((?R)\)**
-
-
-This gives us the following hard to read, but correct regex:
-
-
+First, let's give some example data:
 
 ~~~
-([^()]*\((?R)\))*[^()]*
+[Sample Test Start]
 
+((((ab(((cd((()))))ef))))))
+0000  000  00100000  00000•
+1234  567  89098765  43210
+
+
+((ab((((cd(((ef(()))))gh))))ijkl))))
+00  0000  000  1110000  0000    00••
+12  3456  789  0109876  5432    10
+
+
+((((((ab(cd(ef((()))))gh)ijkl)))mn)))))
+000000  0  0  01110000  0    000  00•••
+123456  7  8  90109876  5    432  10
+
+
+((01ab(cd(ef23gh(ij45kl)mn)op((qr67st)uv\wx)34)yz))128956)abc
+12    3  4      5      4  3  45      4     3  2  10      •
+
+[[@ab[cd{ef@gh{ij@kl}mn]op((qr@st}uv@x]34yz])12@56)[cdedf]
+                          12                1     0
+
+((12ab(cd{ef34gh{ij56kl}mn}123}op((qr78stu)v\wx34)yz)12905126]
+12    3                          45       4      3  2
+••
+
+[[@ab[cd{ef@gh{ij@kl}mn}123]op((qr@stu)v@x34)yz]12@5@6]
+                              12      1     0
+[Sample Test End]
 ~~~
 
+For instance, let’s try to build a regular expression that finds the largest range of text with well balanced parentheses!
 
-Try it, it works. But it is about as hard to decrypt as a badly indented piece of code without a comment and with unpromising, unclear identifiers. This is only one of the reasons why old Perl earned itself the rare qualifier of "write-only language".
+First, some typographic conventions :
 
+* Let Sp be a starting parenthesis. So, its regex syntax is the escaped form \(, or, simply, ( if inside a character class
 
-##### Embellishments
-First of all, let's add some spacing so that we can identify the components of the regex. Spacing can be added using the x modifier flag, which is off by default.
+* Let Ep be an ending parenthesis. So, its regex syntax is the escaped form \), or, simply, ) if inside a character class
 
-So we can write something more legible:
+* Let Ac be any single allowed character, including EOF character(s), different from EP and SP. So, its regex syntax is the negative class character [^EpSp], i.e., the negative class character [^()]
 
+* Let R0 be a recursion to the whole matched pattern. By convention, in PCRE, its regex syntax is (?0) or (?R)
 
+* Let R1 be a recursion to the group 1 pattern. By convention, in PCRE, its regex syntax is (?1)
 
-~~~
-(?x:  ([^ ( ) ]* \( (?R) \) )* [^()]* )
+* Now , let Bb be a well-balanced block, containing an Ep....Sp construction, itself possibly composed with, both, Ac characters and an other Bb, at any level > 0
 
-~~~
+ This Bb block can be represented by the symbolic regex, below ( Blank chars are ignored, for readability ) :
 
+    Sp ( Ac+ | R0 )* Ep,
 
-Now let's add some commenting
+This syntax may be improved as Bb = Sp (?: Ac++ | R0 )* Ep, using, both :
 
+* A non-capturing group, surrounding the two alternatives
 
+* A possessive quantifier relative to the Ac character, to be similar to the atomic state of recursions, in PCRE.
 
-~~~
-(?x:  ([^ ( ) ]* \( (?# The next group means "start matching the
-beginning of the regex")(?R) \) )* [^()]* )
+It is important to point out that, if you would use the greedy form Ac+, instead of Ac++, the last match would be, wrongly, all the file contents, even against a very short text! Again, the advantage of not allowing backtracking reduces combinations and avoids the catastrophic backtracking process :-)
 
-~~~
+Now, more precisely, between the Sp and Ep parentheses, you may meet :
+
+* Nothing, hence the star quantifier, after the non-capturing group
+
+* A non-null range of allowed chars, so the atomic group Ac++
+
+* An other well-balanced Bb construction which can be verified, in turn, by the recursion feature R0
+
+On the other hand, any subject text scanned can be defined, either, as :
+
+* A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac*. So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
+
+* A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well balanced parentheses text... as it contains no parenthesis ! )
+
+This implies that the general symbolic regex is (?: Ac* Bb )+ Ac* | Ac+
+
+Now, by substituting the above value of the well-balanced Bb construction, in our final expression, we get our final symbolic regex expression :
+
+    (?: Ac* ( Sp (?: Ac++ | R1 )* Ep ) )+ Ac* | Ac+
+            \ ---------------------- /
+                     Group 1
+
+Note, however, that we just had to add two parentheses to define a new group #1 , which embeds the Bb construction,. Indeed, during the recursion process, it must refer, specifically, to that group #1 and NOT recurse to the whole regex pattern. Hence, the R1 notation, instead of the R0 notation!
+
+Finally, we can get something more legible if we use the free-spacing mode to identify the components of our regex and rewrite this expression with the correct regex syntax:
+
+    (?x) (?: [^()]*  (  \(  (?:  [^()]++  |  (?1)  )*  \)  )  )+  [^()]*  |  [^()]+
+
+Note that, with the free-spacing mode, you may, as well, insert comments and split the regex on several lines, leading, for instance, to the following text:
+
+    (?x)                  #  FREE-SPACING mode
+    (?:                   #  Start of the FIRST NON-CAPTURING group
+        [^()]*            #      Any range, possibly NUL, of ALLOWED characters
+        (                 #      Start of CAPTURING group #1
+            \(            #          STARTING parenthesis
+            (?:           #          Start of the SECOND NON-CAPTURING group
+                [^()]++   #              Any NON-NULL ATOMIC range of ALLOWED characters,
+                |         #              OR
+                (?1)      #              A RECURSION, using the regex pattern of group #1
+            )*            #          End of the SECOND NON-CAPTURING group, repeated 0 or MORE times
+            \)            #          ENDING parenthesis
+        )                 #      End of the CAPTURING group 1
+    )+                    #  End of the FIRST NON-CAPTURING group, repeated 1 or MORE times
+    [^()]*                #  Any range, possibly NUL, of ALLOWED characters
+    |                     #  OR
+    [^()]+                #  Any NON-NULL range of ALLOWED characters,
+
+If we reduce the syntax of this recursive regular expression to its minimum, we get :
+
+    (?:[^()]*(\((?:[^()]++|(?1))*\)))+[^()]*|[^()]+
+
+But it is about as hard to decrypt as a badly indented piece of code without a comment and with unpromising, unclear identifiers.
+
 
 ## Searching actions when recorded as macros
 
-The Find family of actions can be recorded in a macro to make them easy to name and later replay via the **Macro** menu or an assigned keycombination.  Somewhat unfortunately, **Find what** and **Replace with** text is hardwired into the macro when it is created, and isn't something the user can change when the macro runs, but often this isn't a significant limitation.
+The Find family of actions can be recorded in a macro to make them easy to name and later replay via the **Macro** menu or an assigned keyboard shortcut.  Somewhat unfortunately, **Find what** and **Replace with** text is hardwired into the macro when it is created, and isn't something the user can change when the macro runs, but often this isn't a significant limitation.
 
 Note, however, that Find-related actions are recorded a bit differently than other Notepad++ actions, so we'll discuss them a bit more in-depth here.  Typically, Notepad++ will record a step in a macro every time a user does something in the Notepad++ user interface.  The Find family of actions is more "coordinated" where macro recording is concerned.
 
-The macro recorder only records when an actual Find family action (e.g. **Replace**, **Find All in Current Document**, etc.) occurs.  Thus you can tweak a future action's parameters (e.g. **Match case**, **Wrap around**, etc.) all you'd like, and all of that fiddling doesn't get remembered.  At the point where you peform an action, then a snapshot is taken of all of the parameters and the action, and this is logged in the macro memory as a proper macro sequence.
+The macro recorder only records when an actual Find family action (e.g. **Replace**, **Find All in Current Document**, etc.) occurs.  Thus you can tweak a future action's parameters (e.g. **Match case**, **Wrap around**, etc.) all you'd like, and all of that fiddling doesn't get remembered.  At the point where you perform an action, then a snapshot is taken of all of the parameters and the action, and this is logged in the macro memory as a proper macro sequence.
 
 While the user can simply record and use Find family macros, one can also edit those macros later to change or add to their functionality, so it is helpful to know the details of the macro sequences that were previously recorded.  While the details of how macros in general are recorded and stored in *shortcuts.xml* is discussed elsewhere, here are the details of what happens when Notepad++ saves a recorded Find family macro:
 
@@ -903,24 +1002,31 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 `<Action type="3" message="1702" wParam="0" lParam="515" sParam="" />`
 
-| 1702-Bit-Weight |Binary-Bit-Weight | Meaning (equivalent option ticked) |
-|-----------------|------------------|------------------------------------|
-| 1               |0000000001        | Match whole word only              |
-| 2               |0000000010        | Match case                         |
-| 4               |0000000100        | Purge for each search              |
-| 16              |0000010000        | Bookmark line                      |
-| 32              |0000100000        | In all sub-folders                 |
-| 64              |0001000000        | In hidden folders                  |
-| 128             |0010000000        | In selection                       |
-| 256             |0100000000        | Wrap around                        |
-| 512             |1000000000        | Backward direction (unticked!)     |
+| 1702-Bit-Weight |Binary-Bit-Weight  | Meaning (equivalent option ticked) |
+|----------------:|------------------:|:-----------------------------------|
+| 1               | 0000000001        | Match whole word only              |
+| 2               | 0000000010        | Match case                         |
+| 4               | 0000000100        | Purge for each search              |
+| 16              | 0000010000        | Bookmark line                      |
+| 32              | 0000100000        | In all sub-folders                 |
+| 64              | 0001000000        | In hidden folders                  |
+| 128             | 0010000000        | In selection                       |
+| 256             | 0100000000        | Wrap around                        |
+| 512             | 1000000000        | Backward direction (*)             |
+
+*: **Backward direction** ticked means 512 is _not_ included; unticked means 512 _is_ included.
+
+> Let's see how the example value 515 used above is decoded:
+
+> lParam="515" (decimal) = 203 (hex) = 10 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
+
 
 Finally appears a **1701** message which encodes the Find family action to perform in **lParam**, which, when executed will conduct the action using all of the information encoded in the prior messages; let's do a **Replace in Files**, which has an integer value of 1660, for purposes of an example:
 
 `<Action type="3" message="1701" wParam="0" lParam="1660" sParam="" />`
 
 | 1701-Value | Meaning (equivalent button press)   |
-|------------|-------------------------------------|
+|-----------:|-------------------------------------|
 | 1          | Find Next                           |
 | 1608       | Replace                             |
 | 1609       | Replace All                         |
@@ -933,13 +1039,8 @@ Finally appears a **1701** message which encodes the Find family action to perfo
 | 1656       | Find All (in Files)                 |
 | 1660       | Replace in Files                    |
 
-So really the only tricky part is the 1702 message and how its encoding works.
 
-Let's see how the example value 515 used above is decoded:
-
-lParam="515" (decimal) = 203 (hex) = 10 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
-
-Finally, let's present a complete example (that could occur in *shortcuts.xml*) and how it is interpreted:
+Here is a complete example (that could occur in *shortcuts.xml*) and how it is interpreted:
 
     <Macro name='Book Mark lines NOT containing ABC' Ctrl="no" Alt="no" Shift="no" Key="0">
         <Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
@@ -957,14 +1058,14 @@ The search type for "Regular expression" appears next as lParam="2" in the 1625 
 
 Skipping the 1702 message for the moment, the 1701 message has lParam="1615" which, from the 1701 table, means "Mark All".
 
-Finally, let's consider the 1702 message.  Its pertinent part is lParam="786".  The best way to break that down into its component parts is to convert the number to binary and then determine how the one-bits in the binary contribute to the meaning.  786 in binary is 1100010010, which breaks down as follows, and then reading the 1702 table from earlier we get the contributors to functionality:
+Finally, let's consider the 1702 message.  Its pertinent part is lParam="786".  The best way to break that down into its component parts is to convert the number to binary and then determine how the one-bits in the binary contribute to the meaning.  786 in binary is 1100010010 (= 512 + 256 + 16 + 2), which breaks down as follows, and then reading the 1702 table from earlier we get the contributors to functionality:
 
-* `1000000000` - not Backward direction (thus forward direction from caret toward bottom end of file)
+* `1000000000` = 512 - Backward direction _disabled_ (thus forward direction from caret toward bottom end of file)
 
-* `0100000000` - Wrap around
+* `0100000000` = 256 - Wrap around
 
-* `0000010000` - Bookmark line
+* `0000010000` = 16 - Bookmark line
 
-* `0000000010` - Match case
+* `0000000010` = 2 - Match case
 
 Note that in this example we seem to have conflicting search parameters:  We have a direction encoded, as well as a Wrap around, which nullifies the need for a direction.  This is not a problem, as the Wrap around option will take precedence, just like in a non-macro'd interactive searching operation.
