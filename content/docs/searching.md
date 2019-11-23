@@ -135,9 +135,9 @@ When the mouse's *RightClick* > **Copy** is used, however, it is more complicate
 
 Here's a more detailed description of what happens for *RightClick* > **Copy**:
 
-First, if the user makes a selection of text in the **Find result** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is *RightClick*ed upon:
+First, if the user makes a selection of text in the **Find result** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is under the cursor during the *RightClick* upon:
 
-|*RightClick*ed item     |What gets copied when *RightClick* > **Copy** is run |
+|*RightClick* item      |What gets copied when *RightClick* > **Copy** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
 |a line with line # info|the entire line of the *RightClick* but without line number text                                     |
 |a pathname header line |all the lines for that single file without pathname or line number text                              |
