@@ -302,7 +302,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
 
-*  `[[.☒☒.]]` ⇒ The character the ☒☒ "collating sequence" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as `[[.ch.]]`. This trick also works with symbolic names of control characters, like `[[.BEL.]]` for the character of code 0x07. See also the discussion on character ranges.
+*  `[[.`_col_`.]]` ⇒ The character the _col_ "[collating sequence](https://www.boost.org/doc/libs/1_70_0/libs/regex/doc/html/boost_regex/syntax/collating_names.html)" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as `[[.ch.]]`. This trick also works with symbolic names of control characters, like `[[.BEL.]]` for the character of code 0x07. See also the discussion on character ranges.
 
 
 
@@ -330,11 +330,11 @@ In a regular expression (shortened into regex throughout), special characters in
 
 ##### Character Classes
 
-* `[☒☒☒]`  ⇒ This indicates a set of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
+* `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
 
-* `[^☒☒☒]`  ⇒ The complement of the characters in the set. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
+* `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
 
-* `[:name:]` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
+* `[:`_name_`:]` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
 
     | short | full name      | description | equivalent character class |
     |:-----:|:--------------:|:------------|----------------------------|
@@ -361,9 +361,9 @@ In a regular expression (shortened into regex throughout), special characters in
 
 These properties behave similar to named character classes, but cannot be contained inside a character class.
 
-*  `\p☒` or `\p{name}` ⇒ Same as `[[:☒:]]` or `[[:name:]]`, where ☒ stands for one of the short names from the table above, and _name_ stands for one of the full names from above. For instance, `\pd` and `\p{digit}` both stand for a digit, just like the escape sequence `\d` does.
+*  `\p☒` or `\p{`_name_`}` ⇒ Same as `[[:☒:]]` or `[[:`_name_`:]]`, where ☒ stands for one of the short names from the table above, and _name_ stands for one of the full names from above. For instance, `\pd` and `\p{digit}` both stand for a digit, just like the escape sequence `\d` does.
 
-*  `P☒` or `\P{name}` ⇒ Same as `[^[:☒:]]` or `[^[:name:]]` (not belonging to the class _name_).
+*  `P☒` or `\P{`_name_`}` ⇒ Same as `[^[:☒:]]` or `[^[:`_name_`:]]` (not belonging to the class _name_).
 
 ##### Character escape sequences
 
@@ -383,7 +383,7 @@ These single-letter escape sequences are each equivalent to a class from above. 
 
 ##### Equivalence Classes
 
-* `[[=☒=]]` ⇒ All characters that differ from ☒ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `a`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `A`, `à`, `á`, `â`, `ã`, `ä` and `å`.
+* `[[=`_char_`=]]` ⇒ All characters that differ from _char_ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `a`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `A`, `à`, `á`, `â`, `ã`, `ä` and `å`.
 
 
 #### Multiplying operators
@@ -459,9 +459,9 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Groups
 
-* `(☒☒☒)` ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses (indicated by ☒☒☒ in this example) can be re-used as a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
+* `(`_subset_`)` ⇒ Parentheses mark a _subset_ of the regular expression. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used as a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>☒☒☒)` or `(?'name'☒☒☒)` or `(?(name)☒☒☒)` ⇒ Names this group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
 
 * `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ The ℕ-th subexpression, aka parenthesized group. Using a form other than `\gℕ*` and `\kℕ` has some small benefits, like ℕ being more than 9, or disambiguating when ℕ might be followed by digits. When ℕ is negative, groups are counted backwards, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
 
@@ -479,9 +479,9 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Readability enhancements
 
-* `(?:...)` ⇒ A grouping construct that doesn't count as a subexpression, just grouping things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.  (The ... is a placeholder for the contents of that group.)
+* `(?:`_subset_`)` ⇒ A grouping construct for the _subset_ expression that doesn't count as a subexpression (doesn't get numbered or named), but just groups things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.
 
-* `(?#...)` ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
+* `(?#`_comment_`)` ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
 
 Using the x flag modifier (see section below) is also a good way to improve readability in complex regular expressions.
 
