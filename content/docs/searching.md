@@ -287,54 +287,54 @@ In a regular expression (shortened into regex throughout), special characters in
 
 #### Single-character matches
 
-* ``.`` or ``\C`` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot match any character, including newline sequences.  With the option unchecked, then `.` will only match characters within a line, and not the newline sequences (``\r`` or ``\n``).
+* `.` or `\C` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot match any character, including newline sequences.  With the option unchecked, then `.` will only match characters within a line, and not the newline sequences (`\r` or `\n`).
 
 * `\X` ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
 
-* ``\☒``  ⇒ This allows you to search for a literal character ☒, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, ``\[`` would be interpreted as literal `[` and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, ``\d`` stands for "a digit", while `d` is just an ordinary letter.  (Please note: `☒` here was chosen as a placeholder for the character you want to escape.)
+* `\☒`  ⇒ This allows you to search for a literal character ☒, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, `\[` would be interpreted as literal `[` and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, `\d` stands for "a digit", while `d` is just an ordinary letter.  (Please note: `☒` here was chosen as a placeholder for the character you want to escape.)
 
 
 ##### Non ASCII characters
 
-* ``\xℕℕ`` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. For instance, ``\xE9`` may match an `é` or a `θ` depending on the code page in an ANSI encoded document.
+* `\xℕℕ` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. For instance, `\xE9` may match an `é` or a `θ` depending on the code page in an ANSI encoded document.
 
-* ``\x{ℕℕℕℕ}`` ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
+* `\x{ℕℕℕℕ}` ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
 
-* ``\0ℕℕℕ`` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
+* `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
 
-*  ``[[.☒☒.]]`` ⇒ The character the ☒☒ "collating sequence" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as ``[[.ch.]]``. This trick also works with symbolic names of control characters, like ``[[.BEL.]]`` for the character of code 0x07. See also the discussion on character ranges.
+*  `[[.☒☒.]]` ⇒ The character the ☒☒ "collating sequence" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as `[[.ch.]]`. This trick also works with symbolic names of control characters, like `[[.BEL.]]` for the character of code 0x07. See also the discussion on character ranges.
 
 
 
 ##### Control characters
 
-* ``\a`` ⇒ The BEL control character 0x07 (alarm).
+* `\a` ⇒ The BEL control character 0x07 (alarm).
 
-* ``\b`` ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
+* `\b` ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
 
-* ``\e`` ⇒ The ESC control character 0x1B.
+* `\e` ⇒ The ESC control character 0x1B.
 
-* ``\f`` ⇒ The FF control character 0x0C (form feed).
+* `\f` ⇒ The FF control character 0x0C (form feed).
 
-* ``\n`` ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
+* `\n` ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
 
-* ``\r`` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
+* `\r` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
 
-* ``\R`` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
+* `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
 
-* ``\t`` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
+* `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
-* ``\c☒`` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, ``\c1``, ``\cA`` and ``\ca`` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so ``\cA`` is the character you would get from hitting Ctrl+A in a terminal.
+* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.
 
 #### Ranges or kinds of characters
 
 ##### Character Classes
 
-* ``[☒☒☒]``  ⇒ This indicates a set of characters, for example, ``[abc]`` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example ``[a-z]`` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in ``[[.ch.]-[.ll.]]`` (these are collating sequence in Spanish).
+* `[☒☒☒]`  ⇒ This indicates a set of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
 
-* ``[^☒☒☒]``  ⇒ The complement of the characters in the set. For example, ``[^A-Za-z]`` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence ``[^ABC]*`` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. ``[^ABC\r\n]``.
+* `[^☒☒☒]`  ⇒ The complement of the characters in the set. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
 
-* ``[:name:]`` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
+* `[:name:]` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
 
     | short | full name      | description | equivalent character class |
     |:-----:|:--------------:|:------------|----------------------------|
@@ -449,7 +449,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\A` or `\'` ⇒ The start of the matching string.
 
-* `\z` or ``\` `` ⇒ The end of the matching string.
+* `\z` or `` \` `` ⇒ The end of the matching string.
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
@@ -459,7 +459,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Groups
 
-* `(☒☒☒)` ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses (indicated by ☒☒☒ in this example) can be re-used as a backreference or as part of a replace operation; see Substitutions, below. Groups may be nested.
+* `(☒☒☒)` ⇒ Parentheses mark a subset of the regular expression. The string matched by the contents of the parentheses (indicated by ☒☒☒ in this example) can be re-used as a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
 * `(?<name>☒☒☒)` or `(?'name'☒☒☒)` or `(?(name)☒☒☒)` ⇒ Names this group _name_.  Please note that group names are case-sensitive.
 
@@ -493,12 +493,12 @@ The following constructs control how matches condition other matches, or otherwi
 
 * `\E` ⇒ Ends verbatim mode. Thus, `\Q\*+\Ea+` matches `\*+aaaa`.
 
-* `(?flags-notFlags)` or `(?flags-notFlags:subpattern)` ⇒ There are four flags, described below, which can be applied to a regex or subgroup.  The flags listed next to the `?` will be _enabled_; the flags listed after the `-` will be disabled.  If there is a subpattern, then the flags only apply for the contents of the subpattern; without a subpattern, the flags apply for the remainder of the current regex, or until the next flags are set.
+* `(?enable-disable)` or `(?enable-disable:subpattern)` ⇒ There are four flags, described below, which can be applied to a regex or subgroup.  The _enable_ term can be made up of 0-4 of the flags described below; the _disable_ term can be made up of 0-4 of the flags described below. Any flags in _enable_ will be enabled (turned on); any flags in _disable_ will be disabled (turned off).  (Remember, it does not make sense to include the same flag in both the _enable_ and _disable_ terms.)  If there are no _disable_ flags, the `-` is not necessary; if there are no _enable_ flags, then the `-` will come immediately after the `?`: `(?-...)`.  If there is a subpattern, then the flags only apply for the contents of the subpattern; without a subpattern, there is no `:` separator, and the flags apply for the remainder of the current regex, or until the next flags are set.
 
     * `i` ⇒ case insensitive (default: set by **☐ Match case** dialog option)
     * `m` ⇒ ^ and $ match embedded newlines (default: on)
     * `s` ⇒ dot matches newline (default: as per **☐ . matches newline** dialog option)
-    * `x` ⇒ Ignore non-escaped whitespace in regex (default: off)
+    * `x` ⇒ Ignore non-escaped whitespace in regex (default: off).  Any whitespace that you need to match must be escaped
 
     Examples:
 
@@ -506,6 +506,7 @@ The following constructs control how matches condition other matches, or otherwi
     * `(?i-s:subpattern)` ⇒ enables case insensitivity and disables dot-matches-newline, but just for the `subpattern`
     * `(?-i)caseSensitive(?i)cAsE inSenSitive` ⇒ disables case insensitivity (makes it case-sensitive) for the portion of the regex indicated by `caseSensitive`, and re-enables case-insensitive matching for the rest of the regex
     * `(?m:justHere)` ⇒ `^` and `$` will match on embedded newlines, but just for the contents of this subgroup `justHere`
+    * `(?x)` ⇒ Allow extra whitespace in the expression for the remainder of the regex
 
 * `(?|expression)` ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
 
@@ -524,134 +525,128 @@ The following constructs control how matches condition other matches, or otherwi
 Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
 
 
-* **|** ⇒ The alternation operator, which allows matching either of a number of options, like in&nbsp;: one|two|three to match either of "one", "two" or "three". Matches are attempted from left to right. Use **(?:)** to match an empty string in such a construct.
+* `|` ⇒ The alternation operator, which allows matching either of a number of options.  For example, `one|two|three` will match either of `one`, `two` or `three`. Matches are attempted from left to right. Use `(?:)` to match an empty string in such a construct.
 
-*  **(?**_n_**)** or **_(?**_signed-n_**)** ⇒ Refers to subexpression #_n_. When a sign is present, go to the _signed-n_-th expression.
+*  `(?ℕ)` ⇒ Refers to ℕth subexpression. If ℕ is negative, it will use the ℕth subexpression from the end.
 
-    Please, note the difference between subexpressions and back-references. For instance, using a similar structure to the one, when searching for a four-letters word being a palindrome, this time, both regexes just find a four-letters word, because each subexpression, signed or not, refers to the regex itself, enclosed in each group and NOT to the present value of each group !
+    Please, note the difference between subexpressions and back-references. For instance, using a similar structure to the one, when searching for a four-letters word being a palindrome, this time, both regexes just find a four-letters word, because each subexpression, signed or not, refers to the regex itself, enclosed in each group and NOT to the present value of each group!
 
-    * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a FOUR letters word, when using absolute coordinates
+    * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a four-letter word, when using absolute coordinates
 
-    * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a FOUR letters word, when using relative coordinates
+    * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a four-letter word, when using relative coordinates
 
     Actually, these two regexes could be simplified to `(?-i)\b(\w)(\w)\w\w\b`, assuming that group 1 and 2 are still needed in replacement
 
-*  **(?0)** or **(?R)** ⇒ Backtrack to start of pattern.
+*  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.
 
-*  **(?&amp;_name_)** or **(?P>name)** ⇒ Backtrack to subexpression named _name_.
+*  `(&name)` or `(?P>name)` ⇒ Backtrack to subexpression named _name_.
 
     * If a non-signed subexpression is located OUTSIDE the parentheses of the group to which it refers, it is called a subroutine call
 
     * If a non-signed subexpression is located INSIDE the parentheses of the group to which it refers, it is called a recursive call
 
-*  **(?**assertion_yes-pattern_**|**_no-pattern_**)** ⇒ Matches _yes-pattern_ if assertion is true, and _no-pattern_ otherwise if provided.
+*  `(?(assertion)YesPattern|NoPattern)` ⇒ If the _assertion_ is true, then _YesPattern_ will be used for matching the text; if the _assertion_ is false, then _NoPattern_ will be used for matching the text.
 
-    Supported syntax for _assertion_ include:
+    _YesPattern_ and _NoPattern_ are any valid regex patterns.
 
-    * **(_n_)** ⇒ true if Nth unnamed group previously defined
+    The _assertion_ will always be inside parentheses; this is emphasized by including the parentheses in the list of supported _assertion_ syntax, below:
 
-    * **(?<_name_>)** or **(?'_name_')** ⇒ true if Nth unnamed group previously defined
+    * `(ℕ)` ⇒ true if ℕth unnamed group was previously defined
 
-    *  **(?=**_assert_**)** ⇒ true if positive lookahead matches
+    * `(?<name>)` or `(?'name')` ⇒ true if group called _name_ was previously defined
 
-    *  **(?!_assert_)** ⇒ true if negative lookahead matches
+    *  `(?=lookahead)` ⇒ true if the _lookahead_ expression matches
 
-    *  **(?&lt;=**_assert_**)** ⇒ true if positive lookbehind matches
+    *  `(?!lookahead)` ⇒ true if the _lookahead_ expression does not match
 
-    *  **(?&lt;!_assert_)** ⇒ true if negative lookbehind matches
+    *  `(?<=lookbehind)` ⇒ true if the _lookbehind_ expression matches
 
-    *  **(?\(R))** ⇒ true if inside a recursion
+    *  `(?<!lookbehind)` ⇒ true if the _lookbehind_ expression does not match
 
-    *  **(?(R**_n_**)** ⇒ true if in a recursion to subexpression numbered _n_
+    *  `(?(R))` ⇒ true if inside a recursion
 
-    *  **(?(R&amp;**_name_**)** ⇒ true if in a recursion to named subexpression _name_
+    *  `(?(Rℕ)` ⇒ true if in a recursion to subexpression numbered ℕ
+
+    *  `(?(R&name))` ⇒ true if in a recursion to named subexpression _name_
 
     Note: These are all still _inside_ the conditional expression.
 
+    Do not confuse the assertions that control a conditional expression (here) with the assertions that are part of the pattern matching (the [Assertions](#assertions) section, below).  Here, if the assertion is used to decide which expression is used; below, the assertion decides whether the pattern is matching or not.
 
-PCRE doesn't treat recursion expressions like Perl does:
+    Note: PCRE doesn't treat recursion expressions like Perl does:
 
-> In PCRE (like Python, but unlike Perl), a recursive subpattern call  is
+    > In PCRE (like Python, but unlike Perl), a recursive subpattern call  is
 always treated as an atomic group. That is, once it has matched some of
 the subject string, it is never re-entered, even if it contains untried
 alternatives  and  there  is a subsequent matching failure.
 
-*  **\K** ⇒ Resets matched text at this point. For instance, matching "foo\Kbar" will not match "bar". It will match "foobar", but will pretend that only "bar" matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
+*  `\K` ⇒ Resets matched text at this point. For instance, matching `foo\Kbar` will not match `bar`. It will match `foobar`, but will pretend that only `bar` matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
 
-It is also useful if you would need a look-behind assertion which would contain a non-fixed length pattern (see further on). As variable-length lookbehind is not allowed in Boost's regular expressions, you can use the **\K** syntax, instead. For instance, the non-allowed syntax `(?-i)(?<=\d+)abc` can be replaced with the correct syntax `(?-i)\d+\Kabc` which matches the exact string `abc` only if preceded by, at least, one digit.
+    It is also useful if you would need a look-behind assertion which would contain a non-fixed length pattern (see further on). As variable-length lookbehind is not allowed in Boost's regular expressions, you can use the `\K` syntax, instead. For instance, the non-allowed syntax `(?-i)(?<=\d+)abc` can be replaced with the correct syntax `(?-i)\d+\Kabc` which matches the exact string `abc` only if preceded by, at least, one digit.
 
 #### Assertions
 These special groups consume no characters. Their successful matching counts, but when they are done, matching starts over where it left.
 
+* `(?=pattern)` ⇒ positive lookahead: If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes.
 
-* **(?=_pattern_)** ⇒ positive lookahead: If _pattern_ matches, backtrack to start of _pattern_. This allows using logical AND for combining regexes.
-    * For instance,
+    * The expression `(?=.*[[:lower:]])(?=.*[[:upper:]]).{6,}` tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.
 
-~~~
-(?=.*[[:lower:]])(?=.*[[:upper:]]).{6,}
-~~~
+    * `q(?=u)i` doesn't match `quit`, because the assertion `(?=u)` matches the `u` but does not consume the `u`, as matching `u` consumes zero characters, so then trying to match `i` in the pattern fails, because it is still comparing against the `u` in the text being searched.
 
-        tries finding a lowercase letter anywhere. On success it backtracks and searches for an uppercase letter. On yet another success, it checks whether the subject has at least 6 characters.
+* `(?!pattern)` ⇒ negative lookahead: Matches if lookahead _pattern_ didn't match.
 
-    * '"q(?=u)i" doesn't match "quit", because, as matching 'u' consumes 0 characters, matching "i" in the pattern fails at "u" i the subject.
+* `(?<=pattern)` ⇒ positive lookbehind: This assertion matches if _pattern_ matches before the current token.
 
-* **(?!_pattern_)** ⇒ negative lookahead: Matches if _pattern_ didn't match.
+* `(?<!pattern)` ⇒ negative lookbehind: This assertion matches if _pattern_ does not match before the current token.
 
-* **(?&lt;=_pattern_)** ⇒ positive lookbehind: Asserts that _pattern_ matches before some token.
+    * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Use `\K` (above) for the equivalent of variable-length lookbehind.
 
-* **(?&lt;!_pattern_)** ⇒ negative lookbehind: Asserts that _pattern_ does not match before some token.
-
-    * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Use **\K** (above) for the equivalent of variable-length lookbehind.
-
-*  **(?&gt;_pattern_)** ⇒ Match pattern independently of surrounding patterns, and don't backtrack into it. Failure to match will cause the whole subject not to match.
+*  `(?>pattern)` ⇒ Match _pattern_ independently of surrounding patterns, and don't backtrack into it. Failure to match will cause the whole subject not to match.
 
 
 
 ### Substitutions
 
-*  **\a**,**\e**,**\f**,**\n**,**\r**,**\t**,**\v** ⇒ The corresponding control character, respectively BEL, ESC, FF, LF, CR, TAB and VT.
+In substitutions (the contents of the **Replace with** entry), there are additional escape sequences:
 
-*  **\c**_character_" or **\x**_nn_ or **\x{**_nnnn_**}** ⇒ Like in search patterns, respectively the control character with the same low order bits, the character with code _nn_ and the character with code _nnnn_ (requires Unicode encoding).
+*  `\l` ⇒ Causes next character to output in lowercase
 
-*  **\l** ⇒ Causes next character to output in lowercase
+*  `\L` ⇒ Causes next characters to be output in lowercase, until a `\E` is found.
 
-*  **\L** ⇒ Causes next characters to be output in lowercase, until a **\E** is found.
+*  `\u` ⇒ Causes next character to output in uppercase
 
-*  **\u** ⇒ Causes next character to output in uppercase
+*  `\U` ⇒ Causes next characters to be output in uppercase, until a `\E` is found.
 
-*  **\U** ⇒ Causes next characters to be output in uppercase, until a **\E** is found.
+*  `\E` ⇒ Puts an end to forced case mode initiated by `\L` or `\U`.
 
-*  **\E** ⇒ Puts an end to forced case mode initiated by **\L** or **\U**.
+*  `$&`, `$MATCH`, `${^MATCH}`, `$0`, `${0}` ⇒ The whole matched text.
 
-*  **$&amp;**, **$MATCH**, **${^MATCH}**, **$0**, **${0}** ⇒ The whole matched text.
+*  `` $` ``, `$PREMATCH`, `${^PREMATCH}` ⇒ The text between the previous and current match, or the text before the match if this is the first one.
 
-*  **$`**, **$PREMATCH**, **${^PREMATCH}** ⇒ The text between the previous and current match, or the text before the match if this is the first one.
+*  `$'`, `$POSTMATCH`, `${^POSTMATCH}` ⇒ Everything that follows current match.
 
-*  **$'**, **$POSTMATCH**, **${^POSTMATCH}** ⇒ Everything that follows current match.
+*  `$^N`, `$LAST_SUBMATCH_RESULT`, `${^LAST_SUBMATCH_RESULT}` ⇒ Returns what the last matching subexpression matched.
 
-*  **$^N**, **$LAST_SUBMATCH_RESULT**, **${^LAST_SUBMATCH_RESULT}** ⇒ Returns what the last matching subexpression matched.
+*  `$+`, `$LAST_PAREN_MATCH`, `${^LAST_PAREN_MATCH}` ⇒ Returns what matched the last subexpression in the pattern, if that subexpression is currently matched by the regex engine.
 
-*  **$+**, **$LAST_PAREN_MATCH**, **${^LAST_PAREN_MATCH}** ⇒ Returns what matched the last subexpression in the pattern, if that subexpression is currently matched by the regex engine.
+*  `$$` or `\$` ⇒ Returns literal `$` character.
 
-*  **$$** or **\\$** ⇒ Returns literal `$` character.
+*  `$ℕ`, `${ℕ}`, **\\ℕ** ⇒ Returns what matched the ℕth subexpression, where ℕ is a positive integer (1 or larger).
 
-*  **$_n_**, **${_n_}**, **\\_n_** ⇒ Returns what matched the subexpression numbered _n_. Negative indices are not allowed.
-
-*  **$+{_name_}** ⇒ Returns what matched subexpression named _name_.
+*  `$+{name}` ⇒ Returns what matched subexpression named _name_.
 
 
 
 ### Zero length matches
-While, in normal or extended mode, there would be no point in looking for text of length 0, this can very normally happen with regular expressions. For instance, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
+
+In normal or extended mode, there would be no point in looking for text of length 0; however, in regular expression mode, this can often happen. For example, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
 
 Notepad++ would select the match, but there is no sensible way to select a stretch zero character long. When this happens, a tooltip very similar to function call tips is displayed instead, with a caret pointing upwards to the empty match.
 
 
 ### Examples
-These examples come from an earlier version of this page:
-Notepad++ RegExp Help, by Author&nbsp;: Georg Dembowski
 
-_Add more examples using advanced features of PCRE_
+These examples are meant to help better show what the complex regex syntax will accomplish.  Many of these examples, written by Georg Dembowski, have been in previous versions of the documentation for years; they have been updated to match with the modern Notepad++ v7.7 regular expression syntax.
 
 **IMPORTANT**
 
