@@ -346,7 +346,7 @@ In a regular expression (shortened into regex throughout), special characters in
     |       | graph          | graphical character, so essentially any character except for control chars, `\0x7F`, `\x80` | |
     | l     | lower          | lowercase letters | |
     |       | print          | printable characters | `[\s[:graph:]]` |
-    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]` |
+    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]` <!-- ` -->|
     | s     | space          | whitespace (word or line separator) | `[\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]` |
     | u     | upper          | uppercase letters |  |
     |       | unicode        | any character with code point above 255 | `[\x{0100}-\x{FFFF}]` |
@@ -449,7 +449,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\A` or `\'` ⇒ The start of the matching string.
 
-* `\z` or `` \` `` ⇒ The end of the matching string.
+* `\z` or `` \` `` <!-- ` --> ⇒ The end of the matching string.
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
@@ -621,7 +621,7 @@ In substitutions (the contents of the **Replace with** entry), there are additio
 
 *  `$&`, `$MATCH`, `${^MATCH}`, `$0`, `${0}` ⇒ The whole matched text.
 
-*  `` $` ``, `$PREMATCH`, `${^PREMATCH}` ⇒ The text between the previous and current match, or the text before the match if this is the first one.
+*  `` $` `` <!-- ` -->, `$PREMATCH`, `${^PREMATCH}` ⇒ The text between the previous and current match, or the text before the match if this is the first one.
 
 *  `$'`, `$POSTMATCH`, `${^POSTMATCH}` ⇒ Everything that follows current match.
 
@@ -634,7 +634,6 @@ In substitutions (the contents of the **Replace with** entry), there are additio
 *  `$ℕ`, `${ℕ}`, **\\ℕ** ⇒ Returns what matched the ℕth subexpression, where ℕ is a positive integer (1 or larger).
 
 *  `$+{name}` ⇒ Returns what matched subexpression named _name_.
-
 
 
 ### Zero length matches
@@ -658,11 +657,12 @@ These examples are meant to help better show what the complex regex syntax will 
 How to replace/delete full lines according to a regex pattern?
 Let's say you wish to delete all the lines in a file that contain the word "unused", without leaving blank lines in their stead. This means you need to locate the line, remove it all, and additionally remove its terminating newline.
 
-So, you'd want to do this::
-Find: ^.*?unused.*?$\R
-Replace with: nothing, not even a space
-The regular expression **appears** to always work  is to be read like this:
+So, you'd want to do this:
 
+* Find: `^.*?unused.*?$\R`
+* Replace with: nothing, not even a space
+
+The regular expression **appears** to always work  is to be read like this:
 
 *  assert the start of a line
 
@@ -677,46 +677,43 @@ The regular expression **appears** to always work  is to be read like this:
 *  A newline character or sequence
 
 
-Remember that .* gobbles everything to the end of line if ". matches newline" is off, and to the end of file if the option is on!
+Remember that `.*` gobbles everything to the end of line if **☐ . matches newline** is off, and everything to the end of file if the option is on!
 
 Well, why is **appears** above in bold letters? Because this expression assumes each line ends with an end of line sequence. This is almost always true, and may fail for the last line in the file. It won't match and won't be deleted.
 
 But the remedy is fairly simple: we translate in regex parlance that the newline should match if it is there. So the correct expression actually is:
 
-~~~
-^.*?unused.*?$\R?
-~~~
+* Find: `^.*?unused.*?$\R?`
 
+This is because `?` makes it match 0 or 1 `\R`.
 
 #### Example 1
 You use a MediaWiki (like Wikipedia) and want to make all headings one level higher, so a H2 becomes a H1 etc.
 
-*  Search ^=(=)
+*  Search `^=(=)`
 
-*  Replace with \1
+*  Replace with `\1`
 
-*  Click "Replace all"
+*  Click **Replace all**
 
 You do this to find all headings2...9 (two equal sign characters are required) which begin at line beginning (^) and to replace the two equal sign characters by only the last of the two, so eliminating one and having one remaining.
 
 
-*  Search =(=)$
+*  Search `=(=)$`
 
-*  Replace with \1
+*  Replace with `\1`
 
-*  Click "Replace all"
+*  Click **Replace all**
 
 You do this to find all headings2...9 (two equal sign characters are required) which end at line ending ($) and to replace the two equal sign characters by only the last of the two, so eliminating one and having one remaining.
 
+`== title ==` became `= title =`
 
-
-== title == became = title =
-
-You're done&nbsp;:-)
+You're done :-)
 
 
 #### Example 2
-You have a document with a lot of dates, which are in date format (dd.mm.yy) and you'd like to transform them to sortable format (yy-mm-dd). Don't be afraid by the length of the search term – it's long, but consisting of pretty easy and short parts.
+You have a document with a lot of dates, which are in date format `dd.mm.yy` and you'd like to transform them to sortable format `yy-mm-dd`. Don't be afraid by the length of the search term – it's long, but consisting of pretty easy and short parts.
 
 Do the following:
 
@@ -725,13 +722,12 @@ Do the following:
 
    Search `(\s)([0123][0-9])\.([01][0-9])\.([0-9][0-9])(\s)`
 
-*  Replace with \1\4-\3-\2\5
+*  Replace with `\1\4-\3-\2\5`
 
-*  Click "Replace all"
+*  Click **Replace all**
 
 
 You do this to fetch:
-
 
 *  the day, whose first number can only be 0, 1, 2 or 3
 
@@ -746,47 +742,49 @@ and to write all of this in the opposite order, except for the surroundings. Pay
 
 Outcome:
 
+*  `31.12.97` became `97-12-31`
 
-*  31.12.97 became 97-12-31
+*  `14.08.05` became `05-08-14`
 
-*  14.08.05 became 05-08-14
-
-*  the IP address 14.13.14.14 did not change
+*  the IP address `14.13.14.14` did not change
 
 
-You're done&nbsp;:-)
+You're done :-)
 
 
 #### Example 3
 You have printed in windows a file list using `dir /a-d /b/s /-p > filelist.txt` to the file filelist.txt and want to make local URLs out of them.
 
-*  Open filelist.txt with Notepad++
+*  Open `filelist.txt` with Notepad++
 
-*  Search \\
+*  Search `\\`
 
-*  Replace with /
+*  Replace with `/`
 
-*  Click "Replace all" to change windows path separator char \  into URL path separator char /
+*  Click **Replace all**.
 
-
-* Search \x20
-
-* Replace %20
-
-* Click “Replace all” to change any space character into the %20 syntax
-
-According on your requirements,change any possible symbol ! # $ % & ' ( ) + , - ; = @ [ ] ^ { } ~ with the appropriate %nn expression
+    This changes the Windows path separator char `\` into the URL path separator char `/`
 
 
-*  Search ^(?=.)$
+* Search `\x20`
 
-*  Replace with file:///
+* Replace `%20`
 
-*  Click "Replace all" to add file:/// to the beginning of all non-empty lines
+* Click **Replace all** to change any space character into the `%20` syntax
 
-After this, `C:\!\Test A.csv` became `file:///C:/!/Test%20A.csv`.
+    According on your requirements, you can similarly change any possible symbol `! # $ % & ' ( ) + , - ; = @ [ ] ^ { } ~` with the appropriate `%ℕℕ` expression
 
-You're done&nbsp;:-)
+*  Search `^(?=.)$`
+
+*  Replace with `file:///`
+
+*  Click **Replace all**
+
+    This adds file:/// to the beginning of all non-empty lines
+
+After this sequence, `C:\!\Test A.csv` became `file:///C:/!/Test%20A.csv`.
+
+You're done :-)
 
 
 #### Example 4
@@ -817,7 +815,7 @@ Then use the following regex S/R :
 
 *  Replace with: `,`
 
-*  Hit "Replace All"
+*  Hit **Replace All**
 
 
 ~~~
@@ -883,29 +881,29 @@ For instance, let’s try to build a regular expression that finds the largest r
 
 First, some typographic conventions :
 
-* Let Sp be a starting parenthesis. So, its regex syntax is the escaped form \(, or, simply, ( if inside a character class
+* Let Sp be a starting parenthesis. So, its regex syntax is the escaped form `\(`, or simply `(` if inside a character class
 
-* Let Ep be an ending parenthesis. So, its regex syntax is the escaped form \), or, simply, ) if inside a character class
+* Let Ep be an ending parenthesis. So, its regex syntax is the escaped form `\)`, or simply `)` if inside a character class
 
-* Let Ac be any single allowed character, including EOF character(s), different from EP and SP. So, its regex syntax is the negative class character [^EpSp], i.e., the negative class character [^()]
+* Let Ac be any single allowed character, including EOF character(s), different from EP and SP. So, its regex syntax is the negative class character `[^EpSp]`, i.e., the negative class character `[^()]`
 
-* Let R0 be a recursion to the whole matched pattern. By convention, in PCRE, its regex syntax is (?0) or (?R)
+* Let R0 be a recursion to the whole matched pattern. By convention, in PCRE, its regex syntax is `(?0)` or `(?R)`
 
-* Let R1 be a recursion to the group 1 pattern. By convention, in PCRE, its regex syntax is (?1)
+* Let R1 be a recursion to the group 1 pattern. By convention, in PCRE, its regex syntax is `(?1)`
 
-* Now , let Bb be a well-balanced block, containing an Ep....Sp construction, itself possibly composed with, both, Ac characters and an other Bb, at any level > 0
+* Now , let Bb be a well-balanced block, containing an Ep....Sp construction, itself possibly composed with, both, Ac characters and an other Bb, at any level greater than level 0
 
- This Bb block can be represented by the symbolic regex, below ( Blank chars are ignored, for readability ) :
+    This Bb block can be represented by the symbolic regex, below ( Blank chars are ignored, for readability ) :
 
-    Sp ( Ac+ | R0 )* Ep,
+        Sp ( Ac+ | R0 )* Ep
 
-This syntax may be improved as Bb = Sp (?: Ac++ | R0 )* Ep, using, both :
+    This syntax may be improved as `Bb = Sp (?: Ac++ | R0 )* Ep`, using, both :
 
 * A non-capturing group, surrounding the two alternatives
 
 * A possessive quantifier relative to the Ac character, to be similar to the atomic state of recursions, in PCRE.
 
-It is important to point out that, if you would use the greedy form Ac+, instead of Ac++, the last match would be, wrongly, all the file contents, even against a very short text! Again, the advantage of not allowing backtracking reduces combinations and avoids the catastrophic backtracking process :-)
+    It is important to point out that, if you would use the greedy form `Ac+`, instead of `Ac++`, the last match would be, wrongly, all the file contents, even against a very short text! Again, the advantage of not allowing backtracking reduces combinations and avoids the catastrophic backtracking process :-)
 
 Now, more precisely, between the Sp and Ep parentheses, you may meet :
 
@@ -921,7 +919,7 @@ On the other hand, any subject text scanned can be defined, either, as :
 
 * A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well balanced parentheses text... as it contains no parenthesis ! )
 
-This implies that the general symbolic regex is (?: Ac* Bb )+ Ac* | Ac+
+This implies that the general symbolic regex is `(?: Ac* Bb )+ Ac* | Ac+`
 
 Now, by substituting the above value of the well-balanced Bb construction, in our final expression, we get our final symbolic regex expression :
 
