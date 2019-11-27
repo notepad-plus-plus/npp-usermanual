@@ -11,7 +11,7 @@ If more than one word in the list of candidate words matches what you've typed, 
 
 There are two sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words" and "functions".
 
-## Fuction completion
+## Function completion
 
 "Functions" are pre-defined and loaded along with the lexer that corresponds to the computer language of the file. (The lexer defines the syntax coloring; the auto-completion file specifies the names of the functions.) Typically these function words include language keywords (which technically are not functions) such as `switch` in C and similar languages or `lambda` in Python, and some set of standard library function names such as `assert` or `fdopen` in C.
 
