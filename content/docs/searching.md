@@ -183,7 +183,7 @@ The popup window has a parameter not available in the searches described earlier
 
 ### Find in Files
 
-Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like "*.doc", "*.*" or "foo.*". Note however that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
+Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like `*.doc *.* foo.*`.   As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin`** will exclude files matching `*.bin` from the search results.)  Please note however that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.  As
 
 How the default folder changes is controlled by the `fifFolderFollowsDoc` settings in `config.xml`, which is set by the **Follow current doc** checkbox in the dialog.
 
