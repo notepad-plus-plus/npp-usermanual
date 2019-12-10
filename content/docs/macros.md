@@ -61,5 +61,9 @@ Note that if no macro's are available, this dialog is inaccessible.
 To edit or delete an existing macro shortcut, you can use the Shortcut mapper,
 which displays all shortcuts of all kinds, and allows changing or removing a key
 binding. The interface is also available through the **Macro > Modify
-shortcut / Delete macro** menu entry. Note that the contents of a
-macro definition can be edited only in the `shortcuts.xml` file.
+shortcut / Delete macro** menu entry. 
+
+The contents of a macro definition can be edited only in the `shortcuts.xml` 
+file: there is no built-in interface in Notepad++.  For more information on
+the details of how the macros are stored, and the syntax involved, see the 
+[**Configuration Files Details**: **<Macros>** section](../config-files/#macros).
