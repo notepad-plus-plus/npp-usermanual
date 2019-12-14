@@ -183,9 +183,14 @@ The popup window has a parameter not available in the searches described earlier
 
 ### Find in Files
 
-Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. The filter list is a space separated list of wildcard expressions that cmd.exe can understand, like "*.doc", "*.*" or "foo.*". Note however that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
+Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders. 
 
-How the default folder changes is controlled by the `fifFolderFollowsDoc` settings in `config.xml`, which is set by the **Follow current doc** checkbox in the dialog.
+The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   If you have a blank filter, it is implied to be `*.*`.  As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename; if you have at least one exclusion in your filter, you need to have at least one inclusion in your filter, otherwise it excludes files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you want.  Please also note that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
+
+The **Directory** is the containing folder for where to search.  It has three options that affect it's behavior: 
+* **☐ Follow current doc** ⇒ if enabled, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
+* **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
+* **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
 
 ### Highlighting and bookmarking
 
