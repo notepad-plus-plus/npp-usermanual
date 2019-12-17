@@ -152,6 +152,11 @@ The following sections are defined:
 3. `<History>`: the list of recently used files.
 3. `<ProjectPanels>`: associates workspace files with a given project panel
 
+*Note:* (new to v7.8.3) The command line interpreter that is invoked by "Open Containing Folder in cmd" and "CMD here" can be changed in the `<GUIConfigs>` section. For example, add the following line to set the cli to *powershell*
+
+    <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+
+In principle, any command that can be found in your PATH can be used, but starting up an MSYS/MinGW-like environment usually requires more than just running *bash* or *zsh*. This also applies if you want to start your favorite cli in a *conhost* emulator like ConEmu.
 
 ## Keyword lists: `langs.xml`
 
