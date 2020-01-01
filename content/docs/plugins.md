@@ -20,6 +20,8 @@ The Plugins Admin allows you to easily install plugins that are in the
 Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to
 install, then select Install.
 
+![](/docs/images/pluginsAdmin.png)
+
 ### Install plugin manually
 
 If the plugin you want to install is not listed in the Plugins Admin, you may
@@ -103,8 +105,7 @@ or
 and nppPluginList.json (you should rename it from `pl.x64.json` or `pl.x86.json`,
 according your plugin's architecture). Replace `notepad++.exe` and `GUP.exe` of your
 Notepad++ installation by downloaded ones, copy `pl.x64.json` or `pl.x86.json` to
-`%PROGRAMDATA%\Notepad++\plugins\Config\nppPluginList.json`
-(or `<NPP_INST_DIR>\plugins\Config\nppPluginList.json` - see New Plugins Home), then
+`<NPP_INST_DIR>\plugins\Config\nppPluginList.json`, then
 you're all set - the menu item **Plugins Admin** will be under menu **Plugins** of your
 debug mode notepad++.exe. Launch this command will launch the **Plugins Admin** dialog
 and the rest should be intuitive.
