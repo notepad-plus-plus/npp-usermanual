@@ -16,7 +16,9 @@ For the descriptions below, if it's a checkbox `☐`, the description applies if
 These affect the user interface (localization, toolbar, tab bar, and more).
 
 * **Localization**:
-    * [pulldown]: Set the lanugage for the Notepad++ user interface
+    * [pulldown]: Set the lanugage for the Notepad++ user interface.  
+        * This copies one of the XML files from the `localization` folder to `nativeLang.xml`.
+        * _NOTE_: After upgrading to a new version of Notepad++, you may need to refresh the `nativeLang.xml`: change the **Localization** to another language, then change it back immediately to your preferred language.
 * **Toolbar**:
     * `☐ Hide`: the icon-based toolbar will be hidden
     * `Small icons` / `Big icons` / `Standard icons`: will change the icon size
