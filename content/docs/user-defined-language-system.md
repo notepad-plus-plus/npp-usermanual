@@ -85,3 +85,20 @@ At one time, there was a wiki-maintained list of externally-available UDL defini
 
 But it's gone, so hide this code for now.  Someday, something similar may be maintained
 -->
+
+## UDL Configuration File Contents
+
+It is intended that UDL are edited using the GUI dialog boxes.  However, if you are the type of user who likes to do it manually through the configuration file, it is possible.  Please see the [Configuration Files Details](https://npp-user-manual.org/docs/config-files/#editing-configuration-files) for a description of the sequence for properly editing any of the config files, including the UDL definition file(s).
+
+Most of the settings in the UDL files (whether `userDefineLang.xml` or one of the XML files in the `userDefineLangs` subfolder) correspond directly to the names seen in the **User Defined Languages** dialog box, or the **Styler** sub-dialog.  The `fontStyle` attribute encodes the setting of the **Bold**, **Italic**, and **Underline** checkboxes from the **Styler** dialog, using the sum of **Italic**=1, **Bold**=2, and **Underline**=4 (so something with all three checkboxes set would have `fontStyle="7"`).  The `nesting` keyword similarly encodes the various nesting checkboxes from the **Styler** dialog with a sum of the values below, and indicate which styles will nest properly inside the active style:
+
+| Checkbox | Value | | Checkbox | Value | | Checkbox | Value |
+|----------|------:|-|----------|------:|-|----------|------:|
+| Delimiter 1 | 1 | | Keyword 1 | 1024 | | Comment | 256 |
+| Delimiter 2 | 2 | | Keyword 2 | 2048 | | Comment Line | 512 |
+| Delimiter 3 | 4 | | Keyword 3 | 4096 | | Operators 1 | 16777216 |
+| Delimiter 4 | 8 | | Keyword 4 | 8192 | | Operators 2 | 33554432 |
+| Delimiter 5 | 16 | | Keyword 5 | 16384 | | Numbers | 67108864 |
+| Delimiter 6 | 32 | | Keyword 6 | 32768 | | | |
+| Delimiter 7 | 64 | | Keyword 7 | 65536 | | | |
+| Delimiter 8 | 128 | | Keyword 8 | 131072 | | | |
