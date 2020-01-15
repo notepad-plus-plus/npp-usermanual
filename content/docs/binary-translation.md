@@ -26,7 +26,11 @@ For modifying an existing xml files, here is the way to visualize your modificat
 <div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
-<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/chinese.xml" target="_blank"> <img src="/docs/images/flags/fTaiwan.png" alt="" border="0" /><br /> Chinese</a>
+<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/chineseSimplified.xml" target="_blank"><img src="/docs/images/flags/fChina.png" alt="" border="0" /><br /> Chinese Simplified</a> 
+</div>
+
+<div align="center" style="margin: 20px; display: inline-block;">
+<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/chinese.xml" target="_blank"> <img src="/docs/images/flags/fTaiwan.png" alt="" border="0" /><br /> Chinese Traditional</a>
 </div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
@@ -47,10 +51,6 @@ For modifying an existing xml files, here is the way to visualize your modificat
 
 <div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/dutch.xml" target="_blank"><img src="/docs/images/flags/fNetherlands.png" alt="" border="0" /><br /> Dutch</a> 
-</div>
-
-<div align="center" style="margin: 20px; display: inline-block;">
-<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/chineseSimplified.xml" target="_blank"><img src="/docs/images/flags/fChina.png" alt="" border="0" /><br /> Chinese Simplified</a> 
 </div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
