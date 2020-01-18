@@ -91,13 +91,15 @@ It is intended that UDL are edited using the GUI dialog boxes.  However, if you 
 
 Most of the settings in the UDL definition files correspond directly to the names seen in the **User Defined Languages** dialog box, or the **Styler** sub-dialog.  The `<KeywordLists>` section defines the keywords or symbols for each highlighting category.  The `<Styles>` section defines the text styling (color, font, weight, and decoration) for each highlighting category.  The `<WordsStyle>` `fontStyle` attribute encodes the setting of the **Bold**, **Italic**, and **Underline** checkboxes from the **Styler** dialog, using the sum of **Italic**=1, **Bold**=2, and **Underline**=4 (so something with all three checkboxes set would have `fontStyle="7"`).  The `nesting` attribute similarly encodes the various nesting checkboxes from the **Styler** dialog with a sum of the values below, and indicate which styles will nest properly inside the active style:
 
-| Checkbox | Value | | Checkbox | Value | | Checkbox | Value |
-|----------|------:|-|----------|------:|-|----------|------:|
-| Delimiter 1 | 1 | | Keyword 1 | 1024 | | Comment | 256 |
-| Delimiter 2 | 2 | | Keyword 2 | 2048 | | Comment Line | 512 |
-| Delimiter 3 | 4 | | Keyword 3 | 4096 | | Operators 1 | 16777216 |
-| Delimiter 4 | 8 | | Keyword 4 | 8192 | | Operators 2 | 33554432 |
-| Delimiter 5 | 16 | | Keyword 5 | 16384 | | Numbers | 67108864 |
-| Delimiter 6 | 32 | | Keyword 6 | 32768 | | | |
-| Delimiter 7 | 64 | | Keyword 7 | 65536 | | | |
-| Delimiter 8 | 128 | | Keyword 8 | 131072 | | | |
+| Checkbox    | Value |   | Checkbox  | Value  |   | Checkbox     | Value    |
+|-------------|------:|---|-----------|-------:|---|--------------|---------:|
+| Delimiter 1 | 1     |   | Keyword 1 | 1024   |   | Comment      | 256      |
+| Delimiter 2 | 2     |   | Keyword 2 | 2048   |   | Comment Line | 512      |
+| Delimiter 3 | 4     |   | Keyword 3 | 4096   |   | Operators 1  | 16777216 |
+| Delimiter 4 | 8     |   | Keyword 4 | 8192   |   | Operators 2  | 33554432 |
+| Delimiter 5 | 16    |   | Keyword 5 | 16384  |   | Numbers      | 67108864 |
+| Delimiter 6 | 32    |   | Keyword 6 | 32768  |   |              |          |
+| Delimiter 7 | 64    |   | Keyword 7 | 65536  |   |              |          |
+| Delimiter 8 | 128   |   | Keyword 8 | 131072 |   |              |          |
+
+
