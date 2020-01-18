@@ -77,14 +77,13 @@ The User Defined Languages are _not_ affected by your [active theme](../preferen
 
 However, since you can set the colors of a UDL to whatever you want, you can manually make it match your theme.  If you want to define multiple UDL using the same basic color scheme, you can start by setting the colors of the default **User Defined Language**, then **Create New** for each UDL that you want to match that scheme, customizing the rules for each new UDL.
 
-<!--
-## shared UDL files
+## User Defined Languages Collection
 
-At one time, there was a wiki-maintained list of externally-available UDL definition files
-[UDL List](http://docs.notepad-plus-plus.org/index.php/User_Defined_Language_Files#Contributing_new_user_defined_language_files)
+Throughout the history of Notepad++, many UDL files have been created by Notepad++ users and made publically available.  There is once again a centralized [User Defined Languages Collection](https://github.com/notepad-plus-plus/userDefinedLanguages).
 
-But it's gone, so hide this code for now.  Someday, something similar may be maintained
--->
+https://github.com/notepad-plus-plus/userDefinedLanguages
+
+This central Collection is a convenient location for UDL-users to find new UDL files, and for UDL-authors to share their UDL files with the whole Notepad++ community.  The Collection includes instructions for how to use the files, as well as how to submit new UDL to the Collection.
 
 ## UDL Configuration File Contents
 
