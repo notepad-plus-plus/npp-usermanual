@@ -136,7 +136,6 @@ CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
 FILE_NAME           | The active file's name            | `welcome.html`
 NAME_PART           | The filename without extension    | `welcome`
 EXT_PART            | The extension                     | `html`
-SYS._var_           | the _var_ system environment variable | `$(SYS.PATH)` will expand to your `%PATH%` environment variable
 CURRENT_WORD        | the active selection in Notepad++, or the word under the cursor |
 CURRENT_LINE        | the line number where the cursor is currently located in the editor window | `1`
 CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
