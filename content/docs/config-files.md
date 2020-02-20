@@ -127,7 +127,7 @@ Although it is possible for several commands to have the same name, this is conf
 
 The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command.  If it's not in your path, then you _should_ specify the full path.  Note that Windows will launch your default browser if you put a URL in this If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environement).  For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.
 
-There are a number of variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry.
+There are a number of Notepad++-specific variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry.
 
 Variable            | Description                       | Example
 --------------------|:---                               |:---
@@ -141,6 +141,8 @@ CURRENT_LINE        | the line number where the cursor is currently located in t
 CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
 NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
 NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
+
+If you want access to a Windows environment variable (like `TMP`), use the standard `%`-notation for windows variables (like `%TMP%`).
 
 ## User Interface settings: `config.xml`
 
