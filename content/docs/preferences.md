@@ -126,8 +126,11 @@ For this section to work, please run Notepad++ in Administrator mode, since it i
 This affects the display of the main Language menu, and also affects the per-language tab settings.
 
 * **Language Menu**:
-    * `☐ Make language menu compact` will make submenus for languages that start with the same letter (so Perl and Python syntax highlighting would be selected through **Language > P** submenu, rather than directly from the language menu; this makes the list of items in the **Language** menu much shorter
+    * `☐ Make language menu compact` will make submenus for languages that start with the same letter
+        * Under normal circumstances, this makes the list of items in the **Language** menu much shorter: the standard 80+ languages will be reduced to about 20 submenus and a few standalone **Language** menu entries
+        * For example, Perl and Python syntax highlighting would be selected through **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu
     * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list
+        * If you have moved items to Disabled Items _and_ have enabled `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**
 * **Tab settings**:
     * `[Default]` sets the tab behavior for the "default" condition
     * `normal` sets the tab behavior for plain text
