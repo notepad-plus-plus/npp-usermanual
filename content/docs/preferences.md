@@ -16,7 +16,7 @@ For the descriptions below, if it's a checkbox `☐`, the description applies if
 These affect the user interface (localization, toolbar, tab bar, and more).
 
 * **Localization**:
-    * [pulldown]: Set the lanugage for the Notepad++ user interface.  
+    * [pulldown]: Set the lanugage for the Notepad++ user interface.
         * This copies one of the XML files from the `localization` folder to `nativeLang.xml`.
         * _NOTE_: After upgrading to a new version of Notepad++, you may need to refresh the `nativeLang.xml`: change the **Localization** to another language, then change it back immediately to your preferred language.
 * **Toolbar**:
@@ -225,6 +225,8 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ ''`
         * `☐ html/xml close tag`
         * `Matched pair [1,2,3]: __ __`: define the open and close character(s) for three user-defined pairs
+* `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
+    (note: this setting was in the [MISC preferences](#misc) prior to v7.8.3)
 
 ### Multi-Instance
 
@@ -286,7 +288,6 @@ A variety of settings that didn't fit elsewhere
     * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
-* `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Treat bakslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
