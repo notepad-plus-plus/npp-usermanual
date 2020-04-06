@@ -119,6 +119,8 @@ Select the name of the filetype in the left column; select one of the extensions
 
 To unregister an extension, click it in the right column, and use the left arrow `←` to remove it from the Registered Extensions column.
 
+For this section to work, please run Notepad++ in Administrator mode, since it is modifying the registry.
+
 ### Language
 
 This affects the display of the main Language menu, and also affects the per-language tab settings.
