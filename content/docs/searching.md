@@ -462,24 +462,40 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 
 
-#### Groups
+#### Capture Groups and Backreferences
 
-* `(`_subset_`)` ⇒ Parentheses mark a _subset_ of the regular expression. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used as a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
+* `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a _subset_ of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
 
-* `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ The ℕ-th subexpression, aka parenthesized group. Using a form other than `\gℕ*` and `\kℕ` has some small benefits, like ℕ being more than 9, or disambiguating when ℕ might be followed by digits. When ℕ is negative, groups are counted backwards, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
+* `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.
+A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
 
-    Please, note the difference between absolute and relative backreferences. For instance, an exact four-letters word palindrome can be matched with :
+    * Example: `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.
 
-    * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute coordinates
+    * `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ These forms can handle any non-zero ℕ.
 
-    * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative coordinates
+        * For positive ℕ, it matches the ℕth subgroup, even if ℕ has more than one digit.  `\g10` matches the contents from the 10th capture group, _not_ the contents from the first capture group followed by the literal `0`.
+
+            * If you want to match a literal number after the contents of the ℕth capture group, use one of the forms that has braces, brackets, or quotes, like `\g{ℕ}` or `\k'ℕ'` or `\k<ℕ>`: For example, `\g{2}3` matches the contents of the second capture group, followed by a literal 3, whereas `\g23` would match the contents of the twenty-third capture group.
+
+            * For clarity, it is highly recomended to always use the braces or brackets form for multi-digit ℕ
 
 
-* `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ The string matching the subexpression named _name_.
+        * For negative ℕ, groups are counted backwards relative to the last group, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
 
-* `\ℕ` ⇒ _Backreference:_ `\1` matches an additional occurrence of a text matched by an earlier part of the regex. Example: This regular expression:  `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.  A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group). So `\ℕ` is a synonym for `\gℕ`, but only for `\1` through `\9`: `\10` means "the contents of the first group `\1` followed by the literal character `0`, _not_ "the contents of the 10th group".
+
+            * Please, note the difference between absolute and relative backreferences. For instance, an exact four-letters word palindrome can be matched with :
+
+                * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute (positive) coordinates
+
+                * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative (negative) coordinates
+
+    * `\ℕ` ⇒ This form can only have ℕ as digits 1-9, so if you have more than 9 capture groups, you will have to use one of the other numbered backreference notations, listed in the next bullet point.
+
+        Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
+
+* `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.
 
 
 #### Readability enhancements
@@ -524,7 +540,7 @@ The following constructs control how matches condition other matches, or otherwi
 ~~~
 
 
-    Without the branch reset, `(y)` would be group #3, and `(p(q)r)` would be group #4, and `(t)` would be group #5. With the branch reset, they both report as group #2.
+    Without the branch reset, `(y)` would be group 3, and `(p(q)r)` would be group 4, and `(t)` would be group 5. With the branch reset, they both report as group 2.
 
 ### Control flow
 Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
@@ -626,7 +642,7 @@ In substitutions (the contents of the **Replace with** entry), there are additio
 
 *  `$&`, `$MATCH`, `${^MATCH}`, `$0`, `${0}` ⇒ The whole matched text.
 
-*  `` $` `` <!-- ` -->, `$PREMATCH`, `${^PREMATCH}` ⇒ The text between the previous and current match, or the text before the match if this is the first one.
+*  `` $` `` <!-- `: dont remove this comment; it fixes UDL highlighting of this paragraph -->, `$PREMATCH`, `${^PREMATCH}` ⇒ The text between the previous and current match, or the text before the match if this is the first one.
 
 *  `$'`, `$POSTMATCH`, `${^POSTMATCH}` ⇒ Everything that follows current match.
 
@@ -636,9 +652,9 @@ In substitutions (the contents of the **Replace with** entry), there are additio
 
 *  `$$` or `\$` ⇒ Returns literal `$` character.
 
-*  `$ℕ`, `${ℕ}`, **\\ℕ** ⇒ Returns what matched the ℕth subexpression, where ℕ is a positive integer (1 or larger).
+*  `$ℕ`, `${ℕ}`, `\ℕ` ⇒ Returns what matched the ℕth subexpression (numbered capture group), where ℕ is a positive integer (1 or larger).  If ℕ is greater than 9, use `${ℕ}`.
 
-*  `$+{name}` ⇒ Returns what matched subexpression named _name_.
+*  `$+{name}` ⇒ Returns what matched subexpression named _name_ (named capture group).
 
 
 ### Zero length matches
