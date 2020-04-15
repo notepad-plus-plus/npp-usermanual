@@ -54,7 +54,9 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
     * `☐ Line mode`: the vertical edge is indicated by a solid vertical line, styled with the **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
     * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge with the colour from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
-    * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
+        * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
+    * `☐ Multi-line mode`: Instead of one vertical line at a single column, it allows for multiple veritcal lines.  (added v7.8.6)
+        * The box underneath contains a space-separated list of column numbers.  If it is set to `10 40 60`, there will be vertical lines after character position 10, 40, and 60.
 * **Border Width**
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
@@ -221,6 +223,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ Word completion`: will auto-complete words only
         * `☐ Function and word completion`: will auto-complete both function names and words
         * `From the _n_th character`: must type at least _n_ characters before the auto
+            * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
         * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
 * **Auto-Insert**
@@ -311,7 +314,7 @@ The "Select theme:" pulldown allows you to select which theme you want.  [Themes
 
 The "Language:" selection list lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programming-languages/_index.en.md) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule for the given language.  On all but "Language: Global Styles", there will also be a "Default ext." box, which is an un-editable list of the default file extensions associated with that Language; and the "User ext." box, where you can add a user-defined list of additional extensions (space separated, don't use the . in the extension), which says which other extensions you want to apply this language's formatting to.  There is no specific entry called "Normal text" or "Plain text": to edit the colors for a plain text file (like `.txt`), use the "Global Styles" language.
 
-The final section will reiterate which language and style are selected, and allow you to set colors and fonts.  The Colour Style allows you to choose the Foreground or Background colour by clicking on the colored box.  The Font Style allows you to pick the font, size, and bold/italic/underline settings (if Font name or Font size are left blank, they will inherit from the Global Styles: Default Style.  Under the "Language: Global Styles" with "Style: Global override", there are also a series of checkboxes for "Enable global xxx", which will mean that Notepad++ will use the Global override setting for that attribute, rather than using the per-language styling settings for that attribute.
+The final section will reiterate which language and style are selected, and allow you to set colors and fonts.  The Colour Style allows you to choose the Foreground or Background colour by clicking on the colored box.  The Font Style allows you to pick the font, size, and bold/italic/underline settings.  If Font name or Font size are left blank, they will inherit from the Global Styles: Default Style.  If you right-click a colour, you will see diagonal stripes across the colour, indicating it is set to "inherit", meaning that it will take that colour from the Default Style.  Under the "Language: Global Styles" with "Style: Global override", there are also a series of checkboxes for "Enable global xxx", which will mean that Notepad++ will use the Global override setting for that attribute, rather than using the per-language styling settings for that attribute.
 
 Some language/style combinations (like Perl > INSTRUCTION WORD) will additionally have a list of default keywords (not editable) and user-defined keywords (which allow you to add new keywords to apply this style to).
 
@@ -321,7 +324,7 @@ The Save & Close button will save the settings and close the dialog.  The Cancel
 
 Unlike most of the other items listed in the "Languages" column, which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
 
-Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.  As of v7.8.6, for styles that only have one available colour, the other will be disabled (greyed out).
 
 * Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are enabled will override even the per-language settings; any that are not enabled will not use the global-override settings for that attribute.
 * Default style [background and foreground] ⇒ This sets the base font and colours for all languages -- so any unstyled text will use these settings.
