@@ -186,6 +186,16 @@ Each lexer type has it's own `<LexerType>` section, with multiple `<WordsStyle>`
 
 If you have added user-defined keywords in the [**Settings > Style Configurator**](../preferences/#style-configurator), they will be stored as the contents of the `<WordsStyle>`, as a space-separated list (for example, `<WordsStyle>fancyKeyword1 fancyKeyword2</WordsStyle>`).
 
+The `<WordsStyle>` `fontStyle` attribute encodes the setting of the **Bold**, **Italic**, and **Underline** checkboxes from the **Styler** dialog, using the sum of **Italic**=1, **Bold**=2, and **Underline**=4 (so something with all three checkboxes set would have `fontStyle="7"`).
+
+The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined colors from `fgColor` and `bgColor` attributes, or to use the default color setting (from **Settings > Style Configurator > Global Styles > Default Style**).  The attribute should be set to one of the following:
+
+* No `colorStyle` attribute: this style will use both the `fgColor` and `bgColor` attributes from this `<WordsStyle>` item (standard behavior)
+* Set `colorStyle="2"`: this style will inherit the foreground color from the Default style, and use the `bgColor` value as the background color (equivalent to right-clicking the foreground color in the UDL styler dialog box)
+* Set `colorStyle="1"`: this style will inherit the background color from the Default style, and use the `fgColor` value as the background color (equivalent to right-clicking the background color in the UDL styler dialog box)
+* Set `colorStyle="0"`: this style will inherit both the foreground and background colors from the Default style (equivalent to right-clicking both the foreground and background colors in the UDL styler dialog box)
+
+
 ## `functionList.xml`
 
 Defines what counts as a "function" for **View > Function List**.  There are some comments in the file, and lots of examples of the builtin languages, which you can customize.
