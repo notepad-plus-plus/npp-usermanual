@@ -324,7 +324,7 @@ The Save & Close button will save the settings and close the dialog.  The Cancel
 
 Unlike most of the other items listed in the "Languages" column, which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
 
-Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.  As of v7.8.6, for styles that only have one available colour, the other will be disabled (greyed out).
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.  <!-- For styles that only have one available colour, the other will be disabled (greyed out). -->
 
 * Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are enabled will override even the per-language settings; any that are not enabled will not use the global-override settings for that attribute.
 * Default style [background and foreground] ⇒ This sets the base font and colours for all languages -- so any unstyled text will use these settings.
