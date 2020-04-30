@@ -339,7 +339,9 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
 
-* `[:`_name_`:]` ⇒ The whole character class named _name_, which must be part of a character class.  For many, there is also a single-letter short class name.
+   Please note that the complement of a character set is often many more characters than you expect: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines: the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines", but the `[^x]` is _not_ a dot `.`, so that class is still allowed to match newlines.
+
+* `[[:`_name_`:]]` or `[[:☒:]]` ⇒ The whole character class named _name_.  For many, there is also a single-letter "short" class name, ☒.  Please note: the `[:`_name_`:]` and `[:☒:]` must be inside a character class `[...]` to have their special meaning. 
 
     | short | full name      | description | equivalent character class |
     |:-----:|:--------------:|:------------|----------------------------|
@@ -360,7 +362,13 @@ In a regular expression (shortened into regex throughout), special characters in
 
     Note that letters include any unicode letters (ASCII letters, accented letters, and letters from a variety of other writing systems); digits include ASCII numeric digits, and anything else in Unicode that's classified as a digit (like superscript numbers ¹²³...).
 
-    Note that those character class names may be written in upper or lower case without changing the results.  So `[:alnum:]` is the same as `[:ALNUM:]` or the mixed-case `[:AlNuM:]`.
+    Note that those character class names may be written in upper or lower case without changing the results.  So `[[:alnum:]]` is the same as `[[:ALNUM:]]` or the mixed-case `[[:AlNuM:]]`.
+    
+    As stated earlier, the `[:`_name_`:]` and `[:☒:]` (note the single brackets) must be a part of a surrounding character class.  However, you _may_ combine them inside one character class, such as `[_[:d:]x[:upper:]=]`, which is a character class that would match any digit, any uppercase, the lowercase `x`, and the literal `_` and `=` characters.  These named classes won't always appear with the double brackets, but they will always be inside of a character class.
+    
+    If the `[:`_name_`:]` or `[:☒:]` are accidentally _not_ contained inside a surrounding character class, they will lose their special meaning.  For example, `[:upper:]` is the character class matching `:`, `u`, `p`, `e`, and `r`; whereas `[[:upper:]]` is similar to `[A-Z]` (plus other unicode uppercase letters)
+    
+* `[^[:`_name_`:]]` or `[^[:☒:]]` ⇒ The complement of character class named _name_ or ☒ (matching anything _not_ in that named class).  This uses the same long names, short names, and rules as mentioned in the previous description.
 
 ##### Character Properties
 
@@ -528,6 +536,8 @@ The following constructs control how matches condition other matches, or otherwi
     * `(?-i)caseSensitive(?i)cAsE inSenSitive` ⇒ disables case insensitivity (makes it case-sensitive) for the portion of the regex indicated by `caseSensitive`, and re-enables case-insensitive matching for the rest of the regex
     * `(?m:justHere)` ⇒ `^` and `$` will match on embedded newlines, but just for the contents of this subgroup `justHere`
     * `(?x)` ⇒ Allow extra whitespace in the expression for the remainder of the regex
+    
+    Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
 
 * `(?|expression)` ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
 
