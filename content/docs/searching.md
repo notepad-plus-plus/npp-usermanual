@@ -376,7 +376,7 @@ These properties behave similar to named character classes, but cannot be contai
 
 *  `\p☒` or `\p{`_name_`}` ⇒ Same as `[[:☒:]]` or `[[:`_name_`:]]`, where ☒ stands for one of the short names from the table above, and _name_ stands for one of the full names from above. For instance, `\pd` and `\p{digit}` both stand for a digit, just like the escape sequence `\d` does.
 
-*  `P☒` or `\P{`_name_`}` ⇒ Same as `[^[:☒:]]` or `[^[:`_name_`:]]` (not belonging to the class _name_).
+*  `\P☒` or `\P{`_name_`}` ⇒ Same as `[^[:☒:]]` or `[^[:`_name_`:]]` (not belonging to the class _name_).
 
 ##### Character escape sequences
 
