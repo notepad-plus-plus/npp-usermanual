@@ -341,7 +341,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
    Please note that the complement of a character set is often many more characters than you expect: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines: the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines", but the `[^x]` is _not_ a dot `.`, so that class is still allowed to match newlines.
 
-* `[[:`_name_`:]]` or `[[:☒:]]` ⇒ The whole character class named _name_.  For many, there is also a single-letter "short" class name, ☒.  Please note: the `[:`_name_`:]` and `[:☒:]` must be inside a character class `[...]` to have their special meaning. 
+* `[[:`_name_`:]]` or `[[:☒:]]` ⇒ The whole character class named _name_.  For many, there is also a single-letter "short" class name, ☒.  Please note: the `[:`_name_`:]` and `[:☒:]` must be inside a character class `[...]` to have their special meaning.
 
     | short | full name      | description | equivalent character class |
     |:-----:|:--------------:|:------------|----------------------------|
@@ -363,11 +363,11 @@ In a regular expression (shortened into regex throughout), special characters in
     Note that letters include any unicode letters (ASCII letters, accented letters, and letters from a variety of other writing systems); digits include ASCII numeric digits, and anything else in Unicode that's classified as a digit (like superscript numbers ¹²³...).
 
     Note that those character class names may be written in upper or lower case without changing the results.  So `[[:alnum:]]` is the same as `[[:ALNUM:]]` or the mixed-case `[[:AlNuM:]]`.
-    
+
     As stated earlier, the `[:`_name_`:]` and `[:☒:]` (note the single brackets) must be a part of a surrounding character class.  However, you _may_ combine them inside one character class, such as `[_[:d:]x[:upper:]=]`, which is a character class that would match any digit, any uppercase, the lowercase `x`, and the literal `_` and `=` characters.  These named classes won't always appear with the double brackets, but they will always be inside of a character class.
-    
+
     If the `[:`_name_`:]` or `[:☒:]` are accidentally _not_ contained inside a surrounding character class, they will lose their special meaning.  For example, `[:upper:]` is the character class matching `:`, `u`, `p`, `e`, and `r`; whereas `[[:upper:]]` is similar to `[A-Z]` (plus other unicode uppercase letters)
-    
+
 * `[^[:`_name_`:]]` or `[^[:☒:]]` ⇒ The complement of character class named _name_ or ☒ (matching anything _not_ in that named class).  This uses the same long names, short names, and rules as mentioned in the previous description.
 
 ##### Character Properties
@@ -380,7 +380,7 @@ These properties behave similar to named character classes, but cannot be contai
 
 ##### Character escape sequences
 
-These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
+`\☒` ⇒ Where ☒ is one of `d`, `l`, `s`, `u`, `w`, `h`, `v`, described below.  These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
 
 | Description]     | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
 |:-----------------|:----------------|:---------------|:-------------------------|:---------------|
@@ -536,7 +536,7 @@ The following constructs control how matches condition other matches, or otherwi
     * `(?-i)caseSensitive(?i)cAsE inSenSitive` ⇒ disables case insensitivity (makes it case-sensitive) for the portion of the regex indicated by `caseSensitive`, and re-enables case-insensitive matching for the rest of the regex
     * `(?m:justHere)` ⇒ `^` and `$` will match on embedded newlines, but just for the contents of this subgroup `justHere`
     * `(?x)` ⇒ Allow extra whitespace in the expression for the remainder of the regex
-    
+
     Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
 
 * `(?|expression)` ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
@@ -638,7 +638,13 @@ These special groups consume no characters. Their successful matching counts, bu
 
 ### Substitutions
 
-In substitutions (the contents of the **Replace with** entry), there are additional escape sequences:
+Substitution expressions (the contents of the **Replace with** entry) use similar syntax to the search expression, with the additional features described below.
+
+All characters are treated as literals except for `$`, `\`, `(`, `)`, `?`, and `:`.
+
+#### Substitution Escape Sequences
+
+In substitutions, in addition to allowing the [Control Characters](#control-characters), [Non ASCII characters](#non-ascii-characters), and [Character escape sequences](#character-escape-sequences) from search expressions, the following additional escape sequences are recognized:
 
 *  `\l` ⇒ Causes next character to output in lowercase
 
@@ -666,6 +672,26 @@ In substitutions (the contents of the **Replace with** entry), there are additio
 
 *  `$+{name}` ⇒ Returns what matched subexpression named _name_ (named capture group).
 
+If not described above, `\` followed by any character will output that literal character.
+
+#### Substitution Grouping
+
+The parentheses `(` and `)` are used for creating lexical groups, and are not part of the output text.  To output literal parentheses, use `\(` and `\)`.
+
+#### Substitution Conditionals
+
+If you want to make decisions during the replacement (conditional replacement), use one of these variants of the conditional syntax below.
+
+* `?ℕYesPattern:NoPattern`: where `ℕ` is a single decimal digit (0-9), `YesPattern` and `NoPattern` are replacement expressions.  If the ℕth numbered group from the search expression was matched, the `YesPattern` will be used as the output; if not, the `NoPattern` will be used instead.
+    * For example: `?1george\($1\):gracie` ⇒ if the first group from the search was matched, then use the literal text `george`, followed by the contents of the first match inside literal parentheses; if the first group does not match, use the literal text `gracie`.
+* `?{ℕ}YesPattern:NoPattern`: where `ℕ` here can be one or more decimal digit, `YesPattern` and `NoPattern` are replacement expressions, as above.  This syntax variant will work for any numbered group, not just groups with numbers from 1 thru 9.
+    * For example: `?{13}george\(${13}\):gracie` ⇒ if the thirteenth group from the search was matched, then use the literal text `george`, followed by the contents of the thirteenth match inside literal parentheses; if the thirteenth group does not match, use the literal text `gracie`.
+* `?{name}YesPattern:NoPattern`: where _name_ is the name of a named-match-group, and `YesPattern` and `NoPattern` are replacement expressions, as above.
+    * For example: `?{comedian}george\($+{comedian}\):gracie` ⇒ if the group named _comedian_ from the search was matched, then use the literal text `george`, followed by the contents of the named group inside literal parentheses; if the named group does not match, use the literal text `gracie`.
+
+By placing the expression inside parentheses, you can separate the conditional from the surrounding replacement: `a=?1george:gracie=b` would output `a=george` or `a=gracie=b`, whereas `a=(?1george:gracie)=b` shows when the conditional ends, so would be `a=george=b` or `a=gracie=b`.
+
+Remember, to include literal parentheses, question marks, or colons in conditional substitution expressions, make sure to escape them.
 
 ### Zero length matches
 
