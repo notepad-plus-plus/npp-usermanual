@@ -51,12 +51,17 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
     * `☐ box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
 * **Vertical Edge Settings**
-    * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
-    * `☐ Line mode`: the vertical edge is indicated by a solid vertical line, styled with the **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
-    * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge with the colour from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**
+    * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The colour of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**.
+    * Multiple Vertical Edges: There is one box, which accepts zero or more numbers (as of v7.8.6):
+        * If the box is empty, there are no vertical edges.
+        * If there is one number ℕ in the box, there will be one vertical edge, after the column for the ℕth character.
+        * If there is more than one number (separated by whitespace), then there will be a vertical edge at each of the given character columns.
+        * `☐ Background mode`: the vertical edge is usually a vertical line; if this option is enabled, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
+    * Single Vertical Edge: in older versions of Notepad++, there was only a single vertical edge available, with more toggled options (v7.8.5 and earlier):
+        * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
+        * `☐ Line mode`: the vertical edge is indicated by a solid vertical line
+        * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge
         * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
-    * `☐ Multi-line mode`: Instead of one vertical line at a single column, it allows for multiple veritcal lines.  (added v7.8.6)
-        * The box underneath contains a space-separated list of column numbers.  If it is set to `10 40 60`, there will be vertical lines after character position 10, 40, and 60.
 * **Border Width**
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
