@@ -4,1691 +4,2083 @@ linktitle: plugin-communication
 weight: 92
 ---
 
+
 ## Plugin Communication: Messages and Notifications
 
-When writing a [plugin](../plugins/), you need to communicate with the Notepad++ application, to get information from it or instruct it to do some task.  This is done using messages and notifications.
+[Plugins](../plugins/) need to communicate with Notepad++ to get information from it or to instruct it to do some task. 
+This is done by using messages and notifications.
+
+Message and notifications share a similar interface.  Where messages are sent by using Windows [SendMessage](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendmessage) api, notifications are sent by Notepad++ using [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify) messages.
 
 These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).
 
-### Why both messages <i>and</i> notifications?
+### Why both messages *and* notifications?
 
-Basically, a message may have a return value, and is usually thought as a query, though it can also command actions inside Notepad++. A notification simply informs of some event, and is more usually thought as a command.  However, a notification is sent using a Windows message, [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify), so the interface is similar.  The extra content of the messages and notifications are different from each other, and are described in their respective sections, below.
+Basically, a message may have a return value, and is usually thought as a query, though it can also command actions inside Notepad++.  
+A notification, on the other hand, simply informs of some event and is more usually thought as a command.  
+The extra content of the messages and notifications are different from each other, and are described in their respective sections below.
 
 ## Notepad++ messages
 
-When a message is sent to Notepad++, you send the message ID, and two parameters – known as wParam and lParam. The values placed in those two parameters depend on the message, and are explained below.
-
-The message IDs for each of these named messages can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
-
-You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h).
-
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTSCINTILLA
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>
-<p>[out] int * currentEdit
-</p>
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  currentEdit indicates the current Scintilla view&nbsp;:
-<ul>
-<li> 0 is the main Scintilla view
-</li>
-<li> 1 is the second Scintilla view.
-</li>
-</ul>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTLANGTYPE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] int * langType
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  langType indicates the language type of current Scintilla view document&nbsp;: please see the enum LangType in "PluginInterface.h" for all possible value.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SETCURRENTLANGTYPE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int langTypeToSet
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  langTypeToSet is used to set the language type of current Scintilla view document&nbsp;: please see the enum LangType in "PluginInterface.h" for all possible value.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETFULLCURRENTPATH
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t fullPathLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * fullPath
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  fullPath receives the full path of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTDIRECTORY
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t directoryPathLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * directoryPath
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  directoryPath receives the directory path of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETFILENAME
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t fileNameLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * fileName
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  fileName receives the file name of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETNAMEPART
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t namePartLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * namePart
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  namePart receives the part of name (without extension) of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETEXTPART
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t extensionLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * extension
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  extension receives the part of extension of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTWORD
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t currentWordLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * currentWord
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  currentWord receives the word on which cursor is currently of current Scintilla view document. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETNPPDIRECTORY
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] size_t nppDirLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * nppDir
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  nppDir receives the full path of directory where located Notepad++ binary. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETNBOPENFILES
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int nbType
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  The return value depends on nbType&nbsp;: <br>
-
- nbType
-
- Meaning
-<table border="1">
-<tbody><tr></tr>
-<tr>
-<td> ALL_OPEN_FILES </td>
-<td>the total number of files opened in Notepad++
-</td></tr>
-<tr>
-<td> PRIMARY_VIEW </td>
-<td> the number of files opened in the primary view
-</td></tr>
-<tr>
-<td> SECOND_VIEW </td>
-<td> the number of files opened in the second view
-</td></tr></tbody></table>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETOPENFILENAMES
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [out] TCHAR ** fileNames
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int nbFile
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  nbFile is the size of your fileNames array. You should get this value by using NPPM_NBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value.
-<p>fileNames receives the full path names of all the opened files in Notepad++. User is responsible to allocate fileNames array with an enough size.
-</p><p>The return value is the number of file full path names copied in fileNames array.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETOPENFILENAMESPRIMARY
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [out] TCHAR ** fileNames
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int nbFile
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  nbFile is the size of your fileNames array. You should get this value by using NPPM_NBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value.
-<p>fileNames receives the full path names of the opened files in the primary view. User is responsible to allocate fileNames array with an enough size. The return value is the number of file full path names copied in fileNames array.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETOPENFILENAMESSECOND
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [out] TCHAR ** fileNames
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int nbFile
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  nbFile is the size of your fileNames array. You should get this value by using NPPM_NBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value.
-<p>fileNames receives the full path names of the opened files in the second view. User is responsible to allocate fileNames array with an enough size.
-</p><p>The return value is the number of file full path names copied in fileNames array.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DOOPEN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] TCHAR * fullPathName2Open
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  fullPathName2Open indicates the full file path name to be opened.
-<p>The return value is TRUE (1) if the operation is successful, otherwise FALSE (0).
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_MODELESSDIALOG
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int op
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND hDlg
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  For each created dialog in your plugin, you should register it (and unregister while destroy it) to Notepad++ by using this message. If this message is ignored, then your dialog won't react with the key stroke messages such as TAB key. For the good functioning of your plugin dialog, you're recommended to not ignore this message.
-<p>hDlg is the handle of the dialog to be registed.
-</p><p>op&nbsp;: the operation mode. MODELESSDIALOGADD is to register; MODELESSDIALOGREMOVE is to unregister.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SAVECURRENTSESSION
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] const TCHAR *sessionFileName
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  You can save the current opened files in Notepad++ as a group of files (session) by using this message. Notepad++ saves the current opened files' full pathe names and their current stats in a xml file. The xml full path name is provided by sessionFileName.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SAVESESSION
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] sessionInfo sessionInfomation
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message let plugins save a session file (xml format) by providing an array of full files path name. sessionInfomation is a structure defined as follows:
-<dl>
-<dt>&nbsp; TCHAR* sessionFilePathName;
-</dt>
-<dd> the full path name of session file to save
-</dd>
-<dt>&nbsp; int nbFile;
-</dt>
-<dd> the number of files in the session
-</dd>
-<dt>&nbsp; TCHAR** files;
-</dt>
-<dd> files' full path
-</dd>
-</dl>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETNBSESSIONFILES
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] const TCHAR * sessionFileName
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message return the number of files to load in the session sessionFileName. sessionFileName should be a full path name of an xml file. 0 is returned if sessionFileName is NULL or an empty string
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETSESSIONFILES
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [out] TCHAR ** sessionFileArray
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in]const TCHAR *
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Send this message to get files' full path name from a session file.
-<p>sessionFileName is the session file from which you retrieve the files.
-</p><p>sessionFileArray&nbsp;: the array in which the files' full path of the same group are written. You should send message NPPM_GETNBSESSIONFILES before to allocate this array with the proper size.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_LOADSESSION
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] const TCHAR * sessionFileName
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Open all files of same session in Notepad++ via a xml format session file sessionFileName.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_CREATESCINTILLAHANDLE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND pluginWindowHandle
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  A plugin can create a Scintilla for its usage by sending this message to Notepad++. The return value is created Scintilla handle. The handle should be destroyed by NPPM_DESTROYSCINTILLAHANDLE message while exit the plugin. If pluginWindowHandle is set (non NULL), it will be set as parent window of this created Scintilla handle, otherwise the parent window is Notepad++.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DESTROYSCINTILLAHANDLE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND scintillaHandle2Destroy
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  If plugin called NPPM_DESTROYSCINTILLAHANDLE to create a Scintilla handle, it should call this message to destroy this handle while it exit.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTDOCINDEX
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int iView
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Sending this message to get the current index in the view that you indicates in iView&nbsp;: MAIN_VIEW or SUB_VIEW. Returned value is -1 if the view is invisible (hidden), otherwise is the current index.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ACTIVATEDOC
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int iView
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int index2Activate
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  When Notepad++ receives this message, it switches to iView (MAIN_VIEW or SUB_VIEW) as current view, then it switches to index2Activate from the current document.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETMENUHANDLE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int whichMenu
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message help plugins to get the plugins menu handle of Notepad++, whichMenu must be NPPPLUGINMENU (0), or NPPMAINMENU (1) to return handle to the menu br in the main window. 0 is return on any other inut.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_RELOADFILE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] BOOL withAlert
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] TCHAR *filePathName2Reload
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This Message reloads the file indicated in filePathName2Reload. If withAlert is TRUE, then an alert message box will be launched.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SWITCHTOFILE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] TCHAR *filePathName2switch
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  When this message is received, Notepad++ switches to the document which matches with the given filePathName2switch.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETWINDOWSVERSION
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  The return value is windows version of enum winVer. The possible value is WV_UNKNOWN, WV_WIN32S, WV_95, WV_98, WV_ME, WV_NT, WV_W2K, WV_XP, WV_S2003, WV_XPX64 and WV_VISTA
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SAVECURRENTFILE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Send this message to Notepad++ to save the current document.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SAVEALLFILES
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Send this message to Notepad++ to save all opened document.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETPLUGINSCONFIGDIR
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int strLen
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR *pluginsConfDir
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  pluginsConfDir receives the directory path of plugin config files. User is responsible to allocate (or use automatic variable) a buffer with an enough size. MAX_PATH is suggested to use.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SETMENUITEMCHECK
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int cmdID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL doCheck
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Use this message to set/remove the check on menu item. cmdID is the command ID which corresponds to the menu item.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_LAUNCHFINDINFILESDLG
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] TCHAR * dir2Search
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] TCHAR * filtre
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message triggers the Find in files dialog. The fields Directory and filters are filled by respectively dir2Search and filtre if those parameters are not NULL or empty.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DMMREGASDCKDLG
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] tTbData * dockingData
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  From v4.0, Notepad++ supports the dockable dialog feature for the plugins. This message passes the necessary data dockingData to Notepad++ in order to make your dialog dockable. Here is tTbData looks like this:
-<dl>
-<dt>&nbsp; HWND hClient;
-</dt>
-<dd> your dockable dialog handle.
-</dd>
-<dt>&nbsp; TCHAR *pszName;
-</dt>
-<dd> the name of your plugin dialog.
-</dd>
-<dt>&nbsp; int dlgID;
-</dt>
-<dd> index of menu entry where the dialog in question will be triggered.
-</dd>
-<dt>&nbsp; UINT uMask;
-</dt>
-<dd> contains the behaviour informations of your dialog. It can be one of the following value&nbsp;: DWS_DF_CONT_LEFT, DWS_DF_CONT_RIGHT, DWS_DF_CONT_TOP, DWS_DF_CONT_BOTTOM and DWS_DF_FLOATING combined (optional) with DWS_ICONTAB, DWS_ICONBAR and DWS_ADDINFO.
-</dd>
-<dt>&nbsp; HICON hIconTab;
-</dt>
-<dd> handle to the icon to display on the dialog's tab
-</dd>
-<dt>&nbsp; TCHAR *pszAddInfo;
-</dt>
-<dd> pointer to a string joined to the caption using " - ", if not NULL
-</dd>
-<dt>&nbsp; RECT rcFloat;
-</dt>
-<dd> Used internally, do not set
-</dd>
-<dt>&nbsp; int iPrevCont;
-</dt>
-<dd> Used internally, do not set
-</dd>
-<dt>&nbsp; const TCHAR *pszModuleName;
-</dt>
-<dd> the name of your plugin module (with extension .dll).
-</dd>
-</dl>
-<p>Minimum informations you need to fill out before sending it by NPPM_DMMREGASDCKDLG message is hClient, pszName, dlgID, uMask and pszModuleName.
-Notice that rcFloat and iPrevCont shouldn't be filled. They are used internally.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DMMSHOW
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND hDlg
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message is used for your plugin's dockable dialog. Send this message to show the dialog. hDlg is the handle of your dialog to be shown.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DMMHIDE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND hDlg
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message is used for your plugin's dockable dialog. Send this message to hide the dialog. hDlg is the handle of your dialog to be hidden.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DMMUPDATEDISPINFO
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] HWND hDlg
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message is used for your plugin's dockable dialog. Send this message to update (redraw) the dialog. hDlg is the handle of your dialog to be updated.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_DMMGETPLUGINHWNDBYNAME
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] const TCHAR * windowName
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] const TCHAR * moduleName
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message returns the dialog handle corresponds to the windowName and moduleName. You may need this message if you want to communicate with another plugin "dockable" dialog, by knowing its name and its plugin module name. If moduleName is NULL, then return value is NULL. If windowName is NULL, then the first found window handle which matches with the moduleName will be returned.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_MSGTOPLUGIN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] TCHAR * destModuleName
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>   [in][out] CommunicationInfo * info
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message allows the communication between 2 plugins.
-<p>For example, plugin X can execute a command of plugin Y if plugin X knows the command ID and the file name of plugin Y.
-destModuleName is the complete module name (with the extesion .dll) of plugin with which you want to communicate (plugin Y).
-communicationInfo is a poniter of structure type&nbsp;:
-</p>
-<dl>
-<dt>&nbsp; long internalMsg;
-</dt>
-<dd> an integer defined by plugin Y, known by plugin X, identifying the message being sent.
-</dd>
-<dt>&nbsp; TCHAR * srcModuleName;
-</dt>
-<dd> the complete module name (with the extesion .dll) of caller(plugin X).
-</dd>
-<dt>&nbsp; void * info;
-</dt>
-<dd> defined by plugin, the informations to be exchanged between X and Y. It's a void pointer so it should be defined by plugin Y and known by plugin X.
-</dd>
-</dl>
-<p>The returned value is TRUE if Notepad++ found the plugin by its module name (destModuleName), and pass the info (communicationInfo) to the module.
-The returned value is FALSE if no plugin with such name is found.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_MENUCOMMAND
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int commandID
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message allows plugins to call all the Notepad++ menu commands.
-<p>commandID are the command ID used in Notepad++.
-All the command ID are defined in menuCmdID.h.`
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_TRIGGERTABBARCONTEXTMENU
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int whichView
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int index2Activate
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  This message switches to iView (MAIN_VIEW or SUB_VIEW) as current view, and it switchs to index2Activate from the current document. Finally it triggers the tabbar context menu for the current document.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETNPPVERSION
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  You can get Notepad++ version via this message. The return value is made up of 2 parts&nbsp;: the major version (the high word) and minor version (the low word).<br>For example, the 4.7.5 version will be&nbsp;:
-<p>&nbsp; HIWORD(version) == 4
-&nbsp; LOWORD(version) == 75
-Note that this message is supported by the v4.7 or higher version. Earlier versions return 0.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_HIDETABBAR
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL hideOrNot
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  If hideOrNot == TRUE, then this message will hide the tabbar, otherwise it makes tabbar shown. The returned value is the previous status before this operation.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ISTABBARHIDDEN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  By sending this message, a plugin is able to tell the current status of tabbar from the returned value: TRUE if the tabbar is hidden, FALSE otherwise.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_HIDETOOLBAR
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL hideOrNot
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  If hideOrNot == TRUE, then this message will hide the toolbar, otherwises it makes tabbar shown. The returned value is the previous staus before this operation.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ISTOOLBARHIDDEN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Via this message plugin is able to know the current status of toolbar.
-<p>TRUE if the toolbar is hidden, FALSE otherwise.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_HIDEMENU
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL hideOrNot
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  If hideOrNot == TRUE, then this message will hide the menu bar, otherwises it makes tabbar shown. The returned value is the previous staus before this operation.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ISMENUHIDDEN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Via this message plugin is able to know the current status of menu bar.
-<p>TRUE if the menbar is hidden, FALSE otherwise.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_HIDESTATUSBAR
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL hideOrNot
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  If hideOrNot == TRUE, then this message will hide the status bar, otherwises it makes tabbar shown. The returned value is the previous staus before this operation.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ISSTATUSBARHIDDEN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Via this message plugin is able to know the current status of status bar.
-<p>TRUE if the status bar is hidden, FALSE otherwise.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETSHORTCUTBYCMDID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int cmdID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] ShortcutKey * sk
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get your plugin command current mapped shortcut into sk via cmdID. You may need it after getting NPPN_READY notification.
-<p>Returned value&nbsp;: TRUE if this function call is successful and shorcut is enable, otherwise FALSE
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETPOSFROMBUFFERID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get 0-based document position from given buffer ID, which is held in the 30 lowest bits of the return value on success.
-<p>If bufferID doesn't exist, -1 is returned. Otherwise, the index part is valid, and bit 30 indicates which view has the buffer (clear for main view, set for sub view).
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETFULLPATHFROMBUFFERID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] TCHAR * fullFilePath
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get full path file name from a given buffer ID.
-<p>Return -1 if the bufferID non existing, otherwise the number of TCHAR copied/to copy.
-User should call it with fullFilePath be NULL to get the number of TCHAR (not including the nul character), allocate fullFilePath with the return values + 1, then call it again to get full path file name
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETBUFFERIDFROMPOS
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int position
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] int view
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get document buffer ID from given position.
-<p>position is 0 based index, view should be MAIN_VIEW or SUB_VIEW.
-Return value&nbsp;: 0 if given position is invalid, otherwise the document buffer ID.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTBUFFERID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns active document buffer ID
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_RELOADBUFFERID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL doAlertOrNot
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Reload the document by given buffer ID.
-<p>if doAlertOrNot is TRUE, then a message box will display to ask user to reload the document, otherwise document will be loaded without asking user.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETBUFFERLANGTYPE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get document's language type from given buffer ID.
-<p>Returns value&nbsp;: if error -1, otherwise language type (see LangType).
-[in] int bufferID
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SETBUFFERLANGTYPE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] LangType langType2Set
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Set language type of given buffer ID's document.
-<p>Returns TRUE on success, FALSE otherwise.
-L_USER and L_EXTERNAL are not supported.
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETBUFFERENCODING
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get document's encoding from given buffer ID.
-<p>Returns value&nbsp;: if error -1, otherwise encoding number. enum UniMode - uni8Bit 0, uniUTF8 1, uni16BE 2, uni16LE 3, uniCookie 4, uni7Bit 5, uni16BE_NoBOM 6, uni16LE_NoBOM 7
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SETBUFFERENCODING
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] UniMode encoding
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Set given buffer ID's document encoding.
-<p>Can only be done on new, unedited files
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETBUFFERFORMAT
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Get document's format from given buffer ID.
-<p>Returns value&nbsp;: if error -1, otherwise document's format (see formatType).
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SETBUFFERFORMAT
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] int bufferID
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] formatType format
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Set format of given buffer ID's document.
-<p>Returns TRUE on success, FALSE otherwise
-</p>
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTLINE
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns the caret current position 0-based line
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTCOLUMN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns the caret current position 0-based column
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SAVECURRENTFILEAS
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] 0 to Save As, 1 to Save a Copy As
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] TCHAR* filename
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Performs a Save As (wParam == 0) or Save a Copy As (wParam == 1) on the current buffer, outputting to <i>filename</i>.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTNATIVELANGENCODING
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns the code page associated with the current localisation of Notepad++. As of v6.6.6, returned values are 1252 (ISO 8859-1), 437 (OEM US) or 950 (Big5).
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ALLOCATESUPPORTED
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns TRUE if NPPM_ALLOCATECMDID is supported. Use it to identify if subclassing is necessary.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ALLOCATECMDID
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] Requested number of IDs
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] Pointer to allocated range as an int
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Allows a plugin to obtain a number of consecutive meni item IDs for creating menus dynamically, with the guarantee of these IDs not clashing with any other plugin's. Returns 0 on failure, nonzero on success.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ALLOCATEMARKER
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] Requested number of IDs
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [out] Pointer to allocated range as an int
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Allows a plugin to obtain a number of consecutive arker IDs dynamically, with the guarantee of these IDs not clashing with any other plugin's. Returns 0 on failure, nonzero on success.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETLANGUAGENAME
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] The LangType identifier - an int actually
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in/out] TCHAR* Pointer to language name string.
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns the number of characters needed or copied. If lParam is null, size of the language name is copied. Use this to allocate a buffer to pass as lParam and get the language name copied therein. The terminating \0 isn't counted in the returned length.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETLANGUAGEDESC
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td>  [in] The LangType identifier - an int actually
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in/out] TCHAR* Pointer to language description string.
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns the number of characters needed or copied. If lParam is null, size of the language name is copied. Use this to allocate a buffer to pass as lParam and get the language description copied therein. The terminating \0 isn't counted in the returned length.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_SHOWDOCSWITCHER
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  [in] BOOL showItIfTrue
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Shows document switcher if lparam is true, hide it if false.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_ISDOCSWITCHERSHOWN
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns 0 if the document switcher is not currently shown, else non zero.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETAPPDATAPLUGINSALLOWED
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns true if loading plugins from&nbsp;%APPDATA is allowed, else returns false.
-</td></tr></tbody></table>
-<table border="1" width="100%">
-
-<tbody><tr>
-<td width="50%" rowspan="2" style="background:LightYellow;">  NPPM_GETCURRENTVIEW
-</td>
-<td width="10%" style="background:khaki"> wParam:
-</td>
-<td width="30%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td width="10%" style="background:khaki"> lParam:
-</td>
-<td>  0
-</td></tr>
-<tr>
-<td colspan="3" style="background:#E8F8E8;">  Returns 0 when primary view is active, and 1 instead if secondary view is.
-</td></tr></tbody></table>
+To send a message to Notepad++ you send its window handle together with the message ID, and two parameters, known as wParam and lParam.  
+The values placed in those two parameters depend on the message, and are explained below.  
+In cases when either wParam, lParam or both are not used, they must be set to 0.
+
+The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
+
+You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h). Note, you need to use one of the two Scintilla handles as the first parameter to SendMessage api function.
+
+The general layout of the following messages look like this
+
+>*MESSAGE NAME*  
+>*Description*
+>
+>*Parameters:*  
+>*wParam [in/out]*  
+>*lParam [in/out]*
+>
+>*Return value*
+
+**MESSAGE NAME** gets replaced by a concrete Notepad++ message like NPPM_ACTIVATEDOC.  
+
+**Description** informs about the usage of the message and provides additional information if needed.  
+
+**wParam** and **lParam** are the parameters to be provided  
+
+**in/out** indicates whether this is an input or output parameter, meaning in case of output Notepad++ will copy some information into the provided buffer  
+
+**Return value** is the value returned by the SendMessage api call.
+
+---
+---
+
+#### **NPPM_GETCURRENTSCINTILLA**
+*Retrieves the current Scintilla view*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [out]*
+: int * currentEdit, pointer to the buffer receiving the current view.  
+The returned value can be one of the following:
+
+~~~
+	Value        Meaning
+	  0          The main view
+	  1          The second view
+	 -1          In case of an error
+~~~
+
+**Return value**:
+: Returns always True
+
+---
+
+#### **NPPM_GETCURRENTLANGTYPE**
+*Retrieves the language type of the current document.*
+
+**Parameters**:
+
+*wParam [ in ]*
+: int, must be zero.
+
+*lParam [ out ]*
+: int * langType, pointer to the buffer receiving the language type of the current document  
+Please see the enum LangType for all possible values.  
+
+
+**Return value**
+: Returns always True
+
+---
+
+#### **NPPM_SETCURRENTLANGTYPE**
+*Sets a new language type to the current used document.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int langType, please see the enum LangType for all possible values.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETFULLCURRENTPATH**
+*Retrieves the full path of the current document.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t fullPathLen
+
+*lParam [out]*
+: TCHAR * fullPath
+
+**Return value**:
+: Returns True on success and False if provided fullPath buffer is not large enough
+
+---
+
+#### **NPPM_GETCURRENTDIRECTORY**
+*Retrieves the directory path of current document.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t directoryPathLen
+
+*lParam [out]*
+: TCHAR * directoryPath
+
+**Return value**:
+: Returns True on success and False if provided directoryPath buffer is not large enough
+
+---
+
+#### **NPPM_GETFILENAME**
+*Retrieves the file name of current document.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t fileNameLen
+
+*lParam [out]*
+: TCHAR * fileName
+
+**Return value**:
+: Returns True on success and False if provided fileName buffer is not large enough
+
+---
+
+#### **NPPM_GETNAMEPART**
+*Retrieves the part of filename, without extension, of the current document.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t namePartLen
+
+*lParam [out]*
+: TCHAR * namePart
+
+**Return value**:
+: Returns True on success and False if provided namePart buffer is not large enough
+
+---
+
+#### **NPPM_GETEXTPART**
+*Retrieves the extension of the filename of the current document.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t extensionLen
+
+*lParam [out]*
+: TCHAR * extension
+
+**Return value**:
+: Returns True on success and False if provided extension buffer is not large enough
+
+---
+
+#### **NPPM_GETCURRENTWORD**
+*Retrieves the word containing the caret.  
+User is responsible to allocate a buffer which is large enough.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t currentWordLen
+
+*lParam [out]*
+: TCHAR * currentWord
+
+**Return value**:
+: Returns True on success and False if provided currentWord buffer is not large enough
+
+---
+
+#### **NPPM_GETNPPDIRECTORY**
+*Retrieves the full path of the directory where the Notepad++ binary is located.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t nppDirLen
+
+*lParam [out]*
+: TCHAR * nppDir
+
+**Return value**:
+: Returns True on success and False if provided nppDir buffer is not large enough
+
+---
+
+#### **NPPM_GETNBOPENFILES**
+*Retrieves the number of files currently open*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: Integer of one of the following values:
+~~~
+	Value        Meaning
+	  0          the total number of files opened in Notepad++
+	  1          number of files opened in the main view
+	  2          number of files opened in the second view
+~~~
+
+**Return value**:
+: Returns number of open files
+
+---
+
+#### **NPPM_GETOPENFILENAMES**
+*Retrieves the open files of both views.  
+User is responsible to allocate an big enough fileNames array.*
+
+**Parameters**:
+
+*wParam [out]*
+: TCHAR ** fileNames,  
+receives the full path names of all the opened files in Notepad++
+
+*lParam [in]*
+: int nbFile,  
+is the size of the fileNames array. Get this value by using NPPM_NBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value.
+
+**Return value**:
+: Returns The number of files copied into fileNames array.
+
+---
+
+#### **NPPM_GETOPENFILENAMESPRIMARY**
+*Retrieves the open files of the main view.  
+User is responsible to allocate an big enough fileNames array.*
+
+**Parameters**:
+
+*wParam [out]*
+: TCHAR ** fileNames,  
+receives the full path names of the opened files in the primary view
+
+*lParam [in]*
+: int nbFile,  
+is the size of the fileNames array. Get this value by using NPPM_NBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value.
+
+
+**Return value**:
+: Returns The number of files copied into fileNames array.
+
+---
+
+#### **NPPM_GETOPENFILENAMESSECOND**
+*Retrieves the open files of the secondary view.  
+User is responsible to allocate an big enough fileNames array.*
+
+**Parameters**:
+
+*wParam [out]*
+: TCHAR ** fileNames,  
+receives the full path names of the opened files in the second view
+
+*lParam [in]*
+: int nbFile,  
+is the size of your fileNames array. You should get this value by using NPPM_NBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value.  
+
+**Return value**:
+: Returns The number of files copied into fileNames array.
+
+---
+
+#### **NPPM_DOOPEN**
+*Switches or openes a file with given fullPathName2Open.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: TCHAR * fullPathName2Open
+
+**Return value**:
+: Returns The return value is True (1) if the operation is successful, otherwise False (0).
+
+---
+
+#### **NPPM_MODELESSDIALOG**
+*For each created dialog in your plugin, you should register it (and unregister while destroy it) to Notepad++ by using this message.  
+If this message is ignored, then your dialog won't react with the key stroke messages such as TAB key.  
+For the good functioning of your plugin dialog, you're recommended to not ignore this message.*
+
+**Parameters**:
+
+*wParam [in]*
+: int op,  
+the operation mode.  
+MODELESSDIALOGADD is to register and  
+MODELESSDIALOGREMOVE is to unregister.
+
+*lParam [in]*
+: HWND hDlg,  
+is the handle of the dialog to be registered
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SAVECURRENTSESSION**
+*Saves the current opened files in Notepad++ as a group of files (session) as an xml file.  
+The xml full path name has to be provided by sessionFileName.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: const TCHAR *sessionFileName
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SAVESESSION**
+*Saves a session file (xml format) by providing an array of full files path name*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: sessionInfo sessionInfomation, sessionInfomation is a structure defined as follows:
+
+~~~
+struct sessionInfo {
+	TCHAR* sessionFilePathName;
+	int nbFile;
+	TCHAR** files;
+};
+~~~
+
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETNBSESSIONFILES**
+*Retrieves the number of files to load in the session sessionFileName.  
+sessionFileName should be a full path name of an xml file.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: const TCHAR * sessionFileName
+
+**Return value**:
+: Returns 0 if sessionFileName is NULL or an empty string else the number of files.
+
+---
+
+#### **NPPM_GETSESSIONFILES**
+*Retrieves the files' full path name from a session file.*
+
+**Parameters**:
+
+*wParam [out]*
+: TCHAR ** sessionFileArray,  
+the array in which the files' full path of the same group are written.  
+To allocate the array with the proper size, send message NPPM_GETNBSESSIONFILES.
+
+*lParam [in]*
+: const TCHAR * sessionFileName,  
+is the session file from which you Retrieves the files
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_LOADSESSION**
+*Opens all files of same session in Notepad++ via a xml format session file sessionFileName.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: const TCHAR * sessionFileName
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_CREATESCINTILLAHANDLE**
+*A plugin can create a Scintilla for its usage by sending this message to Notepad++.  
+The handle should be destroyed by NPPM_DESTROYSCINTILLAHANDLE message while exit the plugin.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: HWND pluginWindowHandle,  
+If set (non NULL), it will be the parent window of this created Scintilla handle, otherwise the parent window is Notepad++.
+
+**Return value**:
+: Returns the created Scintilla handle.
+
+---
+
+#### **NPPM_DESTROYSCINTILLAHANDLE**
+*If plugin called NPPM_CREATESCINTILLAHANDLE to create a Scintilla handle, it should call this message to destroy this handle while it exit.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: HWND scintillaHandle2Destroy
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETCURRENTDOCINDEX**
+*Retrieves the current index of the current view.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int iView, which must bei eihter 0 (main view) or 1 (second view).
+
+**Return value**:
+: Returns -1 if the view is invisible (hidden), otherwise is the current index.
+
+---
+
+#### **NPPM_ACTIVATEDOC**
+*Switches to the document by the given view and index.*
+
+**Parameters**:
+
+*wParam [in]*
+: int iView, which must bei eihter 0 (main view) or 1 (second view).
+
+*lParam [in]*
+: int index2Activate
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETMENUHANDLE**
+*Retrieves either the plugin or the main menu handle of Notepad++.*
+
+**Parameters**:
+
+*wParam [in]*
+: int whichMenu, which can be 0 (plugin menu) or 1 (main menu)
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the requested menu handle.
+
+---
+
+#### **NPPM_RELOADFILE**
+*Reloads the file indicated by filePathName2Reload.*
+
+**Parameters**:
+
+*wParam [in]*
+: BOOL withAlert,  
+if True then an alert message box will be launched.
+
+*lParam [in]*
+: TCHAR *filePathName2Reload
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SWITCHTOFILE**
+*Switches to the document which matches with the given filePathName2switch.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: TCHAR *filePathName2switch
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETWINDOWSVERSION**
+*Retrieves the windows operating system version.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns a value of enum winVer. Possible values are  
+- WV_UNKNOWN
+- WV_WIN32S
+- WV_95
+- WV_98
+- WV_ME
+- WV_NT
+- WV_W2K
+- WV_XP
+- WV_S2003
+- WV_XPX64
+- WV_VISTA
+
+---
+
+#### **NPPM_SAVECURRENTFILE**
+*Saves the current document.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SAVEALLFILES**
+*Saves all opened documents.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETPLUGINSCONFIGDIR**
+*Retrieves the path of the plugin config directory.  
+User is responsible to allocate a buffer which is large enough.  
+MAX_PATH is suggested to use.*
+
+**Parameters**:
+
+*wParam [in]*
+: int strLen
+
+*lParam [out]*
+: TCHAR *pluginsConfDir
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SETMENUITEMCHECK**
+*Sets or removes the check on a menu item.*
+
+**Parameters**:
+
+*wParam [in]*
+: int cmdID,  
+is the command ID which corresponds to the menu item
+
+*lParam [in]*
+: BOOL doCheck
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_LAUNCHFINDINFILESDLG**
+*Triggers the Find in files dialog.*
+
+**Parameters**:
+
+*wParam [in]*
+: TCHAR * dir2Search or NULL
+
+*lParam [in]*
+: TCHAR * filter or NULL
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMREGASDCKDLG**
+*From v4.0, Notepad++ supports the dockable dialog feature for the plugins.  
+Pass the necessary dockingData to Notepad++ in order to make your dialog dockable.  
+Minimum informations which needs to be filled out are hClient, pszName, dlgID, uMask and pszModuleName.  
+Notice that rcFloat and iPrevCont shouldn't be filled. They are used internally*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: tTbData * dockingData
+~~~
+typedef struct {
+	HWND        hClient;   // client Window Handle
+	const TCHAR *pszName;  // name of plugin (shown in window)
+	int         dlgID;     // a funcItem provides the function pointer to start a dialog. Please parse here these ID
+
+	// user modifications
+	UINT        uMask;       // mask params: look to above defines
+	HICON       hIconTab;    // icon for tabs
+	const TCHAR *pszAddInfo; // for plugin to display additional informations
+
+	// internal data, do not use !!!
+	RECT          rcFloat;        // floating position
+	int           iPrevCont;      // stores the privious container (toggling between float and dock)
+	const TCHAR*  pszModuleName;  // it's the plugin file name. It's used to identify the plugin
+} tTbData;
+~~~
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMSHOW**
+*Shows the dialog which was previously regeistered by NPPM_DMMREGASDCKDLG.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: HWND hDlg,  
+is the handle of your dialog which should be shown.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMHIDE**
+*Hides the dialog which was previously regeistered by NPPM_DMMREGASDCKDLG.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: HWND hDlg,  
+is the handle of your dialog which should be hidden.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMUPDATEDISPINFO**
+*Updates (redraw) the dialog.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: HWND hDlg,  
+is the handle of the dialog which should be updated.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMGETPLUGINHWNDBYNAME**
+*Retrieves the dialog handle corresponds to the windowName and moduleName.  
+You may need this message if you want to communicate with another plugin "dockable" dialog.* 
+
+**Parameters**:
+
+*wParam [in]*
+: const TCHAR * windowName
+
+*lParam [in]*
+: const TCHAR * moduleName
+
+**Return value**:
+: Returns NULL if moduleName is NULL. If windowName is NULL, then the first found window handle which matches with the moduleName will be returned
+
+---
+
+#### **NPPM_MSGTOPLUGIN**
+*Allows the communication between 2 plugins.  
+For example, plugin X can execute a command of plugin Y if plugin X knows the command ID and the file name of plugin Y.*
+
+**Parameters**:
+
+*wParam [in]*
+: TCHAR * destModuleName,  
+is the complete module name (with the extesion .dll) of plugin with which you want to communicate (plugin Y).
+
+*lParam [out]*
+:  CommunicationInfo * info
+~~~
+struct CommunicationInfo {
+	long internalMsg;
+	const TCHAR * srcModuleName;
+	void * info; // defined by plugin
+};
+~~~
+: *internalMsg* is an integer defined by plugin Y, known by plugin X, identifying the message being sent.
+: *srcModuleName* is the complete module name (with the extesion .dll) of caller(plugin X).
+: *info* is defined by plugin, the informations to be exchanged between X and Y. It's a void pointer so it should be defined by plugin Y and known by plugin X.
+The returned value is TRUE if Notepad++ found the plugin by its module name (destModuleName), and pass the info (communicationInfo) to the module. The returned value is FALSE if no plugin with such name is found.
+
+**Return value**:
+: Returns True if Notepad++ found the plugin by its module name (destModuleName), and pass the info (communicationInfo) to the module, False otherwise.
+
+---
+
+#### **NPPM_MENUCOMMAND**
+*Calls all possible Notepad++ menu commands.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int commandID,
+see menuCmdID.h for all possible values.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_TRIGGERTABBARCONTEXTMENU**
+*Triggers the tabbar context menu for the given view and index.*
+
+**Parameters**:
+
+*wParam [in]*
+: int whichView
+
+*lParam [in]*
+: int index2Activate
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_GETNPPVERSION**
+*Retrieves the current Notepad++ version.  
+The value is made up of 2 parts: the major version (the high word) and minor version (the low word).  
+For example, 4.7.5 is encoded like:  
+ HIWORD(version) == 4  
+ LOWORD(version) == 75  
+Note that this message is supported by the v4.7 or higher version. Earlier versions return 0.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns a LONG value containing the current version.
+
+---
+
+#### **NPPM_HIDETABBAR**
+*Either hides or shows the tabbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL hideOrNot
+
+**Return value**:
+: Returns the previous status before this operation.
+
+---
+
+#### **NPPM_ISTABBARHIDDEN**
+*Retrieves the current status of tabbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if the tabbar is hidden, False otherwise.
+
+---
+
+#### **NPPM_HIDETOOLBAR**
+*Either hides or shows the toolbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL hideOrNot
+
+**Return value**:
+: Returns the previous status before this operation.
+
+---
+
+#### **NPPM_ISTOOLBARHIDDEN**
+*Retrieves the current status of toolbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if the toolbar is hidden, False otherwise.
+
+
+---
+
+#### **NPPM_HIDEMENU**
+*Either hides or shows the menubar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL hideOrNot
+
+**Return value**:
+: Returns the previous status before this operation.
+
+---
+
+#### **NPPM_ISMENUHIDDEN**
+*Retrieves the current status of menubar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if the menubar is hidden, False otherwise.
+
+
+---
+
+#### **NPPM_HIDESTATUSBAR**
+*Either hides or shows the statusbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL hideOrNot
+
+**Return value**:
+: Returns the previous status before this operation.
+
+---
+
+#### **NPPM_ISSTATUSBARHIDDEN**
+*Retrieves the current status of the statusbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if the status bar is hidden, False otherwise.
+
+---
+
+#### **NPPM_GETSHORTCUTBYCMDID**
+*Gets the mapped plugin command shortcut. May be called after getting NPPN_READY notification.*
+
+**Parameters**:
+
+*wParam [in]*
+: int cmdID
+
+*lParam [out]*
+: ShortcutKey * sk, which is defined as
+~~~
+struct ShortcutKey {
+	bool _isCtrl;
+	bool _isAlt;
+	bool _isShift;
+	UCHAR _key;
+}
+~~~
+
+**Return value**:
+: Returns True if this function call is successful and shortcut is enable, otherwise False
+
+---
+
+#### **NPPM_GETPOSFROMBUFFERID**
+*Gets 0-based document position from given buffer ID, which is held in the 30 lowest bits of the return value on success.  
+Bit 30 indicates which view has the buffer (clear for main view, set for sub view).*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns -1 if bufferID doesn't exist else the position.
+
+---
+
+#### **NPPM_GETFULLPATHFROMBUFFERID**
+*Gets the full path file name from the given bufferID.  
+First call should be made with buffer set to NULL to Retrieves the actual size needed.  
+Second call is sent with correctly allocated buffer, +1 for trailing null, to Retrieves the full path file name.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [out]*
+: TCHAR * buffer
+
+**Return value**:
+: Returns -1 if bufferID does not exist, otherwise the number of chars copied/to copy.
+
+---
+
+#### **NPPM_GETBUFFERIDFROMPOS**
+*Gets the document buffer ID from the given position.*
+
+**Parameters**:
+
+*wParam [in]*
+: int position, is 0 based
+
+*lParam [in]*
+: int view, which should be either 0 (main view) or 1 (second view)
+
+**Return value**:
+: Returns 0 if given position is invalid, otherwise the document buffer ID.
+
+---
+
+#### **NPPM_GETCURRENTBUFFERID**
+*Returns the buffer ID of the active document.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the buffer ID of the active document.
+
+---
+
+#### **NPPM_RELOADBUFFERID**
+*Reloads the document with the given bufferID.  
+If doAlertOrNot is True, then a message box will display to ask user to reload the document, otherwise document will be loaded without asking user.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: BOOL doAlertOrNot
+
+**Return value**:
+: Returns True on success, False otherwise
+
+---
+
+#### **NPPM_GETBUFFERLANGTYPE**
+*Retrieves the language type of the document with the given bufferID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns -1 on error, otherwise a value from enum LangType.  
+Please see the enum LangType for all possible values.  
+
+---
+
+#### **NPPM_SETBUFFERLANGTYPE**
+*Sets the language type of the document based on the given bufferID.  
+See enum LangType for valid values, L_USER and L_EXTERNAL are not supported.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: LangType type2Set
+
+**Return value**:
+: Returns True on success, False otherwise.
+
+---
+
+#### **NPPM_GETBUFFERENCODING**
+*Retrieves the encoding from the document with the given bufferID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns -1 on error, otherwise the encoding number. (see enum UniMode)
+
+---
+
+#### **NPPM_SETBUFFERENCODING**
+*Sets the document encoding for the given bufferID.  
+Can only be done on new, unedited files.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: UniMode encoding
+
+**Return value**:
+: Returns True on success, False otherwise.
+
+---
+
+#### **NPPM_GETBUFFERFORMAT**
+*Gets the current format of the document with given bufferID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns -1 on error, otherwise documents format (see formatType).
+
+---
+
+#### **NPPM_SETBUFFERFORMAT**
+*Sets format to the document with the given bufferID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: formatType format
+
+**Return value**:
+: Returns True on success, False otherwise.
+
+---
+
+#### **NPPM_GETCURRENTLINE**
+*Retrieves the line of the caret.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the current, 0-based, line position of the caret.
+
+---
+
+#### **NPPM_GETCURRENTCOLUMN**
+*Retrieves the column of the caret.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the current, 0-based, column position of the caret.
+
+---
+
+#### **NPPM_SAVECURRENTFILEAS**
+*Saves the current file.  
+saveAsCopy must be either 0 to save, or 1 to save a copy of the current filename.*
+
+**Parameters**:
+
+*wParam [in]*
+: int saveAsCopy
+
+*lParam [in]*
+: TCHAR* filename
+
+**Return value**:
+: Returns True on success, False otherwise
+
+---
+
+#### **NPPM_GETCURRENTNATIVELANGENCODING**
+*Retrieves the code page associated with the current localisation of Notepad++.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns As of v6.6.6, returned values are 1252 (ISO 8859-1), 437 (OEM US) or 950 (Big5).
+
+
+---
+
+#### **NPPM_ALLOCATESUPPORTED**
+**
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True always
+
+---
+
+#### **NPPM_ALLOCATECMDID**
+*Obtains a number of consecutive menu item IDs for creating menus dynamically, with the guarantee of these IDs not clashing with any other plugins.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, requested number of IDs.
+
+*lParam [out]*
+: int, pointer to allocated range.
+
+**Return value**:
+: Returns 0 on failure, nonzero on success
+
+---
+
+#### **NPPM_ALLOCATEMARKER**
+*Obtains a number of consecutive marker IDs dynamically, with the guarantee of these IDs not clashing with any other plugins.*
+
+**Parameters**:
+
+*wParam [in]*
+: int numberOfMarkers
+
+*lParam [out]*
+: int * firstMarkerID
+
+**Return value**:
+: Returns 0 on failure, nonzero on success.
+
+---
+
+#### **NPPM_GETLANGUAGENAME**
+*Retrieves the name of the current language used.  
+First call should be made with buffer set to NULL to Retrieves the actual size needed.  
+Second call is sent with correctly allocated buffer to Retrieves the language name.*
+
+**Parameters**:
+
+*wParam [in]*
+: int langTypeID
+
+*lParam [out]*
+: TCHAR* buffer
+
+**Return value**:
+: Returns The number of characters needed or copied
+
+---
+
+#### **NPPM_GETLANGUAGEDESC**
+*Retrieves the description of the current language used.  
+First call should be made with buffer set to NULL to Retrieves the actual size needed.  
+Second call is sent with correctly allocated buffer to Retrieves the description.*
+
+**Parameters**:
+
+*wParam [in]*
+: int langTypeID
+
+*lParam [out]*
+: TCHAR* buffer
+
+**Return value**:
+: Returns The number of characters needed or copied
+
+---
+
+
+#### **NPPM_SHOWDOCSWITCHER**
+*Handles the visibility of document switcher window.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL showItIfTrue
+
+**Return value**:
+: Returns True
+
+---
+
+
+#### **NPPM_ISDOCSWITCHERSHOWN**
+*Checks the visibility of the document switcher window.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if the document switcher is currently shown, False otherwise
+
+---
+
+#### **NPPM_GETAPPDATAPLUGINSALLOWED**
+*Retrieves the information whether plugins are loadable from %APPDATA%.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if loading plugins from %APPDATA% is allowed, False otherwise
+
+---
+
+
+#### **NPPM_GETCURRENTVIEW**
+*Retrieves the current used view. *
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns Either 0 when main view is active or 1 if secondary view is active.
+
+---
+
+#### **NPPM_ADDTOOLBARICON**
+*Adds an icon to the toolbar.  
+This function makes only sense if called on response to NPPN_TBMODIFICATION notification.  
+cmdID must be a command function id which the plugin registered via getFuncsArray previously.  
+icon is a pointer to the toolbarIcons structure.*
+
+**Parameters**:
+
+*wParam [in]*
+: INT cmdID
+
+*lParam [in]*
+: toolbarIcons* icon
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DECODESCI**
+*Changes current buffer view to ansi.  
+view must be either 0 = main view or 1 = second view.*
+
+**Parameters**:
+
+*wParam [in]*
+: INT view
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns The new encoding mode.
+
+---
+
+#### **NPPM_DISABLEAUTOUPDATE**
+*Disables the auto update functionality of Notepad++.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DMMVIEWOTHERTAB**
+*Shows the plugin dialog with the given name.  
+name should be the same value as previously used to register the dialog.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: TCHAR* name
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_DOCSWITCHERDISABLECOLUMN**
+*Sets the extension column in doc switcher window.  
+If disableOrNot is True, extension column is hidden otherwise it is visible.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL disableOrNot
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_ENCODESCI**
+*Changes current buffer view to utf8.  
+view must be either 0 = main view or 1 = second view.*
+
+**Parameters**:
+
+*wParam [in]*
+: INT view
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns The new encoding mode.
+
+---
+
+#### **NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR**
+*Retrieves the current editor default background color.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns The color as integer with hex format being 0x00bbggrr
+
+---
+
+#### **NPPM_GETEDITORDEFAULTFOREGROUNDCOLOR**
+*Retrieves the current editor default foreground.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns The color as integer with hex format being 0x00bbggrr
+
+---
+
+#### **NPPM_GETENABLETHEMETEXTUREFUNC**
+*Returns if visual style of the background of a dialog window is enabled or not.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns A proc address or NULL
+
+---
+
+#### **NPPM_GETFILENAMEATCURSOR**
+*Retrieves the filename at the current caret position.  
+Note, while this message has been created, and is used internally, to Retrieves a filename at the current caret position, it does return anything which fulfils the requirements, even single words.*
+
+**Parameters**:
+
+*wParam [in]*
+: INT length
+
+*lParam [out]*
+: TCHAR* buffer
+
+**Return value**:
+: Returns True if the size of the provided buffer is large enough, False otherwise.
+
+---
+
+#### **NPPM_GETNBUSERLANG**
+*Retrieves the number of user defined languages and, optionally, the starting menu id.  
+Note, udlID is optional, if not used set it to 0, otherwise an integer pointer is needed to Retrieves the menu identifier.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [out]*
+: INT* udlID
+
+**Return value**:
+: Returns The number of user defined languages identified
+
+---
+
+#### **NPPM_GETNPPFULLFILEPATH**
+*Retrieves the full path of the Notepad++ executable.*
+
+**Parameters**:
+
+*wParam [in]*
+: INT length
+
+*lParam [out]*
+: TCHAR* buffer
+
+**Return value**:
+: Returns True if the provided buffer size was big enough to write the full path to it, False otherwise.
+
+---
+
+#### **NPPM_GETPLUGINHOMEPATH**
+*Retrieves the plugin home root path.  
+First call should be made with length set to 0 and buffer set to NULL to Retrieves the actual size of the path. Second call sends the correct length and allocated buffer, both +1 for trailing NULL, to get the path name.*
+
+**Parameters**:
+
+*wParam [in]*
+: SIZE_T length
+
+*lParam [out]*
+: TCHAR* buffer
+
+**Return value**:
+: Returns the number of TCHAR copied to buffer without trailing NULL.
+
+---
+
+#### **NPPM_MAKECURRENTBUFFERDIRTY**
+*Makes the current document dirty, aka sets the save state to unsaved.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_REMOVESHORTCUTBYCMDID**
+*Removes the assigned shortcut mapped to cmdID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int32 cmdID
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns True if function call is successful, False otherwise.
+
+---
+
+#### **NPPM_SAVEFILE**
+*Saves a specific file.  
+filename must be the full file path for the file to be saved.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: const TCHAR* filename
+
+**Return value**:
+: Returns True on success False otherwise
+
+---
+
+#### **NPPM_SAVESESSION**
+*Creates an session file for a defined set of files.  
+sessionInfo is a pointer to sessionInfo structure.  
+Note, contrary to NPPM_SAVECURRENTSESSION, which saves the current opened files, this call can be used to freely define any file which should be part of a session.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: sessionInfo*
+
+**Return value**:
+: Returns On success a TCHAR* to full path of the session filename to be saved or NULL otherwise
+
+---
+
+#### **NPPM_SETEDITORBORDEREDGE**
+*Extends the Scintilla window with an extra style.  
+If value is True adds an additional sunken edge style to the Scintilla window else it removes the extended style from the window. See MSDN Extended Window Styles for more information.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL value
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SETSMOOTHFONT**
+*Uses underlying Scintilla command SCI_SETFONTQUALITY to manage the font quality.  
+If value is True, this message sets SC_EFF_QUALITY_LCD_OPTIMIZED else SC_EFF_QUALITY_DEFAULT*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL value
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_SETSTATUSBAR**
+*Sets value in the specified field of a statusbar.*
+
+**Parameters**:
+
+*wParam [in]*
+: int field, possible values are
+~~~
+STATUSBAR_DOC_TYPE      0
+STATUSBAR_DOC_SIZE      1
+STATUSBAR_CUR_POS       2
+STATUSBAR_EOF_FORMAT    3
+STATUSBAR_UNICODE_TYPE  4
+STATUSBAR_TYPING_MODE   5
+~~~
+
+*lParam [out]*
+: TCHAR * value, pointer to the new value.
+
+**Return value**:
+: Returns 0 on failure, nonzero on success
+
+---
 
 ## Notepad++ notifications
 
-A notification is sent using a WM_NOTIFY message.  It holds the sender's control ID in its wParam, and a pointer to a notification parameter block in its lParam. The parameter block is a structure consisting of at least 3 integers, which indicate:
+A notification is sent using a [WM_NOTIFY](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify) message and therefore uses the [NMHDR structure](https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-nmhdr).
 
-1. Handle of sender
-2. Control ID of sender (duplicates wParam for historical reasons)
-3. Notification code
-
-Extra information, dependent on the notification code, may follow in the parameter block pointed to by lParam. Such information is documented in the Description field, if present.
+The three structure fields are, basically, three integer values.  
+**hwndFrom** and **idFrom** holding the provided information of the notification.  
+The integers might be pointers to structures/arrays, which, if present, are documented.  
+**code** is always set to the ID of the Notification.
 
 The notification IDs for each of these named notifications can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
 
-<table class="notifications" rules="rows" width="100%">
-<tr>
-<th width="40%" rowspan="2" style="background:LightYellow; text-align: left">Notification</th>
-<th width="40%" style="text-align: left">hwndFrom</th>
-<th width="20%" style="background:SeaShell; text-align: left"> idFrom </th></tr>
-<tr>
-<th colspan="2" style="background:#E8F8E8; text-align: left">  Description
-</th></tr>
-</tr>
+Most of the time ***hwndFrom*** is set to **hwndNpp** which represents the window handle of the current Notepad++ instance.  
+**BufferID**, mostly used in ***idFrom***, refers to an ID which uniquely identifies a document  
+A **0** (NULL) in either ***hwndFrom*** or ***idFrom*** indicate that the field is unused.  
 
-<tbody>
+The general layout of the following notifications look like this
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_READY
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that all the procedures of launching notepad++ completed succesfully.
-</td></tr>
-</td></tr>
+**NOTIFICATION NAME**  
+*Description*
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_TBMODIFICATION
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that toolbar icons can be registered.
-</td></tr>
-</td></tr>
+**Fields**  
+: *code*  
+: *hwndFrom*  
+: *idFrom*
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILEBEFORECLOSE
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file is about to be closed
-</td></tr>
-</td></tr>
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILECLOSED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file is just closed
-</td></tr>
-</td></tr>
+**NOTIFICATION NAME** gets replaced by a concrete Notepad++ notification like NPPN_READY.  
+**Description** informs about the usage of the notification and provides additional information if needed.  
+**Fields** are the parameters to be provided by the notification.  
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILEBEFOREOPEN
-</td>
-<td> hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that a file is being opened
-</td></tr>
-</td></tr>
+---
+---
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILEOPENED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file just opened
-</td></tr>
-</td></tr>
+####  **NPPN_BEFORESHUTDOWN**
+*To notify plugins that Npp shutdown has been triggered, files have not been closed yet*  
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILEBEFORESAVE
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file is about to be saved
-</td></tr>
-</td></tr>
+**Fields:**
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILESAVED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file wass just saved
-</td></tr>
-</td></tr>
+	code: 		NPPN_BEFORESHUTDOWN  
+	hwndFrom:	hwndNpp  
+	idFrom:		0
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_SHUTDOWN
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that Notepad++ is about to shut down.
-</td></tr>
-</td></tr>
+---
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_BUFFERACTIVATED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;">  activatedBufferID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that a buffer was activated (put to foreground).
-</td></tr>
-</td></tr>
+####  **NPPN_BUFFERACTIVATED**
+*To notify plugins that a buffer was activated (put to foreground).*  
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_LANGCHANGED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;">  currentBufferID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the language in the current doc just changed.
-</td></tr>
-</td></tr>
+**Fields:**
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_WORDSTYLESUPDATED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;">  currentBufferID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that user initiated a WordStyleDlg change.
-</td></tr>
-</td></tr>
+	code:		NPPN_BUFFERACTIVATED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_SHORTCUTREMAPPED
-</td>
-<td>  ShortcutKeyStructurePointer
-</td>
-<td width="20%" style="background:SeaShell;">  cmdID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that a plugin command shortcut is remapped.
-<p>ShortcutKeyStructurePointer is type ShortcutKey *, cmdID has type int.
-</p>
-</td></tr>
-</td></tr>
+---
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILEBEFORELOAD
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;"> 0
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that the current file is about to be loaded
-</td></tr>
-</td></tr>
+####  **NPPN_CANCELSHUTDOWN**
+*To notify plugins that Npp shutdown has been cancelled*  
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_FILELOADFAILED
-</td>
-<td>  hwndNpp
-</td>
-<td width="20%" style="background:SeaShell;">  bufferID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that file open operation failed
-</td></tr>
-</td></tr>
+**Fields:**
 
-<tr>
-<td rowspan="2" style="background:LightYellow;">  NPPN_DOCORDERCHANGED
-</td>
-<td>  newIndex
-</td>
-<td width="20%" style="background:SeaShell;">  bufferID
-</td></tr>
-<tr>
-<td colspan="2" style="background:#E8F8E8;">  Notifies plugins that document order is changed, bufffer <i>bufferID</i> having index <i>newIndex</i>.
-</td></tr>
-</td>
-</tr>
-</tbody></table>
+	code:		NPPN_CANCELSHUTDOWN  
+	hwndFrom:	hwndNpp  
+	idFrom:		0
 
+---
+
+####  **NPPN_DOCORDERCHANGED**
+*To notify plugins that document order is changed*  
+
+**Fields:**
+
+	code:		NPPN_DOCORDERCHANGED  
+	hwndFrom:	newIndex  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEBEFORECLOSE**
+*To notify plugins that the current file is about to be closed*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFORECLOSE  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEBEFOREDELETE**
+*To notify plugins that file is to be deleted*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFOREDELETE  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEBEFORELOAD**
+*To notify plugins that the current file is about to be loaded*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFORELOAD  
+	hwndFrom:	hwndNpp  
+	idFrom:		NULL
+
+---
+
+####  **NPPN_FILEBEFOREOPEN**
+*To notify plugins that the current file is about to be opened*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFOREOPEN  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEBEFORERENAME**
+*To notify plugins that file is to be renamed*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFORERENAME  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEBEFORESAVE**
+*To notify plugins that the current file is about to be saved*  
+
+**Fields:**
+
+	code:		NPPN_FILEBEFORESAVE  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILECLOSED**
+*To notify plugins that the current file is just closed*  
+
+**Fields:**
+
+	code:		NPPN_FILECLOSED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEDELETED**
+*To notify plugins that file has been deleted*  
+
+**Fields:**
+
+	code:		NPPN_FILEDELETED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEDELETEFAILED**
+*To notify plugins that file deletion has failed*  
+
+**Fields:**
+
+	code:		NPPN_FILEDELETEFAILED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILELOADFAILED**
+*To notify plugins that file open operation failed*  
+
+**Fields:**
+
+	code:		NPPN_FILELOADFAILED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILEOPENED**
+*To notify plugins that the current file is just opened*  
+
+**Fields:**
+
+	code:		NPPN_FILEOPENED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILERENAMECANCEL**
+*To notify plugins that file rename has been cancelled*  
+
+**Fields:**
+
+	code:		NPPN_FILERENAMECANCEL  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILERENAMED**
+*To notify plugins that file has been renamed*  
+
+**Fields:**
+
+	code:		NPPN_FILERENAMED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_FILESAVED**
+*To notify plugins that the current file is just saved*  
+
+**Fields:**
+
+	code:		NPPN_FILESAVED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_LANGCHANGED**
+*To notify plugins that the language in the current doc is just changed.*  
+
+**Fields:**
+
+	code:		NPPN_LANGCHANGED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_READONLYCHANGED**
+*To notify plugins that current document change the readonly status,*  
+
+**Fields:**
+
+	code:		NPPN_READONLYCHANGED  
+	hwndFrom:	BufferID  
+	idFrom:		docStatus, either one or the combination of the following values  
+				DOCSTATUS_READONLY    1
+				DOCSTATUS_BUFFERDIRTY 2
+
+---
+
+####  **NPPN_READY**
+*To notify plugins that all the procedures of launchment of notepad++ are done.*  
+
+**Fields:**
+
+	code:		NPPN_READY  
+	hwndFrom:	hwndNpp  
+	idFrom:		0
+
+---
+
+####  **NPPN_SHORTCUTREMAPPED**
+*To notify plugins that plugin command shortcut is remapped.*  
+
+**Fields:**
+
+	code:		NPPN_SHORTCUTREMAPPED  
+	hwndFrom:	ShortcutKeyStructurePointer, which is defined as
+				struct ShortcutKey {
+					bool _isCtrl
+					bool _isAlt
+					bool _isShift
+					UCHAR _key
+				}
+
+	idFrom:		cmdID, the ID of the command shortcut
+
+---
+
+####  **NPPN_SHUTDOWN**
+*To notify plugins that Notepad++ is about to be shutdowned.*  
+
+**Fields:**
+
+	code:		NPPN_SHUTDOWN  
+	hwndFrom:	hwndNpp  
+	idFrom:		0
+
+---
+
+####  **NPPN_SNAPSHOTDIRTYFILELOADED**
+*To notify plugins that a snapshot dirty file is loaded on startup*  
+
+**Fields:**
+
+	code:		NPPN_SNAPSHOTDIRTYFILELOADED  
+	hwndFrom:	NULL  
+	idFrom:		BufferID
+
+---
+
+####  **NPPN_TBMODIFICATION**
+*To notify plugins that toolbar icons can be registered*  
+
+**Fields:**
+
+	code:		NPPN_TBMODIFICATION  
+	hwndFrom:	hwndNpp  
+	idFrom:		0
+
+---
+
+####  **NPPN_WORDSTYLESUPDATED**
+*To notify plugins that user initiated a WordStyleDlg change.*  
+
+**Fields:**
+
+	code:		NPPN_WORDSTYLESUPDATED  
+	hwndFrom:	hwndNpp  
+	idFrom:		BufferID
+
+---
