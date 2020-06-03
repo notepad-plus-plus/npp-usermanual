@@ -178,6 +178,8 @@ Position | Name | Value format | Meaning
 
 Inside each of the languages, you _could_ add keywords.  However, it's better to use [**Settings > Style Configurator**](../preferences/#style-configurator) and make use of the user-defined keywords box for a given category (when available).  These user-defined keywords are stored in [`stylers.xml`](#highlighting-schemes-stylers-xml) (described below).
 
+The order of the `ext` list here determines the order of extensions in the file-type pulldowns of the Windows-common-dialogs like **Open**, **Save**, and **Save As** dialogs. When using the [old-style dialogs](../preferences/#default-directory), the automatically-added extension will be the first extension from this `ext` list.  As of v7.8.7, the new-style dialogs will also automatically add the first extension.
+
 ## Highlighting schemes: `stylers.xml`
 
 This file sets the color scheme for the default theme.  The other themes are stored in `themes\*.xml`, which follow the same format at `stylers.xml`.  In general, use [**Settings > Style Configurator**](../preferences/#style-configurator) for easier maintenance of styles.
