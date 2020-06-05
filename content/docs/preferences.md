@@ -311,6 +311,16 @@ A variety of settings that didn't fit elsewhere
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
+## Preferences for Advanced Users
+
+The following settings are rather for the specific need and could make some confusion if enable them. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased while Notepad++ exit. 
+
+* Allow regex backward research: Backward regex searches is foribid due to sometimes surprising results (from v7.8.7). However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in `FindHistory` tag of `config.xml` to eanable this option:
+```
+<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
+```
+Add `"regexBackward4PowerUser"="yes"` simply if this option is absent.
+
 ## Style Configurator
 
 The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style defition.
