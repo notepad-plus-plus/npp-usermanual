@@ -311,6 +311,26 @@ A variety of settings that didn't fit elsewhere
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
+## Preferences for Advanced Users
+
+The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased when Notepad++ exits. 
+
+* Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
+```
+<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
+```
+    Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
+
+* Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
+```
+<GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+```
+    If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
+```
+<GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
+```
+    
+
 ## Style Configurator
 
 The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style defition.
