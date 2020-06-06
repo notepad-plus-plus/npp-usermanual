@@ -313,13 +313,23 @@ A variety of settings that didn't fit elsewhere
 
 ## Preferences for Advanced Users
 
-The following settings are rather for the specific need and could make some confusion if enable them. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased while Notepad++ exit. 
+The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased when Notepad++ exits. 
 
-* Allow regex backward research: Backward regex searches is foribid due to sometimes surprising results (from v7.8.7). However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in `FindHistory` tag of `config.xml` to eanable this option:
+* Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
 ```
 <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
 ```
-Add `"regexBackward4PowerUser"="yes"` simply if this option is absent.
+    Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
+
+* Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
+```
+<GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+```
+    If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
+```
+<GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
+```
+    
 
 ## Style Configurator
 
