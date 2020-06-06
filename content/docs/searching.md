@@ -286,6 +286,8 @@ Notepad++ regular expressions use the Boost regular expression library v1.70, wh
 
 The Notepad++ Community has a [FAQ on other resources for regular expressions](https://notepad-plus-plus.org/community/topic/15765/faq-desk-where-to-find-regex-documentation).
 
+Note: Starting in v7.8.7, regex backward search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to enable this option.
+
 ### Regex Special Characters
 
 In a regular expression (shortened into regex throughout), special characters interpreted are:

@@ -319,13 +319,13 @@ The following settings are for rather specific needs and could cause some confus
 ```
 <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
 ```
-    Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
+Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
 
 * Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
 ```
 <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
 ```
-    If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
+If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
 ```
 <GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
 ```
