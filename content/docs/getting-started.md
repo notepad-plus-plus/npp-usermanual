@@ -9,6 +9,7 @@ Notepad++ is a text editor and source code editor for use under Microsoft Window
 Notepad++ is available under [GPL](http://www.gnu.org/licenses/gpl-3.0.html) and distributed as [free software](https://www.fsf.org/).
 
 You may visit the Notepad++ website at https://notepad-plus-plus.org/
+This manual is available on the website https://npp-user-manual.org/
 
 ## Download Notepad++
 Download the latest version of Notepad++ from https://notepad-plus-plus.org/downloads/
