@@ -23,7 +23,7 @@ The main pulldowns and buttons are available, whichever configuration tab is act
 * **☐ Ignore Case** will make the various keywords ignore case while matching.
 * **☐ Transparency** (when not docked) will make the dialog box semi-transparent; the slider bar changes from virtually invisible (all the way to the left) to mostly opaque (all the way to the right); if you want it completely opaque (no transparency), uncheck the box.
 
-When a UDL other than the default **User Defined Language** is seelcted in the pulldown, the following will also be available:
+When a UDL other than the default **User Defined Language** is selected in the pulldown, the following will also be available:
 * **Rename** will rename the currently-selected UDL.
 * **Remove** will delete the currently-selected UDL.
 * **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.  For example **Ext.: `md mkdn`** will associate `file.mkdn` or `something.md` with your selected UDL.
