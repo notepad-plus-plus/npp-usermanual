@@ -833,7 +833,7 @@ You have printed in windows a file list using `dir /a-d /b/s /-p > filelist.txt`
 
     According on your requirements, you can similarly change any possible symbol `! # $ % & ' ( ) + , - ; = @ [ ] ^ { } ~` with the appropriate `%ℕℕ` expression
 
-*  Search `^(?=.)$`
+*  Search `^(?=.)`
 
 *  Replace with `file:///`
 
