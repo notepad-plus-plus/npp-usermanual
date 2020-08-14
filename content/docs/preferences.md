@@ -188,6 +188,14 @@ Affects how the text is formatted when sent to the printer
     * Font pulldown: use selected font for the header or footer (if left blank, use document's default font)
     * Font size pulldown: define font size for header or footer
 
+### Searching
+
+Affects the operations found in the **Find** dialog tabs.
+
+* `☐ Don't fill find field in Find dialog with selected word`: when enabled, **Find** command will _not_ replace the **Find What** text with the currently-selected text; when disabled (default), the **Find What** text _will_ be replaced (added v7.8.3)
+* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
+* `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always
+
 ### Backup
 
 Defines whether or not to perform saving sessions, periodic backup, and backup on save.
@@ -306,18 +314,16 @@ A variety of settings that didn't fit elsewhere
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
-* `☐ Don't fill find field in Find dialog with selected word`: when enabled, **Find** command will _not_ replace the **Find What** text with the currently-selected text; when disabled (default), the **Find What** text _will_ be replaced (added v7.8.3)
-* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
 ## Preferences for Advanced Users
 
-The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased when Notepad++ exits. 
+The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased when Notepad++ exits.
 
 * Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
 ```
-<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
+<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
 ```
 Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
 
@@ -329,7 +335,7 @@ If your command-line interpreter is not in your path, make sure to include the d
 ```
 <GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
 ```
-    
+
 
 ## Style Configurator
 

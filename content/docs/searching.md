@@ -17,7 +17,7 @@ The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ct
 
 *Note:*  Although a keyboard command can open and/or move input focus to one of the four tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
 
-*Note:*  Use of some "Find" family features can cause the window to close.  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by editing `config.xml` and looking for the `dlgAlwaysVisible=` parameter.  It defaults to `dlgAlwaysVisible="no"` but may be set to `dlgAlwaysVisible="yes"` to keep the "Find" window open and always available for user interaction.
+*Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
