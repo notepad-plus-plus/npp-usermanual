@@ -85,7 +85,7 @@ To avoid the regression, running the unit tests before you submit your modificat
 
 ### Unit test file is absent
 
-It could be that your create a new language parser for function list, or you're enhancing an existing language parser but the file `unitTest` doesn't exists. In both cases you should:
+It could be that you're creating a new language parser for function list, or you're enhancing an existing language parser but the file `unitTest` doesn't exists. In both cases you should:
 
 1. Add the directory with language name in lowercase into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`.
 2. Add your new test file as `unitTest` into the new added directory.
