@@ -572,7 +572,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
 *  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.
 
-*  `(&name)` or `(?P>name)` ⇒ Backtrack to subexpression named _name_.
+*  `(?&name)` or `(?P>name)` ⇒ Backtrack to subexpression named _name_.
 
     * If a non-signed subexpression is located OUTSIDE the parentheses of the group to which it refers, it is called a subroutine call
 
