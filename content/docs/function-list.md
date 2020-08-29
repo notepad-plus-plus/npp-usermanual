@@ -69,3 +69,35 @@ In `associationMap`, it contains:
     - `userDefinedLangName`: User Defined Language Name. It makes association between User Defined Language and the parser. If langID is present, this attribute will be ignored.
     - `ext`: File name extesion (should contain `.`). If `langID` or `userDefinedLangName` is present, this attribute will be ignored.
     - `id`: Parser ID.
+
+## Contribute your enhanced functionList.xml
+
+You're welcome to contribute your new or enhanced parser by creating PR on [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus). 
+The following sections describe how to prepare your PR according the different situations.
+
+### Unit tests
+
+To avoid the regression, running the unit tests before you submit your modification is important. Here are the steps to run unit tests:
+
+1. Make sure you copy your modified functionList.xml into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\`
+2. Open powershell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
+3. Once you see "All tests are passed.", you can submit your PR.
+
+### Unit test file is absent
+
+It could be that you're creating a new language parser for function list, or you're enhancing an existing language parser but the file `unitTest` doesn't exists. In both cases you should:
+
+1. Add the directory with language name in lowercase into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`.
+2. Add your new test file as `unitTest` into the new added directory.
+3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
+4. A file named `unitTest.result.json` will be generated. Rename it as `unitTest.expected.result`.
+5. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
+
+### Unit test file is present
+
+If you're improving an existing parser, and `unitTest` is present, then you should:
+
+1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
+2. Modify the file `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\langName]\unitTest` according your enhancement. Generally, you don't remove content but you add the content in this file.
+3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
+4. A file named `unitTest.result.json` will be generated. Remove `unitTest.expected.result` and Rename `unitTest.result.json` to `unitTest.expected.result`.
