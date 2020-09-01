@@ -32,6 +32,7 @@ Summary
 * [Ghost Typing](content/docs/binary-translation.md)
 * [Upgrading](content/docs/upgrading.md)
 * [Other Resources](content/docs/other-resources.md)
+* [Copyright & License](content/docs/license.md)
 
 
 How to test site locally
