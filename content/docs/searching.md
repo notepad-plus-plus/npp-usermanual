@@ -578,7 +578,9 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     * If a non-signed subexpression is located INSIDE the parentheses of the group to which it refers, it is called a recursive call
 
-*  `(?(assertion)YesPattern|NoPattern)` ⇒ If the _assertion_ is true, then _YesPattern_ will be used for matching the text; if the _assertion_ is false, then _NoPattern_ will be used for matching the text.
+*  `(?(assertion)YesPattern|NoPattern)` ⇒ Conditional Expressions
+
+    If the _assertion_ is true, then _YesPattern_ will be used for matching the text; if the _assertion_ is false, then _NoPattern_ will be used for matching the text.
 
     _YesPattern_ and _NoPattern_ are any valid regex patterns.
 
@@ -586,7 +588,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     * `(ℕ)` ⇒ true if ℕth unnamed group was previously defined
 
-    * `(?<name>)` or `(?'name')` ⇒ true if group called _name_ was previously defined
+    * `(<name>)` or `('name')` ⇒ true if group called _name_ was previously defined
 
     *  `(?=lookahead)` ⇒ true if the _lookahead_ expression matches
 
@@ -596,11 +598,11 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     *  `(?<!lookbehind)` ⇒ true if the _lookbehind_ expression does not match
 
-    *  `(?(R))` ⇒ true if inside a recursion
+    *  `(R)` ⇒ true if inside a recursion
 
-    *  `(?(Rℕ)` ⇒ true if in a recursion to subexpression numbered ℕ
+    *  `(Rℕ)` ⇒ true if in a recursion to subexpression numbered ℕ
 
-    *  `(?(R&name))` ⇒ true if in a recursion to named subexpression _name_
+    *  `(R&name)` ⇒ true if in a recursion to named subexpression _name_
 
     Note: These are all still _inside_ the conditional expression.
 
@@ -612,6 +614,18 @@ Normally, a regular expression parses from left to right linearly. But you may n
 always treated as an atomic group. That is, once it has matched some of
 the subject string, it is never re-entered, even if it contains untried
 alternatives  and  there  is a subsequent matching failure.
+
+*  `(?>pattern)` ⇒ Independent sub-expression
+
+    Match _pattern_ independently of surrounding patterns. Search will never backtrack into independent sub-expression.
+
+    Independent sub-expressions are typically used to improve performance, because only the best possible match for pattern will be considered; if this doesn't allow the expression as a whole to match then no match is found at all.
+
+    It can also be used to keep the logic for Conditional Expressions (above) correct, preventing an unexpected path to the wrong alternate being used.  For example, when using a group-number as the conditional assertion, `(?(ℕ)YesPattern|NoPattern)`:
+
+    * The regex `(?:(100)|\d{3}) apples (?(1)YesPattern|NoPattern)`, because it does not use the independent sub-expression, in many cases will find `100 apples NoPattern`, even though you expected `YesPattern` to be used when because `100` was matched.  This happens because, if `YesPattern` failed, the search will backtrack to the beginning and try next alternative, where `100` matches `\d{3}`, but means that `?(1)` does _not_ match so the expression uses `NoPattern`.
+
+    * Instead, you can use the independent sub-expression to prevent backtracking, by using the regex `(?>(100)|\d{3}) apples (?(1)YesPattern|NoPattern)`.  Now, if `YesPattern` fails, it cannot backtrack to use the `\d{3}`, thus preventing it from accidentally using `100 apples NoPattern`, so with `100` it will either match `100 apples YesPattern` or the whole expression will fail.
 
 *  `\K` ⇒ Resets matched text at this point. For instance, matching `foo\Kbar` will not match `bar`. It will match `foobar`, but will pretend that only `bar` matches. Useful when you wish to replace only the tail of a matched subject and groups are clumsy to formulate.
 
@@ -633,10 +647,6 @@ These special groups consume no characters. Their successful matching counts, bu
 * `(?<!pattern)` ⇒ negative lookbehind: This assertion matches if _pattern_ does not match before the current token.
 
     * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Use `\K` (above) for the equivalent of variable-length lookbehind.
-
-*  `(?>pattern)` ⇒ Match _pattern_ independently of surrounding patterns, and don't backtrack into it. Failure to match will cause the whole subject not to match.
-
-
 
 ### Substitutions
 
@@ -1017,6 +1027,70 @@ If we reduce the syntax of this recursive regular expression to its minimum, we 
 
 But it is about as hard to decrypt as a badly indented piece of code without a comment and with unpromising, unclear identifiers.
 
+#### Example 6
+
+This example gives more insight into using independent sub-expressions to prevent back-tracking when using Conditional Expressions.
+
+Given the file:
+```
+  5 apples in a box
+100 apples in a box
+200 apples in a barrel
+250 apples in a box
+500 apples in a barrel
+```
+
+We want to match when there are 250 or fewer apples only when they are in a box; if there are more apples than 250, it should only match in a barrel.  Thus, `200 apples in a barrel` should _not_ match.
+
+First we need to construct Conditional Expression for apples container:
+
+    (?('LEQ250')in a box|in a barrel)
+
+The `('LEQ250')` refers to some Capture Group which will catch quantity of apples comparing with our condition:
+
+    (?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)\D
+
+The trick here is that if we have alternatives in this Capture Group, we can't allow search to back-track to try a different alternative from the condition when the conditional fails.  Thus, we need to use an Independent sub-expression:
+
+    (?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)\D)
+
+But if we use Independent sub-expression we have other two problems:
+
+1. we have possibility for spaces appear before digits `\h*`
+2. we need to check where number ends `\D`
+
+Alternatives and Multiplying Operators need backtracking and so must be resolved inside the Independent sub-expression.  In our example `\h*\d` is definitive - `\h*` always stops before non-space (and a digit `\d` is not a space), but if you need to include some alternatives or multiplying operators inside your capture group, then include all of them, to give the Independent sub-expression the possibility to backtrack within itself.
+
+It is better to check for the end in a more general form, in order to not include patterns not needed for Capture Group inside Independent sub-expression; thus, we will use the positive lookahead (?=\D) Assertion.
+
+As a result we have the following regexp:
+
+    ^\h*(?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)(?=\D)) apples (?('LEQ250')in a box|in a barrel)
+
+With this expression, our search results are
+
+```
+File1 (4 hits)
+Line 1: 5 apples in a box
+Line 2: 100 apples in a box
+Line 4: 250 apples in a box
+Line 5: 500 apples in a barrel
+```
+
+If we didn't use the Independent sub-expression, and instead used the regex
+
+    ^\h*(?:(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)(?=\D)) apples (?('LEQ250')in a box|in a barrel)
+
+Our search results would incorrectly match line 3 (`200 apples in a barrel`):
+
+```
+File1 (5 hits)
+Line 1: 5 apples in a box
+Line 2: 100 apples in a box
+Line 3: 200 apples in a barrel
+Line 4: 250 apples in a box
+Line 5: 500 apples in a barrel
+```
 
 ## Searching actions when recorded as macros
 
