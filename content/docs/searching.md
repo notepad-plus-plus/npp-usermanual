@@ -623,7 +623,7 @@ alternatives  and  there  is a subsequent matching failure.
 
     It can also be used to keep the logic for Conditional Expressions (above) correct, preventing an unexpected path to the wrong alternate being used.  For example, when using a group-number as the conditional assertion, `(?(ℕ)YesPattern|NoPattern)`:
 
-    * The regex `(?:(100)|\d{3}) apples (?(1)YesPattern|NoPattern)`, because it does not use the independent sub-expression, in many cases will find `100 apples NoPattern`, even though you expected `YesPattern` to be used when because `100` was matched.  This happens because, if `YesPattern` failed, the search will backtrack to the beginning and try next alternative, where `100` matches `\d{3}`, but means that `?(1)` does _not_ match so the expression uses `NoPattern`.
+    * The regex `(?:(100)|\d{3}) apples (?(1)YesPattern|NoPattern)` does not use the independent sub-expression, so in many cases, it will find `100 apples NoPattern`, even though you expected `YesPattern` to be used when `100` was matched.  Why? If `YesPattern` failed, the search will backtrack to the beginning and try next alternative, where `100` matches `\d{3}`, but that means that `?(1)` does _not_ match so the conditional expression uses `NoPattern`.
 
     * Instead, you can use the independent sub-expression to prevent backtracking, by using the regex `(?>(100)|\d{3}) apples (?(1)YesPattern|NoPattern)`.  Now, if `YesPattern` fails, it cannot backtrack to use the `\d{3}`, thus preventing it from accidentally using `100 apples NoPattern`, so with `100` it will either match `100 apples YesPattern` or the whole expression will fail.
 
