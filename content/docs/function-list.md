@@ -95,9 +95,19 @@ It could be that you're creating a new language parser for function list, or you
 
 ### Unit test file is present
 
-If you're improving an existing parser, and `unitTest` is present, then you should:
+If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other cathgories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
+
+**Modify the existing unitTest file**
 
 1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
-2. Modify the file `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\langName]\unitTest` according your enhancement. Generally, you don't remove content but you add the content in this file.
+2. Modify the file `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\unitTest` according your enhancement. Generally, you don't remove content but you add the content in this file.
 3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
 4. A file named `unitTest.result.json` will be generated. Remove `unitTest.expected.result` and Rename `unitTest.result.json` to `unitTest.expected.result`.
+
+**Add a new unitTest file**
+
+1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
+2. Add a directory into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\`, the name of directory is arbitary but should be relevant to the category of the test. Name your unit test file as `unitTest` and copy it into the directory you just created.
+3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
+4. 2 files named `unitTest.result.json` will be generated in [langName] root and in the created directory. Removethe the one in [langName] root`[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\unitTest.result.json`, and Rename `unitTest.result.json` in the created directory `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\[yourTestDir2]\` to `unitTest.expected.result`.
+
