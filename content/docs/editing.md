@@ -58,6 +58,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
     * "As Decimals (Comma)" means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
     * "As Decimals (Dot)" means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
     * "Randomly" means that the selected lines will be placed in a random order, not determined by the characters or values on the line (added in v7.9)
+    * If a [Column Mode](./#column-mode-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. If the keys are identical on two lines, then the order of those two lines will not change (even if text outside of the selected key columns is different).
 * `Comment/Uncomment >` ⇒ submenu with actions that add or remove comment syntax, based on the file's **Language** selection
 * `Auto-Completion >` ⇒ submenu with actions that trigger auto-completion of function name, word, function parameter, and pathname, affected by [**Preferences > Auto-Completion** settings](../preferences/#auto-completion)
 * `EOL Conversion >` ⇒ submenu with actions that convert line endings between Windows (`CRLF`), Unix (`LF`), and old Macintosh (`CR`) values
