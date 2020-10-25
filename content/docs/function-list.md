@@ -26,6 +26,8 @@ A function parser contains only a function node.
 A class parser contains only a classRange node.
 A mix parser contains both function and classRange nodes.
 
+*Note that* ***RegEx look behind operations*** *dosen't work with the parser.*
+
 ### Function parser
 In function node it contains:
 
