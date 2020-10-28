@@ -30,7 +30,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
     * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
     * `☐ Reduce`: make the tab bar vertical region and font size smaller
-    * `☐ Alternate icons`: change the saved/edited/read-only icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols
+    * `☐ Alternate icons`: change the saved/edited/read-only icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively; the alternate icons option is designed to improve the user experience for visually-impaired users
     * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
     * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
     * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a coloured bar
@@ -314,7 +314,7 @@ A variety of settings that didn't fit elsewhere
     * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
-* `☐ Set Save dialog file extension filter... for Normal Text`: when this is enabled and the current file is set to Normal Text, the **Save As** dialog's filter will default to `*.*` and require you to type an extension; when disabled, the filter will default to `*.txt` and will auto-append the `.txt` extension if you don't type an extension or choose a different filter.  (Regardless of the state of this option, you can always select a different filter manually in the **Save As** dialog.)
+* `☐ Set Save dialog file extension filter... for Normal Text`: for a file that has not been previously saved and the language of the file is set to Normal text, when this option is enabled, the **Save As** dialog's filter will default to `*.*` and require you to type an extension; when this option is disabled, the filter will default to `*.txt` and will auto-append the `.txt` extension if you don't type an extension or choose a different filter.  (Regardless of the state of this option, you can always select a different filter manually in the **Save As** dialog.)
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
