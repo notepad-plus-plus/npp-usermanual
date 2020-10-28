@@ -8,7 +8,7 @@ Function List Panel is a zone to display all the functions (or method) found in 
 
 
 Function list contains a search engine (by using regular expression) and a panel to display the search result (function list). It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.
-In order to make function list work for your language (if not supported), you should modify `functionList.xml`. It can be found in `%APPDATA%\notepad++\` or in the Notepad++ installed directory if you use zip package.
+In order to make function list work for your language (if not supported), you should modify (or add) the xml file of the languge. The xml files for different languages can be found in `%APPDATA%\notepad++\functionList` or in the `functionList` folder localized in Notepad++ installed directory if you use zip package.
 
 ## How to customize function list
 In parser node it contains:
@@ -51,28 +51,24 @@ If the function parser find the first result by `mainExpr` attribute, then it wi
 ### Class parser
 In classRange node it contains:
 
-- `mainExr`: the main whole string to serach
+- `mainExr`: the main whole string to search
 - `displayMode`: reserved for future use.
-- `openSymbole` & `closeSymbole`: they are optional. if defined, then the parser will determinate the zone of this class. It find first `openSymbole` from the first character of found string by mainExpr attribute. then it determinates the end of class by `closeSymbole` found. The algorithm deals with the several levels of imbrication. for example: `\{\{\{\}\{\}\}\{\}\}`
-- `className`: 1 (or more) `nameExpr` node for determinating class name (from the result of `mainExpr` searching).
+- `openSymbole` & `closeSymbole`: they are optional. if defined, then the parser will determinate the zone of this class. It find first `openSymbole` from the first character of found string by mainExpr attribute. then it determines the end of class by `closeSymbole` found. The algorithm deals with the several levels of imbrication. for example: `\{\{\{\}\{\}\}\{\}\}`
+- `className`: 1 (or more) `nameExpr` node for determining class name (from the result of `mainExpr` searching).
 - `function`: search in the class zone by using `mainExpr` attribute and the `functionName` nodes.
 
 ### Mix parser
 Mix Parser contains Class parser (`classRange` node) and Function parser (`function` node).
 Class parser will be applied firstly to find class zones, then function parser will be applied on non-class zones.
 
-### Link to Language
-Once you finish to defined your parser, you can associate it with Notepad++ internal language id (or with file extension), in order to make it works with the language you want. All you need to do is add association node(s) into associationMap node.
+### Test your parser
+Once you finish to defined your parser, save and name the file as language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
 
-In `associationMap`, it contains:
+If you're not happy about the existing parser rule, you can write your parser rule then save with another arbitrary name. So  your parser rule won't be erased by the default file on the next update.
+Use [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml)to override the default functionList parse rule files, also for adding UDL parse rule files.
 
-- `association`: 1 or several nodes to make associations between defined parsers and languages.
-    - `langID`: Notepad++ internal language ID.
-    - `userDefinedLangName`: User Defined Language Name. It makes association between User Defined Language and the parser. If langID is present, this attribute will be ignored.
-    - `ext`: File name extesion (should contain `.`). If `langID` or `userDefinedLangName` is present, this attribute will be ignored.
-    - `id`: Parser ID.
 
-## Contribute your enhanced functionList.xml
+## Contribute your new or enhanced parser rule
 
 You're welcome to contribute your new or enhanced parser by creating PR on [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus). 
 The following sections describe how to prepare your PR according the different situations.
@@ -81,8 +77,8 @@ The following sections describe how to prepare your PR according the different s
 
 To avoid the regression, running the unit tests before you submit your modification is important. Here are the steps to run unit tests:
 
-1. Make sure you copy your modified functionList.xml into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\`
-2. Open powershell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
+1. Make sure you copy your modified parser rule (xml file) into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`
+2. Open PowerShell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
 3. Once you see "All tests are passed.", you can submit your PR.
 
 ### Unit test file is absent
@@ -93,23 +89,23 @@ It could be that you're creating a new language parser for function list, or you
 2. Add your new test file as `unitTest` into the new added directory.
 3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
 4. A file named `unitTest.result.json` will be generated. Rename it as `unitTest.expected.result`.
-5. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
+5. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 
 ### Unit test file is present
 
-If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other cathgories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
+If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
 
 **- Modify the existing unitTest file**
 
-1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
+1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 2. Modify the file `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\unitTest` according your enhancement. Generally, you don't remove content but you add the content in this file.
 3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
 4. A file named `unitTest.result.json` will be generated. Remove `unitTest.expected.result` and Rename `unitTest.result.json` to `unitTest.expected.result`.
 
 **- Add a new unitTest file**
 
-1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your `functionList.xml` won't cause any regression.
-2. Add a directory into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\`, the name of directory is arbitary but should be relevant to the category of the test. Name your unit test file as `unitTest` and copy it into the directory you just created.
+1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
+2. Add a directory into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\`, the name of directory is arbitrary but should be relevant to the category of the test. Name your unit test file as `unitTest` and copy it into the directory you just created.
 3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\[yourTestDir2]\unitTest`
 4. A file named `unitTest.result.json` will be generated in the created directory `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\[yourTestDir2]\`. Rename `unitTest.result.json` in the created directory  to `unitTest.expected.result`.
 
