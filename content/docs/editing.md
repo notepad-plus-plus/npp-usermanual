@@ -48,17 +48,22 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
 * `Copy to Clipboard >` ⇒ submenu with actions that copy current filename, path, or directory name to the clipboard
 * `Indent >` ⇒ submenu with actions that increase or decrease the current line's indentation, based on [the syntax language's](../preferences/#language) tab/indent settings
 * `Convert Case to >` ⇒ submenu with actions that change the case of the selected text (all UPPERCASE, all lowercase, and various mixed-case settings)
-* `Line Operations >` ⇒ submenu with actions that move or edit the current line; remove blank lines; and a variety of sorting algorithms.  For the sorting algorithms:
-    * "Ascending" means smallest to largest (A-Z)
-    * "Descending" means largest to smallest (Z-A)
-    * "Lexicographically" means based on character codepoint, comparing one character at a time:
-        * uppercase `Z` will sort before lowercase `a`
-        * `10` will come before `2`, because it sorts character-by-character of each collection of characters
-    * "As Integers" means that `10` will sort as being bigger than `2`
-    * "As Decimals (Comma)" means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
-    * "As Decimals (Dot)" means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
-    * "Randomly" means that the selected lines will be placed in a random order, not determined by the characters or values on the line (added in v7.9)
-    * If a [Column Mode](./#column-mode-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. If the keys are identical on two lines, then the order of those two lines will not change (even if text outside of the selected key columns is different).
+* `Line Operations >` ⇒ submenu with actions that move or edit the current line; remove blank lines; and a variety of sorting algorithms.
+    * There are two version of the Remove Duplicates functionality:
+        * `Remove Duplicates`: leaves only the first instance of any full lines that have more than one copy anywhere in the active file
+        * `Remove Consecutive Duplicate Lines`: will only remove duplicates that are on the lines immediately following the first instance (still keeping the first instance)
+    * There are a variety of sorting algorithms:
+        * `Ascending` means smallest to largest (A-Z)
+        * `Descending` means largest to smallest (Z-A)
+        * `Lexicographically` (or `Lex.`) means based on character codepoint, comparing one character at a time:
+            * All uppercase letters will sort before any lowercase letter, so uppercase `Z` will sort before lowercase `a`
+            * The sequence `10` will sort before `2`, because it sorts character-by-character of each collection of characters, and the character `1` comes before the character `2`
+        * `Ignoring case` means that lowercase `a` will sort the same as uppercase `A`, and both will come before either `Z` or `z`
+        * `As Integers` means that `10` will sort as being bigger than `2`
+        * `As Decimals (Comma)` means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
+        * `As Decimals (Dot)` means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
+        * `Randomly` means that the selected lines will be placed in a random order, not determined by the characters or values on the line (added in v7.9)
+        * If a [Column Mode](./#column-mode-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. If the keys are identical on two lines, then the order of those two lines will not change (even if text outside of the selected key columns is different).
 * `Comment/Uncomment >` ⇒ submenu with actions that add or remove comment syntax, based on the file's **Language** selection
 * `Auto-Completion >` ⇒ submenu with actions that trigger auto-completion of function name, word, function parameter, and pathname, affected by [**Preferences > Auto-Completion** settings](../preferences/#auto-completion)
 * `EOL Conversion >` ⇒ submenu with actions that convert line endings between Windows (`CRLF`), Unix (`LF`), and old Macintosh (`CR`) values
