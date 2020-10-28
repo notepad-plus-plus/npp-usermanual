@@ -195,22 +195,31 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 * Set `colorStyle="0"`: this style will inherit both the foreground and background colors from the Default style (equivalent to right-clicking both the foreground and background colors in the UDL styler dialog box)
 
 
-## `functionList.xml`
+## Function List Configuration
 
-Defines what counts as a "function" for **View > Function List**.  There are some comments in the file, and lots of examples of the builtin languages, which you can customize.
+Defines what counts as a "function" for **View > Function List**.  For more about the Function List parser, see [the Function List Panel documentation](../function-list/).
 
-If you want to add **Function List** capability for your User Defined Language (UDL), you can.  You need to add two groups of information:
+The `functionList\` folder contains a separate XML file for each language's function list capability.  There are some comments in each file, and lots of examples of the builtin languages, which you can customize.
 
-1. In the `<associationMap>` section, you need to add lines like the following
+There is also a `functionList\overrideMap.xml`, which maps the XML file names to their builtin language or User Defined Language (UDL).
+
+(In Notepad++ versions before v7.9.1, all those files were merged into one giant `functionList.xml`.)
+
+If you want to add **Function List** capability for your UDL, you need to add two groups of information:
+
+1. In the `<associationMap>` section of, you need to add a line like the following:
 
         <association id="fn_udl_example"          userDefinedLangName="ExampleUDL"     />
+
+    The `fn_udl_example` is a name unique to this UDL.  The value of `userDefinedLangName=...` must exactly match the name you used when you saved your UDL.
+
+    Prior to v7.9.1, you would also need to associate the extension(s).  This is no longer needed
+    in v7.9.1 and newer, but if you haven't upgraded yet, the syntax would be:
+
         <association id="fn_udl_example"          ext=".ex"                            />
         <association id="fn_udl_example"          ext=".exudl"                         />
 
-    where `fn_udl_example` is a name unique to this UDL.  It is best to define it both
-    based on `userDefinedLangName=...` (which must match the name you saved for your UDL) and on extension `ext=...` (which must match the extension(s) of your UDL type, with one extension per entry).
-
-2. In the `<parsers>` section, add a parser, with a similar format to all the builtin parsers shown.  An example would be
+2. In the per-language `functionList\[language].xml` file (or the `<parsers>` section of the pre-v7.9.1 `functionList.xml`), add a parser, with a similar format to all the builtin parsers shown.  An example would be
 
         <parser
             id="fn_udl_example"
@@ -227,7 +236,7 @@ If you want to add **Function List** capability for your User Defined Language (
             </function>
         </parser>
 
-    where the `fn_udl_example` must match the `<association id>`.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).
+    where the `fn_udl_example` must match the `<association id>` from the association map.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).  See [the Function Parser documentation](../function-list/#function-parser) for more.
 
 ## Other Configuration Files
 
