@@ -207,7 +207,7 @@ There is also a `functionList\overrideMap.xml`, which maps the XML file names to
 
 If you want to add **Function List** capability for your UDL, you need to add two groups of information:
 
-1. In the `<associationMap>` section of, you need to add a line like the following:
+1. In the `<associationMap>` section of `overrideMap.xml`, you need to add a line like the following:
 
         <association id="fn_udl_example"          userDefinedLangName="ExampleUDL"     />
 
