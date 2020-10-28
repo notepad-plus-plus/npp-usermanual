@@ -30,6 +30,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
     * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
     * `☐ Reduce`: make the tab bar vertical region and font size smaller
+    * `☐ Alternate icons`: change the saved/edited/read-only icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols
     * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
     * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
     * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a coloured bar
@@ -102,8 +103,8 @@ These affect open and save operations.
     * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog, and remain there (regardless of where the current file is located)
     * `___ ...`: this allows you to browse to a default directory, and all open/save dialogs will start in that directory
 * `☐ Use new style dialog (without file extension feature & Unix style path capacity)`: Windows allows for two styles of open/save dialogs.
-    * "old style" has "Quick Access", "Desktop", and others as icon-buttons along the left; it will also allow using Unix-style backslashes as a path separator, rather than Windows-style forward slashes; it will auto-apply the selected file-type's extension to the file (so typing a filename of `blah` when a file type of "Normal text file (.txt)" is selected will save `blah.txt`).
-    * "new style" does not have the icon-buttons (instead, Windows presents those in the tree, similar to other drives and folders); it will not understand Unix-style backslashes as path separators; in older Notepad++ versions, even when a file-type is selected in the new-style dialog, the user was required to specify the desired file extension, but as of Notepad++ v7.8.7, extensions will be automatically added based on the selected file type.
+    * The "old style" has "Quick Access", "Desktop", and others as icon-buttons along the left. It will also allow using Unix-style backslashes as a path separator, rather than Windows-style forward slashes. It will auto-apply the selected file-type's extension to the file (so typing a filename of `blah` when a file type of "Normal text file (.txt)" is selected will save `blah.txt`).
+    * The "new style" does not have the icon-buttons (instead, Windows presents those in the tree, similar to other drives and folders). It will not understand Unix-style backslashes as path separators. In older Notepad++ versions, even when a file-type is selected in the new-style dialog, the user was required to specify the desired file extension; but as of Notepad++ v7.8.7, extensions will be automatically added based on the selected file type.  As of v7.9.1, there is an option in the [MISC settings](#misc) which chooses whether Normal Text files will default to `*.txt` or no extension (with a filter of `*.*`).
 * `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when enabled, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when disabled, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
 
 ### Recent Files History
@@ -313,6 +314,7 @@ A variety of settings that didn't fit elsewhere
     * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
+* `☐ Set Save dialog file extension filter... for Normal Text`: when this is enabled and the current file is set to Normal Text, the **Save As** dialog's filter will default to `*.*` and require you to type an extension; when disabled, the filter will default to `*.txt` and will auto-append the `.txt` extension if you don't type an extension or choose a different filter.  (Regardless of the state of this option, you can always select a different filter manually in the **Save As** dialog.)
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
