@@ -478,8 +478,9 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
 
-* `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.
-A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
+* `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
+
+    A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
 
     * Example: `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.
 
@@ -682,9 +683,11 @@ In substitutions, in addition to allowing the [Control Characters](#control-char
 
 *  `$ℕ`, `${ℕ}`, `\ℕ` ⇒ Returns what matched the ℕth subexpression (numbered capture group), where ℕ is a positive integer (1 or larger).  If ℕ is greater than 9, use `${ℕ}`.
 
+    * Please note: the `\g...` and `\k...`  [backreference](#capture-groups-and-backreferences) syntaxes only work in the search expression, and are _not_ designed or intended to work in the substititution/replacement expression.
+
 *  `$+{name}` ⇒ Returns what matched subexpression named _name_ (named capture group).
 
-If not described above, `\` followed by any character will output that literal character.
+If not described in this section, `\` followed by any character will output that literal character.
 
 #### Substitution Grouping
 
