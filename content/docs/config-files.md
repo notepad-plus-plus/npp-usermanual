@@ -213,13 +213,10 @@ If you want to add **Function List** capability for your UDL, you need to add tw
 
     The `fn_udl_example` is a name unique to this UDL.  The value of `userDefinedLangName=...` must exactly match the name you used when you saved your UDL.
 
-    Prior to v7.9.1, you would also need to associate the extension(s).  This is no longer needed
-    in v7.9.1 and newer, but if you haven't upgraded yet, the syntax would be:
+    Prior to v7.9.1, you could also associate the extension(s).  This is no longer implemented
+    in v7.9.1 and newer, and should be avoided.
 
-        <association id="fn_udl_example"          ext=".ex"                            />
-        <association id="fn_udl_example"          ext=".exudl"                         />
-
-2. In the per-language `functionList\[language].xml` file (or the `<parsers>` section of the pre-v7.9.1 `functionList.xml`), add a parser, with a similar format to all the builtin parsers shown.  An example would be
+2. In the parser rule file (XML file), add a parser, with a similar format to all the builtin parsers shown.  An example would be
 
         <parser
             id="fn_udl_example"
@@ -236,7 +233,7 @@ If you want to add **Function List** capability for your UDL, you need to add tw
             </function>
         </parser>
 
-    where the `fn_udl_example` must match the `<association id>` from the association map.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).  See [the Function Parser documentation](../function-list/#function-parser) for more.
+    In this example, the `fn_udl_example` must be the string value of the `<association id>` from the association map for v7.9 and earlier; for v7.9.1 and later, you are free to use any name you want.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).  See [the Function Parser documentation](../function-list/#function-parser) for more.
 
 ## Other Configuration Files
 
