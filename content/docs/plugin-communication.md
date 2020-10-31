@@ -630,6 +630,21 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
+#### **NPPM_GETDOCUMENTFROMBUFFER**
+*Gets a document pointer from the given bufferID.  
+This can be used with NPPM_CREATESCINTILLAHANDLE and SCI_SETDOCPOINTER to read and modify a document from it's bufferID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int bufferID
+
+*lParam [in]*
+: int, must be zero
+
+**Return value**:
+: Returns NULL if bufferID does not exist, otherwise a document pointer that can be used with SCI_SETDOCPOINTER.
+
 #### **NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR**
 *Retrieves the current editor default background color.*
 
