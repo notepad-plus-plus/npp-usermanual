@@ -195,9 +195,32 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 * Set `colorStyle="0"`: this style will inherit both the foreground and background colors from the Default style (equivalent to right-clicking both the foreground and background colors in the UDL styler dialog box)
 
 
-## `functionList.xml`
+## `Function List`
 
-Defines what counts as a "function" for **View > Function List**.  There are some comments in the file, and lots of examples of the builtin languages, which you can customize.
+Defines what counts as a "function" for **View > Function List**.  There are some comments in the file(s), and lots of examples of the builtin languages, which you can customize.
+From v7.9.1 the file structure of function list parsers have been changed, so please follow one of sections below according your Notepad++ version.
+
+### v7.9.1 and later versions
+
+The `functionList` folder contains a separate XML file (function list parse rule) for each language's function list capability.
+Each function list parse rule links to a language with the language default name. For example the file name of php language parse rule is `php.xml`, the file name of Java language parse rule is `java.xml`, Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
+
+[overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) is optional which is used when you want to override a default parser rule or define a function list for your User Defined Language (UDL).
+
+* Override a default parser rule
+```
+<association id= "anotherPhpParser.xml"			 langID= "1" />
+<association id= "myPerlRule.xml"			 langID= "21"/>
+```
+If 2 above lines are in *overrideMap.xml*, function list will load your parsers `anotherPhpParser.xml` and `myPerlRule.xml` instead of loaoding `php.xml` and `perl.xml` while showing PHP and Perl function list respectively.
+
+* Define your UDL
+```
+<association id= "krl.xml"				userDefinedLangName="KRL"/>
+```
+You have define a parser rule for your KRL UDL. While you open a file which is recognized as KRL file, then function list engin will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one to make it work.
+
+### v7.9 and previous versions
 
 If you want to add **Function List** capability for your User Defined Language (UDL), you can.  You need to add two groups of information:
 
@@ -210,7 +233,7 @@ If you want to add **Function List** capability for your User Defined Language (
     where `fn_udl_example` is a name unique to this UDL.  It is best to define it both
     based on `userDefinedLangName=...` (which must match the name you saved for your UDL) and on extension `ext=...` (which must match the extension(s) of your UDL type, with one extension per entry).
 
-2. In the `<parsers>` section, add a parser, with a similar format to all the builtin parsers shown.  An example would be
+2. In the `<parsers>` section, add a parser, with a similar format to all the builtin parsers shown. An example would be
 
         <parser
             id="fn_udl_example"
