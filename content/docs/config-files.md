@@ -205,20 +205,20 @@ From v7.9.1 the file structure of function list parsers have been changed, so pl
 The `functionList` folder contains a separate XML file (function list parse rule) for each language's function list capability.
 Each function list parse rule links to a language with the language default name. For example the file name of php language parse rule is `php.xml`, the file name of Java language parse rule is `java.xml`, Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
 
-[overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) is optional which is used when you want to override a default parser rule or define a function list for your User Defined Language (UDL).
+[overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) is optional. When you need to override a default parser rule or to define a function list parser for your User Defined Language (UDL), you modify this file.
 
-* Override a default parser rule
+* Override a default parser rule examples
 ```
 <association id= "anotherPhpParser.xml"			 langID= "1" />
 <association id= "myPerlRule.xml"			 langID= "21"/>
 ```
 If 2 above lines are in *overrideMap.xml*, function list will load your parsers `anotherPhpParser.xml` and `myPerlRule.xml` instead of loaoding `php.xml` and `perl.xml` while showing PHP and Perl function list respectively.
 
-* Define your UDL
+* Define your UDL example
 ```
 <association id= "krl.xml"				userDefinedLangName="KRL"/>
 ```
-You have define a parser rule for your KRL UDL. While you open a file which is recognized as KRL file, then function list engin will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one to make it work.
+Here you define a parser rule file name for your KRL UDL. While you open a file which is recognized as KRL file, then function list engin will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one (with the name "KRL") to make it work.
 
 ### v7.9 and previous versions
 
