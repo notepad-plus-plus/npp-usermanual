@@ -222,6 +222,8 @@ Here you define a parser rule file name for your KRL UDL. While you open a file 
 
 ### v7.9 and previous versions
 
+The `functionList.xml` config file contains XML entries for each language's function list definition, as well as a map that tells Notepad++ which section of the XML is applied to each file type.
+
 If you want to add **Function List** capability for your User Defined Language (UDL), you can.  You need to add two groups of information:
 
 1. In the `<associationMap>` section, you need to add lines like the following
