@@ -4,13 +4,15 @@ linktitle: sessions
 weight: 50
 ---
 
+# Sessions, Workspaces, and Projects
+
 There are three built-in "multiple file management" systems available natively in Notepad++.
 
 * [Sessions](#sessions) = a set of files that can be opened with one action.
 * [Folder as Workspace](#folder-as-workspace) = a tree-based interface to easily access the files in a given Windows directory.
 * [Project Panels](#project-panels) = a tree-based interface to access related files that aren't necessarily grouped in the same Windows directory structure.
 
-There are also various [plugins](./plugins) available that might help manage sessions or workspaces, or serve similar purposes but with a different feature set compared to these built-in features.
+There are also various [plugins](../plugins) available that might help manage sessions or workspaces, or serve similar purposes but with a different feature set compared to these built-in features.
 
 ## Sessions
 
@@ -28,7 +30,7 @@ You can also load a session file using the [`-openSession` command line argument
 
 ## Folder as Workspace
 
-This feature allows you to use a tree-based interface to easily access the files in a given directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](preferences/#default-directory)).
+This feature allows you to use a tree-based interface to easily access the files in a given directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](../preferences/#default-directory)).
 
 You can also load a Folder as Workspace using the [`-openFoldersAsWorkspace` command line argument](../command-prompt).
 
@@ -38,7 +40,7 @@ Double-clicking on a file from the tree-view will open it as a new tab in the No
 
 ## Project Panels
 
-The Project Panels are similar to the [Folder as Workspace](#folder-as-Workspace) panel, but allow you to organize the tree view to your liking, rather than being forced to follow the Windows filesystem hiearchy.
+The Project Panels are similar to the [Folder as Workspace](#folder-as-workspace) panel, but allow you to organize the tree view to your liking, rather than being forced to follow the Windows filesystem hiearchy.
 
 Double-clicking on a file from the tree-view will open it as a new tab in the Notepad++ editor (or will activate that tab if it's already open).  Closing the tab for a file from the Project will not remove it from the Folder as Workspace panel, so it's easy to re-open that file.
 
@@ -51,6 +53,7 @@ Each Workspace can house one or more Projects.  Clicking the **Edit** button on 
 You can move a file into a Folder by dragging the file.  Other than that, there aren't other drag-and-drop features in the Project Panel.
 
 For any entry in the Project Panel tree view, right clicking will give you the available actions on that specific entry.
+
 * On a Workspace:
     * New Workspace = close the existing Workspace (if one is open for this Project Panel) and create an empty Workspace for this Project Panel.
     * Open Workspace = close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
@@ -67,7 +70,7 @@ For any entry in the Project Panel tree view, right clicking will give you the a
     * Add Files from Directory = add all the files from that Windows directory into the Project.
         * Please note: this is _not_ a recursive action:  this just puts all the files in the list.
         * Please note: this does _not_ create a new Folder entry in your Project.
-        * If you want a feature that automatically maps to the selected Windows directories, use [Folder as Workspace](#folder-as-Workspace) instead
+        * If you want a feature that automatically maps to the selected Windows directories, use [Folder as Workspace](#folder-as-workspace) instead
 * On a Folder entry:
     * Has all the same actions as on the Project entry, but everything is relative to this Folder instead of relative to the Project.
 * On a File entry:
