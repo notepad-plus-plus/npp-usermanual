@@ -86,6 +86,10 @@ For any entry in the Project Panel tree view, right clicking will give you the a
         * If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
         * If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
 
+## Differences Between Projects and Folder as Workspace
+
+In contrast to the Folder as Workspace feature, Projects are not bound to the content of a certain folder on the hard disk. Instead, it is possible to put together files and folders from various locations on the hard disk into one Project. It is even possible to create Folders in a project which actually don’t exist on the hard disk and add files from various locations to them.  With projects, it is possible to combine files and folders into a totally virtual structure. This can speed up accessing files which are logically related to each other but are widely spread over the hard disk.
+
 <hr>
 
 **Footnotes**
