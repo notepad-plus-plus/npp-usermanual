@@ -21,6 +21,8 @@ The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ct
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
+*Note:*  With multiple monitors, **Find** will open on the same monitor used on the previous invocation regardless of which monitor upon which the current Notepad++ instance has focus. A second Ctrl+F will bring the Find dialog to the current instance, i.e. Ctrl+F > Ctrl+F
+
 ### Find / Replace
 
 All the dialog-based have certain features in common, though some are disabled under certain circumstances.
