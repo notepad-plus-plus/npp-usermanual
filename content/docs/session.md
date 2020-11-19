@@ -68,7 +68,6 @@ For any entry in the Project Panel tree view, right clicking will give you the a
     * Add Folder = create a new container to go in this Project.
     * Add Files = use a Windows **Open** dialog to select one or more files to add to the Project's tree.
     * Add Files from Directory = add all the files from that Windows directory into the Project.
-        * Please note: this is _not_ a recursive action:  this just puts all the files in the list.
         * Please note: this does _not_ create a new Folder entry in your Project.
         * If you want a feature that automatically maps to the selected Windows directories, use [Folder as Workspace](#folder-as-workspace) instead
 * On a Folder entry:
