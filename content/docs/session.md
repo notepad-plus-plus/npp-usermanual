@@ -42,7 +42,7 @@ Double-clicking on a file from the tree-view will open it as a new tab in the No
 
 The Project Panels are similar to the [Folder as Workspace](#folder-as-workspace) panel, but allow you to organize the tree view to your liking, rather than being forced to follow the Windows filesystem hiearchy.
 
-Double-clicking on a file from the tree-view will open it as a new tab in the Notepad++ editor (or will activate that tab if it's already open).  Closing the tab for a file from the Project will not remove it from the Folder as Workspace panel, so it's easy to re-open that file.
+Double-clicking on a file from the tree-view will open it as a new tab in the Notepad++ editor (or will activate that tab if it's already open).  Closing the tab for a file from the Project will not remove it from the Project panel, so it's easy to re-open that file.
 
 There are three Project Panels available from the **View > Project** sub-menu.  The three Project Panels can be individually docked or floated.
 
@@ -50,7 +50,11 @@ In each panel, you can open one Workspace file.  Using the **Workspace** button 
 
 Each Workspace can house one or more Projects.  Clicking the **Edit** button on the Project Panel, or right clicking on the Project name, will give you administrative options for the selected Project, enumerated below.  In each Project, you can select individual files or the contents of whole Windows Directories to be added to the Project, and you can reorder the files.  If you add a Folder to the Project, you are _not_ creating a Windows directory anywhere: you are creating a container inside the Notepad++ Project item; the files listed in a folder have not moved.  To reiterate: Project Folders are independent of the filesystem, and are just hierarchical containers for this feature of Notepad++.
 
-You can move a file into a Folder by dragging the file.  Other than that, there aren't other drag-and-drop features in the Project Panel.
+You can move a file from one place in the Project panel into a different Folder or Project by dragging the file within the Project Panel and dropping it on the name of the Project or Folder you want the file to move into.  Other than that, there aren't other drag-and-drop features in the Project Panel.
+
+Project files always contain file paths relative to the location of the project file itself. Thus, if a project file is stored in a filesystem folder which is part of a project, it is very easy to move that folder to another location on the hard disk. If the project file is loaded from its new location it will still work.
+
+### Project Panel Specifics
 
 For any entry in the Project Panel tree view, right clicking will give you the available actions on that specific entry.
 
@@ -69,7 +73,6 @@ For any entry in the Project Panel tree view, right clicking will give you the a
     * Add Files = use a Windows **Open** dialog to select one or more files to add to the Project's tree.
     * Add Files from Directory = add all the files from that Windows directory into the Project.
         * Please note: this does _not_ create a new Folder entry in your Project.
-        * If you want a feature that automatically maps to the selected Windows directories, use [Folder as Workspace](#folder-as-workspace) instead
 * On a Folder entry:
     * Has all the same actions as on the Project entry, but everything is relative to this Folder instead of relative to the Project.
 * On a File entry:
