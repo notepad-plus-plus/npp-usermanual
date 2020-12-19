@@ -12,7 +12,16 @@ Notepad++ offers a comprehensive user interface to review or change most of its 
 * Editing previously-recorded macros, or crafting new macros manually
 * Adding keywords to a language, because the new language version isn't matched yet
 
-The underlying XML files are all found in `%AppData%\notepad++\` (or, for zip-based local installations, in the notepad++ executable directory) unless otherwise noted.
+## Configuration Files Location
+
+In a standard installation, the configuration files go in `%AppData%\Notepad++\`.  (For a refresher course on `%AppData%`, see the [Community Forum FAQ's `%AppData%` entry](https://community.notepad-plus-plus.org/topic/15740/faq-desk-what-is-appdata).)
+
+In a portable installation, the configuration files go in the same directory as the `notepad++.exe` executable.  (An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable.  The **?** menu's **Debug Info** will show `Local mode: ON` for a portable version.)
+
+If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
+the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
+
+If the Cloud directory is enabled, that will take priority over the portable or standard config file location; if `doLocalConf.xml` is present, it will take priority over the `%AppData%\Notepad++\` folder; if neither are active, then the standard config file location is `%AppData%\Notepad++\`.
 
 ## Editing Configuration Files
 
@@ -101,7 +110,7 @@ The full list of Scintilla messages for `type=0` and `type=1` Scintilla messages
 
 The `wParam` command IDs for `type=2` Notepad++ messages can be found as the `IDM` constants in the source file [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h), or you can look at the `localization\English.xml` (or your language of choice), which lists the `<Item id="...">` next to the text of the command; the value of the `id` attribute is the "command ID".
 
-For `type=3` search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
+For `type=3` search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).  The message numbers for `type=3` come from [FindReplaceDlg_rc.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/ScitillaComponent/FindReplaceDlg_rc.h).
 
 You can use any Scintilla or Windows message that does not return a value, that passes an integer in `wParam`, and either an integer or string in `lParam`.  There are some messages that require strings in the `wParam`, or various data structures: those will not work in a macro.
 
