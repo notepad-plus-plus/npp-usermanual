@@ -18,7 +18,7 @@ In a standard installation, the configuration files go in `%AppData%\Notepad++\`
 
 In a portable installation, the configuration files go in the same directory as the `notepad++.exe` executable.  (An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable.  The **?** menu's **Debug Info** will show `Local mode: ON` for a portable version.)
 
-If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
+If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `session.xml`, `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
 the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
 
 If the Cloud directory is enabled, that will take priority over the portable or standard config file location; if `doLocalConf.xml` is present, it will take priority over the `%AppData%\Notepad++\` folder; if neither are active, then the standard config file location is `%AppData%\Notepad++\`.
