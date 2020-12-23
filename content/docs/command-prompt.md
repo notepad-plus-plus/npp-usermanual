@@ -10,14 +10,15 @@ to control its startup and affect its behavior.
 ## Help usage
 
 ```
-notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
-  [-p<pos>] [-x<left-pos>] [-y<TopPos>] [-nosession] [-notabbar] [-ro]
-  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-openFoldersAsWorkspace] [-r]
+notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
+  [-n<line>] [-c<column>] [-p<pos>] [-x<left-pos>] [-y<TopPos>]
+  [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
+  [-alwaysOnTop] [-openSession] [-r]
   [-qn<EasterEggName> | -qt<Text> | -qf<ContentFileName>]
   [-qSpeed(1|2|3)] [-quickPrint]
+  [-settingsDir="d:\your settings dir\"] [-openFoldersAsWorkspace]
   [filepath]
 ```
-
 
 * `--help`: The help message for command line arguments. It will be shown before
   Notepad++'s launch.
@@ -32,6 +33,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
   `actionscript`, `nsis`, `tcl`, `lisp`, `scheme`, `asm`, `diff`, `props`,
   `postscript`, `ruby`, `smalltalk`, `vhdl`, `kix`, `autoit`, `Gui4Cli`,
   `powershell`, `caml`, `ada`, `verilog`, `matlab`, `haskell`, `inno`, `cmake`, `yaml`, `r` and `jsp`.
+* `-L`: Apply indicated localization, *langCode* is browser language code
 * `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
 * `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
 * `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
@@ -44,14 +46,14 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<lang>] [-n<line>] [-c<column>]
 * `-loadingTime`: Display Notepad++ loading time.
 * `-alwaysOnTop`: Make Notepad++ always on top.
 * `-openSession`: Open a session. `filepath` must be a session file.
-* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
-* `-r`: Open files recursively. This argument will be ignored if
-  `filepath` contain no wildcard character.
+* `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
 * `-qn`: Launch ghost typing to display easter egg via its *EasterEggName*.
 * `-qt`: Launch ghost typing to display a text via the given *Text*
 * `-qf`: Launch ghost typing to display a file content via the file path *ContentFileName*
 * `-qSpeed`: Ghost typing speed. Value from 1 to 3 for slow, fast and fastest
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
+* `settingsDir="d:\your settings dir\"`: Override the default settings dir
+* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
 * `filepath`: file or folder name to open (absolute or relative path name)
 
 
