@@ -45,12 +45,29 @@ These affect the user interface (localization, toolbar, tab bar, and more).
 These influence editing (carets, code-folding, line wrapping, and more).
 
 * **Caret Settings**: sets the width (in pixels) of the typing caret, as well as how fast it blinks
-* **Multi-Editing Settings**: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s)
+* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is enabled)
+    * `☐ Default`: wraps from the last visible column to the first visible column column
+    * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
+    * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
+* `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s) (was known as **Multi-Editing Settings** prior to v7.9.2)
+* `☐ Enable current line highlighting`: will change the styling of the current line of text to **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour` (ignoring the `Foreground colour` for that style)
+* `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
+* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (Disabled, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
+* `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
+* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
+
+### Margins / Border / Edge
+
+These define the margin style, border width, and edge settings.  (This page is new in v7.9.2; in v7.9.1 and earlier, these settings were in the [Editing](#editing) page of the preferences.
+
 * **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
     * `☐ simple`: shows a `-` if that section is not folded, or a `+` if it is.
     * `☐ arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
     * `☐ circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
     * `☐ box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+* **Border Width**
+    * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
+    * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
 * **Vertical Edge Settings**
     * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The colour of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**.
     * Multiple Vertical Edges: There is one box, which accepts zero or more numbers (as of v7.8.6):
@@ -63,20 +80,12 @@ These influence editing (carets, code-folding, line wrapping, and more).
         * `☐ Line mode`: the vertical edge is indicated by a solid vertical line
         * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge
         * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
-* **Border Width**
-    * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
-    * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
-* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is enabled)
-    * `☐ Default`: wraps from the last visible column to the first visible column column
-    * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
-    * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
-* `☐ Display line number`: shows the line numbers to the left of the text
+* **Line Number**:
+    * `☐ Display`: shows the line numbers to the left of the text (renamed in v7.9.2, known as **Editing** > `☐ Display line number`)
+    * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed (this matches the behavior prior to v7.9.2)
+    * `☐ Constant width`: the line number display will have enough width for any line number in the document (new to v7.9.2)
 * `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
-* `☐ Enable current line highlighting`: will change the styling of the current line of text to **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour` (ignoring the `Foreground colour` for that style)
-* `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
-* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (Disabled, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
-* `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
-* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
+
 
 ### New Document
 
@@ -280,11 +289,19 @@ Sets the characters that are considered part of a "word" for quick selections us
     * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
     * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
 
-### Cloud
+### Cloud & Link
 
-Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.
-* `☐ No Cloud`: saves settings in the normal location
-* `☐ Set your cloud location path here`: settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider
+* **Settings on cloud**: Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.  More information can be found in the [Config files location](../config-files/#configuration-files-location)
+    * `☐ No Cloud`: saves settings in the normal location
+    * `☐ Set your cloud location path here`: settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider
+
+* **Clickable Link Settings**: Affects behavior of URLs in your document.  (Moved in v7.9.2; previously in the [Misc](#misc) settings)
+    * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
+    * `☐ No underline`: will remove the underline normally present on a link
+    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when disabled, just the foreground color will change (new to v7.9.2)
+    * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs (new to v7.9.2). The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they do not need to be included in this entry box.
+
+
 
 
 ### Search Engine
@@ -303,9 +320,6 @@ A variety of settings that didn't fit elsewhere
 * **Document Peeker**
     * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
     * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
-* **Clickable Link Settings**
-    * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
-    * `☐ No underline`: will remove the underline normally present on a link
 * **File Status Auto-Detection**
     * [dropdown]
         * `Enable`: for the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++
