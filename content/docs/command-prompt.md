@@ -52,7 +52,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
 * `-qf`: Launch ghost typing to display a file content via the file path *ContentFileName*
 * `-qSpeed`: Ghost typing speed. Value from 1 to 3 for slow, fast and fastest
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
-* `settingsDir="d:\your settings dir\"`: Override the default settings dir
+* `settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
 * `filepath`: file or folder name to open (absolute or relative path name)
 
