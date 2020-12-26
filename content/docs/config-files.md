@@ -21,7 +21,7 @@ In a portable installation, the configuration files go in the same directory as 
 If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `session.xml`, `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
 the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
 
-There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the configuration file location (added in v7.9.x _**!!TDB!!!**_)
+There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the configuration file location (added in v7.9.2).
 
 If the `--settingsDir` option is set, that configuration file directory will take priority over any other configuration file directory. If the Cloud directory setting is defined and enabled, that will take priority over the portable or standard configuration file directory. If `doLocalConf.xml` is present, the portable configuration file location will take priority over the `%AppData%\Notepad++\` directory.  If none of the other configuration file directories are active, then the standard configuration file directory is `%AppData%\Notepad++\`.
 
