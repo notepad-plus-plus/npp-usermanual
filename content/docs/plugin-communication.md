@@ -804,6 +804,22 @@ Second call is sent with correctly allocated buffer to retrieve the language nam
 
 ---
 
+#### **NPPM_GETLINENUMBERWIDTHMODE**
+*Get line number margin width in dynamic width mode (LINENUMWIDTH_DYNAMIC) or constant width mode (LINENUMWIDTH_CONSTANT)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the line number margin width mode, either the LINENUMWIDTH_DYNAMIC or LINENUMWIDTH_CONSTANT value.
+
+---
+
 #### **NPPM_GETMENUHANDLE**
 *Retrieves either the plugin or the main menu handle of Notepad++.*
 
@@ -1643,6 +1659,23 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 **Return value**:
 : Returns True
+
+---
+
+#### **NPPM_SETLINENUMBERWIDTHMODE**
+*Set line number margin width in dynamic width mode (LINENUMWIDTH_DYNAMIC) or constant width mode (LINENUMWIDTH_CONSTANT).
+It may help some plugins to disable non-dynamic line number margins width to have a smoothly visual effect while vertical scrolling the content in Notepad++*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int widthMode, must be one of the values LINENUMWIDTH_DYNAMIC or LINENUMWIDTH_CONSTANT.
+
+**Return value**:
+: Returns True on success, False on failure
 
 ---
 
