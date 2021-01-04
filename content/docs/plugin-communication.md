@@ -1664,7 +1664,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 #### **NPPM_SETLINENUMBERWIDTHMODE**
 *Set line number margin width in dynamic width mode (LINENUMWIDTH_DYNAMIC) or constant width mode (LINENUMWIDTH_CONSTANT).
-It may help some plugins to disable non-dynamic line number margins width to have a smoothly visual effect while vertical scrolling the content in Notepad++*
+It may help some plugins to disable non-dynamic line number margins width to have a smooth visual effect while vertical scrolling the content in Notepad++*
 
 **Parameters**:
 
