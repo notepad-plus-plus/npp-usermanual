@@ -108,15 +108,13 @@ Position | Name | Value format | Meaning
 4  | lParam  |  integer |  `0` unless `type=0` and the second parameter of the message is actually used, or scalar value used when `type=3`.
 5  | sParam  |  string  |  `""` unless `type=1` or `type=3`, in which case this is the string pointed by the second parameter of the message.
 
-The full list of Scintilla messages for `type=0` and `type=1` Scintilla messages, as well as a concise documentation, can be found in [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface).  More details on those messages can be found in the [Scintilla Docs](https://scintilla.org/ScintillaDoc.html).
+The full list of Scintilla messages for `type=0` and `type=1` Scintilla messages, as well as a concise documentation, can be found in [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface).  More details on those messages can be found in the [Scintilla Docs](https://scintilla.org/ScintillaDoc.html).  You can use any Scintilla message that does not return a value, that passes an integer in `wParam`, and uses either an integer or string in `lParam`.  There are some messages that require strings in the `wParam`, or various data structures in one or both parameters: those will not work in a macro.  (For more on the messaging system, see [Plugin Communication](../plugin-communication/).)
 
 The `wParam` command IDs for `type=2` Notepad++ messages can be found as the `IDM` constants in the source file [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h), or you can look at the `localization\English.xml` (or your language of choice), which lists the `<Item id="...">` next to the text of the command; the value of the `id` attribute is the "command ID".
 
 For `type=3` search-and-replace macros, see the detailed description in ["Searching > Searching actions when recorded as macros"](../searching/#searching-actions-when-recorded-as-macros).
 
-You can use any Scintilla or Windows message that does not return a value, that passes an integer in `wParam`, and either an integer or string in `lParam`.  There are some messages that require strings in the `wParam`, or various data structures: those will not work in a macro.
-
-For more on the messaging system, see [Plugin Communication](../plugin-communication/).
+If your automation task requires conditional execution, counters, variables, using the results of one action to influence the next, or other complex behavior, the macro system will not be sufficient for your needs: you will need a [Plugin](../plugins/): there are scripting plugins available in [Plugins Admin](../plugins/#install-using-plugins-admin) that allow automating Notepad++ with the full power of a variety of programming languages behind them, or you might find a pre-existing plugin that already accomplishes your automation task, or you could write your own plugin).
 
 ### `<UserDefinedCommands>`
 
