@@ -49,9 +49,12 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
 * `Indent >` ⇒ submenu with actions that increase or decrease the current line's indentation, based on [the syntax language's](../preferences/#language) tab/indent settings
 * `Convert Case to >` ⇒ submenu with actions that change the case of the selected text (all UPPERCASE, all lowercase, and various mixed-case settings)
 * `Line Operations >` ⇒ submenu with actions that move or edit the current line; remove blank lines; and a variety of sorting algorithms.
-    * There are two version of the Remove Duplicates functionality:
+    * There are two versions of the Remove Duplicates functionality:
         * `Remove Duplicates`: leaves only the first instance of any full lines that have more than one copy anywhere in the active file
         * `Remove Consecutive Duplicate Lines`: will only remove duplicates that are on the lines immediately following the first instance (still keeping the first instance)
+    * There are methods for splitting lines and joining lines together:
+        * `Split Lines`: will insert a line-ending into a long line(s) at the current size of the editor window or, if enabled, the right-most specified Vertical Edge (requires 7.9.3 or later), whichever is less.  It operates on the lines spanned by the current stream selection or the single line of the caret if no stream selection is currently active.
+        * `Join Lines`: will combine the lines touched by the active stream selection by replacing line-endings with a single space character. It requires an active stream selection that spans two or more lines.
     * There are a variety of sorting algorithms:
         * `Ascending` means smallest to largest (A-Z)
         * `Descending` means largest to smallest (Z-A)
