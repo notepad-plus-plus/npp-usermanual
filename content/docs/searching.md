@@ -280,7 +280,7 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 * `\r`:  The Carriage Return control character CR (ASCII 0x0D)
 * `\t`:  the TAB control character (ASCII 0x09)
 * `\0`:  the NUL control character (ASCII 0x00)
-* `\\`:  the literal backalash character (ASCII 0x5C)
+* `\\`:  the literal backslash character (ASCII 0x5C)
 * `\b`:  the binary representation of a byte, made of 8 digits which are either 1's or 0's. †
 * `\o`:  the octal representation of a byte, made of 3 digits in the 0-7 range
 * `\d`:  the decimal representation of a byte, made of 3 digits in the 0-9 range
