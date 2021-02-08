@@ -15,7 +15,7 @@ The Column Editor dialog allows you to insert text or numbers in every row of th
 
 * The `Text to Insert` will use the same text in every row.
 * The `Number to Insert` will insert increasing numbers.
-    * `Initial number` sets the starting number.
+    * `Initial number` sets the starting number. This number is always interpreted in decimal regardless of the format selected below.
     * `Increase by` will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
     *  `Repeat` will will repeat the same number _n_ times.  Defaults to 1 if left blank.
     * `☐ Leading zeros` will cause all the numbers to have the same number of digits, by adding leading zeros for the smaller values
