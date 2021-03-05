@@ -90,7 +90,7 @@ usage list.  These are intended for advanced usage or other special circumstance
 
 ## Installer Options
 
-The installer application accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
+The Notepad++ [installer executable](../getting-started/#installer) accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
 * `/S` : silent installation
 * `/D=c:\blah` or `/D=c:\path with spaces\blah` : overrides the default installation directory.  Must be the last argument on the installer command line.  Do _not_ put quotes around the path, even when there are spaces.
 * `/NCRC`: skips the installer's CRC check
