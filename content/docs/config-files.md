@@ -263,6 +263,18 @@ If you want to add **Function List** capability for your User Defined Language (
 
     where the `fn_udl_example` must match the `<association id>`.  The `displayName` sets what shows in the **Function List** window header.  The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).
 
+### Upgrading old Function List entries
+
+If you previously had a v7.9-or-earlier style function list entry in `functionList.xml`, and you want to use it in a v7.9.1-or-later Notepad++, you can extract the pieces to the right locations in the new mulit-file format:
+
+1. Open the old `functionList.xml`.
+2. Open the `functionList\overrideMap.xml`
+3. Copy the `<association...>` tag from the old `functionList.xml` to the `functionList\overrideMap.xml`, and place near the end of the `<associationMap>` section.  Make sure it follows the rules for v7.9.1-or-later `<association>` tag syntax
+4. Open the `functionList\blah.xml` for your particular language
+   * If you don't have `blah.xml` yet, copy one of the v7.9.1-or-newer language's XML files to `blah.xml`, and remove the whole `<parser...> ... </parser>` section
+5. Copy the `<parer...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
+   * Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section.  It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block.
+
 ## Other Configuration Files
 
 * `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).
