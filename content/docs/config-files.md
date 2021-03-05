@@ -229,6 +229,8 @@ If 2 above lines are in *overrideMap.xml*, function list will load your parsers 
 ```
 Here you define a parser rule file name for your KRL UDL. While you open a file which is recognized as KRL file, then function list engin will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one (with the name "KRL") to make it work.
 
+The `functionList\`_languagename_`.xml` parser file itself, whether it's for a builtin language or a UDL-based language, requires the structure `<NotepadPlus><functionList><parser...>...</parser></functionList></NotepadPlus>`, where the attributes and contents of the `<parser>` are described in the documents section about [How to Customize Function List](../function-list/#how-to-customize-function-list).  You can look at any of the [default parser files](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/) for examples of working Function List configurations.
+
 ### v7.9 and previous versions
 
 The `functionList.xml` config file contains XML entries for each language's function list definition, as well as a map that tells Notepad++ which section of the XML is applied to each file type.
@@ -273,7 +275,7 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 4. Open the `functionList\blah.xml` for your particular language
    * If you don't have `blah.xml` yet, copy one of the v7.9.1-or-newer language's XML files to `blah.xml`, and remove the whole `<parser...> ... </parser>` section
 5. Copy the `<parer...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
-   * Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section.  It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block.
+   * Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section.  It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block.  Make sure it ends up with the v7.9.1-or-newer structure described above.
 
 ## Other Configuration Files
 
