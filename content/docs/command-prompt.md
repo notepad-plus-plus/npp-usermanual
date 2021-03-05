@@ -68,7 +68,7 @@ as you should always quote the filename.
 This help usage list can be accessed inside Notepad++ using the `--help` command
 line argument, or using the **?**-menu's **Command Line Arguments** entry.
 
-## Additional Options
+### Additional Options
 
 There are other Notepad++ command-line options which aren't included in the help
 usage list.  These are intended for advanced usage or other special circumstances.
@@ -87,3 +87,10 @@ usage list.  These are intended for advanced usage or other special circumstance
   [this Notepad++ Community Forum post](https://community.notepad-plus-plus.org/post/52805),
   where a script run using the PythonScript plugin is able to use a command-line option
   to affect the script's behavior.
+
+## Installer Options
+
+The installer application accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
+* `/S` : silent installation
+* `/D=c:\blah` or `/D=c:\path with spaces\blah` : overrides the default installation directory.  Must be the last argument on the installer command line.  Do _not_ put quotes around the path, even when there are spaces.
+* `/NCRC`: skips the installer's CRC check
