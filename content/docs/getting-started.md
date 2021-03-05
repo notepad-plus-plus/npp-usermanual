@@ -20,6 +20,8 @@ Choose 32 or 64 bit Notepad++ build according to your operating system, then cho
 1. Download the installer
 2. Run the executable binary and follow the installation flow
 
+If you are doing managed installation or otherwise want to control the installer from the command line, the installer has its own [command line options](../command-prompt/#installer-options).
+
 ## Install Notepad++ from 7z or zip
 1. Create a new folder
 2. Unzip the content into the new folder
