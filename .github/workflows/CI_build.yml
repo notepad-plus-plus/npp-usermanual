@@ -11,12 +11,20 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
 
-    - name: Install hugo extended via chocolatey
+    - name: Install hugo extended and httrack via chocolatey
       working-directory: .
-      run: choco install hugo-extended
+      run: choco install hugo-extended httrack
 
-    - name: Build docu
+    - name: Retrieve data from server
       working-directory: .
-      run: hugo.exe --minify --theme book
+      run: |
+           cmd /c start hugo.exe server --minify --theme book
+           $env:Path += ";C:\Program Files\WinHTTrack\" 
+           httrack.exe "http://127.0.0.1:1313/" -O "./nppUserManual" "+*.npp-user-manual.org/*" -v
 
+    - name: Archive artifacts for hugo
+      uses: actions/upload-artifact@v1
+      with:
+          name: N++ static page
+          path: ./nppUserManual/
 
