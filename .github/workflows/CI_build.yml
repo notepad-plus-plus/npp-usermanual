@@ -1,0 +1,22 @@
+name: CI_build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Install hugo extended via chocolatey
+      working-directory: .
+      run: choco install hugo-extended
+
+    - name: Build docu
+      working-directory: .
+      run: hugo.exe --minify --theme book
+
+
