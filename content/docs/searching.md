@@ -205,6 +205,17 @@ The **Directory** is the containing folder for where to search.  It has three op
 * **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
 
+### Find in Projects
+
+Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
+* **☐ Project Panel 1** ⇒ if enabled, all files listed in Project Panel 1 will be included into the search/replace operation
+* **☐ Project Panel 2** ⇒ if enabled, all files listed in Project Panel 2 will be included into the search/replace operation
+* **☐ Project Panel 3** ⇒ if enabled, all files listed in Project Panel 3 will be included into the search/replace operation.
+
+Only Project Panels which are currently open can be searched. The checkmarks of Project Panels which are not currently open are grayed out.
+
+The **Filters** list works the same way as described in the previous **Find in Files** section.
+
 ### Highlighting and bookmarking
 
 The Mark tab from the Find/Replace dialog will perform searches similar to the Find tab, in the current document or selection:
