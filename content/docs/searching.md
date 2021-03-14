@@ -212,17 +212,17 @@ Highlighting is also available in Incremental search, and the style setting is S
 
 ### Searching
 
-The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they reuse the previous pattern or find it in the current document:
+The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document:
 
-* Find Next / Find Previous repeat the current search, either down or up.
+* **Find Next / Find Previous** Repeat searching the current search target, either down or up.
 
-* Go to Next Found / Go to Previous found jump to a place recorded on the search result window. You can use  Search  -&gt;  Found Results Window to toggle the visibility of this window, which allows a more visual navigation.
+* **Next Search Result / Previous Search Result** Jump to the next or previous search result recorded in the Search Results Window. The Search Results Window is created in response to any of the dialog-based **Find All** commands. If it exists, you can use  **Search  -&gt;  Search Results Window** to make it visible and to switch the input focus between the Search Results Window and the current document.
 
-* Find (volatile) Next / Find (volatile) Previous attempt to find the word the caret is in, or the selected text, down or up. Note that this does not interfere with ordinary search - it is really volatile.
+* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is not rembembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.
 
-* Select and Find Next / Select and Find Previous select the word the caret is in if no text is selected, and then find the next/previous occurrence of selected text. This will also set this word as the current search target, so that Find Next or Find Previous will lose its previous target and look for the selected word again.  However, other search parameters, e.g. Match case or Wrap around, will remain in force as last set.
+* **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
 
-Please note that "selected" refers to the contents of the active stream selection. This also applies to the selected part of the caret line when a rectangular area is selected.
+All dialog-free search actions do preserve the current search options set in the Find dialog like Match case or Wrap around.
 
 ### Highlighting
 
