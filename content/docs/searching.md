@@ -11,11 +11,24 @@ All keyboard shortcuts mentioned below are the default values, but are configura
 
 ## Dialog-based Searching
 
-The most powerful set of searching features is found in the standard dialog-based Find / Replace / Find In Files / Mark dialog.  This dialog is generically known as the "Find" dialog or window.  The dialog has one tab for each of the aforementioned searching-related features.
+There is a "Find" dialog box. This dialog box has one tab for each of the following features:
 
-The **Find** tab (accessible using **Search > Find** or the keyboard shortcut Ctrl+F) gives access to searching and counting.  The **Replace** tab (**Search > Replace** or Ctrl+H) is similar, but allows you to also replace the matched text after it's found.  The **Find in Files** tab (**Search > Find in Files** or Ctrl+Shift+F) allows you to search and replace in multiple files with one action.  The **Mark** tab (**Search > Mark...**) allows you to apply red-marking (a red background to matched text; see (**Preferences > Style Configurator > Global Styles > Find Mark style**](../preferences/#global-styles)) to certain sections of text, and to add "bookmarks" to the lines that matched text is found upon.
+* **Find** tab: Gives access to searching and counting.\
+  It can be invoked directly with **Search > Find** or the keyboard shortcut Ctrl+F.
 
-*Note:*  Although a keyboard command can open and/or move input focus to one of the four tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
+* **Replace** tab: Similar to **Find** tab, but allows you to replace the matched text after it's found.\
+  It can be invoked directly with **Search > Replace** or the keyboard shortcut Ctrl+H.
+
+* **Find in Files** tab: Allows you to search and replace in multiple files with one action. The files used for the operation are specified by a directory.\
+  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut Ctrl+Shift+F.  
+
+* **Find in Projects** tab: Similar to **Find in Files**, but Project Panel files are used instead of files from a directory.\
+  It can be invoked over the context menu of the first line of a Project Panel.
+
+* **Mark** tab: Allows you to highlight all occurances of the search target in the current document permanently.\
+  It can be invoked directly with **Search > Mark** or the keyboard shortcut Ctrl+M.
+
+*Note:*  Although a keyboard command can open and/or move input focus to one of the tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
 
 *Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
 
