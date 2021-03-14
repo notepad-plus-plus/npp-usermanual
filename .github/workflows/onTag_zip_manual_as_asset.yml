@@ -1,0 +1,40 @@
+name: Zip Manual as Asset on Tag
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Install hugo-extended and httrack via chocolatey
+      working-directory: .
+      run: choco install hugo-extended httrack
+
+    - name: Convert hugo site to standandalone HTML
+      working-directory: .
+      run: |
+           cmd /c start hugo.exe server --minify --theme book
+           $env:Path += ";C:\Program Files\WinHTTrack\"
+           httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output" "+*.npp-user-manual.org/*" "+*.127.0.0.1:1313/*"  "+localhost:1313/*"  "+localhost:1313" -v
+           Set-Location -Path httrack_output
+           Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
+           Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
+           Set-Location -Path ..
+
+    - name: Store zipfile as asset
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./httrack_output/nppUserManual.zip
+        asset_name: nppUserManual.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "Some release text goes here"
