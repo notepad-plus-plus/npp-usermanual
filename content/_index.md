@@ -24,3 +24,4 @@ Of course, it's not our goal to create bad documentation, but you get what we me
         padding: 2px 1em;
     ">Download most recent offline User Manual</a>
 </center>
+
