@@ -19,12 +19,14 @@ jobs:
       working-directory: .
       run: |
            cmd /c start hugo.exe server --minify --theme book
-           $env:Path += ";C:\Program Files\WinHTTrack\" 
-           httrack.exe "http://127.0.0.1:1313/" -O "./nppUserManual" "+*.npp-user-manual.org/*" -v
+           $env:Path += ";C:\Program Files\WinHTTrack\"
+           httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output" "+*.npp-user-manual.org/*" "+*.127.0.0.1:1313/*"  "+localhost:1313/*"  "+localhost:1313" -v
+           Set-Location -Path httrack_output
+           Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
 
     - name: Archive artifacts for hugo
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
-          name: N++ static page
-          path: ./nppUserManual/
+          name: nppUserManual
+          path: ./httrack_output/nppUserManual/
 
