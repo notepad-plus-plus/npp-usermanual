@@ -12,16 +12,6 @@ Of course, it's not our goal to create bad documentation, but you get what we me
 
 **Notepad++ User Manual** is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual).
 
-<center>
-    <a href="https://github.com/notepad-plus-plus/npp-usermanual/releases/latest/download/nppUserManual.zip" style="
-        text-align: center;
-        font-size: larger;
-        -moz-border-radius: 1em;
-        border-radius: 1em;
-        border: 1px solid #00A2E8;
-        background-color: white;
-        color: #00A2E8;
-        padding: 2px 1em;
-    ">Download most recent offline User Manual</a>
-</center>
+### Offline Manual
 
+You may [download a zipfile of the nppUserManual](https://github.com/notepad-plus-plus/npp-usermanual/releases/latest/download/nppUserManual.zip) to use as an offline reference.
