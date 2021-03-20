@@ -70,7 +70,7 @@ The various action buttons available include:
 * **Close**: Closes the search dialog
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
-* **Replace All**: With **☑ Wrap Around** enabled, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** disabled, it searches from the caret to the end of the file (if **☐ Backward direction** is disabled) or from the caret to the beginning of the file (if **☑ Backward direction** is enabled) and replaces all occurrences found in that region.
+* **Replace All**: With **☑ Wrap Around** ticked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unticked, it searches from the caret to the end of the file (if **☐ Backward direction** is unticked) or from the beginning of the file to the caret (if **☑ Backward direction** is ticked) and replaces all occurrences found in that region.
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
