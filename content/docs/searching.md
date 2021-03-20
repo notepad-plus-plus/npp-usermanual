@@ -20,7 +20,7 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
   It can be invoked directly with **Search > Replace** or the keyboard shortcut Ctrl+H.
 
 * **Find in Files** tab: Allows you to search and replace in multiple files with one action. The files used for the operation are specified by a directory.\
-  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut Ctrl+Shift+F.  
+  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut Ctrl+Shift+F.
 
 * **Find in Projects** tab: Similar to **Find in Files**, but Project Panel files are used instead of files from a directory.\
   It can be invoked over the context menu of the first line of a Project Panel.
@@ -70,8 +70,21 @@ The various action buttons available include:
 * **Close**: Closes the search dialog
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
-* **Replace All**: Replaces all matches from the active location onward (following the **Backward direction** and **Wrap around** settings as appropriate).
+* **Replace All**: Replaces all matches in the active document.  With **☑ Wrap Around** enabled, it makes one pass through the active document, from the very top to the very bottom.  With **☐ Wrap Around** disabled, it searches from the caret to the end of the file (if **☐ Backward direction** is disabled) or from the caret to the beginning of the file (if **☑ Backward direction** is enabled).
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in the regular expression engines of some programming-languages.
+    * To clarify the **Replace All** results, depending on the condition of the various settings:
+
+        Previous<br>Selection | Wrap Around | Backward Direction | In Selection | Range
+        :-:|:-:|:-:|:-:|:----
+        NO |OFF|OFF|OFF|From  CARET location      to  END of file
+        YES|OFF|OFF|OFF|From  START of selection  to  END of file
+        NO |OFF|ON |OFF|From  START of file       to  CARET location
+        YES|OFF|ON |OFF|From  START of file       to  END of selection
+        YES|-/-|-/-|ON |From  START of selection  to  END of selection
+        -/-|ON |-/-|OFF|From  START of file       to  END of file
+
+        _The **Previous Selection** column indicates that a range of text has been selected already. The **Wrap Around** and **Backward Direction** and **In Selection** columns refer to the setting of the checkboxes described above. The **Range** column describes the range of the document that is affected by the **Replace All**. A value of "-/-" means that the setting does not influence the outcome for that combination of conditions._
+
 * **Replace All in All Opened Documents**: same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
 The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  With focus on one of the Find dialog windows, press and release the `Alt` key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be ticked/unticked via pressing its Alt key command.
