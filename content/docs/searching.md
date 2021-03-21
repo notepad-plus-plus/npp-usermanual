@@ -213,7 +213,8 @@ Find in Files allows both finding and replacing. You can choose an extension fil
 
 The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   If you have a blank filter, it is implied to be `*.*`.  As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename; if you have at least one exclusion in your filter, you need to have at least one inclusion in your filter, otherwise it excludes files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you want.  Please also note that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
 
-The **Directory** is the containing folder for where to search.  It has three options that affect it's behavior:
+The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
+
 * **☐ Follow current doc** ⇒ if enabled, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
 * **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
@@ -221,6 +222,7 @@ The **Directory** is the containing folder for where to search.  It has three op
 ### Find in Projects
 
 Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
+
 * **☐ Project Panel 1** ⇒ if enabled, all files listed in Project Panel 1 will be included into the search/replace operation
 * **☐ Project Panel 2** ⇒ if enabled, all files listed in Project Panel 2 will be included into the search/replace operation
 * **☐ Project Panel 3** ⇒ if enabled, all files listed in Project Panel 3 will be included into the search/replace operation.
@@ -235,15 +237,15 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * When **Bookmark line** is checked, a bookmark is dropped on each line where an individual hit occurs.  In the case where an individual hit spans multiple lines, each line in the span will receive the bookmark.
 
-* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Styler Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
+* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Style Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
 
-In either case, the Mark All button will perform the marking.
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is ticked; if **Wrap Around** is not ticked, it will mark from the caret position to the end of the file (if **Backward direction** is not ticked) or from the beginning of the file to the caret position (if **Backward direction** is ticked).
 
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
 Once some text in a document is marked, it may be copied to the clipboard by pressing the **Copy Marked Text** button.  This feature is also invocable from the Search menu, and in order to be used in a macro, the Search menu version of this copy command must be used.
 
-Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Styler Configurator -&gt; Global Styles , Incremental Highlighting instead.
+Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
 ## Dialog-free search/mark actions
 
@@ -265,11 +267,11 @@ All dialog-free search actions do preserve the current search options set in the
 
 Use the Mark All or Unmark All submenus of the Search menu to mark all occurrences of the selected text or word the caret is in if there is no active selection.  You have a choice of five different colors in which to highlight/mark text in this manner.
 
-The settings for each of the 5 available styles are Settings -&gt; Styler Configurator -&gt; Global Styles , Mark style #.
+The settings for each of the 5 available styles are Settings -&gt; Style Configurator -&gt; Global Styles , Mark style #.
 
 If you've highlighted some groups of text in this manner, and you wish to copy those sections, the Copy Styled Text submenu of the Search menu will allow you to do that.
 
-You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Styler Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
+You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Style Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
 
 You enable smart highlighting through Settings -&gt; Preferences -&gt; MISC -&gt; Smart highlighting, Enable smart highlighting. By default, the highlighting is case insensitive, which may be a problem sometimes. Then just toggle Settings -&gt; Preferences -&gt; MISC -&gt; Highlighting is case sensitive on.  (See also [Style Configurator](../preferences/#style-configurator) and [Preferences](../preferences/#preferences).)
 
