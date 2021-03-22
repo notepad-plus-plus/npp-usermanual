@@ -47,18 +47,25 @@ The context menu does not have a GUI-based editor; you just need to edit the fil
 
 All menu commands can be added to the Context Menu, including plugin commands:
 
-* To add a built-in command, you need to provide the main menu name (as it appears in the main menu bar) as the value of the MenuEntryName attribute and the command's item name (as it appears in the menu) as the value of the MenuItemName attribute. The MenuEntryName attribute must reference an entry on the main menu bar and must be an ancestor of the MenuItemName attribute, regardless of its depth.
-* To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.
+* To add a built-in command, you may provide the main menu name (as it appears in the main menu bar) as the value of the MenuEntryName attribute and the command's item name (as it appears in the menu) as the value of the MenuItemName attribute. The MenuEntryName attribute must reference an entry on the main menu bar and must be an ancestor of the MenuItemName attribute, regardless of its depth.  
+    * For example, `<Item MenuEntryName="Edit" MenuItemName="Cut"/>` will add a context-menu entry that calls the **File** menu's **Cut** entry.
+* Alternately, to add a built-in command, you may instead provide the menu command ID via the `id` attribute.  The command ID values for a given menu can be found in your localization file (like [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml)), which will map the localized text you see in the menu to the command ID, or in [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h).   
+    * For example, `<Item id="42001"/>` will add a context-menu entry that calls the **File > Cut** action by its command ID.
+    * **NOTE**: `<Item id="0"/>` has a special meaning: it acts as a horizonal separator line -- that's how you can get a line between groups in the context menu.
+* To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.  
+    * For example: `<Item PluginEntryName="MIME Tools" PluginCommandItemName="Base64 Encode" />` will add a context-menu entry that calls **Plugins > MIME Tools > Base64 Encode**
 
-Note that the value you add should be in English, not in a translated language. The Shortcut Mapper will help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands. If you wish to use IDs, they can be found in [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h), or can be found in your localization file.
+Note that the menu names and menu item names (whether built-in or plugin names) that you use in the should be in English, not in a translated language. The Shortcut Mapper can help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands; or you can look at the  [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) that shipped with your distribution.
+
+By default, each `<Item>` will be rendered in the top level of the context menu with a localized name matching the normal menu entry, unless overridden by the attributes described next.
 
 ### Grouping items into sub-menus
 
-If you add a `FolderName="name_of_submenu"` attribute to consecutive items, they will be grouped into a sub-menu with that name. Specifying "" is the same as leaving the FolderName attribute out. Note that sub-menus do not nest - you cannot add a sub-menu to a sub-menu. Non-Latin characters are supported.
+Each `<Item>` will go in the first level of the context menu.  This can be overridden by adding a `FolderName="name_of_submenu"` attribute to consecutive items, so that they will be grouped into a sub-menu with that name. Specifying "" is the same as leaving the FolderName attribute out. Note that sub-menus do not nest - you cannot add a sub-menu to a sub-menu. Non-Latin characters are supported.
 
 ### Overriding a menu item name
 
-If you add an `ItemNameAs="new_name_for_the_item"` attribute, the new name will be displayed instead of the standard one, which you'd get from the menu bar or its sub-menus. This is useful when the name is lengthy, as it makes the Context Menu unwieldy otherwise. Non-Latin characters are supported.
+Each `<Item>` will use the same text as the main menu entry uses, as defined by your current localization.  This can be overridden by adding an `ItemNameAs="new_name_for_the_item"` attribute, so that the new name will be displayed instead of the standard one.  This is useful when the name is lengthy, as it makes the Context Menu unwieldy otherwise. Non-Latin characters are supported.
 
 ## Keyboard shortcuts: `shortcuts.xml`
 
