@@ -34,7 +34,7 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
-### Find / Replace
+### Find / Replace tabs
 
 All the dialog-based have certain features in common, though some are disabled under certain circumstances.
 
@@ -111,7 +111,47 @@ If a search action is invoked by keyboard command with the Find dialog window op
 
 *Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "FileSeek", "Everything" and many others.
 
-#### "Search results" Window
+### Find in Files tab
+
+Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders.
+
+The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   If you have a blank filter, it is implied to be `*.*`.  As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename; if you have at least one exclusion in your filter, you need to have at least one inclusion in your filter, otherwise it excludes files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you want.  Please also note that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
+
+The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
+
+* **☐ Follow current doc** ⇒ if enabled, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
+* **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
+* **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
+
+### Find in Projects tab
+
+Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
+
+* **☐ Project Panel 1** ⇒ if enabled, all files listed in Project Panel 1 will be included into the search/replace operation
+* **☐ Project Panel 2** ⇒ if enabled, all files listed in Project Panel 2 will be included into the search/replace operation
+* **☐ Project Panel 3** ⇒ if enabled, all files listed in Project Panel 3 will be included into the search/replace operation.
+
+Only Project Panels which are currently open can be searched. The checkmarks of Project Panels which are not currently open are grayed out.
+
+The **Filters** list works the same way as described in the previous **Find in Files** section.
+
+### Mark tab
+
+The Mark tab from the Find/Replace dialog will perform searches similar to the Find tab, in the current document or selection:
+
+* When **Bookmark line** is checked, a bookmark is dropped on each line where an individual hit occurs.  In the case where an individual hit spans multiple lines, each line in the span will receive the bookmark.
+
+* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Style Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
+
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is ticked; if **Wrap Around** is not ticked, it will mark from the caret position to the end of the file (if **Backward direction** is not ticked) or from the beginning of the file to the caret position (if **Backward direction** is ticked).
+
+To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
+
+Once some text in a document is marked, it may be copied to the clipboard by pressing the **Copy Marked Text** button.  This feature is also invocable from the Search menu, and in order to be used in a macro, the Search menu version of this copy command must be used.
+
+Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
+
+### Search results window
 
 After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the F7 keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
 
@@ -149,9 +189,9 @@ If the source file lines are judged by Notepad++ to be too long when they are co
 
 If a search is conducted such that a match which spans two or more lines occurs, only the contents of the *FIRST* line of that match will be copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing Enter) will result in the correct selection of multi-line matching text there.
 
-##### *RightClick* commands in the client area of a **Search results** window's tab
+#### *RightClick* commands in the client area of a **Search results** window's tab
 
-###### Copying text from the **Search results** window
+##### Copying text from the **Search results** window
 
 There are two ways to copy text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and use the keyboard's *Ctrl+c* or the mouse's *RightClick* to invoke the context menu and select **Copy** from that.  Somewhat surprisingly, these two copy mechanisms produce vastly different results.
 
@@ -171,7 +211,7 @@ First, if the user makes a selection of text in the **Search results** window an
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
 
-###### Other commands
+##### Other commands
 
 There are some commands that don't need a lot of explanation; these are:
 
@@ -191,7 +231,7 @@ The user can collapse/uncollapse "branches" of this tree.  To collapse, click wi
 
 The **Collapse all** and **Uncollapse all** commands perform the corresponding actions on *ALL* elements of the entire result history in the **Search results** window at once.  Perhaps a better name for **Uncollapse all** would have been the more-conventional "Expand all"?
 
-###### Searching in previously-found results (secondary searching)
+##### Searching in previously-found results (secondary searching)
 
 Perhaps you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by *RightClick*ing the **Search results** window client area and selecting **Find in these search results...**.
 
@@ -207,45 +247,6 @@ The popup window has a parameter not available in the searches described earlier
 
 *Note:*  The contents of the **Search results** window are discarded upon Notepad++ shutdown.  If there is data of importance there it should be copied, using one of the methods above, and saved in a more-permanent location.
 
-### Find in Files
-
-Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders.
-
-The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   If you have a blank filter, it is implied to be `*.*`.  As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename; if you have at least one exclusion in your filter, you need to have at least one inclusion in your filter, otherwise it excludes files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you want.  Please also note that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
-
-The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
-
-* **☐ Follow current doc** ⇒ if enabled, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
-* **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
-* **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
-
-### Find in Projects
-
-Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
-
-* **☐ Project Panel 1** ⇒ if enabled, all files listed in Project Panel 1 will be included into the search/replace operation
-* **☐ Project Panel 2** ⇒ if enabled, all files listed in Project Panel 2 will be included into the search/replace operation
-* **☐ Project Panel 3** ⇒ if enabled, all files listed in Project Panel 3 will be included into the search/replace operation.
-
-Only Project Panels which are currently open can be searched. The checkmarks of Project Panels which are not currently open are grayed out.
-
-The **Filters** list works the same way as described in the previous **Find in Files** section.
-
-### Highlighting and bookmarking
-
-The Mark tab from the Find/Replace dialog will perform searches similar to the Find tab, in the current document or selection:
-
-* When **Bookmark line** is checked, a bookmark is dropped on each line where an individual hit occurs.  In the case where an individual hit spans multiple lines, each line in the span will receive the bookmark.
-
-* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Style Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
-
-In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is ticked; if **Wrap Around** is not ticked, it will mark from the caret position to the end of the file (if **Backward direction** is not ticked) or from the beginning of the file to the caret position (if **Backward direction** is ticked).
-
-To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
-
-Once some text in a document is marked, it may be copied to the clipboard by pressing the **Copy Marked Text** button.  This feature is also invocable from the Search menu, and in order to be used in a macro, the Search menu version of this copy command must be used.
-
-Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
 ## Dialog-free search/mark actions
 
