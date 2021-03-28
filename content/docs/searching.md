@@ -193,23 +193,19 @@ If a search is conducted such that a match which spans two or more lines occurs,
 
 ##### Copying text from the **Search results** window
 
-There are two ways to copy text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and use the keyboard's *Ctrl+c* or the mouse's *RightClick* to invoke the context menu and select **Copy** from that.  Somewhat surprisingly, these two copy mechanisms produce vastly different results.
+There are two ways to copy exact text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and use the keyboard's *Ctrl+c*, or use the mouse's *RightClick* to invoke the context menu and select **Copy**.  These two copy mechanisms produce identical results.  Another choice is to use the context menu's **Copy Selected Line(s)** command; this type of copy can be thought of as a "Copy Special".  It copies the text of ENTIRE LINES from the results, WITHOUT any search information (called "metadata") being included in what is copied.
 
-When *Ctrl+c* is used, it is very straightforward:  Whatever text is selected is copied, simply and exactly.  If nothing is selected when *Ctrl+c* is pressed (and the **Search results** window has input focus of course), nothing is copied to the clipboard.
+Here's a more detailed description of what happens for *RightClick* > **Copy Selected Line(s)**:
 
-When the mouse's *RightClick* > **Copy** is used, however, it is more complicated.  Basically, this type of copy can be thought of as a "Copy Special".  It copies the text of ENTIRE LINES from the results, WITHOUT any search information (called "metadata") being included in what is copied.
+First, if the user makes a selection of text in the **Search results** window and copies it this way, only the lines of text touched (even partially) by the selection are part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy Selected Line(s)** is invoked, results depend upon what exactly is under the cursor during the *RightClick*:
 
-Here's a more detailed description of what happens for *RightClick* > **Copy**:
-
-First, if the user makes a selection of text in the **Search results** window and copies it this way, only the lines of text touched (even partially) by the selection is part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy** is invoked, results depend upon what exactly is under the cursor during the *RightClick*:
-
-| *RightClick* item     | What gets copied when *RightClick* > **Copy** is run |
+| *RightClick* item     | What gets copied when *RightClick* > **Copy Selected Line(s)** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
 |a line with line # info|the entire line of the *RightClick* but without line number text                                     |
 |a pathname header line |all the lines for that single file without pathname or line number text                              |
 |a "search" header line |all the lines for that search (1 or more files) without search header, pathname or line number text  |
 
-*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
+*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy Selected Line(s)** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
 
 ##### Other commands
 
@@ -247,6 +243,20 @@ The popup window has a parameter not available in the searches described earlier
 
 *Note:*  The contents of the **Search results** window are discarded upon Notepad++ shutdown.  If there is data of importance there it should be copied, using one of the methods above, and saved in a more-permanent location.
 
+##### Search results configuration options
+
+There are currently two ways to configure the **Search results** window behavior, both located in the mouse's *RightClick* context menu:
+
+* **Word wrap long lines**
+* **Purge for every search**
+
+These are checkmarkable menu items; invoke the menu item once to turn the feature on (checkmark will appear on the menu) and run it again to turn it off (checkmark no longer appears). These configuration settings are remembered by Notepad++ until their states are again changed by the user.
+
+When **Word wrap long lines** is turned on (enabled), the **Search results** window text will wrap at the right edge, and be continued on the next visible line.  With the feature off, the window will have a horizontal scrollbar so that the rightmost text on long lines may be scrolled into the user's view.  This feature was introduced in Notepad++ version 7.9(.0).
+
+By default, the **Search results** window accumulates all of your prior **Find All in ...** type searches.  When a new search is executed, old results get collapsed so that only the most-recent results are fully visible at the top of the window.  The old searches remain toward the bottom of the window for possible future reference by expanding them. One use for retaining results from prior searches is to do several different searches, and then execute **Open All** command from the window's right-click context menu -- this will open all files hit by any previous series of possibly disparate searches.
+
+To some users these older results accumulating are an annoyance -- their data may become out of date quickly with changes to files -- so Notepad++ 7.9.6 and higher support a setting that, after turned on, removes any old search data from the window before populating it with new.  The setting is set/cleared by right-clicking anywhere in the **Search results** window, causing the context menu to appear; a checkable menu item entitled **Purge for every search** is present in this menu.  After turning the feature on, which will cause its menu item to have a checkmark, running a search will purge old results.
 
 ## Dialog-free search/mark actions
 
