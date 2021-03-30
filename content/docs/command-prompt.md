@@ -17,6 +17,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
   [-qn<EasterEggName> | -qt<Text> | -qf<ContentFileName>]
   [-qSpeed(1|2|3)] [-quickPrint]
   [-settingsDir="d:\your settings dir\"] [-openFoldersAsWorkspace]
+  [-titleAdd="additional title bar text"]
   [filepath]
 ```
 
@@ -54,6 +55,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
 * `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
+* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v7.9.6)
 * `filepath`: file or folder name to open (absolute or relative path name)
 
 
@@ -93,6 +95,6 @@ usage list.  These are intended for advanced usage or other special circumstance
 The Notepad++ [installer executable](../getting-started/#installer) accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
 * `/S` : silent installation
 * `/NCRC`: skips the installer's CRC check
-* `/D=c:\blah` or `/D=c:\path with spaces\blah` : overrides the default installation directory.  
+* `/D=c:\blah` or `/D=c:\path with spaces\blah` : overrides the default installation directory.
     * Do _not_ put quotes around the path, even when there are spaces.
     * Because it allows spaces in the path, this option **must** be the last argument on the installer command line, if included.
