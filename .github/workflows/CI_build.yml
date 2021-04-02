@@ -20,7 +20,7 @@ jobs:
       run: |
            cmd /c start hugo.exe server --minify --theme book
            $env:Path += ";C:\Program Files\WinHTTrack\"
-           httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output" "+*.npp-user-manual.org/*" "+*.127.0.0.1:1313/*"  "+localhost:1313/*"  "+localhost:1313" -v
+           httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
            Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
 
