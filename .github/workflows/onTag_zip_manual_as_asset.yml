@@ -16,7 +16,9 @@ jobs:
 
     - name: Install hugo-extended and httrack via chocolatey
       working-directory: .
-      run: choco install hugo-extended httrack
+      run: |
+           choco install hugo-extended --version 0.57.2
+           choco install httrack
 
     - name: Convert hugo site to standandalone HTML
       working-directory: .
