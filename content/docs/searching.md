@@ -274,13 +274,15 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 All dialog-free search actions do preserve the current search options set in the Find dialog like Match case or Wrap around.
 
-### Highlighting
+### Marking with a color/style and Highlighting
 
-Use the Mark All or Unmark All submenus of the Search menu to mark all occurrences of the selected text or word the caret is in if there is no active selection.  You have a choice of five different colors in which to highlight/mark text in this manner.
+Use the Mark All or Unmark All submenus of the Search menu to mark/unmark all occurrences of the selected text or word the caret is in if there is no active selection.  You have a choice of five different colors/styles (numbered 1 through 5) in which to mark text in this manner. Mark One submenu options (version 7.9.6 and later) work similarly, but only on the single occurrence of selected text or caret word.
 
-The settings for each of the 5 available styles are Settings -&gt; Style Configurator -&gt; Global Styles , Mark style #.
+The settings for each of the 5 available colors/styles are Settings -&gt; Style Configurator -&gt; Global Styles , Mark style #.
 
-If you've highlighted some groups of text in this manner, and you wish to copy those sections, the Copy Styled Text submenu of the Search menu will allow you to do that.
+If you've highlighted some groups of text in this manner, and you wish to copy those sections, the Copy Styled Text submenu of the Search menu will allow you to do that.  Quick search for previously marked text is possible via the Jump Up or Jump Down submenu choices.
+
+Note: Unfortunately, the Mark All submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.
 
 You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Style Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
 
