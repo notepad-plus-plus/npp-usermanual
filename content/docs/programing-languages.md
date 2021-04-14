@@ -17,7 +17,7 @@ Almost 80 Programming Languages are supported by Notepad++:
 | FreeBASIC    | Gui4Cli            | Haskell                | HTML          | INI files     |
 | Intel HEX    | Inno Setup scripts | Java                   | JavaScript    | JSON          |
 | JSP          | KiXtart            | LaTeX                  | LISP          | Lua           |
-| Makefile     | Matlab             | MMIX                   | Nimrod        | nnCron        |
+| Makefile     | Matlab             | MMIX                   | Nim           | nnCron        |
 | NSIS scripts | Objective-C        | OScript                | Pascal        | Perl          |
 | PHP          | PostScript         | PowerShell             | PureBasic     | Python        |
 | R            | Rebol              | Registry script (.reg) | Resource file | Ruby          |
