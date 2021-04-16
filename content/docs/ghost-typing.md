@@ -7,8 +7,6 @@ Ghost typing can be used to launch Notepad++ with an auto-typing text. Use comma
 
 ## Syntax
 
-The syntax listed here is valid for Notepad++ v7.9.2 and newer.  
-
 ### Main Ghost Typing Modes
 
 Use one of these three command-line options to enable the various modes of ghost typing.
@@ -60,10 +58,17 @@ These options apply to any of the ghost typing modes, unless otherwise mentioned
 
 `notepad++.exe -qt="#hulk { height: 200%; width: 200%; color: green; }" -lcss`
 
-## Old Verions of Notepad++
+## Historical Syntax
 
-In Notepad++ v7.9.1 and earlier, the command-line options for the ghost
-typing modes did not require the `=`, quotes were not allowed, and the
-sequence `%20` was used to represent a space; this older syntax ceased
-to work in v7.9.2. Keep this in mind if using older versions of Notepad++.
+The syntax listed above is valid for Notepad++ v7.9.2 and newer.  
+
+In Notepad++ v7.9.1 and earlier, there were differnces in the syntax:
+
+* the command-line options for the ghost typing modes did not use the `=`,
+  so it would be interpreted as literal text (part of the value)
+* quotes were interpreted as literal text (part of the value)
+* the sequence `%20` was used to represent a space, since you could not
+  use quotes to make spaces significant.
+
+Keep these differences in mind if using older versions of Notepad++.
 
