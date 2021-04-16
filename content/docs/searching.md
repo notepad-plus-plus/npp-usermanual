@@ -523,9 +523,9 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\B` ⇒ Not a word boundary. It represents any location between two word characters or between two non-word characters.
 
-* `\A` or `\'` ⇒ The start of the matching string.
+* `\A` or `` \` `` ⇒ The start of the matching string.
 
-* `\z` or `` \` `` <!-- ` --> ⇒ The end of the matching string.
+* `\z` or `\'` <!-- ` --> ⇒ The end of the matching string.
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
