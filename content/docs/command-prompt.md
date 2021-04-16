@@ -51,7 +51,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
 * `-qn="Easter Egg Name"`: Launch [ghost typing](../ghost-typing/) to display easter egg via its *Easter Egg Name*.
 * `-qt="Text to Type"`: Launch [ghost typing](../ghost-typing/) to display a text via the given *Text to Type*
 * `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*
-* `-qSpeed`*N*: [Ghost typing](../ghost-typing/) speed. Value of *N* from 1 to 3 for slow, fast, and fastest
+* `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
 * `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
