@@ -525,7 +525,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\A` or `` \` `` ⇒ Matches the start of the file.
 
-* `\z` or `\'` <!-- ` --> ⇒ Matches the end of the file.
+* `\z` or `\'` ⇒ Matches the end of the file.
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
