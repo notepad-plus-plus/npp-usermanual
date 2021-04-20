@@ -17,7 +17,7 @@ Going to the main website and downloading the latest installer or zipped archive
 The safety delay is provided so that, in case a critical bug is spotted on a new release, a corrective release is done quickly enough, preventing bad bugs to become widespread.
 
 ## New version available but auto-updater find nothing
-In order to avoid to spread a new version witch contains regression or critical bugs, we wait always for users' feedback during one week,
+In order to avoid to spread a new version which contains regression or critical bugs, we wait always for users' feedback during one week.
 
 ## WinGUp Project
 [WinGUp](http://wingup.org/) project was started for the need of Notepad++ for upgrading Notepad++ automatically. Then it's become more generic solution for updating purpose. [This project has been forked](https://github.com/notepad-plus-plus/wingup) for more Notepad++ specific need so Plugin Admin can share its basic functionalities.
