@@ -53,7 +53,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
         * `Remove Duplicates`: leaves only the first instance of any full lines that have more than one copy anywhere in the active file
         * `Remove Consecutive Duplicate Lines`: will only remove duplicates that are on the lines immediately following the first instance (still keeping the first instance)
     * There are methods for splitting lines and joining lines together:
-        * `Split Lines`: will insert a line-ending into a long line(s) at the current size of the editor window or, if enabled, the right-most specified Vertical Edge (requires 7.9.3 or later), whichever is less.  It operates on the lines spanned by the current stream selection or the single line of the caret if no stream selection is currently active.
+        * `Split Lines`: will insert a line-ending into a long line(s): if there is one or more Vertical Edge value specified (requires v7.9.3 or later), it will split at the right-most Vertical Edge; otherwise, it will split at the current size of the editor window.  It operates on the lines spanned by the current stream selection or the single line of the caret if no stream selection is currently active.
         * `Join Lines`: will combine the lines touched by the active stream selection by replacing line-endings with a single space character. It requires an active stream selection that spans two or more lines.
     * There are a variety of sorting algorithms:
         * `Ascending` means smallest to largest (A-Z)
