@@ -163,17 +163,19 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 Affects highlighting of selected text.
 
+* **Mark All**
+    * `☐ Match case`: Mark All will be case-sensitive
+    * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
 * **Smart Highlighting**
     * `☐ Enable`: if you select a piece of text, Smart Highlighting will color all matching pieces of text.  It will use the style defined in **Style Configurator > Global Styles > Smart Highlighting**
-    * `☐ Match case`: Smart Highlighting will be case-sensitive
-    * `☐ Match whole word only`: Smart Highlighting will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
-    * `☐ Use Find dialog settings`
     * `☐ Highlight another view`: Smart Highlighting will also apply to the other "view" (when you have documents open in both of Notepad++ view panes)
+    * `Matching: ☐ Match case`: Smart Highlighting will be case-sensitive
+    * `Matching: ☐ Match whole word only`: Smart Highlighting will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
+    * `Matching: ☐ Use Find dialog settings`
 * **Highlight Matching Tags**
     * `☐ Enable`: in HTML/XML files, clicking in or highlighting in an opening or closing tag (between the angle brackets) will highlight both the opening and closing tag.  It will use the style defined in **Style Configurator > Global Styles > Tags match highlighting**
     * `☐ Highlight tag attributes`: any attributes inside the active tag will be highlighted using the style defined in **Style Configurator > Global Styles > Tags attribute**
     * `☐ Highlight comment/php/asp zone`
-
 
 ### Print
 
