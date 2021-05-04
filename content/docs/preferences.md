@@ -163,7 +163,7 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 Affects highlighting of selected text.
 
-* **Mark All**
+* **Mark All** (v7.9.6 and later)
     * `☐ Match case`: Mark All will be case-sensitive
     * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
 * **Smart Highlighting**
