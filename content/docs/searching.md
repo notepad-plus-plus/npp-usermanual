@@ -207,6 +207,8 @@ First, if the user makes a selection of text in the **Search results** window an
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy Selected Line(s)** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
 
+New in v7.9.6 is the ability to copy a list of the files that contained hits from past searches.  The **Copy Pathname(s)** context menu command will copy to the clipboard the full pathnames of all files appearing in **Search results**.
+
 ##### Other commands
 
 There are some commands that don't need a lot of explanation; these are:
