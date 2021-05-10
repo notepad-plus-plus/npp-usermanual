@@ -117,7 +117,7 @@ Description:
 	This function should return the name which should be displayed in the LanguageMenu.   
 	If more than one lexer is contained in a plugin, this function will be called accordingly often  
 	and the respective lexer is queried via index.   
-	Name is a pointer to the memory area allocated by Npp.   
+	Name is a pointer to the memory area allocated by Npp. 8bit encoded name is expected.  
 	The size is given by buflength.  
 ~~~
   
@@ -132,7 +132,8 @@ Args:
 Return: none  
 Description:
 	This function should return the description to be displayed in the first field of the status line.  
-	The parameters are to be treated in the same way as in the GetLexerName function.  
+	The parameters are to be treated in the same way as in the GetLexerName function, except for 
+	the name parameter, here a utf16 encoded name is expected.
 ~~~
   
 4. GetLexerFactory
