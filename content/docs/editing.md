@@ -83,12 +83,13 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
 * `Blank Operations >` ⇒ submenu with actions that trim or convert spaces and tab characters on ALL lines of the current file
     * `Trim Trailing Space`: removes any space or tab characters occurring at the end of a line, after any non-whitespace characters
     * `Trim Leading Space`: removes any space or tab characters occurring at the beginning of a line, before any non-whitespace characters
-    * `Trim Leading and Trailing Spaces`: combines the functionalities of Trim Trailing Space` and `Trim Leading Space` into one command
+    * `Trim Leading and Trailing Spaces`: combines the functionalities of `Trim Trailing Space` and `Trim Leading Space` into one command
     * `EOL to Space`: replaces line-ending characters with a single space character (similar to `Join Lines` functionality, but acts upon the entire file rather than the active selection); note: "EOL" means "End Of Line" -- in other words, line-ending characters
     * `Remove Unnecessary Blank and EOL` : performs a combined `Trim Leading and Trailing Spaces` and `EOL to Space` operation
     * `TAB to Space` : replaces any tab characters with their equivalent number of spaces
     * `Space to TAB (All)` : consolidates space characters into an equivalent number of tab characters, wherever the spaces occur
     * `Space to TAB (Leading)` : consolidates space characters into an equivalent number of tab characters, but only where they occur before the first non-whitespace character on a line
+    * NOTE about TAB-related commands: the "equivalent number" of spaces (or tab characters) is based on the [Settings > Preferences > Language > Tab Settings: Tab Size](../preferences/#language) for the active language of the current file
 * `Paste Special >` ⇒ submenu with actions that pastes HTML or RTF , and special versions of copy/cut/paste which handle NULL and other binary characters
     * Note: The HTML and RTF actions paste the HTML and RTF source code from the HTML or RTF entries in the Windows Clipboard; it does _not_ apply HTML or RTF formatting to what appears to be plain text in the Notepad++ editor window.
 * `On Selection >` ⇒ submenu with actions that use the currently-selected text as a filename or folder to open, or as a term for an internet search.  (Custom commands using the current selection can be added to the **Run** menu, using the [`<UserDefinedCommands>` section of `shortcuts.xml`](../config-files/#userdefinedcommands).)
