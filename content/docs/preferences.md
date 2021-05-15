@@ -98,8 +98,8 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * `UTF-8`: this can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters
         * `☐ Apply to opened ANSI files`: if you open an ANSI file, this allows it to be "upgraded" to UTF-8
     * `UTF-8 with BOM`: this is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file
-    * `UCS-2 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)
-    * `UCS-2 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first)
+    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first) (was listed as `UCS-2 Big Endian with BOM` before v7.9.6)
+    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (was listed as `UCS-2 Little Endian with BOM` before v7.9.6)
     * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
 * **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules
 
