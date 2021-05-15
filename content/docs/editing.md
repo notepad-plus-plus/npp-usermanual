@@ -58,12 +58,14 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
     * There are methods for splitting lines and joining lines together:
         * `Split Lines`: will insert a line-ending into a long line(s): if there is one or more [Vertical Edge](../preferences/#margins-border-edge) value specified (requires v7.9.3 or later), it will split at the right-most Vertical Edge; otherwise, it will split at the current size of the editor window.  It operates on the lines spanned by the current stream selection or the single line of the caret if no stream selection is currently active.
         * `Join Lines`: will combine the lines touched by the active stream selection by replacing line-endings with a single space character. It requires an active stream selection that spans two or more lines.
-    * There are commands for moving line(s) up or down:
-        * `Move Up Current Line`: will swap the current line with the line above it, effectively moving the line of the caret up one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection up as a group
-        * `Move Down Current Line`: will swap the current line with the line below it, effectively moving the line of the caret down one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection down as a group
     * There are commands for removing lines
         * `Remove empty lines`: will remove all lines containing no characters from the entire document
         * `Remove empty lines (Containing Blank characters)`: will remove all lines containing no characters from the entire document; if a line contains only space or tab characters that line will be removed as well
+    * There are commands for changing the order of existing lines:
+        * `Move Up Current Line`: will swap the current line with the line above it, effectively moving the line of the caret up one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection up as a group
+        * `Move Down Current Line`: will swap the current line with the line below it, effectively moving the line of the caret down one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection down as a group
+        * `Reverse Line Order`: will will take the selected lines (or all of the lines of the current document if no active selection) and will order them reversely (i.e. flipped) from their existing order (added in v7.9.6)
+        * `Randomize Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and place them in an unpredictable order (added in v7.9)
     * There are a variety of sorting algorithms:
         * `Ascending` means smallest to largest (A-Z)
         * `Descending` means largest to smallest (Z-A)
@@ -74,7 +76,6 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
         * `As Integers` means that `10` will sort as being bigger than `2`
         * `As Decimals (Comma)` means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
         * `As Decimals (Dot)` means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
-        * `Randomly` means that the selected lines will be placed in a random order, not determined by the characters or values on the line (added in v7.9)
         * NOTE: Sorting is performed with the assumption that all line-endings in the file are uniform and match the current selection for the file being edited -- the quickest way to check that selection is to glance at the status bar, where the current line-ending type is shown either as `Windows (CR LF)`, `Unix (LF)` or `Macintosh (CR)`.  It might be desirable to check the line-ending types in your file before executing a sorting operation, and use the `Edit > EOL Conversion >` choices or right-click on the Stataus Bar's EOL indicator to fix the line endings if necessary.
         * NOTE: If a [Column Mode](./#column-mode-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. If the keys are identical on two lines, then the order of those two lines will not change (even if text outside of the selected key columns is different).
 * `Comment/Uncomment >` ⇒ submenu with actions that add or remove comment syntax, based on the file's **Language** selection
