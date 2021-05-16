@@ -17,7 +17,7 @@ The Column Editor dialog allows you to insert text or numbers in every row of th
 * The `Number to Insert` will insert increasing numbers.
     * `Initial number` sets the starting number.
     * `Increase by` will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
-    *  `Repeat` will will repeat the same number _n_ times.  Defaults to 1 if left blank.
+    *  `Repeat` will repeat the same number _n_ times.  Defaults to 1 if left blank.
     * `☐ Leading zeros` will cause all the numbers to have the same number of digits, by adding leading zeros for the smaller values
     * `Format` chooses between **Dec** (0-9), **Hex** (0-9,A-F), **Oct** (0-7), or **Bin** (0-1).
         Note: that the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
@@ -64,7 +64,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
     * There are commands for changing the order of existing lines:
         * `Move Up Current Line`: will swap the current line with the line above it, effectively moving the line of the caret up one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection up as a group
         * `Move Down Current Line`: will swap the current line with the line below it, effectively moving the line of the caret down one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection down as a group
-        * `Reverse Line Order`: will will take the selected lines (or all of the lines of the current document if no active selection) and will order them reversely (i.e. flipped) from their existing order (added in v7.9.6)
+        * `Reverse Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and will order them reversely (i.e. flipped) from their existing order (added in v7.9.6)
         * `Randomize Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and place them in an unpredictable order (added in v7.9)
     * There are a variety of sorting algorithms:
         * `Ascending` means smallest to largest (A-Z)
