@@ -24,6 +24,7 @@ Summary
 * [Plugins](content/docs/plugins.md)
 * [Plugin Communication](content/docs/plugin-communication.md)
 * [Preferences](content/docs/preferences.md)
+* [Views](content/docs/views.md)
 * [Themes](content/docs/themes.md)
 * [Configuration Files Details](content/docs/config-files.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
