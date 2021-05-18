@@ -3,9 +3,9 @@ title: Preferences
 weight: 100
 ---
 
-Control many the aspects of Notepad++. They are divided in three main groups: Preferences, Style Configurator and Shortcut Mapper.
+There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a colour or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
 
-The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a colour or a font. The Preferences dialog manages everything else. While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
+For settings not covered by the three main dialogs, there are [other toggles and settings](#other-toggles-and-settings) which can be found in various dialogs, menus, and configuration files.
 
 ## Preferences
 
@@ -85,7 +85,10 @@ These define the margin style, border width, and edge settings.  (This page is n
     * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed (this matches the behavior prior to v7.9.2)
     * `☐ Constant width`: the line number display will have enough width for any line number in the document (new to v7.9.2)
 * `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
-
+* **Padding**: (new to v7.9.6)
+    * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
+    * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
+    * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
 
 ### New Document
 
@@ -98,8 +101,8 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * `UTF-8`: this can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters
         * `☐ Apply to opened ANSI files`: if you open an ANSI file, this allows it to be "upgraded" to UTF-8
     * `UTF-8 with BOM`: this is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file
-    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first) (was listed as `UCS-2 Big Endian with BOM` before v7.9.6)
-    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (was listed as `UCS-2 Little Endian with BOM` before v7.9.6)
+    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v7.9.6, it was shown as `UCS-2`)
+    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v7.9.6, it was shown as `UCS-2`)
     * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
 * **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules
 
@@ -332,33 +335,13 @@ A variety of settings that didn't fit elsewhere
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: enable/disable sound feedback (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered).
-* `☐ Set Save dialog file extension filter... for Normal Text`: for a file that has not been previously saved and the language of the file is set to Normal text, when this option is enabled, the **Save As** dialog's filter will default to `*.*` and require you to type an extension; when this option is disabled, the filter will default to `*.txt` and will auto-append the `.txt` extension if you don't type an extension or choose a different filter.  (Regardless of the state of this option, you can always select a different filter manually in the **Save As** dialog.)
+* `☐ Set Save dialog file extension filter... for Normal Text`: for a file that has not been previously saved and the language of the file is set to Normal text, when this option is enabled, the **Save As** dialog's filter will default to `*.*` and require you to type an extension; when this option is disabled, the filter will default to `*.txt` and will auto-append the `.txt` extension if you don't type an extension or choose a different filter.  (Regardless of the state of this option, you can always select a different filter manually in the **Save As** dialog.)  (This preference was removed in v7.9.6, and replaced by a [toggle in the **Save As** dialog](#other-toggles-and-settings).)
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing (added in v7.8.8)
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
-
-## Preferences for Advanced Users
-
-The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` by using another editor (Notepad) to prevent your modification from being erased when Notepad++ exits.
-
-* Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
-```
-<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
-```
-Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
-
-* Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
-```
-<GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
-```
-If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
-```
-<GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
-```
-
 
 ## Style Configurator
 
@@ -467,3 +450,66 @@ If you prefer to edit XML instead of using the GUI to modify shortcuts, you may 
 ### Common Shortcut Mapper Problems
 
 With the introduction of the message area, it is easy to see when a conflict exists between shortcuts.  All you have to do is pick the entry that you _don't_ want to use the conflicted shortcut, and either Clear or Modify the shortcut so there is no longer a conflict.
+
+## Other Toggles and Settings
+
+Not all preferences are handled in dialogs, and those toggles and settings are described here.
+
+### Other Settings-menu Entries
+
+* **Settings > Import > Import Plugins...** will ask you to navigate to a plugin DLL anywhere on your filesystem; it will then copy that DLL into the appropriate folder so that the next time you run Notepad++, the application will load that DLL as a plugin (assuming it is a valid plugin DLL).  This is an alternate way to install a single-DLL plugin, rather than the [other installation methods](../plugins/#how-to-install-a-plugin) of using Plugins Admin or manually putting the DLL and associated files in the right location.  (This menu entry will not work on its own if the plugin requires more files than just its DLL.)
+
+* **Settings > Import > Import Style Themes...** will ask you to navigate to a style theme XML file, and will put it in the appropriate folder so that the next time you run Notepad++, the application will include it when you use the [Style Configurator](../preferences/#style-configurator), the new theme will be listed in the "Select theme:" pulldown.
+
+* **Settings > Edit popup ContextMenu** will open the [`contextMenu.xml` configuration file](config-files/#the-context-menu-contextmenu-xml), so that you can edit your context menu, following the advice for [editing configuration files](../config-files/#editing-configuration-files).
+
+### Preference Toggles in Other Dialogs
+
+* The **Save Session** dialog will have a `☐ Save Folder as Workspace` checkbox, which will be active (able to be toggled) when you have a **Folder as Workspace** opened.  If the checkbox is checked, the current **Folder as Workspace** will be included in the saved session; otherwise, the session will not include any **Folder as Workspace** information.  (Requires Notepad++ v7.9.3 or newer.)
+
+* When saving a new file or otherwise running the **Save As** dialog, there is an `☐ Append extension` checkbox.  If checked, Notepad++ will automatically append the first extension listed in the selected **Save as type**; otherwise, the extension must be manually included in the **File name** field.  (This toggle is new to v7.9.6, and replaces the old MISC preference for setting the save dialog file extension to \*.\* that was present in prior versions.)
+
+### Menu-based Settings
+
+The following are settings or preferences that are stored and modified by menu entries rather than dialog boxes.
+
+#### View Menu
+
+The View menu contains many toggles that affect Notepad++, many of which decide whether certain features of the application are visible or not.  Some of these that are remembered from one run of Notepad++ to the next (similar to dialog-based settings), and others that are specific to the current run of Notepad++.  These toggles and actions are described more in the [Views](../views/) section of this manual.
+
+#### Encoding Menu
+
+These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](#misc) preference will affect what encoding will be selected when the file is first read from disk.
+
+The major encodings are `ANSI` which is really a family of 8-bit encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page), [`UTF-8`](https://en.wikipedia.org/wiki/UTF-8), which uses variable-width multi-byte sequences to represent Unicode characters, [`UTF-16`](https://en.wikipedia.org/wiki/UTF-16) which uses two-byte Big Endian or Little Endian sequences to represent Unicode characters (these were listed as `UCS-2` in v7.9.5 and earlier), and the various `Character sets`, which allow you to use international 8-bit sets of characters that provide a limited set of glyphs.
+
+The `... with BOM` entries indicate that it uses the Unicode [Byte Order Mark](https://en.wikipedia.org/wiki/Byte_order_mark "BOM") at the start of the file to indicate the correct byte order (big endian or little endian), and in the case of UTF-8, to make it unambiguous that the file is meant to be a UTF-8 Unicode file rather than another 8-bit encoding.
+
+The `Convert to ...` entries below the separator line will change the encoding (the underlying bytes stored on disk) of the active file, without changing the glyphs.  So if you just have the Euro currency symbol `€` in your file, it will be stored as byte 0x80 if you `Convert to ANSI` (and are in a Western-European codepage in Windows), as the three-byte sequence 0xE2 0x82 0xAC if you `Convert to UTF-8`, and as the two byte sequence 0x20 0xAC if you `Convert to UTF-16 BE BOM` (known as `Convert to UCS-2 BE BOM` in v7.9.5 and earlier).
+
+The entries above the separator line (without `Convert to` in the name) show the file's active encoding or character set.  If you change that setting manually, it will leave the bytes in the file the same and change the glyph that is shown.  For example, if you enter the `€` in a UTF-8 encoded file, and then manually select `Encoding > ANSI`, suddenly those characters will look something like `â‚¬` (depending on the active Windows code page); this is because UTF-8 `€` is the three bytes 0xE2 0x82 0xAC, and those three bytes represent three characters when interpreted as ANSI.  Or, if you are starting with a character set of **Western European > OEM-US** (the old DOS box-drawing character set) with the `▓` grey box, if you change to character set to **Western European > Windows-1252**, it will become the `²` superscript 2.
+
+In general, if you want the glyph to stay the same and change the bytes on the disk, then use the `Convert to...` entries; whereas if the glyphs shown don't match what you think the bytes of the data should represent, you probably need to use one of the upper entries to change the interpretation of the bytes.
+
+#### Language Menu
+
+This menu shows the active syntax highlighter lexer (including [User Defined Languages](../user-defined-language-system/)), and allows you to change the syntax highlighter for the current file.  The syntax highlighting colors are set in the [Style Configurator](#style-configurator) or in the [UDL dialog](../user-defined-language-system/#udl-dialog-box-or-window).
+
+### Preferences for Advanced Users
+
+The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
+
+* Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
+```
+<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
+```
+Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
+
+* Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
+```
+<GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+```
+If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
+```
+<GUIConfig name="commandLineInterpreter">"c:\path\with spaces\to\cli.exe"</GUIConfig>
+```
