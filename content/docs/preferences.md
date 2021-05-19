@@ -21,7 +21,12 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * _NOTE_: After upgrading to a new version of Notepad++, you may need to refresh the `nativeLang.xml`: change the **Localization** to another language, then change it back immediately to your preferred language.
 * **Toolbar**:
     * `☐ Hide`: the icon-based toolbar will be hidden
-    * `Small icons` / `Big icons` / `Standard icons`: will change the icon size
+    * There is a radio-button set of choices for the icons (updated v8.0.0)
+        * `Fluent UI: small`: uses small versions of the Fluent UI icons
+        * `Fluent UI: large`: uses large versions of the Fluent UI icons
+        * `Filled Fluent UI: small`: uses small versions of the Fluent UI icons, in a filled (or reverse-video) style
+        * `Filled Fluent UI: large`: uses large versions of the Fluent UI icons, in a filled (or reverse-video) style
+        * `Standard icons: small`: these are the small version of the traditional (pre-v8.0.0) icons
 * **Document List Panel**:
     * `☐ Show`: will show the Doc Switcher panel, which can be used to quickly switch between documents
     * `☐ Disable extension column`: If enabled, the Doc Switcher panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
