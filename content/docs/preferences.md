@@ -56,6 +56,12 @@ These influence editing (carets, code-folding, line wrapping, and more).
 * `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
 
+### Dark Mode
+
+The Dark Mode feature (added in v8.0.0) is controlled here.
+
+* `☐ Enable Dark Mode`: enables Dark Mode, where the UI is set to dark background with light text
+
 ### Margins / Border / Edge
 
 These define the margin style, border width, and edge settings.  (This page is new in v7.9.2; in v7.9.1 and earlier, these settings were in the [Editing](#editing) page of the preferences.
