@@ -64,7 +64,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
     * There are commands for changing the order of existing lines:
         * `Move Up Current Line`: will swap the current line with the line above it, effectively moving the line of the caret up one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection up as a group
         * `Move Down Current Line`: will swap the current line with the line below it, effectively moving the line of the caret down one row in the document; if a selection spanning lines is active upon invocation, it will move those lines touched by the selection down as a group
-        * `Reverse Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and will order them reversely (i.e. flipped) from their existing order (added in v7.9.6)
+        * `Reverse Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and will order them reversely (i.e. flipped) from their existing order (added in v8.0.0)
         * `Randomize Line Order`: will take the selected lines (or all of the lines of the current document if no active selection) and place them in an unpredictable order (added in v7.9)
     * There are a variety of sorting algorithms:
         * `Ascending` means smallest to largest (A-Z)

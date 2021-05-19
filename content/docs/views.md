@@ -15,7 +15,7 @@ Choosing **Toggle Full-Screen Mode** will cause Notepad++ to take up the full sc
 
 Choosing **Post-It** will get rid of the title bar, menu bar, and tool bar (similar to full-screen mode), but it will maintain the same window size as Notepad++ previously took up, rather than enlarging to take up the whole screen.  This mode will also hide the tab bar, so you can focus on working on the single visible tab, though you can still use the tab-switching shortcuts to choose another tab. Like full-screen mode, Post-It mode has the `⊞` in the upper right of the window for leaving this mode, or you can use the shortcut (the default shortcut is `F12`) or exit Notepad++ and restart.
 
-Choosing **Distraction Free Mode** (new to v7.9.6) will combine full-screen mode with Post-It mode, so it will go full screen, and will hide the title bar, menu bar, tool bar, and tab bar; it will also add wide margins within the edit menu, so the text doesn't go so wide across the full-screen window.
+Choosing **Distraction Free Mode** (new to v8.0.0) will combine full-screen mode with Post-It mode, so it will go full screen, and will hide the title bar, menu bar, tool bar, and tab bar; it will also add wide margins within the edit menu, so the text doesn't go so wide across the full-screen window.
 
 ## View Current File In...
 
