@@ -55,7 +55,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
 * `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
-* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v7.9.6)
+* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0)
 * `filepath`: file or folder name to open (absolute or relative path name)
 
 The order of the options is not important.  Brackets indicate that the options

@@ -296,4 +296,4 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 * `userDefineLang.xml`: see [the **User Defined Languages** doc](../user-defined-language-system/).
 
-* `enableSelectFgColor.xml`: this is a zero-byte file that is just used as an indicator to the [**Settings > Style Configurator > Global Styles > Selected text colour**](../preferences/#global-styles)  to honor the foreground color, not just the background color.  (Available on v7.9.6 and newer.)
+* `enableSelectFgColor.xml`: this is a zero-byte file that is just used as an indicator to the [**Settings > Style Configurator > Global Styles > Selected text colour**](../preferences/#global-styles)  to honor the foreground color, not just the background color.  (Available on v8.0.0 and newer.)

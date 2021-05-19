@@ -85,7 +85,7 @@ These define the margin style, border width, and edge settings.  (This page is n
     * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed (this matches the behavior prior to v7.9.2)
     * `☐ Constant width`: the line number display will have enough width for any line number in the document (new to v7.9.2)
 * `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
-* **Padding**: (new to v7.9.6)
+* **Padding**: (new to v8.0.0)
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
@@ -101,8 +101,8 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * `UTF-8`: this can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters
         * `☐ Apply to opened ANSI files`: if you open an ANSI file, this allows it to be "upgraded" to UTF-8
     * `UTF-8 with BOM`: this is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file
-    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v7.9.6, it was shown as `UCS-2`)
-    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v7.9.6, it was shown as `UCS-2`)
+    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`)
+    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v8.0.0, it was shown as `UCS-2`)
     * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
 * **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules
 
@@ -166,7 +166,7 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 Affects highlighting of selected text.
 
-* **Mark All** (v7.9.6 and later)
+* **Mark All** (v8.0.0 and later)
     * `☐ Match case`: Mark All will be case-sensitive
     * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
 * **Smart Highlighting**
@@ -212,7 +212,7 @@ Affects the operations found in the **Find** dialog tabs.
 * `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
 * `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always (added v7.9)
 * `☐ Confirm Replace All in All Opened Documents`: when enabled, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
-* `☐ Replace: Don't move to the following occurrence`: when enabled and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v7.9.6)
+* `☐ Replace: Don't move to the following occurrence`: when enabled and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
 
 ### Backup
 
@@ -368,7 +368,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Brace highlight style [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the cursor onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
 * Bad brace colour [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the cursor at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
 * Current line background colour [background only] ⇒ The line containing the active editing cursor will be marked using this background style.
-* Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is enabled, the "Smart Highlighting" style (below) will be coloured overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v7.9.6 or newer), "Selected text colour" will honor the foreground colour as well.
+* Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is enabled, the "Smart Highlighting" style (below) will be coloured overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v8.0.0 or newer), "Selected text colour" will honor the foreground colour as well.
 * Caret colour [foreground only] ⇒ This sets the colour for the current-text-position cursor ("caret"), which will either be `|` for insert mode or `_` for overwrite mode.
 * Edge colour [foreground only] ⇒ Colour for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are enabled as Background Mode, this style's "foreground" colour will be used as the background colour for text that's beyond the edge.
 * Line number margin [background and foreground] ⇒ If "Display line number" is enabled in [Preferences > Editing](#editing), this sets the style for those line numbers.
@@ -466,7 +466,7 @@ Not all preferences are handled in dialogs, and those toggles and settings are d
 
 * The **Save Session** dialog will have a `☐ Save Folder as Workspace` checkbox, which will be active (able to be toggled) when you have a **Folder as Workspace** opened.  If the checkbox is checked, the current **Folder as Workspace** will be included in the saved session; otherwise, the session will not include any **Folder as Workspace** information.  (Requires Notepad++ v7.9.3 or newer.)
 
-* When saving a new file or otherwise running the **Save As** dialog, there is an `☐ Append extension` checkbox.  If checked, Notepad++ will automatically append the first extension listed in the selected **Save as type**; otherwise, the extension must be manually included in the **File name** field.  (This toggle is new to v7.9.6, and replaces the **Preferences > MISC > ☐ Set Save dialog file extension filter to \*\.\*** or **Set Save dialog file extension filter to \.\* for Normal Text ** preferences for setting the save dialog file extension to \*.\* that were present in prior v7.9.x.)
+* When saving a new file or otherwise running the **Save As** dialog, there is an `☐ Append extension` checkbox.  If checked, Notepad++ will automatically append the first extension listed in the selected **Save as type**; otherwise, the extension must be manually included in the **File name** field.  (This toggle is new to v8.0.0, and replaces the **Preferences > MISC > ☐ Set Save dialog file extension filter to \*\.\*** or **Set Save dialog file extension filter to \.\* for Normal Text ** preferences for setting the save dialog file extension to \*.\* that were present in prior v7.9.x.)
 
 ### Menu-based Settings
 
