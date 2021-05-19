@@ -5,7 +5,7 @@ weight: 105
 
 The View menu controls the look of the Notepad++, including how Notepad++ and the Windows operating system interact, what features and panels are active inside Notepad++, and whether there are one or two Views (visible files) active at the same time.
 
-Many of the entries in the View menu act as settings or toggles, to enable or disable showing some feature.  Some of these are remembered every time you run Notepad++, and others are just active for the single session and not remembered -- those that are remembered will be marked as **_[Remembered]_**.
+Many of the entries in the View menu act as settings or toggles, to enable or disable showing some feature.  Some of these are remembered every time you run Notepad++, and others are just active for the single session and not remembered -- those that are remembered will be marked as [↗](#remembered-settings "Remembered Setting").
 
 ## Application Views
 
@@ -23,21 +23,21 @@ The **View Current File In...** sub-menu will launch the current file in a stand
 
 ## Show Symbol
 
-The sub-menu **Show Symbol** sub-menu will affect whether certain characters are rendered with special glyphs so that they can easily be seen or identified in the editor view, and whether certain tab and wrap guides will be visible. All of the toggles in this sub-menu are **_[Remembered]_**.
+The **Show Symbol**[↗](#remembered-settings "Remembered Setting") sub-menu will affect whether certain characters are rendered with special glyphs so that they can easily be seen or identified in the editor view, and whether certain tab and wrap guides will be visible.
 
-There are three entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  Only one of these three options can be selected at a time, and selecting a new option will un-select the old.  If you want none of these symbol options, click on the option that is currently selected and it will be turned off.
+There are three entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  Only one of these three options can be selected (indicated with a check mark `✓`) at a given time, and selecting a new option will un-select the old.  If you want none of these symbol options, click on the option that is currently selected and it will be turned off (and none of the options will have the check mark `✓`).
 
-* **Show Whitespace and TAB**: When selected, the space character will show as a [colored](#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
-* **Show End of Line**: When selected, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.
+* **Show Whitespace and TAB**: When selected, the space character will show as a [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
+* **Show End of Line**: When selected, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  (The boxed characters are colored as "reverse text", so the active [Global Styles > Default > Foreground colour](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background colour](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.)
 * **Show All Characters**: When selected, this is effectively both **Show Whitespace and TAB** and **Show End of Line** at the same time.
 
-When the **Show Indent Guide** entry is selected, a [colored](#global-styles "Style Configurator > Global Styles > Indent Guideline Style") dotted vertical line `⸽` will show where each of the tab stops are located if there are enough tabs or spaces at the start of a given line to go beyond a tab stop (as defined by the [per-language Tab settings](#language)).
+When the **Show Indent Guide** entry is selected, a [colored](../preferences/#global-styles "Style Configurator > Global Styles > Indent Guideline Style") dotted vertical line `⸽` will show where each of the tab stops are located if there are enough tabs or spaces at the start of a given line to go beyond a tab stop (as defined by the [per-language Tab settings](../preferences/#language)).
 
-When the **Show Wrap Symbol** entry is selected and **Word Wrap** is also enabled, there will be a little [colored](#global-styles "Style Configurator > Global Styles > White Space Symbol") arrow `↲` on the far edge of the current line if that line has been wrapped.
+When the **Show Wrap Symbol** entry is selected and **Word Wrap** is also enabled, there will be a little [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") arrow `↲` on the far edge of the current line if that line has been wrapped.
 
 ## Zoom
 
-The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom Out** (shrink the text), or **Restore Default Zoom** (which will change the text size back to default settings).  These actions all act only on the current View, so if you have two Views visible, only one will be affected.
+The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom Out** (shrink the text), or **Restore Default Zoom** (which will change the text size back to default settings).  These actions all act only on the current View, so if you have two Views visible, only one will be affected.  Zooming can also be accomplished by holding down the `Ctrl` key and using the mouse wheel to go up (enlarge) or down (shrink).
 
 ## Move / Clone
 
@@ -53,13 +53,15 @@ If the current file is currently not modified (so no unsaved changes), you can a
 
 The **Tab** sub-menu will allow you to navigate through the various open tabs of the active View.
 
-The numbered entries will activate the _N_th tab. The **Next tab** and **Previous tab** actions will activate the next or previous tab in the list of tabs (wrapping).
+The numbered entries will activate the _Nth_ tab. The **Next tab** and **Previous tab** actions will activate the next or previous tab in the list of tabs (wrapping).
 
 The **Move Tab Forward** and **Move Tab Backward** will change the current file's position in the tab list one slot at a time, forward or backward.  The tab order can also be changed by dragging the tabs to the new position in the tab-bar.
 
 ## Wrapping
 
-The **Word wrap** entry will toggle whether or not long lines will be wrapped in the display.  When not set, you will have to use the horizontal scroll bar to the see the whole current line; when set, the line will _appear_ to wrap at the end of your current editor view width, but there will be no newline (so if you open the same text file in a different editor, or a different computer's Notepad++ with different settings, it won't wrap at that character).  It is called "word wrap" instead of just "line wrap", because the line wraps on whole-word increments when possible (but if the current word is longer than the entire line-length, it _will_ wrap in the middle of the word).  **_[Remembered]_**
+The **Word wrap**[↗](#remembered-settings "Remembered Setting") entry will toggle whether or not long lines will be wrapped in the display, and affects all tabs in both Views.
+
+When this toggle is not set, you will have to use the horizontal scroll bar to the see the whole current line; when the toggle is set, the line will _appear_ to wrap at the end of your current editor view width, but there will be no newline (so if you open the same text file in a different editor, or a different computer's Notepad++ with different settings, it won't wrap at that character).  **Note**: The line wraps on whole-word increments when possible, but if the current word is longer than the entire line-length, it _will_ wrap in the middle of the word.
 
 ## Hiding and Folding
 
@@ -79,13 +81,13 @@ The **Summary...** action opens a small dialog that lists information about the 
 
 There are a variety of builtin "panels" (sub-windows) that can be used in Notepad++.  These panels can be "docked" (so they appear as part of the main Notepad++ application window) on either the right, left, top, or bottom edges; or they can be made to "float", so they appear as a separate independent window.  Docked panels can be moved easily to another edge, or to floating, by clicking on the panel's title and dragging it to the new location.
 
-The **Project Panels** sub-menu entries will toggle the display of each of the three [Project Panels](../session/#project-panels) **_[Remembered]_**
+The **Project Panels**[↗](#remembered-settings "Remembered Setting") sub-menu entries will toggle the display of each of the three [Project Panels](../session/#project-panels)
 
-The **Folder as Workspace** entry will toggle the display of the [Folder as Workspace](../session/#folder-as-workspace) panel **_[Remembered]_**
+The **Folder as Workspace**[↗](#remembered-settings "Remembered Setting") entry will toggle the display of the [Folder as Workspace](../session/#folder-as-workspace) panel
 
-The **Document Map** item will toggle the display of the Document Map panel, which shows a copy of the file in a tiny font, with a highlighted range to indicate which section of the current file is visible in the editor. **_[Remembered]_**
+The **Document Map**[↗](#remembered-settings "Remembered Setting") item will toggle the display of the Document Map panel, which shows a copy of the file in a tiny font, with a highlighted range to indicate which section of the current file is visible in the editor.
 
-The **Function List** toggle will display the [Function List](../function-list/) panel, which lists the functions, methods, and classes in the current file, and allows easy navigation to those sections of the file by double-clicking in the Function List panel.  (The "functions, methods, and classes" are programming terms, but the feature can also be used for listing headings or sections of other structured files, or through [config files](config-files/#function-list), can be made to match anything else that you choose to match for indicating "sections" of your text, whatever that happens to mean to you.)  **_[Remembered]_**
+The **Function List**[↗](#remembered-settings "Remembered Setting") toggle will display the [Function List](../function-list/) panel, which lists the functions, methods, and classes in the current file, and allows easy navigation to those sections of the file by double-clicking in the Function List panel.  (The "functions, methods, and classes" are programming terms, but the feature can also be used for listing headings or sections of other structured files, or through [config files](config-files/#function-list), can be made to match anything else that you choose to match for indicating "sections" of your text, whatever that happens to mean to you.)
 
 ## Synchronized Scrolling
 
@@ -100,3 +102,7 @@ The **Text Direction RTL** and **Text Direction LTR** are useful for text that n
 The **Monitoring (tail -f)** toggle will have Notepad++ watch the current file for live changes in the background, and will update the display as it notices the underlying file change.  This puts the file in a de-facto read-only mode, so that the file cannot be edited in Notepad++ as it's being changed by whatever task is changing the file in the background.  This is useful for watching a log file as new lines are added to the end, and is inspired by the Linux command `tail -f` which performs a similar function, hence the entry's name.
 
 The Monitoring feature is also similar to the File Status Auto-Detection settings in the [MISC preferences](../preferences/#misc), which influences whether Notepad++ will detect external changes in the open file(s) even without Monitoring enabled.
+
+## Remembered Settings
+
+[↗](#remembered-settings "Remembered Setting"): These indicated settings are remembered from one run of Notepad++ to the next.
