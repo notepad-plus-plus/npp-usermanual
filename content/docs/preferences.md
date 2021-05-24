@@ -432,6 +432,7 @@ If you change a color in your Style Configurator, but the color doesn't change i
 ## Shortcut Mapper
 
 The Shortcut Mapper dialog presents five tabs:
+
 1. `Main menu`: used for items in the main Notepad++ menu items, like File, Edit, Search, View, Encoding, Language, Settings, Run, and ? (Help/About) menus.
 2. `Macros`: used for items in the Macros menu
 3. `Run commands`: used for user-added items in the Run menu.  (The **Run...** menu entry shortcut is defined in the `Main Menu` tab)
