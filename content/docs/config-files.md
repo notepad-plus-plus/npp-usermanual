@@ -286,7 +286,7 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 ## Other Configuration Files
 
-* `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).
+* `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).  This config folder _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hiearchy or in the cloud settings folder.
 
 * `doLocalConf.xml`: this will only exist on local installations of Notepad++ (when you tell the installer to not use `%AppData%`, or when you install from the zipfile).  This is a zero-byte file that is just used as an indicator to `notepad++.exe` to not go looking for `%AppData%`.
 
