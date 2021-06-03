@@ -70,9 +70,12 @@ The general layout of the following messages look like this
 
 ---
 
-#### **NPPM_ADDTOOLBARICON**
+#### **NPPM_ADDTOOLBARICON** (**NPPM_ADDTOOLBARICON_DEPRECATED** in v8.0)
+*Deprecated in v8.0.  Use NPPM_ADDTOOLBARICON_FORDARKMODE instead.  Does not support
+the Darkmode icons.*
+
 *Adds an icon to the toolbar.
-This function makes only sense if called on response to NPPN_TBMODIFICATION notification.
+This function only makes sense if called on response to NPPN_TBMODIFICATION notification.
 cmdID must be a command function id which the plugin registered via getFuncsArray previously.
 icon is a pointer to the toolbarIcons structure.*
 
@@ -83,6 +86,40 @@ icon is a pointer to the toolbarIcons structure.*
 
 *lParam [in]*
 : toolbarIcons* icon
+~~~
+struct toolbarIconsWithDarkMode {
+	HBITMAP	hToolbarBmp;
+	HICON	hToolbarIcon;
+};
+~~~
+
+**Return value**:
+: Returns True
+
+---
+
+#### **NPPM_ADDTOOLBARICON_FORDARKMODE**
+*Adds an icon to the toolbar.
+This function makes only sense if called on response to NPPN_TBMODIFICATION notification.
+cmdID must be a command function id which the plugin registered via getFuncsArray previously.
+icon is a pointer to the toolbarIconsWithDarkMode structure.*
+
+*(Added in v8.0, replacing old NPPM_ADDTOOLBARICON)*
+
+**Parameters**:
+
+*wParam [in]*
+: INT cmdID
+
+*lParam [in]*
+: toolbarIconsWithDarkMode* icon
+~~~
+struct toolbarIconsWithDarkMode {
+	HBITMAP	hToolbarBmp;
+	HICON	hToolbarIcon;
+	HICON	hToolbarIconDarkMode;
+};
+~~~
 
 **Return value**:
 : Returns True
@@ -122,7 +159,7 @@ icon is a pointer to the toolbarIcons structure.*
 ---
 
 #### **NPPM_ALLOCATESUPPORTED**
-**
+*Use to identify if subclassing is necessary*
 
 **Parameters**:
 
