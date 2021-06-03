@@ -100,7 +100,7 @@ struct toolbarIconsWithDarkMode {
 
 #### **NPPM_ADDTOOLBARICON_FORDARKMODE**
 *Adds an icon to the toolbar.
-This function makes only sense if called on response to NPPN_TBMODIFICATION notification.
+This function only makes sense if called on response to NPPN_TBMODIFICATION notification.
 cmdID must be a command function id which the plugin registered via getFuncsArray previously.
 icon is a pointer to the toolbarIconsWithDarkMode structure.*
 
