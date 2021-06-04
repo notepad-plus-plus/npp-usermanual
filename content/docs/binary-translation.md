@@ -7,7 +7,7 @@ From v2.3 Notepad++ supports the multi-language functionality by means of a tran
 
 ### Make Notepad++ speak your mother tongue
 
-1. Get [english.xml]() translate it to your language, rename it to `nativeLang.xml`.
+1. Get [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) translate it to your language, rename it to `nativeLang.xml`.
 2. Copy `nativeLang.xml` into `%APPDATA%\Notepad++\localization` or `Notepad++_Install_Dir\localization` according the installation package you use. Create `localization` if it doesn't exist.
 3. (Re)Launch Notepad++ - now Notepad++ should display your language.
 
