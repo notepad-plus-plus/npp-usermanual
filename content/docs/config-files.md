@@ -39,6 +39,8 @@ If changes are made in the Notepad++ UI to settings which are stored in configur
 6. Reload Notepad++
 7. The changes will now be in effect.
 
+The `config.xml` file may be overwritten by Notepad++ on exit, even if you follow this procedure, so that sequence won't reliably work for `config.xml`.  To edit `config.xml`, close all instances of Notepad++; edit `config.xml` in some other editor (like Windows' builtin notepad.exe) and save; reload Notepad++ and the changes should take effect.
+
 ## The context menu: `contextMenu.xml`
 
 <!-- http://web.archive.org/web/20190518131311/http://docs.notepad-plus-plus.org/index.php/Context_Menu -->
