@@ -517,6 +517,12 @@ The following settings are for rather specific needs and could cause some confus
 ```
 Simply add `"regexBackward4PowerUser"="yes"` if this option is absent.
 
+* Change the number of expressions that can be saved in the [Find/Replace](../searching/) dialog's Find, Replace, Filters, and Directory fields.  They are set in the `<FindHistory ...>` tag inside `config.xml`, using the attributes:
+    * `nbMaxFindHistoryFind` => changes the number of **Find what** entries that are saved in the history (0 .. 30, default = 10)
+    * `nbMaxFindHistoryReplace` => changes the number of **Replace with** entries that are saved in the history (0 .. 30, default = 10)
+    * `nbMaxFindHistoryPath` => changes the number of **Filters** entries that are saved in the history (0 .. 30, default = 10)
+    * `nbMaxFindHistoryFilter` => changes the number of **Directory** entries that are saved in the history (0 .. 30, default = 10)
+
 * Changing the command-line interpreter used: by default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
 ```
 <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
