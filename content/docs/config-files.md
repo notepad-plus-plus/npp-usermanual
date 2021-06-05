@@ -151,7 +151,7 @@ FULL_CURRENT_PATH   | The full path to the active file  | `E:\My Web\main\welcom
 CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
 FILE_NAME           | The active file's name            | `welcome.html`
 NAME_PART           | The filename without extension    | `welcome`
-EXT_PART            | The extension                     | `html`
+EXT_PART            | The extension (with the `.`)      | `.html`
 CURRENT_WORD        | the active selection in Notepad++, or the word under the cursor |
 CURRENT_LINE        | the line number where the cursor is currently located in the editor window | `1`
 CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
