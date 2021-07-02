@@ -17,8 +17,9 @@ These affect the user interface (localization, toolbar, tab bar, and more).
 
 * **Localization**:
     * [pulldown]: Set the language for the Notepad++ user interface.
-        * This copies one of the XML files from the `localization` folder to `nativeLang.xml`.
-        * _NOTE_: After upgrading to a new version of Notepad++, you may need to refresh the `nativeLang.xml`: change the **Localization** to another language, then change it back immediately to your preferred language.
+        * This copies one of the XML files from the `localization\` folder to `nativeLang.xml`.
+        * To make changes to your localization, edit the language file `localization\<languagename>.xml`, as per the instructions in the [Binary Translation](../binary-translation/) section.
+        * _NOTE_: After making changes to the XML file in the `localization` directory, or after upgrading to a new version of Notepad++, you need to refresh the `nativeLang.xml`: use the **Localization** drop-down to change the **Localization** to another language then change it back immediately to your preferred language, or skip the "another language" step and just click on the preferred language -- either way ends up with copying the file to `nativeLang.xml` and immediately updating Notepad++'s text for menus and dialogs.  (Unlike many configuration files, exiting Notepad++ and restarting the application will _not_ bring in the new settings from an edited `localization\<languagename>.xml`; you _must_ re-choose the desired **Localization** for the changes to be applied.)
 * **Toolbar**:
     * `☐ Hide`: the icon-based toolbar will be hidden
     * There is a radio-button set of choices for the icons (updated v8.0.0)
@@ -238,7 +239,7 @@ Defines whether or not to perform saving sessions, periodic backup, and backup o
         * This is _not_ a long-term backup option.
           * Every time you do a manual save, or every time you close the file while leaving Notepad++ open, this periodic backup of the file will be deleted
           * If there is a Notepad++ crash or Windows crash, it is possible for you to lose data
-        * Periodic Backup file naming: 
+        * Periodic Backup file naming:
           *  For _named_ files (existing or saved files that have recent edits): the name of the backup file (in the listed directory) is `filename.ext@yyyy-mm-dd_hhmmss`, where `filename.ext` is from the main file.  As soon as you manually save the file (so it’s written to disk in the real location), the backup goes away, because the purpose of the periodic backup is to save a copy of a file that you’ve edited but not saved. The timestamp part of the periodic-backup-name is based on the first automatic save after the last manual save. Example: if you saved a file at 8:10:00am, the backup would go away; then, at 8:12:30am, you type something but don’t save, so sometime within N seconds of that (8:12:30+N) it will periodic-backup-save and make a file with a timestamp about then – something like `filename.ext@2021-06-23_081234`. If you left for a while (or exited Notepad++ and reloaded) and came back at 12:34:56pm and typed another character, it would do it’s periodic-backup-save on that file again so the last-modified time of the backup would be updated), but the name of the periodic-backup file will remain the same.
           *  For _unnamed_ files (new files that haven't been saved): the name of the backup file (in the listed directory) is `new NNN@yyyy-mm-dd_hhmmss`, where `new NNN` matches the name listed in the tab title. Since `new NNN` files are by definition not manually saved, the timestamp in the periodic-backup filename is based on when it did the first periodic-backup-save for that unnamed file.
 * **Backup on save**
@@ -365,7 +366,7 @@ The Style Configurator dialog has three regions: Select theme, language and styl
 
 The "Select theme:" pulldown allows you to select which theme you want.  [Themes](../themes/) are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.
 
-The "Language:" selection list lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule for the given language.  
+The "Language:" selection list lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule for the given language.
 
 On all but "Language: Global Styles", there will also be a "Default ext." box, which is an un-editable list of the default file extensions associated with that Language; and the "User ext." box, where you can add a user-defined list of additional extensions (space separated, don't use the . in the extension), which says which other extensions you want to apply this language's formatting to.  There is no specific entry called "Normal text" or "Plain text": to edit the colors for a plain text file (like `.txt`), use the "Global Styles" language.  (Please note that any changes you make in the Style Configurator dialog box for a specific language only applies to that language and only applies to the selected [theme](../themes/): if you add a user-defined extension to a language in the `Default (stylers.xml)` theme, it will not affect the list of user-defined extensions for that language in any of the other themes.)
 
@@ -430,7 +431,7 @@ If you prefer to edit XML instead of using the GUI, you may use the `stylers.xml
 
 The `<LexerStyles>` section contains a `<LexerType>` tag for each programming language -- where the `desc=` attribute matches the name in the list of Languages from the GUI.  Each of those contains one or more `<WordsStyle>` tags, where the `Name=` attribute matches the entries in the GUI's list of Styles for that language; the WordsStyle are usually empty tags (`<WordsStyle .../>`), but can contain values (`<WordsStyle...>user1 user2 ...</WordsStyle>`) if there is an associated list of user-defined keywords for that style.  (If the language's lexer is not programmed to make use of extra keywords for a given style, filling in values there will _not_ make those keywords styled; the lexer must be programmed to use the user-defined keywords for that to work.  You can tell whether a lexer will handle user-defined keywords for a given style if the Style Configurator shows a User-defined Keywords box for the given lexer language and style.)
 
-There is also a `<GlobalStyles>` section, with `<WidgetStyle>` entries corresponding to the elements of the "Global Styles" in the GUI.  
+There is also a `<GlobalStyles>` section, with `<WidgetStyle>` entries corresponding to the elements of the "Global Styles" in the GUI.
 
 ### Common Syntax Highlighting Problems
 
