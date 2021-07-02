@@ -7,7 +7,7 @@ Notepad++ supports multi-language functionality by means of a translated xml fil
 
 ### Editing an existing translation
 
-Sometimes, the official Notepad++ translation for a language doesn't match your particular usage.  Sometimes, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Or sometimes, you just want to have some fun rewording things for your own amusement.  To accomplish any of these goals, follow this process:
+Sometimes, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Sometimes, the official Notepad++ translation for a language doesn't match your particular usage of that language.  Or sometimes, you just want to have some fun rewording things for your own amusement.  To accomplish any of these goals, follow this process:
 
 1. If you don't already have the translation file for your desired language, download it from the [localization portion of the code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/installer/nativeLang) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
 2. It is recommended to download the most recent copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) at the same time, putting it in the same directory, to use as a reference for helping with the translation.
@@ -15,7 +15,7 @@ Sometimes, the official Notepad++ translation for a language doesn't match your 
 3. Edit `localization\<languagename>.xml` in Notepad++
     1. Make sure the initial `<?xml ... ?>` tag indicates `encoding="utf-8"`.  Once it does, you will be able to use Unicode characters in your translation.
     2. Update the `<Native-Langue...>` tag near the top of the file:
-        * Make sure `version="7.9.5"` matches the most recent Notepad++'s version number; if you are unsure as to the format for the version string, see the most recent `english.xml` as a reference.
+        * Make sure `version="8.1.1"` matches the most recent Notepad++'s version number; if you are unsure as to the format for the version string, see the most recent `english.xml` as a reference.
     3. Edit the values of any of the `name="..."` attributes that you want to update.
         * _Note_: do _not_ change any of the `id="###"` or `subMenuId="xxx"` attributes, as those are used to map the text in the `name="..."` attribute to the right piece of text in Notepad++.  If you change those, the localization file will not work properly.
         * You may use XML character entities (like `&amp;` for `&`)
@@ -36,7 +36,7 @@ The process of teaching Notepad++ a new language is nearly the same as editing a
     2. Update the `<Native-Langue...>` tag near the top of the file:
         * Change the `name="English"` attribute to match your language's native name
         * Change the `filename="english.xml"` to match the `filename="<newlanguagename>.xml"`
-        * Make sure `version="7.9.5"` matches the most recent Notepad++'s version number.  It should already match, if you downloaded the most-recent `english.xml` as instructed.
+        * Make sure `version="8.1.1"` matches the most recent Notepad++'s version number.  It should already match, if you downloaded the most-recent `english.xml` as instructed.
     3. Edit the `name="..."` attributes for every entry in the file.
         * _Note_: Do _not_ change any of the `id="###"` or `subMenuId="xxx"` attributes, as those are used to map the text in the `name="..."` attribute to the right piece of text in Notepad++.  If you change those, the localization file will not work properly.
         * You may use XML character entities (like `&amp;` for `&`)
