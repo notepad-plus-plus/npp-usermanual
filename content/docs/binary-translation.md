@@ -5,46 +5,32 @@ weight: 140
 
 Notepad++ supports multi-language functionality by means of a translated xml file (based on the official [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) translation).
 
-### Editing an existing translation
+### Creating or Editing a translation
 
-Sometimes, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Sometimes, the official Notepad++ translation for a language doesn't match your particular usage of that language.  Or sometimes, you just want to have some fun rewording things for your own amusement.  To accomplish any of these goals, follow this process:
+Maybe Notepad++ doesn't currently have the language you would like to use.  Or maybe, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Maybe the official Notepad++ translation for a language doesn't match your particular usage of that language.  Or sometimes, you just want to have some fun rewording things for your own amusement.  
 
-1. If you don't already have the translation file for your desired language, download it from the [localization portion of the code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/installer/nativeLang) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
-2. It is recommended to download the most recent copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) at the same time, putting it in the same directory, to use as a reference for helping with the translation.
-    * _Note_: If you are wanting to change the English text for your own use, please edit `localization\english_customizable.xml` instead of `localization\english.xml`, since `english.xml` is meant to exist as an "absolute reference" with the official names of each of the text entries.
-3. Edit `localization\<languagename>.xml` in Notepad++
-    1. Make sure the initial `<?xml ... ?>` tag indicates `encoding="utf-8"`.  Once it does, you will be able to use Unicode characters in your translation.
-    2. Update the `<Native-Langue...>` tag near the top of the file:
-        * Make sure `version="8.1.1"` matches the most recent Notepad++'s version number; if you are unsure as to the format for the version string, see the most recent `english.xml` as a reference.
-    3. Edit the values of any of the `name="..."` attributes that you want to update.
-        * _Note_: do _not_ change any of the `id="###"` or `subMenuId="xxx"` attributes, as those are used to map the text in the `name="..."` attribute to the right piece of text in Notepad++.  If you change those, the localization file will not work properly.
-        * You may use XML character entities (like `&amp;` for `&`)
-        * If the encoding was properly set (above), you may insert Unicode characters directly.
-        * When possible, keep the translated text about the same length (in characters) as the original English; this will help make sure the translation will fit in menus and dialog boxes which were designed to fit the official English text.
-4. To see the changes take effect, save the file, then go to [**Settings > Preferences > General > Localization**](../preferences/#general) and select `<languagename>` from the pulldown menu: this will copy `localization\<languagename>.xml` to `nativeLang.xml` and will immediately update the Notepad++ application to use the text from your saved XML file.
-    * _Note_: If you do not see the right language in the pulldown, you need to make sure you put the XML file(s) in the right directory, as explained above.
-    * You may actually do the process of saving the file then selecting **Localization** = `<languagename>` throughout your development of the translation, to be able to see the changes you make as you go.
-
-### Create a new translation
-
-The process of teaching Notepad++ a new language is nearly the same as editing an existing language, except you have to create the file for the new language.
+The process of teaching Notepad++ a new language is virtually identical to editing an existing language, and both processes are described here:
 
 1. Download the master copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
-2. Copy `localization\english.xml` to `localization\<newlanguagename>.xml`
-3. Edit `localization\<newlanguagename>.xml`
-    1. Make sure the initial `<?xml ... ?>` tag indicates `encoding="utf-8"`.  Once it does, you will be able to use Unicode characters in your translation.
+    * This will be used as the source for a new translation, and a reference when you are editing an existing language.
+3. This step depends on whether you are editing an existing language translation, or creating a new translation from scratch:
+    1. For an existing translation: Download the most recent copy of the existing language translation from the [localization portion of the code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/installer/nativeLang) and save it into the same folder as `localization\english.xml`.
+        * _Note_: If you are wanting to change the English text for your own use, please edit `localization\english_customizable.xml` instead of `localization\english.xml`, since `english.xml` is meant to exist as an "absolute reference" with the official names of each of the text entries.
+    2. For a new translation for a language that Notepad++ doesn't already have: Copy `localization\english.xml` to `localization\<yourlanguagename>.xml`
+4. Edit `localization\<yourlanguagename>.xml`
+    1. Make sure the initial `<?xml ... ?>` tag indicates `encoding="utf-8"`.
     2. Update the `<Native-Langue...>` tag near the top of the file:
-        * Change the `name="English"` attribute to match your language's native name
-        * Change the `filename="english.xml"` to match the `filename="<newlanguagename>.xml"`
-        * Make sure `version="8.1.1"` matches the most recent Notepad++'s version number.  It should already match, if you downloaded the most-recent `english.xml` as instructed.
-    3. Edit the `name="..."` attributes for every entry in the file.
+        * Make sure the `name="___"` attribute matches your language's native name.  This is the name that will show up in the [Preference](../preferences/#general) dialog's **Localization** pulldown
+        * Make sure the `filename="___.xml"` matches your language name
+        * Make sure `version="8.1.1"` matches the most-recent Notepad++ version number.  It should already match, if you downloaded the most recent `english.xml` as described above.
+    3. Edit the `name="..."` attributes as appropriate for the language you are editing.
         * _Note_: Do _not_ change any of the `id="###"` or `subMenuId="xxx"` attributes, as those are used to map the text in the `name="..."` attribute to the right piece of text in Notepad++.  If you change those, the localization file will not work properly.
         * You may use XML character entities (like `&amp;` for `&`)
         * If the encoding was properly set (above), you may insert Unicode characters directly.
         * When possible, keep the translated text about the same length (in characters) as the original English; this will help make sure the translation will fit in menus and dialog boxes which were designed to fit the official English text.
-4. To see the changes take effect, save the file, then go to [**Settings > Preferences > General > Localization**](../preferences/#general) and select `<languagename>` from the pulldown menu: this will copy `localization\<languagename>.xml` to `nativeLang.xml` and will immediately update the Notepad++ application to use the text from your saved XML file.
+5. To see the changes take effect, save the file, then go to [**Settings > Preferences > General > Localization**](../preferences/#general) and select `<yourlanguagename>` from the pulldown menu: this will copy `localization\<yourlanguagename>.xml` to `nativeLang.xml` and will immediately update the Notepad++ application to use the text from your saved XML file.
     * _Note_: If you do not see the right language in the pulldown, you need to make sure you put the XML file(s) in the right directory, as explained above.
-    * You may actually do the process of saving the file then selecting **Localization** = `<languagename>` throughout your development of the translation, to be able to see the changes you make as you go.
+    * You may actually do the process of saving the file then selecting **Localization** = `<yourlanguagename>` throughout your development of the translation, to be able to see the changes you make as you go.
 
 ### Share your translation
 
