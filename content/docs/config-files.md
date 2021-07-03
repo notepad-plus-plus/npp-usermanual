@@ -18,7 +18,7 @@ In a standard installation, the configuration files go in `%AppData%\Notepad++\`
 
 In a portable installation, the configuration files go in the same directory as the `notepad++.exe` executable.  (An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable.  The **?** menu's **Debug Info** will show `Local mode: ON` for a portable version.)
 
-If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `session.xml`, `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
+If you enable the [Cloud settings](../preferences/#cloud), some configuration files will go in the defined directory (including `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`;
 the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
 
 There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the configuration file location (added in v7.9.2).
@@ -40,6 +40,10 @@ If changes are made in the Notepad++ UI to settings which are stored in configur
 7. The changes will now be in effect.
 
 The `config.xml` file may be overwritten by Notepad++ on exit, even if you follow this procedure, so that sequence won't reliably work for `config.xml`.  To edit `config.xml`, close all instances of Notepad++; edit `config.xml` in some "other" editor and save; reload Notepad++ and the changes should take effect.  (For the "other" editor, you _could_ use something like Windows' builtin notepad.exe.  But it would be better if you had another portable Notepad++ somewhere on your machine, and use that portable Notepad++ to edit your main Notepad++'s `config.xml`, thus never having to use a non-Notepad++ editor: so close your main Notepad++, run the portable Notepad++ and open your main `config.xml`, edit and save, exit the portable Notepad++, then re-run the main Notepad++, and everything should be updated.)
+
+## Configuration Files during Upgrades
+
+When you use the installer to upgrade your existing copy of Notepad++ (either manually, or through the **?**-menu's **Upgrade Notepad++**, or through Notepad++'s auto-update feature), the installer will avoid overwriting configuration files that you have customized -- this is to prevent you losing your preferred settings and customizations.  However, this means that occasionally, new settings that have been added to `config.xml`, or updated functionList parsing files or themes, or new keywords in langs.xml, or new default contextMenu or shortcuts entries might not be added to your local copy of Notepad++.  So if you upgrade and keep your existing configuration, it is a good idea to occasionally compare your configuration files to the "standard/default" configuration files: some of the config files come with `*.model.xml` versions in the installation directory, which show you the default settings for those files; for other configuration files, you could [download](https://notepad-plus-plus.org/downloads/) a portable zipfile of the same version you are using, and compare the config files from the portable to your installed; and you can always look in the [source code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/) for the various configuration files.  (You can use two [Views](../views/) to look at the files side-by-side , and the ;[synchronized scrolling feature](../views/#synchronized-scrolling) can help keep the copies aligned; plugins such as the Compare plugin are designed to show differences between files as well.)
 
 ## The context menu: `contextMenu.xml`
 
