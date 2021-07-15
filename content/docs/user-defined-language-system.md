@@ -76,6 +76,7 @@ If you created or imported a UDL using the **User Defined Languages** dialog ins
 ## UDL and Themes
 
 The User Defined Languages are (mostly) _not_ affected by your [active theme](../preferences/#style-configurator).  This means that if you change theme (including going to [Dark Mode](../preferences/#dark-mode) which changes the theme to `DarkModeDefault`), you might have to edit your UDL colors to be readable.  The UDL doesn't override most of the settings in the [Style Configurator's "Global Styles"](../preferences/#global-styles) settings for the active theme, so some of the settings might make your UDL colors hard to read: 
+
 * the UDL overrides the foreground color for text, and the background color for text; however, the UDL does _not_ override the background color for spaces or the blank space that fills the unused portions of the editor view, so if your UDL default background does not match the theme's default background, the UDL-based document may look strange
 * the UDL does not override the **Selected text colour** or **current line background**, so if your UDL's colors do not provide good contrast with these settings from the theme, selected text will be hard to read
 
