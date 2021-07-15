@@ -14,6 +14,7 @@ The **Languages** menu on the menu-bar includes the list of builtin languages, a
 Using **Languages > Define Your Language...** will bring up a dialog box (which can be docked as a pane in the Notepad++ Window, or can be a floating dialog box).
 
 The main pulldowns and buttons are available, whichever configuration tab is active:
+
 * **User Language** pulldown lists all the existing UDL will allow you to select the UDL you would like to edit or examine.  There is a special entry for the default UDL, called **User Defined Language** here (though it shows up in the Notepad++ **Languages** menu as **User-Defined**), which can be used as a template for other UDL.
 * **Create New** will copy the default **User Defined Language** stylings and rules to a new name.
 * **Save As** will copy the currently-selected UDL, with all its stylings and rules, to a new name.
@@ -24,6 +25,7 @@ The main pulldowns and buttons are available, whichever configuration tab is act
 * **☐ Transparency** (when not docked) will make the dialog box semi-transparent; the slider bar changes from virtually invisible (all the way to the left) to mostly opaque (all the way to the right); if you want it completely opaque (no transparency), uncheck the box.
 
 When a UDL other than the default **User Defined Language** is selected in the pulldown, the following will also be available:
+
 * **Rename** will rename the currently-selected UDL.
 * **Remove** will delete the currently-selected UDL.
 * **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.  For example **Ext.: `md mkdn`** will associate `file.mkdn` or `something.md` with your selected UDL.
@@ -73,9 +75,13 @@ If you created or imported a UDL using the **User Defined Languages** dialog ins
 
 ## UDL and Themes
 
-The User Defined Languages are _not_ affected by your [active theme](../preferences/#style-configurator).
+The User Defined Languages are (mostly) _not_ affected by your [active theme](../preferences/#style-configurator).  This means that if you change theme (including going to [Dark Mode](../preferences/#dark-mode) which changes the theme to `DarkModeDefault`), you might have to edit your UDL colors to be readable.  The UDL doesn't override most of the settings in the [Style Configurator's "Global Styles"](../preferences/#global-styles) settings for the active theme, so some of the settings might make your UDL colors hard to read: 
+* the UDL overrides the foreground color for text, and the background color for text; however, the UDL does _not_ override the background color for spaces or the blank space that fills the unused portions of the editor view, so if your UDL default background does not match the theme's default background, the UDL-based document may look strange
+* the UDL does not override the **Selected text colour** or **current line background**, so if your UDL's colors do not provide good contrast with these settings from the theme, selected text will be hard to read
 
-However, since you can set the colors of a UDL to whatever you want, you can manually make it match your theme.  If you want to define multiple UDL using the same basic color scheme, you can start by setting the colors of the default **User Defined Language**, then **Create New** for each UDL that you want to match that scheme, customizing the rules for each new UDL.
+Since you can set the colors of a UDL to whatever you want, you can manually make it match your theme.  In all, it is best to set the UDL's **Folder & Default > Default Style** to match the foreground and background colors of your active theme, which should balance well with the other of the theme's Global Styles settings.  Further, setting keywords groups and numbers and comments and operators to match the settings for the keywords, numbers, and comments of the other languages that you use in your active theme will help make UDL files fit the active theme better.
+
+If you want to define multiple UDL using the same basic color scheme as your active theme, you can start by setting the colors of the default **User Defined Language**, then **Create New** for each UDL that you want to match that scheme, customizing the rules for each new UDL.  (As soon as you exit Notepad++, the changes to the default UDL will be lost, but all the themes that you created from that will keep the colors they inherited.)
 
 ## User Defined Languages Collection
 
