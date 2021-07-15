@@ -73,12 +73,12 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
       * it will change the active theme to `DarkModeDefault`
         * _Reminder_: changing the theme does _not_ change your UDL colors, as discussed in the [UDL and Themes](../user-defined-language-system/#udl-and-themes) section.  If your UDL was colored to match some other theme, the colors will likely mismatch, and you will need to edit the UDL colors to make it match the DarkModeDefault theme.
       * it will change the coloring of the menu bar and toolbar (if visible)
-        * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully in Dark Mode.
+        * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully in Dark Mode
       * it may change your [General > Toolbar](#General) settings to use one of the **Fluent UI** icon sets: if you already had a Fluent icon set selected, it will keep it; if you had the **Standard icons: small** selected, it will change to **Fluent UI: small** icons
       * When you run in Dark Mode, the saved-file icon will not show up on your Tab Bar, whether or not you have [Alternate Icons](#General "General > Tab Bar > Alternate Icons") checked.  However, a read-only file or an edited file will still show their icons (either different colored disks, or the lock icon and pencil icon, depending on Alternate Icons setting).
     * When you uncheck this checkbox (☐):
-      * it will change the active theme to `Default (stylers.xml)`.
-        * _Note_: this is true even if you previously had a different theme selected before trying out Dark Mode.  If you would like a different theme, you will have to manually change to that theme
+      * it will change the active theme to `Default (stylers.xml)`
+        * _Note_: this is true even if you previously had a different theme selected before trying out Dark Mode.  If you would like a different theme, you will have to manually change to that theme.
       * it will change the coloring of the menu bar and toolbar (if visible)
         * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully out of Dark Mode.
       * it will leave your [Toolbar](#General) settings with the same icon set as you had when you were in Dark Mode
