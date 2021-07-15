@@ -37,7 +37,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
     * `☐ Reduce`: make the tab bar vertical region and font size smaller
     * `☐ Alternate icons`: change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
-      * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer differnt symbols rather than different colors to distinguish the status of each file. 
+      * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file. 
       * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
     * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
     * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
