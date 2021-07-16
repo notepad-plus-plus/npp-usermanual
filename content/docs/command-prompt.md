@@ -10,7 +10,9 @@ to control its startup and affect its behavior.
 ## Help usage
 
 ```
-notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
+notepad++ [--help] [-multiInst] [-noPlugin] 
+  [-l<Language>] [-udl="My UDL Name"]
+  [-L<langCode]
   [-n<line>] [-c<column>] [-p<pos>] [-x<left-pos>] [-y<TopPos>]
   [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
   [-alwaysOnTop] [-openSession] [-r]
@@ -34,6 +36,10 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>] [-L<langCode]
   `actionscript`, `nsis`, `tcl`, `lisp`, `scheme`, `asm`, `diff`, `props`,
   `postscript`, `ruby`, `smalltalk`, `vhdl`, `kix`, `autoit`, `Gui4Cli`,
   `powershell`, `caml`, `ada`, `verilog`, `matlab`, `haskell`, `inno`, `cmake`, `yaml`, `r` and `jsp`.
+* `-udl="My UDL Name"`: Open file with User Defined Language (UDL) syntax 
+  highlighting `My UDL Name` active.  If the UDL name does not conain spaces, the
+  quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
+  should match an existing UDL. (new to v8.1.2)
 * `-L`: Apply indicated localization, *langCode* is browser language code
 * `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
 * `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
