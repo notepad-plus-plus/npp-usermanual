@@ -39,7 +39,8 @@ notepad++ [--help] [-multiInst] [-noPlugin]
 * `-udl="My UDL Name"`: Open file with User Defined Language (UDL) syntax 
   highlighting `My UDL Name` active.  If the UDL name does not conain spaces, the
   quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
-  should match an existing UDL. (new to v8.1.2)
+  should match an existing UDL.  Mutually exclusive with `-l` (UDL will take priority 
+  over standard syntax highlighter).  (new to v8.1.2)
 * `-L`: Apply indicated localization, *langCode* is browser language code
 * `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
 * `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
