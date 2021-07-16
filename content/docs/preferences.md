@@ -73,7 +73,7 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
       * it will change the active theme to `DarkModeDefault`
         * _Reminder_: changing the theme does _not_ change your UDL colors, as discussed in the [UDL and Themes](../user-defined-language-system/#udl-and-themes) section.  If your UDL was colored to match some other theme, the colors will likely mismatch, and you will need to edit the UDL colors to make it match the DarkModeDefault theme.
       * it will change the coloring of the menu bar and toolbar (if visible)
-        * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully in Dark Mode
+        * _Note_: In v8.0 - v8.1.1, you must exit Notepad++ completely and restart for full Dark Mode.  In v8.1.2 and newer, that is no longer necessary.
       * it may change your [General > Toolbar](#General) settings to use one of the **Fluent UI** icon sets: if you already had a Fluent icon set selected, it will keep it; if you had the **Standard icons: small** selected, it will change to **Fluent UI: small** icons
       * When you run in Dark Mode, the saved-file icon will not show up on your Tab Bar, whether or not you have [Alternate Icons](#General "General > Tab Bar > Alternate Icons") checked.  However, a read-only file or an edited file will still show their icons (either different colored disks, or the lock icon and pencil icon, depending on Alternate Icons setting).
     * When you uncheck this checkbox (☐):
@@ -82,6 +82,18 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
       * it will change the coloring of the menu bar and toolbar (if visible)
         * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully out of Dark Mode.
       * it will leave your [Toolbar](#General) settings with the same icon set as you had when you were in Dark Mode
+* Tones: allow you to change the tone of the Dark Mode (new to v8.1.2)
+   * `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone` => The dark color has a hint of that colored tone
+   * `☐ Customized tone` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
+     * `Top` => choose the color of the menu bar and tool bar
+     * `Menu hot track` => choose the color of the active menu bar entry
+     * `Active` => choose the color of the active tab on the tab bar
+     * `Main` => choose the color of the inactive tab(s) on the tab bar, as well as background colors for dialogs
+     * `Error` => choose the color for UI error indicators
+     * `Text` => choose the color for the menu bar entry names, and other normal text in dialogs
+     * `Darker text` => choose the color for the darker text in dialogs
+     * `Disabled text` => choose the color for disabled items in dialogs (often referred to as "greyed out" or "disabled")
+     * `Edge` => choose the color for the veritcal separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
 
 ### Margins / Border / Edge
 
@@ -372,6 +384,9 @@ A variety of settings that didn't fit elsewhere
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing (added in v7.8.8)
+  * DirectWrite will help in displaying characters even if the active font doesn't have a glyph
+  * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).  As with all settings, 
+* `☐ Enable Save All confirm dialog`: when Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Cancel** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
