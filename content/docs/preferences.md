@@ -88,12 +88,13 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Top` => choose the color of the menu bar and tool bar
      * `Menu hot track` => choose the color of the active menu bar entry
      * `Active` => choose the color of the active tab on the tab bar
-     * `Main` => choose the color of the inactive tab(s) on the tab bar, as well as background colors for dialogs
-     * `Error` => choose the color for UI error indicators
-     * `Text` => choose the color for the menu bar entry names, and other normal text in dialogs
-     * `Darker text` => choose the color for the darker text in dialogs
-     * `Disabled text` => choose the color for disabled items in dialogs (often referred to as "greyed out" or "disabled")
+     * `Main` => choose the color of the inactive tab(s) on the tab bar, as well as background colors for the Find/Replace/Mark dialog
+     * `Error` => choose the color for the error indicator on the Incremental Search bar
+     * `Text` => choose the color for the menu bar entry names, and other normal text in the Find/Replace/Mark dialog
+     * `Darker text` => choose the color for the darker text in the Find/Replace/Mark dialog
+     * `Disabled text` => choose the color for disabled items in the Find/Replace/Mark dialog (often referred to as "greyed out" or "disabled")
      * `Edge` => choose the color for the veritcal separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
+   * _Note_: Dark Mode Tones currently affect the main user interface, and the Find/Replace/Mark dialog. Other dialogs, and the menu pull-downs, have their colors defined by operating system settings.
 
 ### Margins / Border / Edge
 
