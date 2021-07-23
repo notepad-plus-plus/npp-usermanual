@@ -207,6 +207,7 @@ Affects highlighting of selected text.
 * **Mark All** (v8.0.0 and later)
     * `☐ Match case`: Mark All will be case-sensitive
     * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
+    * This setting section applies to the **Search** menu's **Mark All** submenu entries, and the equivalent [right-click Context Menu](../config-files/#the-context-menu-contextmenu-xml)'s **Style all occurrences of token** submenu entries, for applying "Style Tokens" to specific text.
 * **Smart Highlighting**
     * `☐ Enable`: if you select a piece of text, Smart Highlighting will color all matching pieces of text.  It will use the style defined in **Style Configurator > Global Styles > Smart Highlighting**
     * `☐ Highlight another view`: Smart Highlighting will also apply to the other "view" (when you have documents open in both of Notepad++ view panes)
