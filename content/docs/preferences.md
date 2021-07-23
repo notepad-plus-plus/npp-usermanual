@@ -152,8 +152,8 @@ These affect open and save operations.
 
 * **Default Directory**:
     * `Follow current document`: open/save dialogs will default to the current directory for the current file
-    * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog, and remain there (regardless of where the current file is located)
-    * `___ ...`: this allows you to browse to a default directory, and all open/save dialogs will start in that directory
+    * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog on subsequent uses of the dialogs (regardless of where the current file is located).  _Note_: the last used directory will only be updated when the **Open** or **Save** option is selected; if you **Cancel** or escape out of dialog, the last used directory will not be updated and will keep its previous value.
+    * `___ ...`: this entry box with no label allows you to browse to a default directory, and all open/save dialogs will start in that directory
 * `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when enabled, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when disabled, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
 
 ### Recent Files History
