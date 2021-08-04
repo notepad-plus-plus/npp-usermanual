@@ -29,8 +29,8 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * `Filled Fluent UI: large`: uses large versions of the Fluent UI icons, in a filled (or reverse-video) style
         * `Standard icons: small`: these are the small version of the traditional (pre-v8.0.0) icons
 * **Document List Panel**:
-    * `☐ Show`: will show the Doc Switcher panel, which can be used to quickly switch between documents
-    * `☐ Disable extension column`: If enabled, the Doc Switcher panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
+    * `☐ Disable extension column`: If enabled, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
+    * prior to v8.1.3, the `☐ Show` setting would toggle the Document List panel, but that is now controlled by the [View menu's "Document List" entry](../views/#panels)
 * **Tab Bar**:
     * `☐ Hide`: the tab bar for the open files will not be visible
     * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
@@ -83,18 +83,19 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
         * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully out of Dark Mode.
       * it will leave your [Toolbar](#General) settings with the same icon set as you had when you were in Dark Mode
 * Tones: allow you to change the tone of the Dark Mode (new to v8.1.2)
+   * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs, as of v8.1.3. (In v8.1.2, the Tones affected the menus and the Find/Replace/Mark dialog, but not the other dialogs.)  The menu pull-downs, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
    * `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone` => The dark color has a hint of that colored tone
    * `☐ Customized tone` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
      * `Top` => choose the color of the menu bar and tool bar
      * `Menu hot track` => choose the color of the active menu bar entry
      * `Active` => choose the color of the active tab on the tab bar
-     * `Main` => choose the color of the inactive tab(s) on the tab bar, as well as background colors for the Find/Replace/Mark dialog
+     * `Main` => choose the color of the inactive tab(s) on the tab bar, as well as background colors for most dialog boxes
      * `Error` => choose the color for the error indicator on the Incremental Search bar
-     * `Text` => choose the color for the menu bar entry names, and other normal text in the Find/Replace/Mark dialog
-     * `Darker text` => choose the color for the darker text in the Find/Replace/Mark dialog
-     * `Disabled text` => choose the color for disabled items in the Find/Replace/Mark dialog (often referred to as "greyed out" or "disabled")
+     * `Text` => choose the color for the menu bar entry names, and other normal text for most dialog boxes
+     * `Darker text` => choose the color for the darker text for most dialog boxes
+     * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "greyed out" or "disabled")
      * `Edge` => choose the color for the veritcal separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
-   * _Note_: Dark Mode Tones currently affect the main user interface, and the Find/Replace/Mark dialog. Other dialogs, and the menu pull-downs, have their colors defined by operating system settings.
+     * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
 
 ### Margins / Border / Edge
 
