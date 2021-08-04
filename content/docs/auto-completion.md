@@ -97,6 +97,8 @@ In the `<AutoComplete>` element you can add the `language` attribute, but it is 
 
 Auto-complete files files are located in the `autoCompletion\` subfolder of the Notepad++ installation folder (unlike some config files, these will _not_ work in the `%AppData%\Notepad++\` hierarchy). These files are optional: you need only one for each language for which you'll use Auto Completion or calltips. They are also supported for User Defined Languages, and bear the name `<Language name>.xml`.
 
+Note: Create a `normal.xml` AutoComplete file for adding custom suggestions to the default language, Normal Text \[i.e., language set to "None (Normal Text)"\].
+
 Under the usual `<NotepadPlus>` tag is a `<AutoComplete>` tag. It has an optional, unused `language` attribute, which you can use for any descriptive purpose.
 
 The contents of a `<AutoComplete>` start with an autoclosing `<Environment>` tag, with the following attributes:
