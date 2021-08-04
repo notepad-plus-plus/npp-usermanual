@@ -63,9 +63,15 @@ The **Word wrap**[↗](#remembered-settings "Remembered Setting") entry will tog
 
 When this toggle is not set, you will have to use the horizontal scroll bar to the see the whole current line; when the toggle is set, the line will _appear_ to wrap at the end of your current editor view width, but there will be no newline (so if you open the same text file in a different editor, or a different computer's Notepad++ with different settings, it won't wrap at that character).  **Note**: The line wraps on whole-word increments when possible, but if the current word is longer than the entire line-length, it _will_ wrap in the middle of the word.
 
-## Hiding and Folding
+## Focus View
+
+The **Focus on Another View** action will swap your active focus between the two Views (if both Views are visible).
+
+## Hiding Lines
 
 The **Hide Lines** action will hide the active line or selected lines, and place symbols in the margin to allow you to unhide those lines.  The text is still there when you save, it will just temporarily not be visible while you are editing (until you unhide the text, or re-start Notepad++).
+
+## Folding
 
 There are a group of folding-related commands, which will allow the folding or unfolding of blocks of text based on the current syntax highlighter lexer for a [programming language](../programing-languages/) or [User Defined Langauge](../user-defined-language-system/), and the folding rules defined in that lexer or UDL.  (To "fold" the text means to temporarily hide a block of text; to "unfold" the text means to reveal that block of text again.)  If folding blocks are nested (contained inside other folding blocks), the outermost block is level 1, the block immediately inside that is level 2, and so on.  (Folding is _not_ remembered from one run to the next, nor is it saved in the automatic or manually-saved session file.)
 
@@ -86,6 +92,8 @@ The **Project Panels**[↗](#remembered-settings "Remembered Setting") sub-menu 
 The **Folder as Workspace**[↗](#remembered-settings "Remembered Setting") entry will toggle the display of the [Folder as Workspace](../session/#folder-as-workspace) panel
 
 The **Document Map**[↗](#remembered-settings "Remembered Setting") item will toggle the display of the Document Map panel, which shows a copy of the file in a tiny font, with a highlighted range to indicate which section of the current file is visible in the editor.
+
+The **Document List**[↗](#remembered-settings "Remembered Setting") toggle will display the Document List panel, which lists all the open documents and allows easily switching between them.  (Prior to v8.1.3, the panel was known as the **Doc Switcher** panel and controlled through the [General preferences](../preferences/#general), but that name was confused with the Document Switcher `Ctrl+TAB` settings in [MISC preferences](../preferences/#misc).)
 
 The **Function List**[↗](#remembered-settings "Remembered Setting") toggle will display the [Function List](../function-list/) panel, which lists the functions, methods, and classes in the current file, and allows easy navigation to those sections of the file by double-clicking in the Function List panel.  (The "functions, methods, and classes" are programming terms, but the feature can also be used for listing headings or sections of other structured files, or through [config files](config-files/#function-list), can be made to match anything else that you choose to match for indicating "sections" of your text, whatever that happens to mean to you.)
 
