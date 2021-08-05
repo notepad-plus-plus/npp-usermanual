@@ -361,9 +361,11 @@ name should be the same value as previously used to register the dialog.*
 
 ---
 
-#### **NPPM_DOCSWITCHERDISABLECOLUMN**
-*Sets the extension column in doc switcher window.
+#### **NPPM_DOCLISTDISABLECOLUMN** 
+*Sets the extension column in Document List panel.
 If disableOrNot is True, extension column is hidden otherwise it is visible.*
+
+*Known as `NPPM_DOCSWITCHERDISABLECOLUMN` in v8.1.2 and earlier.*
 
 **Parameters**:
 
@@ -1267,8 +1269,10 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISDOCSWITCHERSHOWN**
-*Checks the visibility of the document switcher window.*
+#### **NPPM_ISDOCLISTSHOWN**
+*Checks the visibility of the Document List panel.*
+
+*Known as `NPPM_ISDOCSWITCHERSHOWN` in v8.1.2 and earlier.*
 
 **Parameters**:
 
@@ -1279,7 +1283,7 @@ struct ShortcutKey {
 : int, must be zero.
 
 **Return value**:
-: Returns True if the document switcher is currently shown, False otherwise
+: Returns True if the Document List panel is currently shown, False otherwise
 
 ---
 
@@ -1771,6 +1775,25 @@ STATUSBAR_TYPING_MODE   5
 
 **Return value**:
 : Returns 0 on failure, nonzero on success
+
+---
+
+#### **NPPM_SHOWDOCLIST** 
+*Show or hide the Document List panel.
+If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.*
+
+*Known as `NPPM_SHOWDOCSWITCHER` in v8.1.2 and earlier.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL toShowOrNot
+
+**Return value**:
+: Returns True
 
 ---
 
