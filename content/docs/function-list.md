@@ -47,12 +47,9 @@ The `<function>` node accepts the following attributes and contained elements:
     - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.
         - `expr` (_attribute_): This is where you define the regular expression to find the class name.
 
-Both `functionName` and `className` nodes are optional.
-If `functionName` and `className` are absent, then the found string by `mainExpr` regular expression will be processed as function name, and the class name won't be used.
+Both `functionName` and `className` nodes are optional.  If `functionName` and `className` are absent, then the string found by the `mainExpr` regular expression will be processed as the function name, and the class name won't be used.
 
-
-The nodes `functionName` and `className` have the same structure, and they have the same parsing behaviour. For example, in the `functionName` node, we got 2 `nameExpr` nodes:
-If the function parser find the first result by `mainExpr` attribute, then it will use the first `nameExpr` to search in the first result, if found (the 2nd result), then it will use the 2nd `nameExpr` to search in the 2nd result. If found, then the function name is solved.
+The nodes `functionName` and `className` have the same structure, and they have the same parsing behaviour. For example, if in the `functionName` node, we have two `nameExpr` nodes: If the function parser finds a match using the first `mainExpr` attribute, then it will use that match; otherwise, it will search using the second `nameExpr`, and use that match if found; finally, if none of the `mainExpr` regex match the text, no function will be found.
 
 ### Class parser
 The `<classRange>` node accepts the following attributes and contained elements:
