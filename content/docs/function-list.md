@@ -4,69 +4,69 @@ weight: 80
 ---
 
 ## What is Function List
-Function List Panel is a zone to display all the functions (or method) found in the current file. The user can use the Function List Panel to access a function definition quickly by double clicking function item on the list. Function List can be customized to list the functions for whichever language. For customizing Function List to recognize your favorite language, please check below.
+The Function List Panel is a zone to display all the functions (or methods) found in the current file. The user can double-click the function name in the Function List Panel to move to that function in the editor. You can customize the Function List to enhance an existing language or to add a currently-unsupported language by following the instructions found below.
 
+Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.  
 
-Function list contains a search engine (by using regular expression) and a panel to display the search result (function list). It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.
-In order to make function list work for your language (if not supported), you should modify (or add) the xml file of the languge. The xml files for different languages can be found in `%APPDATA%\notepad++\functionList` or in the `functionList` folder localized in Notepad++ installed directory if you use zip package.
+In order to make Function List work for your language (if not supported), you should modify (or add) the xml file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList` or in the `functionList` folder located in Notepad++ installation directory if you use the portable (zip) package.
 
-## How to customize function list
-In parser node it contains:
+## How to customize Function List
 
-- `id`: uniq ID for this parser
-- `displayName`: reserved for future use.
-- `comment`: Optional. you can make a regular expression in this attribute in order to identify comment zones. The identified zones will be ignored by search.
+To customize the Function List, you need to edit the XML file for the language you are defining.  This section describes the structure and requirements for each XML element.
 
-There are 3 kinds of parsers: function parser, class parser and mix parser.
-Define a function parser if the language has only functions to parse (for example C).
-Define a class parser if the language has functions "defined" in a class, but no function defined outside of a class (for example Java).
-Define a mix parser if you have function "defined" both inside and ouside of a class in a file (for example C++).
+The `<parser>` node accepts the three attributes:
 
-A function parser contains only a function node.
-A class parser contains only a classRange node.
-A mix parser contains both function and classRange nodes.
+- `id`: Unique ID for this parser.
+- `displayName`: Reserved for future use.
+- `comment`: Optional. You can make a regular expression in this attribute in order to identify comment zones. The identified zones will be ignored by search, so that it will not find commented-out functions.
 
-*Note that* ***RegEx look behind operations*** *don't work with the parser.*
+There are 3 kinds of parsers: function parser, class parser, and mixed parser.
+
+* Define a function parser if the language has only functions to parse (for example C).
+    * A function parser contains only a `<function>` node.
+* Define a class parser if the language has functions "defined" in a class, but no function defined outside of a class (for example Java).
+    * A class parser contains only a `<classRange>` node.
+* Define a mixed parser if you have function "defined" both inside and ouside of a class in a file (for example C++).
+    * A mixed parser contains both`<function>` and `<classRange>` nodes.
+
+_Notes on regular expressions for parsers_:
+
+* The parser does not accept **regular expresion look behind operations** in the expressions.
+* The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names)
+* You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression
 
 ### Function parser
-In function node it contains:
+The `<function>` node accepts the following attributes and contained elements:
 
-- `mainExpr`: it's the regex to get the whole string which contains all the informations you need.
-- `displayMode`: reserved for future use.
-- `functionName`: define a or several regular expression to get the function name from the result of "mainExpr" attribute of "function" node.
-    - `nameExpr`: 1..N
-        - `expr`: here you define the regular expression to find the function name.
+- `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
+- `displayMode` (_attribute_): Reserved for future use.
+- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of "mainExpr" attribute of "function" node.
+    - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.  (This allows multiple regex patterns for matching different syntaxes of function definition).
+        - `expr` (_attribute_): This is where you define the regular expression to find the function name.
+- `className` (_element_): Define one or more regular expressions to get the class name from the result of "mainExpr".  (You _can_ have classes, even if it's not a class parser.)
+    - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.
+        - `expr` (_attribute_): This is where you define the regular expression to find the class name.
 
-- `className`: define a or several regular expression to get the class name from the result of "mainExpr".
-    - `nameExpr`: 1..N
-        - `expr`: here you define the regular expression to find the function name.
+Both `functionName` and `className` nodes are optional.  If `functionName` and `className` are absent, then the string found by the `mainExpr` regular expression will be processed as the function name, and the class name won't be used.
 
-Both `functionName` and `className` nodes are optional.
-If `functionName` and `className` are absent, then the found string by `mainExpr` regular expression will be processed as function name, and the class name won't be used.
-
-
-The nodes `functionName` and `className` have the same structure, and they have the same parsing behaviour. For example, in the `functionName` node, we got 2 `nameExpr` nodes:
-If the function parser find the first result by `mainExpr` attribute, then it will use the first `nameExpr` to search in the first result, if found (the 2nd result), then it will use the 2nd `nameExpr` to search in the 2nd result. If found, then the function name is solved.
+The nodes `functionName` and `className` have the same structure, and they have the same parsing behaviour. For example, if in the `functionName` node, we have two `nameExpr` nodes: If the function parser finds a match using the first `mainExpr` attribute, then it will use that match; otherwise, it will search using the second `nameExpr`, and use that match if found; finally, if none of the `mainExpr` regex match the text, no function will be found.
 
 ### Class parser
-In classRange node it contains:
+The `<classRange>` node accepts the following attributes and contained elements:
 
-- `mainExr`: the main whole string to search
-- `displayMode`: reserved for future use.
-- `openSymbole` & `closeSymbole`: they are optional. if defined, then the parser will determinate the zone of this class. It find first `openSymbole` from the first character of found string by mainExpr attribute. then it determines the end of class by `closeSymbole` found. The algorithm deals with the several levels of imbrication. for example: `\{\{\{\}\{\}\}\{\}\}`
-- `className`: 1 (or more) `nameExpr` node for determining class name (from the result of `mainExpr` searching).
-- `function`: search in the class zone by using `mainExpr` attribute and the `functionName` nodes.
+- `mainExr` (_attribute_): The main whole string to search.
+- `displayMode` (_attribute_): Reserved for future use.
+- `openSymbole` & `closeSymbole` (_attribute_): They are optional. If defined, then the parser will determine the zone of this class: it find first `openSymbole` from the first character of the string found by "mainExpr" attribute; then it determines the end of class by `closeSymbole` found.  The algorithm deals with the several levels of nesting. For example: `\{\{\{\}\{\}\}\{\}\}`
+- `className` (_element_): Contains one or more `nameExpr` nodes for determining class name (from the result of `mainExpr` searching).
+- `function` (_element_): Finds functions inside the class zone by using the expressions found in the `mainExpr` attribute and the `functionName` nodes.
 
-### Mix parser
-Mix Parser contains Class parser (`classRange` node) and Function parser (`function` node).
-Class parser will be applied firstly to find class zones, then function parser will be applied on non-class zones.
+### Mixed parser
+A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
 
 ### Test your parser
-Once you finish to defined your parser, save and name the file as language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
+Once you finish defining your parser, save and name the file as the language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
 
-If you're not happy about the existing parser rule, you can write your parser rule then save with another arbitrary name. So  your parser rule won't be erased by the default file on the next update.
-Use [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml)to override the default functionList parse rule files, also for adding UDL parse rule files.
-
+If you're not happy about the existing parser rule, you can write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files.
 
 ## Contribute your new or enhanced parser rule
 
