@@ -9,7 +9,7 @@ Notepad++ comes prepackaged with many Language lexers, which apply syntax highli
 
 ## UDL Dialog Box or Window
 
-The **Languages** menu on the menu-bar includes the list of builtin languages, and below those are a separator followed by **Define Your Language...** and a list of any UDL that have been already defined.
+The **Languages** menu on the menu-bar includes the list of built-in languages, and below those are a separator followed by **Define Your Language...** and a list of any UDL that have been already defined.
 
 Using **Languages > Define Your Language...** will bring up a dialog box (which can be docked as a pane in the Notepad++ Window, or can be a floating dialog box).
 
@@ -36,7 +36,7 @@ Ivan Radić has created the definitive guide to the nuts and bolts of UDL versio
 
 * The **Folder & Default** tab allows setting the default style, setting up keywords (or characters) that will allow code folding, and setting up styles for those keywords.  The **Open**, **Middle**, and **Close** boxes under each folding-type define the triggers for the start, middle, and end of folding.  For example, with `if`, `else`, and `endif`, it will define fold regions so that you can fold from `if` to `else`, from `else` to `endif`, and (assuming there is no `else` clause) from `if` to `endif`.  **Folding in comment** allows comments to include folding; **Folding in code 1 style** allows the triggers to be touching something else (so with a trigger of `{`, it will match `if{` or `if {`), whereas **Folding in code 2 style** requires there be whitespace around the trigger (so `if{` would _not_ match an **Open**-trigger of `{`).
 
-* The **Keywords List** tab allows defining eight (8) different groups of keywords, so you can style different groups of words differently (like builtin functions vs. flow control keywords).  Separate each keyword by a space (and that means that spaces are not allowed in keywords unless you put quotes around the phrase).  If **☐ Prefix Mode** is enabled for a given group, that means that it will match anything that _starts_ with your string (so a keyword of `for` would match `for`, `forth`, and `format` if that option is enabled).
+* The **Keywords List** tab allows defining eight (8) different groups of keywords, so you can style different groups of words differently (like built-in functions vs. flow control keywords).  Separate each keyword by a space (and that means that spaces are not allowed in keywords unless you put quotes around the phrase).  If **☐ Prefix Mode** is enabled for a given group, that means that it will match anything that _starts_ with your string (so a keyword of `for` would match `for`, `forth`, and `format` if that option is enabled).
 
     As a point of interest, you shouldn't have a given keyword in more than one keyword-group _or_ folder-group.  If you want `if`/`else`/`endif` to cause block-folding, do not also put them in one of your keyword-groups.
 
@@ -86,7 +86,7 @@ If you want to define multiple UDL using the same basic color scheme as your act
 
 ## User Defined Languages Collection
 
-Throughout the history of Notepad++, many UDL files have been created by Notepad++ users and made publically available.  There is once again a centralized [User Defined Languages Collection](https://github.com/notepad-plus-plus/userDefinedLanguages).
+Throughout the history of Notepad++, many UDL files have been created by Notepad++ users and made publicly available.  There is once again a centralized [User Defined Languages Collection](https://github.com/notepad-plus-plus/userDefinedLanguages).
 
 https://github.com/notepad-plus-plus/userDefinedLanguages
 
