@@ -25,12 +25,12 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 * **Find in Projects** tab: Similar to **Find in Files**, but Project Panel files are used instead of files from a directory.\
   It can be invoked over the context menu of the first line of a Project Panel.
 
-* **Mark** tab: Allows you to highlight all occurances of the search target in the current document permanently.\
+* **Mark** tab: Allows you to highlight all occurrences of the search target in the current document permanently.\
   It can be invoked directly with **Search > Mark** or the keyboard shortcut Ctrl+M.
 
 *Note:*  Although a keyboard command can open and/or move input focus to one of the tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
 
-*Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
+*Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
@@ -105,7 +105,7 @@ The status bar area of the Find dialog keeps the user informed of what occurred 
 
 **Important remark**: When the regular expression search mode is invoked, the red alert error message "Find: Invalid regular expression" appears **ONLY** when you hit the **Find Next** button. All other possible actions lead to simply notify you that no result occurs, whereas, in fact, your search regular expression is just malformed. So, always do a **Find Next** search first, to test the validity of your regular expression input.
 
-Notepad++ uses a flashing of the Find dialog window and the main Notepad++ window itself (when the Find dialog is not open) to indicate that search text has not been found (or possibly that a **Wrap around** in the search has occurred).  In general, if a search results in no matches, and the Find dialog window is open, that window will flash briefly as a failure indication.  If the Find dialog window is NOT open, and a failed search is initiated (e.g. via **Find Next** on the **Search** menu), the main Notepad++ window will flash briefly, again, as an indicator of the lack of success.  With the Find dialog window closed, but with **Wrap around** previously activated, a search that causes a wrap at an end of the file to occur will also cause the Notepad++ main window to flash.  In addition, audible feeback will be provided if a **Find Next** or **Replace** action results in the **Find what** text not being encountered; the sound can be muted using the **Mute all sounds** option in [**Preferences > MISC**](../preferences/#misc).
+Notepad++ uses a flashing of the Find dialog window and the main Notepad++ window itself (when the Find dialog is not open) to indicate that search text has not been found (or possibly that a **Wrap around** in the search has occurred).  In general, if a search results in no matches, and the Find dialog window is open, that window will flash briefly as a failure indication.  If the Find dialog window is NOT open, and a failed search is initiated (e.g. via **Find Next** on the **Search** menu), the main Notepad++ window will flash briefly, again, as an indicator of the lack of success.  With the Find dialog window closed, but with **Wrap around** previously activated, a search that causes a wrap at an end of the file to occur will also cause the Notepad++ main window to flash.  In addition, audible feedback will be provided if a **Find Next** or **Replace** action results in the **Find what** text not being encountered; the sound can be muted using the **Mute all sounds** option in [**Preferences > MISC**](../preferences/#misc).
 
 If a search action is invoked by keyboard command with the Find dialog window open and input focus in the editing window, an unsuccessful search will result in input focus being changed to the Find window.  Presumably, the user would want to conduct a different search at this point?
 
@@ -270,7 +270,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 * **Next Search Result / Previous Search Result** Jump to the next or previous search result recorded in the Search Results Window. The Search Results Window is created in response to any of the dialog-based **Find All** commands. If it exists, you can use  **Search  -&gt;  Search Results Window** to make it visible and to switch the input focus between the Search Results Window and the current document.
 
-* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is not rembembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.
+* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.
 
 * **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
 
@@ -339,7 +339,7 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 * `\o`:  the octal representation of a byte, made of 3 digits in the 0-7 range
 * `\d`:  the decimal representation of a byte, made of 3 digits in the 0-9 range
 * `\x`:  the hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
-* `\u`:  The hexadecimal representation of a two byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character (for instance, `\u2020` matches the `†` char, in an UTF-8 encoded file). In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
+* `\u`:  The hexadecimal representation of a two-byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character (for instance, `\u2020` matches the `†` char, in an UTF-8 encoded file). In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
 
 †NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
@@ -482,7 +482,7 @@ These properties behave similar to named character classes, but cannot be contai
 
 * `{ℕ,ℙ}` ⇒ Matches ℕ to ℙ copies of the element it applies to, as much it can (where ℙ ≥ ℕ).
 
-* `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but mimimally.
+* `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but minimally.
 
 * `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example:
 
@@ -506,7 +506,7 @@ These properties behave similar to named character classes, but cannot be contai
         .*+ matches abc”x ( catches all remaining characters )
         ” cannot match $ ( End of line )
 
-    Notice there is no match at all for the possive version, because the possessive repeat factor prevents from backtracking to a possible solution
+    Notice there is no match at all for the possessive version, because the possessive repeat factor prevents from backtracking to a possible solution
 
 
 #### Anchors
@@ -553,7 +553,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
             * If you want to match a literal number after the contents of the ℕth capture group, use one of the forms that has braces, brackets, or quotes, like `\g{ℕ}` or `\k'ℕ'` or `\k<ℕ>`: For example, `\g{2}3` matches the contents of the second capture group, followed by a literal 3, whereas `\g23` would match the contents of the twenty-third capture group.
 
-            * For clarity, it is highly recomended to always use the braces or brackets form for multi-digit ℕ
+            * For clarity, it is highly recommended to always use the braces or brackets form for multi-digit ℕ
 
 
         * For negative ℕ, groups are counted backwards relative to the last group, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
@@ -746,7 +746,7 @@ In substitutions, in addition to allowing the [Control Characters](#control-char
 
 *  `$ℕ`, `${ℕ}`, `\ℕ` ⇒ Returns what matched the ℕth subexpression (numbered capture group), where ℕ is a positive integer (1 or larger).  If ℕ is greater than 9, use `${ℕ}`.
 
-    * Please note: the `\g...` and `\k...`  [backreference](#capture-groups-and-backreferences) syntaxes only work in the search expression, and are _not_ designed or intended to work in the substititution/replacement expression.
+    * Please note: the `\g...` and `\k...`  [backreference](#capture-groups-and-backreferences) syntaxes only work in the search expression, and are _not_ designed or intended to work in the substitution/replacement expression.
 
 *  `$+{name}` ⇒ Returns what matched subexpression named _name_ (named capture group).
 
@@ -1012,9 +1012,9 @@ First, let's give some example data:
 [Sample Test End]
 ~~~
 
-For instance, let’s try to build a regular expression that finds the largest range of text with well balanced parentheses!
+For instance, let’s try to build a regular expression that finds the largest range of text with well-balanced parentheses!
 
-First, some typographic conventions :
+First, some typographic conventions:
 
 * Let Sp be a starting parenthesis. So, its regex syntax is the escaped form `\(`, or simply `(` if inside a character class
 
@@ -1040,19 +1040,19 @@ First, some typographic conventions :
 
     It is important to point out that, if you would use the greedy form `Ac+`, instead of `Ac++`, the last match would be, wrongly, all the file contents, even against a very short text! Again, the advantage of not allowing backtracking reduces combinations and avoids the catastrophic backtracking process :-)
 
-Now, more precisely, between the Sp and Ep parentheses, you may meet :
+Now, more precisely, between the Sp and Ep parentheses, you may meet:
 
 * Nothing, hence the star quantifier, after the non-capturing group
 
 * A non-null range of allowed chars, so the atomic group Ac++
 
-* An other well-balanced Bb construction which can be verified, in turn, by the recursion feature R0
+* Another well-balanced Bb construction which can be verified, in turn, by the recursion feature R0
 
-On the other hand, any subject text scanned can be defined, either, as :
+On the other hand, any subject text scanned can be defined, either, as:
 
 * A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac*. So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
 
-* A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well balanced parentheses text... as it contains no parenthesis ! )
+* A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well-balanced parentheses text... as it contains no parenthesis ! )
 
 This implies that the general symbolic regex is `(?: Ac* Bb )+ Ac* | Ac+`
 
