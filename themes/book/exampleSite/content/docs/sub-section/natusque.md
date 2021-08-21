@@ -5,7 +5,7 @@
 Lorem markdownum hostem et addit arbusta iacuit laetissimus medio, quae quoque
 faciente. Belli et fuerant fuerat, curas Abas equos sacerdos iactasque videndo
 tanto, sub. Et simulasse caedis, est nec acre addiderat, manet Phrygiae
-quisquam, ater, aura sua **deique cornua**. Bacchi *dixi* cum tollit, ad
+quisquam, ater, aura sua **deique cornua**. Bacchi _dixi_ cum tollit, ad
 sinistra mirum, non se dis fraudare in decimo vocet. Ducunt **Acrisio sine
 ratem**: enim illas venti, ferit nam ora.
 
@@ -13,11 +13,11 @@ ratem**: enim illas venti, ferit nam ora.
 > Calydonia! Cursum est suo lassant quam cutis virgo urbe illa auras, finem.
 > [Trabem est](http://www.tutus.io/) secedere Bybli laudant quercus tribuitque
 > relinque et cornua ora, et quoniam maledicere viscera caelobracchia omne hoc.
-> Metaque Arcas patet *intraverat tenet*.
+> Metaque Arcas patet _intraverat tenet_.
 
 Silvisque primae tulisset sive sonuere, incola visa veniat temptantes spernimur
 et dictis se. Sub gerunt. Aqua [tantum templi](http://www.dextra.net/)
-peregrinis ut *aevo cuique* falsi, ibat avidae transitus.
+peregrinis ut _aevo cuique_ falsi, ibat avidae transitus.
 
 ## Modo auctor imbres est
 
@@ -44,5 +44,5 @@ erat cruribus prosunt. Arboris illis neque, et erubuit Gallicus: iam remisit
 adimuntque adsuerat nolit attonitus! Torvamque sensi ut fecundo fortuna bracchia
 fuerant, semper de manet inseris.
 
-Ictibus in cursus in, in isque Polyxena et Solis oris pressa exclamat *in tori*
+Ictibus in cursus in, in isque Polyxena et Solis oris pressa exclamat _in tori_
 lactente. [Locoque](http://est.net/et.html) iam fata Stygia lege transire.

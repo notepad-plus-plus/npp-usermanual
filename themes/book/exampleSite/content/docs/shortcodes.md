@@ -12,7 +12,9 @@ Lorem markdownum insigne...
 ```
 
 {{< expand >}}
+
 ## Markdown content
+
 Lorem markdownum insigne...
 {{< /expand >}}
 
@@ -26,7 +28,9 @@ Lorem markdownum insigne...
 ```
 
 {{< expand "Custom Label" "..." >}}
+
 ## Markdown content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
@@ -55,6 +59,7 @@ Miseratus fonte Ditis conubia.
 
 {{< tabs "uniqueid" >}}
 {{< tab "MacOS" >}}
+
 # MacOS
 
 This is tab **MacOS** content.
@@ -110,7 +115,9 @@ Lorem markdownum insigne...
 ```
 
 {{< columns >}}
+
 ## Left Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
@@ -119,22 +126,24 @@ Miseratus fonte Ditis conubia.
 <--->
 
 ## Mid Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter!
 
 <--->
 
 ## Right Content
+
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 {{< /columns >}}
 
-
 ## Mermaid Chart
 
 {{< columns >}}
+
 ```tpl
 {{</* mermaid [class="text-center"]*/>}}
 sequenceDiagram
@@ -154,19 +163,18 @@ sequenceDiagram
 
 {{< mermaid >}}
 sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you?
-    alt is sick
-        Bob->>Alice: Not so good :(
-    else is well
-        Bob->>Alice: Feeling fresh like a daisy
-    end
-    opt Extra response
-        Bob->>Alice: Thanks for asking
-    end
+Alice->>Bob: Hello Bob, how are you?
+alt is sick
+Bob->>Alice: Not so good :(
+else is well
+Bob->>Alice: Feeling fresh like a daisy
+end
+opt Extra response
+Bob->>Alice: Thanks for asking
+end
 {{< /mermaid >}}
 
 {{< /columns >}}
-
 
 ## KaTeX
 
@@ -185,11 +193,9 @@ x = \begin{cases}
 
 {{< katex >}}
 x = \begin{cases}
-   a &\text{if } b \\
-   c &\text{if } d
+a &\text{if } b \\
+c &\text{if } d
 \end{cases}
 {{< /katex >}}
 
 {{< /columns >}}
-
-

@@ -18,7 +18,7 @@ exhortatur tenebat, ait.
 
 Freta amatos. [Saxum](http://horas-pericula.net/inprudens.php) vocanti Iovem sui
 quicquam viro linguae minus, ara nec tu ipsa ars miserae, quam tetigit vacet
-inque. Fuistis Deucalion, populi invidiae *indicat texere est* Helicon simul.
+inque. Fuistis Deucalion, populi invidiae _indicat texere est_ Helicon simul.
 
 1. Hominum quantaque membra duos
 2. Domum tela
@@ -35,7 +35,7 @@ fecimus, caput; flamma mentis retia fuit Pallas.
 
 > Arbore et agitasse partes patrem dumque ab, nec infans, sollemnia summis
 > resque, de malles ille? Ultor fugaverat nemus, quaerenti nolle coniugis
-> manibus contraque pace. Fuit verba ipse ignavi vulnus. Nam illud *inferius*
+> manibus contraque pace. Fuit verba ipse ignavi vulnus. Nam illud _inferius_
 > iuvenale iuncta tandem.
 
 Deus hostia Peneidas ad passu in venerat postes

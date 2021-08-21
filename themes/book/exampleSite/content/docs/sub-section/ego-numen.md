@@ -4,7 +4,7 @@
 
 Lorem markdownum, mole, profugus. Madida ne quantus, pars verba lacrimis
 memorique longius cupidi ipse attrahit et. Vota liberiore rector suos fallit
-videor iustissimus barbara quod habet. Tantum patriaeque *omnia spectes* inimica
+videor iustissimus barbara quod habet. Tantum patriaeque _omnia spectes_ inimica
 mari nec spemque ululare: nuper quodque, sic, quo.
 
     var php_wireless = 4;
@@ -45,7 +45,7 @@ altam, mortemque: **ubi** procul, et vidi committit. Et
 abstulerat, Boeotia sentit succincta ad linquit confugisse certae, de dignatur
 et!
 
-> Sic nacta saxo *crura*, iustis rorantia premens tempora lecte sumpsisse
+> Sic nacta saxo _crura_, iustis rorantia premens tempora lecte sumpsisse
 > nusquam ulvam, apta! Sed sub plumas consueta quae; tibi mihi nec committi
 > mundi?
 
@@ -57,4 +57,4 @@ Nunc miserata admisitque [nata](http://mollibus.net/secessitnostrique), cum
 loco, **iacerent**, te medullas matres. Fraude tamen, prorumpit puerum primo
 polus regalia pampineis iungunt nec, aderis replent carituraque cervus.
 Primusque lapides ad inpia pedibus; non fare praeterit penetralia in pedum uror.
-Rapitur vivis lacrimis, vena et *dixit*.
+Rapitur vivis lacrimis, vena et _dixit_.

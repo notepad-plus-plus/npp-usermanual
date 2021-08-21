@@ -4,7 +4,7 @@
 
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-protulit, sed sed aere valvis inhaesuro Pallas animam: qui *quid*, ignes.
+protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 
     var mnemonicPcmcia = file;
@@ -22,7 +22,7 @@ Miseratus fonte Ditis conubia.
 
 ## Lac roratis Diomede
 
-*Aut in vivitur* quam ibi is veniebat Herculis mihi hominem! In matrem gesserit
+_Aut in vivitur_ quam ibi is veniebat Herculis mihi hominem! In matrem gesserit
 manus [coniuge silva](http://etinachus.org/cornibusalter.html) pectore simul nec
 felix in haud ostendit lacrimavit mora. Digna adspice temptata, Palaestina armis
 at crura centum tellus ni tibi Amphiona mansit, bello tibi pugnat fuit. Sidera
@@ -39,7 +39,7 @@ cadunt preces.
 Vagatur laboribus vocandus [honorque segnior
 inclinat](http://www.neve-tellus.io/) petentes manere ut terram fundit; sunt.
 Pressit eodem inmotae quasque linguam, sub famem animos dei nocte futura
-Laconide India. Posset iter nata negarit *limina latus postquam* serior, cum dic
+Laconide India. Posset iter nata negarit _limina latus postquam_ serior, cum dic
 area iamdudum non! Et curaque [me illo](http://testudine-est.com/): addidit
 tuam, Cerealia, fila undae Ilithyiam proceresque tegens numero dominaeque
 **regna** humanis. Multo [adstringit hirsutaque](http://www.e.org/est.php)
