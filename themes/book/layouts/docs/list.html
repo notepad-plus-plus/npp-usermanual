@@ -1,9 +1,5 @@
 {{ define "main" }}
 <article class="markdown">
-  {{- .Content -}}
+    {{- .Content -}}
 </article>
-{{ end }}
-
-{{ define "toc" }}
-  {{ partial "docs/toc" . }}
-{{ end }}
+{{ end }} {{ define "toc" }} {{ partial "docs/toc" . }} {{ end }}
