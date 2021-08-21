@@ -43,7 +43,7 @@ How to test site locally
 In order to visualize the site (with your modification) on your computer locally, you have to download [Hugo **extended** version](https://github.com/gohugoio/hugo/releases) firstly.
 Go to the root of Notepad++ User Manual repository under your bash shell (use `Git bash` under windows) then type `HUGODIR\hugo.exe server --minify --theme book`
 
-```bash
+```txt
 donh@MYPC MINGW64 /c/husbandIsNotATM/npp-usermanual (adapt_hugo_book_theme)
 $ /c/tmp/hugo/hugo_ext/hugo.exe server --minify --theme book
 Building sites …
