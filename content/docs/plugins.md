@@ -11,13 +11,12 @@ but you can always add your own or remove some. The plugins are located in the
 Plugins directory in the main Notepad++ installation directory. They are DLL
 files and simply removing or adding them is enough.
 
-
 ## How to install a plugin
 
 ### Install using Plugins Admin
 
 The Plugins Admin allows you to easily install plugins that are in the
-Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to
+Plugins List. To do so, place a check mark next to the Plugin(s) you wish to
 install, then select Install.
 
 ![](/docs/images/pluginsAdmin.png)
@@ -25,7 +24,7 @@ install, then select Install.
 ### Install plugin manually
 
 If the plugin you want to install is not listed in the Plugins Admin, you may
-still install it manually.  The plugin (in the DLL form) should be placed in
+still install it manually. The plugin (in the DLL form) should be placed in
 the plugins subfolder of the Notepad++ Install Folder, under the subfolder
 with the same name of plugin binary name without file extension.
 For example, if the plugin you want to install named `myAwesomePlugin.dll`,
@@ -70,211 +69,209 @@ You can use
 [Plugin development forum](https://notepad-plus-plus.org/community/category/5/plugin-development)
 for any technical questions/answers and the announcement your new plugin.
 
-
 ### In other languages
 
-* [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
-* [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
-* [D](https://gitlab.com/dokutoku/npp-api)
-* [Delphi](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
-
+- [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
+- [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
+- [D](https://gitlab.com/dokutoku/npp-api)
+- [Delphi](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
 
 ### Building a lexer plugin
 
-A lexer plugin is a kind of extension compared to a normal plugin,   
-i.e. in addition to all the functions already mentioned, additional ones have to be exported and also an XML file defining the styles has to be generated.  
-  
+A lexer plugin is a kind of extension compared to a normal plugin,  
+i.e. in addition to all the functions already mentioned, additional ones have to be exported and also an XML file defining the styles has to be generated.
+
 Notepad++ (Npp) currently supports only the [ILexer4](https://www.scintilla.org/ScintillaDoc.html#LexerObjects) interface.  
-A lexer should define all methods of this interface to ensure a smooth interaction.  
-  
-The additional lexer functions to be exported by the plugin are  
-- GetLexerCount  
-- GetLexerName  
-- GetLexerStatusText  
-- GetLexerFactory  
-  
-Unlike the previous functions, these must be exported as [stdcall calling convention](https://docs.microsoft.com/en-us/cpp/cpp/stdcall?view=msvc-160).  
-  
+A lexer should define all methods of this interface to ensure a smooth interaction.
+
+The additional lexer functions to be exported by the plugin are
+
+- GetLexerCount
+- GetLexerName
+- GetLexerStatusText
+- GetLexerFactory
+
+Unlike the previous functions, these must be exported as [stdcall calling convention](https://docs.microsoft.com/en-us/cpp/cpp/stdcall?view=msvc-160).
+
 1. GetLexerCount
-~~~
+
+```
 (typedef int (EXT_LEXER_DECL *GetLexerCountFn)();)
 Args: none
 Return: 32bit signed integer
 Description:
-	A Lexer_Plugin can contain multiple lexers, so GetLexerCount returns the  
-	number of defined lexers in this plugin. Mostly this will be 1.  
-~~~
-  
+	A Lexer_Plugin can contain multiple lexers, so GetLexerCount returns the
+	number of defined lexers in this plugin. Mostly this will be 1.
+```
+
 2. GetLexerName
-~~~
-(typedef void (EXT_LEXER_DECL *GetLexerNameFn)(unsigned int index, char *name, int buflength);)  
-Args:   
-	- Index  
-	- name  
-	- buflength  
+
+```
+(typedef void (EXT_LEXER_DECL *GetLexerNameFn)(unsigned int index, char *name, int buflength);)
+Args:
+	- Index
+	- name
+	- buflength
 Return: none
 Description:
-	This function should return the name which should be displayed in the LanguageMenu.   
-	If more than one lexer is contained in a plugin, this function will be called accordingly often  
-	and the respective lexer is queried via index.   
-	Name is a pointer to the memory area allocated by Npp.  
+	This function should return the name which should be displayed in the LanguageMenu.
+	If more than one lexer is contained in a plugin, this function will be called accordingly often
+	and the respective lexer is queried via index.
+	Name is a pointer to the memory area allocated by Npp.
 	This name should be encoded as an 8bit string using the current Windows codepage.
-	The size is given by buflength.  
-~~~
-  
-  
-3. GetLexerStatusText 
-~~~
-(typedef void (EXT_LEXER_DECL *GetLexerStatusTextFn)(unsigned int Index, TCHAR *desc, int buflength);)  
-Args:   
-	- Index  
-	- name  
-	- buflength  
-Return: none  
+	The size is given by buflength.
+```
+
+3. GetLexerStatusText
+
+```
+(typedef void (EXT_LEXER_DECL *GetLexerStatusTextFn)(unsigned int Index, TCHAR *desc, int buflength);)
+Args:
+	- Index
+	- name
+	- buflength
+Return: none
 Description:
-	This function should return the description to be displayed in the first field of the status line.  
-	The parameters are to be treated in the same way as in the GetLexerName function, except for 
+	This function should return the description to be displayed in the first field of the status line.
+	The parameters are to be treated in the same way as in the GetLexerName function, except for
 	the name parameter, which requires a string encoded with UTF-16.
-~~~
-  
+```
+
 4. GetLexerFactory
-~~~
-(typedef LexerFactoryFunction(EXT_LEXER_DECL *GetLexerFactoryFunction)(unsigned int Index);)  
-Args:   
-	- Index  
-Return: function pointer  
+
+```
+(typedef LexerFactoryFunction(EXT_LEXER_DECL *GetLexerFactoryFunction)(unsigned int Index);)
+Args:
+	- Index
+Return: function pointer
 Description:
-	This function returns a function pointer that returns a pointer to an implementation of the ILexer4 interface.  
-	If the lexer is written in Cpp, this means you create a class with all virtual methods of the ILexer4 interface.  
+	This function returns a function pointer that returns a pointer to an implementation of the ILexer4 interface.
+	If the lexer is written in Cpp, this means you create a class with all virtual methods of the ILexer4 interface.
 	If another programming language is used to create the Lexer_Plugin this means that you create a fixed array with voidptr, pointing to the methods to be implemented, and assign this to a variable from which you return the pointer.
-~~~
-  
+```
+
 Example of a ILexer4 implementation in Pseudocode:  
 (Note: The C-style comments here are for reference only)
-  
-~~~
-Function GetLexerFactory(index)  
-	return LexerFactoryImplementation  
-	  
-Function LexerFactoryImplementation()  
-	ILexer4[0] = voidptr(version)				// virtual int SCI_METHOD Version() const = 0;  
-	ILexer4[1] = voidptr(release)				// virtual void SCI_METHOD Release() = 0;  
-	ILexer4[2] = voidptr(property_names)			// virtual const char * SCI_METHOD PropertyNames() = 0;  
-	ILexer4[3] = voidptr(property_type)			// virtual int SCI_METHOD PropertyType(const char *name) = 0;  
-	ILexer4[4] = voidptr(describe_property)		// virtual const char * SCI_METHOD DescribeProperty(const char *name) = 0;  
-	ILexer4[5] = voidptr(property_set)			// virtual Sci_Position SCI_METHOD PropertySet(const char *key, const char *val) = 0;  
-	ILexer4[6] = voidptr(describe_word_list_sets)		// virtual const char * SCI_METHOD DescribeWordListSets() = 0;  
-	ILexer4[7] = voidptr(word_list_set)			// virtual Sci_Position SCI_METHOD WordListSet(int n, const char *wl) = 0;  
-	ILexer4[8] = voidptr(lex)				// virtual void SCI_METHOD Lex(Sci_PositionU startPos, Sci_Position lengthDoc, int initStyle, IDocument *pAccess) = 0;  
-	ILexer4[9] = voidptr(fold)				// virtual void SCI_METHOD Fold(Sci_PositionU startPos, Sci_Position lengthDoc, int initStyle, IDocument *pAccess) = 0;  
-	ILexer4[10] = voidptr(private_call)			// virtual void * SCI_METHOD PrivateCall(int operation, void *pointer) = 0;  
-	ILexer4[11] = voidptr(line_end_types_supported)	// virtual int SCI_METHOD LineEndTypesSupported() = 0;  
-	ILexer4[12] = voidptr(allocate_sub_styles)		// virtual int SCI_METHOD AllocateSubStyles(int styleBase, int numberStyles) = 0;  
-	ILexer4[13] = voidptr(sub_styles_start)		// virtual int SCI_METHOD SubStylesStart(int styleBase) = 0;  
-	ILexer4[14] = voidptr(sub_styles_length)		// virtual int SCI_METHOD SubStylesLength(int styleBase) = 0;  
-	ILexer4[15] = voidptr(style_from_sub_style)		// virtual int SCI_METHOD StyleFromSubStyle(int subStyle) = 0;  
-	ILexer4[16] = voidptr(primary_style_from_style)	// virtual int SCI_METHOD PrimaryStyleFromStyle(int style) = 0;  
-	ILexer4[17] = voidptr(free_sub_styles)		// virtual void SCI_METHOD FreeSubStyles() = 0;  
-	ILexer4[18] = voidptr(set_identifiers)		// virtual void SCI_METHOD SetIdentifiers(int style, const char *identifiers) = 0;  
-	ILexer4[19] = voidptr(distance_to_secondary_styles)	// virtual int SCI_METHOD DistanceToSecondaryStyles() = 0;  
-	ILexer4[20] = voidptr(get_sub_style_bases)		// virtual const char * SCI_METHOD GetSubStyleBases() = 0;  
-	ILexer4[21] = voidptr(named_styles)			// virtual int SCI_METHOD NamedStyles() = 0;  
-	ILexer4[22] = voidptr(name_of_style)			// virtual const char * SCI_METHOD NameOfStyle(int style) = 0;  
-	ILexer4[23] = voidptr(tags_of_style)			// virtual const char * SCI_METHOD TagsOfStyle(int style) = 0;  
-	ILexer4[24] = voidptr(description_of_style)		// virtual const char * SCI_METHOD DescriptionOfStyle(int style) = 0;		  
-  
-	ilexer = Pointer(ILexer4)  
-	return Pointer(ilexer)  
-	  
-Function version()  
-...  
-  
-Function release()  
-...  
-  
-Function property_names()  
-...  
-~~~
-  
+
+```
+Function GetLexerFactory(index)
+	return LexerFactoryImplementation
+
+Function LexerFactoryImplementation()
+	ILexer4[0] = voidptr(version)				// virtual int SCI_METHOD Version() const = 0;
+	ILexer4[1] = voidptr(release)				// virtual void SCI_METHOD Release() = 0;
+	ILexer4[2] = voidptr(property_names)			// virtual const char * SCI_METHOD PropertyNames() = 0;
+	ILexer4[3] = voidptr(property_type)			// virtual int SCI_METHOD PropertyType(const char *name) = 0;
+	ILexer4[4] = voidptr(describe_property)		// virtual const char * SCI_METHOD DescribeProperty(const char *name) = 0;
+	ILexer4[5] = voidptr(property_set)			// virtual Sci_Position SCI_METHOD PropertySet(const char *key, const char *val) = 0;
+	ILexer4[6] = voidptr(describe_word_list_sets)		// virtual const char * SCI_METHOD DescribeWordListSets() = 0;
+	ILexer4[7] = voidptr(word_list_set)			// virtual Sci_Position SCI_METHOD WordListSet(int n, const char *wl) = 0;
+	ILexer4[8] = voidptr(lex)				// virtual void SCI_METHOD Lex(Sci_PositionU startPos, Sci_Position lengthDoc, int initStyle, IDocument *pAccess) = 0;
+	ILexer4[9] = voidptr(fold)				// virtual void SCI_METHOD Fold(Sci_PositionU startPos, Sci_Position lengthDoc, int initStyle, IDocument *pAccess) = 0;
+	ILexer4[10] = voidptr(private_call)			// virtual void * SCI_METHOD PrivateCall(int operation, void *pointer) = 0;
+	ILexer4[11] = voidptr(line_end_types_supported)	// virtual int SCI_METHOD LineEndTypesSupported() = 0;
+	ILexer4[12] = voidptr(allocate_sub_styles)		// virtual int SCI_METHOD AllocateSubStyles(int styleBase, int numberStyles) = 0;
+	ILexer4[13] = voidptr(sub_styles_start)		// virtual int SCI_METHOD SubStylesStart(int styleBase) = 0;
+	ILexer4[14] = voidptr(sub_styles_length)		// virtual int SCI_METHOD SubStylesLength(int styleBase) = 0;
+	ILexer4[15] = voidptr(style_from_sub_style)		// virtual int SCI_METHOD StyleFromSubStyle(int subStyle) = 0;
+	ILexer4[16] = voidptr(primary_style_from_style)	// virtual int SCI_METHOD PrimaryStyleFromStyle(int style) = 0;
+	ILexer4[17] = voidptr(free_sub_styles)		// virtual void SCI_METHOD FreeSubStyles() = 0;
+	ILexer4[18] = voidptr(set_identifiers)		// virtual void SCI_METHOD SetIdentifiers(int style, const char *identifiers) = 0;
+	ILexer4[19] = voidptr(distance_to_secondary_styles)	// virtual int SCI_METHOD DistanceToSecondaryStyles() = 0;
+	ILexer4[20] = voidptr(get_sub_style_bases)		// virtual const char * SCI_METHOD GetSubStyleBases() = 0;
+	ILexer4[21] = voidptr(named_styles)			// virtual int SCI_METHOD NamedStyles() = 0;
+	ILexer4[22] = voidptr(name_of_style)			// virtual const char * SCI_METHOD NameOfStyle(int style) = 0;
+	ILexer4[23] = voidptr(tags_of_style)			// virtual const char * SCI_METHOD TagsOfStyle(int style) = 0;
+	ILexer4[24] = voidptr(description_of_style)		// virtual const char * SCI_METHOD DescriptionOfStyle(int style) = 0;
+
+	ilexer = Pointer(ILexer4)
+	return Pointer(ilexer)
+
+Function version()
+...
+
+Function release()
+...
+
+Function property_names()
+...
+```
+
 The most important functions a lexer has to provide are Lex, Fold and WordListSet.  
 As the names suggest, Lex is called by Npp (actually Scintilla) to color the current buffer and then Fold to define any fold points.  
 WordListSet is called depending on how many keyword groups have been defined in the styles XML file and each time changes are made via the Npp StyleDialog.  
-More information about these and all other methods can be obtained from https://www.scintilla.org/ScintillaDoc.html#SCI_LOADLEXERLIBRARY.  
-  
-  
-Creating the Lexer Styles XML file.  
-  
+More information about these and all other methods can be obtained from https://www.scintilla.org/ScintillaDoc.html#SCI_LOADLEXERLIBRARY.
+
+Creating the Lexer Styles XML file.
+
 In order for Npp to know how to color which style, an XML file with the same name as the lexer must be created in addition to the original lexer dll.  
-E.g. if the Lexer plugin is called MyNewLexer.dll, the XML file must be called MyNewLexer.xml and must be present in the plugin config directory.   
-  
-  
-The XML file must have the following layout.  
-  
-~~~
-<?xml version="1.0" encoding="UTF-8" ?>  
-<NotepadPlus>  
-    <Languages>  
-        <Language name="NAME_OF_THE_LEXER" ext="EXTENSIONS_USED_TO_IDENTIFY_THE_LEXER" commentLine="//" commentStart="/*" commentEnd="*/">  
-            <Keywords name="instre1">if then else ...</Keywords>  
-            <Keywords name="instre2">...</Keywords>  
-            <Keywords name="type1">...</Keywords>  
-            <Keywords name="type2">...</Keywords>  
-            <Keywords name="type3">...</Keywords>  
-            <Keywords name="type4">...</Keywords>  
-            <Keywords name="type5" />  
-            <Keywords name="type6" />  
-        </Language>  
-    </Languages>  
-    <LexerStyles>  
-        <LexerType name="NAME_OF_THE_LEXER" desc="DESCRIPTION_OF_THE_LEXER_SHOWN_IN_STATUSBAR" ext="" excluded="no">  
-            <WordsStyle styleID="0" name="Default" fgColor="000000" bgColor="FFFFFF" colorStyle="0" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="1" name="WHATEVER" fgColor="FF0000" bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="2" name="SOMETHING_DIFFERENT" fgColor="00FF00" bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="3" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="4" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="5" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />  
-            <WordsStyle styleID="6" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="instre1" fontSize="" />  
-            <WordsStyle styleID="7" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="instre2" fontSize="" />  
-            <WordsStyle styleID="8" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type1" fontSize="" />  
-            <WordsStyle styleID="9" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type2" />  
-            <WordsStyle styleID="10" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type3" />  
-            <WordsStyle styleID="11" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type4" />  
-            <WordsStyle styleID="12" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type5" />  
-            <WordsStyle styleID="13" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type6" />  
-        </LexerType>  
-    </LexerStyles>  
-</NotepadPlus>  
-~~~
-  
-  
+E.g. if the Lexer plugin is called MyNewLexer.dll, the XML file must be called MyNewLexer.xml and must be present in the plugin config directory.
+
+The XML file must have the following layout.
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+    <Languages>
+        <Language name="NAME_OF_THE_LEXER" ext="EXTENSIONS_USED_TO_IDENTIFY_THE_LEXER" commentLine="//" commentStart="/*" commentEnd="*/">
+            <Keywords name="instre1">if then else ...</Keywords>
+            <Keywords name="instre2">...</Keywords>
+            <Keywords name="type1">...</Keywords>
+            <Keywords name="type2">...</Keywords>
+            <Keywords name="type3">...</Keywords>
+            <Keywords name="type4">...</Keywords>
+            <Keywords name="type5" />
+            <Keywords name="type6" />
+        </Language>
+    </Languages>
+    <LexerStyles>
+        <LexerType name="NAME_OF_THE_LEXER" desc="DESCRIPTION_OF_THE_LEXER_SHOWN_IN_STATUSBAR" ext="" excluded="no">
+            <WordsStyle styleID="0" name="Default" fgColor="000000" bgColor="FFFFFF" colorStyle="0" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="1" name="WHATEVER" fgColor="FF0000" bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="2" name="SOMETHING_DIFFERENT" fgColor="00FF00" bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="3" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="4" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="5" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle styleID="6" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="instre1" fontSize="" />
+            <WordsStyle styleID="7" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="instre2" fontSize="" />
+            <WordsStyle styleID="8" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type1" fontSize="" />
+            <WordsStyle styleID="9" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type2" />
+            <WordsStyle styleID="10" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type3" />
+            <WordsStyle styleID="11" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type4" />
+            <WordsStyle styleID="12" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type5" />
+            <WordsStyle styleID="13" name="..." fgColor="..." bgColor="FFFFFF" colorStyle="1" fontName="" fontStyle="0" keywordClass="type6" />
+        </LexerType>
+    </LexerStyles>
+</NotepadPlus>
+```
+
 Currently, a maximum of 8 keyword groups can be defined in <Languages><Language>.  
 These must then be referenced via a respective keywordClass attribute in the WordsStyle tag of the <LexerStyles><LexerType> node.  
-The advantage and sense of colorStyle can be read [here](https://npp-user-manual.org/docs/user-defined-language-system/#udl-and-themes).  
-  
-The attribute ext in <Languages><Language> is the default extension and in <LexerStyles><LexerType> the additional ones defined by the user.  
-  
-  
-With this everything is done. Actually quite simple.   
-But, as usual in software development, there are also some not so obvious pitfalls.  
-  
+The advantage and sense of colorStyle can be read [here](https://npp-user-manual.org/docs/user-defined-language-system/#udl-and-themes).
+
+The attribute ext in <Languages><Language> is the default extension and in <LexerStyles><LexerType> the additional ones defined by the user.
+
+With this everything is done. Actually quite simple.  
+But, as usual in software development, there are also some not so obvious pitfalls.
+
 #### Tips and Tricks
-  
+
 1. Npp uses 2 views with different scintilla instances.  
-To identify which instance should be handled with which document at the moment,  
-pAccess can be used in Lex and Fold.  
-Hint: It is possible to scroll an inactive instance and thus trigger Lex and Fold callbacks.  
-  
+   To identify which instance should be handled with which document at the moment,  
+   pAccess can be used in Lex and Fold.  
+   Hint: It is possible to scroll an inactive instance and thus trigger Lex and Fold callbacks.
+
 2. API XML files, which are used for autocompletion by Npp, as well as funtionlist XML files can,  
-currently, not be used by plugin lexers.   
-So it makes sense to implement these functionalities as well.  
-  
+   currently, not be used by plugin lexers.  
+   So it makes sense to implement these functionalities as well.
+
 3. GetLexerName and GetLexerCount are called twice.  
-Once from Npp directly and once from Scintilla.  
-Each with different buffer length.  
-  
+   Once from Npp directly and once from Scintilla.  
+   Each with different buffer length.
+
 4. When Npp loads the Lexer plugin it is expected that the corresponding styles XML file  
-is also present in the plugin config directory.  
-Since, for whatever reason, this file might not be present, it is a good idea to check this in the setInfo callback and to react accordingly  
+   is also present in the plugin config directory.  
+   Since, for whatever reason, this file might not be present, it is a good idea to check this in the setInfo callback and to react accordingly
 
 ## Plugins Admin
 

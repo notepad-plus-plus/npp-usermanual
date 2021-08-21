@@ -3,10 +3,9 @@ title: Introduction
 type: docs
 ---
 
-Notepad++ User Manual 
-=======
+# Notepad++ User Manual
 
-***Documentation is like sex, when it's good, it's very, very good; when it's bad, it's better than nothing.***
+**_Documentation is like sex, when it's good, it's very, very good; when it's bad, it's better than nothing._**
 
 Of course, it's not our goal to create bad documentation, but you get what we mean.
 
@@ -27,4 +26,3 @@ color: #00A2E8;
 padding: 2px 1em;
 ">Download offline User Manual</a>
 </p>
-

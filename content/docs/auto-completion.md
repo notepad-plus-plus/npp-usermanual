@@ -61,13 +61,13 @@ The keyboard shortcuts for manual completion can be adjusted in [**Settings > Sh
 
 ## Create auto-completion definition files
 
-Notepad++ uses XML configuration files to define the per-language function and parameter auto-completion.  Those AutoComplete files are located in the `autoCompletion` subdirectory of the Notepad++ install folder.  (In older versions, Notepad++ v7.6.1 and earlier, they were found in the `plugins\APIs` subdirectory of the intstall folder.)
+Notepad++ uses XML configuration files to define the per-language function and parameter auto-completion. Those AutoComplete files are located in the `autoCompletion` subdirectory of the Notepad++ install folder. (In older versions, Notepad++ v7.6.1 and earlier, they were found in the `plugins\APIs` subdirectory of the intstall folder.)
 
 The syntax of AutoComplete files is simple, but does have a few rules, most importantly correct syntax and proper sorting. If the syntax is incorrect, the XML file will fail to load and AutoComplete will be disabled.
 
 Improper sorting (see below) can cause the AutoComplete function to behave erratic, causing it to fail on certain words.
 
-The basic character set used to recognize keywords is made of letters `a-z`, `A-Z`, digits `0-9`, and the underscore `_`.  Punctuation might work for auto-completion; however, if you want to use the parameter hints, you should not use punctuation in the keyword name.
+The basic character set used to recognize keywords is made of letters `a-z`, `A-Z`, digits `0-9`, and the underscore `_`. Punctuation might work for auto-completion; however, if you want to use the parameter hints, you should not use punctuation in the keyword name.
 
 Syntax:
 
@@ -87,7 +87,7 @@ A small example of how the XML file is built is given above. `<NotepadPlus>`, `<
 
 For keywords that are not functions, the `<KeyWord>` tag is autoclosing and only has the `name` attribute. To indicate a keyword can be displayed in a calltip, add the attribute `func="yes"`. In this case, the `<KeyWord>` tag is a node and contains other tags.
 
-Then, for each overload of the function, an `<Overload>` element should be added, which specifies the behavior and the parameters of the function. A function must have at least one `<Overload>` or it will not be displayed as a calltip.  Multiple `<Overload>` elements allow there to be different sets of parameters for a given function.  The `retVal` attribute must be present and specifies the type of the return value, but the `descr` attribute is optional and describes the functions behavior, like a comment. You can add newlines in the description if you wish to do so. For each parameter the function takes, a `<Param>` element can be added. The `name` attribute must be present and specifies the type of the parameters and/or any name of the parameter.
+Then, for each overload of the function, an `<Overload>` element should be added, which specifies the behavior and the parameters of the function. A function must have at least one `<Overload>` or it will not be displayed as a calltip. Multiple `<Overload>` elements allow there to be different sets of parameters for a given function. The `retVal` attribute must be present and specifies the type of the return value, but the `descr` attribute is optional and describes the functions behavior, like a comment. You can add newlines in the description if you wish to do so. For each parameter the function takes, a `<Param>` element can be added. The `name` attribute must be present and specifies the type of the parameters and/or any name of the parameter.
 
 In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can take any string you want.
 
@@ -138,6 +138,7 @@ resulting in the following call tip:
 Remember that the call tip shows up when you type the opening parenthesis after the routine name. Default `"("` or whatever set with startFunc in the `<Environment>` tag.
 
 #### Names
+
 For both call tips and autocompletion to work, keywords must be words, ie identifiers most languages would readily accept. This means that only the 26 Latin alphabet letters in either lower or upper case (no diacritics), digits and the underscore are safe to use. Additional allowed characters will work if they are not whitespace. Autocompletion may cope with spaces or blanks, call tips won't. This is a Scintilla limitation.
 
 #### Sorting
@@ -160,4 +161,4 @@ The simplest way to build a new file might be this:
 
 For case sensitive sorting, you can use Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending**, or any generic ASCII/ANSI sorter that sorts on the byte value of the characters. Simply put, this means the underscore character is between uppercase and lowercase letters.
 
-For case insensitive sorting, treat lowercase letters as uppercase, that is, subtract 32 from each lowercase byte value; this means the underscore must come both after uppercase and lowercase letters.  Unfortunately, Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending** does case-sensitive sorting, and will not work for this purpose.
+For case insensitive sorting, treat lowercase letters as uppercase, that is, subtract 32 from each lowercase byte value; this means the underscore must come both after uppercase and lowercase letters. Unfortunately, Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending** does case-sensitive sorting, and will not work for this purpose.

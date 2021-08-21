@@ -26,7 +26,6 @@ Almost 80 Programming Languages are supported by Notepad++:
 | TeX          | txt2tags           | Visual Basic           | Visual Prolog | VHDL          |
 | Verilog      | XML                | YAML                   |               |               |
 
-
 Notepad++ supports for their [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
 [function list](../function-list/) (customizable via PCRE in xml file).
@@ -34,5 +33,3 @@ syntax folding, [auto-completion](../auto-completion/) (customizable),
 If your beloved language is not in the list above, you can define it by your
 own easily, by using
 [User Defined Languages System](../user-defined-language-system/).
-
-
