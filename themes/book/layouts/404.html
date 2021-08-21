@@ -2,17 +2,15 @@
 <html lang="{{ .Site.Language.Lang }}">
 
 <head>
-  {{ partial "docs/html-head" . }}
-  {{ partial "docs/inject/head" . }}
+    {{ partial "docs/html-head" . }} {{ partial "docs/inject/head" . }}
 </head>
 
 <body>
-  <main class="flex justify-center">
-    <h1>404 Not Found</h1>
-  </main>
+    <main class="flex justify-center">
+        <h1>404 Not Found</h1>
+    </main>
 
-  {{ partial "docs/inject/body" . }}
-  {{ template "_internal/google_analytics_async.html" . }}
+    {{ partial "docs/inject/body" . }} {{ template "_internal/google_analytics_async.html" . }}
 </body>
 
 </html>
