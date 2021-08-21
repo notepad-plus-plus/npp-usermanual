@@ -3,7 +3,7 @@
 baseURL: https://example.com/
 title: Hugo Book
 theme: hugo-book
-disableKinds: ['taxonomy', 'taxonomyTerm']
+disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
 
 # Book configuration
@@ -43,8 +43,8 @@ params:
   # Configure the date format used on the pages
   # - In git information
   # - In blog posts
-  BookDateFormat: 'Jan 2, 2006'
+  BookDateFormat: "Jan 2, 2006"
 
-  # (Optional, default true) Enables search function with lunr.js, 
+  # (Optional, default true) Enables search function with lunr.js,
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch: true
