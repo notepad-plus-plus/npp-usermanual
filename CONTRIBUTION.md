@@ -52,6 +52,6 @@ The best way to avoid this problem is to
 3. Make those changes and submit a new PR from the _branch_ back to the main repository
 4. If you want to make changes for another issue before the PR from step#3 was accepted and merged, create a new branch from your unmodified fork, so that it's starting from the same state that the main repository is currently in
 5. Make the changes in the new branch, and submit a PR from that branch to the main repository
-6. Now your PRs from #3 and #5 are independent, and #5 won't contain the changes
+6. Now your PRs from #3 and #5 are independent, and #5 won't repeat or interfere with the changes from #3
 
 If PRs are not kept independent, they may be rejected.
