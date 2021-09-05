@@ -379,4 +379,8 @@ If you have updated an existing translation to match the most recent version of 
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/zulu.xml" target="_blank"><img src="/docs/images/flags/fZululand.png" alt="" border="0" /><br/> Zulu</a>
 </div>
 
+<div align="center" style="margin: 20px; display: inline-block;">
+<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/abkhazian.xml" target="_blank"><img src="/docs/images/flags/fAbkhazia.png" alt="" border="0" /><br/> Abkhazian</a>
+</div>
+
 </div>
