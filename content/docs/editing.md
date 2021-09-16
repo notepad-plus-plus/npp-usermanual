@@ -45,7 +45,10 @@ The cloned document is the same document as its original one, but with the separ
 
 Aside from the normal undo/redo/copy/paste entries, there are a number of sub-menus to the **Edit** menu, which group together various categories of editing-related commands, and a few other editing commands in the main **Edit** menu.
 
-* `Insert >` ⇒ submenu with actions that insert the date and time as a short format (like `12:46 PM 8/21/2021`) or a long format (like `12:46 PM Saturday, August 21, 2021`) (new to v8.1.4)
+* `Insert >` ⇒ submenu with actions that insert the date and time (new to v8.1.4)
+    * `Date Time (short)` ⇒ like `12:46 PM 8/21/2021` (new to v8.1.4)
+    * `Date Time (long)` ⇒ like `12:46 PM Saturday, August 21, 2021`) (new to v8.1.4)
+    * `Date Time (custom)` ⇒ can insert a date with a customized format, as defined in the [**Settings > Preferences > Multi-Instance & Date**](../preferences/#multi-instance-and-date) dialog
 * `Copy to Clipboard >` ⇒ submenu with actions that copy current filename, path, or directory name to the clipboard
 * `Indent >` ⇒ submenu with actions that increase or decrease the current line's indentation, based on [the syntax language's](../preferences/#language) tab/indent settings
 * `Convert Case to >` ⇒ submenu with actions that change the case of the selected text (all UPPERCASE, all lowercase, and various mixed-case settings)
