@@ -317,15 +317,52 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 * `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
     (note: this setting was in the [MISC preferences](#misc) prior to v7.8.3)
 
-### Multi-Instance
+### Multi-Instance and Date
 
-Determines whether multiple instances of Notepad++ can be run simultaneously.
+The **Multi-Instance** settings determine whether multiple instances of Notepad++ can be run simultaneously.
 
 * `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension.
 * `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++
 * `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
+
+The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).  The 
+
+* `☐ Reverse default date time order (short & long formats)`: if checked, the short and long formats will insert the date then the time; if unchecked, the short and long formats will insert the time then the date.
+* `Custom Format`: Enter in the format string that will define the date and time display desired when inserting the customized time. 
+
+Format | Description | Example
+---|---|---
+--- | _Day_ | ---
+d | Day of the month as digits without leading zeros for single-digit days. | 1, 31
+dd | Day of the month as digits with leading zeros for single-digit days. | 01, 31
+ddd | Abbreviated day of the week | Mon
+dddd | Day of the week | Monday
+--- | _Month_ | ---
+M | Month as digits without leading zeros for single-digit months. | 1
+MM | Month as digits with leading zeros for single-digit months. | 01
+MMM | Abbreviated month | Nov
+MMMM | Full month | November
+--- | _Year_ | ---
+y | Year represented only by the last digit. | 9
+yy | Year represented only by the last two digits. A leading zero is added for single-digit years. | 99
+yyyy | Year represented by a full four or five digits | 1999
+g, gg | Period/era string formatted | B.C., A.D.
+--- | _Time_ | ---
+h | Hours with no leading zero for single-digit hours; 12-hour clock | 1, 11
+hh | Hours with leading zero for single-digit hours; 12-hour clock | 01, 11
+H | Hours with no leading zero for single-digit hours; 24-hour clock | 1, 23
+HH | Hours with leading zero for single-digit hours; 24-hour clock | 01, 23
+m | Minutes with no leading zero for single-digit minutes | 9, 59
+mm | Minutes with leading zero for single-digit minutes | 09, 59
+s | Seconds with no leading zero for single-digit seconds | 9, 59
+ss | Seconds with leading zero for single-digit seconds | 09, 59
+t | One character time marker string | A, P
+tt | Multi-character time marker string | AM, PM
+
+
+
 
 ### Delimiter
 
