@@ -151,7 +151,7 @@ Once some text in a document is marked, it may be copied to the clipboard by pre
 
 Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
-### Bookmarks vs Marks
+#### Bookmarks vs Marks
 
 Bookmarks and Marks are two slightly different things, though the **Mark** tab can affect both.  A Mark will highlight the individual match(es) in the text; a Bookmark affects the whole line, and is usually displayed as a circle (`●`) in the margin, though [**Settings > Preferences > Margin/Border/Edge**](../preferences/#margins-border-edge) has a `☐ Display bookmark` toggle that will influence whether Bookmarks have that circle indicator or not.
 
