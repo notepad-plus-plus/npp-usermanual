@@ -28,9 +28,9 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * `Filled Fluent UI: small`: uses small versions of the Fluent UI icons, in a filled (or reverse-video) style
         * `Filled Fluent UI: large`: uses large versions of the Fluent UI icons, in a filled (or reverse-video) style
         * `Standard icons: small`: these are the small version of the traditional (pre-v8.0.0) icons
-* **Document List Panel**:
-    * `☐ Disable extension column`: If enabled, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column)
-    * prior to v8.1.3, the `☐ Show` setting would toggle the Document List panel, but that is now controlled by the [View menu's "Document List" entry](../views/#panels)
+* **Document List Panel**:  (This section removed in v8.1.5.)
+    * `☐ Disable extension column`: Prior to v8.1.5, if enabled, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
+    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels)
 * **Tab Bar**:
     * `☐ Hide`: the tab bar for the open files will not be visible
     * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
