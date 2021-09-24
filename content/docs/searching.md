@@ -151,6 +151,12 @@ Once some text in a document is marked, it may be copied to the clipboard by pre
 
 Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
 
+#### Bookmarks vs Marks
+
+Bookmarks and Marks are two slightly different things, though the **Mark** tab can affect both.  A Mark will highlight the individual match(es) in the text; a Bookmark affects the whole line, and is usually displayed as a circle (`●`) in the margin (though [**Settings > Preferences > Margin/Border/Edge**](../preferences/#margins-border-edge) has a `☐ Display bookmark` toggle that will influence whether Bookmarks have that circle indicator or not).
+
+Bookmarks, whether visible or not, have a menu that can control and navigate Bookmarks.  This menu is accessible either as **Search > Bookmark** or by right clicking in the Bookmark portion of the margin (between the line number and the text, if line numbers are displayed).  This menu has options to toggle the state of the current line's Bookmark, to navigate to the next or previous Bookmark, to clear all Bookmarks, to cut or copy Bookmarked lines, to paste over (replace) Bookmarked lines, to delete Bookmarked (or non-Bookmarked) lines, or to invert all the Bookmarks (so all lines with a Bookmark have the Bookmark removed, and all lines without a Bookmark have a Bookmark added).
+
 ### Search results window
 
 After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the F7 keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
