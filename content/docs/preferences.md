@@ -205,7 +205,8 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 Affects highlighting of selected text.
 
-* **Mark All** (v8.0.0 and later)
+* **Style All Occurrences of Token** (previously **Mark All**)
+    * _Note_: this section of the preferences was renamed v8.1.4; it was known as **Mark All** in v8.0 - v8.1.3
     * `☐ Match case`: Mark All will be case-sensitive
     * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
     * This setting section applies to the **Search** menu's **Mark All** submenu entries, and the equivalent [right-click Context Menu](../config-files/#the-context-menu-contextmenu-xml)'s **Style all occurrences of token** submenu entries, for applying "Style Tokens" to specific text.
