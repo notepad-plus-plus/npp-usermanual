@@ -94,7 +94,7 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Text` => choose the color for the menu bar entry names, and other normal text for most dialog boxes
      * `Darker text` => choose the color for the darker text for most dialog boxes
      * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "greyed out" or "disabled")
-     * `Edge` => choose the color for the veritcal separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
+     * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
      * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
 
 ### Margins / Border / Edge
@@ -110,7 +110,7 @@ These define the margin style, border width, and edge settings.  (This page is n
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
 * **Vertical Edge Settings**
-    * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The colour of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Forground colour**.
+    * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The colour of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Foreground colour**.
     * Multiple Vertical Edges: There is one box, which accepts zero or more numbers (as of v7.8.6):
         * If the box is empty, there are no vertical edges.
         * If there is one number ℕ in the box, there will be one vertical edge, after the column for the ℕth character.
@@ -371,9 +371,9 @@ Sets the characters that are considered part of a "word" for quick selections us
 
 * **Word character list**
     * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Normal search mode in the Find and Replace dialogs, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
-        * The default "word characters" inlcude anything that Unicode considers alphanumeric, plus the underscore "_" character.
-            * Includes: standard Latin characters, accented characters, letterlike symbols, superscript digits, and enclosed (circled) digits
-            * Excludes: punctuation, mathematical operators, box drawing, arrows, emoji, or other such sybols.
+        * The default "word characters" include anything that Unicode considers alphanumeric, plus the underscore "_" character.
+            * Includes: standard Latin characters, accented characters, letter-like symbols, superscript digits, and enclosed (circled) digits
+            * Excludes: punctuation, mathematical operators, box drawing, arrows, emoji, or other such symbols.
     * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
         * The value should be a string consisting of all the additional characters you would like to be included as a "word character".
         * Spaces are liable to cause problems, and are not recommended to be present in this entry.  If you try to add a space, the dialog box will show a warning message.
@@ -433,7 +433,7 @@ A variety of settings that didn't fit elsewhere
 
 ## Style Configurator
 
-The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style defition.
+The Style Configurator dialog has three regions: Select theme, language and style selection lists, and the style definition.
 
 The "Select theme:" pulldown allows you to select which theme you want.  [Themes](../themes/) are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.
 
@@ -529,7 +529,7 @@ The message area will tell you if there are "no shortcut conflicts for this item
 
 The Filter input allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  There are no regular expression or wildcard syntax interpretations in the Filter.
 
-Use the Modify button to edit the existing shortcut or to create a shortcut for an entry that has none.  The resulting dialog will show the Name of the active action.  There are checkboxes to enable the CTRL, ALT, and SHIFT key-modifiers.  The main key in the shortcut is defined by the pulldown menu.  Hitting OK will apply the added or changed shortcut and leave the dialog.  Cancel will undo your changes and leave the dialog.  (Please note that if you are using some localizations, the key you select [might not match](https://notepad-plus-plus.org/community/topic/17679/using-caret-circumflex-key-for-a-shortcut/10) <!-- TODO = this link should really refer to a submitted issue request, rather than a forum-topic --> what key you type: whatever key in your locale uses the same keycode as the standard US english keyboard will be the actual key.)  In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional Add and Remove buttons.
+Use the Modify button to edit the existing shortcut or to create a shortcut for an entry that has none.  The resulting dialog will show the Name of the active action.  There are checkboxes to enable the CTRL, ALT, and SHIFT key-modifiers.  The main key in the shortcut is defined by the pulldown menu.  Hitting OK will apply the added or changed shortcut and leave the dialog.  Cancel will undo your changes and leave the dialog.  (Please note that if you are using some localizations, the key you select [might not match](https://notepad-plus-plus.org/community/topic/17679/using-caret-circumflex-key-for-a-shortcut/10) <!-- TODO = this link should really refer to a submitted issue request, rather than a forum-topic --> what key you type: whatever key in your locale uses the same keycode as the standard US English keyboard will be the actual key.)  In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional Add and Remove buttons.
 
 Use the Clear button to remove the existing shortcut for a given entry.
 
@@ -593,7 +593,7 @@ This menu shows the active syntax highlighter lexer (including [User Defined Lan
 
 The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
 
-* Allow regex backward search: Backward regex searching is foribidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to eanable this option:
+* Allow regex backward search: Backward regex searching is forbidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
 ```
 <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" "regexBackward4PowerUser"="yes">
 ```
