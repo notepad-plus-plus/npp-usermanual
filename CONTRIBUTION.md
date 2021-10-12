@@ -9,7 +9,7 @@ Your pull requests are welcome to suggest changes to the user manual.
 
 * *KISS* - Keep It Simple, Stupid.  Fewer changes per PR are better.
 * Respect Notepad++ User Manual style.
-* It is best if there is an open [issue](/notepad-plus-plus/npp-usermanual/issues) before making changes and submitting a PR, so that you can ask whether your idea is worth incorporating before spending the effort on
+* It is best if there is an open [issue](../../issues) before making changes and submitting a PR, so that you can ask whether your idea is worth incorporating before spending the effort on.
 * You will need to create a fork to make changes.  Create a new branch in your fork for each PR, keeping each PR independent of others you submit.
 
 If these guidelines and style guide are not followed, or if the reviewers otherwise do not believe the submitted changes are appropriate, you may be asked to make changes to your PR, or your PR may be rejected.  If you do not make requested changes, the reviewers may edit or reject the PR.  We reserve the right to reject a PR for any reason, not just for a reason explicitly enumerated in this document.
