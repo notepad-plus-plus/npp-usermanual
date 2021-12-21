@@ -300,7 +300,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 * **Auto-Completion**
     * `☐ Enable auto-completion on each input`: a dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion
         * `☐ Function completion`: will auto-complete function names only, based on the keywords in the active [auto-completion file](../auto-completion/)
-        * `☐ Word completion`: will auto-complete words only, based on words that already exist
+        * `☐ Word completion`: will auto-complete words only, based on words that already exist in the current file
         * `☐ Function and word completion`: will auto-complete both function names and words
         * `From the _n_th character`: must type at least _n_ characters before the auto
             * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
