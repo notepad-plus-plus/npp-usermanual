@@ -299,13 +299,14 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 
 * **Auto-Completion**
     * `☐ Enable auto-completion on each input`: a dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion
-        * `☐ Function completion`: will auto-complete function names only
-        * `☐ Word completion`: will auto-complete words only
+        * `☐ Function completion`: will auto-complete function names only, based on the keywords in the active [auto-completion file](../auto-completion/)
+        * `☐ Word completion`: will auto-complete words only, based on words that already exist in the current file
         * `☐ Function and word completion`: will auto-complete both function names and words
         * `From the _n_th character`: must type at least _n_ characters before the auto
             * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
         * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
+    * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](https://npp-user-manual.org/docs/editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
 * **Auto-Insert**
     * Will automatically insert the closing item for any of the enabled default pairs, or the three manually-chosen matched pairs
         * `☐ ()`

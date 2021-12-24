@@ -39,7 +39,7 @@ If instead of selecting, you keep typing, items that no longer match will be rem
 
 ### Manual completion
 
-If auto completion is turned off, you can manually force the completion of what you've typed, limiting the selection to either the list of functions or the list of words. By default, these functions are bound to Ctrl+Space (functions) or Ctrl+Enter (words); they are also available in the Edit menu. Typing one of these keystrokes attempts an immediate completion: if there is a single matching entry in the wordlist, that entry is used, with no display of a list. If there are multiple matching entries, the list is displayed just as if auto-completion were triggered at the same point.
+If auto completion is turned off, you can manually force the completion of what you've typed, limiting the selection to either the list of functions or the list of words. By default, these functions are bound to Ctrl+Space (functions) or Ctrl+Enter (words); they are also available in the [Edit menu](../editing/#edit-menu). Typing one of these keystrokes or using those menu commands attempts an immediate completion: if there is a single matching entry in the wordlist, that entry is used, with no display of a list. If there are multiple matching entries, the list is displayed just as if auto-completion were triggered at the same point.
 
 Note: Manual "Function completion" (currently) shows a list of all the functions in the wordlist, even if they don't match the current prefix—unless no function matches the prefix, in which case no list is shown. Manual "Word completion" shows only the matching words.
 
