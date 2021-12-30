@@ -115,7 +115,16 @@ If a search action is invoked by keyboard command with the Find dialog window op
 
 Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders.
 
-The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   If you have a blank filter, it is implied to be `*.*`.  As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)  Please also note that the PathMatchSpec() Windows API is being used, as its behavior departs from cmd.exe wildcard parsing sometimes.
+The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   
+
+* If you have a blank filter, it is implied to be `*.*`.  
+* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)  
+* As of Notepad++ v8.2, you can also exclude particular folders from the search: 
+    * `!\tests` will not search any files in the `tests` folder
+    * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`)
+    * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search)
+* As of Noteoad++ v8.2, if you hover your cursor over the **Filters:** label, a helpful popup will show example syntax for you
+* Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.  
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
