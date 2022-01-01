@@ -59,6 +59,11 @@ The `<classRange>` node accepts the following attributes and contained elements:
 - `openSymbole` & `closeSymbole` (_attribute_): They are optional. If defined, then the parser will determine the zone of this class: it find first `openSymbole` from the first character of the string found by "mainExpr" attribute; then it determines the end of class by `closeSymbole` found.  The algorithm deals with the several levels of nesting. For example: `\{\{\{\}\{\}\}\{\}\}`
 - `className` (_element_): Contains one or more `nameExpr` nodes for determining class name (from the result of `mainExpr` searching).
 - `function` (_element_): Finds functions inside the class zone by using the expressions found in the `mainExpr` attribute and the `functionName` nodes.
+    - _Note_: This `function` node looks similar to the `function` node in the **Function parser** above, but it _is different_, and has slightly different contents.
+    - `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
+    - `functionName` (_element_): The wrapper for digging into and finding the text for the function name
+        - `functionNameExpr` (_element_): The element for the function name of a function inside a class.  Please note that it uses the `functionNameExpr` element instead of the `nameExpr` element in the **Function parser**.  Yes, it's confusing.
+            - `expr` (_attribute_): this is where you put the regular expression defines what should match to be used in displaying the function name in the Function List panel.
 
 ### Mixed parser
 A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
