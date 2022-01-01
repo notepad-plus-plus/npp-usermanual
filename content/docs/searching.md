@@ -123,7 +123,7 @@ The **Filters** list is a space-separated list of wildcard expressions that cmd.
     * `!\tests` will not search any files in the `tests` folder
     * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`)
     * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search)
-* As of Noteoad++ v8.2, if you hover your cursor over the **Filters:** label, a helpful popup will show example syntax for you
+* As of Notepad++ v8.2, if you hover your cursor over the **Filters:** label, a helpful popup will show example syntax for you
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.  
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
