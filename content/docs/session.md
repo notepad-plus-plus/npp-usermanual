@@ -28,6 +28,8 @@ The [MISC preferences](../preferences/#misc) include an option to set a file ext
 
 You can also load a session file using the [`-openSession` command line argument](../command-prompt).
 
+*Note*: As of Notepad++ v8.2, the loaded session is saved automatically on exit of Notepad++, if the [Multi-instance settings](../preferences/#multi-instance-and-date) is **not** set to "Default (Mono-instance)".
+
 ## Folder as Workspace
 
 This feature allows you to use a tree-based interface to easily access the files in a given directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](../preferences/#default-directory)).

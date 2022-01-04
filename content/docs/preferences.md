@@ -323,8 +323,8 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 
 The **Multi-Instance** settings determine whether multiple instances of Notepad++ can be run simultaneously.
 
-* `☐ Open session in a new instance of Notepad++`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension.
-* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++
+* `☐ Open session in a new instance (and save session automatically on exit)`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while the instance exiting, if this option is set.
+* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++.
 * `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
