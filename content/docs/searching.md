@@ -118,11 +118,16 @@ Find in Files allows both finding and replacing. You can choose an extension fil
 The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   
 
 * If you have a blank filter, it is implied to be `*.*`.  
-* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)  
-* As of Notepad++ v8.2, you can also exclude particular folders from the search: 
+* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; 
+for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)  
+* As of Notepad++ v8.2, you can also exclude particular folders from the search: Exclusion operator is alway `!` at the begining. In order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
+If users need to exclude folders with the same name (or names matched the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
     * `!\tests` will not search any files in the `tests` folder
     * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`)
     * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search)
+    
+    *Note*: "inclusion of folder" is not allowed, and such pattern will be ignored
+    
 * As of Notepad++ v8.2, if you hover your cursor over the **Filters:** label, a helpful popup will show example syntax for you
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.  
 
