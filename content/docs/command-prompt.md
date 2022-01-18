@@ -12,7 +12,7 @@ to control its startup and affect its behavior.
 ```
 notepad++ [--help] [-multiInst] [-noPlugin] 
   [-l<Language>] [-udl="My UDL Name"]
-  [-L<langCode]
+  [-L<langCode>]
   [-n<line>] [-c<column>] [-p<pos>] [-x<left-pos>] [-y<TopPos>]
   [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
   [-alwaysOnTop] [-openSession] [-r]
