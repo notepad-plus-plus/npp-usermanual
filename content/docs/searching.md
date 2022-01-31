@@ -410,11 +410,13 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `\r` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
 
-* `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.
-
 * `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
 * `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.
+
+##### Special Control escapes
+
+* `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.  Please note, this sequence might match one or two characters, depending on the text.  Because its length is variable-width, it cannot be used in lookbehinds.  Because it expands to a parentheses-based group with an alternation sequence, it cannot be used inside a character class.  If you accidentally attempt to put it in a character class, it will be interpreted like any other literal-character escape (where `\☒` is used to make sure that the next character is literal) meaning that the `R` will be taken as a literal `R`, without any special meaning.  For example, if you try `[\t\R]`: you may be intendeng to say, "match any single character that's a tab or a newline", but what you are actually saying is "match the tab or a literal R"; to get what you probably intended, use `[\t\v]` for "a tab or any vertical spacing character", or `[\t\r\n]` for "a tab or carriage return or newline but not any of the weird verticals".
 
 #### Ranges or kinds of characters
 
@@ -455,6 +457,8 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `[^[:`_name_`:]]` or `[^[:☒:]]` ⇒ The complement of character class named _name_ or ☒ (matching anything _not_ in that named class).  This uses the same long names, short names, and rules as mentioned in the previous description.
 
+* Character classes may _not_ contain parentheses-based groups of any kind, including the special escape `\R` (which expands to a parentheses-based group when evaluated, even though `\R` doesn't look like it contains parentheses).
+
 ##### Character Properties
 
 These properties behave similar to named character classes, but cannot be contained inside a character class.
@@ -478,6 +482,8 @@ These properties behave similar to named character classes, but cannot be contai
 | vertical space   | `\v`            | see below      | `\V`                     |                |
 
 > Vertical space: This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
+
+_Note_: despite its similarity to `\v`, even though `\R` matches certain veritcal space characters, it is _not_ a character-class-equivalent escape sequence (because it evaluates to a parentheses`()`-based expression, not a class-based expression).  So while `\d`, `\l`, `\s`, `\u`, `\w`, `\h`, and `\v` are all equivalent to a character class and can be included inside another bracket`[]`-based character class, the `\R` is _not_ equivalent to a character class, and _cannot_ be included inside a bracketed`[]` character-class.
 
 ##### Equivalence Classes
 
