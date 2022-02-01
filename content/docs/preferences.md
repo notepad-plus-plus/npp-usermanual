@@ -302,9 +302,13 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ Function completion`: will auto-complete function names only, based on the keywords in the active [auto-completion file](../auto-completion/)
         * `☐ Word completion`: will auto-complete words only, based on words that already exist in the current file
         * `☐ Function and word completion`: will auto-complete both function names and words
-        * `From the _n_th character`: must type at least _n_ characters before the auto
-            * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
-        * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
+    * `From the _n_th character`: must type at least _n_ characters before the auto
+        * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
+    * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
+    * **Insert Selection**: v8.2.1 added a new section
+        * `☐ TAB`: toggles whether or not TAB will accept your choice
+        * `☐ ENTER`: toggles whether or not ENTER will accept your choice
+        * v8.2 and earlier behaved as if both have checkmarks; v8.2.1 and later defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
     * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](https://npp-user-manual.org/docs/editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
 * **Auto-Insert**
