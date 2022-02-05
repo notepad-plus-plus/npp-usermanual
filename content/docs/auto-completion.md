@@ -7,7 +7,7 @@ weight: 70
 
 Notepad++ offers automatic completion of various sorts of text after you have entered an initial substring (or prefix), which can save you having to type all of a long word (and potentially save you mistyping it). For instance, if you're coding in JavaScript and type `syn`, Notepad++ can present `synchronized` (a JavaScript keyword) as a suggestion. You accept the suggestion by typing the completion key (see "[Automatic completion](#automatic-completion)", below), and the word is completed within your buffer as if you'd typed it all out. If the suggested word is not what you want, keep typing.
 
-If more than one word in the list of candidate words matches what you've typed, Notepad++ will present a list containing the words; the highlighted word in the list is the one that will be selected on Enter/Tab, but you can use the Down- & Up-arrow keys, or PageDown & PageUp, to move through the list; or, type Esc to dismiss the list.
+If more than one word in the list of candidate words matches what you've typed, Notepad++ will present a list containing the words; the highlighted word in the list is the one that will be selected on the completion key, but you can use the Down- & Up-arrow keys, or PageDown & PageUp, to move through the list; or, type Esc to dismiss the list.
 
 There are two sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words" and "functions".
 
