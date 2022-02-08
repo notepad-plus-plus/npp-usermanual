@@ -159,16 +159,18 @@ These affect open and save operations.
 
 ### Recent Files History
 
-These change how the list of recent files (also known as the Most Recently Used list, or "MRU") is displayed in the File menu
+These change how the list of recent files is displayed in the File menu.  
 
-* `☐ Don't check at launch time`: will skip checking whether files in the MRU exist at launch time.
-    * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the MRU
+* `☐ Don't check at launch time`: will skip checking whether files in the Recent Files History list exist at launch time.
+    * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the Recent Files History list
     * this is also useful if you like knowing what files were previously edited, even after you've deleted those files from the folder
 * `Max number of entries`: show the _n_ most recent files in the list
 * `☐ In Submenu`: will show the recent files in a "Recent Files" submenu of the File menu, rather than directly in the file menu
 * `☐ Only File Name`: will show just the file name, without the drive or path
 * `☐ Full File Name Path`: will show the full path, including drive, path, and file name
 * `☐ Customize Maximum Length`: will only list the first _n_ characters from the full file path
+
+_Note_: Please understand that the Recent Files History shows the history of files recently _closed_, not recently _opened_.
 
 ### File Association
 
