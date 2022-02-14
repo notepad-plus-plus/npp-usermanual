@@ -15,7 +15,7 @@ There are two sets of candidate words that Notepad++ uses to create suggestions;
 
 "Functions" are pre-defined and loaded along with the lexer that corresponds to the computer language of the file. (The lexer defines the syntax coloring; the auto-completion file specifies the names of the functions.) Typically these function words include language keywords (which technically are not functions) such as `switch` in C and similar languages or `lambda` in Python, and some set of standard library function names such as `assert` or `fdopen` in C.
 
-These function lists are stored in auto-completion definition files, each named according to its language. (The words in these files do not necessarily include all the keywords listed in the lexer definitions.) These files can specify which of the words are keywords and which are functions; functions support an additional completion feature, "parameter hint."
+These function lists are stored in auto-completion definition files, each named according to its language. (The words in these files do not necessarily include all the keywords listed in the lexer definitions.) These files can specify which of the words are keywords and which are functions; functions support an additional completion feature, "parameter hint."  Both the functions and keywords from this file are considered "Function completion" throughout this documentation.
 
 ### Parameter hints
 
@@ -56,6 +56,10 @@ Through [**Settings > Preferences > Auto-Completion**](../preferences/#auto-comp
 In each case, when the opening character is typed, the closing character will automatically be inserted, with the cursor placed between the two.
 
 Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this enabled, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the cursor placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
+
+### Displayed Completion List
+
+When you use [Manual Completion](#manual-completion), the list will only show the items that were manually triggered -- so either only the word list or only the function list.  If [Automatic completion](#automatic-completion) is triggered, the list will show both words and functions that match.  As of v8.3.1, the completion list will use the <i>fx</i> icon to help the user tell the difference between the "[Function completion](#function-completion)" items (from the configuration file) and "[Word completion](#word-completion)" items (from the active document).
 
 ## Auto-completion Settings
 
