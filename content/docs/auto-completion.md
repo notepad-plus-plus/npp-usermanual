@@ -59,7 +59,7 @@ Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this e
 
 ### Displayed Completion List
 
-When you use [Manual Completion](#manual-completion), the list will only show the items that were manually triggered -- so either only the word list or only the function list.  If [Automatic completion](#automatic-completion) is triggered, the list will show both words and functions that match.  As of v8.3.1, the completion list will use the <i>fx</i> icon to help the user tell the difference between the "[Function completion](#function-completion)" items (from the configuration file) and "[Word completion](#word-completion)" items (from the active document).
+When you use [Manual Completion](#manual-completion), the list will only show the items that were manually triggered -- so either only the word list or only the function list.  If [Automatic completion](#automatic-completion) is triggered, the list will show both words and functions that match.  As of v8.3.1, the completion list will use the <i>fx</i> icon to help the user tell the difference between the "[Function completion](#function-completion)" items (keywords and functions from the configuration file will get the <i>fx</i> icon) and "[Word completion](#word-completion)" items (words from the active document will _not_ have the icon).
 
 ## Auto-completion Settings
 
