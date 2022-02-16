@@ -9,7 +9,7 @@ Notepad++ offers automatic completion of various sorts of text after you have en
 
 If more than one word in the list of candidate words matches what you've typed, Notepad++ will present a list containing the words; the highlighted word in the list is the one that will be selected on the completion key, but you can use the Down- & Up-arrow keys, or PageDown & PageUp, to move through the list; or, type Esc to dismiss the list.
 
-There are two sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words" and "functions".
+There are three sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words", "functions" and "system path".
 
 ## Function completion
 
@@ -21,11 +21,15 @@ These function lists are stored in auto-completion definition files, each named 
 
 The auto-complete definition file can specify if a keyword is a function. When a function name has been typed in, followed by the opening parenthesis used to enclose the function's arguments, Notepad++ will automatically, or manually, display a hint (a.k.a. a "call tip"): a small tooltip-style box opens with text containing a description of the function. While the actual text shown is up to the author of the definition file, typically this would show, at minimum, a keyword for each of the parameters taken by the function call. This may save you a trip to the function's documentation to remember what those parameters are.
 
-Notepad++ will display the hint automatically when the open-parenthesis is typed, if that option is selected in the Auto-Completion settings. The user can also select the "Function parameters hint" from the menu or by keystroke (default: Ctrl+Shift+Space), when the cursor is between the opening and closing parentheses of the function call. And again, the hint can be dismissed with Esc.
+Notepad++ will display the hint automatically when the open-parenthesis is typed, if that option is selected in the Auto-Completion settings. The user can also select the "Function parameters hint" from the menu or by keystroke (default: `Ctrl+Shift+Space`), when the cursor is between the opening and closing parentheses of the function call. And again, the hint can be dismissed with Esc.
 
 ## Word completion
 
 "Words" are taken from the current file—everywhere in the current file, comments and code. Any word two or more characters long is added to the list. This includes numbers, but numbers with decimal points are split into two different "words."
+
+## Path completion
+
+Different from function and word completion which can be triggered automatically after 1 (or X th) keystroke(s), Path completion needs to be triggered manually, by using shortcut (default: `Ctrl+Alt+Space`) or via menu command **Edit > Auto-Completion > Path Completion** after typing the drive (for example "C:"). If the string on the left of cursor is not part of one of the system paths, the path list won't appear.
 
 ## How to make it work
 
