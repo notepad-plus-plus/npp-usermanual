@@ -9,7 +9,7 @@ Notepad++ offers automatic completion of various sorts of text after you have en
 
 If more than one word in the list of candidate words matches what you've typed, Notepad++ will present a list containing the words; the highlighted word in the list is the one that will be selected on the completion key, but you can use the Down- & Up-arrow keys, or PageDown & PageUp, to move through the list; or, type Esc to dismiss the list.
 
-There are three sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words", "functions" and "system path".
+There are three sets of candidate words that Notepad++ uses to create suggestions; these are referred to as "words", "functions" and "system paths".
 
 ## Function completion
 
@@ -29,7 +29,7 @@ Notepad++ will display the hint automatically when the open-parenthesis is typed
 
 ## Path completion
 
-Different from function and word completion which can be triggered automatically after 1 (or X th) keystroke(s), Path completion needs to be triggered manually, by using shortcut (default: `Ctrl+Alt+Space`) or via menu command **Edit > Auto-Completion > Path Completion** after typing the drive (for example "C:"). If the string on the left of cursor is not part of one of the system paths, the path list won't appear.
+Different from function and word completion which can be triggered automatically after 1 (or X) keystroke(s), Path completion needs to be triggered manually, by using shortcut (default: `Ctrl+Alt+Space`) or via menu command **Edit > Auto-Completion > Path Completion** after typing the drive (for example "C:"). If the string on the left of cursor is not part of one of the system paths, the path list won't appear.
 
 ## How to make it work
 
