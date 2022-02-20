@@ -45,7 +45,7 @@ The `config.xml` file may be overwritten by Notepad++ on exit, even if you follo
 
 When you use the installer to upgrade your existing copy of Notepad++ (either manually, or through the **?**-menu's **Upgrade Notepad++**, or through Notepad++'s auto-update feature), the installer will avoid overwriting configuration files that you have customized -- this is to prevent you losing your preferred settings and customizations.  
 
-However, this means that occasionally, updated functionList parsing files or themes, or new keywords in langs.xml, or new default contextMenu or shortcuts entries might not be added to your local copy of Notepad++.  So if you upgrade and keep your existing configuration, it is a good idea to occasionally compare your configuration files to the "standard/default" configuration files: some of the config files come with `*.model.xml` versions in the installation directory, which show you the default settings for those files; for other configuration files, you could [download](https://notepad-plus-plus.org/downloads/) a portable zipfile of the same version you are using, and compare the config files from the portable to your installed; and you can always look in the [source code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/) for the various configuration files.  (You can use two [Views](../views/) to look at the files side-by-side , and the [synchronized scrolling feature](../views/#synchronized-scrolling) can help keep the copies aligned; plugins such as the Compare plugin are designed to show differences between files as well.)
+However, this means that occasionally, updated functionList parsing files or themes, or new keywords in langs.xml, or new default contextMenu or shortcuts entries might not be added to your local copy of Notepad++.  So if you upgrade and keep your existing configuration, it is a good idea to occasionally compare your configuration files to the "standard/default" configuration files: some of the config files come with `*.model.xml` versions in the installation directory, which show you the default settings for those files; for other configuration files, you could [download](https://notepad-plus-plus.org/downloads/) a portable zipfile of the same version you are using, and compare the config files from the portable to your installed; and you can always look in the [source code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/) for the various configuration files.  (You can use two [Views](../views/) to look at the files side-by-side, and the [synchronized scrolling feature](../views/#synchronized-scrolling) can help keep the copies aligned; plugins such as the Compare plugin are designed to show differences between files as well.)
 
 For the `config.xml` (which contains the settings from the GUI's **Settings > Preferences** dialog), if Notepad++ has a setting that it doesn't find defined in your current `config.xml`, it will apply the default value compiled in the program, and the next time it writes `config.xml` it will write that default value in `config.xml`.  Once it gets written, future changes to that default value will not override the value already in your file, even when you upgrade Notepad++.  `config.xml` will only get a default value for a setting in three situations: 1) on a new installation (running the installer when there isn't a previous Notepad++, or when there isn't a `config.xml` file and/or settings directory for the active user); 2) when you run Notepad++, and there is no `config.xml` (either because there isn't a `config.xml` file and/or settings file for the current user, or the `config.xml` has been deleted), so Notepad++ writes a complete `config.xml` with all default values; 3) when your `config.xml` is missing the attribute/value pair for a given setting.
 
@@ -65,7 +65,7 @@ All menu commands can be added to the Context Menu, including plugin commands:
 * To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.
     * For example: `<Item PluginEntryName="MIME Tools" PluginCommandItemName="Base64 Encode" />` will add a context-menu entry that calls **Plugins > MIME Tools > Base64 Encode**
 
-Note that the menu names and menu item names (whether built-in or plugin names) that you use in the should be in English, not in a translated language. The Shortcut Mapper can help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands; or you can look at the  [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) that shipped with your distribution.
+Note that the menu names and menu item names (whether built-in or plugin names) that you use in the should be in English, not in a translated language. The Shortcut Mapper can help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands; or you can look at the [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) that shipped with your distribution.
 
 By default, each `<Item>` will be rendered in the top level of the context menu with a localized name matching the normal menu entry, unless overridden by the attributes described next.
 
@@ -87,7 +87,7 @@ This file has the following nodes:
 1. `<Macros>`: Keyboard shortcuts for the macros listed in the lower part of the [**Macro**](../macros/) menu.  Also defines what commands those macros execute.
 1. `<UserDefinedCommands>`: Keyboard shortcuts for the Run menu entries.  Also defines what actions those entries take.
 1. `<PluginCommands>`: Keyboard shortcuts for plugin commands that have been remapped.  (Commands that use their default shortcuts are not listed here.)
-1. `<ScintillaKeys>`: Keyboard shorcuts for Scintilla commands, most of which relate to selecting text and moving around in the editor. (Commands that use their default shortcuts are not listed here.)
+1. `<ScintillaKeys>`: Keyboard shortcuts for Scintilla commands, most of which relate to selecting text and moving around in the editor. (Commands that use their default shortcuts are not listed here.)
 
 The definitions of the `<Macros>` and `<UserDefinedCommands>` are generally all that benefit from manual editing of the `shortcuts.xml`.  It is much safer to edit the shortcuts using the [**Shortcut Mapper**](../preferences/#shortcut-mapper)
 
@@ -97,7 +97,7 @@ All the types of commands in `shortcuts.xml` have a `key` attribute, which uses 
 
 ### `<Macros>`
 
-When not empty, this node is made of `<Macro>` nodes, each of which represents an individual macro. Each `<Macro>` holds a nonempty list of `<Action>` tags which represent individual macro steps. These steps are either Scintilla commands or Notepad++ commands, not raw keystrokes. For more details on macro recording, see [Macros](../macros/).
+When not empty, this node is made of `<Macro>` nodes, each of which represents an individual macro. Each `<Macro>` holds a non-empty list of `<Action>` tags which represent individual macro steps. These steps are either Scintilla commands or Notepad++ commands, not raw keystrokes. For more details on macro recording, see [Macros](../macros/).
 
 **Attributes for the `<Macro>` node**
 
@@ -151,7 +151,7 @@ Position | Name | Value format | Meaning
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
-The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command.  If it's not in your path, then you _should_ specify the full path.  Note that Windows will launch your default browser if you put a URL in this If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environement).  For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.
+The run command may contain any valid command for the <abbr title="Operating System: Generally Windows.  If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>.  If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command.  If it's not in your path, then you _should_ specify the full path.  Note that Windows will launch your default browser if you put a URL in this. If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environment).  For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.
 
 There are a number of Notepad++-specific variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry.
 
@@ -209,7 +209,7 @@ The `commentLine`, `commentStart`, and `commentEnd` attributes are used by the [
 
 This file sets the color scheme for the default theme.  The other themes are stored in `themes\*.xml`, which follow the same format at `stylers.xml`.  In general, use [**Settings > Style Configurator**](../preferences/#style-configurator) for easier maintenance of styles.
 
-Each lexer type has it's own `<LexerType>` section, with multiple `<WordsStyle>` entries.  Each lexer from the **Language** menu has it's own list of available `<WordsStyle>` entries.  Trying to add a new `<WordsStyle>` to a lexer to try to get more categories of keywords will _not_ be successful, because the underlying code which does the syntax highlighting has no internal rules for mapping the entries found to that style.
+Each lexer type has its own `<LexerType>` section, with multiple `<WordsStyle>` entries.  Each lexer from the **Language** menu has it's own list of available `<WordsStyle>` entries.  Trying to add a new `<WordsStyle>` to a lexer to try to get more categories of keywords will _not_ be successful, because the underlying code which does the syntax highlighting has no internal rules for mapping the entries found to that style.
 
 If you have added user-defined keywords in the [**Settings > Style Configurator**](../preferences/#style-configurator), they will be stored as the contents of the `<WordsStyle>`, as a space-separated list (for example, `<WordsStyle>fancyKeyword1 fancyKeyword2</WordsStyle>`).
 
@@ -286,9 +286,9 @@ If you want to add **Function List** capability for your User Defined Language (
 
 ### Upgrading old Function List entries
 
-If you previously had a v7.9-or-earlier style function list entry in `functionList.xml`, and you want to use it in a v7.9.1-or-later Notepad++, you can extract the pieces to the right locations in the new mulit-file format:
+If you previously had a v7.9-or-earlier style function list entry in `functionList.xml`, and you want to use it in a v7.9.1-or-later Notepad++, you can extract the pieces to the right locations in the new multi-file format:
 
-1. Open the old `functionList.xml`.
+1. Open the old `functionList.xml`
 2. Open the `functionList\overrideMap.xml`
 3. Copy the `<association...>` tag from the old `functionList.xml` to the `functionList\overrideMap.xml`, and place near the end of the `<associationMap>` section.  Make sure it follows the rules for v7.9.1-or-later `<association>` tag syntax
 4. Open the `functionList\blah.xml` for your particular language
@@ -298,7 +298,7 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 ## Other Configuration Files
 
-* `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).  This config folder _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hiearchy or in the cloud settings folder.
+* `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).  This config folder _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
 * `doLocalConf.xml`: this will only exist on local installations of Notepad++ (when you tell the installer to not use `%AppData%`, or when you install from the zipfile).  This is a zero-byte file that is just used as an indicator to `notepad++.exe` to not go looking for `%AppData%`.
 
@@ -308,4 +308,4 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 * `userDefineLang.xml`: see [the **User Defined Languages** doc](../user-defined-language-system/).
 
-* `enableSelectFgColor.xml`: this is a zero-byte file that is just used as an indicator to the [**Settings > Style Configurator > Global Styles > Selected text colour**](../preferences/#global-styles)  to honor the foreground color, not just the background color.  (Available on v8.0.0 and newer.)
+* `enableSelectFgColor.xml`: this is a zero-byte file that is just used as an indicator to the [**Settings > Style Configurator > Global Styles > Selected text colour**](../preferences/#global-styles) to honor the foreground color, not just the background color.  (Available on v8.0.0 and newer.)
