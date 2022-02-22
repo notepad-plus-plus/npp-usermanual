@@ -595,6 +595,23 @@ Please see the enum LangType for all possible values.
 
 ---
 
+#### **NPPM_GETCURRENTLINESTR**
+*Retrieves the text of the current line.
+User is responsible to allocate a buffer which is large enough.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen
+
+*lParam [out]*
+: TCHAR * strLine
+
+**Return value**:
+: Returns True on success and False if provided strLine buffer is not large enough
+
+---
+
 #### **NPPM_GETCURRENTNATIVELANGENCODING**
 *Retrieves the code page associated with the current localisation of Notepad++.*
 

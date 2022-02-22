@@ -164,6 +164,7 @@ NAME_PART           | The filename without extension    | `welcome`
 EXT_PART            | The extension (with the `.`)      | `.html`
 CURRENT_WORD        | the active selection in Notepad++, or the word under the cursor |
 CURRENT_LINE        | the line number where the cursor is currently located in the editor window | `1`
+CURRENT_LINESTR     | the text of the current line (added v8.3.2)  | `The quick brown fox jumps over the lazy dog`
 CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
 NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
 NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
