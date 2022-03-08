@@ -73,11 +73,37 @@ The **Hide Lines** action will hide the active line or selected lines, and place
 
 ## Folding
 
-There are a group of folding-related commands, which will allow the folding or unfolding of blocks of text based on the current syntax highlighter lexer for a [programming language](../programing-languages/) or [User Defined Langauge](../user-defined-language-system/), and the folding rules defined in that lexer or UDL.  (To "fold" the text means to temporarily hide a block of text; to "unfold" the text means to reveal that block of text again.)  If folding blocks are nested (contained inside other folding blocks), the outermost block is level 1, the block immediately inside that is level 2, and so on.  (Folding is _not_ remembered from one run to the next, nor is it saved in the automatic or manually-saved session file.)
+Notepad++ includes a feature for folding of blocks of text.  To "fold" text means to temporarily remove from view a block of lines that is hierarchically subordinate to a line directly preceding the block; to "unfold" the text means to reveal that block of text. Another term for folded is "collapsed" and the corresponding term for unfolded is "uncollapsed". When text lines are folded/collapsed, a horizontal line is drawn across the editor window to indicate that something is not currently being displayed.
 
-* **Fold All** and **Unfold All** will collapse or reveal all fold blocks in the current file.
-* **Collapse Current Level** and **Uncollapse Current Level** will collapse or reveal the block based on the caret position
-* The entries in the **Collapse Level** and **Uncollapse Level** sub-menus will collapse or reveal every level _N_ block in the active file.
+Folding is based on the current syntax highlighter lexer for a [programming language](../programing-languages/) or [User Defined Language (UDL)](../user-defined-language-system/), and the folding follows rules defined in that lexer or UDL.  Folding is only possible for file types whose language supports it, when that language's lexer is active in the [**Language** menu](../programing-languages/).  (For example, the **Python** lexer defines folding, so you can fold blocks of Python code in Notepad++.  On the other hand, the **Markdown (preinstalled)** UDL that ships with Notepad++ does not define any folding keywords, and so no text will be folded. Similarly, **Normal Text** has no folding rules and thus cannot be folded.)
+
+For language types that support "code folding", an additional margin will be created along the left edge of the editing window; this is called the "fold margin". A fold margin also appears in the "Search results" panel/window when it is shown; here the hierarchy separates the output from previous search runs into groups.
+
+In the fold margin will appear symbols for expansion and contraction of the code hierarchy, according to folding rules for the current language. The symbols that can appear in the margin are:
+
+* An icon with a "-" symbol, meaning unfolded and the line it is on is a possible future fold point
+* An icon with a "+" symbol, to signify that some amount of lines below the current line are folded
+* Bracketing symbology to show the extent of what could be folded when "-" is the symbol on a foldable "header" line
+
+The exact appearance of the symbols is governed by the **Fold Margin Style** setting in the [**Margins/Border/Edge** section](../preferences/#margins-border-edge) of the **Preferences** dialog.  The color of the symbols is defined by the [**Preferences > Style Configurator**](../preferences/#style-configurator): select the [**Global Styles**](../preferences/#global-styles) entry in the **Language** box of the dialog; the **Style:** selections of **Fold**, **Fold active**, and **Fold margin** will set the colors for the folding symbols and their background, as described in the [**Global Styles**](../preferences/#global-styles) section of this manual.  The color of the horizontal line that is seen when the section is collapsed is defined by the **Default Style**'s foreground color.
+
+If folding blocks are "nested" (contained inside other folding blocks), the outermost block is known as level 1, the block immediately inside that is level 2, and so on.
+
+There is a group of folding-related commands on the **View** menu, which will allow the folding or unfolding of line-blocks of text:
+
+* **Fold All** and **Unfold All** will collapse or reveal all fold blocks in the current file
+* **Collapse Current Level** and **Uncollapse Current Level** will collapse or reveal the block based on the line of the editing caret
+* The entries in the **Collapse Level** and **Uncollapse Level** sub-menus will collapse or reveal every block at level N in the active file
+
+Folding/unfolding can be actuated by menu commands on the **View** menu relating to "fold" or "collapse", or by any shortcut keys assigned (see the [**Preferences > Shortcut Mapper**](../preferences/#shortcut-mapper)). It can also be invoked by using the mouse and clicking on the symbols in the fold margin. Clicking on a "-" symbol will collapse the lines at that level and below so they are no longer shown; clicking on a "+" symbol will expand the fold so such lines will again be displayed.
+
+As folding can be nested there is some remembering of internal fold states while the outer states are manipulated. However, there are some ways to override this behavior:
+
+* Clicking a "-" or "+" fold symbol while holding the `Shift` key:  Any internal folds in the clicked-upon tree will be uncollapsed, so that the whole sub-tree hierarchy will be shown fully expanded; if the tree is already fully expanded, `Shift`-clicking the top-level "-" symbol will do nothing
+* Clicking a "+" fold symbol while holding the `Ctrl` key:  Same as clicking a "+" fold symbol while holding the `Shift` key
+* Clicking a "-" fold symbol while holding the `Ctrl` key:  Collapses at the line of the click point, and collapses all subordinate/internal fold points as well (although this won't be revealed to the user until the fold just created is expanded)
+
+The current fold state of lines is not remembered from one Notepad++ run to the next, nor is it saved in the automatic or a manually-saved session file. It is intended to be very temporary. When a file is reloaded by any means it always loads with all lines showing (no "+" will be visible anywhere in the file's fold margin).
 
 ## File Summary
 
