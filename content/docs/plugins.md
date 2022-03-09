@@ -352,7 +352,6 @@ and the rest should be intuitive.
    `[7.7,8.2.1]` | The plugin is known to work with v7.7 thru v8.2.1
    `[,8.2.1]` | The plugin is known to work with any version up thru v8.2.1
    `[8.3.1,]` | The plugin is known to work with v8.3.1 and beyond
-   `[7.7,8.2.1]` | The plugin is known to work with v7.7 thru v8.2.1
    `[ 7.7,8.2.1]` | ERROR: space after the `[`
    `[7.7 ,8.2.1]` | ERROR: space before the `,`
    `[8.3.1, ]` | ERROR: space after the `,`
