@@ -612,6 +612,26 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
+#### **NPPM_GETCURRENTMACROSTATUS **
+*Gets the current macro status (idle, recording, stopped, and playing back) as an enumeration class object. (Added v8.3.3)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: An object of enum class MacroStatus, with values:
+- `MacroStatus::Idle` - means macro is not in use and it's empty
+- `MacroStatus::RecordInProgress` - macro is currently being recorded
+- `MacroStatus::RecordingStopped` - macro recording has been stopped
+- `MacroStatus::PlayingBack` - macro is currently being played back
+
+---
+
 #### **NPPM_GETCURRENTNATIVELANGENCODING**
 *Retrieves the code page associated with the current localisation of Notepad++.*
 
@@ -731,6 +751,27 @@ User is responsible to allocate a buffer which is large enough.*
 
 **Return value**:
 : Returns A proc address or NULL
+
+---
+
+#### **NPPM_GETEXTERNALLEXERAUTOINDENTMODE**
+*Get ExternalLexerAutoIndentMode for an installed external programming language.  
+Puts that mode in the output object. (Added v8.3.3)*
+
+**Parameters**:
+
+*wParam [in]*
+: const tChar\* languageName, the name of the language to get
+
+*lParam [out]*
+: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class `ExternalLexerAutoIndentMode`.
+- `ExternalLexerAutoIndentMode::Standard` => 0 
+- `ExternalLexerAutoIndentMode::C_Like`   => 1
+- `ExternalLexerAutoIndentMode::Custom`   => 2
+
+
+**Return value**:
+: TRUE for successful searches, otherwise FALSE.
 
 ---
 
@@ -1286,6 +1327,22 @@ struct ShortcutKey {
 
 ---
 
+#### **NPPM_ISAUTOINDENTON**
+*Checks the current Use Auto-Indentation setting in Notepad++ Preferences.  (Added v8.3.3)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: TRUE if Auto-Indentation is on, FALSE otherwise.
+
+---
+
 #### **NPPM_ISDOCLISTSHOWN**
 *Checks the visibility of the Document List panel.*
 
@@ -1717,6 +1774,26 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 **Return value**:
 : Returns True
+
+---
+
+#### **NPPM_SETEXTERNALLEXERAUTOINDENTMODE**
+*Set ExternalLexerAutoIndentMode for an installed external programming language. (Added v8.3.3)*
+
+**Parameters**:
+
+*wParam [in]*
+: const tChar\* languageName, the name of the language to set
+
+*lParam [out]*
+: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class `ExternalLexerAutoIndentMode`.
+- `ExternalLexerAutoIndentMode::Standard` => 0 
+- `ExternalLexerAutoIndentMode::C_Like`   => 1
+- `ExternalLexerAutoIndentMode::Custom`   => 2
+
+
+**Return value**:
+: TRUE for successful searches, otherwise FALSE.
 
 ---
 
