@@ -346,8 +346,7 @@ and the rest should be intuitive.
       if _maximum_ is empty, it will mean that the plugin will work with any version of
       Notepad++ after (and including) the _minimum_; you cannot set both empty.
       The version numbers will be dotted versions, such as `8.0`, `8.2`, `8.3.1` .  If you
-      have spaces anywhere between the `[]` brackets, it will not work.  If the attribute
-      is not in your plugin's entry in the JSON, it will not work.
+      have spaces anywhere between the `[]` brackets, it will not work.
 	
       example | meaning 
       ---|---
@@ -385,6 +384,11 @@ and the rest should be intuitive.
        Similar to npp-compatible-versions, you cannot have spaces inside or between the `[]`.
        You may leave out the _pluginminimum_ and/or _nppminimum_, as shown in the examples,
        but it likely doesn't make sense to leave out either of the maximums.
+	
+   If both of those attributes are missing, it is interpreted that your plugin has no API calls
+   that are incompatible with any version of Notepad++, and it will run with and not crash any 
+   version of Notepad++.  Before submitting a plugin without those attributes, please be certain
+   of the historical compatibility.  Thank you.
 
 ### Do your PR to join plugin list
 
