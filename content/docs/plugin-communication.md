@@ -1785,12 +1785,11 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 *wParam [in]*
 : const tChar\* languageName, the name of the language to set
 
-*lParam [out]*
-: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, with values:
+*lParam [in]*
+: ExternalLexerAutoIndentMode autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, where you supply one of the following values:
 - `ExternalLexerAutoIndentMode::Standard` => 0 
 - `ExternalLexerAutoIndentMode::C_Like`   => 1
 - `ExternalLexerAutoIndentMode::Custom`   => 2
-
 
 **Return value**:
 : TRUE for successful searches, otherwise FALSE.
