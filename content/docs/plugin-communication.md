@@ -612,7 +612,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
-#### **NPPM_GETCURRENTMACROSTATUS **
+#### **NPPM_GETCURRENTMACROSTATUS**
 *Gets the current macro status (idle, recording, stopped, and playing back) as an enumeration class object. (Added v8.3.3)*
 
 **Parameters**:
@@ -624,7 +624,7 @@ User is responsible to allocate a buffer which is large enough.*
 : int, must be zero.
 
 **Return value**:
-: An object of enum class MacroStatus, with values:
+: An object of the enumeration class MacroStatus, with values:
 - `MacroStatus::Idle` - means macro is not in use and it's empty
 - `MacroStatus::RecordInProgress` - macro is currently being recorded
 - `MacroStatus::RecordingStopped` - macro recording has been stopped
@@ -764,7 +764,7 @@ Puts that mode in the output object. (Added v8.3.3)*
 : const tChar\* languageName, the name of the language to get
 
 *lParam [out]*
-: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class `ExternalLexerAutoIndentMode`.
+: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, with values:
 - `ExternalLexerAutoIndentMode::Standard` => 0 
 - `ExternalLexerAutoIndentMode::C_Like`   => 1
 - `ExternalLexerAutoIndentMode::Custom`   => 2
@@ -1786,7 +1786,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 : const tChar\* languageName, the name of the language to set
 
 *lParam [out]*
-: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class `ExternalLexerAutoIndentMode`.
+: ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, with values:
 - `ExternalLexerAutoIndentMode::Standard` => 0 
 - `ExternalLexerAutoIndentMode::C_Like`   => 1
 - `ExternalLexerAutoIndentMode::Custom`   => 2
