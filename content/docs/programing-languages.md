@@ -27,12 +27,14 @@ Almost 80 Programming Languages are supported by Notepad++:
 | Verilog      | XML                | YAML                   |               |               |
 
 
-Notepad++ supports for their [syntax highlighting](../preferences/#style-configurator) (customizable),
+For these languages, Notepad++ supports [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
 [function list](../function-list/) (customizable via PCRE in xml file).
 
-If your beloved language is not in the list above, you can define it by your
-own easily, by using
-[User Defined Languages System](../user-defined-language-system/).
+If your beloved language is not in the list above, you can define it yourself easily, by using the 
+[User Defined Languages System](../user-defined-language-system/).  If that doesn't meet your needs, 
+you could write (or have someone else write) a [lexer plugin](../plugins/#building-a-lexer-plugin).
 
-
+Please note that in Notepad++ v8.3 and newer, Notepad++ will no longer perform syntax highlighting 
+\on files that are over 200MB -- this prevents extreme performance slowdown caused by trying to 
+syntax highlight extremely large files.
