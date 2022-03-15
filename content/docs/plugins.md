@@ -333,6 +333,62 @@ and the rest should be intuitive.
    name as the **folder-name** and the plugin DLL file should be placed at the root
    level of the ZIP file. Otherwise Plugin Admin won't install it. Any additionals
    files (DLL or data) can be placed at the root level or in an arbitrary subfolder.
+7. Compatibility: In March 2022, two new parameters were added to the JSON file format, 
+   to indicate your plugin's compatibility with various versions of Notepad++, called
+   `npp-compatible-versions` and `old-versions-compatibility`.  
+	
+   1. The first will have the format 
+      ```
+      "npp-compatible-versions": "[minimum,maximum]",
+      ```
+      where _minimum_ and _maximum_ are version numbers; if _minimum_ is empty, it will
+      mean that the plugin will work with any version of Notepad++ before (and including) the _maximum_;
+      if _maximum_ is empty, it will mean that the plugin will work with any version of
+      Notepad++ after (and including) the _minimum_; you cannot set both empty.
+      The version numbers will be dotted versions, such as `8.0`, `8.2`, `8.3.1` .  If you
+      have spaces anywhere between the `[]` brackets, it will not work.
+	
+      example | meaning 
+      ---|---
+      `[7.7,8.2.1]` | The plugin is known to work with v7.7 thru v8.2.1
+      `[,8.2.1]` | The plugin is known to work with any version up thru v8.2.1
+      `[8.3.1,]` | The plugin is known to work with v8.3.1 and beyond
+      `[ 7.7,8.2.1]` | ERROR: space after the `[`
+      `[7.7 ,8.2.1]` | ERROR: space before the `,`
+      `[8.3.1, ]` | ERROR: space after the `,`
+      `[7.7,8.2.1 ]` | ERROR: space before the `]`
+      `[,]` | ERROR: must have at least one of _minimum_ and _maximum_
+	
+       You can see examples of working values in the other entries in the JSON file.
+    2. The second will have the form
+       ```
+       "old-versions-compatibility": "[pluginminimum,pluginmaximum][nppminimum,nppmaximum]",
+       ```
+       The `old-versions-compatibility` will explain the ranges of versions for your plugin
+       that worked with older versions of Notepad++.  This is essentially giving the last
+       pair of Plugin & Notepad++ versions that should work.
+    
+       For example, if you are releasing your plugin's version 2.7 to be able to work with 
+       Notepad++ v8.3.1 and newer, and if your old plugin versions 1 through 2.6 worked up 
+       through Notepad++ v8.2.1, the two attributes in the JSON should look like:
+       ```
+       "version": "2.7",
+	   "npp-compatible-versions": "[8.3.1,]",
+	   "old-versions-compatibility": "[,2.6][,8.2.1]",       
+       ```
+       (Where the first line gives the recent plugin version, the second line is telling
+       what versions of Notepad++ the new plugin works with, and the third line explains
+       that older versions of your plugin work with Notepad++ versions up through and 
+       including 8.2.1.)
+    
+       Similar to npp-compatible-versions, you cannot have spaces inside or between the `[]`.
+       You may leave out the _pluginminimum_ and/or _nppminimum_, as shown in the examples,
+       but it likely doesn't make sense to leave out either of the maximums.
+	
+   If both of those attributes are missing, it is interpreted that your plugin has no API calls
+   that are incompatible with any version of Notepad++, and it will run with and not crash any 
+   version of Notepad++.  Before submitting a plugin without those attributes, please be certain
+   of the historical compatibility.  Thank you.
 
 ### Do your PR to join plugin list
 
