@@ -65,6 +65,8 @@ The `<classRange>` node accepts the following attributes and contained elements:
         - `functionNameExpr` (_element_): The element for the function name of a function inside a class.  Please note that it uses the `functionNameExpr` element instead of the `nameExpr` element in the **Function parser**.  Yes, it's confusing.
             - `expr` (_attribute_): this is where you put the regular expression defines what should match to be used in displaying the function name in the Function List panel.
 
+_Please Note_: an empty class (one without any functions) will _not_ display in the Function List panel.  Thus, if you have no `<function>` elements defined in your `<classRange>` node, you will _never_ see your class.  And if you have a `<function>` defined, but it doesn't match any functions inside your class, the class will not be displayed in the FunctionList panel.  In the FunctionList panel, the class is a container, and it will never display on its own if there is no function to display inside of it. 
+
 ### Mixed parser
 A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
 
