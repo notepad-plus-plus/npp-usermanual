@@ -63,13 +63,14 @@ All the dialog-based have certain features in common, though some are disabled u
 The various action buttons available include:
 
 * **Find Next**: Finds the next matching text
-    * **☐** This checkbox changes the single **Find Next** button into **<<** and **>>** buttons, which are "Search backward" and "Search forward" (hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode")
+    * **☐** The unlabeled checkbox near the **Find Next** button changes the single **Find Next** button into two buttons with **▲** and **▼ Find Next** arrows (or **<<** and **>>** buttons before v7.8), which mean "search backward / find previous" and "search forward / find next".  Hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode" to remind you of what the checkbox is for.
 * **Count**: Counts how many matches are in the entire document, or in the specified direction, or possibly "In Selection", and shows that count in the message section at the bottom of the dialog box
 * **Find All in All Opened Documents**: Lists all the search-results in a new **Search results** window; searches through all the file buffers currently open in Notepad++
 * **Find All in Current Document**: Lists all the search-results in a new **Search results** window; only searches the active document buffer
 * **Close**: Closes the search dialog
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
+    * On the **Replace** tab, there is an up-down-arrow button **⇅** near the **Find what** and **Replace with** inputs which swap the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
 * **Replace All**: With **☑ Wrap Around** ticked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unticked, it searches from the caret to the end of the file (if **☐ Backward direction** is unticked) or from the beginning of the file to the caret (if **☑ Backward direction** is ticked) and replaces all occurrences found in that region.
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
