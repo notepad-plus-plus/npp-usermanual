@@ -7,6 +7,8 @@ There are three main dialogs for editing preferences and other user-defined sett
 
 For settings not covered by the three main dialogs, there are [other toggles and settings](#other-toggles-and-settings) which can be found in various dialogs, menus, and configuration files.
 
+As noted in the [Configuration Files](../config-files) documentation, Notepad++ writes the configuration files when it exits, which means that, when you make a change using Notepad++ menus and dialogs described below, your change will _not_ be written to the configuration file until Notepad++ exits.
+
 ## Preferences
 
 For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is enabled.  (For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is.)

@@ -12,6 +12,8 @@ Notepad++ offers a comprehensive user interface to review or change most of its 
 * Editing previously-recorded macros, or crafting new macros manually
 * Adding keywords to a language, because the new language version isn't matched yet
 
+Please note that Notepad++ writes the configuration files when it exits, which is why the [Editing Configuration Files](#editing-configuration-files) section below says that Notepad++ may overwrite your changes.  But this also means that, when you make a change using Notepad++ menus and dialogs (like changing a preference, or saving a macro), your change will not be written to the configuration file until Notepad++ exits.  So if you open up the configuration file after you have changed the preference but before you have exited Notepad++, you will _not_ see that change reflected in the file yet.  Do not be surprised by this.
+
 ## Configuration Files Location
 
 In a standard installation, the configuration files go in `%AppData%\Notepad++\`.  (For a refresher course on `%AppData%`, see the [Community Forum FAQ's `%AppData%` entry](https://community.notepad-plus-plus.org/topic/15740/faq-desk-what-is-appdata).)
