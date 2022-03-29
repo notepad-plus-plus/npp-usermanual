@@ -44,6 +44,11 @@ default key combination. These can later be changed (and deleted) using
 [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper).
 When saved, the macro will be available from the Macro menu or the Macro playlist.
 
+As noted in the [Configuration Files](../config-files) documentation, Notepad++
+writes the configuration files (including the macros) when it exits, which means that
+after you save your macro, your new macro will _not_ be written to the `shortcuts.xml` 
+configuration file until Notepad++ exits.  Thus, if you open `shortcuts.xml` after saving
+the macro but before exiting Notepad++, you will _not_ be able to see your new macro yet.
 
 ## Play a recoded macro multiple times
 
