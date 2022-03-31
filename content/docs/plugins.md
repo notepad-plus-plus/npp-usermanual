@@ -78,7 +78,7 @@ for any technical questions/answers and the announcement your new plugin.
 * [D](https://gitlab.com/dokutoku/npp-api)
 * Delphi: 
   - [Original (ANSI/UNICODE)](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
-  - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/src/default/Readme.textile): this version has the headers necessary to work with Notepad++ v8.3.3
+  - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): this version has the headers necessary to work with Notepad++ v8.3.3
 
 
 ### Building a lexer plugin
