@@ -399,6 +399,24 @@ In a regular expression (shortened into regex throughout), special characters in
 
 *  `[[.`_col_`.]]` ⇒ The character the _col_ "[collating sequence](https://www.boost.org/doc/libs/1_70_0/libs/regex/doc/html/boost_regex/syntax/collating_names.html)" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as `[[.ch.]]`. This trick also works with symbolic names of control characters, like `[[.BEL.]]` for the character of code 0x07. See also the discussion on character ranges.
 
+##### Control characters
+
+* `\a` ⇒ The BEL control character 0x07 (alarm).
+
+* `\b` ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
+
+* `\e` ⇒ The ESC control character 0x1B.
+
+* `\f` ⇒ The FF control character 0x0C (form feed).
+
+* `\n` ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
+
+* `\r` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
+
+* `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
+
+* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.
+
 ##### Special Control escapes
 
 * `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.  Please note, this sequence might match one or two characters, depending on the text.  Because its length is variable-width, it cannot be used in lookbehinds.  Because it expands to a parentheses-based group with an alternation sequence, it cannot be used inside a character class.  If you accidentally attempt to put it in a character class, it will be interpreted like any other literal-character escape (where `\☒` is used to make sure that the next character is literal) meaning that the `R` will be taken as a literal `R`, without any special meaning.  For example, if you try `[\t\R]`: you may be intendeng to say, "match any single character that's a tab or a newline", but what you are actually saying is "match the tab or a literal R"; to get what you probably intended, use `[\t\v]` for "a tab or any vertical spacing character", or `[\t\r\n]` for "a tab or carriage return or newline but not any of the weird verticals".
