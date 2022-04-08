@@ -389,37 +389,15 @@ In a regular expression (shortened into regex throughout), special characters in
     * There are also other characters which are special only in certain circumstances (any time a charcter is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.  
     * _Please note_: if you escape a normal character, it will sometimes _gain_ a special meaning; this is why so many of the syntax items listed in this section have a `\` before them.
 
-##### Match by character code
-
-It is possible to match any character using their character codes, whether they are in ASCII or not.  If you are using an ANSI encoding in your document (that is, using a character set like Windows 1252), you can use any character code with a decimal codepoint from 0 to 255.  If you are using Unicode (one of the UTF encodings), you can actually match any 16-bit Unicode character.
+##### Non ASCII characters
 
 * `\xℕℕ` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. For instance, `\xE9` may match an `é` or a `θ` depending on the code page in an ANSI encoded document.
 
 * `\x{ℕℕℕℕ}` ⇒ Like above, but matches a full 16-bit Unicode character. If the document is ANSI encoded, this construct is invalid.
 
-* `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal, and 65 is the character code for `A` in ASCII, in most of the character sets, and in Unicode.
-
-##### Collating Sequences
+* `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal.
 
 *  `[[.`_col_`.]]` ⇒ The character the _col_ "[collating sequence](https://www.boost.org/doc/libs/1_70_0/libs/regex/doc/html/boost_regex/syntax/collating_names.html)" stands for. For instance, in Spanish, `ch` is a single letter, though it is written using two characters. That letter would be represented as `[[.ch.]]`. This trick also works with symbolic names of control characters, like `[[.BEL.]]` for the character of code 0x07. See also the discussion on character ranges.
-
-##### Control characters
-
-* `\a` ⇒ The BEL control character 0x07 (alarm).
-
-* `\b` ⇒ The BS control character 0x08 (backspace). This is only allowed inside a character class definition. Otherwise, this means "a word boundary".
-
-* `\e` ⇒ The ESC control character 0x1B.
-
-* `\f` ⇒ The FF control character 0x0C (form feed).
-
-* `\n` ⇒ The LF control character 0x0A (line feed). This is the regular end of line under Unix systems.
-
-* `\r` ⇒ The CR control character 0x0D (carriage return). This is part of the DOS/Windows end of line sequence CR-LF, and was the EOL character on Mac 9 and earlier. OSX and later versions use `\n`.
-
-* `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
-
-* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 6 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.
 
 ##### Special Control escapes
 
