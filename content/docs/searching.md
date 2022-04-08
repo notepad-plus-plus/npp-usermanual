@@ -388,7 +388,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 ##### Match by character code
 
-It is possible to match any character using their character codes, whether they are in ASCII or not.  If you are using an ANSI encoding in your document (that is, using a character set like Windows 1252), you can use any character code with a decimal codepoint from 0 to 255.  If you are using Unicode (one of the UTF encodings), you can actually match any Unicode character.  These notations require knowledge of hexadecimal or octal versions of the character code.  (You can find such information on most web pages about ASCII, your selected character set, and UTF-8 and UTF-16 representations of Unicode characters.)
+It is possible to match any character using its character code.  This allows searching for any character, even if you cannot type it into the FIND box, or the FIND box doesn't seem to match your emoji that you want to search for.  If you are using an ANSI encoding in your document (that is, using a character set like Windows 1252), you can use any character code with a decimal codepoint from 0 to 255.  If you are using Unicode (one of the UTF-8 or UTF-16 encodings), you can actually match any Unicode character.  These notations require knowledge of hexadecimal or octal versions of the character code.  (You can find such character code information on most web pages about ASCII, or about your selected character set, and about UTF-8 and UTF-16 representations of Unicode characters.)
 
 * `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  This notation works for for codepoints 0-255 (`\0000` - `\0377`), which covers the full ANSI character set range, or the first 256 Unicode characters.    For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal, and 65 is the character code for `A` in ASCII, in most of the character sets, and in Unicode.
 
@@ -396,20 +396,20 @@ It is possible to match any character using their character codes, whether they 
 
 These next two only work with Unicode encodings (so the various UTF-8 and UTF-16 encodings).
 
-* `\x{ℕℕℕℕ}` ⇒ Like above, but matches a full 16-bit Unicode character, which is any codepoint from U+0000 to U+FFFF.
+* `\x{ℕℕℕℕ}` ⇒ Like `\xℕℕ`, but matches a full 16-bit Unicode character, which is any codepoint from U+0000 to U+FFFF.
 
-* `\x{ℕℕℕℕ}\x{ℕℕℕℕ}` ⇒ For Unicode characters above U+FFFF, in the range U+10000 to U+10FFFF, you need to break the single 5-6 "digit" hex and encode it into two 4 "digit" hex codes; these two codes are the "surrogate codes" for the character.  For example, to search for the `🚂` STEAM LOCOMOTIVE character at U+1F682, you would search for the surrogate codes `\x{D83D}\x{DE82}`.
-    - If you want to know the surrogate codes for a give character, search the internet for "surrogate codes for <whatever>"; the surrogate codes are equivalent to the two-word UTF-16 encoding for those higher characters, so UTF-16 tables will also work for looking this up.  Any site or tool that you are likely to be using to find the U+###### for a given Unicode character will probably already give you the surrogate codes or UTF-16 words for the same character; if not, find a tool or site that does.
+* `\x{ℕℕℕℕ}\x{ℕℕℕℕ}` ⇒ For Unicode characters above U+FFFF, in the range U+10000 to U+10FFFF, you need to break the single 5-digit or 6-digit hex value and encode it into two 4-digit hex codes; these two codes are the "surrogate codes" for the character.  For example, to search for the `🚂` STEAM LOCOMOTIVE character at U+1F682, you would search for the surrogate codes `\x{D83D}\x{DE82}`.
+    - If you want to know the surrogate codes for a give character, search the internet for "surrogate codes for _character_" (where _charcter_ is the fancy Unicode character you need the codes for); the surrogate codes are equivalent to the two-word UTF-16 encoding for those higher characters, so UTF-16 tables will also work for looking this up.  Any site or tool that you are likely to be using to find the U+###### for a given Unicode character will probably already give you the surrogate codes or UTF-16 words for the same character; if not, find a tool or site that does.
     - You _can_ compute it yourself from the character code, but only if you are comfortable with hexadecimal and binary.  Skip the following bullets if you are prone to mathematics-based PTSD.
-        - Start with your Unicode U+######, calling the hexadecimal "digits" as `PPWXYZ`.
-        - `PP` indicates the plane.  subtract one and convert to the 4 binary bits `pppp` (so `PP`=`01` becomes `0000`, `PP`=`0F` becomes `1110`, and `PP`=`10` becomes `1111`)
-        - convert each of the other nibbles into 4 bits (`W` as `wwww`, `X` as `xxvv`, `Y` as `yyyy`, and `Z` as `zzzz`; you will see momentarily why two different characters used in `xxvv`)
-        - write those 20 bits in sequence: `ppppwwwwxxvvyyyyzzzz`
-        - group into two equal groups: `ppppwwwwxx` and `vvyyyyzzzz` (you can see that the `X` ⇒ `xxvv` was split between the two groups, hence the notation)
-        - before the first group, insert the binary digits `110110` to get `110110ppppwwwwxx`, and split into the nibbles `1101 10pp ppww wwxx`.  Convert those nibbles to hex: it will give you a value from `\x{D800}` thru `\x{DBFF}`; this is the High Surrogate code
-        - before the second group, insert the binary digits `110111` to get `110111vvyyyyzzzz`, and split into the nibbles `1101 11vv yyyy zzzz`.  Convert those nibbles to hex: it will give you a value from `\x{DC00}` thru `\x{DFFF}`; this is the Low Surrogate code
-        - combine those into the final `\x{ℕℕℕℕ}\x{ℕℕℕℕ}` for searching.
-    - For more on this, see the Wikipedia article on [Unicode Planes](https://en.wikipedia.org/wiki/Plane_(Unicode)), and a discussion in the Notepad++ Community Forum about how to [search for non-ASCII characters](https://community.notepad-plus-plus.org/post/66322)
+        - Start with your Unicode U+######, calling the hexadecimal digits as `PPWXYZ`.
+        - The `PP` digits indicate the plane.  subtract one and convert to the 4 binary bits `pppp` (so `PP`=`01` becomes `0000`, `PP`=`0F` becomes `1110`, and `PP`=`10` becomes `1111`)
+        - Convert each of the other digits into 4 bits (`W` as `wwww`, `X` as `xxvv`, `Y` as `yyyy`, and `Z` as `zzzz`; you will see momentarily why two different characters used in `xxvv`)
+        - Write those 20 bits in sequence: `ppppwwwwxxvvyyyyzzzz`
+        - Group into two equal groups: `ppppwwwwxx` and `vvyyyyzzzz` (you can see that the `X` ⇒ `xxvv` was split between the two groups, hence the notation)
+        - Before the first group, insert the binary digits `110110` to get `110110ppppwwwwxx`, and split into the nibbles `1101 10pp ppww wwxx`.  Convert those nibbles to hex: it will give you a value from `\x{D800}` thru `\x{DBFF}`; this is the High Surrogate code
+        - Before the second group, insert the binary digits `110111` to get `110111vvyyyyzzzz`, and split into the nibbles `1101 11vv yyyy zzzz`.  Convert those nibbles to hex: it will give you a value from `\x{DC00}` thru `\x{DFFF}`; this is the Low Surrogate code
+        - Combine those into the final `\x{ℕℕℕℕ}\x{ℕℕℕℕ}` for searching.
+    - For more on this, see the Wikipedia article on [Unicode Planes](https://en.wikipedia.org/wiki/Plane_(Unicode)), and the discussion in the Notepad++ Community Forum about how to [search for non-ASCII characters](https://community.notepad-plus-plus.org/post/66322)
 
 ##### Collating Sequences
 
