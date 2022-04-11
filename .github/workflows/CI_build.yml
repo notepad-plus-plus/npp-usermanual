@@ -27,7 +27,7 @@ jobs:
            Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
 
     - name: Archive artifacts for hugo
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
           name: nppUserManual
           path: ./httrack_output/nppUserManual/
