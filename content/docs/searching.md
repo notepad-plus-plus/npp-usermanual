@@ -384,7 +384,10 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `\X` ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
 
-* `\☒`  ⇒ This allows you to search for a literal character ☒, which would otherwise have a special meaning as a regex meta-character, rather than treating it as a regex meta-character. For example, `\[` would be interpreted as literal `[` and not as the start of a character set. Adding the backslash (this is called _escaping_) can work the other way round, too, as it makes special a character that otherwise isn't: for instance, `\d` stands for "a digit", while `d` is just an ordinary letter.  (Please note: `☒` here was chosen as a placeholder for the character you want to escape.)
+* `\$` , `\(` , `\)` , `\*` , `\+` , `\.` , `\?` , `\[` , `\]` , `\\` , `\|` ⇒ Prefixing a special character with `\` to "escape" the character allows you to search for a literal character when the regular expression syntax would otherwise have that character have a special meaning as a regex meta-character.   
+    * The characters `$ ( ) * + . ? [ ] \ |` all have special meaning to the regex engine in normal circumstances; to get them to match as a literal (or to show up as a literal in the substitution), you will have to prefix them with the `\` character.  
+    * There are also other characters which are special only in certain circumstances (any time a charcter is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.  
+    * _Please note_: if you escape a normal character, it will sometimes _gain_ a special meaning; this is why so many of the syntax items listed in this section have a `\` before them.
 
 ##### Match by character code
 
