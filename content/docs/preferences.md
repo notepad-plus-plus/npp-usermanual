@@ -548,7 +548,7 @@ The Delete button is usually disabled.  However, in the `Macros` and `Run comman
 
 The Close button will close the dialog box.
 
-_Please Note_: Notepad++ honors standard Windows behavior with keystrokes for menu accelerators: typing `Alt` with the first letter (or underlined letter) for a main menu entry will open that menu.  (Because the `X` on the right of the menu bar, which closes the active tab, was created as a menu action on the main menu bar with the name "X", it's accelerator is therefore `Alt+X`.)  If you want to define `Alt+`_Letter_ for some other action, you may do so using the Shortcut Mapper, and that accelartor will no longer work for the menu, but will instead access the action you mapped it to.
+_Please Note_: Notepad++ honors standard Windows behavior with keystrokes for menu accelerators: typing `Alt` with the first letter (or underlined letter) for a main menu entry will open that menu.  (Because the `X` on the right of the menu bar, which closes the active tab, was created as a menu action on the main menu bar with the name "X", it's accelerator is therefore `Alt+X`.)  If you want to define `Alt+`_Letter_ for some other action, you may do so using the Shortcut Mapper, and that accelerator will no longer work for the menu, but will instead access the action you mapped it to; undefining that new Mapper entry will allow Windows to treat that sequence as the accelerator again.
 
 ### Configuration file: `shortcuts.xml`
 
