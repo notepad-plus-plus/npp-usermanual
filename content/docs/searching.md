@@ -808,16 +808,16 @@ The parentheses `(` and `)` are used for creating lexical groups, and are not pa
 
 If you want to make decisions during the replacement (conditional replacement), use one of these variants of the conditional syntax below.
 
-* `?ℕYesPattern:NoPattern`: where `ℕ` is a single decimal digit (0-9), `YesPattern` and `NoPattern` are replacement expressions.  If the ℕth numbered group from the search expression was matched, the `YesPattern` will be used as the output; if not, the `NoPattern` will be used instead.
+* `?ℕYesPattern:NoPattern`: where `ℕ` is a decimal number (one or more decimal digits), and `YesPattern` and `NoPattern` are replacement expressions.  If the ℕth numbered group from the search expression was matched, the `YesPattern` will be used as the output; if not, the `NoPattern` will be used instead.  `YesPattern` cannot start with any digits (0-9) in this version of the syntax, because the digits will be interpreted as part of `ℕ` instead of part of `YesPattern`; if `YesPattern` needs to start with one or more digits, use the `?{ℕ}` variant of the syntax, below.
     * For example: `?1george\($1\):gracie` ⇒ if the first group from the search was matched, then use the literal text `george`, followed by the contents of the first match inside literal parentheses; if the first group does not match, use the literal text `gracie`.
-* `?{ℕ}YesPattern:NoPattern`: where `ℕ` here can be one or more decimal digit, `YesPattern` and `NoPattern` are replacement expressions, as above.  This syntax variant will work for any numbered group, not just groups with numbers from 1 thru 9.
-    * For example: `?{13}george\(${13}\):gracie` ⇒ if the thirteenth group from the search was matched, then use the literal text `george`, followed by the contents of the thirteenth match inside literal parentheses; if the thirteenth group does not match, use the literal text `gracie`.
+* `?{ℕ}YesPattern:NoPattern`: where `ℕ` here can be one or more decimal digit, `YesPattern` and `NoPattern` are replacement expressions, as above.  This syntax variant will work even if `YesPattern` needs to start with one or more digits, because the braces around `ℕ` separate it from `YesPattern`.
+    * For example: `?{13}1george\(${13}\):2gracie` ⇒ if the thirteenth group from the search was matched, then use the literal text `1george`, followed by the contents of the thirteenth match inside literal parentheses; if the thirteenth group does not match, use the literal text `2gracie`.
 * `?{name}YesPattern:NoPattern`: where _name_ is the name of a named-match-group, and `YesPattern` and `NoPattern` are replacement expressions, as above.
     * For example: `?{comedian}george\($+{comedian}\):gracie` ⇒ if the group named _comedian_ from the search was matched, then use the literal text `george`, followed by the contents of the named group inside literal parentheses; if the named group does not match, use the literal text `gracie`.
 
 By placing the expression inside parentheses, you can separate the conditional from the surrounding replacement: `a=?1george:gracie=b` would output `a=george` or `a=gracie=b`, whereas `a=(?1george:gracie)=b` shows when the conditional ends, so would be `a=george=b` or `a=gracie=b`.
 
-Remember, to include literal parentheses, question marks, or colons in conditional substitution expressions, make sure to escape them.
+Remember, to include literal parentheses, question marks, or colons in conditional substitution expressions, make sure to escape them as `\(` or `\)` or `\?` or `\:`.
 
 ### Zero length matches
 
