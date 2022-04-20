@@ -85,8 +85,29 @@ for any technical questions/answers and the announcement your new plugin.
 
 A lexer plugin is a kind of extension compared to a normal plugin,   
 i.e. in addition to all the functions already mentioned, additional ones have to be exported and also an XML file defining the styles has to be generated.  
-  
-Notepad++ (Npp) currently supports only the [ILexer4](https://www.scintilla.org/ScintillaDoc.html#LexerObjects) interface.  
+
+#### Notepad++ v8.4 and newer
+
+Notepad++ has transitioned to the [ILexer5](https://www.scintilla.org/LexillaDoc.html) interface as of Notepad++ v8.4.
+A lexer plugin needs to define all methods of this interface to ensure a smooth interaction.  
+
+The lexer functions to be exported by the plugin are
+- GetLexerCount  
+- GetLexerName  
+- GetLexerFactory 
+- CreateLexer
+- LexerNameFromID
+- GetLibraryPropertyNames 
+- SetLibraryProperty
+- GetNameSpace  
+
+The [`SCI_SETILEXER`](https://www.scintilla.org/ScintillaDoc.html#SCI_SETILEXER) message is used to set the current lexer to your defined ILexer5 object.
+
+The [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) has a discussion on how to "[Make External Lexer Plugin work with v8.4](https://community.notepad-plus-plus.org/topic/22866/make-external-lexer-plugin-work-with-v8-4)".
+
+#### Notepad++ v8.3.3 and earlier
+
+Notepad++ (Npp) supported only the [ILexer4](https://www.scintilla.org/ScintillaDoc.html#LexerObjects) interface up through Notepad++ v8.3.3.  
 A lexer should define all methods of this interface to ensure a smooth interaction.  
   
 The additional lexer functions to be exported by the plugin are  
