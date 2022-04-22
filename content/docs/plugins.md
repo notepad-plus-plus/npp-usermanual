@@ -94,20 +94,45 @@ A lexer plugin needs to define all methods of this interface to ensure a smooth 
 The lexer functions to be exported by the plugin are
 - GetLexerCount  
 - GetLexerName  
-- GetLexerFactory 
 - CreateLexer
 - LexerNameFromID
-- GetLibraryPropertyNames 
-- SetLibraryProperty
-- GetNameSpace  
 
 The [`SCI_SETILEXER`](https://www.scintilla.org/ScintillaDoc.html#SCI_SETILEXER) message is used to set the current lexer to your defined ILexer5 object.
 
 The [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) has a discussion on how to "[Make External Lexer Plugin work with v8.4](https://community.notepad-plus-plus.org/topic/22866/make-external-lexer-plugin-work-with-v8-4)".
 
+If you are starting with an ILexer4 lexer defined as below, to convert to ILexer5, it should work to simply add a `CreateLexer` function that returns the pointer to the ILexer5 interface.  In the future, Notepad++ may add support for the GetLibraryPropertyNames, SetLibraryProperty and GetNameSpace functions, if lexer-plugin developers find a good reason and [request](https://github.com/notepad-plus-plus/notepad-plus-plus/issues] that Notepad++ allow those features.
+
+1. CreateLexer
+~~~
+(typedef ILexer5 *(EXT_LEXER_DECL *CreateLexer)(const char *name);)
+Args: name
+Return: Pointer to ILexer5 object
+Description:
+	CreateLexer is the main call that will create a lexer for a particular language. 
+	The returned lexer can then be set as the current lexer in Scintilla by calling SCI_SETILEXER.
+~~~
+
+2. LexerNameFromID
+~~~
+(typedef const char *(EXT_LEXER_DECL *LexerNameFromID(int identifier);)
+Args: identifier
+Return: Name of the lexer
+Description:
+	An optional function that returns the name for a lexer identifier.
+	This is a temporary affordance to make it easier to convert applications to using Lexilla. 
+	Applications should move to using lexer names instead of IDs. This function is deprecated.
+~~~
+
+3. GetLexerName
+   - As described for ILexer4, below.
+
+4. GetLexerCount
+   - As described for ILexer4, below.
+
 #### Notepad++ v8.3.3 and earlier
 
-Notepad++ (Npp) supported only the [ILexer4](https://www.scintilla.org/ScintillaDoc.html#LexerObjects) interface up through Notepad++ v8.3.3.  
+Notepad++ supported only the [ILexer4](https://www.scintilla.org/ScintillaDoc.html#LexerObjects) interface up through Notepad++ v8.3.3.  
 A lexer should define all methods of this interface to ensure a smooth interaction.  
   
 The additional lexer functions to be exported by the plugin are  
@@ -140,7 +165,7 @@ Description:
 	This function should return the name which should be displayed in the LanguageMenu.   
 	If more than one lexer is contained in a plugin, this function will be called accordingly often  
 	and the respective lexer is queried via index.   
-	Name is a pointer to the memory area allocated by Npp.  
+	Name is a pointer to the memory area allocated by Notepad++.  
 	This name should be encoded as an 8bit string using the current Windows codepage.
 	The size is given by buflength.  
 ~~~
@@ -220,14 +245,14 @@ Function property_names()
 ~~~
   
 The most important functions a lexer has to provide are Lex, Fold and WordListSet.  
-As the names suggest, Lex is called by Npp (actually Scintilla) to color the current buffer and then Fold to define any fold points.  
-WordListSet is called depending on how many keyword groups have been defined in the styles XML file and each time changes are made via the Npp StyleDialog.  
+As the names suggest, Lex is called by Notepad++ (actually Scintilla) to color the current buffer and then Fold to define any fold points.  
+WordListSet is called depending on how many keyword groups have been defined in the styles XML file and each time changes are made via the Notepad++ StyleDialog.  
 More information about these and all other methods can be obtained from https://www.scintilla.org/ScintillaDoc.html#SCI_LOADLEXERLIBRARY.  
   
   
 Creating the Lexer Styles XML file.  
   
-In order for Npp to know how to color which style, an XML file with the same name as the lexer must be created in addition to the original lexer dll.  
+In order for Notepad++ to know how to color which style, an XML file with the same name as the lexer must be created in addition to the original lexer dll.  
 E.g. if the Lexer plugin is called MyNewLexer.dll, the XML file must be called MyNewLexer.xml and must be present in the plugin config directory.   
   
   
@@ -282,20 +307,20 @@ But, as usual in software development, there are also some not so obvious pitfal
   
 #### Tips and Tricks
   
-1. Npp uses 2 views with different scintilla instances.  
+1. Notepad++ uses 2 views with different scintilla instances.  
 To identify which instance should be handled with which document at the moment,  
 pAccess can be used in Lex and Fold.  
 Hint: It is possible to scroll an inactive instance and thus trigger Lex and Fold callbacks.  
   
-2. API XML files, which are used for autocompletion by Npp, as well as funtionlist XML files can,  
+2. API XML files, which are used for autocompletion by Notepad++, as well as funtionlist XML files can,  
 currently, not be used by plugin lexers.   
 So it makes sense to implement these functionalities as well.  
   
 3. GetLexerName and GetLexerCount are called twice.  
-Once from Npp directly and once from Scintilla.  
+Once from Notepad++ directly and once from Scintilla.  
 Each with different buffer length.  
   
-4. When Npp loads the Lexer plugin it is expected that the corresponding styles XML file  
+4. When Notepad++ loads the Lexer plugin it is expected that the corresponding styles XML file  
 is also present in the plugin config directory.  
 Since, for whatever reason, this file might not be present, it is a good idea to check this in the setInfo callback and to react accordingly  
 
