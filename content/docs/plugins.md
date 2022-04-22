@@ -101,7 +101,7 @@ The [`SCI_SETILEXER`](https://www.scintilla.org/ScintillaDoc.html#SCI_SETILEXER)
 
 The [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) has a discussion on how to "[Make External Lexer Plugin work with v8.4](https://community.notepad-plus-plus.org/topic/22866/make-external-lexer-plugin-work-with-v8-4)".
 
-If you are starting with an ILexer4 lexer defined as below, to convert to ILexer5, it should work to simply add a `CreateLexer` function that returns the pointer to the ILexer5 interface.  In the future, Notepad++ may add support for the GetLibraryPropertyNames, SetLibraryProperty and GetNameSpace functions, if lexer-plugin developers find a good reason and [request](https://github.com/notepad-plus-plus/notepad-plus-plus/issues] that Notepad++ allow those features.
+If you are starting with an ILexer4 lexer defined as below, to convert to ILexer5, it should work to simply add a `CreateLexer` function that returns the pointer to the ILexer5 interface.  In the future, Notepad++ may add support for the GetLibraryPropertyNames, SetLibraryProperty and GetNameSpace functions; if lexer-plugin developers find a good reason and want that support, they should [make an official feature request](https://github.com/notepad-plus-plus/notepad-plus-plus/issues).
 
 1. CreateLexer
 ~~~
