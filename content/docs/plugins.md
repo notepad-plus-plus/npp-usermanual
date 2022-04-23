@@ -95,13 +95,10 @@ The lexer functions to be exported by the plugin are
 - GetLexerCount  
 - GetLexerName  
 - CreateLexer
-- LexerNameFromID
-
-The [`SCI_SETILEXER`](https://www.scintilla.org/ScintillaDoc.html#SCI_SETILEXER) message is used to set the current lexer to your defined ILexer5 object.
 
 The [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) has a discussion on how to "[Make External Lexer Plugin work with v8.4](https://community.notepad-plus-plus.org/topic/22866/make-external-lexer-plugin-work-with-v8-4)".
 
-If you are starting with an ILexer4 lexer defined as below, to convert to ILexer5, it should work to simply add a `CreateLexer` function that returns the pointer to the ILexer5 interface.  In the future, Notepad++ may add support for the GetLibraryPropertyNames, SetLibraryProperty and GetNameSpace functions; if lexer-plugin developers find a good reason and want that support, they should [make an official feature request](https://github.com/notepad-plus-plus/notepad-plus-plus/issues).
+If you are starting with an ILexer4 lexer defined as below, to convert to ILexer5, you should update Scintilla headers to Scintilla5, and add a `CreateLexer` function that returns the pointer to the ILexer5 interface.  In the future, Notepad++ may add support for the GetLibraryPropertyNames, SetLibraryProperty and GetNameSpace functions; if lexer-plugin developers find a good reason and want that support, they should [make an official feature request](https://github.com/notepad-plus-plus/notepad-plus-plus/issues).
 
 1. CreateLexer
 ~~~
@@ -113,21 +110,10 @@ Description:
 	The returned lexer can then be set as the current lexer in Scintilla by calling SCI_SETILEXER.
 ~~~
 
-2. LexerNameFromID
-~~~
-(typedef const char *(EXT_LEXER_DECL *LexerNameFromID(int identifier);)
-Args: identifier
-Return: Name of the lexer
-Description:
-	An optional function that returns the name for a lexer identifier.
-	This is a temporary affordance to make it easier to convert applications to using Lexilla. 
-	Applications should move to using lexer names instead of IDs. This function is deprecated.
-~~~
-
-3. GetLexerName
+2. GetLexerName
    - As described for ILexer4, below.
 
-4. GetLexerCount
+3. GetLexerCount
    - As described for ILexer4, below.
 
 #### Notepad++ v8.3.3 and earlier
