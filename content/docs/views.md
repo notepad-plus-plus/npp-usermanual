@@ -133,7 +133,9 @@ The **Text Direction RTL** and **Text Direction LTR** are useful for text that n
 
 ## Live File Monitoring
 
-The **Monitoring (tail -f)** toggle will have Notepad++ watch the current file for live changes in the background, and will update the display as it notices the underlying file change.  This puts the file in a de-facto read-only mode, so that the file cannot be edited in Notepad++ as it's being changed by whatever task is changing the file in the background.  This is useful for watching a log file as new lines are added to the end, and is inspired by the Linux command `tail -f` which performs a similar function, hence the entry's name.
+The **Monitoring (tail -f)** toggle will have Notepad++ watch the current file for live changes in the background, and will update the display as it notices the underlying file change.  This puts the file in a de-facto read-only mode, so that the file cannot be edited in Notepad++ as it's being changed by whatever task is changing the file in the background.  (This is useful for watching a log file as new lines are added to the end, and is inspired by the Linux command `tail -f` which performs a similar function, hence the entry's name.)  
+
+When in the Monitoring mode, Notepad++ will use an icon on the tab's title which looks like an eye (because Notepad++ is watching the file for changes).
 
 The Monitoring feature is also similar to the File Status Auto-Detection settings in the [MISC preferences](../preferences/#misc), which influences whether Notepad++ will detect external changes in the open file(s) even without Monitoring enabled.
 
