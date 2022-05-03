@@ -511,6 +511,24 @@ Please see the enum LangType for all possible values.
 
 ---
 
+#### **NPPM_GETCURRENTCMDLINE**
+*Get the Current Command Line string.
+Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
+allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen
+
+*lParam [out]*
+: TCHAR * commandLineStr
+
+**Return value**:
+: Returns the number of TCHAR copied/to copy.
+
+---
+
 #### **NPPM_GETCURRENTCOLUMN**
 *Retrieves the column of the caret.*
 
@@ -861,6 +879,24 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 
 **Return value**:
 : Returns -1 if bufferID does not exist, otherwise the number of chars copied/to copy.
+
+---
+
+#### **NPPM_GETINITIALCMDLINE**
+*Get the Initial Command Line string.
+Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
+allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen
+
+*lParam [out]*
+: TCHAR * commandLineStr
+
+**Return value**:
+: Returns the number of TCHAR copied/to copy.
 
 ---
 
@@ -1983,6 +2019,17 @@ The general layout of the following notifications look like this
 **Fields:**
 
 	code:		NPPN_CANCELSHUTDOWN
+	hwndFrom:	hwndNpp
+	idFrom:		0
+
+---
+
+####  **NPPN_CMDLINECHANGED**
+*To notify plugins that current command line string has changed*
+
+**Fields:**
+
+	code:		NPPN_CMDLINECHANGED
 	hwndFrom:	hwndNpp
 	idFrom:		0
 
