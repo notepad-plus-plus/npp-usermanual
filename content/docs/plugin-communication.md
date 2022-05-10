@@ -706,6 +706,45 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
+#### **NPPM_GETDARKMODECOLORS**
+*Retrieves the colors used in Dark Mode.
+User is responsible to allocate a buffer which is large enough.
+(Added v8.4.1)*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t cbSize - must be filled with `sizeof(NppDarkMode::Colors)`
+
+*lParam [out]*
+: NppDarkMode::Colors* returnColors - must be a pre-allocated NppDarkMode::Colors struct
+
+**Return value**:
+: Returns True on success and False if provided currentWord buffer is not large enough
+
+**Data Structure**
+:
+```
+namespace NppDarkMode
+{
+    struct Colors
+    {
+        COLORREF background = 0;
+        COLORREF softerBackground = 0;
+        COLORREF hotBackground = 0;
+        COLORREF pureBackground = 0;
+        COLORREF errorBackground = 0;
+        COLORREF text = 0;
+        COLORREF darkerText = 0;
+        COLORREF disabledText = 0;
+        COLORREF linkText = 0;
+        COLORREF edge = 0;
+    };
+}
+```
+
+---
+
 #### **NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR**
 *Retrieves the current editor default background color.*
 
@@ -1361,6 +1400,22 @@ struct ShortcutKey {
 
 ---
 
+#### **NPPM_ISDARKMODEENABLED**
+*Notepad++ Dark Mode is enable.  (Added v8.4.1)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: TRUE when Notepad++ Dark Mode is enable, FALSE when it is not.
+
+---
+
 #### **NPPM_ISMENUHIDDEN**
 *Retrieves the current status of menubar.*
 
@@ -1983,6 +2038,18 @@ The general layout of the following notifications look like this
 **Fields:**
 
 	code:		NPPN_CANCELSHUTDOWN
+	hwndFrom:	hwndNpp
+	idFrom:		0
+
+---
+
+####  **NPPN_DARKMODECHANGED**
+*To notify plugins that Dark Mode was changed (either enabled or disabled).  
+(Added v8.4.1)*
+
+**Fields:**
+
+	code:		NPPN_DARKMODECHANGED
 	hwndFrom:	hwndNpp
 	idFrom:		0
 
