@@ -1083,15 +1083,38 @@ MAX_PATH is suggested to use.*
 #### **NPPM_GETNPPVERSION**
 *Retrieves the current Notepad++ version.
 The value is made up of 2 parts: the major version (the high word) and minor version (the low word).
-For example, 4.7.5 is encoded like:
- HIWORD(version) == 4
- LOWORD(version) == 75
-Note that this message is supported by the v4.7 or higher version. Earlier versions return 0.*
+Note that this message is supported by the v4.7 or higher version; earlier versions return 0.
+v8.4.1 adds the ability to pad the result to make comparisons between versions like 8.4.1 and 8.5 easier
+(without the padding, they would have been 8|41 and 8|5, and since 5 is less than 41, it would have incorrectly shown up 
+as 8.5 coming before 8.41; with the padding flag on, they will be 8|410 and 8|500, so 8.5 will properly
+come after 8.4.1).*
 
 **Parameters**:
 
 *wParam [in]*
-: int, must be zero.
+: Boolean ADD_ZERO_PADDING, will add zero padding, as per the tables below:
+~~~
+ADD_ZERO_PADDING == TRUE
+
+    version  | HIWORD | LOWORD
+    -----------------------------
+    8.9.6.4  | 8      | 964
+    9        | 9      | 0
+    6.9      | 6      | 900
+    6.6.6    | 6      | 660
+    13.6.6.6 | 13     | 666
+
+
+ADD_ZERO_PADDING == FALSE
+
+    version  | HIWORD | LOWORD
+    -----------------------------
+    8.9.6.4  | 8      | 964
+    9        | 9      | 0
+    6.9      | 6      | 9
+    6.6.6    | 6      | 66
+    13.6.6.6 | 13     | 666
+~~~
 
 *lParam [in]*
 : int, must be zero.
