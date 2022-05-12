@@ -109,10 +109,12 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
 These define the margin style, border width, and edge settings.  (This page is new in v7.9.2; in v7.9.1 and earlier, these settings were in the [Editing](#editing) page of the preferences.
 
 * **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
-    * `☐ simple`: shows a `-` if that section is not folded, or a `+` if it is.
-    * `☐ arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
-    * `☐ circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
-    * `☐ box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+    * `☐ Simple`: shows a `-` if that section is not folded, or a `+` if it is.
+    * `☐ Arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
+    * `☐ Circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
+    * `☐ Box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+    * `☐ None`: shows no symbols and hides that column, even for lexers that allow code folding
+        - The [View menu folding commands](../views/#folding) still work, even when the Folder Margin Style is set to None
 * **Border Width**
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
