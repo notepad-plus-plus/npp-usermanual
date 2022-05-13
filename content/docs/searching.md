@@ -192,6 +192,7 @@ After running one or more **Find All in ...** commands, a new **Search results**
 |Find All in All Opened Documents   | **Find**               |
 |Find All in Current Document       | **Find**               |
 |Find All                           | **Find in Files**      |
+|Find All                           | **Find in Projects**   |
 
 The **Search results** window by default appears docked at the bottom of the Notepad++ main window.  Like other such windows, it can be moved or even be a free-floating window.
 
