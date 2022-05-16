@@ -64,7 +64,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
 * `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
 * `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0)
-* `-pluginMessage="text for plugin(s)"`: if plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINECHANGED "NPPN_CMDLINECHANGED") that it can parse that string for extra information
+* `-pluginMessage="text for plugin(s)"`: if plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information
 * `filepath`: file or folder name to open (absolute or relative path name)
 
 The order of the options is not important.  Brackets indicate that the options
