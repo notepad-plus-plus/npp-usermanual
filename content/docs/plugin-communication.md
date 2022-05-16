@@ -882,24 +882,6 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 
 ---
 
-#### **NPPM_GETINITIALCMDLINE**
-*Get the Initial Command Line string.
-Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
-allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
-
-**Parameters**:
-
-*wParam [in]*
-: size_t strLen
-
-*lParam [out]*
-: TCHAR * commandLineStr
-
-**Return value**:
-: Returns the number of TCHAR copied/to copy.
-
----
-
 #### **NPPM_GETLANGUAGEDESC**
 *Retrieves the description of the current language used.
 First call should be made with buffer set to NULL to retrieve the actual size needed.
@@ -2024,14 +2006,14 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_CMDLINECHANGED**
-*To notify plugins that current command line string has changed*
+####  **NPPN_CMDLINEPLUGINMSG**
+*To notify plugins that the new argument for plugins (via `-pluginMessage="YOUR_PLUGIN_ARGUMENT"` in [command line](../command-prompt/)) is available*
 
 **Fields:**
 
-	code:		NPPN_CMDLINECHANGED
+	code:		NPPN_CMDLINEPLUGINMSG
 	hwndFrom:	hwndNpp
-	idFrom:		0
+	idFrom:		pluginMessage, where pluginMessage is pointer of type wchar_t
 
 ---
 
