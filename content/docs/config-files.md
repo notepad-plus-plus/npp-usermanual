@@ -301,8 +301,9 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 ## Toolbar Icon Customization: `toolbarIcons.xml`
 
-To override the current toolbar icons, we needs 2 things: `toolbarIcons.xml` file and one icons set.
-Here are the instructions to customize toolbar icons:
+This configuration file allows you to override the current toolbar icons.  (New to v8.4.2)  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.
+
+Aside from the `toolbarIcons.xml` file, you need to create icons.  You will populate and place the configuration file and icon files as described below:
 
 1. Put the file `toolbarIcons.xml` (Note 1) in the main configuration folder (Note 2).
 2. Create a new sub-folder called `toolbarIcons\` in that same folder.
@@ -311,6 +312,8 @@ Here are the instructions to customize toolbar icons:
 4. Go into `toolbarIcons\` folder and create a new folder with the exact name of the icon set name you provided in `icoFolderName`, for example `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
 5. Put all your customized icons into `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
 6. Now it is the magic moment: Relaunch Notepad++ and you'll see your icon set instead of the default icons.
+   - This overrides the icons for any of the **Settings > Preferences > General > Toolbar** icon-set selections
+   - If you have **Settings > Preferences > General > Toolbar** set to any of the three "small" choices, it will scale the icon to 16x16; if you use one of the two "large" choices, it will scale to 32x32.  So if you are going to use a "large" icon set, you should make sure the icons are defined as 32x32.
 
 Note:
 1. The content of `toolbarIcons.xml` is following:
@@ -323,7 +326,7 @@ Note:
 2. This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
 3. If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
 
-For each of the 45 toolbar icons that can be customized, use the specific name listed below.  (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
+For each of the 45 toolbar icons that can be customized, use the specific file name listed below.  (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
 
 | index |  Normal icon             |  Disabled icon                  |
 |-------|--------------------------|---------------------------------|
@@ -360,7 +363,7 @@ For each of the 45 toolbar icons that can be customized, use the specific name l
 |31     |  playback-multiple.ico   |  playback-multiple_disabled.ico |
 |32     |  save-macro.ico          |  save-macro_disabled.ico        |
 
-It's not necessary to have a complete set of 45 icons in the directory: any icons not in the directory will just normal built-in icon instead.
+It's not necessary to have a complete set of 45 icons in the directory: any icons not in the directory will just use the built-in icon instead.
 
 You can have multiple icon set directories; to switch between icon sets, you just edit the `icoFolderName`, save the config file, and relaunch Notepad++.
 
