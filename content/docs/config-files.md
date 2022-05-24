@@ -299,6 +299,71 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 5. Copy the `<parer...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
    * Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section.  It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block.  Make sure it ends up with the v7.9.1-or-newer structure described above.
 
+## Toolbar Icon Customization: `toolbarIcons.xml`
+
+To override the current toolbar icons, we needs 2 things: `toolbarIcons.xml` file and one icons set.
+Here are the instructions to customize toolbar icons:
+
+1. Put the file `toolbarIcons.xml` (Note 1) in the main configuration folder (Note 2).
+2. Create a new sub-folder called `toolbarIcons\` in that same folder.
+3. Edit the file `toolbarIcons.xml`: put the icon set name you want in the `icoFolderName` attribute (Note 3).
+   for example: `<ToolBarIcons icoFolderName="myAwesomeIcons" />`
+4. Go into `toolbarIcons\` folder and create a new folder with the exact name of the icon set name you provided in `icoFolderName`, for example `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
+5. Put all your customized icons into `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
+6. Now it is the magic moment: Relaunch Notepad++ and you'll see your icon set instead of the default icons.
+
+Note:
+1. The content of `toolbarIcons.xml` is following:
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+    <ToolBarIcons icoFolderName="myAwesomeIcons" />
+</NotepadPlus>
+```
+2. This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
+3. If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
+
+For each of the 45 toolbar icons that can be customized, use the specific name listed below.  (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
+
+| index |  Normal icon             |  Disabled icon                  |
+|-------|--------------------------|---------------------------------|
+|1      |  new.ico                 |                                 |
+|2      |  open.ico                |                                 |
+|3      |  save.ico                |  save_disabled.ico              |
+|4      |  save-all.ico            |  save-all_disabled.ico          |
+|5      |  close.ico               |                                 |
+|6      |  close-all.ico           |                                 |
+|7      |  print.ico               |                                 |
+|8      |  cut.ico                 |  cut_disabled.ico               |
+|9      |  copy.ico                |  copy_disabled.ico              |
+|10     |  paste.ico               |  paste_disabled.ico             |
+|11     |  undo.ico                |  undo_disabled.ico              |
+|12     |  redo.ico                |  redo_disabled.ico              |
+|13     |  find.ico                |                                 |
+|14     |  replace.ico             |                                 |
+|15     |  zoom-in.ico             |                                 |
+|16     |  zoom-out.ico            |                                 |
+|17     |  sync-vertical.ico       |                                 |
+|18     |  sync-horizontal.ico     |                                 |
+|19     |  word-wrap.ico           |                                 |
+|20     |  all-chars.ico           |                                 |
+|21     |  indent-guide.ico        |                                 |
+|22     |  udl-dlg.ico             |                                 |
+|23     |  doc-map.ico             |                                 |
+|24     |  doc-list.ico            |                                 |
+|25     |  function-list.ico       |                                 |
+|26     |  folder-as-workspace.ico |                                 |
+|27     |  monitoring.ico          |  monitoring_disabled.ico        |
+|28     |  record.ico              |  record_disabled.ico            |
+|29     |  stop-record.ico         |  stop-record_disabled.ico       |
+|30     |  playback.ico            |  playback_disabled.ico          |
+|31     |  playback-multiple.ico   |  playback-multiple_disabled.ico |
+|32     |  save-macro.ico          |  save-macro_disabled.ico        |
+
+It's not necessary to have a complete set of 45 icons in the directory: any icons not in the directory will just normal built-in icon instead.
+
+You can have multiple icon set directories; to switch between icon sets, you just edit the `icoFolderName`, save the config file, and relaunch Notepad++.
+
 ## Other Configuration Files
 
 * `autoCompletion\*.xml`: files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format).  This config folder _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
