@@ -40,3 +40,5 @@ reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Executi
 	2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position.
 
 	![MoveTabs](https://user-images.githubusercontent.com/14791461/66017596-1b72aa80-e4f9-11e9-9ff0-87632415bd91.gif)
+- Tab manipulation
+  - To create a new tab using the tab bar
