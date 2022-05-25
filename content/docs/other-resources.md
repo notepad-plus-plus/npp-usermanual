@@ -6,7 +6,7 @@ weight: 160
 
 ## Notepad Replacement
 Notepad is a default text editor shipped with Windows. You may want to use Notepad++ instead of Notepad. However, there's no obvious way to do it.
-From the version 7.5.9 onward, you can run the following command to make Notepad++ replace Notepad (run in `cmd.exe` with Administrator privileges):
+From the version 7.5.9 onward, you can run the following command to make Notepad++ replace Notepad (run in `cmd.exe` with Administrator privileges)[†](#registry-edit-warning):
 
 ```batch
 reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" /v "Debugger" /t REG_SZ /d "\"%ProgramFiles(x86)%\Notepad++\notepad++.exe\" -notepadStyleCmdline -z" /f
@@ -14,13 +14,84 @@ reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution 
 
 Note that you may need to use `%ProgramFiles%\Notepad++\` to substitute for `%ProgramFiles(x86)%\Notepad++\` if you have Notepad++ 64-bit installed, or use other path if your Notepad++ is installed in a non-default location.
 
-
 Use the the following comment to undo the replacement:
 ```batch
 reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" /v "Debugger" /f
 ```
 
+This has historically worked from Windows 7 through Windows 10.  However, Microsoft has changed things in Windows 11 , and this may not work for you.
+
+### Registry Edit Warning
+
+_**† Warning**: editing your registry can be dangerous; edit your registry at your own risk; the developers of Notepad++ and contributors to this documentation cannot and will not be held responsible for mistakes made during registry changes or unintendended consequences of such edits_
+
+## Explorer Right-Click menu
+
+When you install Notepad++ normally, Notepad++ will add an **Edit with Notepad++** Explorer Right Click action for all file types. (This is separate from any file types that you use the [Settings > Preferences > File Association](../preferences/#file-association) or other Windows-standard means to "associate" that file type with Notepad++.) 
+
+### Missing "Edit with Notepad++" Action
+
+If you are missing this feature, you can add it to your registry using your favorite method.  One such method is to save the following as a `.reg` file and run it[†](#registry-edit-warning):
+
+**Single User**
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Notepad++]
+@="Edit With Notepad++"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Notepad++\command]
+@="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
+```
+(If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
+
+**All Users** (requires admin privileges)
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Notepad++]
+@="Edit With Notepad++"
+
+[HKEY_CLASSES_ROOT\*\shell\Notepad++\command]
+@="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
+```
+(If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
+
+### Windows 11 Right-Click Workarounds
+
+Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11.  The right click menu contains a **Show More Options** action which will bring up the old-style right click context menu with the old actions; this can also be accessed using the default <kbd>Shift+F10</kbd> shortcut on a file instead of right-clicking.
+
+If that is not sufficient for you, https://www.tomshardware.com/how-to/windows-11-classic-context-menus describes a possible method of changing your registry[†](#registry-edit-warning) to get the old right click context menu by default again in Windows 11.  
+
+If you would rather have it in your modern Windows 11 right click, the following `.reg` files might bring **Edit with Notepad++** to your Windows 11 right click[†](#registry-edit-warning):
+
+**Single User**
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\pintohome]
+"MUIVerb"="Edit with Notepad++"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\pintohome\command]
+@="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
+```
+(If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
+
+**All Users** (requires admin privileges)
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\pintohome]
+"MUIVerb"="Edit with Notepad++"
+
+[HKEY_CLASSES_ROOT\*\shell\pintohome\command]
+@="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
+```
+(If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
+
+
 ## Notepad++ Cheat sheet
+
 ### Tabs
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
