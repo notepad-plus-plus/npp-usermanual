@@ -511,6 +511,24 @@ Please see the enum LangType for all possible values.
 
 ---
 
+#### **NPPM_GETCURRENTCMDLINE**
+*Get the Current Command Line string. (New to v8.4.2).
+Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
+allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen
+
+*lParam [out]*
+: TCHAR * commandLineStr
+
+**Return value**:
+: Returns the number of TCHAR copied/to copy.
+
+---
+
 #### **NPPM_GETCURRENTCOLUMN**
 *Retrieves the column of the caret.*
 
@@ -2063,6 +2081,17 @@ The general layout of the following notifications look like this
 	code:		NPPN_CANCELSHUTDOWN
 	hwndFrom:	hwndNpp
 	idFrom:		0
+
+---
+
+####  **NPPN_CMDLINEPLUGINMSG**
+*To notify plugins that the new argument for plugins (via `-pluginMessage="YOUR_PLUGIN_ARGUMENT"` in [command line](../command-prompt/)) is available. (New to v8.4.2).*
+
+**Fields:**
+
+	code:		NPPN_CMDLINEPLUGINMSG
+	hwndFrom:	hwndNpp
+	idFrom:		pluginMessage, where pluginMessage is pointer of type wchar_t
 
 ---
 
