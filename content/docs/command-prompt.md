@@ -14,7 +14,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
   [-l<Language>] [-udl="My UDL Name"]
   [-L<langCode>]
   [-n<line>] [-c<column>] [-p<pos>] [-x<left-pos>] [-y<TopPos>]
-  [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
+  [-monitor] [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
   [-alwaysOnTop] [-openSession] [-r]
   [-qn="Easter Egg Name" | -qt="Text to Type" | -qf="D:\path to\file"]
   [-qSpeed(1|2|3)] [-quickPrint]
@@ -48,6 +48,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
 * `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
 * `-x`: Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
 * `-y`: Move Notepad++ to indicated top position (*TopPos*) on the screen.
+* `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled
 * `-nosession`: Launch Notepad++ without previous session.
 * `-notabbar`: Launch Notepad++ without tabbar.
 * `-ro`: Make the `filepath` read only.

@@ -59,8 +59,13 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ Default`: wraps from the last visible column to the first visible column column
     * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
     * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
+* **Current Line Indicator**: Determines how the current line will be indicated.  
+    - `☐ None` : no indicator for which line is the current line.
+    - `☐ Highlight Background` : indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`
+    - `☐ Frame` : indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider
+        - **Width**: slider is used to set the width (in pixels) for the lines of the rectangle Frame for the current line
+    - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
 * `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s) (was known as **Multi-Editing Settings** prior to v7.9.2)
-* `☐ Enable current line highlighting`: will change the styling of the current line of text to **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour` (ignoring the `Foreground colour` for that style)
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
 * `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (Disabled, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
 * `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
@@ -104,10 +109,12 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
 These define the margin style, border width, and edge settings.  (This page is new in v7.9.2; in v7.9.1 and earlier, these settings were in the [Editing](#editing) page of the preferences.
 
 * **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
-    * `☐ simple`: shows a `-` if that section is not folded, or a `+` if it is.
-    * `☐ arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
-    * `☐ circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
-    * `☐ box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+    * `☐ Simple`: shows a `-` if that section is not folded, or a `+` if it is.
+    * `☐ Arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
+    * `☐ Circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
+    * `☐ Box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
+    * `☐ None`: shows no symbols and hides that column, even for lexers that allow code folding
+        - The [View menu folding commands](../views/#folding) still work, even when the Folder Margin Style is set to None
 * **Border Width**
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
