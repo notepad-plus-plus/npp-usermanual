@@ -20,6 +20,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
   [-qSpeed(1|2|3)] [-quickPrint]
   [-settingsDir="d:\your settings dir\"] [-openFoldersAsWorkspace]
   [-titleAdd="additional title bar text"]
+  [-pluginMessage="text for plugin(s)"]
   [filepath]
 ```
 
@@ -64,6 +65,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
 * `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
 * `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0)
+* `-pluginMessage="text for plugin(s)"`: if plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2)
 * `filepath`: file or folder name to open (absolute or relative path name)
 
 The order of the options is not important.  Brackets indicate that the options
@@ -88,14 +90,8 @@ usage list.  These are intended for advanced usage or other special circumstance
   a command-line option when you try to print the file from the Explorer Context menu.
   Enabling this option allows Notepad++ to recognize that option, and convert it internally
   to the official `-quickPrint` option.
-* `-z`: Strips out any command line arguments found after this option. Aside from its use
-  in the [Notepad Replacement](../other-resources/#notepad-replacement), this can be used
-  to pass options to plugins, by placing the plugin's options after the `-z` in the command
-  line, and having the plugin parse through the command line to determine if the option is present.
-  An example of this technique can be found in
-  [this Notepad++ Community Forum post](https://community.notepad-plus-plus.org/post/52805),
-  where a script run using the PythonScript plugin is able to use a command-line option
-  to affect the script's behavior.
+* `-z`: Strips out any command line arguments found after this option. Its only intended and 
+  supported use is for the [Notepad Replacement](../other-resources/#notepad-replacement)
 
 ## Installer Options
 
