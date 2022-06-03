@@ -93,6 +93,7 @@ There is a group of folding-related commands on the **View** menu, which will al
 
 * **Fold All** and **Unfold All** will collapse or reveal all fold blocks in the current file
 * **Collapse Current Level** and **Uncollapse Current Level** will collapse or reveal the block based on the line of the editing caret
+  - If [Settings > Preferences > Editing > ☐ Make current level folding/unfolding commands toggleable](../preferences/#editing) is checkmarked, either of these commands (or their shortcut-equivalent) will cause the current level's folding to toggle state, so you can use the same shortcut both for folding and unfolding
 * The entries in the **Collapse Level** and **Uncollapse Level** sub-menus will collapse or reveal every block at level N in the active file
 
 Folding/unfolding can be actuated by menu commands on the **View** menu relating to "fold" or "collapse", or by any shortcut keys assigned (see the [**Preferences > Shortcut Mapper**](../preferences/#shortcut-mapper)). It can also be invoked by using the mouse and clicking on the symbols in the fold margin. Clicking on a "-" symbol will collapse the lines at that level and below so they are no longer shown; clicking on a "+" symbol will expand the fold so such lines will again be displayed.
