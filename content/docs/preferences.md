@@ -576,7 +576,7 @@ Not all preferences are handled in dialogs, and those toggles and settings are d
 
 * **Settings > Import > Import Style Themes...** will ask you to navigate to a style theme XML file, and will put it in the appropriate folder so that the next time you run Notepad++, the application will include it when you use the [Style Configurator](../preferences/#style-configurator), the new theme will be listed in the "Select theme:" pulldown.
 
-* **Settings > Edit popup ContextMenu** will open the [`contextMenu.xml` configuration file](config-files/#the-context-menu-contextmenu-xml), so that you can edit your context menu, following the advice for [editing configuration files](../config-files/#editing-configuration-files).
+* **Settings > Edit popup ContextMenu** will open the [`contextMenu.xml` configuration file](../config-files/#the-context-menu-contextmenu-xml), so that you can edit your context menu, following the advice for [editing configuration files](../config-files/#editing-configuration-files).
 
 ### Preference Toggles in Other Dialogs
 
