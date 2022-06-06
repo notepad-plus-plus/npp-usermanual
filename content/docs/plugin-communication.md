@@ -436,7 +436,7 @@ view must be either 0 = main view or 1 = second view.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : int, must be zero.
@@ -452,7 +452,7 @@ view must be either 0 = main view or 1 = second view.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : int, must be zero.
@@ -484,7 +484,7 @@ view must be either 0 = main view or 1 = second view.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : int, must be zero.
@@ -911,7 +911,7 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [out]*
 : TCHAR * buffer
@@ -1242,7 +1242,7 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : int, must be zero.
@@ -1646,7 +1646,7 @@ If doAlertOrNot is True, then a message box will display to ask user to reload t
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : BOOL doAlertOrNot
@@ -1797,7 +1797,7 @@ Can only be done on new, unedited files.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : UniMode encoding
@@ -1813,7 +1813,7 @@ Can only be done on new, unedited files.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : formatType format
@@ -1830,7 +1830,7 @@ See enum LangType for valid values, L_USER and L_EXTERNAL are not supported.*
 **Parameters**:
 
 *wParam [in]*
-: int bufferID
+: UINT_PTR bufferID
 
 *lParam [in]*
 : LangType type2Set
