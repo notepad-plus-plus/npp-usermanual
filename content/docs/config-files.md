@@ -312,8 +312,10 @@ Aside from the `toolbarIcons.xml` file, you need to create icons.  You will popu
 4. Go into `toolbarIcons\` folder and create a new folder with the exact name of the icon set name you provided in `icoFolderName`, for example `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
 5. Put all your customized icons into `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
 6. Now it is the magic moment: Relaunch Notepad++ and you'll see your icon set instead of the default icons.
-   - This overrides the icons for any of the **Settings > Preferences > General > Toolbar** icon-set selections
+   - This overrides the icons for any of the **Settings > Preferences > General > Toolbar** icon-set selections.
    - If you have **Settings > Preferences > General > Toolbar** set to any of the three "small" choices, it will scale the icon to 16x16; if you use one of the two "large" choices, it will scale to 32x32.  So if you are going to use a "large" icon set, you should make sure the icons are defined as 32x32.
+   - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the necessary `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), restart Notepad++, and you will have the old 32x32 "standard (large)" icons back.
+   - Troubleshooting: if you started Notepad++ with one of the "small" choices selected but have 32x32 icons in your custom icons, it will scale them to 16x16, which is fine for small modes; but if you switch to a "large" option, it might scale the 16x16 back to 32x32 rather than using the true-32x32 from the icon file, which makes for a pixelated ("klunky") large icon: if this happens, leave it with "large" selected, then exit Notepad++ completely and restart: on the subsequent starts, it will use the full 32x32 resolution.
 
 Note:
 1. The content of `toolbarIcons.xml` is following:
