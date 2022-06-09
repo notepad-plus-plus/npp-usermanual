@@ -12,7 +12,7 @@ Using `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection i
 
 In column mode, typing will type the same thing in all the rows of the column.  If you copy/cut in column mode, then you copy/cut a rectangle of text, which can be pasted over an identical-sized rectangle elsewhere, or pasted into a separate document or separate application.  This is implemented for making working with rectangles of text (instead of whole lines of text) more convenient.
 
-The Column Editor dialog, accessed via **Edit > Column Editor** allows you to insert text or numbers in every row of the active Column Mode selection:
+The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to insert text or numbers in every row of the active Column Mode selection:
 
 ![](../images/columnEditor.gif)
 
