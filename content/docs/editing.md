@@ -5,13 +5,16 @@ weight: 30
 
 
 ## Column Mode & Column Editor
-Using `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to switch to column mode:
+
+Using `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection in column mode:
 
 ![](/docs/images/columnMode.gif)
 
-The Column Editor dialog allows you to insert text or numbers in every row of the active Column Mode selection:
+In column mode, typing will type the same thing in all the rows of the column.  If you copy/cut in column mode, then you copy/cut a rectangle of text, which can be pasted over an identical-sized rectangle elsewhere, or pasted into a separate document or separate application.  This is implemented for making working with rectangles of text (instead of whole lines of text) more convenient.
 
-![](/docs/images/columnEditor.gif)
+The Column Editor dialog, accessed via **Edit > Column Editor** allows you to insert text or numbers in every row of the active Column Mode selection:
+
+![](../images/columnEditor.gif)
 
 * The `Text to Insert` will use the same text in every row.
 * The `Number to Insert` will insert increasing numbers.
@@ -23,23 +26,25 @@ The Column Editor dialog allows you to insert text or numbers in every row of th
         Note: that the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
 
 ## Multi-Editing
-Using `CTRL + Mouse clicking` if Multi-Editing mode is enabled.
-To enable Multi-Editing mode:
 
-![](/docs/images/multiEdit.gif)
+Multi-Editing mode allows you to make multiple cursor selections by using `Ctrl+Click` for each additional cursor.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the cursors that you don't want to affect.
+
+![](../images/multiEdit.gif)
+
+Whether or not you can use Multi-Editing mode is determined by the [Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add cursor locations; with it not checkmarked, Multi-Editing is disabled.
 
 
 ## Dual View
 To create Dual View, drag and drop any tab that you want it to be in another view (or right click on the tab) then choose "Move to Other View" command from the popup context menu.
 Once you've got 2 views, you can move files between 2 views by drag-and-dropping.
 
-![](/docs/images/move2view.gif)
+![](../images/move2view.gif)
 
 ## Clone Document
 Drag and drop any tab that you want to clone (or right click on the tab) then choose "Clone to Other View" command from the popup context menu.
 The cloned document is the same document as its original one, but with the separated views.
 
-![](/docs/images/clonedDoc.gif)
+![](../images/clonedDoc.gif)
 
 ## Edit Menu
 
