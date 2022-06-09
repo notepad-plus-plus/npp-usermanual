@@ -8,7 +8,7 @@ weight: 30
 
 Using `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection in column mode:
 
-![](/docs/images/columnMode.gif)
+![](../images/columnMode.gif)
 
 In column mode, typing will type the same thing in all the rows of the column.  If you copy/cut in column mode, then you copy/cut a rectangle of text, which can be pasted over an identical-sized rectangle elsewhere, or pasted into a separate document or separate application.  This is implemented for making working with rectangles of text (instead of whole lines of text) more convenient.
 
