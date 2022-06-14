@@ -331,6 +331,8 @@ _Notes_:
 
 * Note 3: If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
 
+### Set of Icons
+
 For each of the 45 toolbar icons that can be customized, use the specific file name listed below.  (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
 
 | index |  Normal icon             |  Disabled icon                  |
