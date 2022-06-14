@@ -317,16 +317,19 @@ Aside from the `toolbarIcons.xml` file, you need to create icons.  You will popu
    - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the necessary `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), restart Notepad++, and you will have the old 32x32 "standard (large)" icons back.
    - Troubleshooting: if you started Notepad++ with one of the "small" choices selected but have 32x32 icons in your custom icons, it will scale them to 16x16, which is fine for small modes; but if you switch to a "large" option, it might scale the 16x16 back to 32x32 rather than using the true-32x32 from the icon file, which makes for a pixelated ("klunky") large icon: if this happens, leave it with "large" selected, then exit Notepad++ completely and restart: on the subsequent starts, it will use the full 32x32 resolution.
 
-Note:
-1. The content of `toolbarIcons.xml` is following:
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<NotepadPlus>
-    <ToolBarIcons icoFolderName="myAwesomeIcons" />
-</NotepadPlus>
-```
-2. This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
-3. If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
+_Notes_:
+
+* Note 1: The content of `toolbarIcons.xml` is as follows:
+    ```xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <NotepadPlus>
+        <ToolBarIcons icoFolderName="myAwesomeIcons" />
+    </NotepadPlus>
+    ```
+    
+* Note 2: This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
+
+* Note 3: If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
 
 For each of the 45 toolbar icons that can be customized, use the specific file name listed below.  (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
 
