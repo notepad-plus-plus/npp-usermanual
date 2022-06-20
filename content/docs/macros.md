@@ -45,7 +45,8 @@ default key combination. These can later be changed (or deleted) using
 **Macro > Modify Shortcut / Delete Macro**, which brings up the 
 [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper) on the **Macros** tab.
 When saved, the macro will be available in the bottom section of the **Macro** menu, or
-from the **Macro > Run a Macro Multiple Times** menu.
+from the pulldown in the dialog accessed from the **Macro > Run a Macro Multiple Times** 
+menu entry.
 
 As noted in the [Configuration Files](../config-files) documentation, Notepad++
 writes the configuration files (including the macros) when it exits, which means that
