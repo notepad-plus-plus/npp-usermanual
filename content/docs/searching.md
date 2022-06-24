@@ -14,21 +14,21 @@ All keyboard shortcuts mentioned below are the default values, but are configura
 There is a "Find" dialog box. This dialog box has one tab for each of the following features:
 
 * **Find** tab: Gives access to searching and counting.\
-  It can be invoked directly with **Search > Find** or the keyboard shortcut Ctrl+F.
+  It can be invoked directly with **Search > Find** or the keyboard shortcut `Ctrl+F`.
 
 * **Replace** tab: Similar to **Find** tab, but allows you to replace the matched text after it's found.\
-  It can be invoked directly with **Search > Replace** or the keyboard shortcut Ctrl+H.
+  It can be invoked directly with **Search > Replace** or the keyboard shortcut `Ctrl+H`.
 
 * **Find in Files** tab: Allows you to search and replace in multiple files with one action. The files used for the operation are specified by a directory.\
-  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut Ctrl+Shift+F.
+  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut `Ctrl+Shift+F`.
 
 * **Find in Projects** tab: Similar to **Find in Files**, but Project Panel files are used instead of files from a directory.\
   It can be invoked over the context menu of the first line of a Project Panel.
 
 * **Mark** tab: Allows you to highlight all occurrences of the search target in the current document permanently.\
-  It can be invoked directly with **Search > Mark** or the keyboard shortcut Ctrl+M.
+  It can be invoked directly with **Search > Mark** or the keyboard shortcut `Ctrl+M`.
 
-*Note:*  Although a keyboard command can open and/or move input focus to one of the tabs of the "Find" window, once this input focus is achieved, there is no possibility to switch to another of the tabs via the keyboard; the mouse must be used, or the window closed (via the *Escape* key) and the alternate tab's keyboard shortcut (or menu command) then invoked.
+*Note:*  Prior to v8.1.3, doing any of those keystrokes (`Ctrl+F`, `Ctrl+H`, `Ctrl+Shift+F`, or `Ctrl+M`) once would open the Find dialog or bring it into focus; from the main dialog, hitting `Ctrl+F` would re-center the dialog (no matter which tab of the dialog you were on); but you could not use the shortcuts for the other tabs to switch between the tabs.  In v8.1.3 through v8.3.2, once the dialog was active and in focus, hitting the keystrokes would switch between the tabs on that dialog; however, these versions of Notepad++ would _not_ re-center the dialog if you hit `Ctrl+F` again.  Starting in v8.3.3, the first hit of one of those shortcuts would bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog (as with v8.1.3), but hitting the shortcut for the tab you are already on will re-center the dialog (so `Ctrl+F, Ctrl+F` will center the Find dialog, `Ctrl+H, Ctrl+H` will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
 
 *Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
 
