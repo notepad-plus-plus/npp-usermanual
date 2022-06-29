@@ -34,6 +34,17 @@ you should install it with the following path:
 
 Once you installed the plugin, you can use (and you may configure) it via the menu "Plugins".
 
+### Install plugin using Settings > Import > Import plugin(s)
+
+This takes a single DLL and puts it in the right directory, then tells you that _you_ have to
+restart; if you do not manually exit Notepad++ (**File > Exit** or equivalent) and then restart
+Notepad++ from your shortcut or Start Menu, the plugin will _not_ be visible in the Plugins menu.
+
+_Note_: to clarify, this only imports a single DLL file.  If your plugin has other config
+files or documentation files or additional DLLs or resource files, this method _will not_
+put those files in the right place, and then the plugin _will not fully function_.  **Only**
+use this menu to install the plugin if your plugin _only_ has the single DLL in the zipfile.
+
 ## How to develop a plugin
 
 ### Getting started
