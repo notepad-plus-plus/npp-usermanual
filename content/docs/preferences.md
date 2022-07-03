@@ -39,7 +39,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
     * `☐ Reduce`: make the tab bar vertical region and font size smaller
     * `☐ Alternate icons`: change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
-      * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file. 
+      * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
       * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
     * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
     * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
@@ -59,12 +59,16 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ Default`: wraps from the last visible column to the first visible column column
     * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
     * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
-* **Current Line Indicator**: Determines how the current line will be indicated.  
+* **Current Line Indicator**: Determines how the current line will be indicated.
     - `☐ None` : no indicator for which line is the current line.
     - `☐ Highlight Background` : indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`
     - `☐ Frame` : indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider
         - **Width**: slider is used to set the width (in pixels) for the lines of the rectangle Frame for the current line
     - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
+* **EOL (CRLF)**: changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is enabled:
+    - **Default**: old behavior (`CR` and `LF` in reverse-video boxes)
+    - **Plain Text**": Looks like normal text for `CR`, `LF`, and `CRLF`
+    - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > EOL custom color**
 * `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
 * `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s) (was known as **Multi-Editing Settings** prior to v7.9.2)
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
@@ -76,7 +80,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
 
 The Dark Mode feature (added in v8.0.0) is controlled here.
 
-* `☐ Enable Dark Mode`: enables Dark Mode, where the UI is set to dark background with light text  
+* `☐ Enable Dark Mode`: enables Dark Mode, where the UI is set to dark background with light text
     * When you check this checkbox (☑):
       * it will change the active theme to `DarkModeDefault`
         * _Reminder_: changing the theme does _not_ change your UDL colors, as discussed in the [UDL and Themes](../user-defined-language-system/#udl-and-themes) section.  If your UDL was colored to match some other theme, the colors will likely mismatch, and you will need to edit the UDL colors to make it match the DarkModeDefault theme.
@@ -169,7 +173,7 @@ These affect open and save operations.
 
 ### Recent Files History
 
-These change how the list of recent files is displayed in the File menu.  
+These change how the list of recent files is displayed in the File menu.
 
 * `☐ Don't check at launch time`: will skip checking whether files in the Recent Files History list exist at launch time.
     * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the Recent Files History list
@@ -266,6 +270,7 @@ Affects the operations found in the **Find** dialog tabs.
 * `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always (added v7.9)
 * `☐ Confirm Replace All in All Opened Documents`: when enabled, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
 * `☐ Replace: Don't move to the following occurrence`: when enabled and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
+* `☐ Search Result window: show only one entry per found line`: when enabled, the **Search Results Window** will only list each line once, even if the line has multiple matches; when disabled, it will behave like older versions and list each line once for each match on that line (added v8.4.3)
 
 ### Backup
 
@@ -345,10 +350,10 @@ The **Multi-Instance** settings determine whether multiple instances of Notepad+
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
 
-The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).  The 
+The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).  The
 
 * `☐ Reverse default date time order (short & long formats)`: if checked, the short and long formats will insert the date then the time; if unchecked, the short and long formats will insert the time then the date.
-* `Custom Format`: Enter in the format string that will define the date and time display desired when inserting the customized time. 
+* `Custom Format`: Enter in the format string that will define the date and time display desired when inserting the customized time.
 
 Format | Description | Example
 ---|---|---
@@ -443,7 +448,7 @@ A variety of settings that didn't fit elsewhere
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing (added in v7.8.8)
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph
-  * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).  As with all settings, 
+  * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).  As with all settings,
 * `☐ Enable Save All confirm dialog`: when Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Cancel** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future
 * `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
@@ -500,6 +505,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Inactive tabs [background and foreground] ⇒ Selects the colour to be used for the filename displayed in the titlebars of all inactive tabs.
 * URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your cursor is hovering over a URL, the URL's foreground colour will follow this setting.
 * Document map [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
+* EOL Custom Color [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing)
 
 ### Search result styles
 
@@ -546,7 +552,7 @@ The message area will tell you if there are "no shortcut conflicts for this item
 
 The Filter input allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  There are no regular expression or wildcard syntax interpretations in the Filter.
 
-Use the Modify button to edit the existing shortcut or to create a shortcut for an entry that has none.  The resulting dialog will show the Name of the active action.  There are checkboxes to enable the CTRL, ALT, and SHIFT key-modifiers.  The main key in the shortcut is defined by the pulldown menu.  Hitting OK will apply the added or changed shortcut and leave the dialog.  Cancel will undo your changes and leave the dialog.  (Please note that if you are using some localizations, the key you select [might not match](https://notepad-plus-plus.org/community/topic/17679/using-caret-circumflex-key-for-a-shortcut/10) <!-- TODO = this link should really refer to a submitted issue request, rather than a forum-topic --> what key you type: whatever key in your locale uses the same keycode as the standard US English keyboard will be the actual key.)  
+Use the Modify button to edit the existing shortcut or to create a shortcut for an entry that has none.  The resulting dialog will show the Name of the active action.  There are checkboxes to enable the CTRL, ALT, and SHIFT key-modifiers.  The main key in the shortcut is defined by the pulldown menu.  Hitting OK will apply the added or changed shortcut and leave the dialog.  Cancel will undo your changes and leave the dialog.  (Please note that if you are using some localizations, the key you select [might not match](https://notepad-plus-plus.org/community/topic/17679/using-caret-circumflex-key-for-a-shortcut/10) <!-- TODO = this link should really refer to a submitted issue request, rather than a forum-topic --> what key you type: whatever key in your locale uses the same keycode as the standard US English keyboard will be the actual key.)
 
 In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional Add and Remove buttons.  For more on the meaning of the `SCI_xxxx` names in the `Scintilla commands` tab, see the section on [Other Editing Commands and Shortcuts](../editing/#other-editing-commands-and-shortcuts).
 
