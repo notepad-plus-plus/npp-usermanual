@@ -174,6 +174,25 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
+#### **NPPM_CREATELEXER**
+*Returns the ILexer pointer created by Lexilla.
+Calls the lexilla `CreateLexer()` function; allows plugins
+to set the lexer for a Scintilla instance created by
+NPPM_CREATESCINTILLAHANDLE*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: const TCHAR * lexer_name, the name of the lexer
+
+**Return value**:
+: Returns the ILexer pointer created by Lexilla.
+
+---
+
 #### **NPPM_CREATESCINTILLAHANDLE**
 *A plugin can create a Scintilla for its usage by sending this message to Notepad++.
 The handle should be destroyed by NPPM_DESTROYSCINTILLAHANDLE message while exit the plugin.*
@@ -361,7 +380,7 @@ name should be the same value as previously used to register the dialog.*
 
 ---
 
-#### **NPPM_DOCLISTDISABLECOLUMN** 
+#### **NPPM_DOCLISTDISABLECOLUMN**
 *Sets the extension column in Document List panel.
 If disableOrNot is True, extension column is hidden otherwise it is visible.*
 
@@ -812,7 +831,7 @@ namespace NppDarkMode
 ---
 
 #### **NPPM_GETEXTERNALLEXERAUTOINDENTMODE**
-*Get ExternalLexerAutoIndentMode for an installed external programming language.  
+*Get ExternalLexerAutoIndentMode for an installed external programming language.
 Puts that mode in the output object. (Added v8.3.3)*
 
 **Parameters**:
@@ -822,7 +841,7 @@ Puts that mode in the output object. (Added v8.3.3)*
 
 *lParam [out]*
 : ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, with values:
-- `ExternalLexerAutoIndentMode::Standard` => 0 
+- `ExternalLexerAutoIndentMode::Standard` => 0
 - `ExternalLexerAutoIndentMode::C_Like`   => 1
 - `ExternalLexerAutoIndentMode::Custom`   => 2
 
@@ -1103,7 +1122,7 @@ MAX_PATH is suggested to use.*
 The value is made up of 2 parts: the major version (the high word) and minor version (the low word).
 Note that this message is supported by the v4.7 or higher version; earlier versions return 0.
 v8.4.1 adds the ability to pad the result to make comparisons between versions like 8.4.1 and 8.5 easier
-(without the padding, they would have been 8|41 and 8|5, and since 5 is less than 41, it would have incorrectly shown up 
+(without the padding, they would have been 8|41 and 8|5, and since 5 is less than 41, it would have incorrectly shown up
 as 8.5 coming before 8.41; with the padding flag on, they will be 8|410 and 8|500, so 8.5 will properly
 come after 8.4.1).*
 
@@ -1883,7 +1902,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 *lParam [in]*
 : ExternalLexerAutoIndentMode autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, where you supply one of the following values:
-- `ExternalLexerAutoIndentMode::Standard` => 0 
+- `ExternalLexerAutoIndentMode::Standard` => 0
 - `ExternalLexerAutoIndentMode::C_Like`   => 1
 - `ExternalLexerAutoIndentMode::Custom`   => 2
 
@@ -1967,7 +1986,7 @@ STATUSBAR_TYPING_MODE   5
 
 ---
 
-#### **NPPM_SHOWDOCLIST** 
+#### **NPPM_SHOWDOCLIST**
 *Show or hide the Document List panel.
 If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.*
 
@@ -2096,7 +2115,7 @@ The general layout of the following notifications look like this
 ---
 
 ####  **NPPN_DARKMODECHANGED**
-*To notify plugins that Dark Mode was changed (either enabled or disabled).  
+*To notify plugins that Dark Mode was changed (either enabled or disabled).
 (Added v8.4.1)*
 
 **Fields:**

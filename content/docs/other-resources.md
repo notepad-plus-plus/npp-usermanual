@@ -27,7 +27,7 @@ _**† Warning**: editing your registry can be dangerous; edit your registry at 
 
 ## Explorer Right-Click menu
 
-When you install Notepad++ normally, Notepad++ will add an **Edit with Notepad++** Explorer Right Click action for all file types. (This is separate from any file types that you use the [Settings > Preferences > File Association](../preferences/#file-association) or other Windows-standard means to "associate" that file type with Notepad++.) 
+When you install Notepad++ normally, Notepad++ will add an **Edit with Notepad++** Explorer Right Click action for all file types. (This is separate from any file types that you use the [Settings > Preferences > File Association](../preferences/#file-association) or other Windows-standard means to "associate" that file type with Notepad++.)
 
 ### Missing "Edit with Notepad++" Action
 
@@ -61,7 +61,7 @@ Windows Registry Editor Version 5.00
 
 Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11.  The right click menu contains a **Show More Options** action which will bring up the old-style right click context menu with the old actions; this can also be accessed using the default <kbd>Shift+F10</kbd> shortcut on a file instead of right-clicking.
 
-If that is not sufficient for you, https://www.tomshardware.com/how-to/windows-11-classic-context-menus describes a possible method of changing your registry[†](#registry-edit-warning) to get the old right click context menu by default again in Windows 11.  
+If that is not sufficient for you, https://www.tomshardware.com/how-to/windows-11-classic-context-menus describes a possible method of changing your registry[†](#registry-edit-warning) to get the old right click context menu by default again in Windows 11.
 
 If you would rather have it in your modern Windows 11 right click, the following `.reg` files might bring **Edit with Notepad++** to your Windows 11 right click[†](#registry-edit-warning):
 
@@ -93,6 +93,9 @@ Windows Registry Editor Version 5.00
 ## Notepad++ Cheat sheet
 
 ### Tabs
+
+- The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the option to **Hide** the tab bar.
+
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
 
@@ -101,7 +104,7 @@ Windows Registry Editor Version 5.00
   2. Use <kbd>Ctrl</kbd> + <kbd>Page Up</kbd> for next tab and <kbd>Ctrl</kbd> + <kbd>Page Down</kbd> for previous tab.
   3. Use <kbd>Ctrl</kbd> + <kbd>Tab</kbd> for next tab and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd> for previous tab. Using use <kbd>Ctrl</kbd> + <kbd>Tab</kbd> or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd> while MRU is enabled provides great user experience. To enable MRU you can follow `Settings->Preferences->MISC.->Document Switcher`, then tick both `Enable` and `Enable MRU Behavior`.
   ![tabNavNextPrev](../images/tabNavNextPrev.gif)
-  
+
 - To move tab from one position to other position:
   1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position.
   2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position.
@@ -113,13 +116,13 @@ Windows Registry Editor Version 5.00
   3. Drag the tab's title into the editing pane for that same tab and select **Move to Other View**
   4. If the other View is already visible, drag the tab's title into the editing pane of the other View, and it will move
   ![move2view](../images/move2view.gif)
-	
+
 - To clone a tab from one View into the other, you can use the techniques described in the [Editing > Clone Document](../editing/#dual-view) section, including:
   1. Use the menus: **View > Move/Clone Current Document > Clone to Other View**
   2. Right Click on the tab's title and select **Clone to Other View**
   3. Drag the tab's title into the editing pane for that same tab and select **Clone to Other View**
   ![clonedDoc](../images/clonedDoc.gif)
-	
+
 - To create a new file tab using the tab bar:
   1. If there is empty area to the right of the last tab in the tab bar, double click there and a new tab will be created
   ![tabNavNewDoubleClick](../images/tabNavNewDoubleClick.gif)
@@ -128,3 +131,16 @@ Windows Registry Editor Version 5.00
   1. If **Settings > Preferences > General > Tab Bar > Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab
   2. If **Settings > Preferences > General > Tab Bar > Double click to close document** is checked, you can double-click the tab's title to close that tab
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
+
+### Menu Bar
+
+The menu bar of Notepad++ has a variety of menus, including **File** (for generic file operations like open and close), [**Edit**](../editing#edit-menu), [**Search**](../searching/), and [**View**](../views/), **Encoding** (which affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar), **Language** (for [syntax highlighting](../programming-languages/)), [**Settings**](../preferences/), **Tools** (with a couple of built-in utilities), [**Macro**](../macros/), [**Run**](../config-files/#userdefinedcommands) (for running external commands), [**Plugins**](../plugins/), and the **Window** menu (for accessing open files already open in Notepad++).
+
+It also contains the **?** menu, which is a **Help**-style menu, including actions that list the [command line arguments](../command-prompt/); actions that take you to the Notepad++ [home page](https://notepad-plus-plus.org/), the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus), this [user manual](/), and the [Community Forum](https://community.notepad-plus-plus.org); actions for the updater and proxy; the **Debug Info** (which is critical information when asking for help at the Community Forum or when creating a feature request or bug report at the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus/issues)) and **About**.
+
+At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (Before v8.4.3, only the `X` existed in that area of the menu bar.)
+
+### Toolbar
+
+There is a toolbar which has icons for various common tasks.  The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  If you do not understand the icon, hovering over that icon will show the underlying action.
+
