@@ -84,7 +84,7 @@ for any technical questions/answers and the announcement your new plugin.
 
 ### In other languages
 
-* [Ada](https://notepad-plus-plus.org/assets/files/NppHelloAdaDemo.zip)
+* [Ada](http://white-elephant.ch/notepad.php)
 * [C#](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net)
 * [D](https://gitlab.com/dokutoku/npp-api)
 * Delphi: 
