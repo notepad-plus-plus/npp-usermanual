@@ -382,7 +382,9 @@ The Notepad++ Community has a [FAQ on other resources for regular expressions](h
 
 Note: Starting in v7.8.7, regex backward search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to enable this option.
 
-### Regex Special Characters
+**Important Note**: Syntax that works in the **Find What:** box for searching will not always work in the **Replace with:** box for replacement.  There are different syntaxes.  The [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax work in both; other than that, see the individual sections for [Searches](#regex-special-characters-for-searches) vs [Substitutions](#substitutions) for which syntaxes are valid in which fields.
+
+### Regex Special Characters for Searches
 
 In a regular expression (shortened into regex throughout), special characters interpreted are:
 
@@ -625,7 +627,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
         Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
 
-* `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.
+* `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.  (As with the Numbered Backreferences above, these Named Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
 
 #### Readability enhancements
@@ -776,7 +778,7 @@ All characters are treated as literals except for `$`, `\`, `(`, `)`, `?`, and `
 
 #### Substitution Escape Sequences
 
-In substitutions, in addition to allowing the [Control Characters](#control-characters), [Non ASCII characters](#non-ascii-characters), and [Character escape sequences](#character-escape-sequences) from search expressions, the following additional escape sequences are recognized:
+Substitutions understand the the [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax described in the [Searches](#regex-special-characters-for-searches) section work in both Searches and Substitutions. The following additional escape sequences are recognized just for Substitutions:
 
 *  `\l` ⇒ Causes next character to output in lowercase
 
@@ -802,7 +804,7 @@ In substitutions, in addition to allowing the [Control Characters](#control-char
 
 *  `$ℕ`, `${ℕ}`, `\ℕ` ⇒ Returns what matched the ℕth subexpression (numbered capture group), where ℕ is a positive integer (1 or larger).  If ℕ is greater than 9, use `${ℕ}`.
 
-    * Please note: the `\g...` and `\k...`  [backreference](#capture-groups-and-backreferences) syntaxes only work in the search expression, and are _not_ designed or intended to work in the substitution/replacement expression.
+    * Please note: the `\g...` and `\k...` [backreference](#capture-groups-and-backreferences) syntaxes found in the Searching section (whether numbered or named groups) only work in the search expression, and are _not_ designed or intended to work for numbered or named groups in the substitution/replacement expression.
 
 *  `$+{name}` ⇒ Returns what matched subexpression named _name_ (named capture group).
 
