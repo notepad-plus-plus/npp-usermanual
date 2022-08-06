@@ -43,11 +43,20 @@ The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom O
 
 The **Move/Clone Current Document** submenu will allow you to affect where the current document is viewed.
 
-If you **Move to Other View**, the current file will be moved from one View to the other.  If there is currently only one View visible, this command will make the second View visible -- it may be to the right, below, to the left, or above the original View, depending on where the second view was last placed.  To change the arrangement of the Views, right-click on the dotted bar between the two Views, and **Rotate Right** or **Rotate Left**, which will change the orientation from side-to-side to above-and-below.  You can also accomplish this **Move to Other View** by dragging the tab from one View's tab-bar to the other, or right clicking on the tab and selecting the **Move to Other View** from that menu.
+If you **Move to Other View**, the current file will be moved from one View to the other.  If there is currently only one View visible, this command will make the second View visible -- it may be to the right, below, to the left, or above the original View, depending on where the second view was last placed.  You can also accomplish this **Move to Other View** by dragging the tab from one View's tab-bar to the other, or right clicking on the tab and selecting the **Move to Other View** from that menu.
 
 If you **Clone to Other View**, the current file will be visible in both Views at the same time.
 
 If the current file is currently not modified (so no unsaved changes), you can also either **Move to New Instance** or **Clone to New Instance**, which will move the active file from this instance to a new instance of Notepad++, or make this file open in both the current Notepad++ and a new instance of Notepad++.  This will work to create a new instance of Notepad++ even if the [**Settings > Preferences > Multi-Instance**](../preferences/#multi-instance) is set to "mono-instance".
+
+To change the arrangement of the Views, right-click on the dotted bar between the two Views, and **Rotate Right** or **Rotate Left**, which will change the orientation from side-to-side to above-and-below.  Given the four possible arrangements of "File A" and "File B" in separate views shown below, doing **Rotate Right** will go in the sequence 1→2→3→4→1→..., and **Rotate Left** will go in the sequence 1→4→3→2→1→...  (The sequence repeats, and will start from whatever state you are currently in.)
+
+Sequence | Arrangement | Notes
+---|---|---
+1 | ![](../images/view-rotate-1.png) | LEFT:"File A", RIGHT:"File B"
+2 | ![](../images/view-rotate-2.png) | TOP:"File A", BOTTOM:"File B"
+3 | ![](../images/view-rotate-3.png) | RIGHT:"File A", LEFT:"File B"
+4 | ![](../images/view-rotate-4.png) | BOTTOM:"File A", TOP:"File B"
 
 ## Tab
 
@@ -134,7 +143,7 @@ The **Text Direction RTL** and **Text Direction LTR** are useful for text that n
 
 ## Live File Monitoring
 
-The **Monitoring (tail -f)** toggle will have Notepad++ watch the current file for live changes in the background, and will update the display as it notices the underlying file change.  This puts the file in a de-facto read-only mode, so that the file cannot be edited in Notepad++ as it's being changed by whatever task is changing the file in the background.  (This is useful for watching a log file as new lines are added to the end, and is inspired by the Linux command `tail -f` which performs a similar function, hence the entry's name.)  
+The **Monitoring (tail -f)** toggle will have Notepad++ watch the current file for live changes in the background, and will update the display as it notices the underlying file change.  This puts the file in a de-facto read-only mode, so that the file cannot be edited in Notepad++ as it's being changed by whatever task is changing the file in the background.  (This is useful for watching a log file as new lines are added to the end, and is inspired by the Linux command `tail -f` which performs a similar function, hence the entry's name.)
 
 When in the Monitoring mode, Notepad++ will use an icon on the tab's title which looks like an eye (because Notepad++ is watching the file for changes).
 
