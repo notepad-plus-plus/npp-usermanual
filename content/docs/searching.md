@@ -768,7 +768,9 @@ These special groups consume no characters. Their successful matching counts, bu
 
 * `(?<!pattern)` ⇒ negative lookbehind: This assertion matches if _pattern_ does not match before the current token.
 
-    * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Use `\K` (above) for the equivalent of variable-length lookbehind.
+    * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Similar constructs for  variable-length lookbehind include:
+        - For variable-length lookbehind assertions from a limited set of constant data items, a construct such as `((?<=short)|(?<=longer))` is viable.  The individual lookbehinds still cannot include `+` or `*` or similar variable-length syntax.
+        - If your desired lookbehind is more complicated than that, you can use `\K` (see above): instead of `(?<=a.*b)MATCH`, which won't work, use `a.*b\KMATCH`.  The `\K` workaround will only work if the desired lookbehind is the first token of your match, because _everything_ before the `\K` is excluded from the final match. 
 
 ### Substitutions
 
