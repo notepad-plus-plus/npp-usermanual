@@ -28,6 +28,8 @@ The [MISC preferences](../preferences/#misc) include an option to set a file ext
 
 You can also load a session file using the [`-openSession` command line argument](../command-prompt).
 
+When you load a session: if you are set to "Default (Mono-instance)" [in the Multi-instance settings](../preferences/#multi-instance-and-date), then the files from that session are _added_ to the current instance of Notepad++ (files already open will remain open, even if they aren't in the session you loaded); if you are set to  either "Open session in new instance" or "Always in multi-instance mode", then the files from the session you are loading are opened in a new Notepad++ instance.
+
 *Note*: As of Notepad++ v8.2, the loaded session is saved automatically on exit of Notepad++, if the [Multi-instance settings](../preferences/#multi-instance-and-date) is **not** set to "Default (Mono-instance)".
 
 ## Folder as Workspace
