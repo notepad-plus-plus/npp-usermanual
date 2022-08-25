@@ -25,14 +25,20 @@ install, then select Install.
 ### Install plugin manually
 
 If the plugin you want to install is not listed in the Plugins Admin, you may
-still install it manually.  The plugin (in the DLL form) should be placed in
+still install it manually.  The plugin DLL file should be placed in
 the plugins subfolder of the Notepad++ Install Folder, under the subfolder
 with the same name of plugin binary name without file extension.
+
 For example, if the plugin you want to install named `myAwesomePlugin.dll`,
-you should install it with the following path:
-`%PROGRAMFILES(x86)%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll`
+you should install it with one of the following paths:
+- `%PROGRAMFILES%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 64bit installation
+- `%PROGRAMFILES(x86)%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 32bit installation
+- `<portable notepad++ directory>\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ portable edition
 
 Once you installed the plugin, you can use (and you may configure) it via the menu "Plugins".
+
+If you are installing a plugin manually, please check the instructions or other documentation for that 
+specific plugin, to see if you need to put other files in appropriate locations.
 
 ### Install plugin using Settings > Import > Import plugin(s)
 
@@ -44,6 +50,14 @@ _Note_: to clarify, this only imports a single DLL file.  If your plugin has oth
 files or documentation files or additional DLLs or resource files, this method _will not_
 put those files in the right place, and then the plugin _will not fully function_.  **Only**
 use this menu to install the plugin if your plugin _only_ has the single DLL in the zipfile.
+
+### Permissions
+
+If you do not have write permission for the Notepad++ program directory hierarchy or at least the `Plugins\` 
+subdirectory, you will need to get "elevated permission": if you are using Notepad++'s Plugins Admin or 
+Import Plugins commands to install the plugin, you may need to re-run Notepad++ with Windows' "run as Administrator" 
+feature before doing the installation; if you are doing a manual installation, Windows may pop up the UAC dialog 
+to get permission to write the file when you try to copy it into the right directory.
 
 ## How to develop a plugin
 
