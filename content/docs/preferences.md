@@ -556,7 +556,9 @@ Use the Modify button to edit the existing shortcut or to create a shortcut for 
 
 In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional Add and Remove buttons.  For more on the meaning of the `SCI_xxxx` names in the `Scintilla commands` tab, see the section on [Other Editing Commands and Shortcuts](../editing/#other-editing-commands-and-shortcuts).
 
-Use the Clear button to remove the existing shortcut for a given entry.
+For entries on all the tabs except the `Scintilla commands` tab, the Clear button can be used to remove the existing shortcut for the selected entry.  Alternatively, you can click the Modify button in the Shortcut mapper main window and then select None from the dropdown in the Shortcut window that appears, and choose OK to finish.
+
+For entries on the `Scintilla commands` tab, the Clear button is disabled and will not work; instead, select Modify to get into the mode that allows you to edit `Scintilla commands` shortcuts: if there are multiple shortcuts listed in the left pane, click on the shortcut you wish to remove, and click the Remove button; if there is only one shortcut remaining in the left pane, click on it, choose `None` from the key-combo dropdown menu on the right, then click Apply.  Either way, when done deleting shortcuts from this command, hit OK to finish.
 
 The Delete button is usually disabled.  However, in the `Macros` and `Run commands` menu, the Delete button will be enabled, and it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
 
