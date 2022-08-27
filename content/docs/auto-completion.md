@@ -21,7 +21,7 @@ These function lists are stored in auto-completion definition files, each named 
 
 The auto-complete definition file can specify if a keyword is a function. When a function name has been typed in, followed by the opening parenthesis used to enclose the function's arguments, Notepad++ will automatically, or manually, display a hint (a.k.a. a "call tip"): a small tooltip-style box opens with text containing a description of the function. While the actual text shown is up to the author of the definition file, typically this would show, at minimum, a keyword for each of the parameters taken by the function call. This may save you a trip to the function's documentation to remember what those parameters are.
 
-Notepad++ will display the hint automatically when the open-parenthesis is typed, if that option is selected in the Auto-Completion settings. The user can also select the "Function parameters hint" from the menu or by keystroke (default: `Ctrl+Shift+Space`), when the cursor is between the opening and closing parentheses of the function call. And again, the hint can be dismissed with Esc.
+Notepad++ will display the hint automatically when the open-parenthesis is typed, if that option is selected in the Auto-Completion settings. The user can also select the "Function parameters hint" from the menu or by keystroke (default: `Ctrl+Shift+Space`), when the caret is between the opening and closing parentheses of the function call. And again, the hint can be dismissed with Esc.
 
 ## Word completion
 
@@ -29,7 +29,7 @@ Notepad++ will display the hint automatically when the open-parenthesis is typed
 
 ## Path completion
 
-Different from function and word completion which can be triggered automatically after 1 (or X) keystroke(s), Path completion needs to be triggered manually, by using shortcut (default: `Ctrl+Alt+Space`) or via menu command **Edit > Auto-Completion > Path Completion** after typing the drive (for example "C:"). If the string on the left of cursor is not part of one of the system paths, the path list won't appear.
+Different from function and word completion which can be triggered automatically after 1 (or X) keystroke(s), Path completion needs to be triggered manually, by using shortcut (default: `Ctrl+Alt+Space`) or via menu command **Edit > Auto-Completion > Path Completion** after typing the drive (for example "C:"). If the string on the left of caret is not part of one of the system paths, the path list won't appear.
 
 ## How to make it work
 
@@ -57,9 +57,9 @@ Some characters traditionally work in pairs, so that it makes sense to ask an ed
 
 Through [**Settings > Preferences > Auto-Completion**](../preferences/#auto-completion), the **Auto-Insert** options allow selection of any or all of five predefined characters—parenthesis, bracket, brace, double-quote and single quote (apostrophe)—to be automatically matched. Not only that, three custom pairs of characters may be specified. For instance, you might use Unicode open- and close- double quotes; with this feature, you can have both characters inserted when you type the opening quote mark. (Only single characters are allowed in these fields.)
 
-In each case, when the opening character is typed, the closing character will automatically be inserted, with the cursor placed between the two.
+In each case, when the opening character is typed, the closing character will automatically be inserted, with the caret placed between the two.
 
-Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this enabled, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the cursor placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
+Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this enabled, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the caret placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
 
 ### Displayed Completion List
 

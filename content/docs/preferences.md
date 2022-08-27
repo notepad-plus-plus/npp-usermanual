@@ -47,7 +47,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Show close button on each tab`: add the close button to each tab's entry on the tab bar
     * `☐ Double click to close document`: allows double-clicking on the tab to close the file
     * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
-* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, cursor location, line-ending style, encoding, and INS/DEL mode.
+* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, caret location, line-ending style, encoding, and INS/DEL mode.
 * `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
 
 ### Editing
@@ -250,7 +250,7 @@ Affects how the text is formatted when sent to the printer
 * **Margin Setting (Unit:mm)**: define the page margins, in mm
 * **Header and Footer**: define what will be printed in each page's header and footer sections
     * Click in one of the `Left part`, `middle part`, or `right part` for header or footer;
-    * either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current cursor position
+    * either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current caret position
         * Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `c:\path\to\file.txt`
         * Add **File name** ⇒ `$(FILE_NAME)` in the input box ⇒ will print something like `file.txt`
         * Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `c:\path\to`
@@ -420,7 +420,7 @@ Sets the characters that are considered part of a "word" for quick selections us
 
 ### Search Engine
 
-Set your search engine for "Search on Internet" command (found in the **Edit > On Selection** menu, or in the right-click context menu).  It will search for the word under the cursor (or for the whole selection, if a selection is made).
+Set your search engine for "Search on Internet" command (found in the **Edit > On Selection** menu, or in the right-click context menu).  It will search for the word under the caret (or for the whole selection, if a selection is made).
 
 If you want to specify a search engine not listed, type the full URL, with the text `$(CURRENT_WORD)` as the placeholder for the search term (as shown in the example in the Preferences dialog box)
 
@@ -440,7 +440,7 @@ A variety of settings that didn't fit elsewhere
         * `Enable for all open files`: for all active files, check periodically to see if the file has been updated on disk
         * `Disable`: will not check to see if the file has been updated on disk
     * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
-    * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the cursor and scrolled-location stays where it was before the update)
+    * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the caret and scrolled-location stays where it was before the update)
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: enable/disable sound feedback (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered).
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
@@ -478,15 +478,15 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are enabled will override even the per-language settings; any that are not enabled will not use the global-override settings for that attribute.
 * Default style [background and foreground] ⇒ This sets the base font and colours for all languages -- so any unstyled text will use these settings.
 * Indent guideline style [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is enabled, there will be a thin dotted line every for every level of indent.  The foreground sets the colour of the dots; the background sets the colour of the non-dot portion.
-* Brace highlight style [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the cursor onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
-* Bad brace colour [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the cursor at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
-* Current line background colour [background only] ⇒ The line containing the active editing cursor will be marked using this background style.
+* Brace highlight style [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the caret onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
+* Bad brace colour [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the caret at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
+* Current line background colour [background only] ⇒ The line containing the active editing caret will be marked using this background style.
 * Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is enabled, the "Smart Highlighting" style (below) will be coloured overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v8.0.0 or newer), "Selected text colour" will honor the foreground colour as well.
-* Caret colour [foreground only] ⇒ This sets the colour for the current-text-position cursor ("caret"), which will either be `|` for insert mode or `_` for overwrite mode.
+* Caret colour [foreground only] ⇒ This sets the colour for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.
 * Edge colour [foreground only] ⇒ Colour for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are enabled as Background Mode, this style's "foreground" colour will be used as the background colour for text that's beyond the edge.
 * Line number margin [background and foreground] ⇒ If "Display line number" is enabled in [Preferences > Editing](#editing), this sets the style for those line numbers.
-* Fold [background and foreground] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the cursor is _not_ inside that folding-area
-* Fold active [foreground only] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the cursor _is_ inside that folding-area
+* Fold [background and foreground] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area
+* Fold active [foreground only] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area
 * Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colours for the margin-region; it will be coloured with a checkerboard-like pattern (a dense version of `░`)
 * White space symbol [foreground only] ⇒ If **View > Show Symbol** settings have whitespace shown, then the tabs and whitespace symbols will use this foreground colour.
 * Smart Highlighting [background only] ⇒ If [Smart Highlighting](#highlighting) is enabled and active, this colour will be applied to all matches.  This background colour has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact colour seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual colour will be RGB=[155,255,155].)
@@ -503,7 +503,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Active tab unfocused indicator [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is enabled, and if both editor views are visible, this foreground colour will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
 * Active tab text [foreground only] ⇒ Selects the colour to be used for the filename displayed in the titlebar of the active tab.
 * Inactive tabs [background and foreground] ⇒ Selects the colour to be used for the filename displayed in the titlebars of all inactive tabs.
-* URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your cursor is hovering over a URL, the URL's foreground colour will follow this setting.
+* URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your mouse cursor is hovering over a URL, or if the caret is inside the URL text, then the URL's foreground colour will follow this setting.
 * Document map [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
 * EOL Custom Color [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing)
 

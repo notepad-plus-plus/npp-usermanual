@@ -45,7 +45,7 @@ The `config.xml` file may be overwritten by Notepad++ on exit, even if you follo
 
 ## Configuration Files during Upgrades
 
-When you use the installer to upgrade your existing copy of Notepad++ (either manually, or through the **?**-menu's **Upgrade Notepad++**, or through Notepad++'s auto-update feature), the installer will avoid overwriting configuration files that you have customized -- this is to prevent you losing your preferred settings and customizations.  
+When you use the installer to upgrade your existing copy of Notepad++ (either manually, or through the **?**-menu's **Upgrade Notepad++**, or through Notepad++'s auto-update feature), the installer will avoid overwriting configuration files that you have customized -- this is to prevent you losing your preferred settings and customizations.
 
 However, this means that occasionally, updated functionList parsing files or themes, or new keywords in langs.xml, or new default contextMenu or shortcuts entries might not be added to your local copy of Notepad++.  So if you upgrade and keep your existing configuration, it is a good idea to occasionally compare your configuration files to the "standard/default" configuration files: some of the config files come with `*.model.xml` versions in the installation directory, which show you the default settings for those files; for other configuration files, you could [download](https://notepad-plus-plus.org/downloads/) a portable zipfile of the same version you are using, and compare the config files from the portable to your installed; and you can always look in the [source code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/) for the various configuration files.  (You can use two [Views](../views/) to look at the files side-by-side, and the [synchronized scrolling feature](../views/#synchronized-scrolling) can help keep the copies aligned; plugins such as the Compare plugin are designed to show differences between files as well.)
 
@@ -164,10 +164,10 @@ CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
 FILE_NAME           | The active file's name            | `welcome.html`
 NAME_PART           | The filename without extension    | `welcome`
 EXT_PART            | The extension (with the `.`)      | `.html`
-CURRENT_WORD        | the active selection in Notepad++, or the word under the cursor |
-CURRENT_LINE        | the line number where the cursor is currently located in the editor window | `1`
+CURRENT_WORD        | the active selection in Notepad++, or the word under the caret |
+CURRENT_LINE        | the line number where the caret is currently located in the editor window | `1`
 CURRENT_LINESTR     | the text of the current line (added v8.3.2)  | `The quick brown fox jumps over the lazy dog`
-CURRENT_COLUMN      | the column number where the cursor is currently located in the editor window | `5`
+CURRENT_COLUMN      | the column number where the caret is currently located in the editor window | `5`
 NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
 NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
 
@@ -326,7 +326,7 @@ _Notes_:
         <ToolBarIcons icoFolderName="myAwesomeIcons" />
     </NotepadPlus>
     ```
-    
+
 * Note 2: This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
 
 * Note 3: If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
