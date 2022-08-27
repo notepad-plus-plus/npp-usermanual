@@ -27,11 +27,11 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 ## Multi-Editing
 
-Multi-Editing mode allows you to make multiple cursor selections by using `Ctrl+Click` for each additional cursor.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the cursors that you don't want to affect.
+Multi-Editing mode allows you to make multiple caret selections by using `Ctrl+Click` for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.
 
 ![](../images/multiEdit.gif)
 
-Whether or not you can use Multi-Editing mode is determined by the [Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add cursor locations; with it not checkmarked, Multi-Editing is disabled.
+Whether or not you can use Multi-Editing mode is determined by the [Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.
 
 
 ## Dual View

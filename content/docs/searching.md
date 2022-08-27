@@ -43,7 +43,7 @@ All the dialog-based have certain features in common, though some are disabled u
 
 * **☐ In selection**: If you have a region of text selected, and **In selection** is enabled, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
 * **☐ Backward direction**: normally, searches go forward (down the page); with this option, they will go backward (up the page)
-* **☐ Match whole word only**: if enabled, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").  
+* **☐ Match whole word only**: if enabled, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").
     * For ASCII text (text that only has newlines, tabs, and characters with codepoints 32 - 126):
         - If the left and right characters of your search string are both "word characters" (letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then **Match whole word only** will only allow a match if the characters to the left and right of the match are _non_-word-characters or spaces or the beginning or ending of the line.
         - If the left and right characters of your search string are both non-word characters (so _not_ letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then the text to the left and right of your match must be word charcters, spaces, and/or beginning or ending of the line.
@@ -121,25 +121,25 @@ If a search action is invoked by keyboard command with the Find dialog window op
 
 ### Find in Files tab
 
-Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders.  
+Find in Files allows both finding and replacing. You can choose an extension filter (**Filters:**), the containing folder (**Directory:**), and whether to also process hidden files or subfolders.
 
-The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.   
+The **Filters** list is a space-separated list of wildcard expressions that cmd.exe can understand, like `*.doc foo.*`.
 
 * Wildcards can include `*` for zero or more of any character, and `?` for exactly one of any character.
 * Most characters work as literals.  However, space is used as the separator, and thus cannot be used as a literal in your filter.  Some punctuation characters have special meanings (like the `?` and `*` wildcards, or the `!` exclusion or `!+\` for recursive exclusion), and cannot be used as literals.  Also, the `;` causes problems, so even though Microsoft _allows_ it in file and path names, using a `;` in the **Filters** box will not work as you might hope.  If you want to match a space or a semicolon `;` or other problematic-punctuation in your file or folder for your **Filter** (whether for inclusion or exclusion), then use the `*` and/or `?` wildcards instead.  (So `x?y.txt` will match the file `x;y.txt` or `x y.txt` (with a space between `x` and `y`).)  And sorry, no, you cannot use quotes around a path-with-spaces to allow the spaces to work as literals: the space is a separator in this field.
-* If you have a blank filter, it is implied to be `*.*`.  
-* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`; 
-for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)  
+* If you have a blank filter, it is implied to be `*.*`.
+* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`;
+for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)
 * As of Notepad++ v8.2, you can also exclude particular folders from the search: Exclusion operator is alway `!` at the begining. In order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
 If users need to exclude folders with the same name (or names matched the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
     * `!\tests` will not search any files in the `tests` folder
     * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`)
     * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search)
-    
+
     *Note*: "inclusion of folder" is not allowed, and such pattern will be ignored
-    
-* As of Notepad++ v8.2, if you hover your cursor over the **Filters:** label, a helpful popup will show example syntax for you
-* Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.  
+
+* As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters:** label, a helpful popup will show example syntax for you
+* Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
@@ -228,7 +228,7 @@ There are two ways to copy exact text from the **Search results** window:  Make 
 
 Here's a more detailed description of what happens for *RightClick* > **Copy Selected Line(s)**:
 
-First, if the user makes a selection of text in the **Search results** window and copies it this way, only the lines of text touched (even partially) by the selection are part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy Selected Line(s)** is invoked, results depend upon what exactly is under the cursor during the *RightClick*:
+First, if the user makes a selection of text in the **Search results** window and copies it this way, only the lines of text touched (even partially) by the selection are part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy Selected Line(s)** is invoked, results depend upon what exactly is under the mouse cursor during the *RightClick*:
 
 | *RightClick* item     | What gets copied when *RightClick* > **Copy Selected Line(s)** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
@@ -394,9 +394,9 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `\X` ⇒ Matches a single non-combining character followed by any number of combining characters. This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X`.
 
-* `\$` , `\(` , `\)` , `\*` , `\+` , `\.` , `\?` , `\[` , `\]` , `\\` , `\|` ⇒ Prefixing a special character with `\` to "escape" the character allows you to search for a literal character when the regular expression syntax would otherwise have that character have a special meaning as a regex meta-character.   
-    * The characters `$ ( ) * + . ? [ ] \ |` all have special meaning to the regex engine in normal circumstances; to get them to match as a literal (or to show up as a literal in the substitution), you will have to prefix them with the `\` character.  
-    * There are also other characters which are special only in certain circumstances (any time a charcter is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.  
+* `\$` , `\(` , `\)` , `\*` , `\+` , `\.` , `\?` , `\[` , `\]` , `\\` , `\|` ⇒ Prefixing a special character with `\` to "escape" the character allows you to search for a literal character when the regular expression syntax would otherwise have that character have a special meaning as a regex meta-character.
+    * The characters `$ ( ) * + . ? [ ] \ |` all have special meaning to the regex engine in normal circumstances; to get them to match as a literal (or to show up as a literal in the substitution), you will have to prefix them with the `\` character.
+    * There are also other characters which are special only in certain circumstances (any time a charcter is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.
     * _Please note_: if you escape a normal character, it will sometimes _gain_ a special meaning; this is why so many of the syntax items listed in this section have a `\` before them.
 
 ##### Match by character code
@@ -589,7 +589,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
-* `\G` ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current cursor position, or the start of the highlighted text.
+* `\G` ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current caret position, or the start of the highlighted text.
 
 
 
@@ -770,7 +770,7 @@ These special groups consume no characters. Their successful matching counts, bu
 
     * NOTE: In the lookbehind assertions, _pattern_ has to be of fixed length, so that the regex engine knows where to test the assertion.  Similar constructs for  variable-length lookbehind include:
         - For variable-length lookbehind assertions from a limited set of constant data items, a construct such as `((?<=short)|(?<=longer))` is viable.  The individual lookbehinds still cannot include `+` or `*` or similar variable-length syntax.
-        - If your desired lookbehind is more complicated than that, you can use `\K` (see above): instead of `(?<=a.*b)MATCH`, which won't work, use `a.*b\KMATCH`.  The `\K` workaround will only work if the desired lookbehind is the first part of your match, because _everything_ before the `\K` is excluded from the final match. 
+        - If your desired lookbehind is more complicated than that, you can use `\K` (see above): instead of `(?<=a.*b)MATCH`, which won't work, use `a.*b\KMATCH`.  The `\K` workaround will only work if the desired lookbehind is the first part of your match, because _everything_ before the `\K` is excluded from the final match.
 
 ### Substitutions
 
