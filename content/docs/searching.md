@@ -34,6 +34,8 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
+*Note:*  To get a smaller version of the Dialog, with many of the options hidden, use the &#x2a53; button in the lower right corner; to show the full dialog again, use the &#x2a54; button.  (new to v8.4.5)
+
 ### Find / Replace tabs
 
 All the dialog-based have certain features in common, though some are disabled under certain circumstances.
