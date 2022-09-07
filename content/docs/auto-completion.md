@@ -21,6 +21,8 @@ These function lists are stored in auto-completion definition files, each named 
 
 The auto-complete definition file can specify if a keyword is a function. When a function name has been typed in, followed by the opening parenthesis used to enclose the function's arguments, Notepad++ will automatically, or manually, display a hint (a.k.a. a "call tip"): a small tooltip-style box opens with text containing a description of the function. While the actual text shown is up to the author of the definition file, typically this would show, at minimum, a keyword for each of the parameters taken by the function call. This may save you a trip to the function's documentation to remember what those parameters are.
 
+If there are multiple hint definitions for the current function, there will be up and down arrows (▲ ▼) in the tooltip box. You may click on those arrows, or use `Alt+UpArrow` or `Alt+DownArrow` keyboard shortcuts, to cycle through the parameter hints.  (Those keyboard shortcuts are not listed in or affected by the Shortcut Mapper tool.  The keyboard shortcuts are new to v8.4.5.)
+
 Notepad++ will display the hint automatically when the open-parenthesis is typed, if that option is selected in the Auto-Completion settings. The user can also select the "Function parameters hint" from the menu or by keystroke (default: `Ctrl+Shift+Space`), when the caret is between the opening and closing parentheses of the function call. And again, the hint can be dismissed with Esc.
 
 ## Word completion
