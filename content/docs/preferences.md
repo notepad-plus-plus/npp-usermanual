@@ -22,6 +22,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * This copies one of the XML files from the `localization\` folder to `nativeLang.xml`.
         * To make changes to your localization, edit the language file `localization\<languagename>.xml`, as per the instructions in the [Binary Translation](../binary-translation/) section.
         * _NOTE_: After making changes to the XML file in the `localization` directory, or after upgrading to a new version of Notepad++, you need to refresh the `nativeLang.xml`: use the **Localization** drop-down to change the **Localization** to another language then change it back immediately to your preferred language, or skip the "another language" step and just click on the preferred language -- either way ends up with copying the file to `nativeLang.xml` and immediately updating Notepad++'s text for menus and dialogs.  (Unlike many configuration files, exiting Notepad++ and restarting the application will _not_ bring in the new settings from an edited `localization\<languagename>.xml`; you _must_ re-choose the desired **Localization** for the changes to be applied.)
+* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, caret location, line-ending style, encoding, and INS/DEL mode.
 * **Toolbar**:
     * `☐ Hide`: the icon-based toolbar will be hidden
     * There is a radio-button set of choices for the icons (updated v8.0.0)
@@ -47,14 +48,21 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Show close button on each tab`: add the close button to each tab's entry on the tab bar
     * `☐ Double click to close document`: allows double-clicking on the tab to close the file
     * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
-* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, caret location, line-ending style, encoding, and INS/DEL mode.
-* `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
+* **Menu**
+    * `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
+    * `☐ Hide right shortcuts ＋ ▼ ✕ from the mnu bar (Need to restart Notepad++)`: makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
 
 ### Editing
 
 These influence editing (carets, code-folding, line wrapping, and more).
 
-* **Caret Settings**: sets the width (in pixels) of the typing caret, as well as how fast it blinks
+* **Caret Settings**: 
+    * `Width`: [pulldown] Sets the width and shape of the typing caret:
+        - `1`, `2`, `3`: Width (in pixels) of the vertical-bar-style typing caret.
+        - `0`: Width of caret is 0 pixels, which means there is no visible caret.
+        - `Block`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the caret block will be on the last character of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `C`).
+        - `Block After`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the block will be _after_ the character position of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `:`).
+    * `Blink Rate`: [slider] Adjust the rate at which the caret blinks, faster when moved left (**F**), slower when moved right (**S**)
 * **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is enabled)
     * `☐ Default`: wraps from the last visible column to the first visible column column
     * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
@@ -95,7 +103,7 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
         * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully out of Dark Mode.
       * it will leave your [Toolbar](#General) settings with the same icon set as you had when you were in Dark Mode
 * Tones: allow you to change the tone of the Dark Mode (new to v8.1.2)
-   * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs, as of v8.1.3. (In v8.1.2, the Tones affected the menus and the Find/Replace/Mark dialog, but not the other dialogs.)  The menu pull-downs, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
+   * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs, as of v8.1.3. (In v8.1.2, the Tones affected the menus and the Find/Replace/Mark dialog, but not the other dialogs.)  The menu pulldown controls, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
    * `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone` => The dark color has a hint of that colored tone
    * `☐ Customized tone` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
      * `Top` => choose the color of the menu bar and tool bar
@@ -159,7 +167,8 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`)
     * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v8.0.0, it was shown as `UCS-2`)
     * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
-* **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules
+    * _Note_: the [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files
+* **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
 
 ### Default Directory
 
@@ -264,8 +273,9 @@ Affects how the text is formatted when sent to the printer
 ### Searching
 
 Affects the operations found in the **Find** dialog tabs.
-
-* `☐ Don't fill find field in Find dialog with selected word`: when enabled, **Find** command will _not_ replace the **Find What** text with the currently-selected text; when disabled (default), the **Find What** text _will_ be replaced (added v7.8.3)
+* **When Find Dialog is Invoked**
+    * `☐ Fill find field in Find dialog with selected word`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
+        * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
 * `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
 * `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always (added v7.9)
 * `☐ Confirm Replace All in All Opened Documents`: when enabled, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
@@ -327,7 +337,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ ENTER`: toggles whether or not ENTER will accept your choice
         * v8.2 and earlier behaved as if both have checkmarks; v8.2.1 and later defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
-    * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](https://npp-user-manual.org/docs/editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
+    * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](../editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
 * **Auto-Insert**
     * Will automatically insert the closing item for any of the enabled default pairs, or the three manually-chosen matched pairs
         * `☐ ()`
@@ -435,7 +445,7 @@ A variety of settings that didn't fit elsewhere
     * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
     * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
 * **File Status Auto-Detection**
-    * [dropdown]
+    * [pulldown]
         * `Enable`: for the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++
         * `Enable for all open files`: for all active files, check periodically to see if the file has been updated on disk
         * `Disable`: will not check to see if the file has been updated on disk
@@ -443,7 +453,7 @@ A variety of settings that didn't fit elsewhere
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the caret and scrolled-location stays where it was before the update)
 * `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: enable/disable sound feedback (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered).
-* `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used
+* `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing (added in v7.8.8)
@@ -556,9 +566,9 @@ Use the Modify button to edit the existing shortcut or to create a shortcut for 
 
 In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional Add and Remove buttons.  For more on the meaning of the `SCI_xxxx` names in the `Scintilla commands` tab, see the section on [Other Editing Commands and Shortcuts](../editing/#other-editing-commands-and-shortcuts).
 
-For entries on all the tabs except the `Scintilla commands` tab, the Clear button can be used to remove the existing shortcut for the selected entry.  Alternatively, you can click the Modify button in the Shortcut mapper main window and then select None from the dropdown in the Shortcut window that appears, and choose OK to finish.
+For entries on all the tabs except the `Scintilla commands` tab, the Clear button can be used to remove the existing shortcut for the selected entry.  Alternatively, you can click the Modify button in the Shortcut mapper main window and then select None from the pulldown in the Shortcut window that appears, and choose OK to finish.
 
-For entries on the `Scintilla commands` tab, the Clear button is disabled and will not work; instead, select Modify to get into the mode that allows you to edit `Scintilla commands` shortcuts: if there are multiple shortcuts listed in the left pane, click on the shortcut you wish to remove, and click the Remove button; if there is only one shortcut remaining in the left pane, click on it, choose `None` from the key-combo dropdown menu on the right, then click Apply.  Either way, when done deleting shortcuts from this command, hit OK to finish.
+For entries on the `Scintilla commands` tab, the Clear button is disabled and will not work; instead, select Modify to get into the mode that allows you to edit `Scintilla commands` shortcuts: if there are multiple shortcuts listed in the left pane, click on the shortcut you wish to remove, and click the Remove button; if there is only one shortcut remaining in the left pane, click on it, choose `None` from the key-combo pulldown menu on the right, then click Apply.  Either way, when done deleting shortcuts from this command, hit OK to finish.
 
 The Delete button is usually disabled.  However, in the `Macros` and `Run commands` menu, the Delete button will be enabled, and it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
 
