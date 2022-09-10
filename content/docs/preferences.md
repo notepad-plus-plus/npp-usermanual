@@ -3,7 +3,7 @@ title: Preferences
 weight: 100
 ---
 
-There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a colour or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
+There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a color or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
 
 For settings not covered by the three main dialogs, there are [other toggles and settings](#other-toggles-and-settings) which can be found in various dialogs, menus, and configuration files.
 
@@ -11,7 +11,7 @@ As noted in the [Configuration Files](../config-files) documentation, Notepad++ 
 
 ## Preferences
 
-For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is enabled.  (For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is.)
+For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is checked. For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is. (Checkbox states will be referred to as `checked` for `☑`, `unchecked` for `☐`, and `disabled` when it's greyed out so that you cannot toggle the state of the checkbox, and `enabled` if the grey has been removed.)
 
 ### General
 
@@ -32,7 +32,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * `Filled Fluent UI: large`: uses large versions of the Fluent UI icons, in a filled (or reverse-video) style
         * `Standard icons: small`: these are the small version of the traditional (pre-v8.0.0) icons
 * **Document List Panel**:  (This section removed in v8.1.5.)
-    * `☐ Disable extension column`: Prior to v8.1.5, if enabled, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
+    * `☐ Disable extension column`: Prior to v8.1.5, if checked, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
     * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels)
 * **Tab Bar**:
     * `☐ Hide`: the tab bar for the open files will not be visible
@@ -43,8 +43,8 @@ These affect the user interface (localization, toolbar, tab bar, and more).
       * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
       * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
     * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
-    * `☐ Darken inactive tags`: change the fill-colour on inactive tabs to a darker colour
-    * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a coloured bar
+    * `☐ Darken inactive tags`: change the fill-color on inactive tabs to a darker color
+    * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a colored bar
     * `☐ Show close button on each tab`: add the close button to each tab's entry on the tab bar
     * `☐ Double click to close document`: allows double-clicking on the tab to close the file
     * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
@@ -56,14 +56,14 @@ These affect the user interface (localization, toolbar, tab bar, and more).
 
 These influence editing (carets, code-folding, line wrapping, and more).
 
-* **Caret Settings**: 
+* **Caret Settings**:
     * `Width`: [pulldown] Sets the width and shape of the typing caret:
         - `1`, `2`, `3`: Width (in pixels) of the vertical-bar-style typing caret.
         - `0`: Width of caret is 0 pixels, which means there is no visible caret.
         - `Block`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the caret block will be on the last character of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `C`).
         - `Block After`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the block will be _after_ the character position of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `:`).
     * `Blink Rate`: [slider] Adjust the rate at which the caret blinks, faster when moved left (**F**), slower when moved right (**S**)
-* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is enabled)
+* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is checked)
     * `☐ Default`: wraps from the last visible column to the first visible column column
     * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
     * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
@@ -73,14 +73,14 @@ These influence editing (carets, code-folding, line wrapping, and more).
     - `☐ Frame` : indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider
         - **Width**: slider is used to set the width (in pixels) for the lines of the rectangle Frame for the current line
     - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
-* **EOL (CRLF)**: changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is enabled:
+* **EOL (CRLF)**: changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is checked:
     - **Default**: old behavior (`CR` and `LF` in reverse-video boxes)
     - **Plain Text**": Looks like normal text for `CR`, `LF`, and `CRLF`
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > EOL custom color**
 * `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
 * `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s) (was known as **Multi-Editing Settings** prior to v7.9.2)
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
-* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (Disabled, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
+* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
 * `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
 
@@ -132,12 +132,12 @@ These define the margin style, border width, and edge settings.  (This page is n
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
 * **Vertical Edge Settings**
-    * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The colour of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Foreground colour**.
+    * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The color of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Foreground colour**.
     * Multiple Vertical Edges: There is one box, which accepts zero or more numbers (as of v7.8.6):
         * If the box is empty, there are no vertical edges.
         * If there is one number ℕ in the box, there will be one vertical edge, after the column for the ℕth character.
         * If there is more than one number (separated by whitespace), then there will be a vertical edge at each of the given character columns.
-        * `☐ Background mode`: the vertical edge is usually a vertical line; if this option is enabled, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
+        * `☐ Background mode`: the vertical edge is usually a vertical line; if this option is checked, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
     * Single Vertical Edge: in older versions of Notepad++, there was only a single vertical edge available, with more toggled options (v7.8.5 and earlier):
         * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
         * `☐ Line mode`: the vertical edge is indicated by a solid vertical line
@@ -178,7 +178,7 @@ These affect open and save operations.
     * `Follow current document`: open/save dialogs will default to the current directory for the current file
     * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog on subsequent uses of the dialogs (regardless of where the current file is located).  _Note_: the last used directory will only be updated when the **Open** or **Save** option is selected; if you **Cancel** or escape out of dialog, the last used directory will not be updated and will keep its previous value.  Also, note that the last used directory is not remembered across runs of Notepad++: if you restart Notepad++, when you first initiate a **Save As**, it will prompt with the directory the `notepad++.exe` file is in.
     * `___ ...`: this entry box with no label allows you to browse to a default directory, and all open/save dialogs will start in that directory
-* `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when enabled, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when disabled, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
+* `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when checked, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when unchecked, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
 
 ### Recent Files History
 
@@ -214,7 +214,7 @@ This affects the display of the main Language menu, and also affects the per-lan
         * Under normal circumstances, this makes the list of items in the **Language** menu much shorter: the standard 80+ languages will be reduced to about 20 submenus and a few standalone **Language** menu entries
         * For example, Perl and Python syntax highlighting would be selected through **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu
     * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list
-        * If you have moved items to Disabled Items _and_ have enabled `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**
+        * If you have moved items to Disabled Items _and_ have checked `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**
 * **Tab settings**:
     * `[Default]` sets the tab behavior for the "default" condition
     * `normal` sets the tab behavior for plain text
@@ -252,10 +252,10 @@ Affects how the text is formatted when sent to the printer
 
 * `☐ Print line number`: will include line numbers when printed
 * **Colour Options**
-    * `☐ WYSIWYG`: same colours will apply to printing as you see in the editor
-    * `☐ Invert`: black prints as white, light colour prints as dark, and vice versa
+    * `☐ WYSIWYG`: same colors will apply to printing as you see in the editor
+    * `☐ Invert`: black prints as white, light color prints as dark, and vice versa
     * `☐ Black on White`: prints black text on white background, no highlighting
-    * `☐ No background colour`: same as WYSIWYG, except no background colour is printed
+    * `☐ No background colour`: same as WYSIWYG, except no background color is printed
 * **Margin Setting (Unit:mm)**: define the page margins, in mm
 * **Header and Footer**: define what will be printed in each page's header and footer sections
     * Click in one of the `Left part`, `middle part`, or `right part` for header or footer;
@@ -278,9 +278,9 @@ Affects the operations found in the **Find** dialog tabs.
         * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
 * `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
 * `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always (added v7.9)
-* `☐ Confirm Replace All in All Opened Documents`: when enabled, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
-* `☐ Replace: Don't move to the following occurrence`: when enabled and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
-* `☐ Search Result window: show only one entry per found line`: when enabled, the **Search Results Window** will only list each line once, even if the line has multiple matches; when disabled, it will behave like older versions and list each line once for each match on that line (added v8.4.3)
+* `☐ Confirm Replace All in All Opened Documents`: when checked, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
+* `☐ Replace: Don't move to the following occurrence`: when checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
+* `☐ Search Result window: show only one entry per found line`: when checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3)
 
 ### Backup
 
@@ -330,7 +330,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ Word completion`: will auto-complete words only, based on words that already exist in the current file
         * `☐ Function and word completion`: will auto-complete both function names and words
     * `From the _n_th character`: must type at least _n_ characters before the auto
-        * if `☐ Enable auto-completion on each input` is disabled, the _n_th character will be disabled (greyed out)
+        * if `☐ Enable auto-completion on each input` is checked, the _n_th character entry will be disabled (greyed out)
     * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
     * **Insert Selection**: v8.2.1 added a new section
         * `☐ TAB`: toggles whether or not TAB will accept your choice
@@ -339,7 +339,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
     * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](../editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
 * **Auto-Insert**
-    * Will automatically insert the closing item for any of the enabled default pairs, or the three manually-chosen matched pairs
+    * Will automatically insert the closing item for any of the checked pairs, or the three manually-chosen matched pairs
         * `☐ ()`
         * `☐ []`
         * `☐ {}`
@@ -422,7 +422,7 @@ Sets the characters that are considered part of a "word" for quick selections us
 * **Clickable Link Settings**: Affects behavior of URLs in your document.  (Moved in v7.9.2; previously in the [Misc](#misc) settings)
     * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
     * `☐ No underline`: will remove the underline normally present on a link
-    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when disabled, just the foreground color will change (new to v7.9.2)
+    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when unchecked, just the foreground color will change (new to v7.9.2)
     * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs (new to v7.9.2). The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they do not need to be included in this entry box.
 
 
@@ -451,8 +451,8 @@ A variety of settings that didn't fit elsewhere
         * `Disable`: will not check to see if the file has been updated on disk
     * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
     * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the caret and scrolled-location stays where it was before the update)
-* `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If disabled, you will have to manually download the installer from the official website yourself.
-* `☐ Mute all sounds`: enable/disable sound feedback (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered).
+* `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
+* `☐ Mute all sounds`: when checked, a sound will provide feedback on certain actions (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when unchecked, Notepad++ will remain silent for those actions.
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
@@ -473,7 +473,7 @@ The "Language:" selection list lets you select whether you want to set the forma
 
 On all but "Language: Global Styles", there will also be a "Default ext." box, which is an un-editable list of the default file extensions associated with that Language; and the "User ext." box, where you can add a user-defined list of additional extensions (space separated, don't use the . in the extension), which says which other extensions you want to apply this language's formatting to.  There is no specific entry called "Normal text" or "Plain text": to edit the colors for a plain text file (like `.txt`), use the "Global Styles" language.  (Please note that any changes you make in the Style Configurator dialog box for a specific language only applies to that language and only applies to the selected [theme](../themes/): if you add a user-defined extension to a language in the `Default (stylers.xml)` theme, it will not affect the list of user-defined extensions for that language in any of the other themes.)
 
-The final section will reiterate which language and style are selected, and allow you to set colors and fonts.  The Colour Style allows you to choose the Foreground or Background colour by clicking on the colored box. You can also make the style's Foreground or Background colour ignored, by right-clicking on the colored box (you'll see the additional diagonal stripes on the colored box) - in this case the default background/foreground colour will be used.  The Font Style allows you to pick the font, size, and bold/italic/underline settings.  If Font name or Font size are left blank, they will inherit from the Global Styles: Default Style.  If you right-click a colour, you will see diagonal stripes across the colour, indicating it is set to "inherit", meaning that it will take that colour from the Default Style.  Under the "Language: Global Styles" with "Style: Global override", there are also a series of checkboxes for "Enable global xxx", which will mean that Notepad++ will use the Global override setting for that attribute, rather than using the per-language styling settings for that attribute.
+The final section will reiterate which language and style are selected, and allow you to set colors and fonts.  The Colour Style allows you to choose the Foreground or Background color by clicking on the colored box. You can also make the style's Foreground or Background color ignored, by right-clicking on the colored box (you'll see the additional diagonal stripes on the colored box) - in this case the default background/foreground color will be used.  The Font Style allows you to pick the font, size, and bold/italic/underline settings.  If Font name or Font size are left blank, they will inherit from the Global Styles: Default Style.  If you right-click a color, you will see diagonal stripes across the color, indicating it is set to "inherit", meaning that it will take that color from the Default Style.  Under the "Language: Global Styles" with "Style: Global override", there are also a series of checkboxes for "Enable global xxx", which will mean that Notepad++ will use the Global override setting for that attribute, rather than using the per-language styling settings for that attribute.
 
 Some language/style combinations (like Perl > INSTRUCTION WORD) will additionally have a list of default keywords (not editable) and user-defined keywords (which allow you to add new keywords to apply this style to).
 
@@ -483,37 +483,37 @@ The Save & Close button will save the settings and close the dialog.  The Cancel
 
 Unlike most of the other items listed in the "Languages" column, which are language or file-type specific, the "Global Styles" set the default stylings for all types of documents using the active theme.  Except for the "Global override" style, a style for a particular language will override a "Global Style" setting.
 
-Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.  <!-- For styles that only have one available colour, the other will be disabled (greyed out). -->
+Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
 
-* Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are enabled will override even the per-language settings; any that are not enabled will not use the global-override settings for that attribute.
-* Default style [background and foreground] ⇒ This sets the base font and colours for all languages -- so any unstyled text will use these settings.
-* Indent guideline style [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is enabled, there will be a thin dotted line every for every level of indent.  The foreground sets the colour of the dots; the background sets the colour of the non-dot portion.
+* Global override [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are checked will override even the per-language settings; any that are not checked will not use the global-override settings for that attribute.
+* Default style [background and foreground] ⇒ This sets the base font and colors for all languages -- so any unstyled text will use these settings.
+* Indent guideline style [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is checked, there will be a thin dotted line every for every level of indent.  The foreground sets the color of the dots; the background sets the color of the non-dot portion.
 * Brace highlight style [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the caret onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
 * Bad brace colour [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the caret at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
 * Current line background colour [background only] ⇒ The line containing the active editing caret will be marked using this background style.
-* Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is enabled, the "Smart Highlighting" style (below) will be coloured overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v8.0.0 or newer), "Selected text colour" will honor the foreground colour as well.
-* Caret colour [foreground only] ⇒ This sets the colour for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.
-* Edge colour [foreground only] ⇒ Colour for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are enabled as Background Mode, this style's "foreground" colour will be used as the background colour for text that's beyond the edge.
-* Line number margin [background and foreground] ⇒ If "Display line number" is enabled in [Preferences > Editing](#editing), this sets the style for those line numbers.
-* Fold [background and foreground] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area
-* Fold active [foreground only] ⇒ If a given language has folding, this will give the colour for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area
-* Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colours for the margin-region; it will be coloured with a checkerboard-like pattern (a dense version of `░`)
-* White space symbol [foreground only] ⇒ If **View > Show Symbol** settings have whitespace shown, then the tabs and whitespace symbols will use this foreground colour.
-* Smart Highlighting [background only] ⇒ If [Smart Highlighting](#highlighting) is enabled and active, this colour will be applied to all matches.  This background colour has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact colour seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual colour will be RGB=[155,255,155].)
-* Find Mark Style [background only] ⇒ If you have used the **Search > Mark** dialog to mark text, this style will be applied to the background.  Like the "Smart Highlighting" style, this background has about 60% transparency, so the exact colour seen will depend on other styles for this text, combined with this setting.
-* Mark Style 1 [background only] ⇒ If you select text, then use **Search > Mark All > Using 1st Style**, it will use this background colour for all text matching the current selection.
-* Mark Style 2 [background only] ⇒ If you select text, then use **Search > Mark All > Using 2nd Style**, it will use this background colour for all text matching the current selection.
-* Mark Style 3 [background only] ⇒ If you select text, then use **Search > Mark All > Using 3rd Style**, it will use this background colour for all text matching the current selection.
-* Mark Style 4 [background only] ⇒ If you select text, then use **Search > Mark All > Using 4th Style**, it will use this background colour for all text matching the current selection.
-* Mark Style 5 [background only] ⇒ If you select text, then use **Search > Mark All > Using 5th Style**, it will use this background colour for all text matching the current selection.
-* Incremental highlighting all [background only] ⇒ If you use the "Highlight all" feature of the **Search > Incremental Search**, the results will be coloured based on this style.
-* Tags match highlighting [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is enabled, this background colour will be used for the opening and closing HTML/XML tags.
-* Tag attribute [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is enabled, this background colour will be used for attributes inside the HTML/XML tags.
-* Active tab focused indicator [foreground only] ⇒  If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is enabled, this foreground colour will be used for drawing a thick bar along the long edge of the tab name of the active tab in the active view, to emphasize active tab
-* Active tab unfocused indicator [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is enabled, and if both editor views are visible, this foreground colour will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
-* Active tab text [foreground only] ⇒ Selects the colour to be used for the filename displayed in the titlebar of the active tab.
-* Inactive tabs [background and foreground] ⇒ Selects the colour to be used for the filename displayed in the titlebars of all inactive tabs.
-* URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is enabled, when your mouse cursor is hovering over a URL, or if the caret is inside the URL text, then the URL's foreground colour will follow this setting.
+* Selected text colour [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is checked, the "Smart Highlighting" style (below) will be colored overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v8.0.0 or newer), "Selected text colour" will honor the foreground color as well.
+* Caret colour [foreground only] ⇒ This sets the color for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.
+* Edge colour [foreground only] ⇒ Color for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.
+* Line number margin [background and foreground] ⇒ If "Display line number" is checked in [Preferences > Editing](#editing), this sets the style for those line numbers.
+* Fold [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area
+* Fold active [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area
+* Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`)
+* White space symbol [foreground only] ⇒ If **View > Show Symbol** settings have whitespace shown, then the tabs and whitespace symbols will use this foreground color.
+* Smart Highlighting [background only] ⇒ If [Smart Highlighting](#highlighting) is checked and active, this color will be applied to all matches.  This background color has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact color seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual color will be RGB=[155,255,155].)
+* Find Mark Style [background only] ⇒ If you have used the **Search > Mark** dialog to mark text, this style will be applied to the background.  Like the "Smart Highlighting" style, this background has about 60% transparency, so the exact color seen will depend on other styles for this text, combined with this setting.
+* Mark Style 1 [background only] ⇒ If you select text, then use **Search > Mark All > Using 1st Style**, it will use this background color for all text matching the current selection.
+* Mark Style 2 [background only] ⇒ If you select text, then use **Search > Mark All > Using 2nd Style**, it will use this background color for all text matching the current selection.
+* Mark Style 3 [background only] ⇒ If you select text, then use **Search > Mark All > Using 3rd Style**, it will use this background color for all text matching the current selection.
+* Mark Style 4 [background only] ⇒ If you select text, then use **Search > Mark All > Using 4th Style**, it will use this background color for all text matching the current selection.
+* Mark Style 5 [background only] ⇒ If you select text, then use **Search > Mark All > Using 5th Style**, it will use this background color for all text matching the current selection.
+* Incremental highlighting all [background only] ⇒ If you use the "Highlight all" feature of the **Search > Incremental Search**, the results will be colored based on this style.
+* Tags match highlighting [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for the opening and closing HTML/XML tags.
+* Tag attribute [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for attributes inside the HTML/XML tags.
+* Active tab focused indicator [foreground only] ⇒  If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the active tab in the active view, to emphasize active tab
+* Active tab unfocused indicator [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, and if both editor views are visible, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
+* Active tab text [foreground only] ⇒ Selects the color to be used for the filename displayed in the titlebar of the active tab.
+* Inactive tabs [background and foreground] ⇒ Selects the color to be used for the filename displayed in the titlebars of all inactive tabs.
+* URL hovered [foreground only] ⇒ If [Preferences > MISC. > Clickable Link](#misc) is checked, when your mouse cursor is hovering over a URL, or if the caret is inside the URL text, then the URL's foreground color will follow this setting.
 * Document map [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
 * EOL Custom Color [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing)
 
@@ -528,7 +528,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Line Number [background and foreground] ⇒ For each line with a match, the line number of that match will be formatted according to this style.
 * Hit Word [background and foreground] ⇒ The matching word will be formatted using this style inside the search results.
 * Selected Line [background and foreground] ⇒ <!-- This appears to not affect things in v7.7.1; should this be filed as a bug; this was discussed in a recent forum post, though I cannot find it right now -->
-* Current line background [background only] ⇒ As you click on lines in the search results window, this style will be used to set the background colour of the search-result-window line that was clicked.
+* Current line background [background only] ⇒ As you click on lines in the search results window, this style will be used to set the background color of the search-result-window line that was clicked.
 
 ### Configuration file: `stylers.xml`
 
@@ -570,7 +570,7 @@ For entries on all the tabs except the `Scintilla commands` tab, the Clear butto
 
 For entries on the `Scintilla commands` tab, the Clear button is disabled and will not work; instead, select Modify to get into the mode that allows you to edit `Scintilla commands` shortcuts: if there are multiple shortcuts listed in the left pane, click on the shortcut you wish to remove, and click the Remove button; if there is only one shortcut remaining in the left pane, click on it, choose `None` from the key-combo pulldown menu on the right, then click Apply.  Either way, when done deleting shortcuts from this command, hit OK to finish.
 
-The Delete button is usually disabled.  However, in the `Macros` and `Run commands` menu, the Delete button will be enabled, and it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
+The Delete button is usually disabled (greyed out).  However, in the `Macros` and `Run commands` menu, the Delete button will be enabled (not greyed out), and clicking it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
 
 The Close button will close the dialog box.
 
@@ -630,7 +630,7 @@ This menu shows the active syntax highlighter lexer (including [User Defined Lan
 
 ### Preferences for Advanced Users
 
-The following settings are for rather specific needs and could cause some confusion if they are enabled. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
+The following settings are for rather specific needs and could cause some confusion if they are changed from default behavior. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
 
 * Allow regex backward search: Backward regex searching is forbidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
 ```

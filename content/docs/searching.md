@@ -38,14 +38,14 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 
 ### Find / Replace tabs
 
-All the dialog-based have certain features in common, though some are disabled under certain circumstances.
+All the dialog-based have certain features in common, though some are not available (greyed out) under certain circumstances.
 
 * **Find what** edit box with dropdown history: this is the text you are searching for
 * **Replace with** edit box with dropdown history: this is the text that will replace what was matched
 
-* **☐ In selection**: If you have a region of text selected, and **In selection** is enabled, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
+* **☐ In selection**: If you have a region of text selected, and **In selection** is checked, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
 * **☐ Backward direction**: normally, searches go forward (down the page); with this option, they will go backward (up the page)
-* **☐ Match whole word only**: if enabled, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").
+* **☐ Match whole word only**: if checked, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").
     * For ASCII text (text that only has newlines, tabs, and characters with codepoints 32 - 126):
         - If the left and right characters of your search string are both "word characters" (letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then **Match whole word only** will only allow a match if the characters to the left and right of the match are _non_-word-characters or spaces or the beginning or ending of the line.
         - If the left and right characters of your search string are both non-word characters (so _not_ letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then the text to the left and right of your match must be word charcters, spaces, and/or beginning or ending of the line.
@@ -53,14 +53,14 @@ All the dialog-based have certain features in common, though some are disabled u
     * For non-ASCII text, the general concepts are the same; however, some edge cases may behave differently than you expect, and with thousands of possible Unicode characters and millions of combinations of pairs of Unicode characters, this manual _cannot_ contain a full description.
     * With either ASCII or full Unicode text, if you want _full_ control of what counts as a "word" or a "word boundary", use **Search Mode** = **Regular Expression** instead of using **Normal** with **Match whole word only**: regular expressions allow you full and precise control of what is allowed before and after what _you_ consider a "whole word", rather than relying on someone else's definition.
 
-* **☐ Match case**: if enabled, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
-* **☐ Wrap Around**: if enabled, when the search reaches the end of the document, it will wrap around to the beginning and continue searching
+* **☐ Match case**: if checked, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
+* **☐ Wrap Around**: if checked, when the search reaches the end of the document, it will wrap around to the beginning and continue searching
 
 * **Search Mode**: this determines how the text in the **Find what** and **Replace with** will be treated
     * **☐ Normal**: all text is treated literally.
     * **☐ Extended (\n, \r, \t, \0, \x...)**: use certain "wildcards", as described in [Extended Search Mode (below)](#extended-search-mode)
     * **☐ Regular Expression**: uses the Boost regular expression engine to perform very power search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions)
-        * **☐ . matches newline**: in regular expressions, with this disabled, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this enabled, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
+        * **☐ . matches newline**: in regular expressions, with this unchecked, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this checked, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
 
 * **☐ Transparency**: these settings affect the dialog box.  Normally, the dialog box is opaque (can't see the text beneath), but with these settings, it can be made semi-transparent (can partially see the text beneath)
     * **☐ On losing focus**: if this is chosen, the dialog will be opaque when you are actively in the dialog box, but if you click in the Notepad++ window, the dialog will become semi-transparent
@@ -81,7 +81,7 @@ The various action buttons available include:
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
     * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
 * **Replace All**: With **☑ Wrap Around** ticked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unticked, it searches from the caret to the end of the file (if **☐ Backward direction** is unticked) or from the beginning of the file to the caret (if **☑ Backward direction** is ticked) and replaces all occurrences found in that region.
-    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the /g global flag enabled that is available in the regular expression engines of some programming-languages.
+    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
         Previous<br>Selection | Wrap Around | Backward Direction | In Selection | Range
@@ -105,7 +105,7 @@ When a find-family function is invoked via the Search menu, toolbar, or keyboard
 
 A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A valid **Replace with** edit box entry length ranges from 0 to 2046 characters.  Any text entered/pasted into these boxes beyond the 2046th character is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.
 
-Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become deselected and disabled.  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
+Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become unchecked and disabled (greyed out).  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
 The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  For a given run of Notepad++, the search history can grow rather large; when Notepad++ is exited, it only saves the last 10 items in the history by default; number of search/replace terms retained may be changed by editing the `config.xml` configuration file, per [Preferences for Advanced Users](../preferences/#preferences-for-advanced-users).  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse (or, equivalently, pressing Alt+down) to "drop down" the box, or directly (without dropping) by using the down (and/or up) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an up or down arrow key when they really mean to press left or right arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.  Unwanted items in the histories may be removed by dropping-down the box, highlighting the item to be removed, and pressing the Delete key (requires version 7.9.3 or later).
 
@@ -145,17 +145,17 @@ If users need to exclude folders with the same name (or names matched the specif
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
-* **☐ Follow current doc** ⇒ if enabled, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
-* **☐ In all sub-folders** ⇒ if enabled, it will recursively search sub-folders of the given folder.
-* **☐ In hidden folders** ⇒ if enabled, it will search hidden sub-folders as well as normally-visible sub-folders.
+* **☐ Follow current doc** ⇒ if checked, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
+* **☐ In all sub-folders** ⇒ if checked, it will recursively search sub-folders of the given folder.
+* **☐ In hidden folders** ⇒ if checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
 ### Find in Projects tab
 
 Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
 
-* **☐ Project Panel 1** ⇒ if enabled, all files listed in Project Panel 1 will be included into the search/replace operation
-* **☐ Project Panel 2** ⇒ if enabled, all files listed in Project Panel 2 will be included into the search/replace operation
-* **☐ Project Panel 3** ⇒ if enabled, all files listed in Project Panel 3 will be included into the search/replace operation.
+* **☐ Project Panel 1** ⇒ if checked, all files listed in Project Panel 1 will be included into the search/replace operation
+* **☐ Project Panel 2** ⇒ if checked, all files listed in Project Panel 2 will be included into the search/replace operation
+* **☐ Project Panel 3** ⇒ if checked, all files listed in Project Panel 3 will be included into the search/replace operation.
 
 Only Project Panels which are currently open can be searched. The checkmarks of Project Panels which are not currently open are grayed out.
 
@@ -287,7 +287,7 @@ There are currently two ways to configure the **Search results** window behavior
 
 These are checkmarkable menu items; invoke the menu item once to turn the feature on (checkmark will appear on the menu) and run it again to turn it off (checkmark no longer appears). These configuration settings are remembered by Notepad++ until their states are again changed by the user.
 
-When **Word wrap long lines** is turned on (enabled), the **Search results** window text will wrap at the right edge, and be continued on the next visible line.  With the feature off, the window will have a horizontal scrollbar so that the rightmost text on long lines may be scrolled into the user's view.  This feature was introduced in Notepad++ version 7.9(.0).
+When **Word wrap long lines** is turned on (checked), the **Search results** window text will wrap at the right edge, and be continued on the next visible line.  With the feature off, the window will have a horizontal scrollbar so that the rightmost text on long lines may be scrolled into the user's view.  This feature was introduced in Notepad++ version 7.9(.0).
 
 By default, the **Search results** window accumulates all of your prior **Find All in ...** type searches.  When a new search is executed, old results get collapsed so that only the most-recent results are fully visible at the top of the window.  The old searches remain toward the bottom of the window for possible future reference by expanding them. One use for retaining results from prior searches is to do several different searches, and then execute **Open All** command from the window's right-click context menu -- this will open all files hit by any previous series of possibly disparate searches.
 
@@ -319,9 +319,9 @@ If you've highlighted some groups of text in this manner, and you wish to copy t
 
 Note: Unfortunately, the Mark All submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.
 
-You can also cause all occurrences of the word at the caret to get dynamically highlighted if you enable Smart Highlighting; the mark style then is Settings -&gt; Style Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
+You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is Settings -&gt; Style Configurator -&gt; Global Styles , Smart Highlighting. You may choose there whether the matching should be sensitive to case.
 
-You enable smart highlighting through Settings -&gt; Preferences -&gt; MISC -&gt; Smart highlighting, Enable smart highlighting. By default, the highlighting is case insensitive, which may be a problem sometimes. Then just toggle Settings -&gt; Preferences -&gt; MISC -&gt; Highlighting is case sensitive on.  (See also [Style Configurator](../preferences/#style-configurator) and [Preferences](../preferences/#preferences).)
+You activate smart highlighting through **Settings > Preferences > MISC > Smart highlighting, Enable smart highlighting**. By default, the highlighting is case insensitive, which may be a problem sometimes. Then just toggle **Settings &gt; Preferences &gt; MISC &gt; Highlighting is case sensitive** on.  (See also [Style Configurator](../preferences/#style-configurator) and [Preferences](../preferences/#preferences).)
 
 
 ## Finding characters in a specific range
@@ -382,7 +382,7 @@ Notepad++ regular expressions use the Boost regular expression library v1.78 (as
 
 The Notepad++ Community has a [FAQ on other resources for regular expressions](https://notepad-plus-plus.org/community/topic/15765/faq-desk-where-to-find-regex-documentation).
 
-Note: Starting in v7.8.7, regex backward search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to enable this option.
+Note: Starting in v7.8.7, regex backward search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to activate this option.
 
 **Important Note**: Syntax that works in the **Find What:** box for searching will not always work in the **Replace with:** box for replacement.  There are different syntaxes.  The [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax work in both; other than that, see the individual sections for [Searches](#regex-special-characters-for-searches) vs [Substitutions](#substitutions) for which syntaxes are valid in which fields.
 

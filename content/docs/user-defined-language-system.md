@@ -36,13 +36,13 @@ Ivan Radić has created the definitive guide to the nuts and bolts of UDL versio
 
 * The **Folder & Default** tab allows setting the default style, setting up keywords (or characters) that will allow code folding, and setting up styles for those keywords.  The **Open**, **Middle**, and **Close** boxes under each folding-type define the triggers for the start, middle, and end of folding.  For example, with `if`, `else`, and `endif`, it will define fold regions so that you can fold from `if` to `else`, from `else` to `endif`, and (assuming there is no `else` clause) from `if` to `endif`.  **Folding in comment** allows comments to include folding; **Folding in code 1 style** allows the triggers to be touching something else (so with a trigger of `{`, it will match `if{` or `if {`), whereas **Folding in code 2 style** requires there be whitespace around the trigger (so `if{` would _not_ match an **Open**-trigger of `{`).
 
-* The **Keywords List** tab allows defining eight (8) different groups of keywords, so you can style different groups of words differently (like built-in functions vs. flow control keywords).  Separate each keyword by a space (and that means that spaces are not allowed in keywords unless you put quotes around the phrase).  If **☐ Prefix Mode** is enabled for a given group, that means that it will match anything that _starts_ with your string (so a keyword of `for` would match `for`, `forth`, and `format` if that option is enabled).
+* The **Keywords List** tab allows defining eight (8) different groups of keywords, so you can style different groups of words differently (like built-in functions vs. flow control keywords).  Separate each keyword by a space (and that means that spaces are not allowed in keywords unless you put quotes around the phrase).  If **☐ Prefix Mode** is checked for a given group, that means that it will match anything that _starts_ with your string (so a keyword of `for` would match `for`, `forth`, and `format` if that option is checked).
 
     As a point of interest, you shouldn't have a given keyword in more than one keyword-group _or_ folder-group.  If you want `if`/`else`/`endif` to cause block-folding, do not also put them in one of your keyword-groups.
 
 * The **Comment & Number** tab allows setting styles for comments and for numbers.
     * **Line Comment Position** allows you to decide whether "line comments" can start anywhere on the line, must start at the beginning, or can start anywhere on the line as long as it's only whitespace before the comment.
-    * **☐ Allow folding of comments** will enable comments to be foldable.
+    * **☐ Allow folding of comments** will allow comments to be foldable.
     * **Comment line style** defines the style  for "line comments" -- comments that proceed from the opening-trigger to the end of the line.
     * **Comment style** defines the style for multiline-comments.
     * **Number style** defines the style for numbers.  The various **Prefix**es, **Suffix**es, and **Extra**s allow you to define extra numeric representations (useful for hexadecimal, binary, octal and similar representations, as well as for defining currency as a number).  The **Range** allows you to define a syntax for ranges, so that two numbers with a listed token in between will still be treated as a number.  (However, there may be conflicts if the **Range** setting matches one from **Operators & Delimiters**
@@ -66,7 +66,7 @@ The differences between those two methods are when the UDL will be available to 
 Individual UDL files are stored in one of two `userDefineLangs` subfolders.  Each XML file in that folder is used to define one or more UDL.
 
 1. `%AppData%\Notepad++\userDefineLangs`: this is the default location for most Notepad++ installations
-2. `<notepad++_directory>\userDefineLangs`: this is the location for portable versions, or if you turned on "local configuration mode" (or disabled `%AppData%`) during the installation.  `<notepad++_directory>` refers to whatever folder the `notepad++.exe` application executable is located.
+2. `<notepad++_directory>\userDefineLangs`: this is the location for portable versions, or if you turned on "local configuration mode" (or unchecked `Use %AppData%`) during the installation.  `<notepad++_directory>` refers to whatever folder the `notepad++.exe` application executable is located.
 
 If you created or imported a UDL using the **User Defined Languages** dialog inside Notepad++, they will be in the `userDefineLang.xml` file.  This single file often holds multiple UDL definitions.
 
@@ -75,14 +75,14 @@ If you created or imported a UDL using the **User Defined Languages** dialog ins
 
 ## UDL and Themes
 
-The User Defined Languages are (mostly) _not_ affected by your [active theme](../preferences/#style-configurator).  This means that if you change theme (including going to [Dark Mode](../preferences/#dark-mode) which changes the theme to `DarkModeDefault`), you might have to edit your UDL colors to be readable.  The UDL doesn't override most of the settings in the [Style Configurator's "Global Styles"](../preferences/#global-styles) settings for the active theme, so some of the settings might make your UDL colors hard to read: 
+The User Defined Languages are (mostly) _not_ affected by your [active theme](../preferences/#style-configurator).  This means that if you change theme (including going to [Dark Mode](../preferences/#dark-mode) which changes the theme to `DarkModeDefault`), you might have to edit your UDL colors to be readable.  The UDL doesn't override most of the settings in the [Style Configurator's "Global Styles"](../preferences/#global-styles) settings for the active theme, so some of the settings might make your UDL colors hard to read:
 
 * the UDL overrides the foreground color for text, and the background color for text (if transparency is not activated); however, the UDL does _not_ override the background color for spaces or the blank space that fills the unused portions of the editor view, so if your UDL default background does not match the theme's default background, the UDL-based document may look strange
 * the UDL does not override the **Selected text colour** or **current line background**, so if your UDL's colors do not provide good contrast with these settings from the theme, selected text will be hard to read
 
 Since you can set the colors of a UDL to whatever you want, you can manually make it match your theme.  In all, it is best to set the UDL's **Folder & Default > Default Style** to match the foreground and background colors of your active theme, which should balance well with the other of the theme's Global Styles settings.  Further, setting keywords groups and numbers and comments and operators to match the settings for the keywords, numbers, and comments of the other languages that you use in your active theme will help make UDL files fit the active theme better.
 
-If you don't want to override the foreground and/or background text color for some parts of your UDL, activate transparency. This enables to create an UDL that works for multiple themes. For example activate transparency for background and foreground color of your UDL default style. Then activate transparency for background color of your keywords too and select a foreground color for your keywords that works for multiple themes.
+If you don't want to override the foreground and/or background text color for some parts of your UDL, activate transparency for those styles. This allows you to create an UDL that works for multiple themes. For example, activate transparency for background and foreground color of your UDL default style,  then activate transparency for background color of your keywords too, and select a foreground color for your keywords that works for multiple themes.
 
 If you want to define multiple UDL using the same basic color scheme as your active theme, you can start by setting the colors of the default **User Defined Language**, then **Create New** for each UDL that you want to match that scheme, customizing the rules for each new UDL.  (As soon as you exit Notepad++, the changes to the default UDL will be lost, but all the themes that you created from that will keep the colors they inherited.)
 
