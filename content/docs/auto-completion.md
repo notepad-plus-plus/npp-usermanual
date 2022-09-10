@@ -37,9 +37,9 @@ Different from function and word completion which can be triggered automatically
 
 ### Automatic completion
 
-The completion list can be triggered automatically as you type, via settings in [**Settings > Preferences > Auto-Completion**](../preferences/#auto-completion): Auto-Completion is enabled by a checkbox. Additionally there is a setting **From X th character**, accepting a the minimum length of a prefix needed before the completion list is shown (some people like 2, some 3, some 4...); and, there is a setting to specify which candidates should be used: words, functions, or both.
+The completion list can be triggered automatically as you type, via settings in [**Settings > Preferences > Auto-Completion**](../preferences/#auto-completion): Auto-Completion is controlled by a checkbox. Additionally there is a setting **From X th character**, accepting a the minimum length of a prefix needed before the completion list is shown (some people like 2, some 3, some 4...); and, there is a setting to specify which candidates should be used: words, functions, or both.
 
-With auto-completion enabled, after typing a prefix of at least the minimum length, a list is presented with all the available words from the selected list(s) that match what's been typed. (If none match, no list is shown.) The list may be a single entry long, or it may contain multiple items which require navigation, but either way you can select the match and, it is hoped, save yourself some typing.  You can use arrow keys (or the mouse) to navigate through the entries in the popup; hitting the completion key or double-clicking on the choice will select that choice and enter it as if you had just typed the whole word; hitting the `Esc` key will exit the auto-completion popup _without_ choosing one of the suggestions.
+With auto-completion active, after typing a prefix of at least the minimum length, a list is presented with all the available words from the selected list(s) that match what's been typed. (If none match, no list is shown.) The list may be a single entry long, or it may contain multiple items which require navigation, but either way you can select the match and, it is hoped, save yourself some typing.  You can use arrow keys (or the mouse) to navigate through the entries in the popup; hitting the completion key or double-clicking on the choice will select that choice and enter it as if you had just typed the whole word; hitting the `Esc` key will exit the auto-completion popup _without_ choosing one of the suggestions.
 
 If instead of selecting, you keep typing, items that no longer match will be removed from the list, and it will disappear entirely once you've typed a string that matches none of the selections. (Note that if you dismiss the list with Esc, and then keep typing, and what you type continues to match wordlist entries, then the list will reappear.)
 
@@ -61,7 +61,7 @@ Through [**Settings > Preferences > Auto-Completion**](../preferences/#auto-comp
 
 In each case, when the opening character is typed, the closing character will automatically be inserted, with the caret placed between the two.
 
-Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this enabled, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the caret placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
+Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this feature active, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the caret placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
 
 ### Displayed Completion List
 
@@ -77,7 +77,7 @@ The keyboard shortcuts for manual completion can be adjusted in [**Settings > Sh
 
 Notepad++ uses XML configuration files to define the per-language function and parameter auto-completion.  Those AutoComplete files are located in the `autoCompletion` subdirectory of the Notepad++ install folder.  (In older versions, Notepad++ v7.6.1 and earlier, they were found in the `plugins\APIs` subdirectory of the intstall folder.)
 
-The syntax of AutoComplete files is simple, but does have a few rules, most importantly correct syntax and proper sorting. If the syntax is incorrect, the XML file will fail to load and AutoComplete will be disabled.
+The syntax of AutoComplete files is simple, but does have a few rules, most importantly correct syntax and proper sorting. If the syntax is incorrect, the XML file will fail to load and AutoComplete will be not be available for that file type.
 
 Improper sorting (see below) can cause the AutoComplete function to behave erratic, causing it to fail on certain words.
 
