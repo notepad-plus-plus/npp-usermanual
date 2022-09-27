@@ -186,8 +186,8 @@ usage list.  These are intended for advanced usage or other special circumstance
   a command-line option when you try to print the file from the Explorer Context menu.
   Enabling this option allows Notepad++ to recognize that option, and convert it internally
   to the official `-quickPrint` option.
-* `-z`: Strips out any command line arguments found after this option. Its only intended and
-  supported use is for the [Notepad Replacement](../other-resources/#notepad-replacement)
+* `-z`: Causes Notepad++ to ignore the next command line argument token (single word, or phrase in quotes). The only intended and
+  supported use for this option is for the [Notepad Replacement](../other-resources/#notepad-replacement) syntax.
 
 ## Installer Options
 
