@@ -148,11 +148,12 @@ These define the margin style, border width, and edge settings.  (This page is n
     * `☐ Display`: shows the line numbers to the left of the text (renamed in v7.9.2, known as **Editing** > `☐ Display line number`)
     * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed (this matches the behavior prior to v7.9.2)
     * `☐ Constant width`: the line number display will have enough width for any line number in the document (new to v7.9.2)
-* `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
 * **Padding**: (new to v8.0.0)
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
+* `☐ Display Change History`: shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles)
+* `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
 
 ### New Document
 
@@ -496,6 +497,8 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Caret colour [foreground only] ⇒ This sets the color for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.
 * Edge colour [foreground only] ⇒ Color for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.
 * Line number margin [background and foreground] ⇒ If "Display line number" is checked in [Preferences > Editing](#editing), this sets the style for those line numbers.
+* Bookmark margin [background] ⇒ The background of the Bookmark margin will be set to this color, if the margin is enabled.
+* Change History margin ⇒ The background of the Change History margin will use this color, if the margin is enabled.
 * Fold [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area
 * Fold active [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area
 * Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`)
