@@ -66,6 +66,8 @@ The numbered entries will activate the _Nth_ tab. The **Next tab** and **Previou
 
 The **Move Tab Forward** and **Move Tab Backward** will change the current file's position in the tab list one slot at a time, forward or backward.  The tab order can also be changed by dragging the tabs to the new position in the tab-bar.
 
+The **Apply Color #** and **Remove Color** will apply the indicated color to the highlight portion of the tab bar, or remove the color and return it to the default tab color of the active theme. (New to v8.4.6)
+
 ## Wrapping
 
 The **Word wrap**[↗](#remembered-settings "Remembered Setting") entry will toggle whether or not long lines will be wrapped in the display, and affects all tabs in both Views.
