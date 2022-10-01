@@ -132,6 +132,40 @@ Windows Registry Editor Version 5.00
   2. If **Settings > Preferences > General > Tab Bar > Double click to close document** is checked, you can double-click the tab's title to close that tab
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
 
+#### Tab Bar Right Click Menu
+
+When you right click on the title for a tab, you get a context menu for manipulating that tab.
+- `Close`: closes this file's tab
+- `Close Mutiple Tabs >`:
+  - `Close All But This`: Closes all files except this file
+  - `Close All to the Left`: Closes all files that are to the right of this file on the tab bar
+  - `Close All to the Right`: Closes all files that are to the left of this file on the tab bar
+  - `Close All Unchanged`: Closes all files that do not have unsaved changes (leaves only files that have unsaved changes)
+- `Save`: Saves the file (disabled/greyed out if there are no unsaved changes)
+- `Save As`: Allows you to save the current file under a new name
+- `Open Into >`:
+  - `Open Containing Folder in Explorer`: Opens this file's folder in the Windows Explorer
+  - `Open Containing Folder in cmd`: Opens this file's folder in the `cmd` command prompt
+  - `Open Containing Folder as Workspace`: Opens this file's folder as a [Folder as Workspace](../session/#folder-as-workspace)
+- `Rename`: Renames this file
+- `Move to Recyle Bin`: Deletes the current file (placing it safely in Window's Recycle Bin)
+- `Reload`: Reloads this file from disk
+- `Print`: Prints this file
+- `Read-Only`: Sets this file's Notepad++\-specific read-only flag (see more in the [**Edit** menu description](../editing/#edit-menu))
+- `Clear Read-Only Flag`: Clears this file's read-only flag for the Windows OS (see more in the [**Edit** menu description](../editing/#edit-menu))
+- `Copy to Clipboard >`
+  - `Copy Full File Path`: Copies the full file path (drive, directory, and filename) to the Windows Clipboard
+  - `Copy Filename`: Copies just the filename (no drive or directory) to the Windows Clipboard
+  - `Copy Current Dir. Path`: Copies the file's directory (drive and directory, but not the  filename) to the Windows Clipboard
+- `Move Document >`
+  - `Move to Other View`: Moves the tab from one view to the other
+  - `Clone to Other View`: Makes a tab for the same file in the other view
+  - `Move to New Instance`: Moves the tab from this Notepad++ instance to a newly-created instance (only works on named files that have no unsaved changes)
+  - `Open in New Instance`: Makes a tab in a new Notepad++ instance which contains the same file as this tab (only works on named files that have no unsaved changes)
+- `Apply Color to Tab >` (new to v8.4.6)
+  - `Apply Color #`: Applies the indicated color to the highlight portion of the tab bar.  (Applying a different color will _change_ the color, not combine the colors together.  Each tab can only have one color.)
+  - `Remove Color`: Removes the color of the tab, returning to the default color scheme
+
 ### Menu Bar
 
 The menu bar of Notepad++ has a variety of menus, including **File** (for generic file operations like open and close), [**Edit**](../editing#edit-menu), [**Search**](../searching/), and [**View**](../views/), **Encoding** (which affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar), **Language** (for [syntax highlighting](../programming-languages/)), [**Settings**](../preferences/), **Tools** (with a couple of built-in utilities), [**Macro**](../macros/), [**Run**](../config-files/#userdefinedcommands) (for running external commands), [**Plugins**](../plugins/), and the **Window** menu (for accessing open files already open in Notepad++).
