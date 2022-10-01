@@ -18,9 +18,18 @@ files and simply removing or adding them is enough.
 
 The Plugins Admin allows you to easily install plugins that are in the
 Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to
-install, then select Install.
+install, then select the **Install** button.
 
 ![](/docs/images/pluginsAdmin.png)
+
+The Plugins Admin has four tabs:
+- **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
+- **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
+- **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
+- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++: 
+  - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
+
+The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
 
 ### Install plugin manually
 
