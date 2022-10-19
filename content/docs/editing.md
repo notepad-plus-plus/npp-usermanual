@@ -60,9 +60,9 @@ When Notepad++ is told to interpret a file as Unicode (the entries starting with
 
 ## Change History
 
-Notepad++ has a column in the margin section which indicates which lines have been changed since the file was last loaded, controlled by a checkbox in [Settings > Preferences > Margin / Border / Edge](../preferences/#margins-border-edge) with the background color set by the [Settings > Style Configurator > Global Styles > Change History margin](../preferences/#global-styles) (new to v8.4.6) 
+Notepad++ has a column in the margin section which indicates which lines have been changed since the file was last loaded, controlled by a checkbox in [Settings > Preferences > Margin / Border / Edge](../preferences/#margins-border-edge) with the background color set by the [Settings > Style Configurator > Global Styles > Change History margin](../preferences/#global-styles) (new to v8.4.6)
 
-![](./images/ChangeHistoryColors.png)
+![](../images/ChangeHistoryColors.png)
 
 - When the file is first loaded (or a new file is created), no lines have a color in that margin column.
 - If a line is changed (added or edited) since the most recent load or save, it will be orange. (This is `Modified but unsaved` in the image.)
