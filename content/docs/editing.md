@@ -58,6 +58,18 @@ When Notepad++ is told to interpret a file as ANSI or any of the Character Sets 
 
 When Notepad++ is told to interpret a file as Unicode (the entries starting with `UTF-8` or `UTF-16` in the [**Encoding** menu](../preferences/#encoding-menu)), the Character Panel will show the same characters for values 128-255 as the default codepage character set on the user's system (viewable as `Current ANSI codepage` in the **? > Debug Info** menu entry).  In this case, for values 128-255, the `Value` column is meaningless -- only the `Character` shown is important.  If this panel is used to insert the character into the active document, the correct Unicode character bytes will be used instead of the value as in the simpler ANSI case.  For values from 0-127, the character/value pair _is_ meaningful, because for this range the ANSI set of characters -- the true ASCII set -- line up with the same characters and values in the Unicode set.
 
+## Change History
+
+Notepad++ has a column in the margin section which indicates which lines have been changed since the file was last loaded, controlled by a checkbox in [Settings > Preferences > Margin / Border / Edge](../preferences/#margins-border-edge) with the background color set by the [Settings > Style Configurator > Global Styles > Change History margin](../preferences/#global-styles) (new to v8.4.6) 
+- When the file is first loaded (or a new file is created), no lines have a color in that margin column.
+- If a line is changed (added or edited) since the most recent load or save, it will be orange.
+- After the changes to the file are saved, any lines that have been changed since the file was loaded will be green.
+    - _Note_: If you tell Notepad++ to reload the file from disk, _all_ lines will be green.
+    - Multiple saves will leave those lines green, even if they weren't changed since the previous save.
+    - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use `Ctrl+W` then `Ctrl+Shift+T`).
+- If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (sopme call it "olive" or "yellow-green").
+- If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan").
+
 ## Edit Menu
 
 Aside from the normal undo/redo/copy/paste entries, there are a number of sub-menus to the **Edit** menu, which group together various categories of editing-related commands, and a few other editing commands in the main **Edit** menu.
