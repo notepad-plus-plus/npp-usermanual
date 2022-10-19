@@ -61,14 +61,17 @@ When Notepad++ is told to interpret a file as Unicode (the entries starting with
 ## Change History
 
 Notepad++ has a column in the margin section which indicates which lines have been changed since the file was last loaded, controlled by a checkbox in [Settings > Preferences > Margin / Border / Edge](../preferences/#margins-border-edge) with the background color set by the [Settings > Style Configurator > Global Styles > Change History margin](../preferences/#global-styles) (new to v8.4.6) 
+
+![](./images/ChangeHistoryColors.png)
+
 - When the file is first loaded (or a new file is created), no lines have a color in that margin column.
-- If a line is changed (added or edited) since the most recent load or save, it will be orange.
-- After the changes to the file are saved, any lines that have been changed since the file was loaded will be green.
+- If a line is changed (added or edited) since the most recent load or save, it will be orange. (This is `Modified but unsaved` in the image.)
+- After the changes to the file are saved, any lines that have been changed since the file was loaded will be green. (This is `Modified but saved` in the image.)
     - _Note_: If you tell Notepad++ to reload the file from disk, _all_ lines will be green.
     - Multiple saves will leave those lines green, even if they weren't changed since the previous save.
     - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use `Ctrl+W` then `Ctrl+Shift+T`).
-- If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (sopme call it "olive" or "yellow-green").
-- If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan").
+- If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (sopme call it "olive" or "yellow-green").  (This is `Revert to mopdified` in the image.)
+- If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan"). (This is `Revert to original` in the image.)
 
 ## Edit Menu
 
