@@ -505,7 +505,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * Edge colour [foreground only] ⇒ Color for the vertical edge from [Preferences > Editing](#editing).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.
 * Line number margin [background and foreground] ⇒ If "Display line number" is checked in [Preferences > Editing](#editing), this sets the style for those line numbers.
 * Bookmark margin [background] ⇒ The background of the Bookmark margin will be set to this color, if the margin is enabled.
-* Change History margin ⇒ The background of the Change History margin will use this color, if the margin is enabled.
+* Change History margin [background] ⇒ The background of the Change History margin will use this color, if the margin is enabled. (new to v8.4.6)
 * Fold [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area
 * Fold active [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area
 * Fold margin [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`)
