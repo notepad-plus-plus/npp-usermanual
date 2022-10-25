@@ -634,7 +634,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Readability enhancements
 
-* `(?:`_subset_`)` ⇒ A grouping construct for the _subset_ expression that doesn't count as a subexpression (doesn't get numbered or named), but just groups things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.
+* `(?:`_subset_`)` ⇒ A non-capturing grouping construct for the _subset_ expression that doesn't count as a subexpression (doesn't get numbered or named), but just groups things for easier reading of the regex, or for using a quantified amount of that group, with a quantifier located right after that grouping construct.
 
 * `(?#`_comment_`)` ⇒ Comments. The whole group is for humans only and will be ignored in matching text.
 
@@ -665,25 +665,33 @@ The following constructs control how matches condition other matches, or otherwi
 
     Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
 
-* `(?|expression)` ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, you may want the subexpression counter not to be altered by what is in the other branches of the alternation. This construct will just do that.
+* `(?|expression)` ⇒ "Branch Reset" ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, this construction will allow the subexpression counter not to be altered by what is in the other branches of the alternation.
 
-    For example, you get the following subexpression counter values:
+    Put differently, in a normal match, each capture group will increment one counter from the capture-group started to its left; in a branch reset, each alternative resets the capture-group counter, and any capture groups _after_  the branch reset construct will continue numbering based on the largest group number found in one of the branch-reset alternatives.
+
+    For example, consider these two expressions that use alternations, the first one using the non-capture group indicator containing three alternatives, and the second using the branch-reset mechanism containing three alternatives:
 
 ~~~
-#      before  ---------------branch-reset----------- after
-/ (?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
-#      1            2         2  3        2     3     4
+#    -------------------example without branch-reset-----------------
+(?x) ( a )  (?: x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
+#      1   skip     2        3  4        5     6      7  <=== assigned subexpression counter values
+#               first     | second    |  third           <=== alternatives
+
+#              ---------example with branch-reset---------
+(?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
+#      1   skip     2        2  3        2     3      4  <=== assigned subexpression counter values
+#               first     | second    |  third           <=== alternatives
 ~~~
 
-
-    Without the branch reset, `(y)` would be group 3, and `(p(q)r)` would be group 4, and `(t)` would be group 5. With the branch reset, they both report as group 2.
+    Two things to note for the branch-reset example:
+    1. As with the `(?:...)` non-capture grouping indicator in the no-branch-reset, the `(?|...)` branch-reset indicator does not represent a capture-group and gets no group number for itself (hence the "skip")
+    2. It is allowed for one or more alternatives to have fewer capture-group subexpressions defined than other alternates: this means that some group number contents will not be defined if that alternate matches.  For the example text `axyzz`, it matches using the first alternate; since the first alternate does not contain a group 3, group 3 will have an undefined value; but since group 4 comes after the branch reset and matches the final `z`, group 4 will have a value of `z`.  For the example text `apqrz`, it will match the second alternate, where group 2 matches the `pqr` and and group 3 matches the `q`; group 4 will still match the final `z`.
 
 ### Control flow
 Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
 
 
-* `|` ⇒ The alternation operator, which allows matching either of a number of options.  For example, `one|two|three` will match either of `one`, `two` or `three`. Matches are attempted from left to right. Use `(?:)` to match an empty string in such a construct.
-
+* `|` ⇒ The alternation operator, which allows matching either of a number of options.  For example, `one|two|three` will match either of `one`, `two` or `three`. Matches are attempted from left to right. Use `(?:)` inside the alternation to have one of the alternates match an empty string: the subexpression `(A|BC|(?:))` will capture `A` or `BC` or an empty string into that capture-group.
 *  `(?ℕ)` ⇒ Refers to ℕth subexpression. If ℕ is negative, it will use the ℕth subexpression from the end.
 
     Please, note the difference between subexpressions and back-references. For instance, using a similar structure to the one, when searching for a four-letters word being a palindrome, this time, both regexes just find a four-letters word, because each subexpression, signed or not, refers to the regex itself, enclosed in each group and NOT to the present value of each group!
