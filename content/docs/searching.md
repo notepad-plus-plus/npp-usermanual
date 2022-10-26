@@ -671,21 +671,27 @@ The following constructs control how matches condition other matches, or otherwi
 
     For example, consider these two expressions that use alternations, the first one using the non-capture group indicator containing three alternatives, and the second using the branch-reset mechanism containing three alternatives:
 
-~~~
-#    -------------------example without branch-reset-----------------
-(?x) ( a )  (?: x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
-#      1   skip     2        3  4        5     6      7  <=== assigned subexpression counter values
-#               first     | second    |  third           <=== alternatives
+    ~~~
+    #    -------------------example without branch-reset-----------------
+    (?x) ( a )  (?: x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
+    #      1   skip     2        3  4        5     6      7  <=== assigned subexpression counter values
+    #               first     | second    |  third           <=== alternatives
 
-#              ---------example with branch-reset---------
-(?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
-#      1   skip     2        2  3        2     3      4  <=== assigned subexpression counter values
-#               first     | second    |  third           <=== alternatives
-~~~
+    #              ---------example with branch-reset---------
+    (?x) ( a )  (?| x ( y ) z | (p (q) r) | (t) u (v) ) ( z )
+    #      1   skip     2        2  3        2     3      4  <=== assigned subexpression counter values
+    #               first     | second    |  third           <=== alternatives
+    ~~~
+    
+    example text | which alternative is chosen | group contents without branch reset | group contents with branch reset
+    -------------|-----------------------------|-------------------------------------|---------------------------------
+    `axyzz` | first | 1=`a`, 2=`y`, 3=4=5=6=empty, 7=`z` | 1=`a`, 2=`y`, 3=empty, 4=`z`
+    `apqrz` | second | 1=`a`, 2=empty, 3=`pqr`, 4=`q`, 5=6=empty, 7=`z` | 1=`a`, 2=`pqr`, 3=`q`, 4=`z`
+    `atuvz` | third | 1=`a`, 2=3=4=empty, 5=`t`, 6=`v`, 7=`z` | 1=`a`, 2=`t`, 3=`v`, 4=`z`
 
     Two things to note for the branch-reset example:
     1. As with the `(?:...)` non-capture grouping indicator in the no-branch-reset, the `(?|...)` branch-reset indicator does not represent a capture-group and gets no group number for itself (hence the "skip")
-    2. It is allowed for one or more alternatives to have fewer capture-group subexpressions defined than other alternates: this means that some group number contents will not be defined if that alternate matches.  For the example text `axyzz`, it matches using the first alternate; since the first alternate does not contain a group 3, group 3 will have an undefined value; but since group 4 comes after the branch reset and matches the final `z`, group 4 will have a value of `z`.  For the example text `apqrz`, it will match the second alternate, where group 2 matches the `pqr` and and group 3 matches the `q`; group 4 will still match the final `z`.
+    2. It is allowed for one or more alternatives to have fewer capture-group subexpressions defined than other alternates: this means that some group number contents will not be defined if that alternate matches, as is shown by "empty" in the table of results above.
 
 ### Control flow
 Normally, a regular expression parses from left to right linearly. But you may need to change this behavior.
