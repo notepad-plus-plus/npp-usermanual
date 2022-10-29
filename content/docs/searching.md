@@ -698,19 +698,37 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
 
 * `|` ⇒ The alternation operator, which allows matching either of a number of options.  For example, `one|two|three` will match either of `one`, `two` or `three`. Matches are attempted from left to right. Use `(?:)` inside the alternation to have one of the alternates match an empty string: the subexpression `(A|BC|(?:))` will capture `A` or `BC` or an empty string into that capture-group.
-*  `(?ℕ)` ⇒ Refers to ℕth subexpression. If ℕ is negative, it will use the ℕth subexpression from the end.
 
-    Please, note the difference between subexpressions and back-references. For instance, using a similar structure to the one, when searching for a four-letters word being a palindrome, this time, both regexes just find a four-letters word, because each subexpression, signed or not, refers to the regex itself, enclosed in each group and NOT to the present value of each group!
+*  `(?ℕ)` ⇒ Refers to ℕth subexpression (the regex in the expression, not the text matched). If ℕ is negative, it will use the ℕth subexpression from the end.
+
+    This is often called a numbered "recursion", because it acts like a recursive call to execute the same subexpression at multiple places in your full expression without copy/pasting it.
+
+    Please note the difference between the meaning of a numbered recursion and a normal numbered [backreference]([backreference](#capture-groups-and-backreferences)): A normal back-reference is a way to refer to the _values_ from previous capture groups later in the full expression.  This numbered recursion syntax, on the other hand, refers to to the underlying regex from the previous subexpression, not its value.
+
+    For example, using a similar example to the expanding on the the ideas from the backreference palindrome example: with the recursion, both regexes just find any four-letter word, because each subexpression, signed or not, refers to the regex itself, NOT to the specific value found earlier by each group!
 
     * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a four-letter word, when using absolute coordinates
 
     * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a four-letter word, when using relative coordinates
 
-    Actually, these two regexes could be simplified to `(?-i)\b(\w)(\w)\w\w\b`, assuming that group 1 and 2 are still needed in replacement
+    These two expressions are actually both equivalent to `(?-i)\b(\w)(\w)\w\w\b`; there is no good reason for using recursions here.
 
-*  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.
+    Numbered recursions really shine when you want to match the same complicated rules at multiple points in the expression.
 
-*  `(?&name)` or `(?P>name)` ⇒ Backtrack to subexpression named _name_.
+*  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.  This recursively reruns the same expression from the start of the full expression to the very end (even beyond this backtrack).  This is sometimes called  "whole-match recursion".
+
+    This is useful for requiring some sub-portion of the pattern to match according to the same rules
+
+    For example, to find balanced {} with any number of spaces inside or out, and any number of balanced copies next to each other, use the regular expression `{\h*(?0)*\h*}\h*`:
+
+    text | notes
+    -----|---
+    `{ }           ` | matches
+    `{ { } }       ` | matches whole string
+    `{ { { } } {} }` | matches whole string
+    `{ { { } } {}  ` | two matches, `{ { } }` and `{}`, where the first `{` is not matched at all, because it is not balanced with any closing `}`
+
+*  `(?&name)` or `(?P>name)` ⇒ Backtrack to subexpression named _name_.  This is known as "named recursion".
 
     * If a non-signed subexpression is located OUTSIDE the parentheses of the group to which it refers, it is called a subroutine call
 
