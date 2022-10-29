@@ -411,6 +411,7 @@ Sets the characters that are considered part of a "word" for quick selections us
     * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
         * The value should be a string consisting of all the additional characters you would like to be included as a "word character".
         * Spaces are liable to cause problems, and are not recommended to be present in this entry.  If you try to add a space, the dialog box will show a warning message.
+        * If you have characters in this box, then later come and delete them all out, it will not fully stop using those extra characters as delimiters until you  switch the preference back to using the default word character list, or restart Notepad++.
 * **Delimiter selection settings**
     * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
     * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
