@@ -448,6 +448,25 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
+#### **NPPM_GETBOOKMARKID**
+*Returns the bookmark ID.
+This allows plugins to choose an ID different from the bookmark ID, 
+or to intentionally make use of the bookmark ID.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Returns the bookmark ID value as an integer
+
+
+---
+
 
 #### **NPPM_GETBUFFERENCODING**
 *Retrieves the encoding from the document with the given bufferID.*
