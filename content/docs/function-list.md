@@ -78,7 +78,9 @@ If you're not happy about the existing parser rule, you can write your parser ru
 ## Contribute your new or enhanced parser rule
 
 You're welcome to contribute your new or enhanced parser by creating PR on [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus). 
-The following sections describe how to prepare your PR according the different situations.
+The following sections describe how to prepare your PR according the different situations, but these instructions assume you already know how to fork a GitHub repository, and how to run unit tests on the source code from your fork.
+
+Please note that it is only worthwhile to submit your parser to the Notepad++ codebase if the parser is for one of the builtin lexers.  If you have created a parser that is for a UDL, you do not need to follow these instructions for Unit Tests, as they do not get distributed with Notepad++.
 
 ### Unit tests
 
