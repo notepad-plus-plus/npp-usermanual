@@ -64,7 +64,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
         - `Block After`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the block will be _after_ the character position of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `:`).
     * `Blink Rate`: [slider] Adjust the rate at which the caret blinks, faster when moved left (**F**), slower when moved right (**S**)
 * **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is checked)
-    * `☐ Default`: wraps from the last visible column to the first visible column column
+    * `☐ Default`: wraps from the last visible column to the first visible column
     * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
     * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
 * **Current Line Indicator**: Determines how the current line will be indicated.
