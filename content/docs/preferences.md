@@ -416,6 +416,26 @@ Sets the characters that are considered part of a "word" for quick selections us
     * If you define open and close characters, Ctrl + MouseDoubleClick will select everything inside that delimiter pair
     * `☐ Allow on several lines`: Ctrl + MouseDoubleClick will work across multiple lines, instead of just on a single line
 
+### Performance
+
+Some features may slow performance in large files. These features can be auto-disabled on opening a large file, using the settings in this section.  (This customization section is new to v8.4.7.  In previous versions, Notepad++ just quietly deactivated syntax highlighting on any files greater than 200MB, without user configurability.)
+
+NOTE:
+1. Modifying options here requires re-open currently opened large files to get proper behavior.
+2. If "Deactivate Word Wrap globally" is checked and you open a large file, "Word Wrap" will be disabled for all files. You can re-enable it via menu **View > Word Wrap**.
+
+- **Large File Restriction**
+    - `?`: This box provides some helpful hover text (the introductory paragraphs in this manual section were derived from this hover text).
+    - `☐ Enable Large File Restriction (no syntax highlighting)`: when checked, there will be no syntax highlighting for large files, and the other options below will come into effect; when unchecked, there will be no Large File Restrictions active, and Notepad++ will apply all syntax highlighting and other features, even on large files, despite any performance degredation.
+    - `Define Large File Size: ___ MB`: Put in "size limit" which will trigger Large File Restrictions.
+    - `☐ Deactivate Word Wrap globally`: When checked, Notepad++ will deactivate the Word Wrap feature for _all_ files (whether large or small); when unchecked, Word Wrap features will not be affected when a large file is open.
+    - `☐ Allow Auto-completion`: When checked, Auto-completion will still be available for large files.  When unchecked, large files will not allow Auto-completion.
+    - `☐ Allow Smart Highlighting`: When checked, Smart Highlighting will still be available for large files.  When unchecked, large files will not allow Smart Highlighting.
+    - `☐ Allow Brace Match`: When checked, the Brace Match feature will still be available for large files.  When unchecked, large files will not allow Brace Match.
+    - `☐ Allow URL Clickable Link`: When checked, the text that looks like a URL will be presented as a clickable link.  When unchecked, large files will not turn URL text into a clickable link.
+
+
+
 ### Cloud & Link
 
 * **Settings on cloud**: Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.  More information can be found in the [Config files location](../config-files/#configuration-files-location)
