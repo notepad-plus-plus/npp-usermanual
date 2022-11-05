@@ -75,22 +75,22 @@ Once you finish defining your parser, save and name the file as the language nam
 
 If you're not happy about the existing parser rule, you can write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files.
 
-## Contribute your new or enhanced parser rule
+## Contribute your new or enhanced parser rule to the Notepad++ codebase
 
-You're welcome to contribute your new or enhanced parser by creating PR on [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus). 
-The following sections describe how to prepare your PR according the different situations, but these instructions assume you already know how to fork a GitHub repository, and how to run unit tests on the source code from your fork.
-
-Please note that it is only worthwhile to submit your parser to the Notepad++ codebase if the parser is for one of the builtin lexers.  If you have created a parser that is for a UDL, you do not need to follow these instructions for Unit Tests, as they do not get distributed with Notepad++.
+You are welcome to contribute your new or enhanced parser definition file to the Notepad++ codebase by creating PR on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  This can be an update for a language that already has a function list definition, or can be a new definition file for one of the builtin lexer languages that does not yet have a function list definition.  (This is not necessary if you are creating a function list definition for a UDL: since UDLs do not get distributed with Notepad++, neither do function list definitions for the UDLs.  As such, you will not submit your UDL's function list definition to the Notepad++ GitHub page through a PR, and you do not need to go through the "unit test" procedure described below for your UDL's function list definition.)
 
 ### Unit tests
 
-To avoid the regression, running the unit tests before you submit your modification is important. Here are the steps to run unit tests:
+To avoid creating regressions in the Notepad++ codebase, it is important to run the unit tests before you submit your PR.  This procedure is meant for users who are comfortable with the development environment (forking a repository, running unit tests, creating pull requests, and the like), or who are willing to do the research to learn how to do this. If you do not follow these unit test steps, it is likely that your PR will be rejected and your function list definition will not be distributed with Notepad++.
 
-1. Make sure you copy your modified parser rule (xml file) into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`
-2. Open PowerShell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
-3. Once you see "All tests are passed.", you can submit your PR.
+Here are the steps to run unit tests:
 
-### Unit test file is absent
+1. Create or sync your fork of the Notepad++ repository.
+2. Make sure you copy your modified function-list parser definition (xml file) into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`.
+3. Open PowerShell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
+4. Once you see "All tests are passed.", you can submit your PR.
+
+#### Unit test file is absent
 
 It could be that you're creating a new language parser for function list, or you're enhancing an existing language parser but the file `unitTest` doesn't exists. In both cases you should:
 
@@ -100,9 +100,9 @@ It could be that you're creating a new language parser for function list, or you
 4. A file named `unitTest.result.json` will be generated. Rename it as `unitTest.expected.result`.
 5. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 
-### Unit test file is present
+#### Unit test file is present
 
-If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
+If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of the parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
 
 **- Modify the existing unitTest file**
 
