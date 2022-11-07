@@ -97,7 +97,7 @@ Syntax:
        </AutoComplete>
     </NotepadPlus>
 
-A small example of how the XML file is built is given above. `<NotepadPlus>`, `<AutoComplete>` and `<Environment>` elements are singleton elements: there should be only one of each, and all of them should be present for correctness, although it is allowed to remove the `<Environment>` element. Doing so will default all values to the ones given in the above example.  (The XML prolog should include `encoding="UTF-8"`, as shown, if you want to use UTF-8 Unicode characters in your function and parameter descriptions. As with any XML file, you can also use XML's numeric entities for entering special characters, no matter what the encoding.)
+A small example of how the XML file is built is given above. `<NotepadPlus>`, `<AutoComplete>` and `<Environment>` elements are singleton elements: there should be only one of each, and all of them should be present for correctness, although it is allowed to remove the `<Environment>` element. Doing so will default all values to the ones given in the above example.
 
 For keywords that are not functions, the `<KeyWord>` tag is autoclosing and only has the `name` attribute. To indicate a keyword can be displayed in a calltip, add the attribute `func="yes"`. In this case, the `<KeyWord>` tag is a node and contains other tags.
 
@@ -150,7 +150,12 @@ resulting in the following call tip:
 Remember that the call tip shows up when you type the opening parenthesis after the routine name. Default `"("` or whatever set with startFunc in the `<Environment>` tag.
 
 #### Names
+
 For both call tips and autocompletion to work, keywords must be words, ie identifiers most languages would readily accept. This means that only the 26 Latin alphabet letters in either lower or upper case (no diacritics), digits and the underscore are safe to use. Additional allowed characters will work if they are not whitespace. Autocompletion may cope with spaces or blanks, call tips won't. This is a Scintilla limitation.
+
+#### Special Characters
+
+If you want to include special characters in the `retVal` or `descr` attributes and have it render properly in the call tip popup, or if you want to have non-ASCII characters in the auto-completion text, you need to use [hexadecimal XML numeric entities](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references), in the form _&amp;#xhhhh;_.  So `&#x00A0;` will insert a non-breaking space, or `&#x2190;` to get an &#x2190; arrow.
 
 #### Sorting
 
