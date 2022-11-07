@@ -449,9 +449,9 @@ view must be either 0 = main view or 1 = second view.*
 ---
 
 #### **NPPM_GETBOOKMARKID**
-*Returns the bookmark ID.
-This allows plugins to choose an ID different from the bookmark ID, 
-or to intentionally make use of the bookmark ID.*
+*Returns the bookmark marker ID.
+This allows plugins to choose an ID different from the bookmark marker ID, 
+or to intentionally make use of the bookmark marker ID.*
 
 **Parameters**:
 
