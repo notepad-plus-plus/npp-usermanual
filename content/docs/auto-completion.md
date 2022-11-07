@@ -85,7 +85,7 @@ The basic character set used to recognize keywords is made of letters `a-z`, `A-
 
 Syntax:
 
-    <?xml version="1.0" encoding="Windows-1252" ?>
+    <?xml version="1.0" encoding="UTF-8" ?>
     <NotepadPlus>
        <AutoComplete language="C++">
            <Environment ignoreCase="no" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar = "."/>
@@ -97,7 +97,7 @@ Syntax:
        </AutoComplete>
     </NotepadPlus>
 
-A small example of how the XML file is built is given above. `<NotepadPlus>`, `<AutoComplete>` and `<Environment>` elements are singleton elements: there should be only one of each, and all of them should be present for correctness, although it is allowed to remove the `<Environment>` element. Doing so will default all values to the ones given in the above example.
+A small example of how the XML file is built is given above. `<NotepadPlus>`, `<AutoComplete>` and `<Environment>` elements are singleton elements: there should be only one of each, and all of them should be present for correctness, although it is allowed to remove the `<Environment>` element. Doing so will default all values to the ones given in the above example.  (The XML prolog should include `encoding="UTF-8"`, as shown, if you want to use UTF-8 Unicode characters in your function and parameter descriptions. As with any XML file, you can also use XML's numeric entities for entering special characters, no matter what the encoding.)
 
 For keywords that are not functions, the `<KeyWord>` tag is autoclosing and only has the `name` attribute. To indicate a keyword can be displayed in a calltip, add the attribute `func="yes"`. In this case, the `<KeyWord>` tag is a node and contains other tags.
 
@@ -106,8 +106,6 @@ Then, for each overload of the function, an `<Overload>` element should be added
 In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can take any string you want.
 
 ### Auto-completion File Format
-
-<!-- in the old NppWiki++, this was a section of the "Editing Configuration Files" page, but I [pryrt] don't see an equivalent page in the new npp-usermanual, so I'm putting it here for now -->
 
 Auto-complete files files are located in the `autoCompletion\` subfolder of the Notepad++ installation folder (unlike some config files, these will _not_ work in the `%AppData%\Notepad++\` hierarchy). These files are optional: you need only one for each language for which you'll use Auto Completion or calltips. They are also supported for User Defined Languages, and bear the name `<Language name>.xml`.
 
