@@ -18,13 +18,23 @@ Please note that Notepad++ writes the configuration files when it exits, which i
 
 In a standard installation, the per-user configuration files go in `%AppData%\Notepad++\`. (For a refresher course on `%AppData%`, see the [Community Forum FAQ's `%AppData%` entry](https://community.notepad-plus-plus.org/topic/15740/faq-desk-what-is-appdata).)  The machine-wide configuration files go in the executable directory (so usually `c:\program files\notepad++\`). When Notepad++ is looking for [shortcuts](#keyboard-shortcuts-shortcuts-xml), [stylers and themes](#highlighting-schemes-stylers-xml), [function list](#function-list) definitions, and [user defined language](#other-configuration-files:~:text=Configuration%20location%20for%20the%20User%20Defined%20Languages%20feature) definitions, it will try to read from the per-user directory; if the right file isn't found there, then it will check machine-wide configuration files.
 
-In a portable installation, the configuration files all go in the same directory as the `notepad++.exe` executable, and there is no per-user configuration location. (An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable. The **?** menu's **Debug Info** will show `Local mode: ON` for a portable version.)
+In a portable installation, the configuration files all go in the same directory as the `notepad++.exe` executable (or the appropriate subdirectory), and there is no per-user configuration location. (An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable. The **?** menu's **Debug Info** will show `Local mode: ON` for a portable version.)
 
 If you enable the [Cloud settings](../preferences/#cloud), some per-user configuration files will go in the defined directory (including `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`; the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
 
 There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the per-user configuration file location (added in v7.9.2).
 
 **Search order**: If the `-settingsDir` option is set, that configuration file directory will take priority over any other configuration file directory. If the Cloud directory setting is defined and enabled, that will take priority over the portable or standard configuration file directory. If `doLocalConf.xml` is present, the portable configuration file location will take priority over the `%AppData%\Notepad++\` directory. If none of the other configuration file directories are active, then the standard configuration file directory is `%AppData%\Notepad++\`. If it cannot find a configuration file in any of the per-user locations, it will use the version from the same directory as the executable.
+
+### Missing Subdirectories?
+
+Reading the above section, one may go looking for the user `functionList\` or `themes\` folders in `%AppData%\Notepad++\` (or your Cloud folder, or wherever `-settingsDir` option points) after an initial installation, and be surprised those directories aren't there: the installer doesn't create those empty directories for you.  If you want to add a custom function list definition or theme to your user-config folder in the `%AppData%\Notepad++` (or equivalent) hierarchy, you may have to create the appropriate subdirectory first, then put your custom function list or theme definition in the newly-created folder.
+
+### Starting Fresh
+
+If you want to reset your Notepad++ back to "factory condition", and are using the normal installation, you can exit all instances of Notepad++ then delete (or rename) the `%AppData%\Notepad++` folder (or your Cloud folder, or wherever `-settingsDir` option points).  The next time you run Notepad++, it will create `%AppData%\Notepad++` (or Cloud or `-settingsDir` location) and populate it with a minimal set of config files.
+
+If you just want to start fresh on a particular config file: Notepad++ knows how to recreate the necessary files if it doesn't find them.  For the ones that have an `<XXX>.model.xml` file in the Notpad++ application directory, all you have to do is delete your per-user `<XXX>.xml` (from `%AppData%\Notepad++\` or the Cloud or `-settingsDir` location) and restart Notepad++, and Notepad++ will copy the `<XXX>.model.xml` version into the right place for you.  If the `config.xml` or your session or shortcuts or contextMenu config files are intentionally deleted (or otherwise missing) from the config-file folder, Notepad++ can recreate those as necessary as well on its next start (it is programmed on how to create them from scratch, rather than using a `.model.` file).
 
 ## Editing Configuration Files
 
