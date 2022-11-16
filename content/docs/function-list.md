@@ -35,7 +35,7 @@ Other than the caveats below, the function list regular expressions follow the s
 
 - The parser does not accept **regular expresion look behind operations** in the expressions.
 - The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names)
-- You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression, as described in the docs on [regex readability enhancements](../searching/#readability-enhancements)
+- You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression, as described in the docs on [regex search modifiers](../searching/#search-modifiers)
 
 ### Function parser
 The `<function>` node accepts the following attributes and contained elements:
