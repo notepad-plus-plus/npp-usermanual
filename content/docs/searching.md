@@ -666,6 +666,7 @@ The following constructs control how matches condition other matches, or otherwi
     Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
     
     More on free-spacing mode `(?x)`:
+    
     - As with all these flags, this is for the search ("Find what" box) only; it does not work for the substitution ("Replace with" box).
     - As said before, this mode ignores whitespace: this includes space, tabs, newlines, and other fancy Unicode space-like characters.  If you want to _match_ a whitespace character, it must be escaped (using the escapes described earlier in the regex documentation), or put inside a character class.
         - Example: the regex `(?x)one two` will match the text `onetwo`, but _not_ the text `one two`.  `(?x) one \x20 two` could be used to match `one two`.
