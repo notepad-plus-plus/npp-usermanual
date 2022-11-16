@@ -672,7 +672,7 @@ The following constructs control how matches condition other matches, or otherwi
         - Example: the regex `(?x)one two` will match the text `onetwo`, but _not_ the text `one two`.  `(?x) one \x20 two` could be used to match `one two`.
         - Spaces inside character classes will _not_ be ignored: `(?x)one [ ] two` _will_ match `one two`.
     - Inside free-spacing mode, `#` makes the rest of the line of the regex a "comment", rather than text-to-match.  So if you want to match a literal `#` character in a free-spacing-mode regex, encode it in some manner, such as `\x23` or `\#` or `[#]`.
-        - Example: to match `match this phrase` in free-spacing mode:
+        - Example: to match `match this phrase` in free-spacing mode, with a comment in the regex:
             ~~~
             (?x) match \h this \x20 phrase  # enable free-spacing mode; note spaces must be matched with \h or \x20 or [ ], and # with \x23 or [#]
             ~~~
