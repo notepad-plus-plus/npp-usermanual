@@ -653,7 +653,7 @@ The following constructs control how matches condition other matches, or otherwi
     * `i` ⇒ case insensitive (default: set by **☐ Match case** dialog option)
     * `m` ⇒ ^ and $ match embedded newlines (default: on)
     * `s` ⇒ dot matches newline (default: as per **☐ . matches newline** dialog option)
-    * `x` ⇒ Ignore non-escaped whitespace in regex (default: off).  Any whitespace that you need to match must be escaped
+    * `x` ⇒ Ignore non-escaped whitespace in regex (default: off).  Any whitespace that you need to match must be escaped.  This is also known as "free-spacing mode"
 
     Examples:
 
@@ -664,6 +664,19 @@ The following constructs control how matches condition other matches, or otherwi
     * `(?x)` ⇒ Allow extra whitespace in the expression for the remainder of the regex
 
     Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
+    
+    More on free-spacing mode `(?x)`:
+    - As with all these flags, this is for the search ("Find what" box) only; it does not work for the substitution ("Replace with" box).
+    - As said before, this mode ignores whitespace: this includes space, tabs, newlines, and other fancy Unicode space-like characters.  If you want to _match_ a whitespace character, it must be escaped (using the escapes described earlier in the regex documentation), or put inside a character class.
+        - Example: the regex `(?x)one two` will match the text `onetwo`, but _not_ the text `one two`.  `(?x) one \x20 two` could be used to match `one two`.
+        - Spaces inside character classes will _not_ be ignored: `(?x)one [ ] two` _will_ match `one two`.
+    - Inside free-spacing mode, `#` makes the rest of the line of the regex a "comment", rather than text-to-match.  So if you want to match a literal `#` character in a free-spacing-mode regex, encode it in some manner, such as `\x23` or `\#` or `[#]`.
+        - Example:
+            ~~~
+            (?x) match \h this \x20 phrase  # enable free-spacing mode; note spaces must be matched with \h or \x20 or [ ], and # with \x23 or [#]
+            ~~~
+        - Because Notepad++'s regex input field only allows you to enter a single line, you cannot use free-spacing mode to its full multi-line extent, when using the GUI.
+          - However, in the [Function List parser definitions](../function-list/#how-to-customize-function-list), which use the same regex syntax, you _can_ use multi-line regex in free-spacing mode, since it doesn't have the GUI limitation.
 
 * `(?|expression)` ⇒ "Branch Reset" ⇒ If an alternation expression has parenthetical subexpressions in some of its alternatives, this construction will allow the subexpression counter not to be altered by what is in the other branches of the alternation.
 
