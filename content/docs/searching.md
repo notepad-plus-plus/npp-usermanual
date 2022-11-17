@@ -142,6 +142,7 @@ If users need to exclude folders with the same name (or names matched the specif
 
 * As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters:** label, a helpful popup will show example syntax for you
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.
+* To find only files that have no extension, you cannot just say `*.`, because of quirks in the PathMatchSpec().  Instead, you can search for any file that _doesn't_ have at least one letter in the extension: `!*.?*`
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
