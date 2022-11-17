@@ -458,6 +458,7 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 ##### Character Classes
 
 * `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
+    - Because the hyphen `-` means a range in a character class, you cannot just randomly place the hyphen in the character class if you want it to match a literal hyphen as part of the character class.  You must either put the hyphen as the first or last character in the class (because there it cannot be interpreted as a range, since it would be missing either the opening or closing character of a range).  Example: `[#-%]` matches the range of characters between `#` and `%`, so will match any of `#` or `$` or `%`; whereas `[-#%]` and `[#%-]` both match the three literal characters `#` or `%` or `-`.
 
 * `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
 
