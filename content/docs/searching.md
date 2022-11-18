@@ -458,7 +458,15 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 ##### Character Classes
 
 * `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
-    - Because the hyphen `-` means a range in a character class, you cannot just randomly place the hyphen in the character class if you want it to match a literal hyphen as part of the character class.  You must either put the hyphen as the first or last character in the class (because there it cannot be interpreted as a range, since it would be missing either the opening or closing character of a range).  Example: `[#-%]` matches the range of characters between `#` and `%`, so will match any of `#` or `$` or `%`; whereas `[-#%]` and `[#%-]` both match the three literal characters `#` or `%` or `-`.  Alternately, you can escape the hyphen with a `\`, so `[#\-%]` would also match `#` or `%` or `-` .
+    Certain characters require special treatment inside character classes:
+
+    - To use a literal `-` in a character class:  Directly as the first or last character in the enclosing class notation, like `[-abc]` or `[abc-]`; OR "escaped" at any position, like `[\-abc]` or `[a\-bc]`
+
+    - To use a literal `]` in a character class:  Directly right after the opening `[` of the class notation, like `[]abc]`; OR "escaped" at any position, like `[\]abc]` or `[a\]bc]` 
+
+    - To use a literal `[` in a character class:  Use it directly like any other character, like `[ab[c]`; "escaping" is not necessary (but is permissible), like `[ab\[c]`.  This character is not special when used _alone_ inside a class; however, if used with a colon in the order `[:` inside a class, it is the opening sequence  for a named class (described below); if you want to include both a `[` and a `:` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[:[]`, or escape one or both, like `[\[:]` or `[[\:]` or `[\[\:]`.
+
+    - To use a literal `\` in a character class:  Must be doubled (i.e., `\\`) inside the enclosing class notation, e.g. `[ab\\c]`
 
 * `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
 
