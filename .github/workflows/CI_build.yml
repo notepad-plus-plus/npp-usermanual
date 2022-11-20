@@ -25,6 +25,9 @@ jobs:
            httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
            Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
+           Copy-Item "./nppUserManual/index.html" "./nppUserManual/index.unedited"
+           get-content "./nppUserManual/index.unedited" | %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | set-content "./nppUserManual/index.html"
+           Remove-Item "./nppUserManual/index.unedited"
 
     - name: Archive artifacts for hugo
       uses: actions/upload-artifact@v3
