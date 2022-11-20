@@ -20,7 +20,7 @@ jobs:
     - name: Retrieve data from server
       working-directory: .
       run: |
-           cmd /c start hugo.exe server --minify --theme book
+           cmd /c start hugo.exe server --theme book
            $env:Path += ";C:\Program Files\WinHTTrack\"
            httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
