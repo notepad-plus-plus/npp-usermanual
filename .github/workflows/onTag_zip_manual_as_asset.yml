@@ -23,11 +23,14 @@ jobs:
     - name: Convert hugo site to standandalone HTML
       working-directory: .
       run: |
-           cmd /c start hugo.exe server --minify --theme book
+           cmd /c start hugo.exe server --theme book
            $env:Path += ";C:\Program Files\WinHTTrack\"
            httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
            Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
+           Copy-Item "./nppUserManual/index.html" "./nppUserManual/index.unedited"
+           get-content "./nppUserManual/index.unedited" | %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | set-content "./nppUserManual/index.html"
+           Remove-Item "./nppUserManual/index.unedited"
            Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
            Set-Location -Path ..
 
