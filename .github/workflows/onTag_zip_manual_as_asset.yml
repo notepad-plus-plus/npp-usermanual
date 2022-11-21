@@ -28,9 +28,18 @@ jobs:
            httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
            Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
-           Copy-Item "./nppUserManual/index.html" "./nppUserManual/index.unedited"
-           get-content "./nppUserManual/index.unedited" | %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | set-content "./nppUserManual/index.html"
-           Remove-Item "./nppUserManual/index.unedited"
+           Get-ChildItem -Recurse "./nppUserManual" -Filter index.html | Foreach-Object {
+               $orgname = $_.FullName
+               $tmpname = "$($orgname).unedited"
+               echo $tmpname
+               Copy-Item $orgname $tmpname
+               get-content $tmpname | 
+                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | 
+                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} | 
+                    %{$_ -replace 'href="http://localhost:1313/','href="'} | 
+                    set-content $orgname
+               Remove-Item $tmpname
+           }
            Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
            Set-Location -Path ..
 
