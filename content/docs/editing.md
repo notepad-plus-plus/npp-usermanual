@@ -138,6 +138,9 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
             These examples are shown in the screenshot below, where **View > Show Symbol > Whitespace and Tab** shows the tabs as an orange arrow (`→`) and the spaces as an orange middot (`·`); the left shows it with tab characters; the right shows it with those tabs converted to spaces:
 
             ![](../images/edit-tab-stops.png)
+
+            If you want a specific number of space characters to replace each tab character, instead of the above-described fill-to-tabstop behavior, you should use a replacement operation in Extended or Regular Expression search mode to replace `\t` with the number of space characters you desire.
+
 * `Paste Special >` ⇒ submenu with actions that pastes HTML or RTF, and special versions of copy/cut/paste which handle NULL and other binary characters
     * Note: The HTML and RTF actions paste the HTML and RTF source code from the HTML or RTF entries in the Windows Clipboard; it does _not_ apply HTML or RTF formatting to what appears to be plain text in the Notepad++ editor window.
 * `On Selection >` ⇒ submenu with actions that use the currently-selected text as a filename or folder to open, or as a term for an internet search.  (Custom commands using the current selection can be added to the **Run** menu, using the [`<UserDefinedCommands>` section of `shortcuts.xml`](../config-files/#userdefinedcommands).)
