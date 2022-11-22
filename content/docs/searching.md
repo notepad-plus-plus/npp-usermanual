@@ -318,7 +318,7 @@ The settings for each of the 5 available colors/styles are [Settings &gt; Style 
 
 If you've highlighted some groups of text in this manner, and you wish to copy those sections, the **Copy Styled Text** submenu of the Search menu will allow you to do that.  Quick search for previously marked text is possible via the **Jump Up** or **Jump Down** submenu choices.
 
-Note: In older versions of Notepad++, the **Mark All** submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.  This has been improved by renaming the menu to **Style All Ocurrences of Token**.
+Note: In older versions of Notepad++, the **Mark All** submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.  This has been improved by renaming the menu to **Style All Occurrences of Token**.
 
 You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
 
