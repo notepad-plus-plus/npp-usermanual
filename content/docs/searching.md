@@ -322,7 +322,7 @@ Note: In older versions of Notepad++, the **Mark All** submenu name can cause so
 
 You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
 
-You activate smart highlighting through [Settings > Preferences > Highlighting > Smart highlighting > Enable](../preferences/#highlighting). By default, the highlighting is case insensitive; if this is a problem, just toggle [Settings &gt; Preferences &gt; Highlighting &gt; Smart Highlighting > Matching: Case Sensitive](../preferences/#highlighting) on.
+You activate smart highlighting through [Settings > Preferences > Highlighting > Smart highlighting > Enable](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
 
 
 ## Finding characters in a specific range
