@@ -127,7 +127,17 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
     * `TAB to Space`: replaces any tab characters with their equivalent number of spaces
     * `Space to TAB (All)`: consolidates space characters into an equivalent number of tab characters, wherever the spaces occur
     * `Space to TAB (Leading)`: consolidates space characters into an equivalent number of tab characters, but only where they occur before the first non-whitespace character on a line
-    * NOTE about TAB-related commands: the "equivalent number" of spaces (or tab characters) is based on the [Settings > Preferences > Language > Tab Settings: Tab Size](../preferences/#language) for the active language of the current file
+        - NOTE about TAB-related commands: the "equivalent number" of spaces (or tab characters) is based on the [Settings > Preferences > Language > Tab Settings: Tab Size](../preferences/#language) for the active language of the current file, and will be enough spaces to take you to the next "tab stop".
+
+            If the current langauge has a tab setting of 4 spaces per tab, then the tab stops are at 1, 5, 9, 13, and so on.
+
+            If you have a tab at column 1, 2, 3, or 4, it will be wide enough so that the next character will be at column 5; and if you convert tabs to spaces, it will replace it with 4, 3, 2, or 1 space (respectively), so that the next character will still be at column 5.
+
+            Similarly, tabs at columns 5, 6, 7, or 8 will be displayed as wide as (or converted to spaces as) 4, 3, 2, or 1 spaces (respecitvely), so that the next character will be at column 9.
+
+            These examples are shown in the screenshot below, where **View > Show Symbol > Whitespace and Tab** shows the tabs as an orange arrow (`→`) and the spaces as an orange middot (`·`); the left shows it with tab characters; the right shows it with those tabs converted to spaces:
+
+            ![](../images/edit-tab-stops.png)
 * `Paste Special >` ⇒ submenu with actions that pastes HTML or RTF, and special versions of copy/cut/paste which handle NULL and other binary characters
     * Note: The HTML and RTF actions paste the HTML and RTF source code from the HTML or RTF entries in the Windows Clipboard; it does _not_ apply HTML or RTF formatting to what appears to be plain text in the Notepad++ editor window.
 * `On Selection >` ⇒ submenu with actions that use the currently-selected text as a filename or folder to open, or as a term for an internet search.  (Custom commands using the current selection can be added to the **Run** menu, using the [`<UserDefinedCommands>` section of `shortcuts.xml`](../config-files/#userdefinedcommands).)
