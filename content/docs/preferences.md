@@ -230,7 +230,7 @@ This affects the display of the main Language menu, and also affects the per-lan
 
 ### Highlighting
 
-Affects highlighting of selected text.
+Affects the highlighting of the selected text, which is referred to by the menu entries as the "Token".
 
 * **Style All Occurrences of Token** (previously **Mark All**)
     * _Note_: this section of the preferences was renamed v8.1.4; it was known as **Mark All** in v8.0 - v8.1.3
