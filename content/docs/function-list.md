@@ -8,7 +8,7 @@ The Function List Panel is a zone to display all the functions (or methods) foun
 
 Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.  
 
-In order to make Function List work for your language (if not supported), you should modify (or add) the xml file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList` or in the `functionList` folder located in Notepad++ installation directory if you use the portable (zip) package.
+In order to make Function List work for your language, you should modify (or add) the XML file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList`; if you use the portable (zip) package, then it will instead be in the `functionList` folder located in Notepad++ installation directory.  The `overrideMap.xml` file (in that same folder as the language XML file) is used to map the name of the language to the XML file that defines the Function List rule for that language, as described in the [function list config files](../config-files/#function-list) section of the manual. 
 
 ## How to customize Function List
 
@@ -72,18 +72,29 @@ _Please Note_: an empty class (one without any functions) will _not_ display in 
 ### Mixed parser
 A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
 
-### Test your parser
-Once you finish defining your parser, save and name the file as the language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
+## Manually verify that your parser works for you
+Once you finish defining your parser, save and name the file as the language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. (Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.)  Then load a file that uses that parser, and make sure it finds all the functions that you expect, in the appropriate classes.
 
-If you're not happy about the existing parser rule, you can write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files.
+## Use your own personal function list definition for a built-in language
+If you do not like the results of the default Function List parser that ships with Notepad++ for a particular language, feel free to write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files, as described in the [function list config files](../config-files/#function-list) section of the manual. 
 
 ## Contribute your new or enhanced parser rule to the Notepad++ codebase
 
-You are welcome to contribute your new or enhanced parser definition file to the Notepad++ codebase by creating PR on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  This can be an update for a language that already has a function list definition, or can be a new definition file for one of the builtin lexer languages that does not yet have a function list definition.  (This is not necessary if you are creating a function list definition for a UDL: since UDLs do not get distributed with Notepad++, neither do function list definitions for the UDLs.  As such, you will not submit your UDL's function list definition to the Notepad++ GitHub page through a PR, and you do not need to go through the "unit test" procedure described below for your UDL's function list definition.)
+If you have added or updated the parser definition file for one of Notepad++'s built-in languages, you are welcome to contribute your file to the Notepad++ codebase by creating "Pull Request" (also called a "PR") on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  (A "Pull Request" is just the GitHub mechanism for requesting that code you write be added to a project.)
+
+**Please Note**: You only need to create a Pull Request if you want your Function List definition to be bundled as part of the Notepad++ codebase going forward, so that everyone who downloads Notepad++ gets your Function List definition.  If you do not need to contribute your Function List definition to everyone, then you do not need to read anything below this paragraph.
+
+- If you created a Function List for your own UDL, you do not need to create a Pull Request using the link above, because user-created UDLs and their Function List definitions are not distributed as part of Notepad++.  You do not need to read any further.
+
+- If you just edited one of the pre-existing Function List definitions for your own personal use, and you don't want to share it with anyone else, you do not need to create a Pull Request using the link above because you are not sharing it with others.  You do not need to read any further.
+
+- This Pull Request can be used to update the Function List for a language that already has a Function List definition, but you just want to make it better for everyone; or it can be for a new definition file for one of the builtin lexer languages that does not yet have a function list definition.  If it does not not meet one of these requirements, you do not need to read any further.
+
+If you still want to believe you should be submitting your Function List parser to the Notepad++ codebase at this point, please follow the steps below to create and verify your Unit Tests and then submit the Pull Request.
 
 ### Unit tests
 
-To avoid creating regressions in the Notepad++ codebase, it is important to run the unit tests before you submit your PR.  This procedure is meant for users who are comfortable with the development environment (forking a repository, running unit tests, creating pull requests, and the like), or who are willing to do the research to learn how to do this. If you do not follow these unit test steps, it is likely that your PR will be rejected and your function list definition will not be distributed with Notepad++.
+To avoid creating regressions in the Notepad++ codebase, it is important to run the unit tests before you submit your PR.  This procedure is meant for users who are comfortable with the development environment (forking a repository, running unit tests, creating pull requests, and the like), or who are willing to do the research to learn how to do this. If you do not follow these unit test steps, it is likely that your PR will be rejected and your function list definition will not be distributed with Notepad++.  If you do not know how to do this, or cannot do the research on other sites to learn how, then you are not yet ready to submit your Function List definition to be part of the Notepad++ codebase.
 
 Here are the steps to run unit tests:
 
@@ -120,3 +131,6 @@ If you're improving an existing parser, and `unitTest` is present, then you shou
 3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\[yourTestDir2]\unitTest`
 4. A file named `unitTest.result.json` will be generated in the created directory `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\[yourTestDir2]\`. Rename `unitTest.result.json` in the created directory  to `unitTest.expected.result`.
 
+### Create and Submit your Pull Request
+
+As noted in the ["Contributing" rules for Notepad++](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/CONTRIBUTING.md), "All Pull Requests ... need to be attached to a issue on GitHub."  So the first step is to create an issue which requests that the function list definition be improved (if it was already there) or added (if it was not yet there); in your issue, be sure to explain that you have the Function List definition ready, and will be submitting a Pull Request.  The second step is to use the GitHub interface to create the Pull Request from your fork into the main repository.  The final step is to wait for and respond to feedback from the developers as needed, until such time as your PR is accepted or rejected.
