@@ -464,7 +464,11 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
     - To use a literal `]` in a character class:  Use it directly right after the opening `[` of the class notation, like `[]abc]`; OR use it "escaped" at any position, like `[\]abc]` or `[a\]bc]` .
 
-    - To use a literal `[` in a character class:  Use it directly like any other character, like `[ab[c]`; "escaping" is not necessary (but is permissible), like `[ab\[c]` .  This character is not special when used _alone_ inside a class; however, if used with a colon in the order `[:` inside a class, it is the opening sequence  for a named class (described below); if you want to include both a `[` and a `:` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[:[]`, or escape one or both, like `[\[:]` or `[[\:]` or `[\[\:]` .
+    - To use a literal `[` in a character class:  Use it directly like any other character, like `[ab[c]`; "escaping" is not necessary, but is permissible, like `[ab\[c]` .  This character is not special when used _alone_ inside a class; however, there are cases where it _is_ special in combination with another:
+
+        - If used with a colon in the order `[:` inside a class, it is the opening sequence for a named class (described below); if you want to include both a `[` and a `:` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[:[]`, or escape one or both, like `[\[:]` or `[[\:]` or `[\[\:]` .
+        
+        - If used with an equals sign in the order `[=` inside a class, it is the opening sequence for an equivalence class (described below); if you want to include both a `[` and a `=` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[=[]`, or escape one or both, like `[\[=]` or `[[\=]` or `[\[\=]` .
 
     - To use a literal `\` in a character class:  Must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
 
