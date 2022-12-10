@@ -16,7 +16,7 @@ The **Program to Run** entry field allows you to type the command to run.  If th
 
 The **Run** button actually runs the command.
 
-The **Save...** button brings up a dialog to save the command you've typed as a named entry for the **Run** menu.  You can also assign the saved command a keyboard for use inside Notepad++ in that sub-dialog.  **OK** will save the command (with the shortcut you defined); **Cancel** will abort the process, so the command doesn't get saved.
+The **Save...** button brings up a dialog to save the command you've typed as a named entry for the **Run** menu.  You can also assign the saved command a keyboard shortcut for use inside Notepad++ in that sub-dialog.  **OK** will save the command (with the shortcut you defined); **Cancel** will abort the process, so the command doesn't get saved.
 
 The **Cancel** button (or the upper right X in the dialog) will allow you to exit the dialog without running the command.  This is useful if you've changed your mind about running the external process, or if you just wanted to **Save** the command but not immediately run it.
 
@@ -76,9 +76,9 @@ If a single-line command isn't sufficient for your needs, you may want to consid
 
 1. Write a batch file: writing a windows `.bat` or `.cmd` or `.ps1` file using cmd.exe or powershell syntax will allow you to specify a group of commands; you can then just use the **Run > Run...**  to call that batch file to do your more complicated task.  You can pass any of the [special variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) as arguments to this batch file.
 
-2. Use the [NppExec plugin](https://github.com/d0vgan/nppexec/): this plugin can be installed from the **Plugins > Plugins Admin** interface, and gives you access to a custom batch language, but with extended features that give you access to all the [special variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) plus extra access to the internals of the Notepad++ interface.  This also allows you to view the output of commands in an embedded interactive console window that can be docked in Notepad++.
+2. Use the [NppExec plugin](https://github.com/d0vgan/nppexec/): this plugin can be installed from the **Plugins > Plugins Admin** interface, and gives you access to a custom batch language, but with extended features that give you access to all the [special variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) plus extra access to the internals of the Notepad++ interface.  This also allows you to view the output of commands in an embedded interactive console window that can be docked in Notepad++.  (Does not use the **Run** menu.)
 
-3. Use [PythonScript](https://github.com/bruderstein/PythonScript) or [LuaScript](https://github.com/dail8859/LuaScript) or [jN Notepad++](https://github.com/sieukrem/jn-npp-plugin/wiki) plugins (or similar) to write a script in your favorite programming language (and all those languages should give you access to any feature of that language, plus a way to access applications that live on your filesystem).  These may provide interactive console windows to give you even more flexibility.
+3. Use [PythonScript](https://github.com/bruderstein/PythonScript) or [LuaScript](https://github.com/dail8859/LuaScript) or [jN Notepad++](https://github.com/sieukrem/jn-npp-plugin/wiki) plugins (or similar) to write a script in your favorite programming language (and all those languages should give you access to any feature of that language, plus a way to access applications that live on your filesystem).  These may provide interactive console windows to give you even more flexibility. (Does not use the **Run** menu.)
 
 ## Security is Your Responsibility
 
