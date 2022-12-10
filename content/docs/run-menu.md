@@ -70,7 +70,7 @@ Or, if you want to force it to open in a new instance, use:
 
 If you can run it from `cmd.exe` or `powershell.exe` in a single command line, you can run it from here.  Let your imagination run wild.
 
-## Going Beyond
+## Going Beyond Single-Line Commands
 
 If a single-line command isn't sufficient for your needs, you may want to consider one of the following options:
 
