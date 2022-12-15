@@ -135,6 +135,7 @@ Windows Registry Editor Version 5.00
 #### Tab Bar Right Click Menu
 
 When you right click on the title for a tab, you get a context menu for manipulating that tab.
+
 - `Close`: closes this file's tab
 - `Close Mutiple Tabs >`:
   - `Close All But This`: Closes all files except this file
