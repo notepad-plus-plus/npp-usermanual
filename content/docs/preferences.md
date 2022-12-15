@@ -464,6 +464,8 @@ A variety of settings that didn't fit elsewhere
 * **Document Switcher**
     * `☐ Enable`: hitting Ctrl+TAB will allow you to easily switch through all the open documents
     * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file (or "MRU", for short) in the Ctrl+TAB list
+        - When checkmarked: Ctrl+TAB will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
+        - When not checkmarked: Ctrl+TAB will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
 * **Document Peeker**
     * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
     * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
