@@ -119,6 +119,7 @@ Position | Name | Value format | Meaning
 3  |  Alt  |  "yes"/"no"  |  The key being mapped to has the Alt modifier
 4  |  Shift  |  "yes"/"no"  |  The key being mapped to has the Shift modifier
 5  |  Key  |  integer  |  The base virtual key number, in the 1..255 range
+6  | FolderName | string | Can be used to group one or more macros into a named sub-menu (new to v8.4.8)
 
 Although it is possible for several macros to share the same name or shortcut, this practice is highly discouraged.
 
@@ -159,6 +160,7 @@ Position | Name | Value format | Meaning
 3  |  Alt  |  "yes"/"no"  |  The key mapped to has the Alt modifier
 4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
 5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
+6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu (new to v8.4.8)
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
@@ -389,7 +391,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `autoCompletion\*.xml`: Files for defining per-language [auto-completion](../auto-completion/#auto-completion-file-format). This config folder _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
-- `cloud\choice` file: If this folder and file are present, the file contains the path to the [Cloud folder](../preferences/#cloud-link). This config file is created when you define the Cloud preferences. If you are in a normal installation, this config file will be `%AppData%\Notepad++\cloud\choice`; if it is deleted from there, Notepad++ will _not_ look for `<installdir>\cloud\choice`.  If you are in a portable / local configuration (`doLocalConf.xml` exists), it will be in `<portable>\cloud\choice`.  
+- `cloud\choice` file: If this folder and file are present, the file contains the path to the [Cloud folder](../preferences/#cloud-link). This config file is created when you define the Cloud preferences. If you are in a normal installation, this config file will be `%AppData%\Notepad++\cloud\choice`; if it is deleted from there, Notepad++ will _not_ look for `<installdir>\cloud\choice`.  If you are in a portable / local configuration (`doLocalConf.xml` exists), it will be in `<portable>\cloud\choice`.
 
 - `doLocalConf.xml`: This is a zero-byte file that is used as an indicator to `notepad++.exe` to not go looking for `%AppData%`. This will only exist on local installations of Notepad++ (when you tell the installer to not use `%AppData%`, or when you install from the zipfile, or when you manually create the zero-byte file). This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
