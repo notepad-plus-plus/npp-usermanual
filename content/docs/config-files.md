@@ -99,6 +99,7 @@ In brief, the structure of the context menu file is as follows
     - `MenuItemName` attribute: Used for accessing Notepad++ menu items by name.  The value should be the name of the menu item inside the given menu.
     - `id` attribute: Used for accessing Notepad++ commands by CommandID.  The value should be the CommandID number, as seen in [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and similar translation files.
         - `<Item id="0" />` will make a separator line in the menu.
+    - `ItemNameAs` attribute: Used for for [overriding a menu item name](#overriding-a-menu-item-name): using your own "display name" for a given entry in your context menu, instead of using the one inherited from the main Notepad++ menu system.
     - `PluginEntryName` attribute: Used for accessing Plugin commands.  The value should be the name of the plugin as seen in the Plugins menu.
     - `PluginCommandItemName` attribute: Used for accessing Plugin commands.  The value should be the name of the menu entry inside that Plugin's menu.
     - `FolderName` attribute: Used for [grouping items into sub-menus](#grouping-items-into-sub-menus) in the context menu.
