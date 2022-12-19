@@ -88,6 +88,33 @@ Each `<Item>` will go in the first level of the context menu. This can be overri
 
 Each `<Item>` will use the same text as the main menu entry uses, as defined by your current localization. This can be overridden by adding an `ItemNameAs="new_name_for_the_item"` attribute, so that the new name will be displayed instead of the standard one. This is useful when the name is lengthy, as it makes the Context Menu unwieldy otherwise. Non-Latin characters are supported.
 
+### Context menu syntax summary
+
+In brief, the structure of the context menu file is as follows
+
+- Top Level Node: `<NotepadPlus>` (no attributes)
+- Intermediate Node: `<ScintillaContextMenu>` (no attributes)
+- Entry Nodes: `<Item ...>`
+    - `MenuEntryName` attribute: Used for accessing Notepad++ menu items by name.  The value should be name of the menu.
+    - `MenuItemName` attribute: Used for accessing Notepad++ menu items by name.  The value should be the name of the menu item inside the given menu.
+    - `id` attribute: Used for accessing Notepad++ commands by CommandID.  The value should be the CommandID number, as seen in [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and similar translation files.
+        - `<Item id="0" />` will make a separator line in the menu.
+    - `PluginEntryName` attribute: Used for accessing Plugin commands.  The value should be the name of the plugin as seen in the Plugins menu.
+    - `PluginCommandItemName` attribute: Used for accessing Plugin commands.  The value should be the name of the menu entry inside that Plugin's menu.
+    - `FolderName` attribute: Used for [grouping items into sub-menus](#grouping-items-into-sub-menus) in the context menu.
+    - `TranslateID` attribute: Used for auto-translating your sub-menu names.  If the attribute's value matches one of the nodes in the `<MiscStrings>` section of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) or similar translation files, the menu will use your active translation's value for the displayed FolderName.
+- As with all XML files, using `<!--` and `-->` around the code will "comment it out".  So you can use text comments or comment out XML syntax that you want Notepad++ to ignore.  To "uncomment" the XML, remove the `<!--` and `-->` surrounding that piece of code.
+
+## Tab context menu: `tabContextMenu.xml`
+
+Starting in v8.4.8, the tab-bar context menu (the menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
+
+The format is the same as the `contextMenu.xml` described [above](#context-menu-syntax-summary), except the "Intermediate Node" is `<TabContextMenu>` instead of `<ScintillaContextMenu>`.
+
+You may have gotten a copy of `tabContextMenu_example.xml` when you installed, or you can download a copy from the Notepad++ source [here](https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/master/PowerEditor/src/tabContextMenu_example.xml) (possibly needed if you have a portable or minimal copy of Notepad++, or if the file didn't get created when you updated an existing Notepad++ installation) -- if you rename that example to `tabContextMenu.xml` in your [configuration directory](#configuration-files-location "%AppData%\Notepad++\ or in the cloud or installation directory"), and restart Notepad++, then the example will be used.  In that example, the default replicates the structure released with v8.4.7; if you [comment](#context-menu-syntax-summary) that out and uncomment the second half of the file, it will instead replicate the Tab Context Menu found in v8.4.6 and earlier (useful for those who like "the old way" of doing things in the tab context menu).
+
+To go back to the default tab context menu, you can just rename or delete `tabContextMenu.xml` (or download the [fresh copy](https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/master/PowerEditor/src/tabContextMenu_example.xml) and save it over the current `tabContextMenu.xml`) then restart Notepad++.
+
 ## Keyboard shortcuts: `shortcuts.xml`
 
 Defines keyboard shortcuts for various types of commands. The shortcuts are most-easily defined in the various tabs of the [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper).
