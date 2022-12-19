@@ -73,7 +73,7 @@ All menu commands can be added to the Context Menu, including plugin commands:
 - Alternately, to add a built-in command, you may instead provide the menu command ID via the `id` attribute. The command ID values for a given menu can be found in your localization file (like [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml)), which will map the localized text you see in the menu to the command ID, or in [menuCmdID.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h).
     - For example, `<Item id="42001"/>` will add a context-menu entry that calls the **Edit > Cut** action by its command ID.
     - **NOTE**: `<Item id="0"/>` has a special meaning: it acts as a horizonal separator line -- that's how you can get a line between groups in the context menu.
-- To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.
+- To add a plugin command, you need to provide the plugin's menu item name (as it appears in the Plugins menu) as the value of the PluginEntryName attribute and the command's menu item name (as it appears in the plugin's sub-menu) as the value of the PluginCommandItemName attribute.  (_Note_: Context menu entries will only work for entries immediately under the plugin name; entries deeper than that, like **Plugins > Super Plugin Name > Submenu Here > I Want This Command**, will not work.)
     - For example: `<Item PluginEntryName="MIME Tools" PluginCommandItemName="Base64 Encode" />` will add a context-menu entry that calls **Plugins > MIME Tools > Base64 Encode**
 
 Note that the menu names and menu item names (whether built-in or plugin names) that you use in the should be in English, not in a translated language. The Shortcut Mapper can help you find the English name of plugin commands; simply switch to English localization for the raw name of built-in commands; or you can look at the [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) that shipped with your distribution.
@@ -101,7 +101,7 @@ In brief, the structure of the context menu file is as follows
         - `<Item id="0" />` will make a separator line in the menu.
     - `ItemNameAs` attribute: Used for for [overriding a menu item name](#overriding-a-menu-item-name): using your own "display name" for a given entry in your context menu, instead of using the one inherited from the main Notepad++ menu system.
     - `PluginEntryName` attribute: Used for accessing Plugin commands.  The value should be the name of the plugin as seen in the Plugins menu.
-    - `PluginCommandItemName` attribute: Used for accessing Plugin commands.  The value should be the name of the menu entry inside that Plugin's menu.
+    - `PluginCommandItemName` attribute: Used for accessing Plugin commands.  The value should be the name of the menu entry inside that Plugin's menu.  (_Note_: Context menu entries will only work for entries immediately under the plugin name; entries deeper than that, like **Plugins > Super Plugin Name > Submenu Here > I Want This Command**, will not work.)
     - `FolderName` attribute: Used for [grouping items into sub-menus](#grouping-items-into-sub-menus) in the context menu.
     - `TranslateID` attribute: Used for auto-translating your sub-menu names.  If the attribute's value matches one of the nodes in the `<MiscStrings>` section of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) or similar translation files, the menu will use your active translation's value for the displayed FolderName.
 - As with all XML files, using `<!--` and `-->` around the code will "comment it out".  So you can use text comments or comment out XML syntax that you want Notepad++ to ignore.  To "uncomment" the XML, remove the `<!--` and `-->` surrounding that piece of code.
@@ -147,7 +147,9 @@ Position | Name | Value format | Meaning
 3  |  Alt  |  "yes"/"no"  |  The key being mapped to has the Alt modifier
 4  |  Shift  |  "yes"/"no"  |  The key being mapped to has the Shift modifier
 5  |  Key  |  integer  |  The base virtual key number, in the 1..255 range
-6  | FolderName | string | Can be used to group one or more macros into a named sub-menu (new to v8.4.8)
+6  | FolderName | string | [optional] Can be used to group one or more macros into a named sub-menu (new to v8.4.8)
+
+_Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file; it is not available in the Shortcut Mapper or any other GUI element.
 
 Although it is possible for several macros to share the same name or shortcut, this practice is highly discouraged.
 
@@ -189,6 +191,8 @@ Position | Name | Value format | Meaning
 4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
 5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
 6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu (new to v8.4.8)
+
+_Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file; it is not available in the Shortcut Mapper or any other GUI element.
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
