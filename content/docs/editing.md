@@ -6,7 +6,7 @@ weight: 30
 
 ## Column Mode & Column Editor
 
-Using `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection in column mode:
+Use `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection in column mode:
 
 ![](../images/columnMode.gif)
 
@@ -23,7 +23,7 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
     *  `Repeat` will repeat the same number _n_ times.  Defaults to 1 if left blank.
     * `☐ Leading zeros` will cause all the numbers to have the same number of digits, by adding leading zeros for the smaller values
     * `Format` chooses between **Dec** (0-9), **Hex** (0-9,A-F), **Oct** (0-7), or **Bin** (0-1).
-        Note: that the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
+        _Note_: the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
 
 ## Multi-Editing
 
@@ -70,7 +70,7 @@ Notepad++ has a column in the margin section which indicates which lines have be
     - _Note_: If you tell Notepad++ to reload the file from disk, _all_ lines will be green.
     - Multiple saves will leave those lines green, even if they weren't changed since the previous save.
     - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use `Ctrl+W` then `Ctrl+Shift+T`).
-- If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (sopme call it "olive" or "yellow-green").  (This is `Revert to mopdified` in the image.)
+- If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (some call it "olive" or "yellow-green").  (This is `Revert to modified` in the image.)
 - If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan"). (This is `Revert to original` in the image.)
 
 ## Edit Menu
