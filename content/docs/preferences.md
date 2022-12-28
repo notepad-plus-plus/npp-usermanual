@@ -154,7 +154,7 @@ These define the margin style, border width, and edge settings.  (This page is n
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
 * `☐ Display Change History`: shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles)
-* `☐ Display bookmark`: shows a large shaded circle next to all rows that contain a bookmark
+* `☐ Display bookmark`: adds an additional margin to the left of the text editing area, to show a large shaded circle next to all lines that contain a bookmark, and green arrow symbols that bracket a range of hidden lines.
 
 ### New Document
 
