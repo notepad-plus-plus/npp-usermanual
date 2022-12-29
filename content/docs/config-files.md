@@ -106,7 +106,7 @@ In brief, the structure of the context menu file is as follows
     - `TranslateID` attribute: Used for auto-translating your sub-menu names.  If the attribute's value matches one of the nodes in the `<MiscStrings>` section of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) or similar translation files, the menu will use your active translation's value for the displayed FolderName.
 - As with all XML files, using `<!--` and `-->` around the code will "comment it out".  So you can use text comments or comment out XML syntax that you want Notepad++ to ignore.  To "uncomment" the XML, remove the `<!--` and `-->` surrounding that piece of code.
 
-## Tab context menu: `tabContextMenu.xml`
+## The context menu: `tabContextMenu.xml`
 
 Starting in v8.4.8, the tab-bar context menu (the menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
 
