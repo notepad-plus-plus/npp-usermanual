@@ -364,18 +364,24 @@ If your caret is on word word2, "Find Next (Volatile)" will search the next word
 
 In extended mode, these escape sequences (a backslash followed by a single character and optional material) have special meaning, and will not be interpreted literally.
 
-* `\n`:  the Line Feed control character LF (ASCII 0x0A)
+* `\n`:  The Line Feed control character LF (ASCII 0x0A)
 * `\r`:  The Carriage Return control character CR (ASCII 0x0D)
-* `\t`:  the TAB control character (ASCII 0x09)
-* `\0`:  the NUL control character (ASCII 0x00)
-* `\\`:  the literal backslash character (ASCII 0x5C)
-* `\b`:  the binary representation of a byte, made of 8 digits which are either 1's or 0's. †
-* `\o`:  the octal representation of a byte, made of 3 digits in the 0-7 range
-* `\d`:  the decimal representation of a byte, made of 3 digits in the 0-9 range
-* `\x`:  the hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
-* `\u`:  The hexadecimal representation of a two-byte character, made of 4 digits in the 0-9, A-F/a-f range. In Unicode builds, finds a Unicode character (for instance, `\u2020` matches the `†` char, in an UTF-8 encoded file). In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. †
+* `\t`:  The TAB control character (ASCII 0x09)
+* `\0`:  The NUL control character (ASCII 0x00) †
+* `\\`:  The literal backslash character (ASCII 0x5C)
+* `\b`:  The binary representation of a byte, made of 8 digits which are either 1's or 0's. †
+    - `\b00100000` will match the SPACE character (ASCII 32 is "00100000" in 8-bit binary)
+* `\o`:  The octal representation of a byte, made of 3 digits in the 0-7 range. †
+    - `\b040` will match the SPACE character (ASCII 32 is "040" in 3-digit octal)
+* `\d`:  The decimal representation of a byte, made of 3 digits in the 0-9 range. †
+    - `\d032` will match the SPACE character (ASCII 32 is "032" in 3-digit decimal)
+* `\x`:  The hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
+    - `\x20` will match the SPACE character (ASCII 32 is "20" in 2-digit hexadecimal)
+* `\u`:  The hexadecimal representation of a two-byte character, made of 4 digits in the 0-9, A-F/a-f range. †
+    - In Unicode builds, finds a Unicode character: for example, `\u263A` matches the `☺` char, in an UTF-8 encoded file.
+    - In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. 
 
-†NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
+† NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
 ## Regular Expressions
 
