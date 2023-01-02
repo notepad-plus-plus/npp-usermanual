@@ -49,6 +49,14 @@ Once you installed the plugin, you can use (and you may configure) it via the me
 If you are installing a plugin manually, please check the instructions or other documentation for that
 specific plugin, to see if you need to put other files in appropriate locations.
 
+_Note_: The Windows OS instinctively mistrusts DLLs from the internet (for very good reasons), and will not allow
+applications (like Notepad++) use that DLL.  Assuming you trust the source of the DLL: before starting Notepad++
+and after downloading and manually installing a plugin in the right location, you need to right-click the DLL and
+visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click 
+**Apply**, then **OK**; this will unblock the DLL so that Windows will allow Notepad++ to use it.
+
+![](../images/unblockDLL.png)
+
 ### Install plugin using Settings > Import > Import plugin(s)
 
 This takes a single DLL and puts it in the right directory, then tells you that _you_ have to
