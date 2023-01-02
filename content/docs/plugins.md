@@ -52,6 +52,7 @@ specific plugin, to see if you need to put other files in appropriate locations.
 _Note_: The Windows OS instinctively mistrusts DLLs from the internet (for very good reasons).  Before attempting 
 to use _any_ plugin you downloaded yourself, right-click the DLL and visit the **Properties** context menu. If the 
 **Unblock** option is shown, click the checkbox and click **Apply**, then **OK**.
+
 ![](../images/unblockDLL.png)
 
 ### Install plugin using Settings > Import > Import plugin(s)
