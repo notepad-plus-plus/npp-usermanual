@@ -50,7 +50,7 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
 * **Menu**
     * `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
-    * `☐ Hide right shortcuts ＋ ▼ ✕ from the mnu bar (Need to restart Notepad++)`: makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
+    * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
 
 ### Editing
 
