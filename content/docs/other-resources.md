@@ -19,7 +19,14 @@ Use the the following comment to undo the replacement:
 reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" /v "Debugger" /f
 ```
 
-This has historically worked from Windows 7 through Windows 10.  However, Microsoft has changed things in Windows 11 , and this may not work for you.
+This has historically worked from Windows 7 through Windows 10.  However, in Windows 11 it's Notepad UWP version installed, you have to remove Notepad UWP to make the above instructions work.
+
+To remove UWP version of Notepad, you have to launch powershell with admin privileges, then run the following command:
+```powershell
+Get-AppxPackage *Microsoft.WindowsNotepad* | Remove-AppxPackage
+```
+
+For restoring Notepad, launch "Microsoft Store" via Start menu of Windows, search "Notepad", select "Windows Notepad", then click on "Install" button.
 
 ### Registry Edit Warning
 
