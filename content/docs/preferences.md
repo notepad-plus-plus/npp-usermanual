@@ -357,11 +357,13 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
 
 The **Multi-Instance** settings determine whether multiple instances of Notepad++ can be run simultaneously.
 
-* `☐ Open session in a new instance (and save session automatically on exit)`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while the instance exiting, if this option is set.
-* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++.
 * `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
+* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++.
+* `☐ Open session in a new instance (and save session automatically on exit)`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while the instance exiting, if this option is set.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
+
+The **Panel State and [-nosession]** checkboxes allow panel state to be remembered even when running in multi-instance mode or with `-nosession` (added v8.4.9).  Normally, when run with `-nosession`, or when subsequent instances are run, all panels start as "off" (because the new instance ignores the session file).  With each panel type that is checkmarked in these settings, Notepad++ will "remember" whether that panel was open in the previous session, even when the session is otherwise being ignored.  The panels available are Clipboard History, Document List, Character Panel, Folder as Workspace, Project Panels, Document Map, Function List, and a catchall for all Plugin panels.  For changes to these settings to take effect, Notepad++ must be restarted.
 
 The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).  The
 
