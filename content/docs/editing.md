@@ -118,7 +118,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
 * `Auto-Completion >` ⇒ submenu with actions that manually trigger [auto-completion](../auto-completion/) of function name, word, function parameter, and pathname.  While the automatic completion is affected by [**Preferences > Auto-Completion** settings](../preferences/#auto-completion) for setting minimum number of characters, and enabling which of the completions happen automatically, when you manually trigger one of the auto-completion actions through this menu or keyboard shortcut equivalents, completion will happen regardless of those settings (so you can manually trigger when there's fewer characters than the auto-trigger threshold, or you can manually trigger function completion when only word completion is active).
 * `EOL Conversion >` ⇒ submenu with actions that convert line endings between Windows (`CRLF`), Unix (`LF`), and old Macintosh (`CR`) values; these operations affect all of the lines of the current file
     * If your file has mixed line endings (some `CRLF` and some `LF`, for example), you can use this menu to fix it: if the desired line-ending is not greyed out, you can just select it, and any mixed line-endings will be converted to the chosen line ending; if the desired line-ending is greyed out, select one of the other line-endings, then switch back to the desired line-ending selection, and any mixed line-endings will be converted to the final line-ending choice.
-* `Blank Operations >` ⇒ submenu with actions that trim or convert spaces and tab characters on ALL lines of the current file
+* `Blank Operations >` ⇒ submenu with actions that trim or convert spaces and tab characters on ALL lines of the current file.
     * `Trim Trailing Space`: removes any space or tab characters occurring at the end of a line, after any non-whitespace characters
     * `Trim Leading Space`: removes any space or tab characters occurring at the beginning of a line, before any non-whitespace characters
     * `Trim Leading and Trailing Spaces`: combines the functionalities of `Trim Trailing Space` and `Trim Leading Space` into one command
@@ -140,6 +140,7 @@ Aside from the normal undo/redo/copy/paste entries, there are a number of sub-me
             ![](../images/edit-tab-stops.png)
 
             If you want a specific number of space characters to replace each tab character, instead of the above-described fill-to-tabstop behavior, you should use a replacement operation in Extended or Regular Expression search mode to replace `\t` with the number of space characters you desire.
+    * NOTE: All the `Blank Operations` commands will default to doing a global change through the whole document.  Starting in Notepad++ v8.4.9, if there is an active selection, the `Blank Operation` change will only apply to the selected text.
 
 * `Paste Special >` ⇒ submenu with actions that pastes HTML or RTF, and special versions of copy/cut/paste which handle NULL and other binary characters
     * Note: The HTML and RTF actions paste the HTML and RTF source code from the HTML or RTF entries in the Windows Clipboard; it does _not_ apply HTML or RTF formatting to what appears to be plain text in the Notepad++ editor window.
