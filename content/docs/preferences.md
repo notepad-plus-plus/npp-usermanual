@@ -77,6 +77,11 @@ These influence editing (carets, code-folding, line wrapping, and more).
     - **Default**: old behavior (`CR` and `LF` in reverse-video boxes)
     - **Plain Text**": Looks like normal text for `CR`, `LF`, and `CRLF`
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > EOL custom color**
+* **Non-Printing Characters**: changes the rendering of the Non-Printing Characters when **View > Show Symbol > Show Non-Printing Characters** or **Show All Characters** is checked:
+    - **Abbreviation**: The symbol will use the abbreviation value from [this table](../views/#show-symbol), such as `NBSP` for the "no-break space".
+    - **Codepoint**": The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
+    - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > NPC custom color**
+
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
 * `☐ Enable virtual space`: enables putting the caret beyond the end of the line (new to v8.4.3)
 * `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
@@ -553,6 +558,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * URL hovered [foreground only] ⇒ If [Preferences > Cloud & Link > Clickable Link Settings > Enable](#cloud-link) is checked, when your mouse cursor is hovering over a URL, or if the caret is inside the URL text, then the URL's foreground color will follow this setting.  The "Go to settings" link will take you to [Preferences > Cloud & Link](#cloud-link) so you can change **Clickable Link Settings**.
 * Document map [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
 * EOL Custom Color [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing).  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **EOL** settings.
+* NPC Custom Color [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing).  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **Non-Printing Characters** settings.
 
 ### Search result styles
 
