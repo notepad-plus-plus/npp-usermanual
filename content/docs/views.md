@@ -30,51 +30,51 @@ There are three entries that are grouped together, which can affect the renderin
 * **Show Space and Tab**: When checked, the space character will show as a [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
 * **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
 * **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing) is checked.
-
-    Codepoint | Character Name               | Abbreviation
-    ----------|------------------------------|---------------
-    U+00A0    | no-break space               | NBSP
-    U+1680    | ogham space mark             | OSPM
-    U+180E    | mongolian vowel separator    | MVS
-    U+2000    | en quad                      | NQSP
-    U+2001    | em quad                      | MQSP
-    U+2002    | en space                     | ENSP
-    U+2003    | em space                     | EMSP
-    U+2004    | three-per-em space           | 3/MSP
-    U+2005    | four-per-em space            | 4/MSP
-    U+2006    | six-per-em space             | 6/MSP
-    U+2007    | figure space                 | FSP
-    U+2008    | punctation space             | PSP
-    U+2009    | thin space                   | THSP
-    U+200A    | hair space                   | HSP
-    U+200B    | zero-width space             | ZWSP
-    U+200C    | zero-width non-joiner        | ZWNJ
-    U+200D    | zero-width joiner            | ZWJ
-    U+200E    | left-to-right mark           | LRM
-    U+200F    | right-to-left mark           | RLM
-    U+2028    | line separator               | LSEP
-    U+2029    | paragraph separator          | PSEP
-    U+202A    | left-to-right embedding      | LRE
-    U+202B    | right-to-left embedding      | RLE
-    U+202C    | pop directional formatting   | PDF
-    U+202D    | left-to-right override       | LRO
-    U+202E    | right-to-left override       | RLO
-    U+202F    | narrow no-break space        | NNSP
-    U+205F    | medium mathematical space    | MMSP
-    U+2060    | word joiner                  | WJ
-    U+2066    | left-to-right isolate        | LRI
-    U+2067    | right-to-left isolate        | RLI
-    U+2068    | first strong isolate         | FSI
-    U+2069    | pop directional isolate      | PDI
-    U+206A    | inhibit symmetric swapping   | ISS
-    U+206B    | activate symmetric swapping  | ASS
-    U+206C    | inhibit arabic form shaping  | IAFS
-    U+206D    | activate arabic form shaping | AAFS
-    U+206E    | national digit shapes        | NADS
-    U+206F    | nominal digit shapes         | NODS
-    U+3000    | ideographic space            | ISP
-    U+FEFF    | zero-width no-break space    | ZWNBSP
-
+    {{< expand "Table of Non-Printing Characters" >}}
+Codepoint | Character Name               | Abbreviation
+----------|------------------------------|---------------
+U+00A0    | no-break space               | NBSP
+U+1680    | ogham space mark             | OSPM
+U+180E    | mongolian vowel separator    | MVS
+U+2000    | en quad                      | NQSP
+U+2001    | em quad                      | MQSP
+U+2002    | en space                     | ENSP
+U+2003    | em space                     | EMSP
+U+2004    | three-per-em space           | 3/MSP
+U+2005    | four-per-em space            | 4/MSP
+U+2006    | six-per-em space             | 6/MSP
+U+2007    | figure space                 | FSP
+U+2008    | punctation space             | PSP
+U+2009    | thin space                   | THSP
+U+200A    | hair space                   | HSP
+U+200B    | zero-width space             | ZWSP
+U+200C    | zero-width non-joiner        | ZWNJ
+U+200D    | zero-width joiner            | ZWJ
+U+200E    | left-to-right mark           | LRM
+U+200F    | right-to-left mark           | RLM
+U+2028    | line separator               | LSEP
+U+2029    | paragraph separator          | PSEP
+U+202A    | left-to-right embedding      | LRE
+U+202B    | right-to-left embedding      | RLE
+U+202C    | pop directional formatting   | PDF
+U+202D    | left-to-right override       | LRO
+U+202E    | right-to-left override       | RLO
+U+202F    | narrow no-break space        | NNSP
+U+205F    | medium mathematical space    | MMSP
+U+2060    | word joiner                  | WJ
+U+2066    | left-to-right isolate        | LRI
+U+2067    | right-to-left isolate        | RLI
+U+2068    | first strong isolate         | FSI
+U+2069    | pop directional isolate      | PDI
+U+206A    | inhibit symmetric swapping   | ISS
+U+206B    | activate symmetric swapping  | ASS
+U+206C    | inhibit arabic form shaping  | IAFS
+U+206D    | activate arabic form shaping | AAFS
+U+206E    | national digit shapes        | NADS
+U+206F    | nominal digit shapes         | NODS
+U+3000    | ideographic space            | ISP
+U+FEFF    | zero-width no-break space    | ZWNBSP
+    {{< /expand >}}
 * **Show All Characters**: When checked, this is effectively equivalent to having both **Show Whitespace and TAB** and **Show End of Line** at the same time.
 When the **Show Indent Guide** entry is checked, a [colored](../preferences/#global-styles "Style Configurator > Global Styles > Indent Guideline Style") dotted vertical line `⸽` will show where each of the tab stops are located if there are enough tabs or spaces at the start of a given line to go beyond a tab stop (as defined by the [per-language Tab settings](../preferences/#language)).
 
