@@ -178,3 +178,7 @@ The simplest way to build a new file might be this:
 For case sensitive sorting, you can use Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending**, or any generic ASCII/ANSI sorter that sorts on the byte value of the characters. Simply put, this means the underscore character is between uppercase and lowercase letters.
 
 For case insensitive sorting, treat lowercase letters as uppercase, that is, subtract 32 from each lowercase byte value; this means the underscore must come both after uppercase and lowercase letters.  Unfortunately, Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending** does case-sensitive sorting, and will not work for this purpose.
+
+## Validating autoCompletion files
+
+If you are developing an autoCompletion file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").
