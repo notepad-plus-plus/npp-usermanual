@@ -103,7 +103,7 @@ For keywords that are not functions, the `<KeyWord>` tag is autoclosing and only
 
 Then, for each overload of the function, an `<Overload>` element should be added, which specifies the behavior and the parameters of the function. A function must have at least one `<Overload>` or it will not be displayed as a calltip.  Multiple `<Overload>` elements allow there to be different sets of parameters for a given function.  The `retVal` attribute must be present and specifies the type of the return value, but the `descr` attribute is optional and describes the functions behavior, like a comment. You can add newlines in the description if you wish to do so. For each parameter the function takes, a `<Param>` element can be added. The `name` attribute must be present and specifies the type of the parameters and/or any name of the parameter.
 
-In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can take any string you want.
+In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can technically take any string you want, though standard practice among autoCompletion developers has been to put the official name of the language as the value (like the `C++` shown above).
 
 ### Auto-completion File Format
 
