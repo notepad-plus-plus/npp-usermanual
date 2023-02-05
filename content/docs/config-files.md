@@ -436,3 +436,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 - `session.xml`: Stores the current [session](../session/) information. Overwritten on every exit of Notepad++ if [**Settings > Preferences > Backup > Remember current session for next launch**](../preferences/#backup) is enabled. If you want sessions that you control, use **File > Save Session...** to save it; the file is safe to edit; and you can reload that session at any time using **File > Load Session...**. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
 - `userDefineLang.xml` and `userDefineLangs\*.xml`: Configuration location for the [**User Defined Languages**](../user-defined-language-system/) feature.
+
+## Validating Config-File XML
+
+If you are developing a config file by editing the raw XML file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").
