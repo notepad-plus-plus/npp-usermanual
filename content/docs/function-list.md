@@ -78,6 +78,10 @@ Once you finish defining your parser, save and name the file as the language nam
 ## Use your own personal function list definition for a built-in language
 If you do not like the results of the default Function List parser that ships with Notepad++ for a particular language, feel free to write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files, as described in the [function list config files](../config-files/#function-list) section of the manual. 
 
+## Validating Function List defintion files
+
+If you are developing a Function List definition file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").
+
 ## Contribute your new or enhanced parser rule to the Notepad++ codebase
 
 If you have added or updated the parser definition file for one of Notepad++'s built-in languages, you are welcome to contribute your file to the Notepad++ codebase by creating "Pull Request" (also called a "PR") on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  (A "Pull Request" is just the GitHub mechanism for requesting that code you write be added to a project.)
