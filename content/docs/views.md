@@ -31,9 +31,9 @@ There are three entries that are grouped together, which can affect the renderin
 * **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
 * **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing) is checked.
     {{< expand "Table of Non-Printing Characters" >}}
-Codepoint | Character Name               | Abbreviation
-----------|------------------------------|---------------
+U+0085    | next line                    | NEL
 U+00A0    | no-break space               | NBSP
+U+061C    | arabic letter mark           | ALM
 U+1680    | ogham space mark             | OSPM
 U+180E    | mongolian vowel separator    | MVS
 U+2000    | en quad                      | NQSP
@@ -52,14 +52,14 @@ U+200C    | zero-width non-joiner        | ZWNJ
 U+200D    | zero-width joiner            | ZWJ
 U+200E    | left-to-right mark           | LRM
 U+200F    | right-to-left mark           | RLM
-U+2028    | line separator               | LSEP
-U+2029    | paragraph separator          | PSEP
+U+2028    | line separator               | LS
+U+2029    | paragraph separator          | PS
 U+202A    | left-to-right embedding      | LRE
 U+202B    | right-to-left embedding      | RLE
 U+202C    | pop directional formatting   | PDF
 U+202D    | left-to-right override       | LRO
 U+202E    | right-to-left override       | RLO
-U+202F    | narrow no-break space        | NNSP
+U+202F    | narrow no-break space        | NNBSP
 U+205F    | medium mathematical space    | MMSP
 U+2060    | word joiner                  | WJ
 U+2066    | left-to-right isolate        | LRI
@@ -72,7 +72,7 @@ U+206C    | inhibit arabic form shaping  | IAFS
 U+206D    | activate arabic form shaping | AAFS
 U+206E    | national digit shapes        | NADS
 U+206F    | nominal digit shapes         | NODS
-U+3000    | ideographic space            | ISP
+U+3000    | ideographic space            | IDSP
 U+FEFF    | zero-width no-break space    | ZWNBSP
     {{< /expand >}}
 * **Show All Characters**: When checked, this is effectively equivalent to having both **Show Whitespace and TAB** and **Show End of Line** at the same time.
