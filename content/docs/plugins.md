@@ -112,7 +112,6 @@ You can use
 [Plugin development forum](https://notepad-plus-plus.org/community/category/5/plugin-development)
 for any technical questions/answers and the announcement your new plugin.
 
-
 ### In other languages
 
 * [Ada](http://white-elephant.ch/notepad.php)
@@ -122,6 +121,9 @@ for any technical questions/answers and the announcement your new plugin.
   - [Original (ANSI/UNICODE)](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
   - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): this version has the headers necessary to work with Notepad++ v8.3.3
 
+### Header Files
+
+Whether you start from one of the templates above, or are making a new version of a plugin or copying from an existing plugin as your starting point, you should always check the Notepad++ repository for the up-to-date copies of the message header files ([Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h) and [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h), plus the interface file [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface)): those files may have been updated compared to the copy that was in your template or previous plugin version, and you should always start from the most recent version of those headers.
 
 ### Building a lexer plugin
 
