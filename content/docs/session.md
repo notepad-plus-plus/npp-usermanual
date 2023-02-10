@@ -40,9 +40,9 @@ You can also load a Folder as Workspace using the [`-openFoldersAsWorkspace` com
 
 The toolbar for the panel has three buttons: 
 
-- **Unfold All** - Shows the entire hierarchy of all the directories shown.
-- **Fold All** - Collapses all the directory hierarchies so it just shows the top-level folders.
-- **Locate Current File** - If the file being actively edited in Notepad++'s active editor view is in one of the folders shown in the panel, the panel will unfold and scroll to that file in the file list, and will highlight that file.
+- **Unfold All**: Shows the entire hierarchy of all the directories shown.
+- **Fold All**: Collapses all the directory hierarchies so it just shows the top-level folders.
+- **Locate Current File**: If the file being actively edited in Notepad++'s active editor view is in one of the folders shown in the panel, the panel will unfold and scroll to that file in the file list, and will highlight that file.
 
 For folders/directories in the panel:
 
