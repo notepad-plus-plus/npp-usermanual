@@ -34,13 +34,46 @@ When you load a session: if you are set to "Default (Mono-instance)" [in the Mul
 
 ## Folder as Workspace
 
-This feature allows you to use a tree-based interface to easily access the files in a given directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](../preferences/#default-directory)).
+This feature allows you to use a tree-based interface to easily access the files in one or more filesystem directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](../preferences/#default-directory)).
 
 You can also load a Folder as Workspace using the [`-openFoldersAsWorkspace` command line argument](../command-prompt).
 
-If you right-click in the Folder as Workspace panel, you can add more directories to the current Workspace.
+The toolbar for the panel has three buttons: 
 
-Double-clicking on a file from the tree-view will open it as a new tab in the Notepad++ editor (or will activate that tab if it's already open).  Closing the tab for a file from the Project will not remove it from the Folder as Workspace panel, so it's easy to re-open that file.
+- **Unfold All** - Shows the entire hierarchy of all the directories shown.
+- **Fold All** - Collapses all the directory hierarchies so it just shows the top-level folders.
+- **Locate Current File** - If the file being actively edited in Notepad++'s active editor view is in one of the folders shown in the panel, the panel will unfold and scroll to that file in the file list, and will highlight that file.
+
+For folders/directories in the panel:
+
+- If it has the `﹀` down-arrow chevron, clicking that will "fold" that level so that the files and directories under it are not visible.
+- If it has the `〉` right-arrow chevron, clicking that will "unfold" that level, so that it will show the files and directories under that directory.
+- Right-clicking on a directory's entry will bring up a context menu:
+    - **Remove**: Will remove that directory hierarchy from the Folder as Workspace panel (only available on the top level Folder as Workspace directories, not on subdirectories).
+    - **Copy Path**: Puts the full path of the directory into the Windows clipboard, so you can paste it in Notepad++ or elsewhere in Windows.
+    - **Find in Files**: Opens the **Search > Find in Files** dialog with that directory chosen as the directory to be searched.
+    - **Explorer Here**: Opens the Windows Explorer on that directory.
+    - **CMD Here**: Opens a Windows `cmd.exe` window in that directory.
+
+For files in that panel:
+
+- Double-clicking on a file's entry will open that file in Notepad++'s active view, or will activate that file's tab if the file is already open in the current Notepad++ instance.
+- Right-clicking on a file's entry will bring up a context menu:
+    - **Open**: Will open that file in Notepad++'s active view, or will activate that file's tab if the file is already open in the current Notepad++ instance.
+    - **Copy Path**: Puts the full path of the file into the Windows clipboard, so you can paste it in Notepad++ or elsewhere in Windows.
+    - **Copy File Name**: Puts the filename into the Windows clipboard.
+    - **Run by System**: This will launch the file with Windows default application for that file type.
+    - **Explorer Here**: Opens the Windows Explorer in the directory where the file is located.
+    - **CMD Here**: Opens a Windows `cmd.exe` window in the directory where the file is located.
+
+If you right click in the empty space in the Folder as Workspace panel (either in the empty portion of the toolbar to the left of the icons, or in the empty space below the final directory listing in the panel), you will get a context menu with **Add** and **Remove All**.  
+
+- **Add**: Will let you open another folder into the panel.  
+- **Remove All**: Will remove all directories from the Folder as Workspace panel.  
+
+If there isn't any "empty space" to right-click on, you can either widen the panel (giving more empty space on the panel's toolbar) or you can collapse one or all of the folder listings (using the `﹀` by the folder name or the **Fold All** button on the toolbar) to show empty space at the bottom where you can right click.
+
+
 
 ## Project Panels
 
@@ -62,35 +95,35 @@ Project files always contain file paths relative to the location of the project 
 
 For any entry in the Project Panel tree view, right clicking will give you the available actions on that specific entry.
 
-* On a Workspace:
-    * New Workspace = close the existing Workspace (if one is open for this Project Panel) and create an empty Workspace for this Project Panel.
-    * Open Workspace = close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
-    * Reload Workspace = re-read the XML file for the active Workspace (it may have been edited externally).
-    * Save = save any changes in the Projects, files, and Folders of the active Workspace configuration.
-    * Save As = save the active Workspace in a new Windows filesystem location.
-    * Save As Copy = save the active Workspace in a new Windows filesystem location, keeping the old Workspace file as well.
-    * Add New Project = add a new Project container to the active Workspace.
-* On a Project entry:
-    * Move Up / Move Down = reorder the selected Project relative to other Projects in the Workspace.
-    * Rename = change the name of the Project.
-    * Add Folder = create a new container to go in this Project.
-    * Add Files = use a Windows **Open** dialog to select one or more files to add to the Project's tree.
-    * Add Files from Directory = add all the files from that Windows directory into the Project.
-        * Please note: this does _not_ create a new Folder entry in your Project.
-* On a Folder entry:
-    * Has all the same actions as on the Project entry, but everything is relative to this Folder instead of relative to the Project.
-* On a File entry:
-    * Move Up / Move Down = reorder the selected file relative to other files or Folders in the containing Project or Folder.
-    * Rename = changes the name of the file in the list.
-        * This action does _not_ change the underlying file.
-        * If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
-        * If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
-    * Remove = removes the file from the Project.
-        * This action does _not_ change the underlying file.
-    * Modify File Path = similar to rename, changes the file in the list, but also allows you to change what Windows directory is being referenced.
-        * This action does _not_ change the underlying file.
-        * If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
-        * If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
+- On a Workspace:
+    - **New Workspace**: close the existing Workspace (if one is open for this Project Panel) and create an empty Workspace for this Project Panel.
+    - **Open Workspace**: close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
+    - **Reload Workspace**: re-read the XML file for the active Workspace (it may have been edited externally).
+    - **Save**: save any changes in the Projects, files, and Folders of the active Workspace configuration.
+    - **Save As**: save the active Workspace in a new Windows filesystem location.
+    - **Save As Copy**: save the active Workspace in a new Windows filesystem location, keeping the old Workspace file as well.
+    - **Add New Project**: add a new Project container to the active Workspace.
+- On a Project entry:
+    - **Move Up / Move Down**: reorder the selected Project relative to other Projects in the Workspace.
+    - **Rename**: change the name of the Project.
+    - **Add Folder**: create a new container to go in this Project.
+    - **Add Files**: use a Windows **Open** dialog to select one or more files to add to the Project's tree.
+    - **Add Files from Directory**: add all the files from that Windows directory into the Project.
+        - Please note: this does _not_ create a new Folder entry in your Project.
+- On a Folder entry:
+    - Has all the same actions as on the Project entry, but everything is relative to this Folder instead of relative to the Project.
+- On a File entry:
+    - **Move Up / Move Down**: reorder the selected file relative to other files or Folders in the containing Project or Folder.
+    - **Rename**: changes the name of the file in the list.
+        - This action does _not_ change the underlying file.
+        - If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
+        - If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
+    - **Remove**: removes the file from the Project.
+        - This action does _not_ change the underlying file.
+    - **Modify File Path**: similar to rename, changes the file in the list, but also allows you to change what Windows directory is being referenced.
+        - This action does _not_ change the underlying file.
+        - If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
+        - If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
 
 ## Differences Between Projects and Folder as Workspace
 
