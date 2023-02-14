@@ -80,7 +80,7 @@ If you do not like the results of the default Function List parser that ships wi
 
 ## Validating Function List defintion files
 
-If you are developing a Function List definition file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").
+If you are developing a Function List definition file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml).
 
 ## Contribute your new or enhanced parser rule to the Notepad++ codebase
 
