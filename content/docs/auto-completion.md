@@ -103,7 +103,7 @@ For keywords that are not functions, the `<KeyWord>` tag is autoclosing and only
 
 Then, for each overload of the function, an `<Overload>` element should be added, which specifies the behavior and the parameters of the function. A function must have at least one `<Overload>` or it will not be displayed as a calltip.  Multiple `<Overload>` elements allow there to be different sets of parameters for a given function.  The `retVal` attribute must be present and specifies the type of the return value, but the `descr` attribute is optional and describes the functions behavior, like a comment. You can add newlines in the description if you wish to do so. For each parameter the function takes, a `<Param>` element can be added. The `name` attribute must be present and specifies the type of the parameters and/or any name of the parameter.
 
-In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can take any string you want.
+In the `<AutoComplete>` element you can add the `language` attribute, but it is not used by Notepad++; you can add it for completeness if you wish and can technically take any string you want, though standard practice among autoCompletion developers has been to put the official name of the language as the value (like the `C++` shown above).
 
 ### Auto-completion File Format
 
@@ -178,3 +178,7 @@ The simplest way to build a new file might be this:
 For case sensitive sorting, you can use Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending**, or any generic ASCII/ANSI sorter that sorts on the byte value of the characters. Simply put, this means the underscore character is between uppercase and lowercase letters.
 
 For case insensitive sorting, treat lowercase letters as uppercase, that is, subtract 32 from each lowercase byte value; this means the underscore must come both after uppercase and lowercase letters.  Unfortunately, Notepad++'s **Edit > Line Operations > Sort Lexicographically Ascending** does case-sensitive sorting, and will not work for this purpose.
+
+## Validating autoCompletion files
+
+If you are developing an autoCompletion file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").

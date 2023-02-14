@@ -140,3 +140,7 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 * Set `colorStyle="2"`: this style will inherit the foreground color from the Default style, and use the `bgColor` value as the background color (equivalent to right-clicking the foreground color in the UDL styler dialog box)
 * Set `colorStyle="1"`: this style will inherit the background color from the Default style, and use the `fgColor` value as the foreground color (equivalent to right-clicking the background color in the UDL styler dialog box)
 * Set `colorStyle="0"`: this style will inherit both the foreground and background colors from the Default style (equivalent to right-clicking both the foreground and background colors in the UDL styler dialog box)
+
+### Validating User Defined Language defintion files
+
+If you are developing a User Defined Definition by editing the raw XML file (instead of just using the UDL GUI interface) and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml).
