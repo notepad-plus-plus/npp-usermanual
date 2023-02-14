@@ -1192,7 +1192,7 @@ receives the full path names of all the opened files in Notepad++
 
 *lParam [in]*
 : int nbFile,
-is the size of the fileNames array. Get this value by using NPPM_NBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value.
+is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value.
 
 **Return value**:
 : Returns The number of files copied into fileNames array.
@@ -1211,7 +1211,7 @@ receives the full path names of the opened files in the primary view
 
 *lParam [in]*
 : int nbFile,
-is the size of the fileNames array. Get this value by using NPPM_NBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value.
+is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value.
 
 
 **Return value**:
@@ -1231,7 +1231,7 @@ receives the full path names of the opened files in the second view
 
 *lParam [in]*
 : int nbFile,
-is the size of your fileNames array. You should get this value by using NPPM_NBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value.
+is the size of your fileNames array. You should get this value by using NPPM_GETNBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value.
 
 **Return value**:
 : Returns The number of files copied into fileNames array.
