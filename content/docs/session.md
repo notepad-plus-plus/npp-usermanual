@@ -100,7 +100,7 @@ For any entry in the Project Panel tree view, right clicking will give you the a
     - **Open Workspace**: close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
     - **Reload Workspace**: re-read the XML file for the active Workspace (it may have been edited externally).
     - **Save**: save any changes in the Projects, files, and Folders of the active Workspace configuration.
-    - **Save As**: save the active Workspace in a new Windows filesystem location, while still leaving the old Workspace file under the old name.  (Example: if your active Workspace is `one.wkspc` and you **Save As** `two.wkspc`, then `one.wkspc` will still exist, but the active Workspace will be `two.wkspc`.)
+    - **Save As**: save the active Workspace in a new Windows filesystem location and use that new Workspace, while still leaving the old Workspace file under the old name.  (Example: if your active Workspace is `one.wkspc` and you **Save As** `two.wkspc`, then `one.wkspc` will still exist, but the active Workspace will be `two.wkspc`.)
     - **Save a Copy As**: save the active Workspace in a new Windows filesystem location, while still keeping the old Workspace file as the active Workspace. (Example: if your active Workspace is `one.wkspc` and you **Save a Copy As** `two.wkspc`, then `one.wkspc` will still exist and be active, but there will also be a `two.wkspc` saved but not open.)
     - **Add New Project**: add a new Project container to the active Workspace.
 - On a Project entry:
