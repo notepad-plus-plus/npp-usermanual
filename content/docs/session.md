@@ -89,7 +89,7 @@ Each Workspace can house one or more Projects.  Clicking the **Edit** button on 
 
 You can move a file from one place in the Project panel into a different Folder or Project by dragging the file within the Project Panel and dropping it on the name of the Project or Folder you want the file to move into.  Other than that, there aren't other drag-and-drop features in the Project Panel.
 
-Project files always contain file paths relative to the location of the project file itself. Thus, if a project file is stored in a filesystem folder which is part of a project, it is very easy to move that folder to another location on the hard disk. If the project file is loaded from its new location it will still work.
+Project Workspace files always contain file paths relative to the location of the workspace file itself. Thus, if a workspace file is stored in a filesystem folder which is part of a project, it is very easy to move that folder to another location on the hard disk. If the workspace file is loaded from its new location it will still work to load the local copy of the project.  (Because these files contain relative paths, when you open an existing workspace file or save a new workspace file, Notepad++ will default to being in the same directory as the file you are actively editing.  If you prefer a centralized directory to store all your workspace files, you will have to manually change to that directory to open or save there.)
 
 ### Project Panel Specifics
 
@@ -100,8 +100,8 @@ For any entry in the Project Panel tree view, right clicking will give you the a
     - **Open Workspace**: close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
     - **Reload Workspace**: re-read the XML file for the active Workspace (it may have been edited externally).
     - **Save**: save any changes in the Projects, files, and Folders of the active Workspace configuration.
-    - **Save As**: save the active Workspace in a new Windows filesystem location.
-    - **Save As Copy**: save the active Workspace in a new Windows filesystem location, keeping the old Workspace file as well.
+    - **Save As**: save the active Workspace in a new Windows filesystem location, while still leaving the old Workspace file under the old name.  (Example: if your active Workspace is `one.wkspc` and you **Save As** `two.wkspc`, then `one.wkspc` will still exist, but the active Workspace will be `two.wkspc`.)
+    - **Save a Copy As**: save the active Workspace in a new Windows filesystem location, keeping the old Workspace file as well. (Example: if your active Workspace is `one.wkspc` and you **Save a Copy As** `two.wkspc`, then `one.wkspc` will still exist and be active, but there will also be a `two.wkspc` saved but not open.)
     - **Add New Project**: add a new Project container to the active Workspace.
 - On a Project entry:
     - **Move Up / Move Down**: reorder the selected Project relative to other Projects in the Workspace.
