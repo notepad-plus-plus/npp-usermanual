@@ -308,7 +308,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 * **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
 
-All dialog-free search actions do preserve the current search options set in the Find dialog like Match case or Wrap around.
+All dialog-free search actions respect the current search options set in the Find dialog like Match case or Wrap around.
 
 ### Marking with a color/style and Highlighting
 
