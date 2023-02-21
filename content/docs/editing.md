@@ -4,13 +4,35 @@ weight: 30
 ---
 
 
-## Column Mode & Column Editor
+## Selection modes & Column Editor
 
-Use `Alt + Mouse dragging` or `Alt + Shift + Arrow keys` to make a selection in column mode:
+Notepad++ has two modes for selecting text:  stream selection and column-mode selection.
+
+Normally when you select text by `LeftClick+Drag` with the mouse, or `Shift+Arrow` key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically.  Column mode is also referred to as column-block, rectangular selection, or rectangular block selection.
+
+On the **Edit** menu is an entry **Column Mode** which when executed opens a text box window that explains the basics of column mode selection of text:
+
+There are 3 ways to switch to column-select mode:
+
+1. (Keyboard and Mouse)  Hold Alt while left-click dragging
+
+2. (Keyboard only)  Hold Alt+Shift while using arrow keys
+
+3. (Keyboard or Mouse)  Put caret at desired start of column block position, then execute the `Begin/End Select in Column Mode` command; move caret to desired end of column block position, then execute the `Begin/End Select in Column Mode` command again.
+
+Truly, other ways to enter column-mode exist, e.g. try Alt+Shift+PageDown, but knowing the intricacies of these -- what works and what doesn't -- takes some really specialized knowledge.
+
+As soon as you make a caret movement that doesn't intentionally keep you in column mode, your selection mode returns to the stream selection mode.  Similarly, if in stream mode, and you perform a caret movement that doesn't keep you selecting text, your stream selection will end and no text will be selected.
+
+When column-selecting with the mouse, once you stop making a column mode selection by letting up on the mouse's left click button, the only way to then alter the shape of the rectangular selection is with the keyboard (`Alt+Shift+Arrows`).
+
+Animation of using `Alt+LeftClick+Drag` or `Alt+Shift+Arrows` to make a selection in column mode:
 
 ![](../images/columnMode.gif)
 
 In column mode, typing will type the same thing in all the rows of the column.  If you copy/cut in column mode, then you copy/cut a rectangle of text, which can be pasted over an identical-sized rectangle elsewhere, or pasted into a separate document or separate application.  This is implemented for making working with rectangles of text (instead of whole lines of text) more convenient.
+
+In column mode selection, when text is copied/cut, artificial line-ending characters are introduced into the text.  Thus, pasting in column mode can sometimes lead to surprising results, especially when you simply want the text inserted as if it isn't a column block.  Example: You copy a column block that spans 10 lines and then move the caret to column 1 on an empty line in your document and perform the paste.  The first line of the data from the paste ends up fine, but for the remaining lines, the paste has pushed existing text on subsequent lines to the right before inserting the new columns.  The solution here is to first (before the paste), use the Enter key to insert enough blank lines in the document so that the paste won't do this.
 
 The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to insert text or numbers in every row of the active Column Mode selection:
 
@@ -27,12 +49,17 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 ## Multi-Editing
 
-Multi-Editing mode allows you to make multiple caret selections by using `Ctrl+Click` for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.
+Multi-Editing mode (available via mouse usage only) allows you to make multiple carets by using `Ctrl+Click` for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.  You may place as many additional carets as you want.
 
-![](../images/multiEdit.gif)
+In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a `Ctrl+LeftClick+Drag` operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
+
+Multi-Editing mode is only available when stream selection(s) are active; it doesn't work in conjunction with column-block selection.  Unlike stream selections, where with Multi-editing you can define two or more selections simultaneously, with column mode there can be only one active selection at a time.
 
 Whether or not you can use Multi-Editing mode is determined by the [Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.
 
+Animation showing enabling Multi-Editing, and example usage of making multiple carets:
+
+![](../images/multiEdit.gif)
 
 ## Dual View
 To create Dual View, drag and drop any tab that you want it to be in another view (or right click on the tab) then choose "Move to Other View" command from the popup context menu.
@@ -75,7 +102,30 @@ Notepad++ has a column in the margin section which indicates which lines have be
 
 ## Edit Menu
 
-Aside from the normal undo/redo/copy/paste entries, there are a number of sub-menus to the **Edit** menu, which group together various categories of editing-related commands, and a few other editing commands in the main **Edit** menu.
+The top of the **Edit** menu features typical editing commands which any Windows user should be familiar with:
+
+* `Undo` - reverts the text to its content before the previous operation; can be used one or more times consecutively to step back through a document's textual history
+* `Redo` - if `Undo` was executed previously, this will reinstate the change(s) previously undone; may be executed multiple times
+* `Cut` - will remove any selected text from the document and place it on the Windows clipboard
+* `Copy` - will put a copy of any selected text on the Windows clipboard; document content is unaltered
+* `Paste` - if the Windows clipboard contains text, this will insert a copy of that text at the point of the caret; if text is selected when this command is executed, the selected text will be replaced by the text from the clipboard; if the clipboard does not contain text, nothing will happen
+* `Delete` - will remove any selected text from the document
+* `Select All` - selects all text in the document into a stream selection
+
+Below the common editing commands are two that (each) allow text to be selected in two distinct steps:
+
+* `Begin/End Select`
+* `Begin/End Select in Column Mode`
+
+Normally text selection is a dedicated process -- once a selection is started, the only thing you can do is to complete it, before moving on to other actions.  But sometimes it is useful to do other things, in particular document navigation actions, between defining the starting point of a selection and actually bringing the selection into existence.
+
+The `Begin/End Select` commands are useful when making huge selections of text; rather than holding Shift while using arrow keys or the mouse to select text, and be at the mercy of the system scroll speed as you watch the viewport scroll interminably to locate the far-away ending point for the selection you started, you can use the `Begin/End Select` feature.  Execute `Begin/End Select` once to set a starting point of a future selection, then use a caret movement command(s) (example: Ctrl+End to move quickly to the end of a document), and finally run `Begin/End Select` a second time to create a text selection between the two far-away document positions.
+
+After you use `Begin/End Select` the first time to set the starting point, the menu item for the command will appear "checkmarked" to let you know that you have started the process, and need to execute the command a second time to define the selection end point and show the text as selected.
+
+`Begin/End Select in Column Mode` works very similarly to the normal version of the command, with the exception being that when the two-stage command is completed, a column mode selection will be made rather than a stream selection.  If you execute the first part of one of the commands, and then change your mind about the type of selection needed, you must complete the in-progress command before you will be allowed to begin the one of the opposite type.
+
+Below the `Begin/End Select` entries, there are a number of sub-menus to the **Edit** menu, which group together various categories of editing-related commands, and a few other editing commands in the main **Edit** menu.
 
 * `Insert >` ⇒ submenu with actions that insert the date and time (new to v8.1.4)
     * `Date Time (short)` ⇒ like `12:46 PM 8/21/2021` (new to v8.1.4)
