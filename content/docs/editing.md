@@ -179,7 +179,7 @@ Below the `Begin/End Select` entries, there are a number of sub-menus to the **E
     * `Space to TAB (Leading)`: consolidates space characters into an equivalent number of tab characters, but only where they occur before the first non-whitespace character on a line
         - NOTE about TAB-related commands: the "equivalent number" of spaces (or tab characters) is based on the [Settings > Preferences > Language > Tab Settings: Tab Size](../preferences/#language) for the active language of the current file, and will be enough spaces to take you to the next "tab stop".
 
-            If the current langauge has a tab setting of 4 spaces per tab, then the tab stops are at 1, 5, 9, 13, and so on.
+            If the current language has a tab setting of 4 spaces per tab, then the tab stops are at 1, 5, 9, 13, and so on.
 
             If you have a tab at column 1, 2, 3, or 4, it will be wide enough so that the next character will be at column 5; and if you convert tabs to spaces, it will replace it with 4, 3, 2, or 1 space (respectively), so that the next character will still be at column 5.
 
