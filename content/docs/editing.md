@@ -185,7 +185,7 @@ Below the `Begin/End Select` entries, there are a number of sub-menus to the **E
 
             Similarly, tabs at columns 5, 6, 7, or 8 will be displayed as wide as (or converted to spaces as) 4, 3, 2, or 1 spaces (respecitvely), so that the next character will be at column 9.
 
-            These examples are shown in the screenshot below, where **View > Show Symbol > Whitespace and Tab** shows the tabs as an orange arrow (`→`) and the spaces as an orange middot (`·`); the left shows it with tab characters; the right shows it with those tabs converted to spaces:
+            These examples are shown in the screenshot below, where [**View > Show Symbol > Whitespace and Tab**](../views/#show-symbol) shows the tabs as an orange arrow (`→`) and the spaces as an orange middot (`·`); the left shows it with tab characters; the right shows it with those tabs converted to spaces:
 
             ![](../images/edit-tab-stops.png)
 
