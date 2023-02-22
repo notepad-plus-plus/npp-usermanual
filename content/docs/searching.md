@@ -306,27 +306,27 @@ The following commands, available through the Search menu or keyboard shortcuts,
     - The Search Results Window is created in response to any of the dialog-based **Find All** commands.
     - If such a search has been run in this instance of Notepad++, but the Search Results Window it is not visible, you can use  **Search > Search Results Window** to make it visible; if it is already visible, that command will switch the input focus between the Search Results Window and the current document.
 * **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
-    - The sequence of events is described below:
-        - all mentions of the _Find_ window in this sequence are still true even if the _Find_ window is not currently visible
-        - copies the selected text to _Find what_ box of _Find_ window, then uses it
+    - The specific search behavior:
+        - copies the selected text to _Find what_ box of _Find_ window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
-        - uses _Match case_ setting from _Find_ window
-        - uses _Match whole word only_ setting from _Find_ window
-        - uses _Wrap around_ setting from _Find_ window
-        - uses _Search mode_ = _Normal_
-        - selects and moves the caret to the next or previous match, using those search settings
+        - uses the following set of options:
+            - uses _Match case_ setting from _Find_ window
+            - uses _Match whole word only_ setting from _Find_ window
+            - uses _Wrap around_ setting from _Find_ window
+            - uses _Search mode_ = _Normal_ (regardless of its current setting in the _Find_ window)
+        - (all mentions of the _Find_ window in this search description are still true even if the _Find_ window is not currently visible)
 * **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up.
     - The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.  However, because it will have moved the caret and selection to the next match, repeated **Find (volatile) Next / Find (volatile) Previous** _will_ work as expected.
-    - The sequence of events is described below:
-        - uses the selected text as the search text
+    - The specific search behavior:
+        - uses the selected text as the search text, but does **not** overwrite the existing _Find what_ value in the _Find_ dialog
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
-        - uses _Match case_ = false (as this is most "flexible", i.e., "less strict")
-        - uses _Match whole word only_ = false (as this is most "flexible")
-        - uses _Wrap around_ = true (as this is most "flexible")
-        - uses _Search mode_ = _Normal_
-        - selects and moves the caret to the next or previous match, using those search settings
+        - uses the least-strict set of options, providing the most flexibility in the results provided by a volatile search:
+            - considers _Match case_ to be unchecked
+            - considers _Match whole word only_ to be unchecked
+            - considers _Wrap around_ to be checked
+            - considers _Search mode_ to be _Normal_
 
 ### Marking with a color/style and Highlighting
 
