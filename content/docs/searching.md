@@ -301,14 +301,32 @@ To some users these older results accumulating are an annoyance -- their data ma
 The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document:
 
 * **Find Next / Find Previous** Repeat searching the current search target, either down or up.
-
-* **Next Search Result / Previous Search Result** Jump to the next or previous search result recorded in the Search Results Window. The Search Results Window is created in response to any of the dialog-based **Find All** commands. If it exists, you can use  **Search  -&gt;  Search Results Window** to make it visible and to switch the input focus between the Search Results Window and the current document.
-
-* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.
-
+    - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous**
+* **Next Search Result / Previous Search Result** Jump to the next or previous search result recorded in the Search Results Window.
+    - The Search Results Window is created in response to any of the dialog-based **Find All** commands.
+    - If such a search has been run in this instance of Notepad++, but the Search Results Window it is not visible, you can use  **Search > Search Results Window** to make it visible; if it is already visible, that command will switch the input focus between the Search Results Window and the current document.
 * **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
-
-All dialog-free search actions respect the current search options set in the Find dialog like Match case or Wrap around.
+    - The sequence of events is described below:
+        - all mentions of the _Find_ window in this sequence are still true even if the _Find_ window is not currently visible
+        - copies the selected text to _Find what_ box of _Find_ window, then uses it
+            - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
+            - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
+        - uses _Match case_ setting from _Find_ window
+        - uses _Match whole word only_ setting from _Find_ window
+        - uses _Wrap around_ setting from _Find_ window
+        - uses _Search mode_ = _Normal_
+        - selects and moves the caret to the next or previous match, using those search settings
+* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up.
+    - The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.  However, because it will have moved the caret and selection to the next match, repeated **Find (volatile) Next / Find (volatile) Previous** _will_ work as expected.
+    - The sequence of events is described below:
+        - uses the selected text as the search text
+            - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
+            - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
+        - uses _Match case_ = false (as this is most "flexible", i.e., "less strict")
+        - uses _Match whole word only_ = false (as this is most "flexible")
+        - uses _Wrap around_ = true (as this is most "flexible")
+        - uses _Search mode_ = _Normal_
+        - selects and moves the caret to the next or previous match, using those search settings
 
 ### Marking with a color/style and Highlighting
 
@@ -379,7 +397,7 @@ In extended mode, these escape sequences (a backslash followed by a single chara
     - `\x20` will match the SPACE character (ASCII 32 is "20" in 2-digit hexadecimal)
 * `\u`:  The hexadecimal representation of a two-byte character, made of 4 digits in the 0-9, A-F/a-f range. †
     - In Unicode builds, finds a Unicode character: for example, `\u263A` matches the `☺` char, in an UTF-8 encoded file.
-    - In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding. 
+    - In ANSI builds, finds characters requiring two bytes, like in the Shift-JIS encoding.
 
 † NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
@@ -401,7 +419,7 @@ In a regular expression (shortened into regex throughout), special characters in
 
 * `.` or `\C` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot match any character, including newline sequences.  With the option unchecked, then `.` will only match characters within a line, and not the newline sequences (`\r` or `\n`).
 
-* `\X` ⇒ Matches a single non-combining character followed by any number (zero or more) combining characters. You can think of `\X` as a "`.` on steroids": it matches the whole [grapheme](https://en.wikipedia.org/wiki/Grapheme "character with all its modifiers") as a unit, not just the base character itself.  This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X` (the latter, being generic, matches more than just `ǭ̳̚`, inluding but not limited to `ą̳̄̚` or `o` alone); if you want to limit the `\X` in this example to just match a possibly-modified `o` (so "`o` followed by 0 or more modifiers"), use a lookahead before the `\X`: `(?=o)\X`, which would match `o` alone or `ǭ̳̚`, but not `ą̳̄̚`.  
+* `\X` ⇒ Matches a single non-combining character followed by any number (zero or more) combining characters. You can think of `\X` as a "`.` on steroids": it matches the whole [grapheme](https://en.wikipedia.org/wiki/Grapheme "character with all its modifiers") as a unit, not just the base character itself.  This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X` (the latter, being generic, matches more than just `ǭ̳̚`, inluding but not limited to `ą̳̄̚` or `o` alone); if you want to limit the `\X` in this example to just match a possibly-modified `o` (so "`o` followed by 0 or more modifiers"), use a lookahead before the `\X`: `(?=o)\X`, which would match `o` alone or `ǭ̳̚`, but not `ą̳̄̚`.
 
 * `\$` , `\(` , `\)` , `\*` , `\+` , `\.` , `\?` , `\[` , `\]` , `\\` , `\|` ⇒ Prefixing a special character with `\` to "escape" the character allows you to search for a literal character when the regular expression syntax would otherwise have that character have a special meaning as a regex meta-character.
     * The characters `$ ( ) * + . ? [ ] \ |` all have special meaning to the regex engine in normal circumstances; to get them to match as a literal (or to show up as a literal in the substitution), you will have to prefix them with the `\` character.
@@ -473,7 +491,7 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
     - To use a literal `[` in a character class:  Use it directly like any other character, like `[ab[c]`; "escaping" is not necessary, but is permissible, like `[ab\[c]` .  This character is not special when used _alone_ inside a class; however, there are cases where it _is_ special in combination with another:
 
         - If used with a colon in the order `[:` inside a class, it is the opening sequence for a named class (described below); if you want to include both a `[` and a `:` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[:[]`, or escape one or both, like `[\[:]` or `[[\:]` or `[\[\:]` .
-        
+
         - If used with an equals sign in the order `[=` inside a class, it is the opening sequence for an equivalence class (described below); if you want to include both a `[` and a `=` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[=[]`, or escape one or both, like `[\[=]` or `[[\=]` or `[\[\=]` .
 
     - To use a literal `\` in a character class:  Must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
@@ -686,9 +704,9 @@ The following constructs control how matches condition other matches, or otherwi
     * `(?x)` ⇒ Allow extra whitespace in the expression for the remainder of the regex
 
     Please note that turning off "dot matches newline" with `(?-s)` will _not_ affect character classes: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines, even though the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines" (the `[^x]` is _not_ a dot `.`, so is still allowed to match newlines).
-    
+
     More on free-spacing mode `(?x)`:
-    
+
     - As with all these flags, this is for the search ("Find what" box) only; it does not work for the substitution ("Replace with" box).
     - As said before, this mode ignores whitespace: this includes space, tabs, newlines, and other fancy Unicode space-like characters.  If you want to _match_ a whitespace character, it must be escaped (using the escapes described earlier in the regex documentation), or put inside a character class.
         - Example: the regex `(?x)one two` will match the text `onetwo`, but _not_ the text `one two`.  `(?x) one \x20 two` could be used to match `one two`.
@@ -718,7 +736,7 @@ The following constructs control how matches condition other matches, or otherwi
     #      1   skip     2        2  3        2     3      4  <=== assigned subexpression counter values
     #               first     | second    |  third           <=== alternatives
     ~~~
-    
+
     example text | which alternative is chosen | group contents without branch reset | group contents with branch reset
     -------------|-----------------------------|-------------------------------------|---------------------------------
     `axyzz` | first | 1=`a`, 2=`y`, 3=4=5=6=empty, 7=`z` | 1=`a`, 2=`y`, 3=empty, 4=`z`
