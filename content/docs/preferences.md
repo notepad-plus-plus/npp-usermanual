@@ -276,6 +276,7 @@ Affects how the text is formatted when sent to the printer
 ### Searching
 
 Affects the operations found in the **Find** dialog tabs.
+
 * **When Find Dialog is Invoked**
     * `☐ Fill find field in Find dialog with selected word`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
         * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
