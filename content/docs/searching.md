@@ -298,14 +298,11 @@ To some users these older results accumulating are an annoyance -- their data ma
 
 ### Searching
 
-The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document:
+The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document (with the default shortcuts):
 
-* **Find Next / Find Previous** Repeat searching the current search target, either down or up.
+* **Find Next (`F3`)/ Find Previous (`Shift+F3`)**: Repeat searching the current search target, either down or up.
     - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous**
-* **Next Search Result / Previous Search Result** Jump to the next or previous search result recorded in the Search Results Window.
-    - The Search Results Window is created in response to any of the dialog-based **Find All** commands.
-    - If such a search has been run in this instance of Notepad++, but the Search Results Window it is not visible, you can use  **Search > Search Results Window** to make it visible; if it is already visible, that command will switch the input focus between the Search Results Window and the current document.
-* **Select and Find Next / Select and Find Previous** Attempt to find the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
+* **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
         - copies the selected text to _Find what_ box of _Find_ window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
@@ -316,7 +313,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
             - uses _Wrap around_ setting from _Find_ window
             - uses _Search mode_ = _Normal_ (regardless of its current setting in the _Find_ window)
         - (all mentions of the _Find_ window in this search description are still true even if the _Find_ window is not currently visible)
-* **Find (volatile) Next / Find (volatile) Previous** Attempt to find the word the caret is in, or the selected text, down or up.
+* **Find (Volatile) Next (`Ctrl+Alt+F3`) / Find (Volatile) Previous (`Ctrl+Alt+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up.
     - The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.  However, because it will have moved the caret and selection to the next match, repeated **Find (volatile) Next / Find (volatile) Previous** _will_ work as expected.
     - The specific search behavior:
         - uses the selected text as the search text, but does **not** overwrite the existing _Find what_ value in the _Find_ dialog
@@ -327,6 +324,15 @@ The following commands, available through the Search menu or keyboard shortcuts,
             - considers _Match whole word only_ to be unchecked
             - considers _Wrap around_ to be checked
             - considers _Search mode_ to be _Normal_
+
+#### _Comparison between "Select and Find Next" and "Find (Volatile) Next"_
+
+Both commands **Select and Find Next** and **Find (Volatile) Next** do almost the same thing: select the current word (where the caret is) or use the active selection, then jump to the next occurrence of that selected text. However, there is a slight difference between these commands: **Select and Find Next** remembers the searched word, whereas **Find (Volatile) Next** does not.  Example sequence:
+
+- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show _Find what_ to be the active search value. (_Note_: The [Settings > Preferences > Searching](../preferences/#searching) options might affect whether you see the **Select and Find Next** text the next time you open the **Find** dialog; but that action is storing the text in the _Find what_ field, regardless.)
+
+- If your caret is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your caret onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
+
 
 ### Marking with a color/style and Highlighting
 
@@ -363,20 +369,6 @@ This command will show a small region at the bottom of the Notepad++, which has 
 * If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
 * If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.
 * To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
-
-## Comparison between "Select and Find Next" and "Find Next (Volatile)"
-
-This section is aimed to clear the confusion about these 2 similar commands.
-
-Both commands "Select and Find Next" (Ctrl+F3) and "Find Next (Volatile)" (Ctrl+Alt+F3) does the same thing (almost): select the current word (on which caret is) then jump to the next occurrence.
-
-However, there is a slight difference between these 2 commands: "Select and Find Next" remembers the searched word, "Find Next (Volatile)" does not.
-
-Here's an example:
-
-If you do "Select and Find Next" command for word word1 then you can always use "Find Next" command (F3) or "Find Previous" command (Shift+F3) to search word1, even the caret is on word2.
-
-If your caret is on word word2, "Find Next (Volatile)" will search the next word2. Now if you move your caret on word word3 and do "Find Next (Volatile)", it will search next word3, and word2 is forgotten.
 
 ## Extended Search Mode
 
