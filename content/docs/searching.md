@@ -80,7 +80,7 @@ The various action buttons available include:
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
     * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
-* **Replace All**: With **☑ Wrap Around** ticked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unticked, it searches from the caret to the end of the file (if **☐ Backward direction** is unticked) or from the beginning of the file to the caret (if **☑ Backward direction** is ticked) and replaces all occurrences found in that region.
+* **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
@@ -97,7 +97,7 @@ The various action buttons available include:
 
 * **Replace All in All Opened Documents**: same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
-The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  With focus on one of the Find dialog windows, press and release the `Alt` key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be ticked/unticked via pressing its Alt key command.
+The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  With focus on one of the Find dialog windows, press and release the `Alt` key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its Alt key command.
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing Enter when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing Shift+Enter when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use Shift+Enter to search in the opposite direction* as a reminder of this capability.
 
@@ -170,7 +170,7 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * Otherwise, the matched pattern is highlighted according to the Settings -&gt; Style Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
 
-In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is ticked; if **Wrap Around** is not ticked, it will mark from the caret position to the end of the file (if **Backward direction** is not ticked) or from the beginning of the file to the caret position (if **Backward direction** is ticked).
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is checked; if **Wrap Around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
 
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
@@ -1344,7 +1344,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 `<Action type="3" message="1702" wParam="0" lParam="515" sParam="" />`
 
-| 1702-Bit-Weight |Binary-Bit-Weight  | Meaning (equivalent option ticked) |
+| 1702-Bit-Weight |Binary-Bit-Weight  | Meaning (equivalent option checked) |
 |----------------:|------------------:|:-----------------------------------|
 | 1               | 0000000001        | Match whole word only              |
 | 2               | 0000000010        | Match case                         |
@@ -1356,7 +1356,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 | 256             | 0100000000        | Wrap around                        |
 | 512             | 1000000000        | Backward direction (*)             |
 
-*: **Backward direction** ticked means 512 is _not_ included; unticked means 512 _is_ included.
+*: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
 
 > Let's see how the example value 515 used above is decoded:
 
