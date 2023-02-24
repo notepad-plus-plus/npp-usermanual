@@ -302,7 +302,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 * **Find Next (`F3`)/ Find Previous (`Shift+F3`)**: Repeat searching the current search target, either down or up.
     - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous**
-* **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is remembered in the find history, and the search can be repeated with **Find Next / Find Previous**.
+* **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
         - copies the selected text to _Find what_ box of _Find_ window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
@@ -314,7 +314,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
             - uses _Search mode_ = _Normal_ (regardless of its current setting in the _Find_ window)
         - (all mentions of the _Find_ window in this search description are still true even if the _Find_ window is not currently visible)
 * **Find (Volatile) Next (`Ctrl+Alt+F3`) / Find (Volatile) Previous (`Ctrl+Alt+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up.
-    - The searched word or selection is not remembered in the find history, and the search will not be repeatable with **Find Next / Find Previous**. That's why it's called volatile.  However, because it will have moved the caret and selection to the next match, repeated **Find (volatile) Next / Find (volatile) Previous** _will_ work as expected.
+    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** _will_ work as expected.
     - The specific search behavior:
         - uses the selected text as the search text, but does **not** overwrite the existing _Find what_ value in the _Find_ dialog
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
@@ -327,9 +327,9 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 #### _Comparison between "Select and Find Next" and "Find (Volatile) Next"_
 
-Both commands **Select and Find Next** and **Find (Volatile) Next** do almost the same thing: select the current word (where the caret is) or use the active selection, then jump to the next occurrence of that selected text. However, there is a slight difference between these commands: **Select and Find Next** remembers the searched word, whereas **Find (Volatile) Next** does not.  Example sequence:
+Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's _Find what_ field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
 
-- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show _Find what_ to be the active search value. (_Note_: The [Settings > Preferences > Searching](../preferences/#searching) options might affect whether you see the **Select and Find Next** text the next time you open the **Find** dialog; but that action is storing the text in the _Find what_ field, regardless.)
+- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show _Find what_ to be the active search value. (_Note_: See the section on [Settings > Preferences > Searching](../preferences/#searching), because those options can cause other text to overwrite the _Find what_ field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
 
 - If your caret is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your caret onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
 
@@ -351,11 +351,14 @@ You activate smart highlighting through [Settings > Preferences > Highlighting >
 
 ## Finding characters in a specific range
 
-While regular expressions provide for specifying a range (or multiple ranges) of characters using the  [start....end] pattern, this is sometimes awkward when the start or end character isn't easily typed in. Notepad++ provides a specific dialog, available using Find -&gt; Find Characters in range....
+It is sometimes desirable to search for characters by their codepoint (underlying numerical value), and even to search for text that matches a range of character codepoints (like finding all characters from `a` to `z`).
+Notepad++ provides a dialog for doing this character-range search, available using the **Search &gt; Find Characters in range...** action.
 
-A custom range of characters can be asked for, as well as either half of the 0..255 range: ASCII covers the lower half, non-ASCII covers the upper part. Note that entries should be in decimal notation, and that values above 255 are not handled in a useful way.
+A custom range of characters can be asked for, as well as either half of the 0..255 range: ASCII covers the lower half, non-ASCII covers the upper part. Note that entries should be in decimal notation, and that values above 255 are not handled in a useful way (so fancy Unicode characters cannot be searched for in this manner).
 
-Search may proceed up or down, and optionally wraps around. Hit Find to perform it. Close dialog using either the dedicated button, the close button on the title bar or the Esc key.
+This search may proceed up or down, and optionally wraps around. Hit **Find** to run this range-search, and hit **Close** to leave the dialog.
+
+The [regular expressions](#regular-expressions) search mode (described [below](#regular-expressions)) also provides a way to for specifying a range (or multiple ranges) of characters using a [character class](#character-classes), but that mode can be difficult for inexperienced users, so this dialog has been provided as an easier alternative.
 
 ## Incremental Search
 
@@ -363,7 +366,7 @@ Incremental search is similar to the searching capabilities found in your favori
 
 This command will show a small region at the bottom of the Notepad++, which has a few simple features.
 
-* The **✗** allows you to close out of Incremental Search.
+* The **X** allows you to close out of Incremental Search.
 * The **Find** box is where you type your literal search term.
 * The **<** and **>** buttons navigate backward and forward through the search results (wrapping around when it reaches the end or start of the document).
 * If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
