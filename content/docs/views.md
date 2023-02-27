@@ -25,11 +25,14 @@ The **View Current File In...** sub-menu will launch the current file in a stand
 
 The **Show Symbol**[↗](#remembered-settings "Remembered Setting") sub-menu will affect whether certain characters are rendered with special glyphs so that they can easily be seen or identified in the editor view, and whether certain tab and wrap guides will be visible.
 
-There are three entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  Only one of these three options can be active (indicated with a check mark `✓`) at a given time, and choosing a new option will remove the checkmark from the old.  If you want none of these symbol options, click on the option that is currently active and it will be turned off (and none of the options will have the checkmark `✓`).
+There are four entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  The options that are active will be indicated with a check mark `✓`.  (In older versions, there were only three options, and only one could be active a time, but as of Notepad++ v8.5, the first three are independent, and the fourth will control the other three.)  Choosing one of the first three will toggle on or off that particular option, whereas choosing the **Show All Characters** will toggle the other three either all-on or all-off.
 
-* **Show Space and Tab**: When checked, the space character will show as a [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
-* **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
-* **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing) is checked.
+- **Show Space and Tab**: When checked, the space character will show as a [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
+
+- **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
+
+- **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing) is checked.  (New to v8.5)
+
     {{< expand "Table of Non-Printing Characters" >}}
 Codepoint | Character Name               | Abbreviation
 ----------|------------------------------|---------------
@@ -77,10 +80,14 @@ U+206F    | nominal digit shapes         | NODS
 U+3000    | ideographic space            | IDSP
 U+FEFF    | zero-width no-break space    | ZWNBSP
     {{< /expand >}}
-* **Show All Characters**: When checked, this is effectively equivalent to having both **Show Whitespace and TAB** and **Show End of Line** at the same time.
-When the **Show Indent Guide** entry is checked, a [colored](../preferences/#global-styles "Style Configurator > Global Styles > Indent Guideline Style") dotted vertical line `⸽` will show where each of the tab stops are located if there are enough tabs or spaces at the start of a given line to go beyond a tab stop (as defined by the [per-language Tab settings](../preferences/#language)).
 
-When the **Show Wrap Symbol** entry is checked and **Word Wrap** is also checked, there will be a little [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") arrow `↲` on the far edge of the current line if that line has been wrapped.
+- **Show All Characters**: When checked, this is will check all three **Show Whitespace and TAB** and **Show End of Line** and **Show Non-Printing Characters** at the same time.
+
+The remaining two entries in this sub-menu aren't affecting the glyphs of characters in the file; instead, they are showing information about Notepad++'s indentation and word-wrap:
+
+- **Show Indent Guide**: when checked, a [colored](../preferences/#global-styles "Style Configurator > Global Styles > Indent Guideline Style") dotted vertical line `⸽` will show where each of the tab stops are located if there are enough tabs or spaces at the start of a given line to go beyond a tab stop (as defined by the [per-language Tab settings](../preferences/#language)).
+
+- **Show Wrap Symbol**: When this option is checked and the **Word Wrap** option (below) is also checked, there will be a little [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") arrow `↲` on the far edge of the current line if that line has been wrapped.
 
 ## Zoom
 
