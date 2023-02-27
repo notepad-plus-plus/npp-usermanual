@@ -123,7 +123,7 @@ The `Begin/End Select` commands are useful when making huge selections of text; 
 
 After you use `Begin/End Select` the first time to set the starting point, the menu item for the command will appear "checkmarked" to let you know that you have started the process, and need to execute the command a second time to define the selection end point and show the text as selected.
 
-`Begin/End Select in Column Mode` works very similarly to the normal version of the command, with the exception being that when the two-stage command is completed, a column mode selection will be made rather than a stream selection.  If you execute the first part of one of the commands, and then change your mind about the type of selection needed, you must complete the in-progress command before you will be allowed to begin the one of the opposite type.
+`Begin/End Select in Column Mode` works very similarly to the normal version of the command, with the exception being that when the two-stage command is completed, a column mode selection will be made rather than a stream selection.  If you execute the first part of one of the commands, and then change your mind about the type of selection needed, you must complete the in-progress command before you will be allowed to begin the one of the opposite type.  (New to v8.5.)
 
 Below the `Begin/End Select` entries, there are a number of sub-menus to the **Edit** menu, which group together various categories of editing-related commands, and a few other editing commands in the main **Edit** menu.
 
