@@ -2156,6 +2156,17 @@ The general layout of the following notifications look like this
 
 ---
 
+####  **NPPN_EXTERNALLEXERBUFFER**
+*To notify lexer plugins that the buffer (in idFrom) is just applied to a external lexer*
+
+**Fields:**
+
+	code:		NPPN_FILEBEFORECLOSE
+	hwndFrom:	hwndNpp
+	idFrom:		BufferID
+
+---
+
 ####  **NPPN_FILEBEFORECLOSE**
 *To notify plugins that the current file is about to be closed*
 
