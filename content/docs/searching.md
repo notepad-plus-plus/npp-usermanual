@@ -1339,23 +1339,26 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 `<Action type="3" message="1702" wParam="0" lParam="515" sParam="" />`
 
-| 1702-Bit-Weight |Binary-Bit-Weight  | Meaning (equivalent option checked) |
-|----------------:|------------------:|:-----------------------------------|
-| 1               | 0000000001        | Match whole word only              |
-| 2               | 0000000010        | Match case                         |
-| 4               | 0000000100        | Purge for each search              |
-| 16              | 0000010000        | Bookmark line                      |
-| 32              | 0000100000        | In all sub-folders                 |
-| 64              | 0001000000        | In hidden folders                  |
-| 128             | 0010000000        | In selection                       |
-| 256             | 0100000000        | Wrap around                        |
-| 512             | 1000000000        | Backward direction (*)             |
+| 1702-Bit-Weight |Binary-Bit-Weight      | Meaning (equivalent option checked) | Alternate Meaning (\*\*) |
+|----------------:|----------------------:|:------------------------------------|:-----------------------|
+| 1               | 0000-0000-0001        | Match whole word only               |                        |
+| 2               | 0000-0000-0010        | Match case                          |                        |
+| 4               | 0000-0000-0100        | Purge for each search               |                        |
+| 16              | 0000-0001-0000        | Bookmark line                       |                        |
+| 32              | 0000-0010-0000        | In all sub-folders                  |                        |
+| 64              | 0000-0100-0000        | In hidden folders                   |                        |
+| 128             | 0000-1000-0000        | In selection                        | Project Panel 1 (\*\*)   |
+| 256             | 0001-0000-0000        | Wrap around                         | Project Panel 2 (\*\*)   |
+| 512             | 0010-0000-0000        | Backward direction (\*)              | Project Panel 3 (\*\*)    |
+| 1024            | 0100-0000-0000        | . matches newline                   |                        |
 
-*: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
+\*: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
+
+\*\*: **Project Panel "alternate meaning"** column shows the meaning for those those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
 
 > Let's see how the example value 515 used above is decoded:
 
-> lParam="515" (decimal) = 203 (hex) = 10 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
+> lParam="515" (decimal) = 203 (hex) = 0010 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
 
 
 Finally appears a **1701** message which encodes the Find family action to perform in **lParam**, which, when executed will conduct the action using all of the information encoded in the prior messages; let's do a **Replace in Files**, which has an integer value of 1660, for purposes of an example:
@@ -1375,6 +1378,8 @@ Finally appears a **1701** message which encodes the Find family action to perfo
 | 1641       | Find All in Current Document        |
 | 1656       | Find All (in Files)                 |
 | 1660       | Replace in Files                    |
+| 1665       | Replace in Projects                 |
+| 1666       | Find All (in Projects)              |
 
 
 Here is a complete example (that could occur in *shortcuts.xml*) and how it is interpreted:
