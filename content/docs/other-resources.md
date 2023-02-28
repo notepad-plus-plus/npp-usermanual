@@ -96,6 +96,7 @@ Windows Registry Editor Version 5.00
 ```
 (If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
 
+Starting in v8.5, the Notepad++ installer will automatically add this `pintohome` workaround on Windows 11, as long as no other app is currently using the `pintohome` command; if there is already something else in that registry slot, Notepad++ will not overwrite it.
 
 ## Notepad++ Cheat sheet
 
