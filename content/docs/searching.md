@@ -80,6 +80,11 @@ The various action buttons available include:
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
     * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
+    * Notepad++ v8.5.1 extends this swap feature: you can right click on that button to choose one of three actions:
+        - **⇅ Swap Find with Replace**: moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
+        - **⤵ Copy from Find to Replace**: copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
+        - **⤴ Copy from Replace to Find**: copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
+        - After selecting an action from that right click menu, that action will be immediately performed, and the button will change icon to indicate the new mode for that button.
 * **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
