@@ -66,7 +66,7 @@ Windows Registry Editor Version 5.00
 
 ### Windows 11 Right-Click Workarounds
 
-Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11.  The right click menu contains a **Show More Options** action which will bring up the old-style right click context menu with the old actions; this can also be accessed using the default <kbd>Shift+F10</kbd> shortcut on a file instead of right-clicking.
+Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11; though starting with v8.5.1, the installer should put the action in the main Windows 11 right-click menu again.  For older Notepad++, the Windows right click menu contains a **Show More Options** action which will bring up the old-style right click context menu with the old actions; this can also be accessed using the default <kbd>Shift+F10</kbd> shortcut on a file instead of right-clicking.
 
 If that is not sufficient for you, https://www.tomshardware.com/how-to/windows-11-classic-context-menus describes a possible method of changing your registry[†](#registry-edit-warning) to get the old right click context menu by default again in Windows 11.
 
@@ -96,7 +96,7 @@ Windows Registry Editor Version 5.00
 ```
 (If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
 
-Starting in v8.5, the Notepad++ installer will automatically add this `pintohome` workaround on Windows 11, as long as no other app is currently using the `pintohome` command; if there is already something else in that registry slot, Notepad++ will not overwrite it.
+In v8.5, the Notepad++ installer would automatically add this `pintohome` workaround on Windows 11, as long as no other app is currently using the `pintohome` command; if there is already something else in that registry slot, Notepad++ will not overwrite it.  However, since this got rid of the Windows native "pin to home" feature for some Windows 11 users, v8.5.1 undid that change; instead, the installer was updated to add to the main Windows 11 right click, rather than being being relegated to the **Show More Options** sub-menu.
 
 ## Notepad++ Cheat sheet
 
