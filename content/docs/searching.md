@@ -841,6 +841,8 @@ alternatives  and  there  is a subsequent matching failure.
 
     It is also useful if you would need a look-behind assertion which would contain a non-fixed length pattern (see further on). As variable-length lookbehind is not allowed in Boost's regular expressions, you can use the `\K` syntax, instead. For instance, the non-allowed syntax `(?-i)(?<=\d+)abc` can be replaced with the correct syntax `(?-i)\d+\Kabc` which matches the exact string `abc` only if preceded by, at least, one digit.
 
+    _Note_: Because of the way that Notepad++'s replacement works with `\K`, if your regex **Find what** includes `\K`, you will _not_ be able to use just **Replace** to replace a single instance of the match; you must use **Replace All** to replace all the matches.  You may use the **Find Next** button to see where an individual replacement will occur, to verify your expression, but you cannot do the replacements one-at-a-time.
+
 #### Assertions
 These special groups consume no characters. Their successful matching counts, but when they are done, matching starts over where it left.
 
