@@ -296,7 +296,7 @@ Here you define a parser rule file name for your KRL UDL. While you open a file 
 
 The `functionList\`_languagename_`.xml` parser file itself, whether it's for a builtin language or a UDL-based language, requires the structure `<NotepadPlus><functionList><parser...>...</parser></functionList></NotepadPlus>`, where the attributes and contents of the `<parser>` are described in the documents section about [How to Customize Function List](../function-list/#how-to-customize-function-list). You can look at any of the [default parser files](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/) for examples of working Function List configurations.
 
-For plain text files, aka **Language > None (Normal Text)**, you can have a function list definition in `functionList\normal.xml`, or you can use `langID="0"` in your `functionList\overrideMap.xml` to assign it to some other file.  For example, if you've defined your normal-text functions in `functionList\someOtherNormalText.xml`, you would use the following override:
+For plain text files (ones with **Language > None (Normal Text)** selected), you can have a function list definition in `functionList\normal.xml`, or you can use `langID="0"` in your `functionList\overrideMap.xml` to assign it to some other file.  For example, if you've defined your normal-text functions in `functionList\someOtherNormalText.xml`, you would use the following override:
 ```xml
 <association id= "someOtherNormalText.xml"			 langID= "0" />
 ```
