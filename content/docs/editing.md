@@ -43,7 +43,15 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
     * `Initial number` sets the starting number.
     * `Increase by` will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
     * `Repeat` will repeat the same number _n_ times.  Defaults to 1 if left blank.
-    * `Leading` is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.  (Prior to v8.5.2, the only option was a checkbox for `☐ Leading zeros`)
+    * `Leading` is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.  
+
+        None | Zeros | Spaces
+        ---|---|---
+        ![](../images/colEdit-LeadingNone.png) | ![](../images/colEdit-LeadingZeros.png) | ![](../images/colEdit-LeadingSpaces.png)
+        _examples shown with **View > Show Symbol > Show Spaces and Tab** to make the leading spaces obvious._
+
+        (Prior to v8.5.2, the only option was a checkbox for `☐ Leading zeros`, so unchecked was equivalent to "None" and checkmarked was equivalent to "Zeros")
+
     * `Format` chooses between **Dec** (0-9), **Hex** (0-9,A-F), **Oct** (0-7), or **Bin** (0-1).
         _Note_: the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
 
