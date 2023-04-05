@@ -8,7 +8,7 @@ The Function List Panel is a zone to display all the functions (or methods) foun
 
 Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.  
 
-In order to make Function List work for your language, you should modify (or add) the XML file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList`; if you use the portable (zip) package, then it will instead be in the `functionList` folder located in Notepad++ installation directory.  The `overrideMap.xml` file (in that same folder as the language XML file) is used to map the name of the language to the XML file that defines the Function List rule for that language, as described in the [function list config files](../config-files/#function-list) section of the manual.   (For plain text files, aka **Language > None (Normal Text)**, you can have a function list definition in `normal.xml`.)
+In order to make Function List work for your language, you should modify (or add) the XML file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList`; if you use the portable (zip) package, then it will instead be in the `functionList` folder located in Notepad++ installation directory.  The `overrideMap.xml` file (in that same folder as the language XML file) is used to map the name of the language to the XML file that defines the Function List rule for that language, as described in the [function list config files](../config-files/#function-list) section of the manual.   (For plain text files, aka **Language > None (Normal Text)**, you can have a function list definition in `functionList\normal.xml`.)
 
 ## How to customize Function List
 
@@ -36,6 +36,7 @@ Other than the caveats below, the function list regular expressions follow the s
 - The parser does not accept **regular expresion look behind operations** in the expressions.
 - The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names)
 - You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression, as described in the docs on [regex search modifiers](../searching/#search-modifiers)
+- The parser defaults to `. matches newline` being turned on (the equivalent of `(?s)` inside a regex).  If you want `.` to _not_ match newlines, please include `(?-s)` in your FunctionList definition regular expressions.
 
 ### Function parser
 The `<function>` node accepts the following attributes and contained elements:
