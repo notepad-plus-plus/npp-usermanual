@@ -85,6 +85,7 @@ The various action buttons available include:
         - **⤵ Copy from Find to Replace**: copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
         - **⤴ Copy from Replace to Find**: copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
         - After selecting an action from that right click menu, that action will be immediately performed, and the button will change icon to indicate the new mode for that button.
+    * Notepad++ v8.5.2 added a pulldown-indicator (▼) to the swap button, to make it more obvious that it can be changed.
 * **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
