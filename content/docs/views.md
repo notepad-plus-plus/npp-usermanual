@@ -195,17 +195,17 @@ The **Function List**[↗](#remembered-settings "Remembered Setting") toggle wil
 
 ### Panel Mechanics
 
-Docked panels can be moved easily to another edge, or to be floating instead of docked, by clicking on the panel's title and dragging it to the new location.  Another way to make a docked panel float is to double-click its title bar; when the panel is already floating, it may be returned to its previously-docked location by double-clicking its title bar. 
+Docked Panels can be moved easily to another edge, or to be floating instead of docked, by clicking on the Panel's title and dragging it to the new location.  Another way to make a docked Panel float is to double-click its title bar.  When a Panel is already floating, it may be returned to its previously-docked location by double-clicking its title bar. 
 
-A panel docked to an edge of the Notepad++ main window may contain multiple functionalities. When it does, "tabs" identifying functionality will appear at the bottom of the docked panel window (contrast this with a panel with a single functionality: the functionality is identified only in the title bar, and there is no tab-bar at the bottom of that docking panel).
+A Panel docked to an edge of the Notepad++ main window may contain multiple functionalities -- that is, each Pnel location may hold multiple Panel functionalities simultaneously. When one does, "tabs" identifying functionality will appear at the bottom of the docked Panel window (contrast this with a Panel with a single functionality: the functionality is identified only in the title bar, and there is no tab-bar at the bottom of that docking Panel).
 
-When dragging toward an edge of the Notepad++ main window that does not already contain a docked panel, when the mouse cursor gets close enough to the edge, the drag rectangle will "snap" to the edge, indicating that if the mouse is released, whatever is being dragged will "dock" in the location shown. However, when doing this with a floating panel, the drag rectangle will not "snap" if the given edge already contains a docked panel. To get it go join an existing docked panel, you have to end the drag over the title bar (at the top) in the case of a single docked item, or end the drag over the title bar OR the group of tabs (at the bottom) in the case of a multiple tabbed group panel.
+When dragging toward an edge of the Notepad++ main window that does not already contain a docked Panel, when the mouse cursor gets close enough to the edge, the drag rectangle will "snap" to the edge, indicating that if the mouse is released, whatever is being dragged will "dock" in the location shown. However, when doing this with a floating panel, the drag rectangle will not "snap" if the given edge already contains a docked panel. To get it go join an existing docked panel, you have to end the drag over the title bar (at the top) in the case of a single docked item, or end the drag over the title bar OR the group of tabs (at the bottom) in the case of a multiple tabbed group panel.
 
-With multiple tabs in a docked panel:
+With multiple tabs in a docked Panel:
 
 - double-click an individual tab: breaks only that tab out into a floating window (double-click the title bar of the newly created floating window to "put it back")
 
-- double-click titlebar of any tab: breaks all tabs of that panel out into a floating window together (double-click a single tab of a floating group will put the single tab back in the previously docked location)
+- double-click titlebar of any tab: breaks all tabs of that Panel out into a floating window together (double-click a single tab of a floating group will put the single tab back in the previously docked location)
 
 - to change the order of the tabs: drag and drop a tab within the other tabs (the tab to be moved will appear to the left of the tab dropped upon); note that for this type of move there is NO visual feedback to the user on what is occurring.
 
