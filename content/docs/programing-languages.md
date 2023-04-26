@@ -31,12 +31,12 @@ For these languages, Notepad++ supports [syntax highlighting](../preferences/#st
 syntax folding, [auto-completion](../auto-completion/) (customizable),
 [function list](../function-list/) (customizable via PCRE in xml file).
 
-If your beloved language is not in the list above, you can define it yourself easily, by using the 
-[User Defined Languages System](../user-defined-language-system/).  If that doesn't meet your needs, 
+If your beloved language is not in the list above, you can define it yourself easily, by using the
+[User Defined Languages System](../user-defined-language-system/).  If that doesn't meet your needs,
 you could write (or have someone else write) a [lexer plugin](../plugins/#building-a-lexer-plugin).
 
-Please note that in Notepad++ v8.3 and newer, Notepad++ will no longer perform syntax highlighting 
-\on files that are over 200MB -- this prevents extreme performance slowdown caused by trying to 
+Please note that in Notepad++ v8.3 and newer, Notepad++ will no longer perform syntax highlighting
+\on files that are over 200MB -- this prevents extreme performance slowdown caused by trying to
 syntax highlight extremely large files.
 
 ## Language Detection Priority
@@ -47,6 +47,7 @@ When opening an existing file, Notepad++ has an algorithm for trying to decide w
 2. If the file is in the active [session file](session/) (the automatic `session.xml` or a manually-controlled session), it will use the language stored in that session.
 3. If the file extension is a "known extension" (whether it's from the [Style Configurator](../preferences/#style-configurator)'s default extension list [in `langs.xml` or `langs.model.xml`] or user-defined extension list [from `stylers.xml` or `themes\<ThemeName>.xml`] for a built-in language, or the [User Defined Language](../user-defined-language-system/)'s extension settings [from `userDefineLang.xml` or `userDefineLangs\<UDLName>.xml`]), Notepad++ will use that language.
 4. If the filename matches one of a few specific names, Notepad++ knows what language they should be:
+
     filename | language
     ---|---
     `makefile` | Makefile
