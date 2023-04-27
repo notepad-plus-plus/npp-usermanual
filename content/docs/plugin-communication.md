@@ -12,7 +12,7 @@ This is done by using messages and notifications.
 
 Message and notifications share a similar interface.  Where messages are sent by using Windows [SendMessage](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendmessage) api, notifications are sent by Notepad++ using [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify) messages.
 
-These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).
+These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).  External applications (such as AutoHotKey) can also make use of these messages to automate Notepad++.
 
 ### Why both messages *and* notifications?
 
@@ -26,7 +26,13 @@ To send a message to Notepad++ you send its window handle together with the mess
 The values placed in those two parameters depend on the message, and are explained below.
 In cases when either wParam, lParam or both are not used, they must be set to 0.
 
-The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
+The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).  
+
+{{< expand "Aside: interpreting #defines" >}}
+If you are writing your plugin in C++ or similar languages, you should just include the `Notepad_plus_msgs.h` to get all the constants; but if you are using a different language for your plugin or other message-interface, you will need to translate those `#define` statements to constants or values appropriate to your language.  
+
+When reading the `#define` for the various `NPPM_` constants, you need to notice that `NPPMSG` is defined as `(WM_USER + 1000)` near the top of the file, and you need to know that [`WM_USER`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-user) is the Windows standard constant with a value of `0x0400` (1024).  You may need to look up other `#define` values from elsewhere in the header file in order to fully resolve some of the values.  For example, `#define NPPM_SAVEALLFILES (NPPMSG + 39)` is really the integer 1024 + 1000 + 39 = 2063, so that is the value you need to use when defining your version of the `NPPM_SAVEALLFILES` constant.
+{{< /expand >}}
 
 You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h). Note, you need to use one of the two Scintilla handles as the first parameter to SendMessage api function.
 
