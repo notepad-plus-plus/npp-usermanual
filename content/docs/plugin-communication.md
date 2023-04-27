@@ -12,7 +12,7 @@ This is done by using messages and notifications.
 
 Message and notifications share a similar interface.  Where messages are sent by using Windows [SendMessage](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendmessage) api, notifications are sent by Notepad++ using [`WM_NOTIFY`](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify) messages.
 
-These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).
+These same techniques can also be used for editing [macros](../macros/) (some of which use messages to control Notepad++), or when using one of the scripting plugins (which effectively make your script a mini-plugin).  External applications (such as AutoHotKey) can also make use of these messages to automate Notepad++.
 
 ### Why both messages *and* notifications?
 
