@@ -207,7 +207,7 @@ With multiple tabs in a docked Panel:
 
 - double-click titlebar of any tab: breaks all tabs of that Panel out into a floating window together (double-click a single tab of a floating group will put the single tab back in the previously docked location)
 
-- to change the order of the tabs: drag and drop a tab within the other tabs (the tab to be moved will appear to the left of the tab dropped upon); note that for this type of move there is NO visual feedback to the user on what is occurring.
+- to change the order of the tabs: drag and drop a tab within the other tabs (the tab to be moved will appear to the left of the tab dropped upon); to move it to the far right, drag the tab to the empty space on the right of the rest of the tab list; note that for this type of move there is NO visual feedback to the user on what is occurring.
 
 #### Panel not Visible
 
