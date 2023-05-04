@@ -26,10 +26,10 @@ To send a message to Notepad++ you send its window handle together with the mess
 The values placed in those two parameters depend on the message, and are explained below.
 In cases when either wParam, lParam or both are not used, they must be set to 0.
 
-The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).  
+The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
 
 {{< expand "Aside: interpreting #defines" >}}
-If you are writing your plugin in C++ or similar languages, you should just include the `Notepad_plus_msgs.h` to get all the constants; but if you are using a different language for your plugin or other message-interface, you will need to translate those `#define` statements to constants or values appropriate to your language.  
+If you are writing your plugin in C++ or similar languages, you should just include the `Notepad_plus_msgs.h` to get all the constants; but if you are using a different language for your plugin or other message-interface, you will need to translate those `#define` statements to constants or values appropriate to your language.
 
 When reading the `#define` for the various `NPPM_` constants, you need to notice that `NPPMSG` is defined as `(WM_USER + 1000)` near the top of the file, and you need to know that [`WM_USER`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-user) is the Windows standard constant with a value of `0x0400` (1024).  You may need to look up other `#define` values from elsewhere in the header file in order to fully resolve some of the values.  For example, `#define NPPM_SAVEALLFILES (NPPMSG + 39)` is really the integer 1024 + 1000 + 39 = 2063, so that is the value you need to use when defining your version of the `NPPM_SAVEALLFILES` constant.
 {{< /expand >}}
@@ -60,7 +60,7 @@ The general layout of the following messages look like this
 ---
 ---
 
-#### **NPPM_ACTIVATEDOC**
+#### [2052] **NPPM_ACTIVATEDOC**
 *Switches to the document by the given view and index.*
 
 **Parameters**:
@@ -76,11 +76,11 @@ The general layout of the following messages look like this
 
 ---
 
-#### **NPPM_ADDTOOLBARICON** (**NPPM_ADDTOOLBARICON_DEPRECATED** in v8.0)
+#### [2065] **NPPM_ADDTOOLBARICON** [DEPRECATED]
 *Deprecated in v8.0.  Use NPPM_ADDTOOLBARICON_FORDARKMODE instead.  Does not support
 the Darkmode icons.*
 
-*Adds an icon to the toolbar.
+*`NPPM_ADDTOOLBARICON_DEPRECATED`: Adds an icon to the toolbar.
 This function only makes sense if called on response to NPPN_TBMODIFICATION notification.
 cmdID must be a command function id which the plugin registered via getFuncsArray previously.
 icon is a pointer to the toolbarIcons structure.*
@@ -104,7 +104,7 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
-#### **NPPM_ADDTOOLBARICON_FORDARKMODE**
+#### [2125] **NPPM_ADDTOOLBARICON_FORDARKMODE**
 *Adds an icon to the toolbar.
 This function only makes sense if called on response to NPPN_TBMODIFICATION notification.
 cmdID must be a command function id which the plugin registered via getFuncsArray previously.
@@ -132,7 +132,7 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
-#### **NPPM_ALLOCATECMDID**
+#### [2105] **NPPM_ALLOCATECMDID**
 *Obtains a number of consecutive menu item IDs for creating menus dynamically, with the guarantee of these IDs not clashing with any other plugins.*
 
 **Parameters**:
@@ -148,7 +148,7 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
-#### **NPPM_ALLOCATEMARKER**
+#### [2106] **NPPM_ALLOCATEMARKER**
 *Obtains a number of consecutive marker IDs dynamically, with the guarantee of these IDs not clashing with any other plugins.*
 
 **Parameters**:
@@ -164,7 +164,7 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
-#### **NPPM_ALLOCATESUPPORTED**
+#### [2104] **NPPM_ALLOCATESUPPORTED**
 *Use to identify if subclassing is necessary*
 
 **Parameters**:
@@ -180,7 +180,7 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
-#### **NPPM_CREATELEXER**
+#### [2134] **NPPM_CREATELEXER**
 *Returns the ILexer pointer created by Lexilla.
 Calls the lexilla `CreateLexer()` function; allows plugins
 to set the lexer for a Scintilla instance created by
@@ -199,7 +199,7 @@ NPPM_CREATESCINTILLAHANDLE*
 
 ---
 
-#### **NPPM_CREATESCINTILLAHANDLE**
+#### [2044] **NPPM_CREATESCINTILLAHANDLE**
 *A plugin can create a Scintilla for its usage by sending this message to Notepad++.
 The handle should be destroyed by NPPM_DESTROYSCINTILLAHANDLE message while exit the plugin.*
 
@@ -217,7 +217,7 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 
 ---
 
-#### **NPPM_DECODESCI**
+#### [2051] **NPPM_DECODESCI**
 *Changes current buffer view to ansi.
 view must be either 0 = main view or 1 = second view.*
 
@@ -234,7 +234,7 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### **NPPM_DESTROYSCINTILLAHANDLE**
+#### [2045] **NPPM_DESTROYSCINTILLAHANDLE**
 *If plugin called NPPM_CREATESCINTILLAHANDLE to create a Scintilla handle, it should call this message to destroy this handle while it exit.*
 
 **Parameters**:
@@ -250,7 +250,7 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### **NPPM_DISABLEAUTOUPDATE**
+#### [2119] **NPPM_DISABLEAUTOUPDATE**
 *Disables the auto update functionality of Notepad++.*
 
 **Parameters**:
@@ -266,7 +266,7 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### **NPPM_DMMGETPLUGINHWNDBYNAME**
+#### [2067] **NPPM_DMMGETPLUGINHWNDBYNAME**
 *Retrieves the dialog handle corresponds to the windowName and moduleName.
 You may need this message if you want to communicate with another plugin "dockable" dialog.*
 
@@ -283,7 +283,7 @@ You may need this message if you want to communicate with another plugin "dockab
 
 ---
 
-#### **NPPM_DMMHIDE**
+#### [2055] **NPPM_DMMHIDE**
 *Hides the dialog which was previously regeistered by NPPM_DMMREGASDCKDLG.*
 
 **Parameters**:
@@ -300,7 +300,7 @@ is the handle of your dialog which should be hidden.
 
 ---
 
-#### **NPPM_DMMREGASDCKDLG**
+#### [2057] **NPPM_DMMREGASDCKDLG**
 *From v4.0, Notepad++ supports the dockable dialog feature for the plugins.
 Pass the necessary dockingData to Notepad++ in order to make your dialog dockable.
 Minimum informations which needs to be filled out are hClient, pszName, dlgID, uMask and pszModuleName.
@@ -335,7 +335,7 @@ typedef struct {
 
 ---
 
-#### **NPPM_DMMSHOW**
+#### [2054] **NPPM_DMMSHOW**
 *Shows the dialog which was previously regeistered by NPPM_DMMREGASDCKDLG.*
 
 **Parameters**:
@@ -352,7 +352,7 @@ is the handle of your dialog which should be shown.
 
 ---
 
-#### **NPPM_DMMUPDATEDISPINFO**
+#### [2056] **NPPM_DMMUPDATEDISPINFO**
 *Updates (redraw) the dialog.*
 
 **Parameters**:
@@ -369,7 +369,7 @@ is the handle of the dialog which should be updated.
 
 ---
 
-#### **NPPM_DMMVIEWOTHERTAB**
+#### [2059] **NPPM_DMMVIEWOTHERTAB**
 *Shows the plugin dialog with the given name.
 name should be the same value as previously used to register the dialog.*
 
@@ -386,11 +386,12 @@ name should be the same value as previously used to register the dialog.*
 
 ---
 
-#### **NPPM_DOCLISTDISABLECOLUMN**
+#### [2113] **NPPM_DOCLISTDISABLEEXTCOLUMN**
 *Sets the extension column in Document List panel.
 If disableOrNot is True, extension column is hidden otherwise it is visible.*
 
 *Known as `NPPM_DOCSWITCHERDISABLECOLUMN` in v8.1.2 and earlier.*
+*Known as `NPPM_DOCLISTDISABLECOLUMN` in v8.1.3 - v8.1.4.*
 
 **Parameters**:
 
@@ -405,7 +406,24 @@ If disableOrNot is True, extension column is hidden otherwise it is visible.*
 
 ---
 
-#### **NPPM_DOOPEN**
+#### [2126] **NPPM_DOCLISTDISABLEPATHCOLUMN**
+*Sets the path column in Document List panel. (New to v8.1.5)
+If disableOrNot is True, path column is hidden otherwise it is visible.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: BOOL disableOrNot
+
+**Return value**:
+: Returns True
+
+---
+
+#### [2101] **NPPM_DOOPEN**
 *Switches or openes a file with given fullPathName2Open.*
 
 **Parameters**:
@@ -421,7 +439,7 @@ If disableOrNot is True, extension column is hidden otherwise it is visible.*
 
 ---
 
-#### **NPPM_ENCODESCI**
+#### [2050] **NPPM_ENCODESCI**
 *Changes current buffer view to utf8.
 view must be either 0 = main view or 1 = second view.*
 
@@ -438,7 +456,7 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### **NPPM_GETAPPDATAPLUGINSALLOWED**
+#### [2111] **NPPM_GETAPPDATAPLUGINSALLOWED**
 *Retrieves the information whether plugins are loadable from %APPDATA%.*
 
 **Parameters**:
@@ -454,9 +472,9 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### **NPPM_GETBOOKMARKID**
+#### [2135] **NPPM_GETBOOKMARKID**
 *Returns the bookmark marker ID.
-This allows plugins to choose an ID different from the bookmark marker ID, 
+This allows plugins to choose an ID different from the bookmark marker ID,
 or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 
 **Parameters**:
@@ -474,7 +492,7 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 ---
 
 
-#### **NPPM_GETBUFFERENCODING**
+#### [2090] **NPPM_GETBUFFERENCODING**
 *Retrieves the encoding from the document with the given bufferID.*
 
 **Parameters**:
@@ -490,7 +508,7 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 
 ---
 
-#### **NPPM_GETBUFFERFORMAT**
+#### [2092] **NPPM_GETBUFFERFORMAT**
 *Gets the current format of the document with given bufferID.*
 
 **Parameters**:
@@ -506,7 +524,7 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 
 ---
 
-#### **NPPM_GETBUFFERIDFROMPOS**
+#### [2083] **NPPM_GETBUFFERIDFROMPOS**
 *Gets the document buffer ID from the given position.*
 
 **Parameters**:
@@ -522,7 +540,7 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 
 ---
 
-#### **NPPM_GETBUFFERLANGTYPE**
+#### [2088] **NPPM_GETBUFFERLANGTYPE**
 *Retrieves the language type of the document with the given bufferID.*
 
 **Parameters**:
@@ -539,7 +557,7 @@ Please see the enum LangType for all possible values.
 
 ---
 
-#### **NPPM_GETCURRENTBUFFERID**
+#### [2084] **NPPM_GETCURRENTBUFFERID**
 *Returns the buffer ID of the active document.*
 
 **Parameters**:
@@ -555,7 +573,7 @@ Please see the enum LangType for all possible values.
 
 ---
 
-#### **NPPM_GETCURRENTCMDLINE**
+#### [2133] **NPPM_GETCURRENTCMDLINE**
 *Get the Current Command Line string. (New to v8.4.2).
 Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
 allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
@@ -573,7 +591,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 
 ---
 
-#### **NPPM_GETCURRENTCOLUMN**
+#### [4033] **NPPM_GETCURRENTCOLUMN**
 *Retrieves the column of the caret.*
 
 **Parameters**:
@@ -589,7 +607,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 
 ---
 
-#### **NPPM_GETCURRENTDIRECTORY**
+#### [4026] **NPPM_GETCURRENTDIRECTORY**
 *Retrieves the directory path of current document.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -607,7 +625,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETCURRENTDOCINDEX**
+#### [2047] **NPPM_GETCURRENTDOCINDEX**
 *Retrieves the current index of the current view.*
 
 **Parameters**:
@@ -623,7 +641,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETCURRENTLANGTYPE**
+#### [2029] **NPPM_GETCURRENTLANGTYPE**
 *Retrieves the language type of the current document.*
 
 **Parameters**:
@@ -641,7 +659,7 @@ Please see the enum LangType for all possible values.
 
 ---
 
-#### **NPPM_GETCURRENTLINE**
+#### [4032] **NPPM_GETCURRENTLINE**
 *Retrieves the line of the caret.*
 
 **Parameters**:
@@ -657,7 +675,7 @@ Please see the enum LangType for all possible values.
 
 ---
 
-#### **NPPM_GETCURRENTLINESTR**
+#### [4036] **NPPM_GETCURRENTLINESTR**
 *Retrieves the text of the current line.
 User is responsible to allocate a buffer which is large enough.*
 
@@ -674,7 +692,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
-#### **NPPM_GETCURRENTMACROSTATUS**
+#### [2130] **NPPM_GETCURRENTMACROSTATUS**
 *Gets the current macro status (idle, recording, stopped, and playing back) as an enumeration class object. (Added v8.3.3)*
 
 **Parameters**:
@@ -694,7 +712,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
-#### **NPPM_GETCURRENTNATIVELANGENCODING**
+#### [2103] **NPPM_GETCURRENTNATIVELANGENCODING**
 *Retrieves the code page associated with the current localisation of Notepad++.*
 
 **Parameters**:
@@ -711,7 +729,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
-#### **NPPM_GETCURRENTSCINTILLA**
+#### [2028] **NPPM_GETCURRENTSCINTILLA**
 *Retrieves the current Scintilla view*
 
 **Parameters**:
@@ -735,7 +753,7 @@ The returned value can be one of the following:
 
 ---
 
-#### **NPPM_GETCURRENTVIEW**
+#### [2112] **NPPM_GETCURRENTVIEW**
 *Retrieves the current used view. *
 
 **Parameters**:
@@ -751,7 +769,7 @@ The returned value can be one of the following:
 
 ---
 
-#### **NPPM_GETCURRENTWORD**
+#### [4030] **NPPM_GETCURRENTWORD**
 *Retrieves the word containing the caret.
 User is responsible to allocate a buffer which is large enough.*
 
@@ -768,7 +786,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 ---
 
-#### **NPPM_GETDARKMODECOLORS**
+#### [2132] **NPPM_GETDARKMODECOLORS**
 *Retrieves the colors used in Dark Mode.
 User is responsible to allocate a buffer which is large enough.
 (Added v8.4.1)*
@@ -807,7 +825,7 @@ namespace NppDarkMode
 
 ---
 
-#### **NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR**
+#### [2115] **NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR**
 *Retrieves the current editor default background color.*
 
 **Parameters**:
@@ -823,7 +841,7 @@ namespace NppDarkMode
 
 ---
 
-#### **NPPM_GETEDITORDEFAULTFOREGROUNDCOLOR**
+#### [2114] **NPPM_GETEDITORDEFAULTFOREGROUNDCOLOR**
 *Retrieves the current editor default foreground.*
 
 **Parameters**:
@@ -839,8 +857,10 @@ namespace NppDarkMode
 
 ---
 
-#### **NPPM_GETENABLETHEMETEXTUREFUNC**
-*Returns if visual style of the background of a dialog window is enabled or not.*
+#### [2069] **NPPM_GETENABLETHEMETEXTUREFUNC** [DEPRECATED]
+*Deprecated v8.4.9: Use EnableThemeTexture from uxtheme.h instead.*
+
+*`NPPM_GETENABLETHEMETEXTUREFUNC_DEPRECATED`: Returns if visual style of the background of a dialog window is enabled or not.*
 
 **Parameters**:
 
@@ -855,7 +875,7 @@ namespace NppDarkMode
 
 ---
 
-#### **NPPM_GETEXTERNALLEXERAUTOINDENTMODE**
+#### [2127] **NPPM_GETEXTERNALLEXERAUTOINDENTMODE**
 *Get ExternalLexerAutoIndentMode for an installed external programming language.
 Puts that mode in the output object. (Added v8.3.3)*
 
@@ -876,7 +896,7 @@ Puts that mode in the output object. (Added v8.3.3)*
 
 ---
 
-#### **NPPM_GETEXTPART**
+#### [4029] **NPPM_GETEXTPART**
 *Retrieves the extension of the filename of the current document.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -894,7 +914,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETFILENAME**
+#### [4027] **NPPM_GETFILENAME**
 *Retrieves the file name of current document.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -912,7 +932,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETFILENAMEATCURSOR**
+#### [4035] **NPPM_GETFILENAMEATCURSOR**
 *Retrieves the filename at the current caret position.
 Note, while this message has been created, and is used internally, to retrieve a filename at the current caret position, it does return anything which fulfils the requirements, even single words.*
 
@@ -929,7 +949,7 @@ Note, while this message has been created, and is used internally, to retrieve a
 
 ---
 
-#### **NPPM_GETFULLCURRENTPATH**
+#### [4025] **NPPM_GETFULLCURRENTPATH**
 *Retrieves the full path of the current document.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -947,7 +967,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETFULLPATHFROMBUFFERID**
+#### [2082] **NPPM_GETFULLPATHFROMBUFFERID**
 *Gets the full path file name from the given bufferID.
 First call should be made with buffer set to NULL to retrieve the actual size needed.
 Second call is sent with correctly allocated buffer, +1 for trailing null, to retrieve the full path file name.*
@@ -965,7 +985,7 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 
 ---
 
-#### **NPPM_GETLANGUAGEDESC**
+#### [2108] **NPPM_GETLANGUAGEDESC**
 *Retrieves the description of the current language used.
 First call should be made with buffer set to NULL to retrieve the actual size needed.
 Second call is sent with correctly allocated buffer to retrieve the description.*
@@ -984,7 +1004,7 @@ Second call is sent with correctly allocated buffer to retrieve the description.
 ---
 
 
-#### **NPPM_GETLANGUAGENAME**
+#### [2107] **NPPM_GETLANGUAGENAME**
 *Retrieves the name of the current language used.
 First call should be made with buffer set to NULL to retrieve the actual size needed.
 Second call is sent with correctly allocated buffer to retrieve the language name.*
@@ -1002,7 +1022,7 @@ Second call is sent with correctly allocated buffer to retrieve the language nam
 
 ---
 
-#### **NPPM_GETLINENUMBERWIDTHMODE**
+#### [2124] **NPPM_GETLINENUMBERWIDTHMODE**
 *Get line number margin width in dynamic width mode (LINENUMWIDTH_DYNAMIC) or constant width mode (LINENUMWIDTH_CONSTANT)*
 
 **Parameters**:
@@ -1018,7 +1038,7 @@ Second call is sent with correctly allocated buffer to retrieve the language nam
 
 ---
 
-#### **NPPM_GETMENUHANDLE**
+#### [2049] **NPPM_GETMENUHANDLE**
 *Retrieves either the plugin or the main menu handle of Notepad++.*
 
 **Parameters**:
@@ -1034,7 +1054,7 @@ Second call is sent with correctly allocated buffer to retrieve the language nam
 
 ---
 
-#### **NPPM_GETNAMEPART**
+#### [4028] **NPPM_GETNAMEPART**
 *Retrieves the part of filename, without extension, of the current document.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -1052,7 +1072,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETNBOPENFILES**
+#### [2031] **NPPM_GETNBOPENFILES**
 *Retrieves the number of files currently open*
 
 **Parameters**:
@@ -1074,7 +1094,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETNBSESSIONFILES**
+#### [2037] **NPPM_GETNBSESSIONFILES**
 *Retrieves the number of files to load in the session sessionFileName.
 sessionFileName should be a full path name of an xml file.*
 
@@ -1091,7 +1111,7 @@ sessionFileName should be a full path name of an xml file.*
 
 ---
 
-#### **NPPM_GETNBUSERLANG**
+#### [2046] **NPPM_GETNBUSERLANG**
 *Retrieves the number of user defined languages and, optionally, the starting menu id.
 Note, udlID is optional, if not used set it to 0, otherwise an integer pointer is needed to retrieve the menu identifier.*
 
@@ -1108,7 +1128,7 @@ Note, udlID is optional, if not used set it to 0, otherwise an integer pointer i
 
 ---
 
-#### **NPPM_GETNPPDIRECTORY**
+#### [4031] **NPPM_GETNPPDIRECTORY**
 *Retrieves the full path of the directory where the Notepad++ binary is located.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -1126,7 +1146,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETNPPFULLFILEPATH**
+#### [4034] **NPPM_GETNPPFULLFILEPATH**
 *Retrieves the full path of the Notepad++ executable.*
 
 **Parameters**:
@@ -1142,7 +1162,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETNPPVERSION**
+#### [2074] **NPPM_GETNPPVERSION**
 *Retrieves the current Notepad++ version.
 The value is made up of 2 parts: the major version (the high word) and minor version (the low word).
 Note that this message is supported by the v4.7 or higher version; earlier versions return 0.
@@ -1186,7 +1206,7 @@ ADD_ZERO_PADDING == FALSE
 
 ---
 
-#### **NPPM_GETOPENFILENAMES**
+#### [2032] **NPPM_GETOPENFILENAMES**
 *Retrieves the open files of both views.
 User is responsible to allocate an big enough fileNames array.*
 
@@ -1205,7 +1225,7 @@ is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES 
 
 ---
 
-#### **NPPM_GETOPENFILENAMESPRIMARY**
+#### [2041] **NPPM_GETOPENFILENAMESPRIMARY**
 *Retrieves the open files of the main view.
 User is responsible to allocate an big enough fileNames array.*
 
@@ -1225,7 +1245,7 @@ is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES 
 
 ---
 
-#### **NPPM_GETOPENFILENAMESSECOND**
+#### [2042] **NPPM_GETOPENFILENAMESSECOND**
 *Retrieves the open files of the secondary view.
 User is responsible to allocate an big enough fileNames array.*
 
@@ -1244,7 +1264,7 @@ is the size of your fileNames array. You should get this value by using NPPM_GET
 
 ---
 
-#### **NPPM_GETPLUGINHOMEPATH**
+#### [2121] **NPPM_GETPLUGINHOMEPATH**
 *Retrieves the plugin home root path.
 First call should be made with length set to 0 and buffer set to NULL to retrieve the actual size of the path. Second call sends the correct length and allocated buffer, both +1 for trailing NULL, to get the path name.*
 
@@ -1261,7 +1281,7 @@ First call should be made with length set to 0 and buffer set to NULL to retriev
 
 ---
 
-#### **NPPM_GETPLUGINSCONFIGDIR**
+#### [2070] **NPPM_GETPLUGINSCONFIGDIR**
 *Retrieves the path of the plugin config directory.
 User is responsible to allocate a buffer which is large enough.
 MAX_PATH is suggested to use.*
@@ -1279,7 +1299,7 @@ MAX_PATH is suggested to use.*
 
 ---
 
-#### **NPPM_GETPOSFROMBUFFERID**
+#### [2081] **NPPM_GETPOSFROMBUFFERID**
 *Gets 0-based document position from given buffer ID, which is held in the 30 lowest bits of the return value on success.
 Bit 30 indicates which view has the buffer (clear for main view, set for sub view).*
 
@@ -1295,7 +1315,7 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 : Returns -1 if bufferID doesn't exist else the position.
 
 ---
-#### **NPPM_GETSETTINGSONCLOUDPATH**
+#### [2122] **NPPM_GETSETTINGSONCLOUDPATH**
 *Get settings on cloud path. It's useful if plugins want to store its settings on Cloud, if this path is set. (added v7.9.2).*
 
 *First call should be made with buffer set to NULL to retrieve the actual size needed.
@@ -1317,7 +1337,7 @@ the path for cloud settings obtained by this message
 
 ---
 
-#### **NPPM_GETSESSIONFILES**
+#### [2038] **NPPM_GETSESSIONFILES**
 *Retrieves the files' full path name from a session file.*
 
 **Parameters**:
@@ -1336,7 +1356,7 @@ the path to the session file from which you retrieve the files
 
 ---
 
-#### **NPPM_GETSHORTCUTBYCMDID**
+#### [2100] **NPPM_GETSHORTCUTBYCMDID**
 *Gets the mapped plugin command shortcut. May be called after getting NPPN_READY notification.*
 
 **Parameters**:
@@ -1360,7 +1380,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_GETWINDOWSVERSION**
+#### [2066] **NPPM_GETWINDOWSVERSION**
 *Retrieves the windows operating system version.*
 
 **Parameters**:
@@ -1387,7 +1407,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_HIDEMENU**
+#### [2096] **NPPM_HIDEMENU**
 *Either hides or shows the menubar.*
 
 **Parameters**:
@@ -1403,7 +1423,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_HIDESTATUSBAR**
+#### [2098] **NPPM_HIDESTATUSBAR**
 *Either hides or shows the statusbar.*
 
 **Parameters**:
@@ -1419,7 +1439,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_HIDETABBAR**
+#### [2075] **NPPM_HIDETABBAR**
 *Either hides or shows the tabbar.*
 
 **Parameters**:
@@ -1435,7 +1455,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_HIDETOOLBAR**
+#### [2094] **NPPM_HIDETOOLBAR**
 *Either hides or shows the toolbar.*
 
 **Parameters**:
@@ -1451,7 +1471,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISAUTOINDENTON**
+#### [2129] **NPPM_ISAUTOINDENTON**
 *Checks the current Use Auto-Indentation setting in Notepad++ Preferences.  (Added v8.3.3)*
 
 **Parameters**:
@@ -1467,7 +1487,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISDOCLISTSHOWN**
+#### [2110] **NPPM_ISDOCLISTSHOWN**
 *Checks the visibility of the Document List panel.*
 
 *Known as `NPPM_ISDOCSWITCHERSHOWN` in v8.1.2 and earlier.*
@@ -1485,7 +1505,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISDARKMODEENABLED**
+#### [2131] **NPPM_ISDARKMODEENABLED**
 *Notepad++ Dark Mode is enable.  (Added v8.4.1)*
 
 **Parameters**:
@@ -1501,7 +1521,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISMENUHIDDEN**
+#### [2097] **NPPM_ISMENUHIDDEN**
 *Retrieves the current status of menubar.*
 
 **Parameters**:
@@ -1518,7 +1538,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISSTATUSBARHIDDEN**
+#### [2099] **NPPM_ISSTATUSBARHIDDEN**
 *Retrieves the current status of the statusbar.*
 
 **Parameters**:
@@ -1534,7 +1554,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISTABBARHIDDEN**
+#### [2076] **NPPM_ISTABBARHIDDEN**
 *Retrieves the current status of tabbar.*
 
 **Parameters**:
@@ -1550,7 +1570,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_ISTOOLBARHIDDEN**
+#### [2095] **NPPM_ISTOOLBARHIDDEN**
 *Retrieves the current status of toolbar.*
 
 **Parameters**:
@@ -1567,7 +1587,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_LAUNCHFINDINFILESDLG**
+#### [2053] **NPPM_LAUNCHFINDINFILESDLG**
 *Triggers the Find in files dialog.*
 
 **Parameters**:
@@ -1583,7 +1603,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_LOADSESSION**
+#### [2058] **NPPM_LOADSESSION**
 *Opens all files of same session in Notepad++ via a xml format session file sessionFileName.*
 
 **Parameters**:
@@ -1599,7 +1619,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_MAKECURRENTBUFFERDIRTY**
+#### [2068] **NPPM_MAKECURRENTBUFFERDIRTY**
 *Makes the current document dirty, aka sets the save state to unsaved.*
 
 **Parameters**:
@@ -1615,7 +1635,7 @@ struct ShortcutKey {
 
 ---
 
-#### **NPPM_MENUCOMMAND**
+#### [2072] **NPPM_MENUCOMMAND**
 *Calls all possible Notepad++ menu commands.*
 
 **Parameters**:
@@ -1632,7 +1652,7 @@ see menuCmdID.h for all possible values.
 
 ---
 
-#### **NPPM_MODELESSDIALOG**
+#### [2036] **NPPM_MODELESSDIALOG**
 *For each created dialog in your plugin, you should register it (and unregister while destroy it) to Notepad++ by using this message.
 If this message is ignored, then your dialog won't react with the key stroke messages such as TAB key.
 For the good functioning of your plugin dialog, you're recommended to not ignore this message.*
@@ -1654,7 +1674,7 @@ is the handle of the dialog to be registered
 
 ---
 
-#### **NPPM_MSGTOPLUGIN**
+#### [2071] **NPPM_MSGTOPLUGIN**
 *Allows the communication between 2 plugins.
 For example, plugin X can execute a command of plugin Y if plugin X knows the command ID and the file name of plugin Y.*
 
@@ -1683,7 +1703,7 @@ The returned value is TRUE if Notepad++ found the plugin by its module name (des
 
 ---
 
-#### **NPPM_RELOADBUFFERID**
+#### [2085] **NPPM_RELOADBUFFERID**
 *Reloads the document with the given bufferID.
 If doAlertOrNot is True, then a message box will display to ask user to reload the document, otherwise document will be loaded without asking user.*
 
@@ -1700,7 +1720,7 @@ If doAlertOrNot is True, then a message box will display to ask user to reload t
 
 ---
 
-#### **NPPM_RELOADFILE**
+#### [2060] **NPPM_RELOADFILE**
 *Reloads the file indicated by filePathName2Reload.*
 
 **Parameters**:
@@ -1717,7 +1737,7 @@ if True then an alert message box will be launched.
 
 ---
 
-#### **NPPM_REMOVESHORTCUTBYCMDID**
+#### [2120] **NPPM_REMOVESHORTCUTBYCMDID**
 *Removes the assigned shortcut mapped to cmdID.*
 
 **Parameters**:
@@ -1733,7 +1753,7 @@ if True then an alert message box will be launched.
 
 ---
 
-#### **NPPM_SAVEALLFILES**
+#### [2063] **NPPM_SAVEALLFILES**
 *Saves all opened documents.*
 
 **Parameters**:
@@ -1749,7 +1769,7 @@ if True then an alert message box will be launched.
 
 ---
 
-#### **NPPM_SAVECURRENTFILE**
+#### [2062] **NPPM_SAVECURRENTFILE**
 *Saves the current document.*
 
 **Parameters**:
@@ -1765,7 +1785,7 @@ if True then an alert message box will be launched.
 
 ---
 
-#### **NPPM_SAVECURRENTFILEAS**
+#### [2102] **NPPM_SAVECURRENTFILEAS**
 *Saves the current file.
 saveAsCopy must be either 0 to save, or 1 to save a copy of the current filename.*
 
@@ -1782,7 +1802,7 @@ saveAsCopy must be either 0 to save, or 1 to save a copy of the current filename
 
 ---
 
-#### **NPPM_SAVECURRENTSESSION**
+#### [2040] **NPPM_SAVECURRENTSESSION**
 *Saves the current opened files in Notepad++ as a group of files (session) as an xml file.
 The xml full path name has to be provided by sessionFileName.*
 
@@ -1799,7 +1819,7 @@ The xml full path name has to be provided by sessionFileName.*
 
 ---
 
-#### **NPPM_SAVEFILE**
+#### [2118] **NPPM_SAVEFILE**
 *Saves a specific file.
 filename must be the full file path for the file to be saved.*
 
@@ -1816,7 +1836,7 @@ filename must be the full file path for the file to be saved.*
 
 ---
 
-#### **NPPM_SAVESESSION**
+#### [2039] **NPPM_SAVESESSION**
 *Creates an session file for a defined set of files.
 sessionInfo is a pointer to sessionInfo structure.
 Note, contrary to NPPM_SAVECURRENTSESSION, which saves the current opened files, this call can be used to freely define any file which should be part of a session.*
@@ -1834,7 +1854,7 @@ Note, contrary to NPPM_SAVECURRENTSESSION, which saves the current opened files,
 
 ---
 
-#### **NPPM_SETBUFFERENCODING**
+#### [2091] **NPPM_SETBUFFERENCODING**
 *Sets the document encoding for the given bufferID.
 Can only be done on new, unedited files.*
 
@@ -1851,7 +1871,7 @@ Can only be done on new, unedited files.*
 
 ---
 
-#### **NPPM_SETBUFFERFORMAT**
+#### [2093] **NPPM_SETBUFFERFORMAT**
 *Sets format to the document with the given bufferID.*
 
 **Parameters**:
@@ -1867,7 +1887,7 @@ Can only be done on new, unedited files.*
 
 ---
 
-#### **NPPM_SETBUFFERLANGTYPE**
+#### [2089] **NPPM_SETBUFFERLANGTYPE**
 *Sets the language type of the document based on the given bufferID.
 See enum LangType for valid values, L_USER and L_EXTERNAL are not supported.*
 
@@ -1884,7 +1904,7 @@ See enum LangType for valid values, L_USER and L_EXTERNAL are not supported.*
 
 ---
 
-#### **NPPM_SETCURRENTLANGTYPE**
+#### [2030] **NPPM_SETCURRENTLANGTYPE**
 *Sets a new language type to the current used document.*
 
 **Parameters**:
@@ -1900,7 +1920,7 @@ See enum LangType for valid values, L_USER and L_EXTERNAL are not supported.*
 
 ---
 
-#### **NPPM_SETEDITORBORDEREDGE**
+#### [2117] **NPPM_SETEDITORBORDEREDGE**
 *Extends the Scintilla window with an extra style.
 If value is True adds an additional sunken edge style to the Scintilla window else it removes the extended style from the window. See MSDN Extended Window Styles for more information.*
 
@@ -1917,7 +1937,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 ---
 
-#### **NPPM_SETEXTERNALLEXERAUTOINDENTMODE**
+#### [2128] **NPPM_SETEXTERNALLEXERAUTOINDENTMODE**
 *Set ExternalLexerAutoIndentMode for an installed external programming language. (Added v8.3.3)*
 
 **Parameters**:
@@ -1936,7 +1956,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 
 ---
 
-#### **NPPM_SETLINENUMBERWIDTHMODE**
+#### [2123] **NPPM_SETLINENUMBERWIDTHMODE**
 *Set line number margin width in dynamic width mode (LINENUMWIDTH_DYNAMIC) or constant width mode (LINENUMWIDTH_CONSTANT).
 It may help some plugins to disable non-dynamic line number margins width to have a smooth visual effect while vertical scrolling the content in Notepad++*
 
@@ -1953,7 +1973,7 @@ It may help some plugins to disable non-dynamic line number margins width to hav
 
 ---
 
-#### **NPPM_SETMENUITEMCHECK**
+#### [2064] **NPPM_SETMENUITEMCHECK**
 *Sets or removes the check on a menu item.*
 
 **Parameters**:
@@ -1970,7 +1990,7 @@ is the command ID which corresponds to the menu item
 
 ---
 
-#### **NPPM_SETSMOOTHFONT**
+#### [2116] **NPPM_SETSMOOTHFONT**
 *Uses underlying Scintilla command SCI_SETFONTQUALITY to manage the font quality.
 If value is True, this message sets SC_EFF_QUALITY_LCD_OPTIMIZED else SC_EFF_QUALITY_DEFAULT*
 
@@ -1987,7 +2007,7 @@ If value is True, this message sets SC_EFF_QUALITY_LCD_OPTIMIZED else SC_EFF_QUA
 
 ---
 
-#### **NPPM_SETSTATUSBAR**
+#### [2048] **NPPM_SETSTATUSBAR**
 *Sets value in the specified field of a statusbar.*
 
 **Parameters**:
@@ -2011,7 +2031,7 @@ STATUSBAR_TYPING_MODE   5
 
 ---
 
-#### **NPPM_SHOWDOCLIST**
+#### [2109] **NPPM_SHOWDOCLIST**
 *Show or hide the Document List panel.
 If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.*
 
@@ -2030,7 +2050,7 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 
 ---
 
-#### **NPPM_SWITCHTOFILE**
+#### [2061] **NPPM_SWITCHTOFILE**
 *Switches to the document which matches with the given filePathName2switch.*
 
 **Parameters**:
@@ -2046,7 +2066,7 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 
 ---
 
-#### **NPPM_TRIGGERTABBARCONTEXTMENU**
+#### [2073] **NPPM_TRIGGERTABBARCONTEXTMENU**
 *Triggers the tabbar context menu for the given view and index.*
 
 **Parameters**:
