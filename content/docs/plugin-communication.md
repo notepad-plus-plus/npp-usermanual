@@ -36,26 +36,30 @@ When reading the `#define` for the various `NPPM_` constants, you need to notice
 
 You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h). Note, you need to use one of the two Scintilla handles as the first parameter to SendMessage api function.
 
+#### **Message Key**
+
 The general layout of the following messages look like this
 
->*MESSAGE NAME*
+>[ID Number] **MESSAGE NAME**
+>
 >*Description*
 >
->*Parameters:*
+>**Parameters**:
+>
 >*wParam [in/out]*
+>
 >*lParam [in/out]*
 >
->*Return value*
+>**Return value**:
 
-**MESSAGE NAME** gets replaced by a concrete Notepad++ message like NPPM_ACTIVATEDOC.
+where:
 
-**Description** informs about the usage of the message and provides additional information if needed.
-
-**wParam** and **lParam** are the parameters to be provided
-
-**in/out** indicates whether this is an input or output parameter, meaning in case of output Notepad++ will copy some information into the provided buffer
-
-**Return value** is the value returned by the SendMessage api call.
+- **[ID Number]** is the integer value of the Notepad++ message
+- **MESSAGE NAME** is the name of the Notepad++ message constant (like `NPPM_ACTIVATEDOC`).
+- **Description** informs about the usage of the message and provides additional information if needed.
+- **Parameters** called **wParam** and **lParam** are to be provided as the arguments to the notification.
+- **[in/out]** indicates whether this is an input or output Parameter.  In the case of an output Parameter, Notepad++ will copy some information into the buffer provided as that Parameter
+- **Return value** is the value returned by the SendMessage api call.
 
 ---
 ---
@@ -2086,37 +2090,35 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 
 A notification is sent using a [WM_NOTIFY](https://docs.microsoft.com/en-us/windows/win32/controls/wm-notify) message and therefore uses the [NMHDR structure](https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-nmhdr).
 
-The three structure fields are, basically, three integer values.
-**hwndFrom** and **idFrom** holding the provided information of the notification.
-The integers might be pointers to structures/arrays, which, if present, are documented.
-**code** is always set to the ID of the Notification.
+The notification carries three Fields in the notification structure, each of which holds an integer value.  The ***code*** Field integer is always the notification number.  The ***hwndFrom*** and ***idFrom*** Field integers _normally_ refer to the Notepad++ window handle **hwndNpp** and the Notepad++ buffer identifier **BufferID**; however, they can also be pointers to data structures, in which case, the description of that particular Notification will describe the structure, or call out a common c/c++ data type, or otherwise describe the usage of that Field for that Notification.
 
 The notification IDs for each of these named notifications can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
 
-Most of the time ***hwndFrom*** is set to **hwndNpp** which represents the window handle of the current Notepad++ instance.
-**BufferID**, mostly used in ***idFrom***, refers to an ID which uniquely identifies a document
-A **0** (NULL) in either ***hwndFrom*** or ***idFrom*** indicate that the field is unused.
+#### **Notification Key**
 
 The general layout of the following notifications look like this
 
-**NOTIFICATION NAME**
-*Description*
+> [ID Number] **NOTIFICATION NAME**
+>
+> *Description*
+>
+> **Fields**
+> : *code*:
+> : *hwndFrom*:
+> : *idFrom*:
 
-**Fields**
-: *code*
-: *hwndFrom*
-: *idFrom*
-
-
-**NOTIFICATION NAME** gets replaced by a concrete Notepad++ notification like NPPN_READY.
-**Description** informs about the usage of the notification and provides additional information if needed.
-**Fields** are the parameters to be provided by the notification.
+- **[ID Number]** is the integer value for that notification
+- **NOTIFICATION NAME** is the Notepad++ notification constant name (like `NPPN_READY`)
+- **Description** informs about the usage of the notification and provides additional information if needed.
+- **Fields** are the parameters to be provided by the notification.
+    - ***hwndFrom*** normally holds the **hwndNpp**, which means that the window handle for the current Notepad++ window is passed as that argument.  If it is shown as a `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
+    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the current editor buffer is passed as that argument.  If it is shown as `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
 
 ---
 ---
 
-####  **NPPN_BEFORESHUTDOWN**
-*To notify plugins that Npp shutdown has been triggered, files have not been closed yet*
+#### [1019] **NPPN_BEFORESHUTDOWN**
+*To notify plugins that Notepad++ shutdown has been triggered, files have not been closed yet*
 
 **Fields:**
 
@@ -2126,7 +2128,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_BUFFERACTIVATED**
+#### [1010] **NPPN_BUFFERACTIVATED**
 *To notify plugins that a buffer was activated (put to foreground).*
 
 **Fields:**
@@ -2137,8 +2139,8 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_CANCELSHUTDOWN**
-*To notify plugins that Npp shutdown has been cancelled*
+#### [1020] **NPPN_CANCELSHUTDOWN**
+*To notify plugins that Notepad++ shutdown has been canceled*
 
 **Fields:**
 
@@ -2148,7 +2150,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_CMDLINEPLUGINMSG**
+#### [1028] **NPPN_CMDLINEPLUGINMSG**
 *To notify plugins that the new argument for plugins (via `-pluginMessage="YOUR_PLUGIN_ARGUMENT"` in [command line](../command-prompt/)) is available. (New to v8.4.2).*
 
 **Fields:**
@@ -2159,7 +2161,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_DARKMODECHANGED**
+#### [1027] **NPPN_DARKMODECHANGED**
 *To notify plugins that Dark Mode was changed (either enabled or disabled).
 (Added v8.4.1)*
 
@@ -2171,7 +2173,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_DOCORDERCHANGED**
+#### [1017] **NPPN_DOCORDERCHANGED**
 *To notify plugins that document order is changed*
 
 **Fields:**
@@ -2182,18 +2184,18 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_EXTERNALLEXERBUFFER**
-*To notify lexer plugins that the buffer (in idFrom) is just applied to a external lexer*
+#### [1029] **NPPN_EXTERNALLEXERBUFFER**
+*To notify lexer plugins that the buffer (in idFrom) is just applied to a external lexer. (New to v8.5).*
 
 **Fields:**
 
-	code:		NPPN_FILEBEFORECLOSE
+	code:		NPPN_EXTERNALLEXERBUFFER
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
 
 ---
 
-####  **NPPN_FILEBEFORECLOSE**
+#### [1003] **NPPN_FILEBEFORECLOSE**
 *To notify plugins that the current file is about to be closed*
 
 **Fields:**
@@ -2204,7 +2206,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEBEFOREDELETE**
+#### [1024] **NPPN_FILEBEFOREDELETE**
 *To notify plugins that file is to be deleted*
 
 **Fields:**
@@ -2215,7 +2217,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEBEFORELOAD**
+#### [1014] **NPPN_FILEBEFORELOAD**
 *To notify plugins that the current file is about to be loaded*
 
 **Fields:**
@@ -2226,7 +2228,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEBEFOREOPEN**
+#### [1006] **NPPN_FILEBEFOREOPEN**
 *To notify plugins that the current file is about to be opened*
 
 **Fields:**
@@ -2237,7 +2239,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEBEFORERENAME**
+#### [1021] **NPPN_FILEBEFORERENAME**
 *To notify plugins that file is to be renamed*
 
 **Fields:**
@@ -2248,7 +2250,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEBEFORESAVE**
+#### [1007] **NPPN_FILEBEFORESAVE**
 *To notify plugins that the current file is about to be saved*
 
 **Fields:**
@@ -2259,7 +2261,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILECLOSED**
+#### [1005] **NPPN_FILECLOSED**
 *To notify plugins that the current file is just closed*
 
 **Fields:**
@@ -2270,7 +2272,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEDELETED**
+#### [1026] **NPPN_FILEDELETED**
 *To notify plugins that file has been deleted*
 
 **Fields:**
@@ -2281,7 +2283,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEDELETEFAILED**
+#### [1025] **NPPN_FILEDELETEFAILED**
 *To notify plugins that file deletion has failed*
 
 **Fields:**
@@ -2292,7 +2294,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILELOADFAILED**
+#### [1015] **NPPN_FILELOADFAILED**
 *To notify plugins that file open operation failed*
 
 **Fields:**
@@ -2303,7 +2305,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILEOPENED**
+#### [1004] **NPPN_FILEOPENED**
 *To notify plugins that the current file is just opened*
 
 **Fields:**
@@ -2314,8 +2316,8 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILERENAMECANCEL**
-*To notify plugins that file rename has been cancelled*
+#### [1022] **NPPN_FILERENAMECANCEL**
+*To notify plugins that file rename has been canceled*
 
 **Fields:**
 
@@ -2325,7 +2327,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILERENAMED**
+#### [1023] **NPPN_FILERENAMED**
 *To notify plugins that file has been renamed*
 
 **Fields:**
@@ -2336,7 +2338,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_FILESAVED**
+#### [1008] **NPPN_FILESAVED**
 *To notify plugins that the current file is just saved*
 
 **Fields:**
@@ -2347,7 +2349,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_LANGCHANGED**
+#### [1011] **NPPN_LANGCHANGED**
 *To notify plugins that the language in the current doc is just changed.*
 
 **Fields:**
@@ -2358,8 +2360,8 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_READONLYCHANGED**
-*To notify plugins that current document change the readonly status,*
+#### [1016] **NPPN_READONLYCHANGED**
+*To notify plugins that current document changed the read-only status*
 
 **Fields:**
 
@@ -2371,8 +2373,8 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_READY**
-*To notify plugins that all the procedures of launchment of notepad++ are done.*
+#### [1001] **NPPN_READY**
+*To notify plugins that all the procedures of the launch of Notepad++ are done.*
 
 **Fields:**
 
@@ -2382,7 +2384,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_SHORTCUTREMAPPED**
+#### [1013] **NPPN_SHORTCUTREMAPPED**
 *To notify plugins that plugin command shortcut is remapped.*
 
 **Fields:**
@@ -2400,8 +2402,8 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_SHUTDOWN**
-*To notify plugins that Notepad++ is about to be shutdowned.*
+#### [1009] **NPPN_SHUTDOWN**
+*To notify plugins that Notepad++ is about to be shut down.*
 
 **Fields:**
 
@@ -2411,7 +2413,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_SNAPSHOTDIRTYFILELOADED**
+#### [1018] **NPPN_SNAPSHOTDIRTYFILELOADED**
 *To notify plugins that a snapshot dirty file is loaded on startup*
 
 **Fields:**
@@ -2422,7 +2424,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_TBMODIFICATION**
+#### [1002] **NPPN_TBMODIFICATION**
 *To notify plugins that toolbar icons can be registered*
 
 **Fields:**
@@ -2433,7 +2435,7 @@ The general layout of the following notifications look like this
 
 ---
 
-####  **NPPN_WORDSTYLESUPDATED**
+#### [1012] **NPPN_WORDSTYLESUPDATED**
 *To notify plugins that user initiated a WordStyleDlg change.*
 
 **Fields:**
