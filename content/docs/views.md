@@ -81,7 +81,9 @@ U+3000    | ideographic space            | IDSP
 U+FEFF    | zero-width no-break space    | ZWNBSP
     {{< /expand >}}
 
-- **Show All Characters**: When checked, this is will check all three **Show Whitespace and TAB** and **Show End of Line** and **Show Non-Printing Characters** at the same time.
+- **Show Control Characters & Unicode EOL**: When checked, the control characters in the ASCII/Unicode [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) will be shown in a small box, either as the Codepoint or as an Abbreviation.  In addition to the C0 and C1 control codes, this also influences the Unicode "End of Line" characters LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `[PS]`).  (new to v8.5.3)
+
+- **Show All Characters**: When checked, this is will check all three **Show Whitespace and TAB** and **Show End of Line** and **Show Non-Printing Characters** and **Show Control Characters & Unicode EOL** at the same time.
 
 The remaining two entries in this sub-menu aren't affecting the glyphs of characters in the file; instead, they are showing information about Notepad++'s indentation and word-wrap:
 
