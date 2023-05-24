@@ -82,7 +82,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
     - **Abbreviation**: The symbol will use the abbreviation value from [this table](../views/#show-symbol), such as `NBSP` for the "no-break space".
     - **Codepoint**": The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > NPC custom color**
-
+    - **Apply to C0, C1 & Unicode EOL**: Applies these Non-Printing Characters settings to the [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) as well as the Unicode "End of Line" characters for LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`)
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
 * `☐ Enable virtual space`: enables putting the caret beyond the end of the line (new to v8.4.3)
 * `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
