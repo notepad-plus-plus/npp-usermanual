@@ -43,9 +43,10 @@ The `<function>` node accepts the following attributes and contained elements:
 
 - `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
 - `displayMode` (_attribute_): Reserved for future use.
-- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of "mainExpr" attribute of "function" node.
-    - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.  (This allows multiple regex patterns for matching different syntaxes of function definition).
+- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of `mainExpr` attribute of `function` node.
+    - `nameExpr` (_element_): Used to match a function name.  Uses the results from the `mainExpr` above as the input for the `nameExpr`.
         - `expr` (_attribute_): This is where you define the regular expression to find the function name.
+        - Note: if there are multiple `nameExpr` elements inside a `functionName`, the results of one `nameExpr` is used as the input for the next `nameExpr` (in the order they appear in the function list definition) -- they work in series, not parallel.
 - `className` (_element_): Define one or more regular expressions to get the class name from the result of "mainExpr".  (You _can_ have classes, even if it's not a class parser.)
     - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.
         - `expr` (_attribute_): This is where you define the regular expression to find the class name.
