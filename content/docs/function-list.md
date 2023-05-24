@@ -43,16 +43,15 @@ The `<function>` node accepts the following attributes and contained elements:
 
 - `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
 - `displayMode` (_attribute_): Reserved for future use.
-- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of "mainExpr" attribute of "function" node.
-    - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.  (This allows multiple regex patterns for matching different syntaxes of function definition).
+- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of `mainExpr` attribute of `function` node.
+    - `nameExpr` (_element_): Used to match a function name.  Uses the results from the `mainExpr` above as the input for the `nameExpr`.
         - `expr` (_attribute_): This is where you define the regular expression to find the function name.
-- `className` (_element_): Define one or more regular expressions to get the class name from the result of "mainExpr".  (You _can_ have classes, even if it's not a class parser.)
-    - `nameExpr` (_element_): Use one "nameExpr" element for each function-name pattern.
+        - Note: if there are multiple `nameExpr` elements inside a `functionName`, the results of one `nameExpr` is used as the input for the next `nameExpr` (in the order they appear in the function list definition) -- they work in series, not parallel.
+- `className` (_element_): Define one or more regular expressions to get the class name from the result of `mainExpr`.  (You _can_ have classes, even if it's not a class parser.)
+    - `nameExpr` (_element_): Extracts the class name from the results of the `mainExpr`.
         - `expr` (_attribute_): This is where you define the regular expression to find the class name.
 
 Both `functionName` and `className` nodes are optional.  If `functionName` and `className` are absent, then the string found by the `mainExpr` regular expression will be processed as the function name, and the class name won't be used.
-
-The nodes `functionName` and `className` have the same structure, and they have the same parsing behaviour. For example, if in the `functionName` node, we have two `nameExpr` nodes: If the function parser finds a match using the first `mainExpr` attribute, then it will use that match; otherwise, it will search using the second `nameExpr`, and use that match if found; finally, if none of the `mainExpr` regex match the text, no function will be found.
 
 ### Class parser
 The `<classRange>` node accepts the following attributes and contained elements:
@@ -65,7 +64,7 @@ The `<classRange>` node accepts the following attributes and contained elements:
     - _Note_: This `function` node looks similar to the `function` node in the **Function parser** above, but it _is different_, and has slightly different contents.
     - `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
     - `functionName` (_element_): The wrapper for digging into and finding the text for the function name
-        - `functionNameExpr` (_element_): The element for the function name of a function inside a class.  Please note that it uses the `functionNameExpr` element instead of the `nameExpr` element in the **Function parser**.  Yes, it's confusing.
+        - `functionNameExpr` (_element_): The element for the function name of a function inside a class.  Please note that the **Class parser** uses the `functionNameExpr` element instead of the `nameExpr` element in the **Function parser**.
             - `expr` (_attribute_): this is where you put the regular expression defines what should match to be used in displaying the function name in the Function List panel.
 
 _Please Note_: an empty class (one without any functions) will _not_ display in the Function List panel.  Thus, if you have no `<function>` elements defined in your `<classRange>` node, you will _never_ see your class.  And if you have a `<function>` defined, but it doesn't match any functions inside your class, the class will not be displayed in the FunctionList panel.  In the FunctionList panel, the class is a container, and it will never display on its own if there is no function to display inside of it. 
