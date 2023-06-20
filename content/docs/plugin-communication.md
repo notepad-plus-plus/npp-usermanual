@@ -221,6 +221,68 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 
 ---
 
+#### [2136] **NPPM_DARKMODESUBCLASSANDTHEME**
+*Add support for generic dark mode.*
+*(New to v8.5.4)*
+
+**Parameters**:
+
+*wParam [in]*
+: ULONG dmFlags : values in `namespace NppDarkMode` (below)
+
+*lParam [in]*
+: HWND pluginWindowHandle,
+
+**Return value**:
+: Returns The new encoding mode.
+
+**Other information**:
+
+- Docking panels don't need to call NPPM_DARKMODESUBCLASSANDTHEME for main hwnd.
+
+- Subclassing is applied automatically unless DWS_USEOWNDARKMODE flag is used.
+
+- Might not work properly in C# plugins.
+
+- `dmFlags` values in `NppDarkMode` namespace:
+
+```
+	namespace NppDarkMode
+	{
+		// Standard flags for main parent after its children are initialized.
+		constexpr ULONG dmfInit =               0x0000000BUL;
+
+		// Standard flags for main parent usually used in NPPN_DARKMODECHANGED.
+		constexpr ULONG dmfHandleChange =       0x0000000CUL;
+	};
+```
+
+**Examples:**
+
+- after controls initializations in WM_INITDIALOG, in WM_CREATE or after CreateWindow:
+
+```
+auto success = static_cast<ULONG>(::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(NppDarkMode::dmfInit), reinterpret_cast<LPARAM>(mainHwnd)));
+```
+
+- handling dark mode change:
+
+```
+extern "C" __declspec(dllexport) void beNotified(SCNotification * notifyCode)
+
+	switch (notifyCode->nmhdr.code)
+	{
+		case NPPN_DARKMODECHANGED:
+		{
+			::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(dmfHandleChange), reinterpret_cast<LPARAM>(mainHwnd));
+			::SetWindowPos(mainHwnd, nullptr, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED); // to redraw titlebar and window
+			break;
+		}
+	}
+```
+
+---
+
 #### [2051] **NPPM_DECODESCI**
 *Changes current buffer view to ansi.
 view must be either 0 = main view or 1 = second view.*
