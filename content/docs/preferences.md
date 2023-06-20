@@ -178,6 +178,8 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
     * _Note_: the [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files
 * **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
+* `☐ Always open a new document in addition at startup` : with this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
+
 
 ### Default Directory
 
