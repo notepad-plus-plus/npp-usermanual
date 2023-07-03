@@ -1,9 +1,3 @@
----
-title: Copyright & License
-linktitle: license
-weight: 9999
----
-
 ## Copyright
 
 Copyright (C) 2020 Don HO &lt;<don.h@free.fr>&gt;.
