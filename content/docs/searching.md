@@ -59,7 +59,7 @@ All the dialog-based have certain features in common, though some are not availa
 * **Search Mode**: this determines how the text in the **Find what** and **Replace with** will be treated
     * **☐ Normal**: all text is treated literally.
     * **☐ Extended (\n, \r, \t, \0, \x...)**: use certain "wildcards", as described in [Extended Search Mode (below)](#extended-search-mode)
-    * **☐ Regular Expression**: uses the Boost regular expression engine to perform very power search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions)
+    * **☐ Regular Expression**: uses the Boost regular expression engine to perform very powerful search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions)
         * **☐ . matches newline**: in regular expressions, with this unchecked, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this checked, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
 
 * **☐ Transparency**: these settings affect the dialog box.  Normally, the dialog box is opaque (can't see the text beneath), but with these settings, it can be made semi-transparent (can partially see the text beneath)
@@ -391,7 +391,7 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 * `\b`:  The binary representation of a byte, made of 8 digits which are either 1's or 0's. †
     - `\b00100000` will match the SPACE character (ASCII 32 is "00100000" in 8-bit binary)
 * `\o`:  The octal representation of a byte, made of 3 digits in the 0-7 range. †
-    - `\b040` will match the SPACE character (ASCII 32 is "040" in 3-digit octal)
+    - `\o040` will match the SPACE character (ASCII 32 is "040" in 3-digit octal)
 * `\d`:  The decimal representation of a byte, made of 3 digits in the 0-9 range. †
     - `\d032` will match the SPACE character (ASCII 32 is "032" in 3-digit decimal)
 * `\x`:  The hexadecimal representation of a byte, made of 2 digits in the 0-9, A-F/a-f range.
