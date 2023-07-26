@@ -1,17 +1,17 @@
 ---
-title: Binary Translation
+title: Localization (User Interface Translation)
 weight: 140
 ---
 
-Notepad++ supports multi-language functionality by means of a translated xml file (based on the official [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) translation).
+Notepad++ can be "localized" to your chosen written language, so that it translates the user interface (including menu and command names, and the text in dialogs and buttons).  It supports this multi-language functionality by using a localization xml file (based on the official [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) translation) which maps the various user-interface pieces to the appropriate translation.  The Notepad++ localization is chosen through the **[Settings > Preferences > General](../preferences/#general)] > Localization** interface.
 
 ### Creating or Editing a translation
 
-Maybe Notepad++ doesn't currently have the language you would like to use.  Or maybe, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Maybe the official Notepad++ translation for a language doesn't match your particular usage of that language.  Or sometimes, you just want to have some fun rewording things for your own amusement.  
+Maybe Notepad++ doesn't currently have the language you would like to use.  Or maybe, Notepad++ has been updated recently but the translation file is one or more versions behind, so some of the text isn't in your selected language.  Maybe the official Notepad++ translation for a language doesn't match your particular usage of that language.  Or sometimes, you just want to have some fun rewording things for your own amusement.
 
 The process of teaching Notepad++ a new language is virtually identical to editing an existing language, and both processes are described here:
 
-1. Download the master copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
+1. Download the official copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
     * This will be used as the source for a new translation, and a reference when you are editing an existing language.
 3. This step depends on whether you are editing an existing language translation, or creating a new translation from scratch:
     1. For an existing translation: Download the most recent copy of the existing language translation from the [localization portion of the code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/installer/nativeLang) and save it into the same folder as `localization\english.xml`.
@@ -28,6 +28,20 @@ The process of teaching Notepad++ a new language is virtually identical to editi
         * You may use XML character entities for characters.  (_Note_: unlike HTML, XML only has 5 [predefined named entities](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Predefined_entities_in_XML "XML Entity List"); all other characters require [numeric or hexadecimal entities](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_reference_overview).)
         * If the encoding was properly set (above), you may insert Unicode characters directly.
         * When possible, keep the translated text about the same length (in characters) as the original English; this will help make sure the translation will fit in menus and dialog boxes which were designed to fit the official English text.
+    4. If you are going to share your localization file with others, you must define accelerator letters for critical menu commands.
+        - These accelerator letters are the letters you see underlined in menus.
+            - These are used for quickly activating a menu entry from the keyboard when the menu is active.
+                - For example, the **File** menu's **New** command has an accelerator of `N` defined in the default English localization file, so when the **File** menu is displayed, typing `N` will run that command.
+            - This is separate from the keyboard shortcut used while editing.
+                - For example, the **File** menu's **New** command has a default keyboard shortcut of `Ctrl+N`, which can be used anytime the editor section of Notepad++ is active.  But if you have the **File** menu showing, `Ctrl+N` does nothing; instead, you have to use the accelerator.
+                - Thus, even commands that have keyboard shortcuts should also have accelerators defined.
+        - To define the accelerator character, you need to put an ampersand `&` before the appropriate character in your translation text.
+            - Because the localization file is in XML, and `&` has a special meaning to XML, you need to use the string `&amp;` before the letter in your translation string.
+            - For example, to underline the `E` in `Super Edit`, your string would need to be defined as `Super &amp;Edit` in the XML: `<Item id="#####" name="Super &amp;Edit"/>`
+        - To know which commands are critical to have accelerators for, please use the official `english.xml` as a guide: any string that includes the `&amp;` notation in the official `english.xml` should also include the `&amp;` in your translation.
+        - Users of Notepad++ (and any Windows application) expect menus to have these accelerator keys.
+            - If you neglect to define them, or choose not to, you will be breaking the expectation of the users of your translation.
+            - Further, you may be inhibiting usability for people who must use (or prefer to use) the keyboard for controlling Notepad++.
 5. To see the changes take effect, save the file, then go to [**Settings > Preferences > General > Localization**](../preferences/#general) and select `<yourlanguagename>` from the pulldown menu: this will copy `localization\<yourlanguagename>.xml` to `nativeLang.xml` and will immediately update the Notepad++ application to use the text from your saved XML file.
     * _Note_: If you do not see the right language in the pulldown, you need to make sure you put the XML file(s) in the right directory, as explained above.
     * You may actually do the process of saving the file then selecting **Localization** = `<yourlanguagename>` throughout your development of the translation, to be able to see the changes you make as you go.
