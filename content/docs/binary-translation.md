@@ -11,7 +11,7 @@ Maybe Notepad++ doesn't currently have the language you would like to use.  Or m
 
 The process of teaching Notepad++ a new language is virtually identical to editing an existing language, and both processes are described here:
 
-1. Download the official copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and save it into the `%APPDATA%\Notepad++\localization\` or `Notepad++_Install_Dir\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  Create the `localization\` directory first, if it doesn't already exist.
+1. Download the official copy of [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) and save it into the `<Notepad++_Install_Dir>\localization\` directory (see [Configuration Files Location](../config-files/#configuration-files-location)).  You may need to create the `localization\` directory first, if it doesn't already exist.
     * This will be used as the source for a new translation, and a reference when you are editing an existing language.
 3. This step depends on whether you are editing an existing language translation, or creating a new translation from scratch:
     1. For an existing translation: Download the most recent copy of the existing language translation from the [localization portion of the code repository](https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/installer/nativeLang) and save it into the same folder as `localization\english.xml`.
