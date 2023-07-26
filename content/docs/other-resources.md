@@ -3,8 +3,8 @@ title: Other Resources
 weight: 160
 ---
 
-
 ## Notepad Replacement
+
 Notepad is a default text editor shipped with Windows. You may want to use Notepad++ instead of Notepad. However, there's no obvious way to do it.
 From the version 7.5.9 onward, you can run the following command to make Notepad++ replace Notepad (run in `cmd.exe` with Administrator privileges)[†](#registry-edit-warning):
 
@@ -14,19 +14,34 @@ reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution 
 
 Note that you may need to use `%ProgramFiles(x86)%\Notepad++\` to substitute for `%ProgramFiles%\Notepad++\` if you have Notepad++ 32-bit installed, or use other path if your Notepad++ is installed in a non-default location.
 
-Use the the following comment to undo the replacement:
+For Windows 11 onward first uninstall Notepad (just right-click on the Notepad shortcut in **Start Menu** and select **Uninstall**) and run below instead:
+
 ```batch
-reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" /v "Debugger" /f
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\0" /v Debugger /t REG_SZ /d "\"%ProgramFiles%\Notepad++\notepad++.exe\" -notepadStyleCmdline -z" /f
+
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\1" /v Debugger /t REG_SZ /d "\"%ProgramFiles%\Notepad++\notepad++.exe\" -notepadStyleCmdline -z" /f
+
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\2" /v Debugger /t REG_SZ /d "\"%ProgramFiles%\Notepad++\notepad++.exe\" -notepadStyleCmdline -z" /f
+
+reg delete HKCR\Applications\notepad.exe /v NoOpenWith /f
 ```
 
-This has historically worked from Windows 7 through Windows 10.  However, in Windows 11 it's Notepad UWP version installed, you have to remove Notepad UWP to make the above instructions work.
+**Note**: Windows 11 introduced UWP version of Notepad that use the same technique as described (but with undocumented [UseFilter](https://www.geoffchappell.com/studies/windows/win32/ntdll/api/rtl/rtlexec/openimagefileoptionskey.htm)) to replace the built-in Notepad. As UWP apps are started differently than regular apps, they cannot be replaced the same way and UWP Notepad must be uninstalled. Otherwise it would start when opening text files or when run from **Start Menu**. What\`s more, to be able to again use built-in Notepad (now redirected to Notepad++) to open text files the `NoOpenWith` registry value must be removed (based on [How to Restore Old Classic Notepad in Windows 11](https://www.winhelponline.com/blog/restore-old-classic-notepad-windows/)).
 
-To remove UWP version of Notepad, you have to launch powershell with admin privileges, then run the following command:
-```powershell
-Get-AppxPackage *Microsoft.WindowsNotepad* | Remove-AppxPackage
+Use the the following command to undo the replacement:
+
+```batch
+reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" /v Debugger /f
 ```
 
-For restoring Notepad, launch "Microsoft Store" via Start menu of Windows, search "Notepad", select "Windows Notepad", then click on "Install" button.
+For Windows 11 onward reinstall Notepad (launch **Microsoft Store** via **Start Menu**, search "Windows Notepad", select it and then click on **Install** button) and run below instead:
+
+```batch
+reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\0" /v Debugger /f
+reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\1" /v Debugger /f
+reg delete "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe\2" /v Debugger /f
+reg add HKCR\Applications\notepad.exe /v NoOpenWith /t REG_SZ /f
+```
 
 ### Registry Edit Warning
 
