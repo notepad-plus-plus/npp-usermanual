@@ -1,10 +1,10 @@
 ---
-title: Usage via the command prompt
-linktitle: Command prompt
+title: Command Line Arguments
+linktitle: Command Line Arguments
 weight: 120
 ---
 
-Notepad++ supports various case-sensitive command line parameters
+Notepad++ supports various case-sensitive command line arguments
 to control its startup and affect its behavior.
 
 ## Help usage
