@@ -1,5 +1,5 @@
 ---
-title: Right Click - Open With Notepad++
+title: Right Click - Edit With Notepad++
 weight: 130
 ---
 
