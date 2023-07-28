@@ -25,11 +25,11 @@ Determine whether your system requires the 64-bit or ARM 64-bit or 32-bit build 
 
 If you are doing managed installation or otherwise want to control the installer from the command line, the installer has a few [command line options](../command-prompt/#installer-options).
 
-The installer will likely require Administrative privileges in order to install Notepad++ in Windows's standard "Program Files" location.  If you do not have Administrative privileges, you either need to find someone who does, or tell the installer to use a location where you _do_ have write permission, or run the portable edition from a directory where you have write permission.
+The installer will likely require Administrative privileges in order to install Notepad++ in Windows's standard "Program Files" location, and to install/update plugins when installed in that location.  If you do not have Administrative privileges, you either need to find someone who does, or tell the installer to use a location where you _do_ have write permission (though that may still ask for Administrator privileges), or run a portable edition from a directory where you have write permission.
 
 When you use the installer to install to a directory other than "Program Files", you can choose an option in the installer to _not_ use the `%AppData%\Notepad++` folder for your configuration, and instead use the "[local configuration](../config-files/#configuration-files-location)".
 
-The installer should also install the [Shell Extension](../shell-extension/) to add **Open with Notepad++** to the Windows Right-Click context menu.
+The installer should also install the [Shell Extension](../shell-extension/) to add **Edit with Notepad++** to the Windows Right-Click context menu.
 
 ## Install Notepad++ from 7z or zip
 
@@ -41,9 +41,9 @@ These instructions will allow you to run a portable or mini-portable (also calle
 
 In a portable edition, the [configuration files](../config-files/#configuration-files-location) will be stored in the same directory where you put `notepad++.exe`.
 
-The portable editions do not automatically install Right-Click context menu, so you will not see **Open With Notepad++** on files unless you use Windows' **Open With** feature to permanently associate that type of file with your portable Notepad++, or use [Settings > Preferences > File Association](../preferences/#file-association), or use one of the [alternative right-click context menu](../shell-extension/#alternatives) registry edits.  (But if what you really want is to have Notepad++ "installed", but just not use the "Program Files" hierarchy, you can tell the installer to use a different directory for the installation.)
+The portable editions do not automatically install Right-Click context menu, so you will not see **Edit with Notepad++** on files unless you use Windows' **Edit with** feature to permanently associate that type of file with your portable Notepad++, or use [Settings > Preferences > File Association](../preferences/#file-association), or use one of the [alternative right-click context menu](../shell-extension/#alternatives) registry edits.  (But if what you really want is to have Notepad++ "installed", but just not use the "Program Files" hierarchy, you can tell the installer to use a different directory for the installation.)
 
-The mini-portable edition only includes the default theme and default Dark Mode theme, and only the English localization; it also does not include the autoCompletion files, functionList files, Plugins Admin, or the Notepad++ updater.  The full portable includes all the themes that ship with the Notepad++ installer, and has all localization files included.
+The minimalist / mini-portable edition only includes the default theme and default Dark Mode theme, and only the English localization; it also does not include the autoCompletion files, functionList files, or the Notepad++ editor; it does not install the default plugins or the Plugins Admin tool (so no automated [plugin](../plugins/) installation/removal, but you can still manually install a plugin).  The full portable includes all the themes that ship with the Notepad++ installer, and has all localization files included, and includes the default plugins with the Plugins Admin tool.
 
 ## "Program Files" Restrictions
 
