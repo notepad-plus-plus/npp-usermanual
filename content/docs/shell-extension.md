@@ -1,13 +1,13 @@
 ---
-title: Shell Extension (Right Click Context Entry)
+title: Right Click - Open With Notepad++
 weight: 130
 ---
 
-## Description
+## Shell Extension
 
 Notepad++ installs with a Shell Extension -- a DLL which adds menu commands to the Windows Explorer right-click context menu.  If you choose to install it (and the Notepad++ installer does install it), then any file you right-click on will show an entry named “Edit with Notepad++” with the Notepad++ icon.
 
-## Installation
+### Installation
 
 Under normal circumstances, the Shell Extension was installed when you installed Notepad++.
 
@@ -15,17 +15,17 @@ Please note that to install or remove the extension, you most likely need to use
 
 If the Shell Extension is already installed, the Notepad++ installer/updater might not be able to update or overwrite it, so you might first have to uninstall it and restart Explorer.
 
-### Location and Name
+#### Location and Name
 
 If you used the installer to get Notepad++, then the Shell Extension file will exist as a DLL in your Notepad++ installation folder hierarchy: in versions before Notepad++ v8.5.1, it will be in the same directory as notepad++.exe, named as `NppShell_##.dll` (with ## being something like `01` - `06`); in Notepad++ v8.5.1 and later, it is now found in the `contextMenu\` subfolder of the Notepad++ installation, and is named plainly `NppShell.dll`.
 
-### Portable Notepad++
+#### Portable Notepad++
 
 If you didn't use the installer, the DLL does not come with the portable edition.  The reason that portable Notepad++ does not ship with the Shell Extension is that registering a DLL usually requires administrative privileges, and is inherently non-portable.  Also, there may be subtle issues that arise because the application is not in the expected directory.
 
 However, if you want to try to see if the Shell Extension will work for your particular portable circumstances, you are allowed (though success is not guaranteed or warrantied): you could download the installer, rename it to a `.zip`, and extract the Shell Extension DLL from that zip archive, which you can put in the correct location for your portable edition -- that is, alongside notepad++.exe for older versions, and in the `contextMenu\` subdirectory (which you may have to create yourself) for v8.5.1 and newer.  You would then have to register the DLL, as described below.
 
-### Manual Installation / Registration
+#### Manual Installation / Registration
 
 If your installation process had problems with installing or updating the Shell Extension, or if you want to try the experiment of using the Shell Extension with your portable edition of Notepad++, you can manually register the DLL.  Registering the DLL may require elevating to elevated privileges.
 
@@ -39,7 +39,7 @@ If your installation process had problems with installing or updating the Shell 
 - `regsvr32 /U /i NppShell.dll`
 - `regsvr32 /U NppShell.dll`
 
-## Difficulties
+### Difficulties
 
 It should be noted that the Shell Extension can have difficulty loading a file into Notepad++ if Notepad++ is in Admin mode.
 
@@ -53,7 +53,7 @@ If you are willing to edit your registry[†](#registry-edit-warning "edit your 
 
 ### Manual "Edit with Notepad++" Action
 
-You can manually add an "Edit with Notepad++" action to your registry using your favorite registry-editing method[†](#registry-edit-warning "edit your registry at your own risk").  You could save the appropriate script below as a `.reg` file and run it, and it will update your registry for you.  Or you can use `regedit.exe` to use the GUI to edit the keys and values mentioned in the `.reg` files.
+You can manually add an "Edit with Notepad++" action to your registry using your favorite registry-editing method[†](#registry-edit-warning "edit your registry at your own risk").  You could save the appropriate script below as a `.reg` file and run it, and it will update your registry for you.  Or you can use `regedit.exe` to use the GUI to edit the keys and values mentioned in the `.reg` files.  (To remove the manual entry, just remove the keys that are populated by these scripts or that you populated in regedit.)
 
 #### SINGLE USER
 
