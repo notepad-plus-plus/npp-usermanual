@@ -63,6 +63,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Notepad++]
 @="Edit With Notepad++"
+"Icon"="C:\\Program Files\\Notepad++\\notepad++.exe,0"
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Notepad++\command]
 @="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
@@ -78,6 +79,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\Notepad++]
 @="Edit With Notepad++"
+"Icon"="C:\\Program Files\\Notepad++\\notepad++.exe,0"
 
 [HKEY_CLASSES_ROOT\*\shell\Notepad++\command]
 @="\"C:\\Program Files\\Notepad++\\notepad++.exe\" \"%1\""
