@@ -23,13 +23,15 @@ Determine whether your system requires the 64-bit or ARM 64-bit or 32-bit build 
 1. Download the installer
 2. Run the executable binary and follow the installation flow
 
+The installer will likely require Administrative privileges in order to install Notepad++.  If you do not have Administrative privileges, you either need to find someone who does, or tell the installer to use a location where you _do_ have write permission (though that may still ask for Administrator privileges), or run a portable edition from a directory where you have write permission.
+
+By default, the installer will use `%AppData%\Notepad++` to [store your settings](../config-files/#configuration-files-location); but when you use the installer to install to a directory other than "Program Files", you can choose the installation option "Don't use %APPDATA%" to instead use a "[local configuration](../config-files/#configuration-files-location)".
+
+The installer should also install the [Shell Extension](../shell-extension/) to add **Edit with Notepad++** to the Windows Right-Click context menu.  (Your specific version or translation may use a different phrasing for that entry.)
+
 If you are doing managed installation or otherwise want to control the installer from the command line, the installer has a few [command line options](../command-prompt/#installer-options).
 
-The installer will likely require Administrative privileges in order to install Notepad++ in Windows's standard "Program Files" location, and to install/update plugins when installed in that location.  If you do not have Administrative privileges, you either need to find someone who does, or tell the installer to use a location where you _do_ have write permission (though that may still ask for Administrator privileges), or run a portable edition from a directory where you have write permission.
-
-When you use the installer to install to a directory other than "Program Files", you can choose an option in the installer to _not_ use the `%AppData%\Notepad++` folder for your configuration, and instead use the "[local configuration](../config-files/#configuration-files-location)".
-
-The installer should also install the [Shell Extension](../shell-extension/) to add **Edit with Notepad++** to the Windows Right-Click context menu.
+The installed version of Notepad++ can be removed using the standard Windows OS's "Add/Remove Programs" interface for removing installed programs (or similar, depending on your OS version).
 
 ## Install Notepad++ from 7z or zip
 
@@ -39,14 +41,16 @@ These instructions will allow you to run a portable or mini-portable (also calle
 2. Unzip the content into the new folder
 3. Run Notepad++ from the new folder
 
-In a portable edition, the [configuration files](../config-files/#configuration-files-location) will be stored in the same directory where you put `notepad++.exe`.
+For the all portable editions, everything (the application, settings, and plugins) is stored in one folder hierarchy.  And by default, the portable editions do not mess with operating system settings (so no file associations or **Edit with Notepad++** context-menu entries) -- if you want such with a portable edition, you will have to set it up manually.
 
-The portable editions do not automatically install Right-Click context menu, so you will not see **Edit with Notepad++** on files unless you use Windows' **Edit with** feature to permanently associate that type of file with your portable Notepad++, or use [Settings > Preferences > File Association](../preferences/#file-association), or use one of the [alternative right-click context menu](../shell-extension/#alternatives) registry edits.  (But if what you really want is to have Notepad++ "installed", but just not use the "Program Files" hierarchy, you can tell the installer to use a different directory for the installation.)
+The main portable 7z or zip editions contain all the themes, user defined languages, auto-completions, localizations, and default plugins and Plugins Admin tool that come with the installed version of Notepad++.
 
-The minimalist / mini-portable edition only includes the default theme and default Dark Mode theme, and only the English localization; it also does not include the autoCompletion files, functionList files, or the Notepad++ editor; it does not install the default plugins or the Plugins Admin tool (so no automated [plugin](../plugins/) installation/removal, but you can still manually install a plugin).  The full portable includes all the themes that ship with the Notepad++ installer, and has all localization files included, and includes the default plugins with the Plugins Admin tool.
+The minimalist / mini-portable edition only comes with the default light-mode and dark-mode theme, the default English localization, and no plugins or Plugins Admin.  However, you can separately download any of the non-included config files that you want from the main Notepad++ source repository, and you can still [install plugins manually](../plugins/#install-plugin-manually).
+
+The portable editions of Notepad++ can be removed by deleting the directory they came in.  If you manually set up and file associations or context-menu entries in the OS, it is your responsibility to remove them yourself.
 
 ## "Program Files" Restrictions
 
 Windows is particular about what goes into "Program Files", and restricts permissions there, usually requiring Administrator Privilege to install or edit there.
 
-Trying to set the "Don't use %APPDATA%" during installation while still installing in "Program Files", or putting the portable into "Program Files", or manually adding `doLocalConf.xml` to the installation in "Program Files", are not intended use cases.  Doing so may still result in `%AppData%` being used, due to file permissions and special OS handling of the "Program Files" hierarchy, and may expose other odd behaviors that wouldn't be seen if you weren't trying to "mix modes".  If you really don't want to use `%AppData%` for your configuration, do not use "Program Files" as your installation-location, or unzip the portable into a different directory, or always run using the `-settingsDir` [Command Line Argument](../command-prompt/) or Cloud settings to give an [alternative config-file location](../config-files/#configuration-files-location).
+When Notepad++ is placed in "Program Files" (whether through the installer or through unzipping a portable edition there), it intentionally does _not_ honor the [doLocalConf.xml](../config-files/#other-configuration-files) that comes from the "Do not Use %APPDATA%" setting or unzipping a portable edition there or manually creating the file, and will instead use your `%AppData%\Notepad++` directory for [storing settings](../config-files/#configuration-files-location) despite that file being there.
