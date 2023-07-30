@@ -23,7 +23,7 @@ Determine whether your system requires the 64-bit or ARM 64-bit or 32-bit build 
 1. Download the installer
 2. Run the executable binary and follow the installation flow
 
-The installer will likely require Administrative privileges in order to install Notepad++.  If you do not have Administrative privileges, you either need to find someone who does, or tell the installer to use a location where you _do_ have write permission (though that may still ask for Administrator privileges), or run a portable edition from a directory where you have write permission.
+The installer will likely require Administrative privileges in order to install Notepad++ (and later, to update Notepad++ or install or update plugins, or anything else that requires writing to the installation directory).  If you do not have Administrative privileges, you either need to tell the installer to use a location where you _do_ have write permission (though that may still ask for Administrator privileges), or you may choose not use the installer and instead run a portable edition from a directory where you have write permission.
 
 By default, the installer will use `%AppData%\Notepad++` to [store your settings](../config-files/#configuration-files-location); but when you use the installer to install to a directory other than "Program Files", you can choose the installation option "Don't use %APPDATA%" to instead use a "[local configuration](../config-files/#configuration-files-location)".
 
