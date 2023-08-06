@@ -1,37 +1,32 @@
 Notepad++ User Manual
 =======
 
-***Documentation is like sex, when it's good, it's very, very good; when it's bad, it's better than nothing.***
-
-Of course, it's not our goal to create bad documentation, but you get what we mean.
-
 [**Notepad++ User Manual**](https://npp-user-manual.org) is built collaboratively, and your contribution is very welcome. Before submitting a pull request (PR), please check our [contribution rules](CONTRIBUTION.md) to prevent your PR from being rejected.
-
-
 
 Summary
 =======
 
 * [Getting started](content/docs/getting-started.md)
-* [Programing Languages](content/docs/programing-languages.md)
-* [User Defined Language System](content/docs/user-defined-language-system.md)
 * [Editing](content/docs/editing.md)
 * [Searching](content/docs/searching.md)
-* [Session](content/docs/session.md)
-* [Macros](content/docs/macros.md)
-* [Auto-completion](content/docs/auto-completion.md)
+* [Views](content/docs/views.md)
+* [Sessions, Workspaces, and Projects](content/docs/session.md)
 * [Function List](content/docs/function-list.md)
+* [Auto-Completion](content/docs/auto-completion.md)
+* [Highlighting - Built-in Languages](content/docs/programing-languages.md)
+* [Highlighting - User Defined Languages](content/docs/user-defined-language-system.md)
+* [Macros - Task Automation](content/docs/macros.md)
+* [Run External Commands](content/docs/run-menu.md)
 * [Plugins](content/docs/plugins.md)
 * [Plugin Communication](content/docs/plugin-communication.md)
-* [Preferences](content/docs/preferences.md)
-* [Views](content/docs/views.md)
-* [Themes](content/docs/themes.md)
-* [Configuration Files Details](content/docs/config-files.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
-* [Shell Extension](content/docs/shell-extension.md)
-* [Binary Translation](content/docs/binary-translation.md)
-* [Ghost Typing](content/docs/ghost-typing.md)
+* [Preferences](content/docs/preferences.md)
+* [Configuration Files Details](content/docs/config-files.md)
+* [Themes](content/docs/themes.md)
+* [Localization - User Interface Translation](content/docs/binary-translation.md)
 * [Upgrading](content/docs/upgrading.md)
+* [Right Click - Edit with Notepad++](content/docs/shell-extension.md)
+* [Ghost Typing](content/docs/ghost-typing.md)
 * [Other Resources](content/docs/other-resources.md)
 * [Copyright & License](content/docs/license.md)
 
