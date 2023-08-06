@@ -16,7 +16,7 @@ Summary
 * [Highlighting - Built-in Languages](content/docs/programing-languages.md)
 * [Highlighting - User Defined Languages](content/docs/user-defined-language-system.md)
 * [Macros - Task Automation](content/docs/macros.md)
-* [Run External Commands](content/docs/run-menu.md)
+* [Running External Commands](content/docs/run-menu.md)
 * [Plugins](content/docs/plugins.md)
 * [Plugin Communication](content/docs/plugin-communication.md)
 * [Command Line Arguments](content/docs/command-prompt.md)
