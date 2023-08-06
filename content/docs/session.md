@@ -1,7 +1,7 @@
 ---
 title: Sessions, Workspaces, and Projects
 linktitle: sessions
-weight: 50
+weight: 40
 ---
 
 # Sessions, Workspaces, and Projects
@@ -38,7 +38,7 @@ This feature allows you to use a tree-based interface to easily access the files
 
 You can also load a Folder as Workspace using the [`-openFoldersAsWorkspace` command line argument](../command-prompt).
 
-The toolbar for the panel has three buttons: 
+The toolbar for the panel has three buttons:
 
 - **Unfold All**: Shows the entire hierarchy of all the directories shown.
 - **Fold All**: Collapses all the directory hierarchies so it just shows the top-level folders.
@@ -66,10 +66,10 @@ For files in that panel:
     - **Explorer Here**: Opens the Windows Explorer in the directory where the file is located.
     - **CMD Here**: Opens a Windows `cmd.exe` window in the directory where the file is located.
 
-If you right click in the empty space in the Folder as Workspace panel (either in the empty portion of the toolbar to the left of the icons, or in the empty space below the final directory listing in the panel), you will get a context menu with **Add** and **Remove All**.  
+If you right click in the empty space in the Folder as Workspace panel (either in the empty portion of the toolbar to the left of the icons, or in the empty space below the final directory listing in the panel), you will get a context menu with **Add** and **Remove All**.
 
-- **Add**: Will let you open another folder into the panel.  
-- **Remove All**: Will remove all directories from the Folder as Workspace panel.  
+- **Add**: Will let you open another folder into the panel.
+- **Remove All**: Will remove all directories from the Folder as Workspace panel.
 
 If there isn't any "empty space" to right-click on, you can either widen the panel (giving more empty space on the panel's toolbar) or you can collapse one or all of the folder listings (using the `﹀` by the folder name or the **Fold All** button on the toolbar) to show empty space at the bottom where you can right click.
 

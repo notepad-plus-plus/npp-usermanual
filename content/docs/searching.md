@@ -1,6 +1,6 @@
 ---
 title: Searching
-weight: 40
+weight: 20
 ---
 
 There are multiple methods to search (and replace) text in files. You can also mark search results with a bookmark on their lines, or highlight the textual results themselves.  Generating a count of matches is also possible.

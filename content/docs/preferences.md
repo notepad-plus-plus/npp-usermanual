@@ -1,6 +1,6 @@
 ---
 title: Preferences
-weight: 100
+weight: 140
 ---
 
 There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a color or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
@@ -353,7 +353,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ TAB`: toggles whether or not TAB will accept your choice
         * `☐ ENTER`: toggles whether or not ENTER will accept your choice
         * v8.2 and earlier behaved as if both have checkmarks; v8.2.1 and later defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
-    * `☐ Make auto-completion list brief`: when unchecked, once the auto-completion list pops up, the list will stay the same size even as you type additional letters, but the selection will move to the first word that matches all the characters typed; when checked, as you type more characters, the auto-completion list will shrink to only match words that match all the typed characters (new to v8.5; prior to v8.5, the list never shrank).  
+    * `☐ Make auto-completion list brief`: when unchecked, once the auto-completion list pops up, the list will stay the same size even as you type additional letters, but the selection will move to the first word that matches all the characters typed; when checked, as you type more characters, the auto-completion list will shrink to only match words that match all the typed characters (new to v8.5; prior to v8.5, the list never shrank).
         - Example: If you have `abc`, `acb`, and `add` in your auto-completion list and start auto-completion from the 1st character, when you type `a`, all three words will appear in the auto-completion list.  With this option unchecked (or in earlier versions of Notepad++), typing `d` next will just move the selection to `add`, but all three words will still be shown; with this option checked, once you type the `d`, only `add` will be shown in the list.
     * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
     * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](../editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.

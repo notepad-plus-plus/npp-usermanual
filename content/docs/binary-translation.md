@@ -1,6 +1,6 @@
 ---
-title: Localization (User Interface Translation)
-weight: 140
+title: Localization - User Interface Translation
+weight: 170
 ---
 
 Notepad++ can be "localized" to your chosen written language, so that it translates the user interface (including menu and command names, and the text in dialogs and buttons).  It supports this multi-language functionality by using a localization xml file (based on the official [english.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/english.xml) translation) which maps the various user-interface pieces to the appropriate translation.  The Notepad++ localization is chosen through the **[Settings > Preferences > General](../preferences/#general)] > Localization** interface.

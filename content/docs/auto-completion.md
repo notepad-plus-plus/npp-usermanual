@@ -1,6 +1,6 @@
 ---
-title: Auto-completion
-weight: 70
+title: Auto-Completion
+weight: 60
 ---
 
 ## What is Auto-completion

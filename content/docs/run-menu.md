@@ -1,7 +1,7 @@
 ---
 title: Run External Commands
 linktitle: run-menu
-weight: 107
+weight: 100
 ---
 
 The **Run** menu allows you to run arbitrary external commands from inside Notepad++, and to save the commands into new entries in the **Run** menu and even to assign keyboard shortcuts to those saved commands.  Because of the variable syntax (defined in the [Configuration Files Details > User Defined Commands](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) section of this manual), you can even use the filename or the current selected text or similar as arguments to the programs. [That section of the manual](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) also describes the underlying format of how saved **Run**-menu commands are stored in the `shortcuts.xml` config file.

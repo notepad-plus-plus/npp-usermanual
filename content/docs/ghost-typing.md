@@ -1,6 +1,6 @@
 ---
 title: Ghost Typing
-weight: 145
+weight: 200
 ---
 
 Ghost typing can be used to launch Notepad++ with an auto-typing text. Use command line arguments **-qn**, **-qt** or **-qf** to trigger it.
@@ -15,7 +15,7 @@ Use one of these three command-line options to enable the various modes of ghost
 
 **-qn**: ghost typing text is derived from a builtin easter egg text.
 
-***EasterEggName***: the name of easter egg.  Quotes are required if the name contains a space.  
+***EasterEggName***: the name of easter egg.  Quotes are required if the name contains a space.
 
 Use `-qn=random` to randomly select an easter egg quote. Other than that, we encourage examining
 the source code to discover more easter egg quotes.
@@ -60,7 +60,7 @@ These options apply to any of the ghost typing modes, unless otherwise mentioned
 
 ## Historical Syntax
 
-The syntax listed above is valid for Notepad++ v7.9.2 and newer.  
+The syntax listed above is valid for Notepad++ v7.9.2 and newer.
 
 In Notepad++ v7.9.1 and earlier, there were differnces in the syntax:
 

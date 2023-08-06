@@ -1,6 +1,6 @@
 ---
-title: Programming Languages
-weight: 10
+title: Highlighting - Built-in Languages
+weight: 70
 ---
 
 ## Supported Programming Languages

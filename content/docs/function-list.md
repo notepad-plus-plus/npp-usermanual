@@ -1,12 +1,12 @@
 ---
 title: Function List
-weight: 80
+weight: 50
 ---
 
 ## What is Function List
 The Function List Panel is a zone to display all the functions (or methods) found in the current file. The user can double-click the function name in the Function List Panel to move to that function in the editor. You can customize the Function List to enhance an existing language or to add a currently-unsupported language by following the instructions found below.
 
-Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.  
+Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.
 
 In order to make Function List work for your language, you should modify (or add) the XML file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList`; if you use the portable (zip) package, then it will instead be in the `functionList` folder located in Notepad++ installation directory.  The `overrideMap.xml` file (in that same folder as the language XML file) is used to map the name of the language to the XML file that defines the Function List rule for that language, as described in the [function list config files](../config-files/#function-list) section of the manual.   (For plain text files, you can have a function list definition in `functionList\normal.xml`.)
 
@@ -67,7 +67,7 @@ The `<classRange>` node accepts the following attributes and contained elements:
         - `functionNameExpr` (_element_): The element for the function name of a function inside a class.  Please note that the **Class parser** uses the `functionNameExpr` element instead of the `nameExpr` element in the **Function parser**.
             - `expr` (_attribute_): this is where you put the regular expression defines what should match to be used in displaying the function name in the Function List panel.
 
-_Please Note_: an empty class (one without any functions) will _not_ display in the Function List panel.  Thus, if you have no `<function>` elements defined in your `<classRange>` node, you will _never_ see your class.  And if you have a `<function>` defined, but it doesn't match any functions inside your class, the class will not be displayed in the FunctionList panel.  In the FunctionList panel, the class is a container, and it will never display on its own if there is no function to display inside of it. 
+_Please Note_: an empty class (one without any functions) will _not_ display in the Function List panel.  Thus, if you have no `<function>` elements defined in your `<classRange>` node, you will _never_ see your class.  And if you have a `<function>` defined, but it doesn't match any functions inside your class, the class will not be displayed in the FunctionList panel.  In the FunctionList panel, the class is a container, and it will never display on its own if there is no function to display inside of it.
 
 ### Mixed parser
 A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
@@ -76,7 +76,7 @@ A mixed parser contains a Class parser (`classRange` node) and a Function parser
 Once you finish defining your parser, save and name the file as the language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. (Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.)  Then load a file that uses that parser, and make sure it finds all the functions that you expect, in the appropriate classes.
 
 ## Use your own personal function list definition for a built-in language
-If you do not like the results of the default Function List parser that ships with Notepad++ for a particular language, feel free to write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files, as described in the [function list config files](../config-files/#function-list) section of the manual. 
+If you do not like the results of the default Function List parser that ships with Notepad++ for a particular language, feel free to write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files, as described in the [function list config files](../config-files/#function-list) section of the manual.
 
 ## Validating Function List defintion files
 
@@ -119,7 +119,7 @@ It could be that you're creating a new language parser for function list, or you
 
 #### Unit test file is present
 
-If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of the parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file. 
+If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of the parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file.
 
 **- Modify the existing unitTest file**
 

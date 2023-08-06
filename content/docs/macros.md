@@ -1,7 +1,7 @@
 ---
-title: Task automation with macros
+title: Macros - Task Automation
 linktitle: Macros
-weight: 60
+weight: 90
 ---
 
 Notepad++ is capable of recording some of your actions you perform while editing
