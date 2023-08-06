@@ -1,7 +1,7 @@
 ---
-title: Extend functionality with plugins
+title: Plugins
 linktitle: Plugins
-weight: 90
+weight: 110
 ---
 
 Notepad++ is very extensible using so called plugins. Plugins are small or big
@@ -26,7 +26,7 @@ The Plugins Admin has four tabs:
 - **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
 - **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
 - **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
-- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++: 
+- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++:
   - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
 
 The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
@@ -52,7 +52,7 @@ specific plugin, to see if you need to put other files in appropriate locations.
 _Note_: The Windows OS instinctively mistrusts DLLs from the internet (for very good reasons), and will not allow
 applications (like Notepad++) use that DLL.  Assuming you trust the source of the DLL: before starting Notepad++
 and after downloading and manually installing a plugin in the right location, you need to right-click the DLL and
-visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click 
+visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click
 **Apply**, then **OK**; this will unblock the DLL so that Windows will allow Notepad++ to use it.
 
 ![](../images/unblockDLL.png)

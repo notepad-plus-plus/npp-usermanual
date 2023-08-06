@@ -1,7 +1,7 @@
 ---
 title: Configuration Files Details
 linktitle: config-files
-weight: 115
+weight: 150
 ---
 
 # Configuration Files

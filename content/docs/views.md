@@ -1,6 +1,6 @@
 ---
 title: Views
-weight: 105
+weight: 30
 ---
 
 The View menu controls the look of the Notepad++, including how Notepad++ and the Windows operating system interact, what features and panels are active inside Notepad++, and whether there are one or two Views (visible files) active at the same time.
@@ -179,7 +179,7 @@ The **Summary...** action opens a small dialog that lists information about the 
 
 ## Panels
 
-There are a variety of builtin "panels" (sub-windows) that can be used in Notepad++, and plugins may add more panel functions, in addition to the builtin panels. These panels can be "docked" (so they appear as part of the main Notepad++ application window) on either the right, left, top, or bottom edges; or they can be made to "float", so they appear as a separate independent window.  
+There are a variety of builtin "panels" (sub-windows) that can be used in Notepad++, and plugins may add more panel functions, in addition to the builtin panels. These panels can be "docked" (so they appear as part of the main Notepad++ application window) on either the right, left, top, or bottom edges; or they can be made to "float", so they appear as a separate independent window.
 
 The builtin Notepad++ features that use Panels are described in the [Builtin Panels](#builtin-panels) section (next).  The process of moving the panels to the various edges (or floating location) are described in the [Panel Mechanics](#panel-mechanics) section (following).
 
@@ -197,7 +197,7 @@ The **Function List**[↗](#remembered-settings "Remembered Setting") toggle wil
 
 ### Panel Mechanics
 
-Docked Panels can be moved easily to another edge, or to be floating instead of docked, by clicking on the Panel's title and dragging it to the new location.  Another way to make a docked Panel float is to double-click its title bar.  When a Panel is already floating, it may be returned to its previously-docked location by double-clicking its title bar. 
+Docked Panels can be moved easily to another edge, or to be floating instead of docked, by clicking on the Panel's title and dragging it to the new location.  Another way to make a docked Panel float is to double-click its title bar.  When a Panel is already floating, it may be returned to its previously-docked location by double-clicking its title bar.
 
 A Panel docked to an edge of the Notepad++ main window may contain multiple functionalities -- that is, each Pnel location may hold multiple Panel functionalities simultaneously. When one does, "tabs" identifying functionality will appear at the bottom of the docked Panel window (contrast this with a Panel with a single functionality: the functionality is identified only in the title bar, and there is no tab-bar at the bottom of that docking Panel).
 

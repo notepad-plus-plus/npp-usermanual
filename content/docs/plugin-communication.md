@@ -1,7 +1,7 @@
 ---
 title: Plugin Communication
 linktitle: plugin-communication
-weight: 92
+weight: 120
 ---
 
 

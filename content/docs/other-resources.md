@@ -1,6 +1,6 @@
 ---
 title: Other Resources
-weight: 160
+weight: 210
 ---
 
 ## Notepad Replacement

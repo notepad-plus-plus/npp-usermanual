@@ -1,7 +1,7 @@
 ---
 title: Upgrading
 linktitle: Upgrading
-weight: 150
+weight: 180
 ---
 
 Notepad++ is an actively maintained piece of software, and new versions come fast. There are basically four ways to keep abreast of changes:

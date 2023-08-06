@@ -1,7 +1,7 @@
 ---
 title: Command Line Arguments
 linktitle: Command Line Arguments
-weight: 120
+weight: 130
 ---
 
 Notepad++ supports various case-sensitive command line arguments

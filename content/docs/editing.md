@@ -1,6 +1,6 @@
 ---
 title: Editing
-weight: 30
+weight: 10
 ---
 
 
@@ -43,7 +43,7 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
     * `Initial number` sets the starting number.
     * `Increase by` will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
     * `Repeat` will repeat the same number _n_ times.  Defaults to 1 if left blank.
-    * `Leading` is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.  
+    * `Leading` is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.
 
         None | Zeros | Spaces
         ---|---|---
@@ -87,7 +87,7 @@ The Character Panel, accessed through the **Edit > Character Panel** menu entry,
 
 When opened, the Character Panel will be by default a docked window on the right-hand side of the Notepad++ main window, entitled `ASCII Codes Insertion Panel`. (This is a bit of a misnomer since ASCII is defined as values 0 - 127 and the panel shows values in the range  0 - 255.)
 
-This panel contains a grid-like control that has five columns: `Value`, `Hex`, `Character`, `HTML Name`, `HTML Decimal` and `HTML Hexadecimal`.  The HTML columns show the various HTML entity formats for each character: `HTML Name` is the named entity, like `&quot;`.  `HTML Decimal` (or `HTML Code` in older versions) is the decimal entity, like `&#34;`.  And `HTML Hexadecimal` (new to v8.5.2) is the hexadecimal entity, like `&#x22;`.  (All three of those examples refer to the ASCII single quote `'` character.)  
+This panel contains a grid-like control that has five columns: `Value`, `Hex`, `Character`, `HTML Name`, `HTML Decimal` and `HTML Hexadecimal`.  The HTML columns show the various HTML entity formats for each character: `HTML Name` is the named entity, like `&quot;`.  `HTML Decimal` (or `HTML Code` in older versions) is the decimal entity, like `&#34;`.  And `HTML Hexadecimal` (new to v8.5.2) is the hexadecimal entity, like `&#x22;`.  (All three of those examples refer to the ASCII single quote `'` character.)
 
 If input focus is moved to a line in the Character Panel and Enter is pressed, the character from the `Character` column will be inserted at the current position in the document being edited.  If the mouse is used there is more flexibility: an item from the grid that is double-clicked will be inserted.  For example, when double-clicking `&quot;` from the `HTML Name` column on the line of value 34, `&quot;` (as literal text) will be inserted at the current position in the active document -- so this can be used to insert the character number in decimal or hexadecimal, the character itself, or the HTML entity (named or decimal or hexadecimal) into the document being edited.
 

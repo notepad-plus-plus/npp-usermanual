@@ -1,6 +1,6 @@
 ---
 title: Right Click - Edit With Notepad++
-weight: 130
+weight: 190
 ---
 
 ## Shell Extension
