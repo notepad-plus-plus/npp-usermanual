@@ -1,5 +1,5 @@
 ---
-title: Run External Commands
+title: Running External Commands
 linktitle: run-menu
 weight: 100
 ---
