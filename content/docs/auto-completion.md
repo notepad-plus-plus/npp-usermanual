@@ -75,7 +75,7 @@ The keyboard shortcuts for manual completion can be adjusted in [**Settings > Sh
 
 ## Create auto-completion definition files
 
-Notepad++ uses XML configuration files to define the per-language function and parameter auto-completion.  Those AutoComplete files are located in the `autoCompletion` subdirectory of the Notepad++ install folder.  (In older versions, Notepad++ v7.6.1 and earlier, they were found in the `plugins\APIs` subdirectory of the intstall folder.)
+Notepad++ uses XML configuration files to define the per-language function and parameter auto-completion.  Those AutoComplete files are located in the `autoCompletion` subdirectory of the Notepad++ install folder.
 
 The syntax of AutoComplete files is simple, but does have a few rules, most importantly correct syntax and proper sorting. If the syntax is incorrect, the XML file will fail to load and AutoComplete will be not be available for that file type.
 

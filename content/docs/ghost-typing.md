@@ -60,15 +60,4 @@ These options apply to any of the ghost typing modes, unless otherwise mentioned
 
 ## Historical Syntax
 
-The syntax listed above is valid for Notepad++ v7.9.2 and newer.
-
-In Notepad++ v7.9.1 and earlier, there were differnces in the syntax:
-
-* the command-line options for the ghost typing modes did not use the `=`,
-  so it would be interpreted as literal text (part of the value)
-* quotes were interpreted as literal text (part of the value)
-* the sequence `%20` was used to represent a space, since you could not
-  use quotes to make spaces significant.
-
-Keep these differences in mind if using older versions of Notepad++.
-
+The syntax listed above is valid for Notepad++ v8 and newer.  If you have a v7.x version of Notepad++, please download the [last offline User Manual that contains Notepad++ v7.x details](https://github.com/notepad-plus-plus/npp-usermanual/releases/download/3.6/nppUserManual.zip)
