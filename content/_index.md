@@ -3,12 +3,10 @@ title: Introduction
 type: docs
 ---
 
-Notepad++ User Manual 
+Notepad++ User Manual
 =======
 
-***Documentation is like sex, when it's good, it's very, very good; when it's bad, it's better than nothing.***
-
-Of course, it's not our goal to create bad documentation, but you get what we mean.
+This **Notepad++ User Manual** describes the Notepad++ application v8.x (currently up to v8.5.5).
 
 **Notepad++ User Manual** is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual).
 
@@ -28,3 +26,7 @@ padding: 2px 1em;
 ">Download offline User Manual</a>
 </p>
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+Historic versions are linked from the [History](docs/history).
