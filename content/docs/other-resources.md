@@ -5,8 +5,7 @@ weight: 210
 
 ## Notepad Replacement
 
-Notepad is a default text editor shipped with Windows. You may want to use Notepad++ instead of Notepad. However, there's no obvious way to do it.
-From the version 7.5.9 onward, you can run commands to edit the registry following command to make Notepad++ replace Notepad (run in `cmd.exe` with Administrator privileges)[†](#registry-edit-warning).
+Notepad is a default text editor shipped with Windows. You may want to use Notepad++ instead of Notepad. However, there's no obvious way to do it: You can run commands to edit the registry following command to make Notepad++ replace Notepad (run in `cmd.exe` with Administrator privileges)[†](#registry-edit-warning).
 
 For Windows 7 - Windows 10, use the following command:
 
