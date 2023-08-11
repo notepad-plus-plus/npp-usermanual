@@ -28,6 +28,7 @@ Summary
 * [Right Click - Edit with Notepad++](content/docs/shell-extension.md)
 * [Ghost Typing](content/docs/ghost-typing.md)
 * [Other Resources](content/docs/other-resources.md)
+* [User Manual History](content/docs/history.md)
 * [Copyright & License](content/docs/license.md)
 
 
