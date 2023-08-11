@@ -216,6 +216,20 @@ NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\n
 
 If you want access to a Windows environment variable (like `TMP`), use the standard `%`-notation for windows variables (like `%TMP%`).
 
+### v8.5.3 `shortcuts.xml` updates
+
+In Notepad++ v8.5.2 and earlier, if you had a "special character" in your macro or run-menu command -- whether it was in the name of the macro/command or in text that it uses -- then inside the XML, it would be stored as an XML entity. For example, `☺` would be stored as `&#x263a;` or `π` as `&#x03C0;` .
+
+In Notepad++ v8.5.3, it changed to storing those characters as actual UTF-8 encoded characters, and it treats nearly all entities as raw text.  Thus, `&#x03C0;` is interpreted by v8.5.3  (and newer) as 8 characters, not an entity-representation of the underlying character.
+
+There are still a small number of entities that _will_ be recognized inside macros, even in v8.5.3 and newer:
+
+* The 5 predefined XML named-entities: `&amp; &lt; &gt; &apos; &quot;`
+
+* Any of the hexadecimal entities that only include two hex digits, like `&#x0D;` and `&#x0A;` for `CR` and `LF`, and `&#x22;` for double-quotes.  This notation works for all ASCII codepoints from 1 (`&#x01;` for the `SOH` character) through 127 (`&#x7F;` for the `DEL` character)
+
+This change in interpretation may make it so your old macros or run-menu commands don't work as expected.  You can follow the instructions in the [Notepad++ Community Forum FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) to see how to update your `shortcuts.xml` to be compatible with Notepad++ v8.5.3 and newer.
+
 ## User Interface settings: `config.xml`
 
 The following sections are defined:
@@ -438,9 +452,23 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `nppLogNulContentCorruptionIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` in the case of certain crashes, which can help the developers debug issues resulting from the crash. If you want to prohibit that logfile from being created, delete this config file; but that will mean that you will not be able to provide the useful information to the developers if a crash causes issues for you; delete at your own risk. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder. (New to v8.1.9.3.)
 
+- `nppLogNetworkDriveIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `c:\temp\nppLogNetworkDriveIssue.log` in the case of certain network drive issues.  (New to v8.1.9.3.)
+    - This should be used if you are getting "This file has been modified by another program" when dealing with network drives (like a Samba server, or other filesystems access by `\\machinename\path\`).
+    - Create this zero-byte file either next to `notepad++.exe` or in the `%AppData%\Notepad++` directory.
+    - Create directory `c:\temp\` if it doesn't exist.
+    - Start `notepad++.exe`, and wait until you get the file status (timestamp) detection error from the network drive.
+    - If the errors occur, there should be some trace in "C:\temp\nppLogNetworkDriveIssue.log".
+    - This log can be shared with the developers to help them improve Notepad++'s network handling (create an issue [here](https://github.com/notepad-plus-plus/notepad-plus-plus/issues) and attach the logfile along with your other details).
+
 - `session.xml`: Stores the current [session](../session/) information. Overwritten on every exit of Notepad++ if [**Settings > Preferences > Backup > Remember current session for next launch**](../preferences/#backup) is enabled. If you want sessions that you control, use **File > Save Session...** to save it; the file is safe to edit; and you can reload that session at any time using **File > Load Session...**. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
 - `userDefineLang.xml` and `userDefineLangs\*.xml`: Configuration location for the [**User Defined Languages**](../user-defined-language-system/) feature.
+
+- `v852NoNeedShortcutsBackup.xml`: Tracks whether your macros definitions in `shortcuts.xml` have been updated per the v8.5.3 rules
+    - This file is created the first time you save a recorded macro after upgrading from Notepad++ v8.5.2 (or older) to Notepad++ v8.5.3 (or newer)
+    - When this file is created, it will also create `shortcuts.xml.v8.5.2.backup`
+    - After this file is created, Notepad++ won't check any more whether `shortcuts.xml` has been updated
+    - See [v8.5.3 `shortcuts.xml` updates](#v8-5-3-shortcuts-xml-updates) (above) and this Notepad++ Community [FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
 
 ## Validating Config-File XML
 
