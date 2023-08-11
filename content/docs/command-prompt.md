@@ -157,8 +157,8 @@ code | file
 * `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*
 * `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest
 * `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
-* `-settingsDir="d:\your settings dir\"`: Override the default settings dir (new to v7.9.2)
-* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually (new to v7.8)
+* `-settingsDir="d:\your settings dir\"`: Override the default settings dir
+* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually
 * `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0)
 * `-pluginMessage="text for plugin(s)"`: if plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2)
 * `filepath`: file or folder name to open (absolute or relative path name)

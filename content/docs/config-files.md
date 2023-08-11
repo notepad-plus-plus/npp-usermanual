@@ -22,7 +22,7 @@ In a portable installation, the configuration files all go in the same directory
 
 If you enable the [Cloud settings](../preferences/#cloud), some per-user configuration files will go in the defined directory (including `contextMenu.xml`, `shortcuts.xml`, `userDefineLang.xml`, `langs.xml`, `stylers.xml`, and `config.xml`; the `userDefineLang\` subfolder can be placed there as well, though it won't be created by default when the Cloud settings folder is first populated).
 
-There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the per-user configuration file location (added in v7.9.2).
+There is a [command-line option](../command-prompt/) `-settingsDir` which will set a new directory for the per-user configuration file location.
 
 **Search order**: If the `-settingsDir` option is set, that configuration file directory will take priority over any other configuration file directory. If the Cloud directory setting is defined and enabled, that will take priority over the portable or standard configuration file directory. If `doLocalConf.xml` is present, the portable configuration file location will take priority over the `%AppData%\Notepad++\` directory. If none of the other configuration file directories are active, then the standard configuration file directory is `%AppData%\Notepad++\`. If it cannot find a configuration file in any of the per-user locations, it will use the version from the same directory as the executable.
 
@@ -261,7 +261,7 @@ Position | Name | Value format | Meaning
 
 Inside each of the languages, you _could_ add keywords. However, it's better to use [**Settings > Style Configurator**](../preferences/#style-configurator) and make use of the user-defined keywords box for a given category (when available). These user-defined keywords are stored in [`stylers.xml`](#highlighting-schemes-stylers-xml) (described below).
 
-The order of the `ext` list here determines the order of extensions in the file-type pulldowns of the Windows-common-dialogs like **Open**, **Save**, and **Save As** dialogs. When using the [old-style dialogs](../preferences/#default-directory), the automatically-added extension will be the first extension from this `ext` list. As of v7.8.7, the new-style dialogs will also automatically add the first extension.
+The order of the `ext` list here determines the order of extensions in the file-type pulldowns of the Windows-common-dialogs like **Open**, **Save**, and **Save As** dialogs.  The automatically-added extension will be the first extension from this `ext` list.
 
 The `commentLine`, `commentStart`, and `commentEnd` attributes are used by the [Edit Menu](../editing/#edit-menu)'s **Comment/Uncomment** actions for adding or removing the comment syntax to the selected lines of text. These are independent of the selected [programming **Language**](../programing-languages/)'s syntax lexer, so changing these attributes will _not_ affect what code sections will get highlighted as comments by the active syntax highlighter. (Because of the way the Scintilla library that Notepad++ uses for the lexers, in order to change what gets highlighted as a comment, one would need to edit and re-compile the lexer for the chosen and then rebuild the Notepad++ project; in other words, it would have to be changed by the developers for a new release, not changed by the user in the `langs.xml` configuration file.)  These attributes can only define one type of line and block comments; if your language has multiple types of either, you will have to choose the _one_ type that you'd like Comment/Uncomment to work with.
 
@@ -286,9 +286,8 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 ## `Function List`
 
 Defines what counts as a "function" for **View > Function List**. There are some comments in the file(s), and lots of examples of the builtin languages, which you can customize.
-From v7.9.1 the file structure of function list parsers have been changed, so please follow one of sections below according your Notepad++ version.
 
-### v7.9.1 and later versions
+### Function List Definitions
 
 The `functionList` folder contains a separate XML file (function list parse rule) for each language's function list capability.
 Each function list parse rule links to a language with the language default name. For example the file name of php language parse rule is `php.xml`, the file name of Java language parse rule is `java.xml`, Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
@@ -315,51 +314,17 @@ For plain text files (ones with **Language > None (Normal Text)** selected), you
 <association id= "someOtherNormalText.xml"			 langID= "0" />
 ```
 
-### v7.9 and previous versions
-
-The `functionList.xml` config file contains XML entries for each language's function list definition, as well as a map that tells Notepad++ which section of the XML is applied to each file type.
-
-If you want to add **Function List** capability for your User Defined Language (UDL), you can. You need to add two groups of information:
-
-1. In the `<associationMap>` section, you need to add lines like the following
-
-        <association id="fn_udl_example"          userDefinedLangName="ExampleUDL"     />
-        <association id="fn_udl_example"          ext=".ex"                            />
-        <association id="fn_udl_example"          ext=".exudl"                         />
-
-    where `fn_udl_example` is a name unique to this UDL. It is best to define it both
-    based on `userDefinedLangName=...` (which must match the name you saved for your UDL) and on extension `ext=...` (which must match the extension(s) of your UDL type, with one extension per entry).
-
-2. In the `<parsers>` section, add a parser, with a similar format to all the builtin parsers shown. An example would be
-
-        <parser
-            id="fn_udl_example"
-            displayName="Example UDL Name (UDL)"
-            commentExpr="((--.*?$))"
-        >
-            <function
-                mainExpr="^[\s]*(private[\s]+)?(procedure|function)[\s]*[\w_]+"
-                displayMode="$functionName"
-            >
-                <functionName>
-                    <nameExpr expr="^[\s]*(private[\s]+)?(procedure|function)[\s]*[\w_]+" />
-                </functionName>
-            </function>
-        </parser>
-
-    where the `fn_udl_example` must match the `<association id>`. The `displayName` sets what shows in the **Function List** window header. The `...Expr` values are all defined in [regular expression syntax](../searching/#regular-expressions).
-
 ### Upgrading old Function List entries
 
-If you previously had a v7.9-or-earlier style function list entry in `functionList.xml`, and you want to use it in a v7.9.1-or-later Notepad++, you can extract the pieces to the right locations in the new multi-file format:
+If you previously had a v7.9-or-earlier style function list entry in `functionList.xml`, and you want to use it in a modern v8.x version of Notepad++, you can extract the pieces to the right locations in the new multi-file format:
 
 1. Open the old `functionList.xml`
 2. Open the `functionList\overrideMap.xml`
-3. Copy the `<association...>` tag from the old `functionList.xml` to the `functionList\overrideMap.xml`, and place near the end of the `<associationMap>` section. Make sure it follows the rules for v7.9.1-or-later `<association>` tag syntax
+3. Copy the `<association...>` tag from the old `functionList.xml` to the `functionList\overrideMap.xml`, and place near the end of the `<associationMap>` section. Make sure it follows the rules for modern `<association>` tag syntax
 4. Open the `functionList\blah.xml` for your particular language
-   - If you don't have `blah.xml` yet, copy one of the v7.9.1-or-newer language's XML files to `blah.xml`, and remove the whole `<parser...> ... </parser>` section
+   - If you don't have `blah.xml` yet, copy another language's XML file from the most-recent Notepad++ version to `blah.xml`, and remove the whole `<parser...> ... </parser>` section
 5. Copy the `<parer...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
-   - Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section. It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block. Make sure it ends up with the v7.9.1-or-newer structure described above.
+   - Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section. It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block. Make sure it ends up with the structure described above.
 
 ## Toolbar Icon Customization: `toolbarIcons.xml`
 

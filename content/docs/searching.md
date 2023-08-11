@@ -72,7 +72,7 @@ All the dialog-based have certain features in common, though some are not availa
 The various action buttons available include:
 
 * **Find Next**: Finds the next matching text
-    * **☐** The unlabeled checkbox near the **Find Next** button changes the single **Find Next** button into two buttons with **▲** and **▼ Find Next** triangle arrows (or **<<** and **>>** buttons before v7.8), which mean "search backward / find previous" and "search forward / find next".  Hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode" to remind you of what the checkbox is for.
+    * **☐** The unlabeled checkbox near the **Find Next** button changes the single **Find Next** button into two buttons with **▲** and **▼ Find Next** triangle arrows, which mean "search backward / find previous" and "search forward / find next".  Hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode" to remind you of what the checkbox is for.
 * **Count**: Counts how many matches are in the entire document, or in the specified direction, or possibly "In Selection", and shows that count in the message section at the bottom of the dialog box
 * **Find All in All Opened Documents**: Lists all the search-results in a new **Search results** window; searches through all the file buffers currently open in Notepad++
 * **Find All in Current Document**: Lists all the search-results in a new **Search results** window; only searches the active document buffer
@@ -136,8 +136,8 @@ The **Filters** list is a space-separated list of wildcard expressions that cmd.
 * Wildcards can include `*` for zero or more of any character, and `?` for exactly one of any character.
 * Most characters work as literals.  However, space is used as the separator, and thus cannot be used as a literal in your filter.  Some punctuation characters have special meanings (like the `?` and `*` wildcards, or the `!` exclusion or `!+\` for recursive exclusion), and cannot be used as literals.  Also, the `;` causes problems, so even though Microsoft _allows_ it in file and path names, using a `;` in the **Filters** box will not work as you might hope.  If you want to match a space or a semicolon `;` or other problematic-punctuation in your file or folder for your **Filter** (whether for inclusion or exclusion), then use the `*` and/or `?` wildcards instead.  (So `x?y.txt` will match the file `x;y.txt` or `x y.txt` (with a space between `x` and `y`).)  And sorry, no, you cannot use quotes around a path-with-spaces to allow the spaces to work as literals: the space is a separator in this field.
 * If you have a blank filter, it is implied to be `*.*`.
-* As of Notepad++ v7.8.2, you can also exclude certain file patterns by prefixing the filter with a `!`;
-for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.  (Before v7.8.7, if you had at least one exclusion in your filter, you needed to have at least one inclusion in your filter, otherwise it excluded files from the 0 matched inclusion files, resulting in no files matched, which probably isn't what you wanted.  This was fixed in v7.8.7, so now you can have a lone exclusion like `!*.bin` and have it match any file not ending in `.bin`.)
+* You can also exclude certain file patterns by prefixing the filter with a `!`;
+for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.
 * As of Notepad++ v8.2, you can also exclude particular folders from the search: The exclusion operator is always `!` at the beginning of the expression, so in order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
 If users need to exclude folders with the same name (or names matched the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
     * `!\tests` will not search any files in the `tests` folder
@@ -404,11 +404,11 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 
 ## Regular Expressions
 
-Notepad++ regular expressions use the Boost regular expression library v1.80 (as of NPP v8.4.7), which is based on PCRE (Perl Compatible Regular Expression) syntax, only departing from it in very minor ways. Complete documentation on the precise implementation is to be found on the Boost pages for [search syntax](https://www.boost.org/doc/libs/1_80_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html) and [replacement syntax](https://www.boost.org/doc/libs/1_80_0/libs/regex/doc/html/boost_regex/format/boost_format_syntax.html)
+Notepad++ regular expressions ("regex") use the Boost regular expression library v1.80 (as of NPP v8.4.7), which is based on PCRE (Perl Compatible Regular Expression) syntax, only departing from it in very minor ways. Complete documentation on the precise implementation is to be found on the Boost pages for [search syntax](https://www.boost.org/doc/libs/1_80_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html) and [replacement syntax](https://www.boost.org/doc/libs/1_80_0/libs/regex/doc/html/boost_regex/format/boost_format_syntax.html)
 
 The Notepad++ Community has a [FAQ on other resources for regular expressions](https://notepad-plus-plus.org/community/topic/15765/faq-desk-where-to-find-regex-documentation).
 
-Note: Starting in v7.8.7, regex backward search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to activate this option.
+Note: Regular expression "backward" search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to activate this option.
 
 **Important Note**: Syntax that works in the **Find What:** box for searching will not always work in the **Replace with:** box for replacement.  There are different syntaxes.  The [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax work in both; other than that, see the individual sections for [Searches](#regex-special-characters-for-searches) vs [Substitutions](#substitutions) for which syntaxes are valid in which fields.
 
@@ -931,7 +931,7 @@ Notepad++ would select the match, but there is no sensible way to select a stret
 
 ### Examples
 
-These examples are meant to help better show what the complex regex syntax will accomplish.  Many of these examples, written by Georg Dembowski, have been in previous versions of the documentation for years; they have been updated to match with the modern Notepad++ v7.7 regular expression syntax.
+These examples are meant to help better show what the complex regex syntax will accomplish.  Many of these examples, written by Georg Dembowski, have been in previous versions of the documentation for years; they have been updated to match with the modern Notepad++ regular expression syntax.
 
 **IMPORTANT**
 
@@ -1362,7 +1362,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 ¹: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
 
-²: **Project Panel "alternate meaning"** column shows the meaning for those those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.  (Added in v7.9.4.)
+²: **Project Panel "alternate meaning"** column shows the meaning for those those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
 
 > Let's see how the example value 515 used above is decoded:
 

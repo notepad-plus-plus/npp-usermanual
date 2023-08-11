@@ -1382,7 +1382,7 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 
 ---
 #### [2122] **NPPM_GETSETTINGSONCLOUDPATH**
-*Get settings on cloud path. It's useful if plugins want to store its settings on Cloud, if this path is set. (added v7.9.2).*
+*Get settings on cloud path. It's useful if plugins want to store its settings on Cloud, if this path is set.*
 
 *First call should be made with buffer set to NULL to retrieve the actual size needed.
 Second call is sent with correctly allocated buffer, +1 for trailing null, to retrieve the full path file name.*
