@@ -86,9 +86,9 @@ These influence editing (carets, code-folding, line wrapping, and more).
 * `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
 * `☐ Enable virtual space`: enables putting the caret beyond the end of the line (new to v8.4.3)
 * `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
-* `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s) (was known as **Multi-Editing Settings** prior to v7.9.2)
+* `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s)
 * `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
-* `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection (added v7.9)
+* `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
 
 ### Dark Mode
@@ -127,7 +127,7 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
 
 ### Margins / Border / Edge
 
-These define the margin style, border width, and edge settings.  (This page is new in v7.9.2; in v7.9.1 and earlier, these settings were in the [Editing](#editing) page of the preferences.
+These define the margin style, border width, and edge settings.
 
 * **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
     * `☐ Simple`: shows a `-` if that section is not folded, or a `+` if it is.
@@ -141,20 +141,20 @@ These define the margin style, border width, and edge settings.  (This page is n
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
 * **Vertical Edge Settings**
     * This will allow one or more vertical edges to be displayed while editing your file, to help with line lengths or positioning text.  This edge indicator can either be a vertical line, or a background shading beyond the edge.  The color of the line or background shading will be taken from **Settings > Style Configurator > Global Styles > Edge Color: Foreground colour**.
-    * Multiple Vertical Edges: There is one box, which accepts zero or more numbers (as of v7.8.6):
+    * Multiple Vertical Edges: There is one box, which accepts zero or more numbers:
         * If the box is empty, there are no vertical edges.
         * If there is one number ℕ in the box, there will be one vertical edge, after the column for the ℕth character.
         * If there is more than one number (separated by whitespace), then there will be a vertical edge at each of the given character columns.
         * `☐ Background mode`: the vertical edge is usually a vertical line; if this option is checked, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
-    * Single Vertical Edge: in older versions of Notepad++, there was only a single vertical edge available, with more toggled options (v7.8.5 and earlier):
+    * Single Vertical Edge: in older versions of Notepad++, there was only a single vertical edge available, with more toggled options:
         * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
         * `☐ Line mode`: the vertical edge is indicated by a solid vertical line
         * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge
         * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
 * **Line Number**:
-    * `☐ Display`: shows the line numbers to the left of the text (renamed in v7.9.2, known as **Editing** > `☐ Display line number`)
-    * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed (this matches the behavior prior to v7.9.2)
-    * `☐ Constant width`: the line number display will have enough width for any line number in the document (new to v7.9.2)
+    * `☐ Display`: shows the line numbers to the left of the text
+    * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed
+    * `☐ Constant width`: the line number display will have enough width for any line number in the document
 * **Padding**: (new to v8.0.0)
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
@@ -240,7 +240,6 @@ This affects the display of the main Language menu, and also affects the per-lan
 
             _The image has [**View > Show Symbol > Whitespace and Tab**](../views/#show-symbol) enabled to make the tab-characters vs space characters obvious._
 * `☐ Treat backslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
-    (Note: this option moved from [MISC Preferences](#misc) in v7.8.1)
 
 ### Highlighting
 
@@ -293,9 +292,9 @@ Affects the operations found in the **Find** dialog tabs.
 * **When Find Dialog is Invoked**
     * `☐ Fill find field in Find dialog with selected word`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
         * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
-* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change (added v7.8.1)
-* `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always (added v7.9)
-* `☐ Confirm Replace All in All Opened Documents`: when checked, **Replace All in All Opened Documents** will ask for confirmation (added v7.9)
+* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change
+* `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always
+* `☐ Confirm Replace All in All Opened Documents`: when checked, **Replace All in All Opened Documents** will ask for confirmation
 * `☐ Replace: Don't move to the following occurrence`: when checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
 * `☐ Search Result window: show only one entry per found line`: when checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3)
 
@@ -367,7 +366,6 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ html/xml close tag`
         * `Matched pair [1,2,3]: __ __`: define the open and close character(s) for three user-defined pairs
 * `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
-    (note: this setting was in the [MISC preferences](#misc) prior to v7.8.3)
 
 ### Multi-Instance and Date
 
@@ -461,11 +459,11 @@ NOTE:
     * `☐ No Cloud`: saves settings in the normal location
     * `☐ Set your cloud location path here`: settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider
 
-* **Clickable Link Settings**: Affects behavior of URLs in your document.  (Moved in v7.9.2; previously in the [Misc](#misc) settings)
+* **Clickable Link Settings**: Affects behavior of URLs in your document.
     * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
     * `☐ No underline`: will remove the underline normally present on a link
-    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when unchecked, just the foreground color will change (new to v7.9.2)
-    * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs (new to v7.9.2). The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they do not need to be included in this entry box.
+    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when unchecked, just the foreground color will change
+    * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs. The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they do not need to be included in this entry box.
 
 
 
@@ -500,7 +498,7 @@ A variety of settings that didn't fit elsewhere
 * `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
 * `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
 * `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
-* `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing (added in v7.8.8)
+* `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph
   * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
 * `☐ Enable Save All confirm dialog`: when Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Cancel** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future
@@ -581,7 +579,6 @@ Some of these styles apply to the background only, some apply to the foreground 
 * File Header [background and foreground] ⇒ For each file in a group of search results, the file name and how many matches were in that file are listed in this style.
 * Line Number [background and foreground] ⇒ For each line with a match, the line number of that match will be formatted according to this style.
 * Hit Word [background and foreground] ⇒ The matching word will be formatted using this style inside the search results.
-* Selected Line [background and foreground] ⇒ <!-- This appears to not affect things in v7.7.1; should this be filed as a bug; this was discussed in a recent forum post, though I cannot find it right now -->
 * Current line background [background only] ⇒ As you click on lines in the search results window, this style will be used to set the background color of the search-result-window line that was clicked.
 
 ### Configuration file: `stylers.xml`
@@ -652,9 +649,9 @@ Not all preferences are handled in dialogs, and those toggles and settings are d
 
 ### Preference Toggles in Other Dialogs
 
-* The **Save Session** dialog will have a `☐ Save Folder as Workspace` checkbox, which will be active (able to be toggled) when you have a **Folder as Workspace** opened.  If the checkbox is checked, the current **Folder as Workspace** will be included in the saved session; otherwise, the session will not include any **Folder as Workspace** information.  (Requires Notepad++ v7.9.3 or newer.)
+* The **Save Session** dialog will have a `☐ Save Folder as Workspace` checkbox, which will be active (able to be toggled) when you have a **Folder as Workspace** opened.  If the checkbox is checked, the current **Folder as Workspace** will be included in the saved session; otherwise, the session will not include any **Folder as Workspace** information.
 
-* When saving a new file or otherwise running the **Save As** dialog, there is an `☐ Append extension` checkbox.  If checked, Notepad++ will automatically append the first extension listed in the selected **Save as type**; otherwise, the extension must be manually included in the **File name** field.  (This toggle is new to v8.0.0, and replaces the **Preferences > MISC > ☐ Set Save dialog file extension filter to `*.*`** or **Set Save dialog file extension filter to `.*` for Normal Text** preferences for setting the save dialog file extension to `*.*` that were present in prior v7.9.1-v7.9.5; in v7.9.1, that `*.*` option replaced the setting in the Default Directory section called **Use new style dialog** which influenced how extensions were added or not as it toggled the Save As dialog from an ancient Windows Save-As dialog to a somewhat more modern dialog.)
+* When saving a new file or otherwise running the **Save As** dialog, there is an `☐ Append extension` checkbox.  If checked, Notepad++ will automatically append the first extension listed in the selected **Save as type**; otherwise, the extension must be manually included in the **File name** field.
 
 ### Menu-based Settings
 
@@ -668,11 +665,11 @@ The View menu contains many toggles that affect Notepad++, many of which decide 
 
 These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](#misc) preference will affect what encoding will be selected when the file is first read from disk.
 
-The major encodings are `ANSI` which is really a family of 8-bit encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page), [`UTF-8`](https://en.wikipedia.org/wiki/UTF-8), which uses variable-width multi-byte sequences to represent Unicode characters, [`UTF-16`](https://en.wikipedia.org/wiki/UTF-16) which uses two-byte Big Endian or Little Endian sequences to represent Unicode characters (these were listed as `UCS-2` in v7.9.5 and earlier), and the various `Character sets`, which allow you to use international 8-bit sets of characters that provide a limited set of glyphs.
+The major encodings are `ANSI` which is really a family of 8-bit encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page), [`UTF-8`](https://en.wikipedia.org/wiki/UTF-8), which uses variable-width multi-byte sequences to represent Unicode characters, [`UTF-16`](https://en.wikipedia.org/wiki/UTF-16) which uses two-byte Big Endian or Little Endian sequences to represent Unicode characters, and the various `Character sets`, which allow you to use international 8-bit sets of characters that provide a limited set of glyphs.
 
 The `... with BOM` entries indicate that it uses the Unicode [Byte Order Mark](https://en.wikipedia.org/wiki/Byte_order_mark "BOM") at the start of the file to indicate the correct byte order (big endian or little endian), and in the case of UTF-8, to make it unambiguous that the file is meant to be a UTF-8 Unicode file rather than another 8-bit encoding.
 
-The `Convert to ...` entries below the separator line will change the encoding (the underlying bytes stored on disk) of the active file, without changing the glyphs.  So if you just have the Euro currency symbol `€` in your file, it will be stored as byte 0x80 if you `Convert to ANSI` (and are in a Western-European codepage in Windows), as the three-byte sequence 0xE2 0x82 0xAC if you `Convert to UTF-8`, and as the two byte sequence 0x20 0xAC if you `Convert to UTF-16 BE BOM` (known as `Convert to UCS-2 BE BOM` in v7.9.5 and earlier).
+The `Convert to ...` entries below the separator line will change the encoding (the underlying bytes stored on disk) of the active file, without changing the glyphs.  So if you just have the Euro currency symbol `€` in your file, it will be stored as byte 0x80 if you `Convert to ANSI` (and are in a Western-European codepage in Windows), as the three-byte sequence 0xE2 0x82 0xAC if you `Convert to UTF-8`, and as the two byte sequence 0x20 0xAC if you `Convert to UTF-16 BE BOM`.
 
 The entries above the separator line (without `Convert to` in the name) show the file's active encoding or character set.  If you change that setting manually, it will leave the bytes in the file the same and change the glyph that is shown.  For example, if you enter the `€` in a UTF-8 encoded file, and then manually select `Encoding > ANSI`, suddenly those characters will look something like `â‚¬` (depending on the active Windows code page); this is because UTF-8 `€` is the three bytes 0xE2 0x82 0xAC, and those three bytes represent three characters when interpreted as ANSI.  Or, if you are starting with a character set of **Western European > OEM-US** (the old DOS box-drawing character set) with the `▓` grey box, if you change to character set to **Western European > Windows-1252**, it will become the `²` superscript 2.
 
@@ -686,7 +683,7 @@ This menu shows the active syntax highlighter lexer (including [User Defined Lan
 
 The following settings are for rather specific needs and could cause some confusion if they are changed from default behavior. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
 
-* Allow regex backward search: Backward regex searching is forbidden by default (starting in v7.8.7) due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
+* Allow regex backward search: Backward regex searching is forbidden by default due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
 ```
 <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" regexBackward4PowerUser="yes">
 ```
