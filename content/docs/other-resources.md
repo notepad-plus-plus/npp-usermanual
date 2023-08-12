@@ -151,6 +151,7 @@ This menu contains commands related to running [cryptographic hash functions](ht
 [SHA-1](https://en.wikipedia.org/wiki/SHA-1), and the SHA-256 and SHA-512 algorithms from [SHA-2](https://en.wikipedia.org/wiki/SHA-2).  (SHA-1 and SHA-512 were added in v8.5.5.)  These are useful for comparing the hashes for downloaded files to offically-published hashes, and for generating those hashes for files that you are publishing.
 
 For each function, there are 3 commands:
+
 - **Generate** - You can enter text in the upper field, and it will give you the hash output in the other field.  You can copy those results to the Clipboard through the button.  You can optionally **Treat each line as a separate string** to get N different hashes for N different strings at the same time, rather than a single hash that covers the entire input text.
 - **Generate from Files** - Will calculate the hashes for one or more selected files.
 - **Generate from Selection into Clipboard** - Will use the text that is currently selected, calculate the hash, and put the hash results in the Clipboard.
