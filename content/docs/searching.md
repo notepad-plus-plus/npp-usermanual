@@ -354,6 +354,30 @@ You can also cause all occurrences of the word at the caret to get dynamically h
 
 You activate smart highlighting through [Settings > Preferences > Highlighting > Smart highlighting > Enable](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
 
+### Manipulating Bookmarks
+
+The **Search > Bookmarks** menu allows you to navigate and manipulate Bookmarks and Bookmarked lines (see ["Bookmarks vs Marks"](#bookmarks-vs-marks) for more on the Bookmark feature).
+
+- **Toggle Bookmark** - Toggle the state of the Bookmark indicator on the active line.
+- **Next Bookmark** - Navigate to the next Bookmark in the active document.
+- **Previous Bookmark** - Navigate to the previous Bookmark in the active document.
+- **Clear all Bookmarks** - Remove all Bookmark indicators in the active document.
+- **Cut Bookmarked Lines** - Place all Bookmarked lines in the Clipboard and remove those lines from the active document.
+- **Copy Bookmarked Lines** - Place all Bookmarked lines in the Clipboard but leave those lines in the active document.
+- **Paste to (Replace) Bookmarked Lines** - Paste the contents of the Clipboard to replace the contents of all Bookmarked lines.  (Thus, if your Clipboard is `Hello World`, then _every_ Bookmarked line will say `Hello World` after this action.)
+- **Remove Bookmarked Lines** - Remove all Bookmarked lines from the active document.
+- **Remove Non-Bookmarked Lines** - Remove all lines that are not Bookmarked from the active document, leaving only the Bookmarked lines.
+- **Inverse Bookmark** - Every line that was Bookmarked is now not Bookmarked, and every line that was previously not Bookmarked is now Bookmarked.  (Equivalent to choosing **Toggle Bookmark** once on every line in the active document.)
+
+These actions are also available by right-clicking on the Bookmark margin.
+
+### Change History
+
+The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [Settings > Preferences > Margins / Border / Edge > Change History](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
+
+- **Go to Next Change** - Move to the next line that is indicated as being changed.
+- **Go to Previous Change** - Move to the previous line that is indicated as being changed.
+- **Clear Change History** - Removes the active change history, so the Change History Margin appears blank, as it did when you first loaded the document.
 
 ## Finding characters in a specific range
 
