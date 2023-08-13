@@ -143,7 +143,15 @@ Below the `Begin/End Select` entries, there are a number of sub-menus to the **E
     * `Date Time (custom)` ⇒ can insert a date with a customized format, as defined in the [**Settings > Preferences > Multi-Instance & Date**](../preferences/#multi-instance-and-date) dialog
 * `Copy to Clipboard >` ⇒ submenu with actions that copy current filename, path, or directory name to the clipboard
 * `Indent >` ⇒ submenu with actions that increase or decrease the current line's indentation, based on [the syntax language's](../preferences/#language) tab/indent settings
-* `Convert Case to >` ⇒ submenu with actions that change the case of the selected text (all UPPERCASE, all lowercase, and various mixed-case settings)
+* `Convert Case to >` ⇒ submenu with actions that change the case of the selected text
+    - `Uppercase` ⇒ convert to all uppercase: `StArT mIxEd` ⇒ `START MIXED`
+    - `lowercase` ⇒ convert to all lowercase: `StArT mIxEd` ⇒ `start mixed`
+    - `Proper Case` ⇒ first character of every word is made uppercase, all others made lowercase: `isCharAlpha NMumericW` ⇒ `Ischaralpha Nmumericw`
+    - `Proper Case (blend)` ⇒ first character of every word is made uppercase, all others left alone: `isCharAlpha NMumericW` ⇒ `IsCharAlpha NMumericW`
+    - `Sentence case` ⇒ first character of each sentence is made uppercase, all others made lowercase: `tHis Is A Sentence. iS tHis Second?` ⇒ `This is a sentence. Is this second?`
+    - `Sentence case (blend)` ⇒ first charaacter of each sentence is made uppercase, all others left alone: `tHis Is A Sentence. iS tHis Second?` ⇒ `THis Is A Sentence. IS tHis Second?`
+    - `iNVERT cASE` ⇒ any that were uppercase are changed to lowercase, and any that were lowercase are changed to uppercase: `StArT mIxEd` ⇒ `sTaRt MiXeD`
+    - `ranDOm CasE` ⇒ each character gets a random case: `StArT mIxEd` ⇒ `StaRt mIxeD`
 * `Line Operations >` ⇒ submenu with actions that typically work on lines (also known as "rows") of your document
     * There is a method for duplicating data:
         * `Duplicate Current Line`: duplicates the current line if no selection is active, or duplicates the selected text if a selection is active
