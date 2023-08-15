@@ -152,6 +152,25 @@ struct toolbarIconsWithDarkMode {
 
 ---
 
+#### [2137] **NPPM_ALLOCATEINDICATOR**
+*Obtains a number of consecutive indicator IDs dynamically, with the guarantee of these IDs not clashing with Notepad++'s own internal indicator usage, nor usage by any other plugins that use this API to allocate their needed indicators. (new to v8.5.6)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, numberOfIndicators.
+
+*lParam [out]*
+: int, pointer to firstIndicatorID.
+
+**Return value**
+: Returns 0 on failure, nonzero on success
+
+**Other information**
+: If successful, `(*firstIndicatorID)+0` thru `(*firstIndicatorID)+numberOfIndicators-1` are the indicator numbers that have been set as reserved for use by the caller.
+
+---
+
 #### [2106] **NPPM_ALLOCATEMARKER**
 *Obtains a number of consecutive marker IDs dynamically, with the guarantee of these IDs not clashing with any other plugins.*
 
