@@ -166,9 +166,8 @@ struct toolbarIconsWithDarkMode {
 **Return value**
 : Returns 0 on failure, nonzero on success
 
-**Other information**:
-
-If successful, `(*firstIndicatorID)+0` thru `(*firstIndicatorID)+numberOfIndicators-1` are the indicator numbers that have been set as reserved for use by the caller.
+**Other information**
+: If successful, `(*firstIndicatorID)+0` thru `(*firstIndicatorID)+numberOfIndicators-1` are the indicator numbers that have been set as reserved for use by the caller.
 
 ---
 
