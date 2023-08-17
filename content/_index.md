@@ -6,9 +6,9 @@ type: docs
 Notepad++ User Manual
 =======
 
-This **Notepad++ User Manual** describes the Notepad++ application v8.x (currently up to v8.5.5).
+This **Notepad++ User Manual** describes the Notepad++ application v8.x (currently up to v8.5.6).  
 
-**Notepad++ User Manual** is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual).
+The documentation is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual).
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
