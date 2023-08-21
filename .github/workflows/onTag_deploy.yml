@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - '*'
+    branches:
+      - newDeploy
   workflow_dispatch:
 
 jobs:
