@@ -49,6 +49,7 @@ jobs:
       working-directory: .
       run: |
         printf "%s" "${{ secrets.USERMANUAL_KEY }}" >../private_key.pem
+        chmod 600 ../private_key.pem
         ls -latr ./public
         ls -latr ..
         ssh -o StrictHostKeyChecking=no -p ${{ secrets.USERMANUAL_PORT }} -i ../private_key.pem ${{ secrets.USERMANUAL_USERNAME }}@${{ secrets.USERMANUAL_HOST }} ls -latr /tmp/um/
