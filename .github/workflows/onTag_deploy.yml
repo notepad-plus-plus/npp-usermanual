@@ -41,7 +41,7 @@ jobs:
           server: ${{ secrets.USERMANUAL_HOST }}
           port: ${{ secrets.USERMANUAL_PORT }}
           ssh_private_key: ${{ secrets.USERMANUAL_KEY }}
-          delete_remote_files: true
+          delete_remote_files: false
           local_path: './public/*'
           remote_path: '/var/www/npp-user-manual.org/public_html/'
 
