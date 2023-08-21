@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - '*'
-    branches:
-      - newDeploy
   workflow_dispatch:
 
 jobs:
@@ -45,11 +43,11 @@ jobs:
           local_path: './public/*'
           remote_path: '/var/www/npp-user-manual.org/public_html/'
 
-    - name: check
-      working-directory: .
-      run: |
-        printf "%s" "${{ secrets.USERMANUAL_KEY }}" >../private_key.pem
-        chmod 600 ../private_key.pem
-        ls -latr ./public
-        ls -latr ..
-        ssh -o StrictHostKeyChecking=no -p ${{ secrets.USERMANUAL_PORT }} -i ../private_key.pem ${{ secrets.USERMANUAL_USERNAME }}@${{ secrets.USERMANUAL_HOST }} ls -latr /var/www/npp-user-manual.org/public_html/
+    #- name: check
+    #  working-directory: .
+    #  run: |
+    #    printf "%s" "${{ secrets.USERMANUAL_KEY }}" >../private_key.pem
+    #    chmod 600 ../private_key.pem
+    #    ls -latr ./public
+    #    ls -latr ..
+    #    ssh -o StrictHostKeyChecking=no -p ${{ secrets.USERMANUAL_PORT }} -i ../private_key.pem ${{ secrets.USERMANUAL_USERNAME }}@${{ secrets.USERMANUAL_HOST }} ls -latr /var/www/npp-user-manual.org/public_html/
