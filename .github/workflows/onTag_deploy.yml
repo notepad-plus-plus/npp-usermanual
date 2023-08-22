@@ -1,0 +1,53 @@
+name: Deploy Online User Manual Website
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Deploying Online User Manual Website
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: check
+      working-directory: .
+      run: |
+        pwd
+        which ssh
+        which sftp
+
+    - name: 🚚 Checkout repo
+      uses: actions/checkout@v3
+
+    - name: 📡 Get Hugo-Extended v0.57.2
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.57.2'
+        extended: true
+
+    - name: 🔨 Build into ./public
+      working-directory: .
+      run: hugo --theme book
+
+    - name: 🎉 Deploy to npp-user-manual.org
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+          username: ${{ secrets.USERMANUAL_USERNAME }}
+          server: ${{ secrets.USERMANUAL_HOST }}
+          port: ${{ secrets.USERMANUAL_PORT }}
+          ssh_private_key: ${{ secrets.USERMANUAL_KEY }}
+          delete_remote_files: false
+          local_path: './public/*'
+          remote_path: '/var/www/npp-user-manual.org/public_html/'
+
+    #- name: check
+    #  working-directory: .
+    #  run: |
+    #    printf "%s" "${{ secrets.USERMANUAL_KEY }}" >../private_key.pem
+    #    chmod 600 ../private_key.pem
+    #    ls -latr ./public
+    #    ls -latr ..
+    #    ssh -o StrictHostKeyChecking=no -p ${{ secrets.USERMANUAL_PORT }} -i ../private_key.pem ${{ secrets.USERMANUAL_USERNAME }}@${{ secrets.USERMANUAL_HOST }} ls -latr /var/www/npp-user-manual.org/public_html/
