@@ -143,6 +143,8 @@ Below the `Begin/End Select` entries, there are a number of sub-menus to the **E
     * `Date Time (custom)` ⇒ can insert a date with a customized format, as defined in the [**Settings > Preferences > Multi-Instance & Date**](../preferences/#multi-instance-and-date) dialog
 * `Copy to Clipboard >` ⇒ submenu with actions that copy current filename, path, or directory name to the clipboard
 * `Indent >` ⇒ submenu with actions that increase or decrease the current line's indentation, based on [the syntax language's](../preferences/#language) tab/indent settings
+    - `Increase Line Indent` ⇒ Inserts a tab or equivalent number of spaces at the beginning of the line (any whitespace already at the beginning of the line will still be there, coming _after_ the new tab or spaces that was inserted)
+    - `Decrease Line Indent` ⇒ Removes a tab or equivalent number of spaces at the beginning of the line (if there aren't enough leading space characters to remove an entire tabwidth, all the leading space characters will be removed)
 * `Convert Case to >` ⇒ submenu with actions that change the case of the selected text
     - `Uppercase` ⇒ convert to all uppercase: `StArT mIxEd` ⇒ `START MIXED`
     - `lowercase` ⇒ convert to all lowercase: `StArT mIxEd` ⇒ `start mixed`
