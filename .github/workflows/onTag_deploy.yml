@@ -20,7 +20,7 @@ jobs:
         which sftp
 
     - name: 🚚 Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: 📡 Get Hugo-Extended v0.57.2
       uses: peaceiris/actions-hugo@v2
