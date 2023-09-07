@@ -151,7 +151,7 @@ Below the `Begin/End Select` entries, there are a number of sub-menus to the **E
     - `Proper Case` ⇒ first character of every word is made uppercase, all others made lowercase: `isCharAlpha NMumericW` ⇒ `Ischaralpha Nmumericw`
     - `Proper Case (blend)` ⇒ first character of every word is made uppercase, all others left alone: `isCharAlpha NMumericW` ⇒ `IsCharAlpha NMumericW`
     - `Sentence case` ⇒ first character of each sentence is made uppercase, all others made lowercase: `tHis Is A Sentence. iS tHis Second?` ⇒ `This is a sentence. Is this second?`
-    - `Sentence case (blend)` ⇒ first charaacter of each sentence is made uppercase, all others left alone: `tHis Is A Sentence. iS tHis Second?` ⇒ `THis Is A Sentence. IS tHis Second?`
+    - `Sentence case (blend)` ⇒ first character of each sentence is made uppercase, all others left alone: `tHis Is A Sentence. iS tHis Second?` ⇒ `THis Is A Sentence. IS tHis Second?`
     - `iNVERT cASE` ⇒ any that were uppercase are changed to lowercase, and any that were lowercase are changed to uppercase: `StArT mIxEd` ⇒ `sTaRt MiXeD`
     - `ranDOm CasE` ⇒ each character gets a random case: `StArT mIxEd` ⇒ `StaRt mIxeD`
 * `Line Operations >` ⇒ submenu with actions that typically work on lines (also known as "rows") of your document
