@@ -41,13 +41,13 @@ These instructions will allow you to run a portable or mini-portable (also calle
 2. Unzip the content into the new folder
 3. Run Notepad++ from the new folder
 
-For the all portable editions, everything (the application, settings, and plugins) is stored in one folder hierarchy.  And by default, the portable editions do not mess with operating system settings (so no file associations or **Edit with Notepad++** context-menu entries) -- if you want such with a portable edition, you will have to set it up manually.
+For all the portable editions, everything (the application, settings, and plugins) is stored in one folder hierarchy.  And by default, the portable editions do not mess with operating system settings (so no file associations or **Edit with Notepad++** context-menu entries) -- if you want such with a portable edition, you will have to set it up manually.
 
 The main portable 7z or zip editions contain all the themes, user defined languages, auto-completions, localizations, and default plugins and Plugins Admin tool that come with the installed version of Notepad++.
 
 The minimalist / mini-portable edition only comes with the default light-mode and dark-mode theme, the default English localization, and no plugins or Plugins Admin.  However, you can separately download any of the non-included config files that you want from the main Notepad++ source repository, and you can still [install plugins manually](../plugins/#install-plugin-manually).
 
-The portable editions of Notepad++ can be removed by deleting the directory they came in.  If you manually set up and file associations or context-menu entries in the OS, it is your responsibility to remove them yourself.
+The portable editions of Notepad++ can be removed by deleting the directory they came in.  If you manually set up file associations or context-menu entries in the OS, it is your responsibility to remove them yourself.
 
 ## "Program Files" Restrictions
 
