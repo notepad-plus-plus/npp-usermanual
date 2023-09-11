@@ -78,16 +78,16 @@ The various action buttons available include:
 * **Find All in Current Document**: Lists all the search-results in a new **Search results** window; only searches the active document buffer.
 * **Close**: Closes the search dialog.
 
-* **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
+* **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction.)
     * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
-    * Notepad++ v8.5.1 extends this swap feature: you can right click on that button to choose one of three actions:
-        - **⇅ Swap Find with Replace**: moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
-        - **⤵ Copy from Find to Replace**: copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
-        - **⤴ Copy from Replace to Find**: copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
-        - After selecting an action from that right click menu, that action will be immediately performed, and the button will change icon to indicate the new mode for that button.
+    * Notepad++ v8.5.1 extends this swap feature: You can open the dropdown menu on that button to choose one of three actions:
+        - **⇅ Swap Find with Replace**: Moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
+        - **⤵ Copy from Find to Replace**: Copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
+        - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
+        - After selecting an action from that right click menu, that action will be immediately performed, and the button will change its icon to indicate the new mode for that button.
     * Notepad++ v8.5.2 added a pulldown-indicator (▼) to the swap button, to make it more obvious that it can be changed.
 * **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
-    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
+    * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
         Previous<br>Selection | Wrap Around | Backward Direction | In Selection | Range
@@ -101,9 +101,9 @@ The various action buttons available include:
 
         _The **Previous Selection** column indicates that a range of text has been selected already. The **Wrap Around** and **Backward Direction** and **In Selection** columns refer to the setting of the checkboxes described above. The **Range** column describes the range of the document that is affected by the **Replace All**. A value of "-/-" means that the setting does not influence the outcome for that combination of conditions._
 
-* **Replace All in All Opened Documents**: same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
+* **Replace All in All Opened Documents**: Same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
-The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  With focus on one of the Find dialog windows, press and release the `Alt` key.  This will cause Notepad++ to underline a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its Alt key command.
+The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  Notepad++ underlines a single character in the text of *most* of the buttons.  Pressing Alt and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The Alt technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its Alt key command.  In a similar vein, pressing `Alt` outside one of the Find dialog windows underlines items in the top main menu.
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing Enter when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing Shift+Enter when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use Shift+Enter to search in the opposite direction* as a reminder of this capability.
 
