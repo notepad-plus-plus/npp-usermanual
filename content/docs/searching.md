@@ -140,30 +140,30 @@ The **Filters** list is a space-separated list of wildcard expressions that cmd.
 * You can also exclude certain file patterns by prefixing the filter with a `!`;
 for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.
 * As of Notepad++ v8.2, you can also exclude particular folders from the search: The exclusion operator is always `!` at the beginning of the expression, so in order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
-If users need to exclude folders with the same name (or names matched the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
-    * `!\tests` will not search any files in the `tests` folder
-    * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`)
-    * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search)
+If users need to exclude folders with the same name (or names matching the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
+    * `!\tests` will not search any files in the `tests` folder,
+    * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`),
+    * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search).
 
-    *Note*: "inclusion of folder" is not allowed, and such pattern will be ignored
+    *Note*: Inclusion of subfolders of excluded folders is not allowed, and any such pattern will be ignored.
 
-* As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters:** label, a helpful popup will show example syntax for you
+* As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters** label, a helpful popup will show example syntax to you.
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.
-* To find only files that have no extension, you cannot just say `*.`, because of quirks in the PathMatchSpec().  Instead, you can search for any file that _doesn't_ have at least one letter in the extension: `!*.?*`
+* To find only files that have no extension, you cannot just say `*.`, because this would still include a `.`.  Instead, you can search for any file that _doesn't_ have at least one letter in the extension: `!*.?*`.
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
-* **☐ Follow current doc** ⇒ if checked, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
-* **☐ In all sub-folders** ⇒ if checked, it will recursively search sub-folders of the given folder.
-* **☐ In hidden folders** ⇒ if checked, it will search hidden sub-folders as well as normally-visible sub-folders.
+* **☐ Follow current doc** ⇒ If checked, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
+* **☐ In all sub-folders** ⇒ If checked, it will recursively search sub-folders of the given folder.
+* **☐ In hidden folders** ⇒ If checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
 ### Find in Projects tab
 
-Find in Projects allows both finding and replacing. The files used for this operations are specified by the following check marks:
+Find in Projects allows both finding and replacing search items in [Project Panels](../session). The files used for these operations are specified by the following check marks:
 
-* **☐ Project Panel 1** ⇒ if checked, all files listed in Project Panel 1 will be included into the search/replace operation
-* **☐ Project Panel 2** ⇒ if checked, all files listed in Project Panel 2 will be included into the search/replace operation
-* **☐ Project Panel 3** ⇒ if checked, all files listed in Project Panel 3 will be included into the search/replace operation.
+* **☐ Project Panel 1** ⇒ If checked, all files listed in Project Panel 1 will be included into the search/replace operation.
+* **☐ Project Panel 2** ⇒ If checked, all files listed in Project Panel 2 will be included into the search/replace operation.
+* **☐ Project Panel 3** ⇒ If checked, all files listed in Project Panel 3 will be included into the search/replace operation.
 
 Only Project Panels which are currently open can be searched. The checkmarks of Project Panels which are not currently open are grayed out.
 
@@ -175,21 +175,21 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * When **Bookmark line** is checked, a bookmark is dropped on each line where an individual hit occurs.  In the case where an individual hit spans multiple lines, each line in the span will receive the bookmark.
 
-* Otherwise, the matched pattern is highlighted according to the Settings -&gt; Style Configurator -&gt; Global Styles , Find Mark Style setting.  (See also [Style Configurator](../preferences/#style-configurator).)
+* Otherwise, the matched pattern is highlighted according to the [**Settings > Style Configurator > Global Styles > Find Mark Style**](../preferences/#global-styles) setting.
 
-In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is checked; if **Wrap Around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace-tabs), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is checked; if **Wrap Around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
 
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
 Once some text in a document is marked, it may be copied to the clipboard by pressing the **Copy Marked Text** button.  This feature is also invocable from the Search menu, and in order to be used in a macro, the Search menu version of this copy command must be used.
 
-Highlighting is also available in Incremental search, and the style setting is Settings -&gt; Style Configurator -&gt; Global Styles , Incremental Highlighting instead.
+Highlighting is also available in Incremental search, and the style setting is [**Settings > Style Configurator > Global Styles > Incremental highlight all**](../preferences/#global-styles) instead.
 
 #### Bookmarks vs Marks
 
 Bookmarks and Marks are two slightly different things, though the **Mark** tab can affect both.  A Mark will highlight the individual match(es) in the text; a Bookmark affects the whole line, and is usually displayed as a circle (`●`) in the margin (though [**Settings > Preferences > Margin/Border/Edge**](../preferences/#margins-border-edge) has a `☐ Display bookmark` toggle that will influence whether Bookmarks have that circle indicator or not).
 
-Bookmarks, whether visible or not, have a menu that can control and navigate Bookmarks.  This menu is accessible either as **Search > Bookmark** or by right clicking in the Bookmark portion of the margin (between the line number and the text, if line numbers are displayed).  This menu has options to toggle the state of the current line's Bookmark, to navigate to the next or previous Bookmark, to clear all Bookmarks, to cut or copy Bookmarked lines, to paste over (replace) Bookmarked lines, to delete Bookmarked (or non-Bookmarked) lines, or to invert all the Bookmarks (so all lines with a Bookmark have the Bookmark removed, and all lines without a Bookmark have a Bookmark added).
+Bookmarks, whether visible or not, have a menu that can control and navigate Bookmarks.  This menu is accessible either via **Search > Bookmark** or by right clicking in the Bookmark portion of the margin (between the line number and the text, if line numbers are displayed).  This menu has options to toggle the state of the current line's Bookmark, to navigate to the next or previous Bookmark, to clear all Bookmarks, to cut or copy Bookmarked lines, to paste over (replace) Bookmarked lines, to delete Bookmarked (or non-Bookmarked) lines, or to invert all the Bookmarks (so all lines with a Bookmark have the Bookmark removed, and all lines without a Bookmark have a Bookmark added).
 
 ### Search results window
 
