@@ -193,7 +193,7 @@ Bookmarks, whether visible or not, have a menu that can control and navigate Boo
 
 ### Search results window
 
-After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the F7 keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
+After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the `F7` keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
 
 *Definition:*  **Find All in ...** commands include:
 
@@ -208,15 +208,16 @@ The **Search results** window by default appears docked at the bottom of the Not
 
 From **Find All in ...** searches, three types of sections are added to the **Search results** window.  First is a line describing what was searched for, how many total matches (known as "hits") occurred (this is also shown in the title bar for the window, for the most recently-occurring search), and how many files had matches.  Second is a line that shows the filename with the matches and the count of matches for that file (this type will be repeated if the search found multiple files with matches).  Last comes the details about the matches found, including line number and the line contents with the matched text emphasized.  The default emphasis is red text on a yellow background, but this may be changed in the Style Configurator's "Search result" Language area.
 
-When Notepad++ populates the **Search results** window, it does so using one line for each match found by the search.  Note that this can and often does end with the same source file line being repeated multiple times in the output.  An example of this would be if you are searching for "the" in the line of text that reads "Now is the time for all good men to come to the aid of their country"; the **Search results** window would list the line twice, once with the word "the" called out in red text with a yellow background, and a second time with "the" in "their" similarly emphasized.
+When Notepad++ populates the **Search results** window, it does so using one line for each match found by the search.  Note that this can and often does end with the same source file line being repeated multiple times in the output.  An example of this would be if you are searching for "the" in the line of text that reads "Now is the time for all good men to come to the aid of their country"; the **Search results** window would list the line three times, twice with each word "the" called out in red text with a yellow background, and a third time with "the" in "their" similarly emphasized.
+However, multiple findings of the same search term may be collapsed into one search result by checking the option **Settings > Preferences > Searching > ☐ Search Result window: show only one entry per found line**.
 
 When the **Search results** window has input focus, the currently active line has a different background color, much like how the main editor window does by default.  Unlike the main editor window, where the current-line background feature may be turned off, the **Search results** window always has a background highlight for its active line.
 
-Use the up and down arrows to navigate within the **Search results** window when it has input focus.  Double-clicking with the mouse or hitting ENTER when input focus is on a specific match will move the editor window to that match and cause its text to be selected.
+Use the up and down arrows to navigate within the **Search results** window when it has input focus.  Double-clicking with the mouse or hitting `ENTER` when input focus is on a specific match will move the editor window to that match and cause its text to be selected.
 
-Other ways to navigate back to an editor window via the **Search results** window matches include the **Search** menu items **Next Search Result** (keyboard: F4) and **Previous Search Result** (keyboard: Shift+F4).  These can be invoked regardless of where input focus is in Notepad++.
+Other ways to navigate back to an editor window via the **Search results** window matches include the **Search** menu items **Next Search Result** (keyboard: `F4`) and **Previous Search Result** (keyboard: `Shift+F4`).  These can be invoked regardless of where input focus is in Notepad++.
 
-The *Delete* key can be used to delete individual results, file matches or whole search matches in the **Search results** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing *Delete* when in a higher-level element of the tree removes that whole branch.  Thus:
+The `Delete` key can be used to delete individual results, file matches or whole search matches in the **Search results** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing `Delete` when in a higher-level element of the tree removes that whole branch.  Thus:
 
 |*Pressing Delete when **Search results** active line starts with...*| *What is removed*                                                                              |
 |-----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -224,38 +225,36 @@ The *Delete* key can be used to delete individual results, file matches or whole
 |a pathname                                                       | that pathname line and all "Line" lines under it                                                |
 |the text: "Line"                                                 | only that line                                                                                 |
 
-Multiple searches will be listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
+Multiple searches are listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
 
-If the source file lines are judged by Notepad++ to be too long when they are copied to be placed in the **Search results** window, they will be truncated and **...** will be added at the end.  In this case, matched text occurring in the line after the **...** position will not be emphasized.  However, using a method to return to the editor window (e.g. pressing Enter) will result in the correct selection of matching text there.  The length limit is 1024 characters; this includes the match line number information and other formatting.
+If the source file lines are judged by Notepad++ to be too long when they are copied to be placed in the **Search results** window, they will be truncated and **...** will be added at the end.  In this case, matched text occurring in the line after the **...** position will not be emphasized.  However, using a method to return to the editor window (e.g. pressing `Enter`) will result in the correct selection of matching text there.  The length limit is 1024 characters; this includes the match line number information and other formatting.
 
-If a search is conducted such that a match which spans two or more lines occurs, only the contents of the *FIRST* line of that match will be copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing Enter) will result in the correct selection of multi-line matching text there.
+If a search is conducted such that a match which spans two or more lines occurs, only the contents of the first line of that match will be copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing `Enter`) will result in the correct selection of multi-line matching text there.
 
-#### *RightClick* commands in the client area of a **Search results** window's tab
+#### `RightClick` commands in the client area of a **Search results** window's tab
 
 ##### Copying text from the **Search results** window
 
-There are two ways to copy exact text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and use the keyboard's *Ctrl+c*, or use the mouse's *RightClick* to invoke the context menu and select **Copy**.  These two copy mechanisms produce identical results.  Another choice is to use the context menu's **Copy Selected Line(s)** command; this type of copy can be thought of as a "Copy Special".  It copies the text of ENTIRE LINES from the results, WITHOUT any search information (called "metadata") being included in what is copied.
+There are two ways to copy exact text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and press `Ctrl+C`, or `RightClick` to invoke the context menu and select **Copy**.  These two copy mechanisms produce identical results.  Another choice is to use the context menu's **Copy Selected Line(s)** command; this copies entire lines from the results, excluding search information (called "metadata").
 
-Here's a more detailed description of what happens for *RightClick* > **Copy Selected Line(s)**:
+More precisely:
 
-First, if the user makes a selection of text in the **Search results** window and copies it this way, only the lines of text touched (even partially) by the selection are part of the copy.  All other text with information about the search (pathname, line number, etc.) is *not* copied, even if part of the selection.  Secondly, if there is no active selection when the *RightClick* > **Copy Selected Line(s)** is invoked, results depend upon what exactly is under the mouse cursor during the *RightClick*:
-
-| *RightClick* item     | What gets copied when *RightClick* > **Copy Selected Line(s)** is run |
+| `RightClick` item     | What gets copied when **`RightClick` > Copy Selected Line(s)** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
-|a line with line # info|the entire line of the *RightClick* but without line number text                                     |
+|a line with line # info|the entire line of the `RightClick` but without line number text                                     |
 |a pathname header line |all the lines for that single file without pathname or line number text                              |
 |a "search" header line |all the lines for that search (1 or more files) without search header, pathname or line number text  |
 
-*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual Shift+Alt+arrow keys or by holding Alt+LeftClick and dragging with the mouse.  This is really only practical when using the *Ctrl+c* method of copying; *RightClick* > **Copy Selected Line(s)** only copies entire lines, and this copy will only copy the single full line at the top/bottom of the column block.
+*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual `Shift+Alt+arrow keys` or by holding `Alt+LeftClick` and dragging with the mouse.  This is really only practical when using the `Ctrl+C` method of copying; **`RightClick` > Copy Selected Line(s)** doesn't work this way.
 
-There is a capability to copy a list of the files that contained hits from past searches (v8.0.0 and later).  The **Copy Pathname(s)** context menu command will copy to the clipboard the full pathnames of all files appearing in **Search results**.
+There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later).  The **Copy Pathname(s)** context menu command copies to the clipboard the full pathnames of all files appearing in **Search results**.
 
 ##### Other commands
 
 There are some commands that don't need a lot of explanation; these are:
 
-* **Collapse all**
-* **Uncollapse all**
+* **Fold all**
+* **Unfold all**
 * **Select all**
 * **Clear all**
 * **Open all**
