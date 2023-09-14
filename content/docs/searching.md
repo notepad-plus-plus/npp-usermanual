@@ -259,83 +259,80 @@ There are some commands that don't need a lot of explanation; these are:
 * **Clear all**
 * **Open all**
 
-The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the *Delete* key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches (with the intent to **Open all** afterwards) may be the thing to do.
+The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the `Delete` key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches with the intent to **Open all** afterwards may be the thing to do.
 
-The **Select all** command is self-explanatory:  *ALL* text in the **Search results** tab will be selected
+The **Select all** command is self-explanatory:  All text in the **Search results** tab is selected.
 
-The contents of the **Search results** tab are in the form of a tree.  When Notepad++ adds to the result history, it does so in an uncollapsed way, that is, the user can see all of the information from the recently-added search.  However, before adding new results, Notepad++ will collapse all previous result data; perhaps it is deciding that the most-recent search is the most important?
+The contents of the **Search results** tab are in the form of a tree.  When Notepad++ adds to the result history, the user can see all of the information from the recently-added search.  However, before adding new results, Notepad++ will fold all previous result data.
 
-The user can collapse/uncollapse "branches" of this tree.  To collapse, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be collapsed (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To uncollapse an individual item that has previously been collapsed (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and again shown.
+The user can fold/unfold "branches" of this tree.  To fold, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be folded (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To unfold an individual item that has previously been folded (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and shown again.
 
-The **Collapse all** and **Uncollapse all** commands perform the corresponding actions on *ALL* elements of the entire result history in the **Search results** window at once.  Perhaps a better name for **Uncollapse all** would have been the more-conventional "Expand all"?
+The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once.
 
 ##### Searching in previously-found results (secondary searching)
 
-Perhaps you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by *RightClick*ing the **Search results** window client area and selecting **Find in these search results...**.
+Assume, you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by `RightClick`ing the **Search results** window client area and selecting **Find in these search results...**.
 
-Selecting **Find in these search results...** will cause a window to pop up, and this window looks much like the standard **Find** window, but is stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Search results** tab will open (in the **Search results** window) with the results of the "refined" search.
+Selecting **Find in these search results...** will cause a window to pop up, which looks much like the standard **Find** window, but stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Search results** tab will open (in the **Search results** window) with the results of the "refined" search.
 
 The popup window has a parameter not available in the searches described earlier:  **☐ Search only in found lines**.  Checking this box limits the search to lines that appear in matched files in the parent **Search results** window.  Unchecking the box will cause the new search to examine previously matched files in their entirety.  When a search has been limited to previously-found lines, its results will indicate this by using this type of output:  `Search "___" (__ hits in __ files - Line Filter Mode: only display the filtered results)` as opposed to the normally seen:  `Search "___" (__ hits in __ files)`
 
-*Tip:*  Use the *RightClick* option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in these search results...** search will look in files matched by ALL previous searches whose results are still present in the parent **Search results** tab.
+*Tip:*  Use the `RightClick` option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in these search results...** search will look in files matched by *all* previous searches whose results are still present in the parent **Search results** tab.
 
-*Tip:*  Since the newly opened **Search results** window also has a *RightClick* menu, you may do another **Find in these search results...** based upon the new results, focusing your search for some bit of data even more.  This type of refinement may be repeated as much as desired.  [Note that the title bar of the window does *not* show the hit count of the currently active tab, but rather shows the hit count of the *first* **Search results** tab of the window.]
+*Tip:*  Since the newly opened **Search results** window also has a `RightClick` menu, you may do another **Find in these search results...** based upon the new results, focusing your search for some bit of data even more.  This type of refinement may be repeated as often as desired.  [Note that the title bar of the window does *not* show the hit count of the currently active tab, but rather shows the hit count of the *first* **Search results** tab of the window.]
 
 *Note:*  The commands that switch input focus to the **Search results** window always activate the *first* **Search results** tab, not any additional **Search results** tabs that may have been created.
 
-*Note:*  The contents of the **Search results** window are discarded upon Notepad++ shutdown.  If there is data of importance there it should be copied, using one of the methods above, and saved in a more-permanent location.
+*Note:*  The contents of the **Search results** window are discarded upon Notepad++ shutdown.  If it contains data of importance, it should be copied using one of the methods above, and saved in a more-permanent location.
 
 ##### Search results configuration options
 
-There are currently two ways to configure the **Search results** window behavior, both located in the mouse's *RightClick* context menu:
+There are currently two ways to configure the **Search results** window behavior, both located in the `RightClick` context menu:
 
 * **Word wrap long lines**
 * **Purge for every search**
 
-These are checkmarkable menu items; invoke the menu item once to turn the feature on (checkmark will appear on the menu) and run it again to turn it off (checkmark no longer appears). These configuration settings are remembered by Notepad++ until their states are again changed by the user.
+When **Word wrap long lines** is turned on (checked), the **Search results** window text wraps at the right edge, and is continued on the next visible line.  With the feature off, the window has a horizontal scrollbar, so that the rightmost text on long lines may be scrolled into the user's view.
 
-When **Word wrap long lines** is turned on (checked), the **Search results** window text will wrap at the right edge, and be continued on the next visible line.  With the feature off, the window will have a horizontal scrollbar so that the rightmost text on long lines may be scrolled into the user's view.
-
-By default, the **Search results** window accumulates all of your prior **Find All in ...** type searches.  When a new search is executed, old results get collapsed so that only the most-recent results are fully visible at the top of the window.  The old searches remain toward the bottom of the window for possible future reference by expanding them. One use for retaining results from prior searches is to do several different searches, and then execute **Open All** command from the window's right-click context menu -- this will open all files hit by any previous series of possibly disparate searches.
-
-To some users these older results accumulating are an annoyance -- their data may become out of date quickly with changes to files -- so Notepad++ supports a setting that, after turned on, removes any old search data from the window before populating it with new.  To set or clear this setting, right-click anywhere in the Search results window, then click on the **Purge for every search** entry to change that setting: there will be a checkmark to indicate it's already on, and no checkmark to indicate it's off. _Note_: clicking this option doesn't immediately purge the old results; instead, searches made subsequent to enabling this option will purge the old results.
+To some users older search results accumulating are an annoyance, so Notepad++ supports a setting that, after turned on, removes any old search results from the window before populating it with new ones.  To set or clear this setting, right-click anywhere in the Search results window, then click on the **Purge for every search** entry to change that setting: There will be a checkmark to indicate it's already on, and no checkmark to indicate it's off.
+_Note_: Clicking this option doesn't immediately purge the old results; instead, searches made subsequent to enabling this option will purge the old results.
 
 ## Dialog-free search/mark actions
 
 ### Searching
 
-The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document (with the default shortcuts):
+The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target in the current document (with the default shortcuts):
 
 * **Find Next (`F3`)/ Find Previous (`Shift+F3`)**: Repeat searching the current search target, either down or up.
-    - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous**
+    - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous** commands.
 * **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
-        - copies the selected text to _Find what_ box of _Find_ window for future use, then uses that same string for this specific search
+        - copies the selected text to **Find what** box of **Find** window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
         - uses the following set of options:
-            - uses _Match case_ setting from _Find_ window
-            - uses _Match whole word only_ setting from _Find_ window
-            - uses _Wrap around_ setting from _Find_ window
-            - uses _Search mode_ = _Normal_ (regardless of its current setting in the _Find_ window)
-        - (all mentions of the _Find_ window in this search description are still true even if the _Find_ window is not currently visible)
+            - uses **☐ Match case** setting from **Find** window
+            - uses **☐ Match whole word only** setting from **Find** window
+            - uses **☐ Wrap around** setting from **Find** window
+            - uses **Search mode = Normal** (regardless of its current setting in the **Find** window)
+        - (all mentions of the **Find** window in this search description are still true even if the **Find** window is not currently visible)
 * **Find (Volatile) Next (`Ctrl+Alt+F3`) / Find (Volatile) Previous (`Ctrl+Alt+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up.
-    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** _will_ work as expected.
+    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** works as expected.
     - The specific search behavior:
-        - uses the selected text as the search text, but does **not** overwrite the existing _Find what_ value in the _Find_ dialog
+        - uses the selected text as the search text, but does **not** overwrite the existing **Find what** value in the **Find** dialog
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
         - uses the least-strict set of options, providing the most flexibility in the results provided by a volatile search:
-            - considers _Match case_ to be unchecked
-            - considers _Match whole word only_ to be unchecked
-            - considers _Wrap around_ to be checked
-            - considers _Search mode_ to be _Normal_
+            - considers **☐ Match case** to be unchecked
+            - considers **☐ Match whole word only** to be unchecked
+            - considers **☐ Wrap around** to be checked
+            - considers **Search mode** to be **Normal**
 
 #### _Comparison between "Select and Find Next" and "Find (Volatile) Next"_
 
-Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's _Find what_ field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
+Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's **Find what** field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
 
-- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show _Find what_ to be the active search value. (_Note_: See the section on [Settings > Preferences > Searching](../preferences/#searching), because those options can cause other text to overwrite the _Find what_ field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
+- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show **Find what** to be the active search value. (_Note_: See the section on [**Settings > Preferences > Searching**](../preferences/#searching), because those options can cause other text to overwrite the **Find what** field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
 
 - If your caret is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your caret onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
 
@@ -344,19 +341,19 @@ Both commands **Select and Find Next** and **Find (Volatile) Next** search based
 
 Use the **Style All Occurrences of Token** or **Clear Style** submenus of the Search menu (previously called the **Mark All** or **Unmark All** submenus) to mark or unmark all occurrences of the selected text or word the caret is in (the "Token") if there is no active selection.  You have a choice of five different colors/styles (numbered 1 through 5) in which to mark text in this manner.  The **Style One Token** (previously, **Mark One**) submenu options work similarly, but only on the single occurrence of selected text or caret word.
 
-The settings for each of the 5 available colors/styles are [Settings &gt; Style Configurator &gt; Global Styles > Mark style #](../preferences/#global-styles).
+The settings for each of the 5 available colors/styles are [**Settings &gt; Style Configurator &gt; Global Styles > Mark style #**](../preferences/#global-styles).
 
 If you've highlighted some groups of text in this manner, and you wish to copy those sections, the **Copy Styled Text** submenu of the Search menu will allow you to do that.  Quick search for previously marked text is possible via the **Jump Up** or **Jump Down** submenu choices.
 
 Note: In older versions of Notepad++, the **Mark All** submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.  This has been improved by renaming the menu to **Style All Occurrences of Token**.
 
-You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
+You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [**Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting**](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
 
-You activate smart highlighting through [Settings > Preferences > Highlighting > Smart highlighting > Enable](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
+You activate smart highlighting through [**Settings > Preferences > Highlighting > Smart highlighting > Enable**](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
 
 ### Manipulating Bookmarks
 
-The **Search > Bookmarks** menu allows you to navigate and manipulate Bookmarks and Bookmarked lines (see ["Bookmarks vs Marks"](#bookmarks-vs-marks) for more on the Bookmark feature).
+The **Search > Bookmark** menu allows you to navigate and manipulate Bookmarks and Bookmarked lines (see ["Bookmarks vs Marks"](#bookmarks-vs-marks) for more on the Bookmark feature).
 
 - **Toggle Bookmark** - Toggle the state of the Bookmark indicator on the active line.
 - **Next Bookmark** - Navigate to the next Bookmark in the active document.
@@ -373,7 +370,7 @@ These actions are also available by right-clicking on the Bookmark margin.
 
 ### Change History
 
-The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [Settings > Preferences > Margins / Border / Edge > Change History](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
+The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [**Settings > Preferences > Margins/Border/Edge > Change History**](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
 
 - **Go to Next Change** - Move to the next line that is indicated as being changed.
 - **Go to Previous Change** - Move to the previous line that is indicated as being changed.
@@ -382,13 +379,13 @@ The **Search > Change History** menu allows you to easily navigate between the l
 ## Finding characters in a specific range
 
 It is sometimes desirable to search for characters by their codepoint (underlying numerical value), and even to search for text that matches a range of character codepoints (like finding all characters from `a` to `z`).
-Notepad++ provides a dialog for doing this character-range search, available using the **Search &gt; Find Characters in range...** action.
+Notepad++ provides a dialog for doing this character-range search, available using the **Search &gt; Find characters in range...** action.
 
 A custom range of characters can be asked for, as well as either half of the 0..255 range: ASCII covers the lower half, non-ASCII covers the upper part. Note that entries should be in decimal notation, and that values above 255 are not handled in a useful way (so fancy Unicode characters cannot be searched for in this manner).
 
 This search may proceed up or down, and optionally wraps around. Hit **Find** to run this range-search, and hit **Close** to leave the dialog.
 
-The [regular expressions](#regular-expressions) search mode (described [below](#regular-expressions)) also provides a way to for specifying a range (or multiple ranges) of characters using a [character class](#character-classes), but that mode can be difficult for inexperienced users, so this dialog has been provided as an easier alternative.
+The [regular expressions](#regular-expressions) search mode (described [below](#regular-expressions)) also provides a way to specify a range (or multiple ranges) of characters using a [character class](#character-classes), but that mode can be difficult for inexperienced users, so this dialog has been provided as an easier alternative.
 
 ## Incremental Search
 
