@@ -439,33 +439,33 @@ In a regular expression (shortened into regex throughout), special characters in
 
 #### Single-character matches
 
-* `.` or `\C` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot match any character, including newline sequences.  With the option unchecked, then `.` will only match characters within a line, and not the newline sequences (`\r` or `\n`).
+* `.` or `\C` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot matches any character, including newline sequences (`\r` or `\n`).  With the option unchecked, `.` only matches characters within a line.
 
 * `\X` ⇒ Matches a single non-combining character followed by any number (zero or more) combining characters. You can think of `\X` as a "`.` on steroids": it matches the whole [grapheme](https://en.wikipedia.org/wiki/Grapheme "character with all its modifiers") as a unit, not just the base character itself.  This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X` (the latter, being generic, matches more than just `ǭ̳̚`, inluding but not limited to `ą̳̄̚` or `o` alone); if you want to limit the `\X` in this example to just match a possibly-modified `o` (so "`o` followed by 0 or more modifiers"), use a lookahead before the `\X`: `(?=o)\X`, which would match `o` alone or `ǭ̳̚`, but not `ą̳̄̚`.
 
 * `\$` , `\(` , `\)` , `\*` , `\+` , `\.` , `\?` , `\[` , `\]` , `\\` , `\|` ⇒ Prefixing a special character with `\` to "escape" the character allows you to search for a literal character when the regular expression syntax would otherwise have that character have a special meaning as a regex meta-character.
     * The characters `$ ( ) * + . ? [ ] \ |` all have special meaning to the regex engine in normal circumstances; to get them to match as a literal (or to show up as a literal in the substitution), you will have to prefix them with the `\` character.
-    * There are also other characters which are special only in certain circumstances (any time a charcter is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.
+    * There are also other characters which are special only in certain circumstances (any time a character is used with a non-literal meaning throughout the Regular Expression section of this manual); if you want to match one of those sometimes-special characters as literal character _in those situations_, those sometimes-special characters will also have to be escaped _in those situations_ by putting a `\` before it.
     * _Please note_: if you escape a normal character, it will sometimes _gain_ a special meaning; this is why so many of the syntax items listed in this section have a `\` before them.
 
 ##### Match by character code
 
-It is possible to match any character using its character code.  This allows searching for any character, even if you cannot type it into the FIND box, or the FIND box doesn't seem to match your emoji that you want to search for.  If you are using an ANSI encoding in your document (that is, using a character set like Windows 1252), you can use any character code with a decimal codepoint from 0 to 255.  If you are using Unicode (one of the UTF-8 or UTF-16 encodings), you can actually match any Unicode character.  These notations require knowledge of hexadecimal or octal versions of the character code.  (You can find such character code information on most web pages about ASCII, or about your selected character set, and about UTF-8 and UTF-16 representations of Unicode characters.)
+It is possible to match any character using its character code.  This allows searching for any character, even if you cannot type it into the Find box, or the Find box doesn't seem to match your emoji that you want to search for.  If you are using an ANSI encoding in your document (that is, using a character set like Windows 1252), you can use any character code with a decimal codepoint from 0 to 255.  If you are using Unicode (one of the UTF-8 or UTF-16 encodings), you can actually match any Unicode character.  These notations require knowledge of hexadecimal or octal versions of the character code.  (You can find such character code information on most web pages about ASCII, or about your selected character set, and about UTF-8 and UTF-16 representations of Unicode characters.)
 
 * `\0ℕℕℕ` ⇒ A single byte character whose code in octal is ℕℕℕ, where each ℕ is an octal digit.  (That's the number `0`, not the letter `o` or `O`.)  This notation works for for codepoints 0-255 (`\0000` - `\0377`), which covers the full ANSI character set range, or the first 256 Unicode characters. For example, `\0101` looks for the letter `A`, as 101 in octal is 65 in decimal, and 65 is the character code for `A` in ASCII, in most of the character sets, and in Unicode.
 
-* `\xℕℕ` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. This notation works for for codepoints 0-255 (`\x00` - `\xFF`), which covers the full ANSI character set range, or the first 256 Unicode characters.  For instance, `\xE9` may match an `é` or a `θ` depending on the character set (also known as the "code page") in an ANSI encoded document.
+* `\xℕℕ` ⇒ Specify a single character with code ℕℕ, where each ℕ is a hexadecimal digit. What this stands for depends on the text encoding. This notation works for codepoints 0-255 (`\x00` - `\xFF`), which covers the full ANSI character set range, or the first 256 Unicode characters.  For instance, `\xE9` may match an `é` or a `θ` depending on the character set (also known as the "code page") in an ANSI encoded document.
 
-These next two only work with Unicode encodings (so the various UTF-8 and UTF-16 encodings).
+These next two only work with Unicode encodings (so the various UTF-8 and UTF-16 encodings):
 
 * `\x{ℕℕℕℕ}` ⇒ Like `\xℕℕ`, but matches a full 16-bit Unicode character, which is any codepoint from U+0000 to U+FFFF.
 
 * `\x{ℕℕℕℕ}\x{ℕℕℕℕ}` ⇒ For Unicode characters above U+FFFF, in the range U+10000 to U+10FFFF, you need to break the single 5-digit or 6-digit hex value and encode it into two 4-digit hex codes; these two codes are the "surrogate codes" for the character.  For example, to search for the `🚂` STEAM LOCOMOTIVE character at U+1F682, you would search for the surrogate codes `\x{D83D}\x{DE82}`.
-    - If you want to know the surrogate codes for a give character, search the internet for "surrogate codes for _character_" (where _charcter_ is the fancy Unicode character you need the codes for); the surrogate codes are equivalent to the two-word UTF-16 encoding for those higher characters, so UTF-16 tables will also work for looking this up.  Any site or tool that you are likely to be using to find the U+###### for a given Unicode character will probably already give you the surrogate codes or UTF-16 words for the same character; if not, find a tool or site that does.
-    - You _can_ compute it yourself from the character code, but only if you are comfortable with hexadecimal and binary.  Skip the following bullets if you are prone to mathematics-based PTSD.
+    - If you want to know the surrogate codes for a given character, search the internet for "surrogate codes for _character_" (where _character_ is the fancy Unicode character you need the codes for); the surrogate codes are equivalent to the two-word UTF-16 encoding for those higher characters, so UTF-16 tables will also work for looking this up.  Any site or tool that you are likely to be using to find the U+###### for a given Unicode character will probably already give you the surrogate codes or UTF-16 words for the same character; if not, find a tool or site that does.
+    - You can also compute surrogate codes yourself from the character code, but only if you are comfortable with hexadecimal and binary.  Skip the following bullets if you are prone to mathematics-based PTSD.
         - Start with your Unicode U+######, calling the hexadecimal digits as `PPWXYZ`.
         - The `PP` digits indicate the plane.  subtract one and convert to the 4 binary bits `pppp` (so `PP`=`01` becomes `0000`, `PP`=`0F` becomes `1110`, and `PP`=`10` becomes `1111`)
-        - Convert each of the other digits into 4 bits (`W` as `wwww`, `X` as `xxvv`, `Y` as `yyyy`, and `Z` as `zzzz`; you will see momentarily why two different characters used in `xxvv`)
+        - Convert each of the other digits into 4 bits (`W` as `wwww`, `X` as `xxvv`, `Y` as `yyyy`, and `Z` as `zzzz`; you will see in a moment why two different characters are used in `xxvv`)
         - Write those 20 bits in sequence: `ppppwwwwxxvvyyyyzzzz`
         - Group into two equal groups: `ppppwwwwxx` and `vvyyyyzzzz` (you can see that the `X` ⇒ `xxvv` was split between the two groups, hence the notation)
         - Before the first group, insert the binary digits `110110` to get `110110ppppwwwwxx`, and split into the nibbles `1101 10pp ppww wwxx`.  Convert those nibbles to hex: it will give you a value from `\x{D800}` thru `\x{DBFF}`; this is the High Surrogate code
@@ -497,13 +497,13 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
 ##### Special Control escapes
 
-* `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.  Please note, this sequence might match one or two characters, depending on the text.  Because its length is variable-width, it cannot be used in lookbehinds.  Because it expands to a parentheses-based group with an alternation sequence, it cannot be used inside a character class.  If you accidentally attempt to put it in a character class, it will be interpreted like any other literal-character escape (where `\☒` is used to make sure that the next character is literal) meaning that the `R` will be taken as a literal `R`, without any special meaning.  For example, if you try `[\t\R]`: you may be intendeng to say, "match any single character that's a tab or a newline", but what you are actually saying is "match the tab or a literal R"; to get what you probably intended, use `[\t\v]` for "a tab or any vertical spacing character", or `[\t\r\n]` for "a tab or carriage return or newline but not any of the weird verticals".
+* `\R` ⇒ Any newline sequence.  Specifically, the atomic group `(?>\r\n|\n|\x0B|\f|\r|\x85|\x{2028}|\x{2029})`.  Please note, this sequence might match one or two characters, depending on the text.  Because its length is variable-width, it cannot be used in lookbehinds.  Because it expands to a parentheses-based group with an alternation sequence, it cannot be used inside a character class.  If you accidentally attempt to put it in a character class, it will be interpreted like any other literal-character escape (where `\☒` is used to make sure that the next character is literal) meaning that the `R` will be taken as a literal `R`, without any special meaning.  For example, if you try `[\t\R]`: you may be intending to say, "match any single character that's a tab or a newline", but what you are actually saying is "match the tab or a literal R"; to get what you probably intended, use `[\t\v]` for "a tab or any vertical spacing character", or `[\t\r\n]` for "a tab or carriage return or newline but not any of the weird verticals".
 
 #### Ranges or kinds of characters
 
 ##### Character Classes
 
-* `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
+* `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by putting a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequences in Spanish).
     Certain characters require special treatment inside character classes:
 
     - To use a literal `-` in a character class:  Use it directly as the first or last character in the enclosing class notation, like `[-abc]` or `[abc-]`; OR use it "escaped" at any position, like `[\-abc]` or `[a\-bc]` .
@@ -516,13 +516,11 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
         - If used with an equals sign in the order `[=` inside a class, it is the opening sequence for an equivalence class (described below); if you want to include both a `[` and a `=` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[=[]`, or escape one or both, like `[\[=]` or `[[\=]` or `[\[\=]` .
 
-    - To use a literal `\` in a character class:  Must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
+    - To use a literal `\` in a character class, it must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
 
     - To use a literal `^` in a character class: Use it directly as any character but the first, such as `[a^b]` or `[ab^]`; OR use it "escaped" at any position, such as `[\^ab]` or `[a\^b]` or `[ab\^]` .
 
 * `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
-
-   Please note that the complement of a character set is often many more characters than you expect: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines: the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines", but the `[^x]` is _not_ a dot `.`, so that class is still allowed to match newlines.
 
 * `[[:`_name_`:]]` or `[[:☒:]]` ⇒ The whole character class named _name_.  For many, there is also a single-letter "short" class name, ☒.  Please note: the `[:`_name_`:]` and `[:☒:]` must be inside a character class `[...]` to have their special meaning.
 
@@ -530,13 +528,13 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
     |:-----:|:--------------:|:------------|----------------------------|
     |       | alnum          | letters and digits | |
     |       | alpha          | letters | |
-    | h     | blank          | spacing which is not a line terminator | `[\t\x20\xA0]`|
+    | h     | blank          | spacing which is not a line terminator | `[\t\x20\xA0]` |
     |       | cntrl          | control characters | `[\x00-\x1F\x7F\x81\x8D\x8F\x90\x9D]` |
     | d     | digit          | digits | |
     |       | graph          | graphical character, so essentially any character except for control chars, `\0x7F`, `\x80` | |
     | l     | lower          | lowercase letters | |
     |       | print          | printable characters | `[\s[:graph:]]` |
-    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]` <!-- ` -->|
+    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_{\|}~]` |
     | s     | space          | whitespace (word or line separator) | `[\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]` |
     | u     | upper          | uppercase letters |  |
     |       | unicode        | any character with code point above 255 | `[\x{0100}-\x{FFFF}]` |
