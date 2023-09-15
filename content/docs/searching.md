@@ -563,25 +563,25 @@ These properties behave similar to named character classes, but cannot be contai
 
 ##### Character escape sequences
 
-`\☒` ⇒ Where ☒ is one of `d`, `l`, `s`, `u`, `w`, `h`, `v`, described below.  These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
+`\☒` ⇒ Where ☒ is one of `d`, `w`, `l`, `u`, `s`, `h`, `v`, described below.  These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
 
-| Description]     | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
-|:-----------------|:----------------|:---------------|:-------------------------|:---------------|
-| digits           | `\d`            | `[[:digit:]]`  | `\D`                     | `[^[:digit:]]` |
-| lowercase        | `\l`            | `[[:lower:]]`  | `\L`                     | `[^[:lower:]]` |
-| space chars      | `\s`            | `[[:space:]]`  | `\S`                     | `[^[:space:]]` |
-| uppercase        | `\u`            | `[[:upper:]]`  | `\U`                     | `[^[:upper:]]` |
-| word chars       | `\w`            | `[[:word:]]`   | `\W`                     | `[^[:word:]]`  |
-| horizontal space | `\h`            | `[[:blank:]]`  | `\H`                     | `[^[:blank:]]` |
-| vertical space   | `\v`            | see below      | `\V`                     |                |
+| Description          | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
+|:---------------------|:----------------|:---------------|:-------------------------|:---------------|
+| digits               | `\d`            | `[[:digit:]]`  | `\D`                     | `[^[:digit:]]` |
+| word chars           | `\w`            | `[[:word:]]`   | `\W`                     | `[^[:word:]]`  |
+| lowercase            | `\l`            | `[[:lower:]]`  | `\L`                     | `[^[:lower:]]` |
+| uppercase            | `\u`            | `[[:upper:]]`  | `\U`                     | `[^[:upper:]]` |
+| word/line separators | `\s`            | `[[:space:]]`  | `\S`                     | `[^[:space:]]` |
+| horizontal space     | `\h`            | `[[:blank:]]`  | `\H`                     | `[^[:blank:]]` |
+| vertical space       | `\v`            | see below      | `\V`                     |                |
 
-> Vertical space: This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
+> Vertical space: This encompasses all the `[[:space:]]` characters that aren't `[[:blank:]]` characters: The LF, VT, FF, CR , NEL control characters and the LS and PS format characters: 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
 
-_Note_: despite its similarity to `\v`, even though `\R` matches certain veritcal space characters, it is _not_ a character-class-equivalent escape sequence (because it evaluates to a parentheses`()`-based expression, not a class-based expression).  So while `\d`, `\l`, `\s`, `\u`, `\w`, `\h`, and `\v` are all equivalent to a character class and can be included inside another bracket`[]`-based character class, the `\R` is _not_ equivalent to a character class, and _cannot_ be included inside a bracketed`[]` character-class.
+_Note_: despite its similarity to `\v`, even though `\R` matches certain vertical space characters, it is _not_ a character-class-equivalent escape sequence (because it evaluates to a parentheses`()`-based expression, not a class-based expression).  So while `\d`, `\l`, `\s`, `\u`, `\w`, `\h`, and `\v` are all equivalent to a character class and can be included inside another bracket`[]`-based character class, the `\R` is _not_ equivalent to a character class, and _cannot_ be included inside a bracketed`[]` character-class.
 
 ##### Equivalence Classes
 
-* `[[=`_char_`=]]` ⇒ All characters that differ from _char_ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `a`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `A`, `à`, `á`, `â`, `ã`, `ä` and `å`.
+* `[[=`_char_`=]]` ⇒ All characters that differ from _char_ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `A`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `a`, `à`, `á`, `â`, `ã`, `ä` and `å`.
 
 
 #### Multiplying operators
@@ -604,7 +604,7 @@ _Note_: despite its similarity to `\v`, even though `\R` matches certain veritca
 
 * `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but minimally.
 
-* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example:
+* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example (TODO/editorial comment: It is unclear to me what each of the following lines are supposed to mean):
 
     When regex `“.*”` is run against the text `“abc”x` :
 
@@ -637,7 +637,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `$`  ⇒ This matches the end of a line.
 
-* `\<`  ⇒ This matches the start of a word using Scintilla's definitions of words.
+* `\<`  ⇒ This matches the start of a word using Scintilla's definition of words (TODO: What is Scintilla's definition of words? A quick search in Scintilla's documentation hasn't given me any useful results.).
 
 * `\>`  ⇒ This matches the end of a word using Scintilla's definition of words.
 
@@ -657,15 +657,19 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Capture Groups and Backreferences
 
-* `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a _subset_ of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
+* `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a part of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as the group _name_.  Please note that group names are case-sensitive.
 
 * `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
-    A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
+    A regex can have multiple subgroups, so `\2`, `\3`, etc. can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
 
     * Example: `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.
+
+    * `\ℕ` ⇒ This form can only have ℕ as digits 1-9, so if you have more than 9 capture groups, you will have to use one of the other numbered backreference notations, listed in the next bullet point.
+
+        Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
 
     * `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ These forms can handle any non-zero ℕ.
 
@@ -684,10 +688,6 @@ Anchors match a zero-length position in the line, rather than a particular chara
                 * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute (positive) coordinates
 
                 * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative (negative) coordinates
-
-    * `\ℕ` ⇒ This form can only have ℕ as digits 1-9, so if you have more than 9 capture groups, you will have to use one of the other numbered backreference notations, listed in the next bullet point.
-
-        Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
 
 * `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.  (As with the Numbered Backreferences above, these Named Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
@@ -779,11 +779,11 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     Please note the difference between the meaning of a numbered recursion and a normal numbered [backreference]([backreference](#capture-groups-and-backreferences)): A normal back-reference is a way to refer to the _values_ from previous capture groups later in the full expression.  This numbered recursion syntax, on the other hand, refers to to the underlying regex from the previous subexpression, not its value.
 
-    For example, using a similar example to the expanding on the the ideas from the backreference palindrome example: with the recursion, both regexes just find any four-letter word, because each subexpression, signed or not, refers to the regex itself, NOT to the specific value found earlier by each group!
+    Using an example similar to the backreference palindrome example: With the recursion, both regexes just find any four-letter word, because each subexpression, signed or not, refers to the regex itself, not to the specific value found earlier by each group!
 
-    * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a four-letter word, when using absolute coordinates
+    * The regex `(?-i)\b(\w)(\w)(?2)(?1)\b` finds a four-letter word, when using absolute coordinates.
 
-    * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a four-letter word, when using relative coordinates
+    * The regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` finds a four-letter word, when using relative coordinates.
 
     These two expressions are actually both equivalent to `(?-i)\b(\w)(\w)\w\w\b`; there is no good reason for using recursions here.
 
@@ -791,7 +791,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
 *  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.  This recursively reruns the same expression from the start of the full expression to the very end (even beyond this backtrack).  This is sometimes called  "whole-match recursion".
 
-    This is useful for requiring some sub-portion of the pattern to match according to the same rules
+    This is useful for requiring some sub-portion of the pattern to match according to the same rules.
 
     For example, to find balanced {} with any number of spaces inside or out, and any number of balanced copies next to each other, use the regular expression `{\h*(?0)*\h*}\h*`:
 
@@ -836,7 +836,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     Note: These are all still _inside_ the conditional expression.
 
-    Do not confuse the assertions that control a conditional expression (here) with the assertions that are part of the pattern matching (the [Assertions](#assertions) section, below).  Here, if the assertion is used to decide which expression is used; below, the assertion decides whether the pattern is matching or not.
+    Do not confuse the assertions that control a conditional expression (here) with the assertions that are part of the pattern matching (the [Assertions](#assertions) section, below).  Here, the assertion is used to decide which expression is used; below, the assertion decides whether the pattern is matching or not.
 
     Note: PCRE doesn't treat recursion expressions like Perl does:
 
