@@ -25,6 +25,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 * When referencing a setting in a dialog box, make it bold.  Examples:
     * On the **Settings > Preferences > Backup** page, please enable **☑ Remember Current Session For Next Launch**"
     * Use the checkbox **Search > Find > Search Mode: ☑ Regular Expression** to enable regular expressions in your search
+    * The symbols `☐` and `☑` are used both for checkboxes and for radio buttons (because there aren't Unicode characters that are widely supported across fonts that are a good representation of a radio button)
 
 * For text that you want to indicate as user-entered (such as regular expressions or values entered into dialog box prompts), and for filenames and directories, use backticks to set the `monospaced / code` formatting.
 
@@ -33,6 +34,8 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 * Images should be used sparingly.  If they are needed, keep the filesize small and place the image file in the `content/docs/images/` directory.
 
 * Changes to the theme (whether it's just slight edits or a completely new theme, or anything in between) will not be accepted unless you have worked with the owner to make sure that the changes to the theme are necessary or appropriate.
+
+* Many sections of the User Manual were written before this Style Guide, and the style chosen by the original author of that section has been "grandfathered in".  If you are changing something else in a small section of such a document, you can also update the style in that small section, but you should not make huge changes to the formatting without getting the agreement of the owner and/or maintainer(s) of the User Manual.
 
 ## Cross-Links
 
