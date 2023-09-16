@@ -19,6 +19,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 * First and foremost, when editing, keep it similar to what's already in that document.  
   * Do not arbitrarily change an existing style choice (like `-` vs `*` for bulleted lists, or `_..._` vs `*...*` for italics) without a good technical reason
   * If you are fixing an actual Markdown _error_ that causes the final user manual documentation to render incorrectly, that is allowed (and encouraged).
+  * Many sections of the User Manual were written before this Style Guide, and the style chosen by the original author of that section has been "grandfathered in".  If you are changing something else in a small section of such a document, you can also update the style in that small section, but you should not make huge changes to the formatting without getting the agreement of the owner and/or maintainer(s) of the User Manual.
 
 * When referencing a menu item, like **File > Open**, make it bold, and use `>` as the separator-character between different levels.  <!-- This follows Microsoft documentation style for the separator character, so will make it more familiar to Windows users. -->
 
@@ -29,13 +30,11 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 
 * For text that you want to indicate as user-entered (such as regular expressions or values entered into dialog box prompts), and for filenames and directories, use backticks to set the `monospaced / code` formatting.
 
-* Special symbols may be entered by pasting in Unicode characters.  Please stick to common characters that are likely to be rendered on a variety of platforms with a variety of fonts.
+* Special symbols may be entered by pasting in Unicode characters or using the appropriate &amp;-entities.  Please stick to common characters that are likely to be rendered on a variety of platforms with a variety of fonts.
 
 * Images should be used sparingly.  If they are needed, keep the filesize small and place the image file in the `content/docs/images/` directory.
 
 * Changes to the theme (whether it's just slight edits or a completely new theme, or anything in between) will not be accepted unless you have worked with the owner to make sure that the changes to the theme are necessary or appropriate.
-
-* Many sections of the User Manual were written before this Style Guide, and the style chosen by the original author of that section has been "grandfathered in".  If you are changing something else in a small section of such a document, you can also update the style in that small section, but you should not make huge changes to the formatting without getting the agreement of the owner and/or maintainer(s) of the User Manual.
 
 ## Cross-Links
 
