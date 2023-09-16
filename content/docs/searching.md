@@ -604,7 +604,7 @@ _Note_: despite its similarity to `\v`, even though `\R` matches certain vertica
 
 * `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but minimally.
 
-* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example (TODO/editorial comment: It is unclear to me what each of the following lines are supposed to mean):
+* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example:
 
     When regex `“.*”` is run against the text `“abc”x` :
 
@@ -637,7 +637,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `$`  ⇒ This matches the end of a line.
 
-* `\<`  ⇒ This matches the start of a word using Scintilla's definition of words (TODO: What is Scintilla's definition of words? A quick search in Scintilla's documentation hasn't given me any useful results.).
+* `\<`  ⇒ This matches the start of a word using Scintilla's definition of words.
 
 * `\>`  ⇒ This matches the end of a word using Scintilla's definition of words.
 
