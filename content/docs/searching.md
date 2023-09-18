@@ -250,10 +250,8 @@ There is a capability to copy the list of files containing hits from past search
 
 ##### Other commands
 
-There are some commands that don't need a lot of explanation; these are:
-
-* **Fold all**
-* **Unfold all**
+* **Fold all** (called **Collapse all** before v8.4.6)
+* **Unfold all** (called **Uncollapse all** before v8.4.6)
 * **Select all**
 * **Clear all**
 * **Open all**
@@ -270,7 +268,7 @@ The **Fold all** and **Unfold all** commands perform the corresponding actions o
 
 ##### Searching in previously-found results (secondary searching)
 
-Assume, you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by `RightClick`ing the **Search results** window client area and selecting **Find in these search results...**.
+Assume that you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by `RightClick`ing the **Search results** window client area and selecting **Find in these search results...**.
 
 Selecting **Find in these search results...** will cause a window to pop up, which looks much like the standard **Find** window, but stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Search results** tab will open (in the **Search results** window) with the results of the "refined" search.
 
