@@ -30,64 +30,64 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 
 *Note:*  Prior to v8.1.3, doing any of those keystrokes (`Ctrl+F`, `Ctrl+H`, `Ctrl+Shift+F`, or `Ctrl+M`) once would open the Find dialog or bring it into focus; from the main dialog, hitting `Ctrl+F` would re-center the dialog (no matter which tab of the dialog you were on); but you could not use the shortcuts for the other tabs to switch between the tabs.  In v8.1.3 through v8.3.2, once the dialog was active and in focus, hitting the keystrokes would switch between the tabs on that dialog; however, these versions of Notepad++ would _not_ re-center the dialog if you hit `Ctrl+F` again.  Starting in v8.3.3, the first hit of one of those shortcuts would bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog (as with v8.1.3), but hitting the shortcut for the tab you are already on will re-center the dialog (so `Ctrl+F, Ctrl+F` will center the Find dialog, `Ctrl+H, Ctrl+H` will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
 
-*Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Preferences > Searching > Find dialog remains open after search that outputs to results window**.
+*Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Settings > Preferences > Searching > ☐ Find dialog remains open after search that outputs to results window**.
 
 *Note:*  Search option choices made by the user are remembered across invocations of Notepad++.
 
-*Note:*  To get a smaller version of the Dialog, with many of the options hidden, use the &#x2a53; button in the lower right corner; to show the full dialog again, use the &#x2a54; button.  (new to v8.4.5)
+*Note:*  To get a smaller version of the Dialog, with many of the options hidden, use the **∧** button in the lower right corner; to show the full dialog again, use the **∨** button.  (new to v8.4.5)
 
 ### Find / Replace tabs
 
-All the dialog-based have certain features in common, though some are not available (greyed out) under certain circumstances.
+All the search dialogs have certain features in common, though some are not available (greyed out) under certain circumstances.
 
-* **Find what** edit box with dropdown history: this is the text you are searching for
-* **Replace with** edit box with dropdown history: this is the text that will replace what was matched
+* **Find what** edit box with dropdown history: This is the text you are searching for.
+* **Replace with** edit box with dropdown history: This is the text that will replace what was matched.
 
-* **☐ In selection**: If you have a region of text selected, and **In selection** is checked, it will only **Count**, **Replace All**, or **Mark All** within that selection of text, rather than in the whole document (other buttons, such as **Find Next**, will continue to work on the whole document)
-* **☐ Backward direction**: normally, searches go forward (down the page); with this option, they will go backward (up the page)
-* **☐ Match whole word only**: if checked, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").
+* **☐ In selection**: If you have a region of text selected, and this option is checked, **Count**, **Replace All**, or **Mark All** will only operate within the selected text, rather than the whole document (other buttons, such as **Find Next**, will continue to work on the whole document).
+* **☐ Backward direction**: Normally, searches go forward (down the page); with this option, they will go backward (up the page).
+* **☐ Match whole word only**: If checked, searches will only match if the result is a whole word (so "it" will not be found inside "hitch").
     * For ASCII text (text that only has newlines, tabs, and characters with codepoints 32 - 126):
         - If the left and right characters of your search string are both "word characters" (letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then **Match whole word only** will only allow a match if the characters to the left and right of the match are _non_-word-characters or spaces or the beginning or ending of the line.
         - If the left and right characters of your search string are both non-word characters (so _not_ letters, numbers, underscore, and [optionally](https://npp-user-manual.org/docs/preferences/#delimiter "NPP User Manual: Delimiter settings") additional characters set by your preferences), then the text to the left and right of your match must be word characters, spaces, and/or beginning or ending of the line.
         - If the left of your search string is a word character and the right is not (or vice versa), then the characters to the left and right must be of the opposite type, or be spaces, or be the beginning/ending of a line.
     * For non-ASCII text, the general concepts are the same; however, some edge cases may behave differently than you expect, and with thousands of possible Unicode characters and millions of combinations of pairs of Unicode characters, this manual _cannot_ contain a full description.
-    * With either ASCII or full Unicode text, if you want _full_ control of what counts as a "word" or a "word boundary", use **Search Mode** = **Regular Expression** instead of using **Normal** with **Match whole word only**: regular expressions allow you full and precise control of what is allowed before and after what _you_ consider a "whole word", rather than relying on someone else's definition.
+    * With either ASCII or full Unicode text, if you want _full_ control of what counts as a "word" or a "word boundary", use **Search Mode** = **Regular Expression** instead of using **Normal** with **Match whole word only**: Regular expressions allow you full and precise control of what is allowed before and after what _you_ consider a "whole word", rather than relying on someone else's definition.
 
-* **☐ Match case**: if checked, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
-* **☐ Wrap Around**: if checked, when the search reaches the end of the document, it will wrap around to the beginning and continue searching
+* **☐ Match case**: If checked, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
+* **☐ Wrap Around**: If checked, when the search reaches the end of the document, it will wrap around to the beginning and continue searching.
 
-* **Search Mode**: this determines how the text in the **Find what** and **Replace with** will be treated
-    * **☐ Normal**: all text is treated literally.
-    * **☐ Extended (\n, \r, \t, \0, \x...)**: use certain "wildcards", as described in [Extended Search Mode (below)](#extended-search-mode)
-    * **☐ Regular Expression**: uses the Boost regular expression engine to perform very powerful search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions)
-        * **☐ . matches newline**: in regular expressions, with this unchecked, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this checked, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
+* **Search Mode**: This determines how the text in the **Find what** and **Replace with** text fields will be treated.
+    * **☐ Normal**: All text is treated literally.
+    * **☐ Extended (\n, \r, \t, \0, \x...)**: Use certain "wildcards", as described in [Extended Search Mode (below)](#extended-search-mode).
+    * **☐ Regular Expression**: Uses the Boost regular expression engine to perform very powerful search and replace actions, as explained in [Regular Expressions (below)](#regular-expressions).
+        * **☐ . matches newline**: In regular expressions, with this unchecked, the regular expression `.` matches any character except the line-ending characters (carriage-return and/or linefeed); with this checked, `.` also matches the line-ending characters.  As an alternative to using this checkbox, begin the **Find what** box text with `(?-s)` to obtain the unchecked behavior of **. matches newline**, or with `(?s)` to get its checked behavior.
 
-* **☐ Transparency**: these settings affect the dialog box.  Normally, the dialog box is opaque (can't see the text beneath), but with these settings, it can be made semi-transparent (can partially see the text beneath)
-    * **☐ On losing focus**: if this is chosen, the dialog will be opaque when you are actively in the dialog box, but if you click in the Notepad++ window, the dialog will become semi-transparent
-    * **☐ Always**: if this is chosen, the dialog will be semi-transparent, even when you are actively in the dialog box
-    * Slider Bar: sliding it right makes the dialog more opaque; sliding it left makes it more transparent.
-        * Be careful when sliding it to the extreme left: you might not be able to see the dialog box anymore
+* **☐ Transparency**: These settings affect the dialog box.  Normally, the dialog box is opaque (can't see the text beneath), but with these settings, it can be made semi-transparent (can partially see the text beneath).
+    * **☐ On losing focus**: If this is chosen, the dialog will be opaque when you are actively in the dialog box, but if you click in the Notepad++ window, the dialog will become semi-transparent.
+    * **☐ Always**: If this is chosen, the dialog will be semi-transparent, even when you are actively in the dialog box.
+    * Slider Bar: Sliding it right makes the dialog more opaque; sliding it left makes it more transparent.
+        * Be careful when sliding it to the extreme left: You might not be able to see the dialog box anymore.
         * By (temporarily) setting it to **Always**, you can see how transparent the dialog will be while moving the slider, which can help prevent making it too transparent to see.
 
 The various action buttons available include:
 
-* **Find Next**: Finds the next matching text
-    * **☐** The unlabeled checkbox near the **Find Next** button changes the single **Find Next** button into two buttons with **▲** and **▼ Find Next** triangle arrows, which mean "search backward / find previous" and "search forward / find next".  Hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode" to remind you of what the checkbox is for.
-* **Count**: Counts how many matches are in the entire document, or in the specified direction, or possibly "In Selection", and shows that count in the message section at the bottom of the dialog box
-* **Find All in All Opened Documents**: Lists all the search-results in a new **Search results** window; searches through all the file buffers currently open in Notepad++
-* **Find All in Current Document**: Lists all the search-results in a new **Search results** window; only searches the active document buffer
-* **Close**: Closes the search dialog
+* **Find Next**: Finds the next matching text.
+    * **☐** The unlabeled checkbox near the **Find Next** button changes the single **Find Next** button into two buttons with **▲** and **▼ Find Next** triangle arrows, which mean "search backward / find previous" and "search forward / find next".  Hovering over this checkbox with the mouse will, after a slight pause in movement, pop up a tooltip indicating "2 find buttons mode" to remind you of its utility.
+* **Count**: Counts how many matches are in the entire document, or in the specified direction, or possibly **☐ In selection**, and shows that count in the message section at the bottom of the dialog box.
+* **Find All in All Opened Documents**: Lists all the search-results in a new **Search results** window; searches through all the file buffers currently open in Notepad++.
+* **Find All in Current Document**: Lists all the search-results in a new **Search results** window; only searches the active document buffer.
+* **Close**: Closes the search dialog.
 
-* **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction)
+* **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction.)
     * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
-    * Notepad++ v8.5.1 extends this swap feature: you can right click on that button to choose one of three actions:
-        - **⇅ Swap Find with Replace**: moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
-        - **⤵ Copy from Find to Replace**: copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
-        - **⤴ Copy from Replace to Find**: copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
-        - After selecting an action from that right click menu, that action will be immediately performed, and the button will change icon to indicate the new mode for that button.
-    * Notepad++ v8.5.2 added a pulldown-indicator (▼) to the swap button, to make it more obvious that it can be changed.
+    * Notepad++ v8.5.1 extends this swap feature: You can right-click on that button to choose one of three actions:
+        - **⇅ Swap Find with Replace**: Moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
+        - **⤵ Copy from Find to Replace**: Copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
+        - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
+        - After selecting an action from this menu, that action is immediately performed, and the button changes its icon to indicate the new mode for that button.
+    * Notepad++ v8.5.2 replaces the right-click menu with a pull-down menu (▼) on the swap button, to make it more obvious that it can be changed.
 * **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
-    * NOTE: for regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
+    * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
         Previous<br>Selection | Wrap Around | Backward Direction | In Selection | Range
