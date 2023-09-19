@@ -250,12 +250,6 @@ There is a capability to copy the list of files containing hits from past search
 
 ##### Other commands
 
-* **Fold all** (called **Collapse all** before v8.4.6)
-* **Unfold all** (called **Uncollapse all** before v8.4.6)
-* **Select all**
-* **Clear all**
-* **Open all**
-
 The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the `Delete` key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches with the intent to **Open all** afterwards may be the thing to do.
 
 The **Select all** command is self-explanatory:  All text in the **Search results** tab is selected.
@@ -264,7 +258,7 @@ The contents of the **Search results** tab are in the form of a tree.  When Note
 
 The user can fold/unfold "branches" of this tree.  To fold, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be folded (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To unfold an individual item that has previously been folded (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and shown again.
 
-The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once.
+The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once. (These were called **Collapse all** and **Uncollapse all** before v8.4.6.)
 
 ##### Searching in previously-found results (secondary searching)
 
