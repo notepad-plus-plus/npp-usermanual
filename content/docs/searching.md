@@ -145,7 +145,7 @@ If users need to exclude folders with the same name (or names matching the speci
     * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`),
     * `!+\log*` will _recursively_ not search any files in folders that start with log (so directories like `.\log`, `.\logs`, `.\other\logfiles`, `.\many\layers\deep\log` will all be excluded from the search).
 
-    *Note*: Inclusion of subfolders of excluded folders is not allowed, and any such pattern will be ignored.
+    *Note*: There is no opposite ("inclusive") version of the folder-exclusion syntax.  This means that other than checking **☐ In all sub-folders**, you cannot include specific folders in the search.  In particular, you cannot include specific subfolders of excluded folders (`!\skip \skip\exceptThis` will _not_ work to skip the `\skip` subfolder but to still search the `\skip\exceptThis` subfolder).
 
 * As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters** label, a helpful popup will show example syntax to you.
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.
