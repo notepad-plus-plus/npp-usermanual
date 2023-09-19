@@ -304,38 +304,38 @@ To some users these older results accumulating are an annoyance -- their data ma
 
 ### Searching
 
-The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog, because they search for the previous search target or for a word or selection in the current document (with the default shortcuts):
+The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog (with the default shortcuts):
 
 * **Find Next (`F3`)/ Find Previous (`Shift+F3`)**: Repeat searching the current search target, either down or up.
-    - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous**
+    - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous** commands.
 * **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
-        - copies the selected text to _Find what_ box of _Find_ window for future use, then uses that same string for this specific search
+        - copies the selected text to **Find what** box of **Find** window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
         - uses the following set of options:
-            - uses _Match case_ setting from _Find_ window
-            - uses _Match whole word only_ setting from _Find_ window
-            - uses _Wrap around_ setting from _Find_ window
-            - uses _Search mode_ = _Normal_ (regardless of its current setting in the _Find_ window)
-        - (all mentions of the _Find_ window in this search description are still true even if the _Find_ window is not currently visible)
+            - uses **☐ Match case** setting from **Find** window
+            - uses **☐ Match whole word only** setting from **Find** window
+            - uses **☐ Wrap around** setting from **Find** window
+            - uses **Search mode = Normal** (regardless of its current setting in the **Find** window)
+        - (all mentions of the **Find** window in this search description are still true even if the **Find** window is not currently visible)
 * **Find (Volatile) Next (`Ctrl+Alt+F3`) / Find (Volatile) Previous (`Ctrl+Alt+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up.
-    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** _will_ work as expected.
+    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** works as expected.
     - The specific search behavior:
-        - uses the selected text as the search text, but does **not** overwrite the existing _Find what_ value in the _Find_ dialog
+        - uses the selected text as the search text, but does **not** overwrite the existing **Find what** value in the **Find** dialog
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
             - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
         - uses the least-strict set of options, providing the most flexibility in the results provided by a volatile search:
-            - considers _Match case_ to be unchecked
-            - considers _Match whole word only_ to be unchecked
-            - considers _Wrap around_ to be checked
-            - considers _Search mode_ to be _Normal_
+            - considers **☐ Match case** to be unchecked
+            - considers **☐ Match whole word only** to be unchecked
+            - considers **☐ Wrap around** to be checked
+            - considers **Search mode** to be **Normal**
 
 #### _Comparison between "Select and Find Next" and "Find (Volatile) Next"_
 
-Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's _Find what_ field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
+Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's **Find what** field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
 
-- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show _Find what_ to be the active search value. (_Note_: See the section on [Settings > Preferences > Searching](../preferences/#searching), because those options can cause other text to overwrite the _Find what_ field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
+- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show **Find what** to be the active search value. (_Note_: See the section on [**Settings > Preferences > Searching**](../preferences/#searching), because those options can cause other text to overwrite the **Find what** field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
 
 - If your caret is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your caret onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
 
@@ -344,19 +344,19 @@ Both commands **Select and Find Next** and **Find (Volatile) Next** search based
 
 Use the **Style All Occurrences of Token** or **Clear Style** submenus of the Search menu (previously called the **Mark All** or **Unmark All** submenus) to mark or unmark all occurrences of the selected text or word the caret is in (the "Token") if there is no active selection.  You have a choice of five different colors/styles (numbered 1 through 5) in which to mark text in this manner.  The **Style One Token** (previously, **Mark One**) submenu options work similarly, but only on the single occurrence of selected text or caret word.
 
-The settings for each of the 5 available colors/styles are [Settings &gt; Style Configurator &gt; Global Styles > Mark style #](../preferences/#global-styles).
+The settings for each of the 5 available colors/styles are [**Settings &gt; Style Configurator &gt; Global Styles > Mark style #**](../preferences/#global-styles).
 
 If you've highlighted some groups of text in this manner, and you wish to copy those sections, the **Copy Styled Text** submenu of the Search menu will allow you to do that.  Quick search for previously marked text is possible via the **Jump Up** or **Jump Down** submenu choices.
 
 Note: In older versions of Notepad++, the **Mark All** submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.  This has been improved by renaming the menu to **Style All Occurrences of Token**.
 
-You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
+You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [**Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting**](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
 
-You activate smart highlighting through [Settings > Preferences > Highlighting > Smart highlighting > Enable](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
+You activate smart highlighting through [**Settings > Preferences > Highlighting > Smart highlighting > Enable**](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
 
 ### Manipulating Bookmarks
 
-The **Search > Bookmarks** menu allows you to navigate and manipulate Bookmarks and Bookmarked lines (see ["Bookmarks vs Marks"](#bookmarks-vs-marks) for more on the Bookmark feature).
+The **Search > Bookmark** menu allows you to navigate and manipulate Bookmarks and Bookmarked lines (see ["Bookmarks vs Marks"](#bookmarks-vs-marks) for more on the Bookmark feature).
 
 - **Toggle Bookmark** - Toggle the state of the Bookmark indicator on the active line.
 - **Next Bookmark** - Navigate to the next Bookmark in the active document.
@@ -373,7 +373,7 @@ These actions are also available by right-clicking on the Bookmark margin.
 
 ### Change History
 
-The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [Settings > Preferences > Margins / Border / Edge > Change History](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
+The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [**Settings > Preferences > Margins/Border/Edge > Change History**](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
 
 - **Go to Next Change** - Move to the next line that is indicated as being changed.
 - **Go to Previous Change** - Move to the previous line that is indicated as being changed.
@@ -382,13 +382,13 @@ The **Search > Change History** menu allows you to easily navigate between the l
 ## Finding characters in a specific range
 
 It is sometimes desirable to search for characters by their codepoint (underlying numerical value), and even to search for text that matches a range of character codepoints (like finding all characters from `a` to `z`).
-Notepad++ provides a dialog for doing this character-range search, available using the **Search &gt; Find Characters in range...** action.
+Notepad++ provides a dialog for doing this character-range search, available using the **Search &gt; Find characters in range...** action.
 
 A custom range of characters can be asked for, as well as either half of the 0..255 range: ASCII covers the lower half, non-ASCII covers the upper part. Note that entries should be in decimal notation, and that values above 255 are not handled in a useful way (so fancy Unicode characters cannot be searched for in this manner).
 
 This search may proceed up or down, and optionally wraps around. Hit **Find** to run this range-search, and hit **Close** to leave the dialog.
 
-The [regular expressions](#regular-expressions) search mode (described [below](#regular-expressions)) also provides a way to for specifying a range (or multiple ranges) of characters using a [character class](#character-classes), but that mode can be difficult for inexperienced users, so this dialog has been provided as an easier alternative.
+The [regular expressions](#regular-expressions) search mode (described [below](#regular-expressions)) also provides a way to specify a range (or multiple ranges) of characters using a [character class](#character-classes), but that mode can be difficult for inexperienced users, so this dialog has been provided as an easier alternative.
 
 ## Incremental Search
 
