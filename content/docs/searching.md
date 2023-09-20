@@ -878,7 +878,7 @@ All characters are treated as literals except for `$`, `\`, `(`, `)`, `?`, and `
 
 #### Substitution Escape Sequences
 
-Substitutions understand the the [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax described in the [Searches](#regex-special-characters-for-searches) section work in both Searches and Substitutions. The following additional escape sequences are recognized just for Substitutions:
+Substitutions understand the [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax described in the [Searches](#regex-special-characters-for-searches) section works in both Searches and Substitutions. The following additional escape sequences are recognized only for Substitutions:
 
 *  `\l` ⇒ Causes next character to output in lowercase
 
@@ -1208,7 +1208,7 @@ Now, more precisely, between the Sp and Ep parentheses, you may meet:
 
 On the other hand, any subject text scanned can be defined, either, as:
 
-* A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac*. So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
+* A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac* . So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
 
 * A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well-balanced parentheses text... as it contains no parenthesis ! )
 
@@ -1266,7 +1266,7 @@ Given the file:
 
 We want to match when there are 250 or fewer apples only when they are in a box; if there are more apples than 250, it should only match in a barrel.  Thus, `200 apples in a barrel` should _not_ match.
 
-First we need to construct Conditional Expression for apples container:
+First we need to construct a Conditional Expression for apples container:
 
     (?('LEQ250')in a box|in a barrel)
 
@@ -1369,7 +1369,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 ¹: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
 
-²: **Project Panel "alternate meaning"** column shows the meaning for those those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
+²: **Project Panel "alternate meaning"** column shows the meaning for those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
 
 > Let's see how the example value 515 used above is decoded:
 
