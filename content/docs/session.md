@@ -28,7 +28,7 @@ The [MISC preferences](../preferences/#misc) include an option to set a file ext
 
 You can also load a session file using the [`-openSession` command line argument](../command-prompt).
 
-When you load a session: if you are set to "Default (Mono-instance)" [in the Multi-instance settings](../preferences/#multi-instance-and-date), then the files from that session are _added_ to the current instance of Notepad++ (files already open will remain open, even if they aren't in the session you loaded); if you are set to  either "Open session in new instance" or "Always in multi-instance mode", then the files from the session you are loading are opened in a new Notepad++ instance.
+When you load a session: If you are set to "Default (Mono-instance)" [in the Multi-instance settings](../preferences/#multi-instance-and-date), then the files from that session are _added_ to the current instance of Notepad++ (files already open will remain open, even if they aren't in the session you loaded); if you are set to  either "Open session in new instance" or "Always in multi-instance mode", then the files from the session you are loading are opened in a new Notepad++ instance.
 
 *Note*: As of Notepad++ v8.2, the loaded session is saved automatically on exit of Notepad++, if the [Multi-instance settings](../preferences/#multi-instance-and-date) is **not** set to "Default (Mono-instance)".
 
@@ -81,7 +81,7 @@ The Project Panels are similar to the [Folder as Workspace](#folder-as-workspace
 
 Double-clicking on a file from the tree-view will open it as a new tab in the Notepad++ editor (or will activate that tab if it's already open).  Closing the tab for a file from the Project will not remove it from the Project panel, so it's easy to re-open that file.
 
-There are three Project Panels available from the **View > Project** sub-menu.  The three Project Panels can be individually docked or floated.
+There are three Project Panels available from the **View > Project Panels** sub-menu.  The three Project Panels can be individually docked or floated.
 
 In each panel, you can open one Workspace file.  Using the **Workspace** button on the Project Panel, or right clicking on the Workspace's name in the tree view, you can perform a variety of actions, enumerated below.  The [MISC preferences](../preferences/#misc) include an option to set a file extension that will automatically be opened equivalently to the **Open Workspace** command, even if you use **File > Open** to access that Workspace file; that extension will also be the default when you **Save Workspace**[¹](#FN1 "Footnote ¹").
 
@@ -96,31 +96,31 @@ Project Workspace files always contain file paths relative to the location of th
 For any entry in the Project Panel tree view, right clicking will give you the available actions on that specific entry.
 
 - On a Workspace:
-    - **New Workspace**: close the existing Workspace (if one is open for this Project Panel) and create an empty Workspace for this Project Panel.
-    - **Open Workspace**: close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
-    - **Reload Workspace**: re-read the XML file for the active Workspace (it may have been edited externally).
-    - **Save**: save any changes in the Projects, files, and Folders of the active Workspace configuration.
-    - **Save As**: save the active Workspace in a new Windows filesystem location and use that new Workspace, while still leaving the old Workspace file under the old name.  (Example: if your active Workspace is `one.wkspc` and you **Save As** `two.wkspc`, then `one.wkspc` will still exist, but the active Workspace will be `two.wkspc`.)
-    - **Save a Copy As**: save the active Workspace in a new Windows filesystem location, while still keeping the old Workspace file as the active Workspace. (Example: if your active Workspace is `one.wkspc` and you **Save a Copy As** `two.wkspc`, then `one.wkspc` will still exist and be active, but there will also be a `two.wkspc` saved but not open.)
-    - **Add New Project**: add a new Project container to the active Workspace.
+    - **New Workspace**: Close the existing Workspace (if one is open for this Project Panel) and create an empty Workspace for this Project Panel.
+    - **Open Workspace**: Close the existing Workspace (if one is open for this Project Panel) and open the selected Workspace file.
+    - **Reload Workspace**: Re-read the XML file for the active Workspace (it may have been edited externally).
+    - **Save**: Save any changes in the Projects, files, and Folders of the active Workspace configuration.
+    - **Save As**: Save the active Workspace in a new Windows filesystem location and use that new Workspace, while still leaving the old Workspace file under the old name.  (Example: if your active Workspace is `one.wkspc` and you **Save As** `two.wkspc`, then `one.wkspc` will still exist, but the active Workspace will be `two.wkspc`.)
+    - **Save a Copy As**: Save the active Workspace in a new Windows filesystem location, while still keeping the old Workspace file as the active Workspace. (Example: if your active Workspace is `one.wkspc` and you **Save a Copy As** `two.wkspc`, then `one.wkspc` will still exist and be active, but there will also be a `two.wkspc` saved but not open.)
+    - **Add New Project**: Add a new Project container to the active Workspace.
 - On a Project entry:
-    - **Move Up / Move Down**: reorder the selected Project relative to other Projects in the Workspace.
-    - **Rename**: change the name of the Project.
-    - **Add Folder**: create a new container to go in this Project.
-    - **Add Files**: use a Windows **Open** dialog to select one or more files to add to the Project's tree.
-    - **Add Files from Directory**: add all the files from that Windows directory into the Project.
-        - Please note: this does _not_ create a new Folder entry in your Project.
+    - **Move Up / Move Down**: Reorder the selected Project relative to other Projects in the Workspace.
+    - **Rename**: Change the name of the Project.
+    - **Add Folder**: Create a new container to go in this Project.
+    - **Add Files**: Use a Windows **Open** dialog to select one or more files to add to the Project's tree.
+    - **Add Files from Directory**: Add all the files from that Windows directory into the Project.
+        - Please note: This does _not_ create a new Folder entry in your Project.
 - On a Folder entry:
     - Has all the same actions as on the Project entry, but everything is relative to this Folder instead of relative to the Project.
 - On a File entry:
-    - **Move Up / Move Down**: reorder the selected file relative to other files or Folders in the containing Project or Folder.
-    - **Rename**: changes the name of the file in the list.
+    - **Move Up / Move Down**: Reorder the selected file relative to other files or Folders in the containing Project or Folder.
+    - **Rename**: Changes the name of the file in the list.
         - This action does _not_ change the underlying file.
         - If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
         - If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
-    - **Remove**: removes the file from the Project.
+    - **Remove**: Removes the file from the Project.
         - This action does _not_ change the underlying file.
-    - **Modify File Path**: similar to rename, changes the file in the list, but also allows you to change what Windows directory is being referenced.
+    - **Modify File Path**: Similar to rename, changes the file in the list, but also allows you to change what Windows directory is being referenced.
         - This action does _not_ change the underlying file.
         - If the new name does not exist as a file, it will show a little error symbol on the file icon in the tree.
         - If the new name does exist as a file, the old file will still exist but will no longer be a part of this Project.
