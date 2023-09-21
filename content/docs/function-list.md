@@ -6,7 +6,7 @@ weight: 50
 ## What is Function List
 The Function List Panel is a zone to display all the functions (or methods) found in the current file. The user can double-click the function name in the Function List Panel to move to that function in the editor. You can customize the Function List to enhance an existing language or to add a currently-unsupported language by following the instructions found below.
 
-Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows user to modify the way to search, or to add new parser for any programming language.
+Function List uses a regular-expression (regex) search engine to parse the active file and look for functions (or methods); it displays the results from the regular-expression search in the Function List panel.  It is designed to be as generic as possible, and allows users to modify the way to search, or to add new parsers for any programming language.
 
 In order to make Function List work for your language, you should modify (or add) the XML file of the languge. The XML files for different languages can be found in `%APPDATA%\notepad++\functionList`; if you use the portable (zip) package, then it will instead be in the `functionList` folder located in Notepad++ installation directory.  The `overrideMap.xml` file (in that same folder as the language XML file) is used to map the name of the language to the XML file that defines the Function List rule for that language, as described in the [function list config files](../config-files/#function-list) section of the manual.   (For plain text files, you can have a function list definition in `functionList\normal.xml`.)
 
@@ -33,7 +33,7 @@ _Notes on regular expressions for parsers_:
 
 Other than the caveats below, the function list regular expressions follow the same syntax spelled out in the docs on [Searching: Regular Expressions](../searching/#regular-expressions):
 
-- The parser does not accept **regular expresion look behind operations** in the expressions.
+- The parser does not accept **regular expression look behind operations** in the expressions.
 - The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names)
 - You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression, as described in the docs on [regex search modifiers](../searching/#search-modifiers)
 - The parser defaults to `. matches newline` being turned on (the equivalent of `(?s)` inside a regex).  If you want `.` to _not_ match newlines, please include `(?-s)` in your FunctionList definition regular expressions.
@@ -43,7 +43,7 @@ The `<function>` node accepts the following attributes and contained elements:
 
 - `mainExpr` (_attribute_): The regex to get the whole string which contains all the informations you need.
 - `displayMode` (_attribute_): Reserved for future use.
-- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of `mainExpr` attribute of `function` node.
+- `functionName` (_element_): Define one or more regular expressions to get the function name from the result of `mainExpr` attribute of the `function` node.
     - `nameExpr` (_element_): Used to match a function name.  Uses the results from the `mainExpr` above as the input for the `nameExpr`.
         - `expr` (_attribute_): This is where you define the regular expression to find the function name.
         - Note: if there are multiple `nameExpr` elements inside a `functionName`, the results of one `nameExpr` is used as the input for the next `nameExpr` (in the order they appear in the function list definition) -- they work in series, not parallel.
@@ -56,9 +56,9 @@ Both `functionName` and `className` nodes are optional.  If `functionName` and `
 ### Class parser
 The `<classRange>` node accepts the following attributes and contained elements:
 
-- `mainExr` (_attribute_): The main whole string to search.
+- `mainExpr` (_attribute_): The main whole string to search.
 - `displayMode` (_attribute_): Reserved for future use.
-- `openSymbole` & `closeSymbole` (_attribute_): They are optional. If defined, then the parser will determine the zone of this class: it find first `openSymbole` from the first character of the string found by "mainExpr" attribute; then it determines the end of class by `closeSymbole` found.  The algorithm deals with the several levels of nesting. For example: `\{\{\{\}\{\}\}\{\}\}`
+- `openSymbole` & `closeSymbole` (_attribute_): They are optional. If defined, the parser will determine the zone of this class: It first finds `openSymbole` from the last character of the string found by the "mainExpr" attribute; then it determines the end of the class by finding a corresponding `closeSymbole`.  The algorithm deals with the several levels of nesting. For example: `\{\{\{\}\{\}\}\{\}\}`
 - `className` (_element_): Contains one or more `nameExpr` nodes for determining class name (from the result of `mainExpr` searching).
 - `function` (_element_): Finds functions inside the class zone by using the expressions found in the `mainExpr` attribute and the `functionName` nodes.
     - _Note_: This `function` node looks similar to the `function` node in the **Function parser** above, but it _is different_, and has slightly different contents.
@@ -73,18 +73,18 @@ _Please Note_: an empty class (one without any functions) will _not_ display in 
 A mixed parser contains a Class parser (`classRange` node) and a Function parser (`function` node).  The Class parser will be applied first to find class zones, then the Function parser will be applied on non-class zones.
 
 ## Manually verify that your parser works for you
-Once you finish defining your parser, save and name the file as the language name with `xml` as file extension in `functionList` folder in order to make it works with the language you want. (Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.)  Then load a file that uses that parser, and make sure it finds all the functions that you expect, in the appropriate classes.
+Once you finish defining your parser, save and name the file as the language name with `xml` as file extension to the `functionList` folder in order to make it work with the language you want. (Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.)  Then load a file that uses that parser, and make sure it finds all the functions that you expect, in the appropriate classes.
 
 ## Use your own personal function list definition for a built-in language
 If you do not like the results of the default Function List parser that ships with Notepad++ for a particular language, feel free to write your parser rule then save with a unique filename (like `my_languagename.xml`).  (_Note_: if you edit the existing `languagename.xml`, the next update may erase your changes.)  Use your [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) in the functionList directory to override the default mapping of functionList parser rule files, or to add a mapping to new UDL parser rule files, as described in the [function list config files](../config-files/#function-list) section of the manual.
 
-## Validating Function List defintion files
+## Validating Function List definition files
 
 If you are developing a Function List definition file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml).
 
 ## Contribute your new or enhanced parser rule to the Notepad++ codebase
 
-If you have added or updated the parser definition file for one of Notepad++'s built-in languages, you are welcome to contribute your file to the Notepad++ codebase by creating "Pull Request" (also called a "PR") on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  (A "Pull Request" is just the GitHub mechanism for requesting that code you write be added to a project.)
+If you have added or updated the parser definition file for one of Notepad++'s built-in languages, you are welcome to contribute your file to the Notepad++ codebase by creating a "Pull Request" (also called a "PR") on the [Notepad++ GitHub page](https://github.com/notepad-plus-plus/notepad-plus-plus).  (A "Pull Request" is just the GitHub mechanism for requesting that code you write be added to a project.)
 
 **Please Note**: You only need to create a Pull Request if you want your Function List definition to be bundled as part of the Notepad++ codebase going forward, so that everyone who downloads Notepad++ gets your Function List definition.  If you do not need to contribute your Function List definition to everyone, then you do not need to read anything below this paragraph.
 
@@ -109,30 +109,30 @@ Here are the steps to run unit tests:
 
 #### Unit test file is absent
 
-It could be that you're creating a new language parser for function list, or you're enhancing an existing language parser but the file `unitTest` doesn't exists. In both cases you should:
+It could be that you're creating a new language parser for the Function List, or you're enhancing an existing language parser but the file `unitTest` doesn't exist. In both cases you should:
 
 1. Add the directory with language name in lowercase into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`.
 2. Add your new test file as `unitTest` into the new added directory.
-3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
+3. Open `cmd`, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`.
 4. A file named `unitTest.result.json` will be generated. Rename it as `unitTest.expected.result`.
 5. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 
 #### Unit test file is present
 
-If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of the parser is for covering few more cases, then you can add these case into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file.
+If you're improving an existing parser, and `unitTest` is present, then you should **modify the existing unitTest file** or **add a new unitTest file**. If your modification of the parser is for covering few more cases, then you can add these cases into the existing unitTest file. Otherwise if the modification is for covering the other categories and you have to add a lot of functions to test, you can just leave the current unitTest file as it is, and add your new unitTest file.
 
 **- Modify the existing unitTest file**
 
 1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 2. Modify the file `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\unitTest` according your enhancement. Generally, you don't remove content but you add the content in this file.
-3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`
+3. Open `cmd`, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\unitTest`.
 4. A file named `unitTest.result.json` will be generated. Remove `unitTest.expected.result` and Rename `unitTest.result.json` to `unitTest.expected.result`.
 
 **- Add a new unitTest file**
 
 1. Run unit tests (check above [Unit tests](#unit-tests) section) to make sure your parser rule (xml file) won't cause any regression.
 2. Add a directory into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\`, the name of directory is arbitrary but should be relevant to the category of the test. Name your unit test file as `unitTest` and copy it into the directory you just created.
-3. Open `cmd` go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\[yourTestDir2]\unitTest`
+3. Open `cmd`, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\`, run the command `..\..\bin\notepad++.exe -export=functionList -l[langName] .\[langName]\[yourTestDir2]\unitTest`.
 4. A file named `unitTest.result.json` will be generated in the created directory `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\[langName]\[yourTestDir2]\`. Rename `unitTest.result.json` in the created directory  to `unitTest.expected.result`.
 
 ### Create and Submit your Pull Request
