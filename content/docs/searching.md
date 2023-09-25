@@ -647,7 +647,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a _subset_ of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
 
 * `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
