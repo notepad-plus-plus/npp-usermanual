@@ -625,7 +625,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `$`  ⇒ This matches the end of a line.
 
-* `\<`  ⇒ This matches the start of a word using Scintilla's definitions of words.
+* `\<`  ⇒ This matches the start of a word using Scintilla's definition of words.
 
 * `\>`  ⇒ This matches the end of a word using Scintilla's definition of words.
 
@@ -645,15 +645,19 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 #### Capture Groups and Backreferences
 
-* `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a _subset_ of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
+* `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a part of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as the group _name_.  Please note that group names are case-sensitive.
 
 * `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
-    A regex can have multiple subgroups, so `\2`, `\3`, etc can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
+    A regex can have multiple subgroups, so `\2`, `\3`, etc. can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
 
     * Example: `([Cc][Aa][Ss][Ee]).*\1` would match a line such as `Case matches Case` but not `Case doesn't match cASE`.
+
+    * `\ℕ` ⇒ This form can only have ℕ as digits 1-9, so if you have more than 9 capture groups, you will have to use one of the other numbered backreference notations, listed in the next bullet point.
+
+        Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
 
     * `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ These forms can handle any non-zero ℕ.
 
@@ -672,10 +676,6 @@ Anchors match a zero-length position in the line, rather than a particular chara
                 * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute (positive) coordinates
 
                 * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative (negative) coordinates
-
-    * `\ℕ` ⇒ This form can only have ℕ as digits 1-9, so if you have more than 9 capture groups, you will have to use one of the other numbered backreference notations, listed in the next bullet point.
-
-        Example: the expression `\10` matches the contents of the first capture group `\1` followed by the literal character `0`", _not_ the contents of the 10th group.
 
 * `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.  (As with the Numbered Backreferences above, these Named Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
@@ -767,11 +767,11 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     Please note the difference between the meaning of a numbered recursion and a normal numbered [backreference]([backreference](#capture-groups-and-backreferences)): A normal back-reference is a way to refer to the _values_ from previous capture groups later in the full expression.  This numbered recursion syntax, on the other hand, refers to to the underlying regex from the previous subexpression, not its value.
 
-    For example, using a similar example to the expanding on the the ideas from the backreference palindrome example: with the recursion, both regexes just find any four-letter word, because each subexpression, signed or not, refers to the regex itself, NOT to the specific value found earlier by each group!
+    Using an example similar to the backreference palindrome example: With the recursion, both regexes just find any four-letter word, because each subexpression, signed or not, refers to the regex itself, not to the specific value found earlier by each group!
 
-    * the regex `(?-i)\b(\w)(\w)(?2)(?1)\b` find a four-letter word, when using absolute coordinates
+    * The regex `(?-i)\b(\w)(\w)(?2)(?1)\b` finds a four-letter word, when using absolute coordinates.
 
-    * the regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` find a four-letter word, when using relative coordinates
+    * The regex `(?-i)\b(\w)(\w)(?-1)(?-2)\b` finds a four-letter word, when using relative coordinates.
 
     These two expressions are actually both equivalent to `(?-i)\b(\w)(\w)\w\w\b`; there is no good reason for using recursions here.
 
@@ -779,7 +779,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
 *  `(?0)` or `(?R)` ⇒ Backtrack to start of pattern.  This recursively reruns the same expression from the start of the full expression to the very end (even beyond this backtrack).  This is sometimes called  "whole-match recursion".
 
-    This is useful for requiring some sub-portion of the pattern to match according to the same rules
+    This is useful for requiring some sub-portion of the pattern to match according to the same rules.
 
     For example, to find balanced {} with any number of spaces inside or out, and any number of balanced copies next to each other, use the regular expression `{\h*(?0)*\h*}\h*`:
 
@@ -824,7 +824,7 @@ Normally, a regular expression parses from left to right linearly. But you may n
 
     Note: These are all still _inside_ the conditional expression.
 
-    Do not confuse the assertions that control a conditional expression (here) with the assertions that are part of the pattern matching (the [Assertions](#assertions) section, below).  Here, if the assertion is used to decide which expression is used; below, the assertion decides whether the pattern is matching or not.
+    Do not confuse the assertions that control a conditional expression (here) with the assertions that are part of the pattern matching (the [Assertions](#assertions) section, below).  Here, the assertion is used to decide which expression is used; below, the assertion decides whether the pattern is matching or not.
 
     Note: PCRE doesn't treat recursion expressions like Perl does:
 
@@ -839,7 +839,7 @@ alternatives  and  there  is a subsequent matching failure.
 
     Independent sub-expressions are typically used to improve performance, because only the best possible match for pattern will be considered; if this doesn't allow the expression as a whole to match then no match is found at all.
 
-    It can also be used to keep the logic for Conditional Expressions (above) correct, preventing an unexpected path to the wrong alternate being used.  For example, when using a group-number as the conditional assertion, `(?(ℕ)YesPattern|NoPattern)`:
+    It can also be used to keep the logic for Conditional Expressions (above) correct, preventing an unexpected path to the wrong alternative being used.  For example, when using a group-number as the conditional assertion, `(?(ℕ)YesPattern|NoPattern)`:
 
     * The regex `(?:(100)|\d{3}) apples (?(1)YesPattern|NoPattern)` does not use the independent sub-expression, so it will find `100 apples NoPattern`, even though you expected `YesPattern` to be used when `100` was matched.  Why? If `YesPattern` failed, the search will backtrack to the beginning and try next alternative, where `100` matches `\d{3}`, but that means that `?(1)` does _not_ match so the conditional expression uses `NoPattern`.
 
@@ -849,7 +849,7 @@ alternatives  and  there  is a subsequent matching failure.
 
     It is also useful if you would need a look-behind assertion which would contain a non-fixed length pattern (see further on). As variable-length lookbehind is not allowed in Boost's regular expressions, you can use the `\K` syntax, instead. For instance, the non-allowed syntax `(?-i)(?<=\d+)abc` can be replaced with the correct syntax `(?-i)\d+\Kabc` which matches the exact string `abc` only if preceded by, at least, one digit.
 
-    _Note_: Because of the way that Notepad++'s replacement works with `\K`, if your regex **Find what** includes `\K`, you will _not_ be able to use just **Replace** to replace a single instance of the match; you must use **Replace All** to replace all the matches.  You may use the **Find Next** button to see where an individual replacement will occur, to verify your expression, but you cannot do the replacements one-at-a-time.
+    _Note_: Because of the way that Notepad++'s replacement works with `\K`, if your regex **Find what** includes `\K`, you will _not_ be able to use just **Replace** to replace a single instance of the match; you must use **Replace All** to replace all the matches.  You may use the **Find Next** button to see where an individual replacement will occur, to verify your expression, but you cannot do the replacements one at a time.
 
 #### Assertions
 These special groups consume no characters. Their successful matching counts, but when they are done, matching starts over where it left.
