@@ -3,15 +3,15 @@ title: Views
 weight: 30
 ---
 
-The View menu controls the look of the Notepad++, including how Notepad++ and the Windows operating system interact, what features and panels are active inside Notepad++, and whether there are one or two Views (visible files) active at the same time.
+The View menu controls the look of Notepad++, including how Notepad++ and the Windows operating system interact, what features and panels are active inside Notepad++, and whether there are one or two Views (visible files) active at the same time.
 
-Many of the entries in the View menu act as settings or toggles, to show or hide some feature: the feature will be visible when there is a checkmark `✔` next to the menu entry, and it will not be visible if there is no checkmark shown.  Some of these are remembered every time you run Notepad++, and others are just active for the single session and not remembered -- those that are remembered will be marked as [↗](#remembered-settings "Remembered Setting").
+Many of the entries in the View menu act as settings or toggles, to show or hide some feature: the feature will be visible when there is a checkmark `✔` next to the menu entry, and it will not be visible if there is no checkmark shown.  Some of these are remembered every time you run Notepad++, and others are just active for the single session and not remembered -- those that are remembered will be marked with a [↗](#remembered-settings "Remembered Setting") in this manual.
 
 ## Application Views
 
 Choosing **Always On Top** will make the Windows OS always keep Notepad++ on top of of other windows, even when you give other windows focus.  If this is blocking another window you need access to, you can drag one of the windows, or you can uncheck **Always on Top** mode and then switch to the blocked window.
 
-Choosing **Toggle Full-Screen Mode** will cause Notepad++ to take up the full screen, and the title bar and menu bar and tool bar will _not_ be visible.  The menu bar will no longer be accessible through Alt-key accelerators, so the Notepad++ menu system cannot be used to get out of this mode; however, there is a little + sign in a box  (`⊞`) in the upper right which can be used to exit the full-screen mode; alternatively, use the current keyboard shortcut for this toggle action (the default shortcut is `F11`), or close Notepad++ with `Alt+F4` or other Windows OS methods of closing applications and then restart Notepad++ (which will come up in normal view again). (To clarify: though Alt-accelerators will not show the menu bar or access the menu bar menus, action shortcuts defined through Shortcut Mapper will still work, even if they use the Alt key.)
+Choosing **Toggle Full-Screen Mode** will cause Notepad++ to take up the full screen, and the title bar, menu bar and tool bar will _not_ be visible.  The menu bar will no longer be accessible through Alt-key accelerators, so the Notepad++ menu system cannot be used to get out of this mode; however, there is a little + sign in a box  (`⊞`) in the upper right which can be used to exit the full-screen mode; alternatively, use the current keyboard shortcut for this toggle action (the default shortcut is `F11`), or close Notepad++ with `Alt+F4` or other Windows OS methods of closing applications and then restart Notepad++ (which will come up in normal view again). (To clarify: though Alt-accelerators will not show the menu bar or access the menu bar menus, action shortcuts defined through Shortcut Mapper will still work, even if they use the Alt key.)
 
 Choosing **Post-It** will get rid of the title bar, menu bar, and tool bar (similar to full-screen mode), but it will maintain the same window size as Notepad++ previously took up, rather than enlarging to take up the whole screen.  This mode will also hide the tab bar, so you can focus on working on the single visible tab, though you can still use the tab-switching shortcuts to choose another tab. Like full-screen mode, Post-It mode has the `⊞` in the upper right of the window for leaving this mode, or you can use the shortcut (the default shortcut is `F12`) or exit Notepad++ and restart.
 
@@ -25,11 +25,11 @@ The **View Current File In...** sub-menu will launch the current file in a stand
 
 The **Show Symbol**[↗](#remembered-settings "Remembered Setting") sub-menu will affect whether certain characters are rendered with special glyphs so that they can easily be seen or identified in the editor view, and whether certain tab and wrap guides will be visible.
 
-There are four entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  The options that are active will be indicated with a check mark `✓`.  (In older versions, there were only three options, and only one could be active a time, but as of Notepad++ v8.5, the first three are independent, and the fourth will control the other three.)  Choosing one of the first three will toggle on or off that particular option, whereas choosing the **Show All Characters** will toggle the other three either all-on or all-off.
+There are four entries that are grouped together, which can affect the rendering of certain characters with alternate glyphs. Please note that while the characters may be displayed differently in Notepad++, the underlying file has the normal characters encoded per the current **Language** menu settings.  The options that are active will be indicated with a check mark `✓`.  (In older versions, there were only three options, and only one could be active a time, but as of Notepad++ v8.5, the options are independent, with only the last one controlling the others.)  Choosing one of the options will toggle on or off that particular option, whereas choosing the **Show All Characters** will set all the options to either all-on or all-off.
 
 - **Show Space and Tab**: When checked, the space character will show as a [colored](../preferences/#global-styles "Style Configurator > Global Styles > White Space Symbol") dot `·`, and the tab as a colored arrow `→` that expands to fill the width of the tab.
 
-- **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CRLF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
+- **Show End of Line**: When checked, the carriage return character will be rendered as `CR` in a small box, the line feed character as `LF`, and a Windows two-character line ending as `CR` `LF`.  The boxed characters are normally colored as "reverse text", so the active [Global Styles > Default > Foreground color](../preferences/#global-styles "see Style Configurator > Global Styles") will fill in the box and the active [Global Styles > Default > Background color](../preferences/#global-styles "see Style Configurator > Global Styles") will define the boxed-letter's foreground color.  [Global Styles > Default > EOL Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") will override that if the [Editing > EOL > Custom Color](../preferences/#editing) is checked.
 
 - **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing) is checked.  (New to v8.5)
 
@@ -83,7 +83,7 @@ U+FEFF    | zero-width no-break space    | ZWNBSP
 
 - **Show Control Characters & Unicode EOL**: When checked, the control characters in the ASCII/Unicode [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) will be shown in a small box, either as the Codepoint or as an Abbreviation.  In addition to the C0 and C1 control codes, this also influences the Unicode "End of Line" characters LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`).  (new to v8.5.3)
 
-- **Show All Characters**: When checked, this is will check all three **Show Whitespace and TAB** and **Show End of Line** and **Show Non-Printing Characters** and **Show Control Characters & Unicode EOL** at the same time.
+- **Show All Characters**: When checked, this will check all of the previous **Show Symbol** options at the same time.
 
 The remaining two entries in this sub-menu aren't affecting the glyphs of characters in the file; instead, they are showing information about Notepad++'s indentation and word-wrap:
 
@@ -156,22 +156,22 @@ The exact appearance of the symbols is governed by the **Fold Margin Style** set
 
 If folding blocks are "nested" (contained inside other folding blocks), the outermost block is known as level 1, the block immediately inside that is level 2, and so on.
 
-There is a group of folding-related commands on the **View** menu, which will allow the folding or unfolding of line-blocks of text:
+There is a group of folding-related commands on the **View** menu, which will allow the folding or unfolding of line-blocks of text ('collapsing' and 'uncollapsing' before v8.4.6):
 
 * **Fold All** and **Unfold All** will collapse or reveal all fold blocks in the current file
-* **Collapse Current Level** and **Uncollapse Current Level** will collapse or reveal the block based on the line of the editing caret
-  - If [Settings > Preferences > Editing > ☐ Make current level folding/unfolding commands toggleable](../preferences/#editing) is checked, either of these commands (or their shortcut-equivalent) will cause the current level's folding to toggle state, so you can use the same shortcut both for folding and unfolding
-* The entries in the **Collapse Level** and **Uncollapse Level** sub-menus will collapse or reveal every block at level N in the active file
+* **Fold Current Level** and **Unfold Current Level** will collapse or reveal the block based on the line of the editing caret
+  - If [**Settings > Preferences > Editing > ☐ Make current level folding/unfolding commands toggleable**](../preferences/#editing) is checked, either of these commands (or their shortcut-equivalent) will cause the current level's folding to toggle state, so you can use the same shortcut both for folding and unfolding
+* The entries in the **Fold Level** and **Unfold Level** sub-menus will collapse or reveal every block at level N in the active file
 
 Folding/unfolding can be actuated by menu commands on the **View** menu relating to "fold" or "collapse", or by any shortcut keys assigned (see the [**Preferences > Shortcut Mapper**](../preferences/#shortcut-mapper)). It can also be invoked by using the mouse and clicking on the symbols in the fold margin. Clicking on a "-" symbol will collapse the lines at that level and below so they are no longer shown; clicking on a "+" symbol will expand the fold so such lines will again be displayed.
 
-As folding can be nested there is some remembering of internal fold states while the outer states are manipulated. However, there are some ways to override this behavior:
+As folding can be nested, there is some remembering of internal fold states while the outer states are manipulated. However, there are some ways to override this behavior:
 
 * Clicking a "-" or "+" fold symbol while holding the `Shift` key:  Any internal folds in the clicked-upon tree will be uncollapsed, so that the whole sub-tree hierarchy will be shown fully expanded; if the tree is already fully expanded, `Shift`-clicking the top-level "-" symbol will do nothing
 * Clicking a "+" fold symbol while holding the `Ctrl` key:  Same as clicking a "+" fold symbol while holding the `Shift` key
 * Clicking a "-" fold symbol while holding the `Ctrl` key:  Collapses at the line of the click point, and collapses all subordinate/internal fold points as well (although this won't be revealed to the user until the fold just created is expanded)
 
-The current fold state of lines is not remembered from one Notepad++ run to the next, nor is it saved in the automatic or a manually-saved session file. It is intended to be very temporary. When a file is reloaded by any means it always loads with all lines showing (no "+" will be visible anywhere in the file's fold margin).
+The current fold state of lines is not remembered from one Notepad++ run to the next, nor is it saved in the automatic or a manually-saved session file. It is intended to be temporary. When a file is reloaded by any means it always loads with all lines showing (no "+" will be visible anywhere in the file's fold margin).
 
 ## File Summary
 
@@ -179,11 +179,11 @@ The **Summary...** action opens a small dialog that lists information about the 
 
 ## Panels
 
-There are a variety of builtin "panels" (sub-windows) that can be used in Notepad++, and plugins may add more panel functions, in addition to the builtin panels. These panels can be "docked" (so they appear as part of the main Notepad++ application window) on either the right, left, top, or bottom edges; or they can be made to "float", so they appear as a separate independent window.
+There are a variety of built-in "panels" (sub-windows) that can be used in Notepad++, and plugins may add more panel functions, in addition to the built-in panels. These panels can be "docked" (so they appear as part of the main Notepad++ application window) on either the right, left, top, or bottom edges; or they can be made to "float", so they appear as a separate independent window.
 
-The builtin Notepad++ features that use Panels are described in the [Builtin Panels](#builtin-panels) section (next).  The process of moving the panels to the various edges (or floating location) are described in the [Panel Mechanics](#panel-mechanics) section (following).
+The builtin Notepad++ features that use Panels are described in the [Built-in Panels](#built-in-panels) section (next).  The process of moving the panels to the various edges (or floating location) are described in the [Panel Mechanics](#panel-mechanics) section (following).
 
-### Builtin Panels
+### Built-in Panels
 
 The **Project Panels**[↗](#remembered-settings "Remembered Setting") sub-menu entries will toggle the display of each of the three [Project Panels](../session/#project-panels)
 
@@ -199,7 +199,7 @@ The **Function List**[↗](#remembered-settings "Remembered Setting") toggle wil
 
 Docked Panels can be moved easily to another edge, or to be floating instead of docked, by clicking on the Panel's title and dragging it to the new location.  Another way to make a docked Panel float is to double-click its title bar.  When a Panel is already floating, it may be returned to its previously-docked location by double-clicking its title bar.
 
-A Panel docked to an edge of the Notepad++ main window may contain multiple functionalities -- that is, each Pnel location may hold multiple Panel functionalities simultaneously. When one does, "tabs" identifying functionality will appear at the bottom of the docked Panel window (contrast this with a Panel with a single functionality: the functionality is identified only in the title bar, and there is no tab-bar at the bottom of that docking Panel).
+A Panel docked to an edge of the Notepad++ main window may contain multiple functionalities -- that is, each Panel location may hold multiple Panel functionalities simultaneously. When one does, "tabs" identifying functionality will appear at the bottom of the docked Panel window (contrast this with a Panel with a single functionality: the functionality is identified only in the title bar, and there is no tab-bar at the bottom of that docking Panel).
 
 When dragging toward an edge of the Notepad++ main window that does not already contain a docked Panel, when the mouse cursor gets close enough to the edge, the drag rectangle will "snap" to the edge, indicating that if the mouse is released, whatever is being dragged will "dock" in the location shown. However, when doing this with a floating panel, the drag rectangle will not "snap" if the given edge already contains a docked panel. To get it to join an existing docked panel, you have to end the drag over the title bar (at the top) in the case of a single docked item, or end the drag over the title bar OR the group of tabs (at the bottom) in the case of a multiple tabbed group panel.
 
@@ -215,9 +215,9 @@ With multiple tabs in a docked Panel:
 
 It is possible to accidentally shrink a docked Panel so small that you don't notice it's there, or that a floating Panel may be in a location where you cannot see it. The following may help you to find and resize your Panel:
 
-- If the top-edge panel is too small, you might just see a small thin rectangle or line between the Notepad++ Toolbar and the Notepad++ Tab Bar for the editor view, or it might be so small you see nothing: if you move the cursor between the Toolbar and Tab Bar and get the up-down-arrow `⇕`, it indicates that you can click-and-drag to resize the top panel.  If the Toolbar or Tab Bar are not visible, you can turn them on using [Settings > Preferences > General](../preferences/#general).
+- If the top-edge panel is too small, you might just see a small thin rectangle or line between the Notepad++ Toolbar and the Notepad++ Tab Bar for the editor view, or it might be so small you see nothing: if you move the cursor between the Toolbar and Tab Bar and get the up-down-arrow `⇕`, it indicates that you can click-and-drag to resize the top panel.  If the Toolbar or Tab Bar are not visible, you can turn them on by unchecking [**Settings > Preferences > General > ☑ Hide**](../preferences/#general).
 
-- If the bottom-edge panel is too small, you might just see a small thin rectangle or line between the bottom of the Notepad++ editor view and the top of the Status Bar: if you move the cursor between the editor and the Status Bar and get the the up-down-arrow `⇕`, it indicates that you can click-and-drag to resize the bottom panel.  If the Toolbar or Tab Bar are not visible, you can turn them on using [Settings > Preferences > General](../preferences/#general).
+- If the bottom-edge panel is too small, you might just see a small thin rectangle or line between the bottom of the Notepad++ editor view and the top of the Status Bar: if you move the cursor between the editor and the Status Bar and get the the up-down-arrow `⇕`, it indicates that you can click-and-drag to resize the bottom panel.  If the Toolbar or Tab Bar are not visible, you can turn them on by unchecking [**Settings > Preferences > General > ☑ Hide**](../preferences/#general).
 
 - If the left-edge and right-edge panels are too small, you might see a small thin rectangle or line between the editor view and the application border, or it might be so small you see nothing: if you move the cursor between the editor view and the application border, you can get the right-left arrow `⇔` to indicate the panel can be resized.  However, it can be difficult (even impossible) to tell the difference between the panel's resize arrow and the application window's resize arrow, since they are nearly overlapping; if you cannot identify the correct resize arrow and instead keep resizing the application, you may want to change the Notepad++ window to Full Screen (**View > Toggle Full Screen**) or use standard Windows methods to Maximize the Notepad++ window (double-click the application header, click the Maximize button, or use the application menu from the Notepad++ icon in the upper-left to maximize); once it is Maximized or Full Screen, then the resize arrow `⇔` on the right or left will be for the right or left Panel.
 
@@ -241,4 +241,4 @@ The Monitoring feature is also similar to the File Status Auto-Detection setting
 
 ## Remembered Settings
 
-[↗](#remembered-settings "Remembered Setting"): These indicated settings are remembered from one run of Notepad++ to the next.
+[↗](#remembered-settings "Remembered Setting"): Settings with this symbol next to them on this manual page are remembered from one run of Notepad++ to the next.

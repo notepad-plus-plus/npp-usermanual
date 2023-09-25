@@ -495,7 +495,7 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
 ##### Character Classes
 
-* `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by doing a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequence in Spanish).
+* `[`_set_`]`  ⇒ This indicates a _set_ of characters, for example, `[abc]` means any of the literal characters `a`, `b` or `c`. You can also use ranges by putting a hyphen between characters, for example `[a-z]` for any character from `a` to `z`.  You can use a collating sequence in character ranges, like in `[[.ch.]-[.ll.]]` (these are collating sequences in Spanish).
     Certain characters require special treatment inside character classes:
 
     - To use a literal `-` in a character class:  Use it directly as the first or last character in the enclosing class notation, like `[-abc]` or `[abc-]`; OR use it "escaped" at any position, like `[\-abc]` or `[a\-bc]` .
@@ -508,13 +508,11 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
         - If used with an equals sign in the order `[=` inside a class, it is the opening sequence for an equivalence class (described below); if you want to include both a `[` and a `=` inside the same character class, do not use them unescaped right next to each other; either change the order, like `[=[]`, or escape one or both, like `[\[=]` or `[[\=]` or `[\[\=]` .
 
-    - To use a literal `\` in a character class:  Must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
+    - To use a literal `\` in a character class, it must be doubled (i.e., `\\`) inside the enclosing class notation, like `[ab\\c]` .
 
     - To use a literal `^` in a character class: Use it directly as any character but the first, such as `[a^b]` or `[ab^]`; OR use it "escaped" at any position, such as `[\^ab]` or `[a\^b]` or `[ab\^]` .
 
 * `[^`_set_`]`  ⇒ The complement of the characters in the _set_. For example, `[^A-Za-z]` means any character except an alphabetic character.  Care should be taken with a complement list, as regular expressions are always multi-line, and hence `[^ABC]*` will match until the first `A`, `B` or `C` (or `a`, `b` or `c` if match case is off), including any newline characters. To confine the search to a single line, include the newline characters in the exception list, e.g. `[^ABC\r\n]`.
-
-   Please note that the complement of a character set is often many more characters than you expect: `(?-s)[^x]+` will match 1 or more instances of any non-`x` character, including newlines: the `(?-s)` [search modifier](#search-modifier) turns off "dot matches newlines", but the `[^x]` is _not_ a dot `.`, so that class is still allowed to match newlines.
 
 * `[[:`_name_`:]]` or `[[:☒:]]` ⇒ The whole character class named _name_.  For many, there is also a single-letter "short" class name, ☒.  Please note: the `[:`_name_`:]` and `[:☒:]` must be inside a character class `[...]` to have their special meaning.
 
@@ -522,13 +520,13 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
     |:-----:|:--------------:|:------------|----------------------------|
     |       | alnum          | letters and digits | |
     |       | alpha          | letters | |
-    | h     | blank          | spacing which is not a line terminator | `[\t\x20\xA0]`|
+    | h     | blank          | spacing which is not a line terminator | `[\t\x20\xA0]` |
     |       | cntrl          | control characters | `[\x00-\x1F\x7F\x81\x8D\x8F\x90\x9D]` |
     | d     | digit          | digits | |
     |       | graph          | graphical character, so essentially any character except for control chars, `\0x7F`, `\x80` | |
     | l     | lower          | lowercase letters | |
     |       | print          | printable characters | `[\s[:graph:]]` |
-    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]` <!-- ` -->|
+    |       | punct          | punctuation characters | `[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_{\|}~]` |
     | s     | space          | whitespace (word or line separator) | `[\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}]` |
     | u     | upper          | uppercase letters |  |
     |       | unicode        | any character with code point above 255 | `[\x{0100}-\x{FFFF}]` |
@@ -557,25 +555,25 @@ These properties behave similar to named character classes, but cannot be contai
 
 ##### Character escape sequences
 
-`\☒` ⇒ Where ☒ is one of `d`, `l`, `s`, `u`, `w`, `h`, `v`, described below.  These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
+`\☒` ⇒ Where ☒ is one of `d`, `w`, `l`, `u`, `s`, `h`, `v`, described below.  These single-letter escape sequences are each equivalent to a class from above.  The lower-case escape sequence means it matches that class; the upper-case escape sequence means it matches the negative of that class.  (Unlike the properties, these can be used both inside or outside of a character class.)
 
-| Description]     | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
-|:-----------------|:----------------|:---------------|:-------------------------|:---------------|
-| digits           | `\d`            | `[[:digit:]]`  | `\D`                     | `[^[:digit:]]` |
-| lowercase        | `\l`            | `[[:lower:]]`  | `\L`                     | `[^[:lower:]]` |
-| space chars      | `\s`            | `[[:space:]]`  | `\S`                     | `[^[:space:]]` |
-| uppercase        | `\u`            | `[[:upper:]]`  | `\U`                     | `[^[:upper:]]` |
-| word chars       | `\w`            | `[[:word:]]`   | `\W`                     | `[^[:word:]]`  |
-| horizontal space | `\h`            | `[[:blank:]]`  | `\H`                     | `[^[:blank:]]` |
-| vertical space   | `\v`            | see below      | `\V`                     |                |
+| Description          | Escape Sequence | Positive Class | Negative Escape Sequence | Negative Class |
+|:---------------------|:----------------|:---------------|:-------------------------|:---------------|
+| digits               | `\d`            | `[[:digit:]]`  | `\D`                     | `[^[:digit:]]` |
+| word chars           | `\w`            | `[[:word:]]`   | `\W`                     | `[^[:word:]]`  |
+| lowercase            | `\l`            | `[[:lower:]]`  | `\L`                     | `[^[:lower:]]` |
+| uppercase            | `\u`            | `[[:upper:]]`  | `\U`                     | `[^[:upper:]]` |
+| word/line separators | `\s`            | `[[:space:]]`  | `\S`                     | `[^[:space:]]` |
+| horizontal space     | `\h`            | `[[:blank:]]`  | `\H`                     | `[^[:blank:]]` |
+| vertical space       | `\v`            | see below      | `\V`                     |                |
 
-> Vertical space: This encompasses the LF, VT, FF, CR , NEL control characters and the LS and PS format characters : 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
+> Vertical space: This encompasses all the `[[:space:]]` characters that aren't `[[:blank:]]` characters: The LF, VT, FF, CR , NEL control characters and the LS and PS format characters: 0x000A (line feed), 0x000B (vertical tabulation), 0x000C (form feed), 0x000D (carriage return), 0x0085 (next line), 0x2028 (line separator) and 0x2029 (paragraph separator).  There isn't a named class which matches.
 
-_Note_: despite its similarity to `\v`, even though `\R` matches certain veritcal space characters, it is _not_ a character-class-equivalent escape sequence (because it evaluates to a parentheses`()`-based expression, not a class-based expression).  So while `\d`, `\l`, `\s`, `\u`, `\w`, `\h`, and `\v` are all equivalent to a character class and can be included inside another bracket`[]`-based character class, the `\R` is _not_ equivalent to a character class, and _cannot_ be included inside a bracketed`[]` character-class.
+_Note_: despite its similarity to `\v`, even though `\R` matches certain vertical space characters, it is _not_ a character-class-equivalent escape sequence (because it evaluates to a parentheses`()`-based expression, not a class-based expression).  So while `\d`, `\l`, `\s`, `\u`, `\w`, `\h`, and `\v` are all equivalent to a character class and can be included inside another bracket`[]`-based character class, the `\R` is _not_ equivalent to a character class, and _cannot_ be included inside a bracketed`[]` character-class.
 
 ##### Equivalence Classes
 
-* `[[=`_char_`=]]` ⇒ All characters that differ from _char_ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `a`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `A`, `à`, `á`, `â`, `ã`, `ä` and `å`.
+* `[[=`_char_`=]]` ⇒ All characters that differ from _char_ by case, accent or similar alteration only. For example `[[=a=]]` matches any of the characters: `A`, `À`, `Á`, `Â`, `Ã`, `Ä`, `Å`, `a`, `à`, `á`, `â`, `ã`, `ä` and `å`.
 
 
 #### Multiplying operators
@@ -598,29 +596,25 @@ _Note_: despite its similarity to `\v`, even though `\R` matches certain veritca
 
 * `{ℕ,}?` or `{ℕ,ℙ}?` ⇒ Like the above, but minimally.
 
-* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example:
+* `*+` or `?+` or `++` or `{ℕ,}+` or `{ℕ,ℙ}+` ⇒ These so called "possessive" variants of greedy repeat marks do not backtrack. This allows failures to be reported much earlier, which can boost performance significantly. But they will eliminate matches that would require backtracking to be found. As an example, see how the matching engine handles the following two regexes:
 
     When regex `“.*”` is run against the text `“abc”x` :
 
-        “  matches “
-        .* matches abc”x
-        ”  cannot match $ ( End of line ) => Backtracking
-
-        “  matches “
-        .* matches abc”
-        ”  cannot match letter x => Backtracking
-
-        “  matches “
-        .* matches abc
-        ”  matches ” => 1 overall match “abc”
+        `“`  matches `“`
+        `.*` matches `abc”x`
+        `”`  doesn't match ( End of line ) => Backtracking
+        `.*` matches `abc”`
+        `”`  doesn't match letter `x` => Backtracking
+        `.*` matches `abc`
+        `”`  matches `”` => 1 overall match `“abc”`
 
     When regex `“.*+”`, with a possessive quantifier, is run against the text `“abc”x` :
 
-        “   matches “
-        .*+ matches abc”x ( catches all remaining characters )
-        ” cannot match $ ( End of line )
+        `“`   matches `“`
+        `.*+` matches `abc”x` ( catches all remaining characters )
+        `”`   doesn't match ( End of line )
 
-    Notice there is no match at all for the possessive version, because the possessive repeat factor prevents from backtracking to a possible solution
+    Notice there is no match at all in this version, because the possessive quantifier prevents backtracking to a possible solution.
 
 
 #### Anchors
@@ -653,7 +647,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `(`_subset_`)` ⇒ _Numbered Capture Group_: Parentheses mark a part of the regular expression, also known as a _subset_ expression or capture group. The string matched by the contents of the parentheses (indicated by _subset_ in this example) can be re-used with a backreference or as part of a replace operation; see [Substitutions](#substitutions), below. Groups may be nested.
 
-* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` or `(?(name)`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as the group _name_.  Please note that group names are case-sensitive.
+* `(?<name>`_subset_`)` or `(?'name'`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as the group _name_.  Please note that group names are case-sensitive.
 
 * `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
@@ -884,7 +878,7 @@ All characters are treated as literals except for `$`, `\`, `(`, `)`, `?`, and `
 
 #### Substitution Escape Sequences
 
-Substitutions understand the the [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax described in the [Searches](#regex-special-characters-for-searches) section work in both Searches and Substitutions. The following additional escape sequences are recognized just for Substitutions:
+Substitutions understand the [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax described in the [Searches](#regex-special-characters-for-searches) section works in both Searches and Substitutions. The following additional escape sequences are recognized only for Substitutions:
 
 *  `\l` ⇒ Causes next character to output in lowercase
 
@@ -1214,7 +1208,7 @@ Now, more precisely, between the Sp and Ep parentheses, you may meet:
 
 On the other hand, any subject text scanned can be defined, either, as:
 
-* A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac*. So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
+* A combination of successive syntaxes  Ac*  Bb  Ac*  Bb  Ac*  Bb, ended with a last Ac* . So, in the symbolic regex syntax, this can be written as (?: Ac* Bb)+ Ac*
 
 * A non-null range of allowed chars, when the subject text does NOT contain any Ep and Sp parenthesis, so the Ac+ symbolic syntax, only ( By extension, a text without parentheses is, obviously, a well-balanced parentheses text... as it contains no parenthesis ! )
 
@@ -1272,7 +1266,7 @@ Given the file:
 
 We want to match when there are 250 or fewer apples only when they are in a box; if there are more apples than 250, it should only match in a barrel.  Thus, `200 apples in a barrel` should _not_ match.
 
-First we need to construct Conditional Expression for apples container:
+First we need to construct a Conditional Expression for apples container:
 
     (?('LEQ250')in a box|in a barrel)
 
@@ -1375,7 +1369,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 ¹: **Backward direction** checked means 512 is _not_ included; unchecked means 512 _is_ included.
 
-²: **Project Panel "alternate meaning"** column shows the meaning for those those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
+²: **Project Panel "alternate meaning"** column shows the meaning for those bits when the action **1701** message (below) is set to **Find All** (in Projects) or **Replace in Projects**.
 
 > Let's see how the example value 515 used above is decoded:
 
