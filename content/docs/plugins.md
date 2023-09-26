@@ -38,7 +38,7 @@ still install it manually.  The plugin DLL file should be placed in
 the plugins subfolder of the Notepad++ Install Folder, under the subfolder
 with the same name of plugin binary name without file extension.
 
-For example, if the plugin you want to install named `myAwesomePlugin.dll`,
+For example, if the plugin you want to install is named `myAwesomePlugin.dll`,
 you should install it with one of the following paths:
 - `%PROGRAMFILES%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 64bit installation
 - `%PROGRAMFILES(x86)%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 32bit installation
@@ -50,7 +50,7 @@ If you are installing a plugin manually, please check the instructions or other 
 specific plugin, to see if you need to put other files in appropriate locations.
 
 _Note_: The Windows OS instinctively mistrusts DLLs from the internet (for very good reasons), and will not allow
-applications (like Notepad++) use that DLL.  Assuming you trust the source of the DLL: before starting Notepad++
+applications (like Notepad++) use that DLL.  Assuming you trust the source of the DLL: Before starting Notepad++
 and after downloading and manually installing a plugin in the right location, you need to right-click the DLL and
 visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click
 **Apply**, then **OK**; this will unblock the DLL so that Windows will allow Notepad++ to use it.
@@ -63,7 +63,7 @@ This takes a single DLL and puts it in the right directory, then tells you that 
 restart; if you do not manually exit Notepad++ (**File > Exit** or equivalent) and then restart
 Notepad++ from your shortcut or Start Menu, the plugin will _not_ be visible in the Plugins menu.
 
-_Note_: to clarify, this only imports a single DLL file.  If your plugin has other config
+_Note_: To clarify, this only imports a single DLL file.  If your plugin has other config
 files or documentation files or additional DLLs or resource files, this method _will not_
 put those files in the right place, and then the plugin _will not fully function_.  **Only**
 use this menu to install the plugin if your plugin _only_ has the single DLL in the zipfile.
@@ -71,8 +71,8 @@ use this menu to install the plugin if your plugin _only_ has the single DLL in 
 ### Permissions
 
 If you do not have write permission for the Notepad++ program directory hierarchy or at least the `Plugins\`
-subdirectory, you will need to get "elevated permission": if you are using Notepad++'s Plugins Admin or
-Import Plugins commands to install the plugin, you may need to re-run Notepad++ with Windows' "run as Administrator"
+subdirectory, you will need to get "elevated permission": If you are using Notepad++'s Plugins Admin or
+Import Plugins commands to install the plugin, you may need to re-run Notepad++ with Windows' "Run as Administrator"
 feature before doing the installation; if you are doing a manual installation, Windows may pop up the UAC dialog
 to get permission to write the file when you try to copy it into the right directory.
 
@@ -80,7 +80,7 @@ to get permission to write the file when you try to copy it into the right direc
 
 ### Getting started
 
-Here are the instructions to make your first Notepad++ plugin in less 10 minutes,
+Here are the instructions to make your first Notepad++ plugin in less than 10 minutes,
 by following 6 steps:
 
 1. Download and unzip the latest release of [Notepad++ Plugin Template](https://github.com/npp-plugins/plugintemplate/releases).
@@ -90,7 +90,7 @@ by following 6 steps:
 5. Customize plugin commands names and associated function name (and the other stuff, optional) in `PluginDefinition.cpp`.
 6. Define the associated functions.
 
-You are guided by the following comments in both
+You are guided by the following comments in both the
 [PluginDefinition.h](https://github.com/npp-plugins/plugintemplate/blob/master/src/PluginDefinition.h)
 and [PluginDefinition.cpp](https://github.com/npp-plugins/plugintemplate/blob/master/src/PluginDefinition.cpp) files:
 
@@ -105,12 +105,12 @@ A good sample illustrates better the whole picture than a detailed documentation
 You can check [Notepad++ Plugin Demo](https://github.com/npp-plugins/plugindemo/releases)
 to learn how to make some commands more complex.
 
-However, the knowledge of Notepad++ plugin system is required, if you want to
+However, knowledge of the Notepad++ plugin system is required, if you want to
 accomplish some sophisticated plugin commands.
 
-You can use
+You can visit the
 [Plugin development forum](https://notepad-plus-plus.org/community/category/5/plugin-development)
-for any technical questions/answers and the announcement your new plugin.
+for any technical questions/answers and the announcement of your new plugin.
 
 ### In other languages
 
@@ -119,7 +119,7 @@ for any technical questions/answers and the announcement your new plugin.
 * [D](https://gitlab.com/dokutoku/npp-api)
 * Delphi:
   - [Original (ANSI/UNICODE)](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
-  - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): this version has the headers necessary to work with Notepad++ v8.3.3
+  - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): This version has the headers necessary to work with Notepad++ v8.3.3
 
 ### Header Files
 
