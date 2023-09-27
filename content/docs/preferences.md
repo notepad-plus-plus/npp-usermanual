@@ -3,7 +3,7 @@ title: Preferences
 weight: 140
 ---
 
-There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Styler Configurator allows changing the visual appearance of anything that has a color or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
+There are three main dialogs for editing preferences and other user-defined settings: [Preferences](#Preferences), [Style Configurator](#style-configurator) and [Shortcut Mapper](#shortcut-mapper).  The Shortcut Mapper is a list of keyboard shortcuts to everything that can have one in Notepad++. Style Configurator allows changing the visual appearance of anything that has a color or a font. The Preferences dialog manages most other user-settings.  While there are various aspects in Notepad++ that are not configurable, you may not even notice them.
 
 For settings not covered by the three main dialogs, there are [other toggles and settings](#other-toggles-and-settings) which can be found in various dialogs, menus, and configuration files.
 
@@ -23,35 +23,36 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * To make changes to your localization, edit the language file `localization\<languagename>.xml`, as per the instructions in the [Binary Translation](../binary-translation/) section.
         * _NOTE_: After making changes to the XML file in the `localization` directory, or after upgrading to a new version of Notepad++, you need to refresh the `nativeLang.xml`: use the **Localization** drop-down to change the **Localization** to another language then change it back immediately to your preferred language, or skip the "another language" step and just click on the preferred language -- either way ends up with copying the file to `nativeLang.xml` and immediately updating Notepad++'s text for menus and dialogs.  (Unlike many configuration files, exiting Notepad++ and restarting the application will _not_ bring in the new settings from an edited `localization\<languagename>.xml`; you _must_ re-choose the desired **Localization** for the changes to be applied.)
         * _NOTE_: After changing the Localization in this Preferences dialog, certain translatable strings, like the tooltip/hover text in dialog boxes, will not refresh until Notepad++ is restarted.  If it ever looks like your Localization didn't fully activate, try exiting all instances of Notepad++ then restarting the application.
-* `☐ Show status bar`: there will be a Status Bar along the bottom of the Notepad++ window, showing file type, caret location, line-ending style, encoding, and INS/DEL mode.
+* **Status bar**: There will be a Status Bar along the bottom of the Notepad++ window, showing file type, caret location, line-ending style, encoding, and INS/DEL mode.
+    * `☐ Hide`: The status bar will be hidden
 * **Toolbar**:
-    * `☐ Hide`: the icon-based toolbar will be hidden
-    * There is a radio-button set of choices for the icons (updated v8.0.0)
-        * `Fluent UI: small`: uses small versions of the Fluent UI icons
-        * `Fluent UI: large`: uses large versions of the Fluent UI icons
-        * `Filled Fluent UI: small`: uses small versions of the Fluent UI icons, in a filled (or reverse-video) style
-        * `Filled Fluent UI: large`: uses large versions of the Fluent UI icons, in a filled (or reverse-video) style
-        * `Standard icons: small`: these are the small version of the traditional (pre-v8.0.0) icons
+    * `☐ Hide`: The icon-based toolbar will be hidden.
+    * There is a radio-button set of choices for the icons (updated v8.0.0):
+        * `Fluent UI: small`: Uses small versions of the Fluent UI icons.
+        * `Fluent UI: large`: Uses large versions of the Fluent UI icons.
+        * `Filled Fluent UI: small`: Uses small versions of the Fluent UI icons, in a filled (or reverse-video) style.
+        * `Filled Fluent UI: large`: Uses large versions of the Fluent UI icons, in a filled (or reverse-video) style.
+        * `Standard icons: small`: These are the small version of the traditional (pre-v8.0.0) icons.
 * **Document List Panel**:  (This section removed in v8.1.5.)
     * `☐ Disable extension column`: Prior to v8.1.5, if checked, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
-    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels)
+    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels).
 * **Tab Bar**:
-    * `☐ Hide`: the tab bar for the open files will not be visible
-    * `☐ Multi-line`: if there are enough tabs, they will wrap to a second line
-    * `☐ Vertical`: have the tabs on their side on the left, rather than along the top
-    * `☐ Reduce`: make the tab bar vertical region and font size smaller
-    * `☐ Alternate icons`: change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
+    * `☐ Hide`: The tab bar for the open files will not be visible.
+    * `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
+    * `☐ Vertical`: Have the tabs on their side on the left, rather than along the top.
+    * `☐ Reduce`: Make the tab bar vertical region and font size smaller.
+    * `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
       * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
       * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
-    * `☐ Lock (no drag and drop)`: prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs)
-    * `☐ Darken inactive tags`: change the fill-color on inactive tabs to a darker color
-    * `☐ Draw a coloured bar on active tab`: indicate the active tab by adding a colored bar
-    * `☐ Show close button on each tab`: add the close button to each tab's entry on the tab bar
-    * `☐ Double click to close document`: allows double-clicking on the tab to close the file
-    * `☐ Exit on close the last tab`: if the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open)
+    * `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
+    * `☐ Darken inactive tabs`: Change the fill-color on inactive tabs to a darker color.
+    * `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
+    * `☐ Show close button on each tab`: Add the close button to each tab's entry on the tab bar.
+    * `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
+    * `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 * **Menu**
-    * `☐ Hide menu bar (use Alt or F10 key to toggle)`: sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key
-    * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
+    * `☐ Hide menu bar (use Alt or F10 key to toggle)`: Sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key.
+    * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
 
 ### Editing
 
@@ -61,34 +62,34 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `Width`: [pulldown] Sets the width and shape of the typing caret:
         - `1`, `2`, `3`: Width (in pixels) of the vertical-bar-style typing caret.
         - `0`: Width of caret is 0 pixels, which means there is no visible caret.
-        - `Block`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the caret block will be on the last character of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `C`).
-        - `Block After`: the caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the block will be _after_ the character position of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `:`).
-    * `Blink Rate`: [slider] Adjust the rate at which the caret blinks, faster when moved left (**F**), slower when moved right (**S**)
-* **Line Wrap**: sets how lines will be wrapped (when **View > Word Wrap** is checked)
-    * `☐ Default`: wraps from the last visible column to the first visible column
-    * `☐ Aligned`: wraps from the last visible column to the same indent as the start of the unwrapped line
-    * `☐ Indent`: wraps from the last visible column to the next level of indent compared to the start of the unwrapped line
+        - `Block`: The caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the caret block will be on the last character of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `C`).
+        - `Block After`: The caret will be a full-character-width rectangle; while typing, the caret block will appear where the next character will be typed; while selecting text, the block will be _after_ the character position of the selection (so if you have text `ABC:` and select from `A` to `C`, the caret block will be on the `:`).
+    * `Blink Rate`: [slider] Adjust the rate at which the caret blinks, faster when moved left (**F**), slower when moved right (**S**).
+* **Line Wrap**: Sets how lines will be wrapped (when **View > Word Wrap** is checked)
+    * `☐ Default`: Wraps from the last visible column to the first visible column.
+    * `☐ Aligned`: Wraps from the last visible column to the same indent as the start of the unwrapped line.
+    * `☐ Indent`: Wraps from the last visible column to the next level of indent compared to the start of the unwrapped line.
 * **Current Line Indicator**: Determines how the current line will be indicated.
-    - `☐ None` : no indicator for which line is the current line.
-    - `☐ Highlight Background` : indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`
-    - `☐ Frame` : indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider
-        - **Width**: slider is used to set the width (in pixels) for the lines of the rectangle Frame for the current line
+    - `☐ None`: No indicator for which line is the current line.
+    - `☐ Highlight Background`: Indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`.
+    - `☐ Frame`: Indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider.
+        - **Width**: Use a slider to set the width (in pixels) for the lines of the rectangle frame for the current line.
     - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
-* **EOL (CRLF)**: changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is checked:
-    - **Default**: old behavior (`CR` and `LF` in reverse-video boxes)
-    - **Plain Text**": Looks like normal text for `CR`, `LF`, and `CRLF`
+* **EOL (CRLF)**: Changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is checked:
+    - **Default**: Old behavior (`CR` and `LF` in reverse-video boxes)
+    - **Plain Text**: `CR`, `LF`, and `CRLF` look like normal text.
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > EOL custom color**
-* **Non-Printing Characters**: changes the rendering of the Non-Printing Characters when **View > Show Symbol > Show Non-Printing Characters** or **Show All Characters** is checked:
+* **Non-Printing Characters**: Changes the rendering of the Non-Printing Characters when **View > Show Symbol > Show Non-Printing Characters** or **Show All Characters** is checked:
     - **Abbreviation**: The symbol will use the abbreviation value from [this table](../views/#show-symbol), such as `NBSP` for the "no-break space".
-    - **Codepoint**": The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
+    - **Codepoint**: The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > NPC custom color**
     - **Apply to C0, C1 & Unicode EOL**: Applies these Non-Printing Characters settings to the [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) as well as the Unicode "End of Line" characters for LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`)
-* `☐ Enable smooth font`: enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays
-* `☐ Enable virtual space`: enables putting the caret beyond the end of the line (new to v8.4.3)
-* `☐ Make current level folding/unfolding commands toggleable`: enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2)
-* `☐ Enable Multi-Editing`: allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s)
-* `☐ Enable scrolling beyond last line`: allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window)
-* `☐ Keep selection when right-click outside of selection`: prevents right-click from canceling active selection
+* `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
+* `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
+* `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
+* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s).
+* `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
+* `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
 
 ### Dark Mode
