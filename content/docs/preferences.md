@@ -113,8 +113,8 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
     * Notepad++ will track [Settings > Preferences > General](#general) settings for the **Tool Bar** and **Tab Bar** separately for Light Mode and Dark Mode, as well as [Settings > Style Configurator > Theme](#style-configurator) to allow you to have different tool bar icons or tab bar settings and themes in the different modes, so you can switch between them without having to manually make those changes (new to v8.4.8)
 * Tones: allow you to change the tone of the Dark Mode (new to v8.1.2)
    * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs, as of v8.1.3. (In v8.1.2, the Tones affected the menus and the Find/Replace/Mark dialog, but not the other dialogs.)  The menu pulldown controls, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
-   * `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone`, `☐ Black tone` => The dark color has a hint of that colored tone
-   * `☐ Customized tone` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
+   * `☐ Black`, `☐ Red`, `☐ Green`, `☐ Blue`, `☐ Purple`, `☐ Cyan`, `☐ Olive` => The dark color has a hint of that colored tone
+   * `☐ Customized` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
      * `Top` => choose the color of the menu bar and tool bar
      * `Menu hot track` => choose the color of the active menu bar entry
      * `Active` => choose the color of the active tab on the tab bar
@@ -126,17 +126,17 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
      * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
 
-### Margins / Border / Edge
+### Margins/Border/Edge
 
 These define the margin style, border width, and edge settings.
 
-* **Folder Margin Style**: if the active Language lexer allows for code folding, these determine
-    * `☐ Simple`: shows a `-` if that section is not folded, or a `+` if it is.
-    * `☐ Arrow`: shows a `▼` if that section is not folded, or a `▶` if it is.
-    * `☐ Circle tree`: shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded
-    * `☐ Box tree`: shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded
-    * `☐ None`: shows no symbols and hides that column, even for lexers that allow code folding
-        - The [View menu folding commands](../views/#folding) still work, even when the Folder Margin Style is set to None
+* **Fold Margin Style**: If the active Language lexer allows for code folding, these determine
+    * `☐ Simple`: Shows a `-` if that section is not folded, or a `+` if it is.
+    * `☐ Arrow`: Shows a `▼` if that section is not folded, or a `▶` if it is.
+    * `☐ Circle tree`: Shows a `⊖` with a line to the end of the section if that section is not folded, or a `⊕` if it is folded.
+    * `☐ Box tree`: Shows a `⊟` with a line to the end of the section if that section is not folded, or a `⊞` if it is folded.
+    * `☐ None`: Shows no symbols and hides that column, even for lexers that allow code folding.
+        - The [View menu folding commands](../views/#folding) still work, even when the Folder Margin Style is set to None.
 * **Border Width**
     * [number-slider]: sets the width (in pixels) of the border around each view's text editor; technically, it's the gap between the light and dark portions of the sunken border, so a width of 0 will still have the light and dark lines for the sunken edge
     * `☐ No edge`: will remove the entire border, including the light and dark bars, so it no longer appears sunken
@@ -146,22 +146,22 @@ These define the margin style, border width, and edge settings.
         * If the box is empty, there are no vertical edges.
         * If there is one number ℕ in the box, there will be one vertical edge, after the column for the ℕth character.
         * If there is more than one number (separated by whitespace), then there will be a vertical edge at each of the given character columns.
-        * `☐ Background mode`: the vertical edge is usually a vertical line; if this option is checked, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
-    * Single Vertical Edge: in older versions of Notepad++, there was only a single vertical edge available, with more toggled options:
-        * `☐ Show vertical edge`: shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line
-        * `☐ Line mode`: the vertical edge is indicated by a solid vertical line
-        * `☐ Background mode`: the vertical edge is indicated by styling the _background_ of the text to the right of the edge
-        * `Number of columns: __ `: sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page
+        * `☐ Background mode`: The vertical edge is usually a vertical line; if this option is checked, the vertical edge will be indicated by styling the _background_ of the text to the right of the edge.
+    * Single Vertical Edge: In older versions of Notepad++, there was only a single vertical edge available, with more toggled options:
+        * `☐ Show vertical edge`: Shows a vertical edge at the specified location, often used to indicate the right margin for manually setting the number of characters per line.
+        * `☐ Line mode`: The vertical edge is indicated by a solid vertical line.
+        * `☐ Background mode`: The vertical edge is indicated by styling the _background_ of the text to the right of the edge.
+        * `Number of columns: __ `: Sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page.
 * **Line Number**:
-    * `☐ Display`: shows the line numbers to the left of the text
-    * `☐ Dynamic width`: the line number display will adjust its width based on the number of digits needed
-    * `☐ Constant width`: the line number display will have enough width for any line number in the document
+    * `☐ Display`: Shows the line numbers to the left of the text.
+        * `☐ Dynamic width`: The line number display will adjust its width based on the number of digits needed.
+        * `☐ Constant width`: The line number display will have enough width for any line number in the document.
 * **Padding**: (new to v8.0.0)
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
-* `☐ Display Change History`: shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles)
-* `☐ Display bookmark`: adds an additional margin to the left of the text editing area, to show a large shaded circle next to all lines that contain a bookmark, and green arrow symbols that bracket a range of hidden lines.
+* `☐ Display Change History`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles)
+* `☐ Display bookmark`: Adds an additional margin to the left of the text editing area, to show a large shaded circle next to all lines that contain a bookmark, and green arrow symbols that bracket a range of hidden lines.
 
 ### New Document
 
