@@ -305,102 +305,102 @@ Affects the operations found in the **Find** dialog tabs.
 Defines whether or not to perform saving sessions, periodic backup, and backup on save.
 
 * **Session snapshot and periodic backup**
-    * `☐ Remember current session for next launch`: the current session is the current list of open files.  The next time you run Notepad++, it will open with that same list of files
-    * `☐ Enable session snapshot and periodic backup`: this will auto-save your changed file once every N seconds to the listed directory (default to `%AppData%\Notepad++\backup\`).
-        * It is not possible to select this option without `☐ Remember current session ...` also being active
-        * This is also how you enable Notepad++ to remember unsaved changes
-        * This will allow you to exit Notepad++ and resume, remembering changes to files that hadn't been intentionally saved
-        * When you exit Notepad++ with unsaved changes, Notepad++ will _not_ ask you to save changes.  It will just keep the periodic backup file, and reload from there rather than from the normal disk location for the file
-        * If you want Notepad++ to ask to you save edited files every time you close the file or exit Notepad++, do not enable this option.
+    * `☐ Remember current session for next launch`: The current session is the current list of open files.  The next time you run Notepad++, it will open with that same list of files.
+    * `☐ Enable session snapshot and periodic backup`: This will auto-save your changed file once every N seconds to the listed directory (default to `%AppData%\Notepad++\backup\`).
+        * It is not possible to select this option without `☐ Remember current session ...` also being active.
+        * This is also how you enable Notepad++ to remember unsaved changes.
+        * This will allow you to exit Notepad++ and resume, remembering changes to files that hadn't been intentionally saved.
+        * When you exit Notepad++ with unsaved changes, Notepad++ will _not_ ask you to save changes.  It will just keep the periodic backup file, and reload from there rather than from the normal disk location for the file.
+        * If you want Notepad++ to ask you to save edited files every time you close the file or exit Notepad++, do not enable this option.
         * This is _not_ a long-term backup option.
-          * Every time you do a manual save, or every time you close the file while leaving Notepad++ open, this periodic backup of the file will be deleted
-          * If there is a Notepad++ crash or Windows crash, it is possible for you to lose data
+          * Every time you do a manual save, or every time you close the file while leaving Notepad++ open, this periodic backup of the file will be deleted.
+          * If there is a Notepad++ crash or Windows crash, it is possible for you to lose data.
         * Periodic Backup file naming:
-          *  For _named_ files (existing or saved files that have recent edits): the name of the backup file (in the listed directory) is `filename.ext@yyyy-mm-dd_hhmmss`, where `filename.ext` is from the main file.  As soon as you manually save the file (so it’s written to disk in the real location), the backup goes away, because the purpose of the periodic backup is to save a copy of a file that you’ve edited but not saved. The timestamp part of the periodic-backup-name is based on the first automatic save after the last manual save. Example: if you saved a file at 8:10:00am, the backup would go away; then, at 8:12:30am, you type something but don’t save, so sometime within N seconds of that (8:12:30+N) it will periodic-backup-save and make a file with a timestamp about then – something like `filename.ext@2021-06-23_081234`. If you left for a while (or exited Notepad++ and reloaded) and came back at 12:34:56pm and typed another character, it would do it’s periodic-backup-save on that file again so the last-modified time of the backup would be updated), but the name of the periodic-backup file will remain the same.
-          *  For _unnamed_ files (new files that haven't been saved): the name of the backup file (in the listed directory) is `new NNN@yyyy-mm-dd_hhmmss`, where `new NNN` matches the name listed in the tab title. Since `new NNN` files are by definition not manually saved, the timestamp in the periodic-backup filename is based on when it did the first periodic-backup-save for that unnamed file.
+          *  For _named_ files (existing or saved files that have recent edits) the name of the backup file (in the listed directory) is `filename.ext@yyyy-mm-dd_hhmmss`, where `filename.ext` is from the main file.  As soon as you manually save the file (so it’s written to disk in the real location), the backup goes away, because the purpose of the periodic backup is to save a copy of a file that you’ve edited but not saved. The timestamp part of the periodic-backup-name is based on the first automatic save after the last manual save. Example: if you saved a file at 8:10:00am, the backup would go away; then, at 8:12:30am, you type something but don’t save, so sometime within N seconds of that (8:12:30+N) it will periodic-backup-save and make a file with a timestamp about then – something like `filename.ext@2021-06-23_081234`. If you left for a while (or exited Notepad++ and reloaded) and came back at 12:34:56pm and typed another character, it would do it’s periodic-backup-save on that file again so the last-modified time of the backup would be updated), but the name of the periodic-backup file will remain the same.
+          *  For _unnamed_ files (new files that haven't been saved) the name of the backup file (in the listed directory) is `new NNN@yyyy-mm-dd_hhmmss`, where `new NNN` matches the name listed in the tab title. Since `new NNN` files are by definition not manually saved, the timestamp in the periodic-backup filename is based on when it did the first periodic-backup-save for that unnamed file.
 * **Backup on save**
-    * `☐ None`: no additional backup will be performed when the file is saved
-    * `☐ Simple backup`: it will save a copy of the file, with the same name and extension, but with `.bak` appended.
-      * if the `Custom Backup Directory` is turned on and defined, it will save the simple backup in that defined directory; for example, if it is set as `c:\myCustomBackupFolder\`, then the file `c:\path\to\file.txt` will save its simple backup as `c:\myCustomBackupFolder\file.txt.bak`
-        * _Note_: if you are editing two files with the same name which are in separate directories (like `c:\path\a.txt` and `c:\other\a.txt`), the Custom Backup directory will only contain _one_ backup file (`a.txt.bak`) , with the contents of whichever file was saved most recently.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backup of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
-      * if the `Custom Backup Directory` is not turned on and defined, it will save the simple backup in the same directory as the original file; for example, saving `c:\path\to\file.txt` will save its simple backup as `c:\path\to\file.txt.bak`
-    * `☐ Verbose backup`: it will save a copy of the file, with a date-and-timestamp added to the filename (in the format `yyyy-mm-dd_hhmmss`) as well as the `.bak` extension.
-      * if the `Custom Backup Directory` is turned on and defined, it will save it in that directory; for example, if it is set as `c:\myCustomBackupFolder\`, then the file `c:\path\to\file.txt file` would be backed up as `c:\myCustomBackupFolder\file.txt.2021-06-28_073650.bak`
-        * _Note_: if you are editing multiple files with the same name which are in separate directories (like `c:\path\a.txt` and `c:\other\a.txt`), the Custom Backup directory will contain verbose backup files for nearly all individual saves; however, if it happens that both files were saved within the same second (by being really fast, or using Save All), then only_one_ backup file will exist with that timestamp (`a.txt.2021-06-28-073722.bak`), with the contents of whichever file happened to be saved last in that second.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backups of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
-      * if the `Custom Backup Directory` is not turned on and defined, it will save it in `.\nppBackup\` subdirectory of the file's current directory; for example, saving `c:\path\to\file.txt` will create a backup called `c:\path\to\nppBackup\file.txt.2021-06-28_073650.bak`
-    * `☐ Custom Backup Directory`: leave blank to put the backup in the same directory as the file; set to a directory to have all files backed up to one directory
+    * `☐ None`: No additional backup will be performed when the file is saved.
+    * `☐ Simple backup`: It will save a copy of the file, with the same name and extension, but with `.bak` appended.
+      * If the `Custom Backup Directory` is turned on and defined, it will save the simple backup in that defined directory; for example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt` will save its simple backup as `C:\myCustomBackupFolder\file.txt.bak`
+        * _Note_: If you are editing two files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will only contain _one_ backup file (`a.txt.bak`), with the contents of whichever file was saved most recently.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backup of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
+      * If the `Custom Backup Directory` is not turned on and defined, it will save the simple backup in the same directory as the original file; for example, saving `C:\path\to\file.txt` will save its simple backup as `C:\path\to\file.txt.bak`.
+    * `☐ Verbose backup`: It will save a copy of the file, with a date-and-timestamp added to the filename (in the format `yyyy-mm-dd_hhmmss`) as well as the `.bak` extension.
+      * If the `Custom Backup Directory` is turned on and defined, it will save it in that directory; for example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt file` would be backed up as `C:\myCustomBackupFolder\file.txt.2021-06-28_073650.bak`
+        * _Note_: If you are editing multiple files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will contain verbose backup files for nearly all individual saves; however, if it happens that both files were saved within the same second (by being really fast, or using Save All), then only _one_ backup file will exist with that timestamp (`a.txt.2021-06-28-073722.bak`), with the contents of whichever file happened to be saved last in that second.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backups of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
+      * If the `Custom Backup Directory` is not turned on and defined, it will save it in the `.\nppBackup\` subdirectory of the file's current directory; for example, saving `C:\path\to\file.txt` will create a backup called `C:\path\to\nppBackup\file.txt.2021-06-28_073650.bak`
+    * `☐ Custom Backup Directory`: Leave blank to put the backup in the same directory as the file; set to a directory to have all files backed up to one directory.
 
 #### Important backup information
 
 This bears repeating: with `☐ Enable session snapshot and periodic backup` on, Notepad++ will allow you to exit with unsaved changes without asking you to save, and unless an error occurs, the next time you run Notepad++, your unsaved changes will still be there.  Notepad++ has been coded in such a way as to make this periodic backup as reliable as possible.  However, there are crashes and errors possible outside of Notepad++'s control, and there is no guarantee or warranty that your unsaved data will remain after a crash or other major system error.  Once you manually save, the periodic backup is deleted.  The builtin periodic backup should not be considered a long-term backup option, and unsaved changes in files should always be considered as volatile and unsaved.
 
-Backup on save is the long-term backup solution built into Notepad++: simple backup will just keep one copy that matches the most recent save of the file; verbose backup keeps multiple copies with date stamps.  The location of backup-on-save backup files is described above.
+Backup on save is the long-term backup solution built into Notepad++: Simple backup will just keep one copy that matches the most recent save of the file; verbose backup keeps multiple copies with date stamps.  The location of backup-on-save backup files is described above.
 
-If you are editing mission-critical files: Your data is your responsibility.  It is recommended to always use dedicated backup software in addition to any periodic-backup or backup-on-save features you have enabled.  You may want to look into the AutoSave plugin (available through **Plugins > Plugins Admin**) for better control of automated-saving while changes are being made -- though if you install that plugin, understand that you have to configure it before it will automatically save your file(s) for you.  Using cloud-based folders may provide backup and/or revision history.  A dedicated revision control system, such as git or subversion, will provide control over your version history.
+If you are editing mission-critical files: Your data is your responsibility.  It is recommended to always use dedicated backup software in addition to any periodic-backup or backup-on-save features you have enabled.  You may want to look into the AutoSave plugin (available through **Plugins > Plugins Admin**) for better control of automated-saving while changes are being made -- though if you install that plugin, understand that you have to configure it before it will automatically save your file(s) for you.  Using cloud-based folders may provide backup and/or revision history.  A dedicated revision control system, such as Git or Subversion, will provide control over your version history.
 
 ### Auto-Completion
 
 Sets options for [auto-completion](../auto-completion/) of text, including word completion, syntax completion, and automatically pairing certain punctuation pairs and html/xml tags.
 
 * **Auto-Completion**
-    * `☐ Enable auto-completion on each input`: a dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion
-        * `☐ Function completion`: will auto-complete function names only, based on the keywords in the active [auto-completion file](../auto-completion/)
-        * `☐ Word completion`: will auto-complete words only, based on words that already exist in the current file
-        * `☐ Function and word completion`: will auto-complete both function names and words
-    * `From _n_th character`: must type at least _n_ characters before the auto
-        * if `☐ Enable auto-completion on each input` is checked, the _n_th character entry will be disabled (greyed out)
-    * `☐ Ignore numbers`: won't try to auto-complete when typing numbers
-    * **Insert Selection**: v8.2.1 added a new section
-        * `☐ TAB`: toggles whether or not TAB will accept your choice
-        * `☐ ENTER`: toggles whether or not ENTER will accept your choice
+    * `☐ Enable auto-completion on each input`: A dropdown selection will appear as you type; arrow keys will select various choices, TAB or ENTER will accept a choice, ESC will cancel auto-completion.
+        * `☐ Function completion`: Will auto-complete function names only, based on the keywords in the active [auto-completion file](../auto-completion/).
+        * `☐ Word completion`: Will auto-complete words only, based on words that already exist in the current file.
+        * `☐ Function and word completion`: Will auto-complete both function names and words.
+    * `From _n_th character`: Must type at least _n_ characters before auto-completion activates.
+        * If `☐ Enable auto-completion on each input` is unchecked, the _n_th character entry will be disabled (greyed out).
+    * `☐ Ignore numbers`: Won't try to auto-complete when typing numbers.
+    * **Insert Selection**: v8.2.1 added a new section.
+        * `☐ TAB`: Toggles whether TAB will accept your choice.
+        * `☐ ENTER`: Toggles whether ENTER will accept your choice.
         * v8.2 and earlier behaved as if both have checkmarks; v8.2.1 and later defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
     * `☐ Make auto-completion list brief`: when unchecked, once the auto-completion list pops up, the list will stay the same size even as you type additional letters, but the selection will move to the first word that matches all the characters typed; when checked, as you type more characters, the auto-completion list will shrink to only match words that match all the typed characters (new to v8.5; prior to v8.5, the list never shrank).
         - Example: If you have `abc`, `acb`, and `add` in your auto-completion list and start auto-completion from the 1st character, when you type `a`, all three words will appear in the auto-completion list.  With this option unchecked (or in earlier versions of Notepad++), typing `d` next will just move the selection to `add`, but all three words will still be shown; with this option checked, once you type the `d`, only `add` will be shown in the list.
-    * `☐ Function parameters hint on input`: for applicable programming languages, will provide hints on what to type in a function parameter list
+    * `☐ Function parameters hint on input`: For applicable programming languages, will provide hints on what to type in a function parameter list.
     * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](../editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
 * **Auto-Insert**
-    * Will automatically insert the closing item for any of the checked pairs, or the three manually-chosen matched pairs
+    * Will automatically insert the closing item for any of the checked pairs, or the three manually-chosen matched pairs.
         * `☐ ()`
         * `☐ []`
         * `☐ {}`
         * `☐ ""`
         * `☐ ''`
         * `☐ html/xml close tag`
-        * `Matched pair [1,2,3]: __ __`: define the open and close character(s) for three user-defined pairs
-* `☐ Auto-indent`: when making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line
+        * `Matched pair [1,2,3]: __ __`: Define the open and close character(s) for three user-defined pairs.
+* `☐ Auto-indent`: When making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line.
 
 ### Multi-Instance and Date
 
 The **Multi-Instance** settings determine whether multiple instances of Notepad++ can be run simultaneously.
 
-* `☐ Default (mono-instance)`: every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
-* `☐ Always in multi-instance mode`: every time you open a file from Windows, it will open a new instance of Notepad++.
-* `☐ Open session in a new instance (and save session automatically on exit)`: each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while the instance exiting, if this option is set.
+* `☐ Default (mono-instance)`: Every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
+* `☐ Always in multi-instance mode`: Every time you open a file from Windows, it will open a new instance of Notepad++.
+* `☐ Open session in a new instance (and save session automatically on exit)`: Each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while exiting the instance, if this option is set.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
 
 The **Panel State and [-nosession]** checkboxes allow panel state to be remembered even when running in multi-instance mode or with `-nosession` (added v8.4.9).  Normally, when run with `-nosession`, or when subsequent instances are run, all panels start as "off" (because the new instance ignores the session file).  With each panel type that is checkmarked in these settings, Notepad++ will "remember" whether that panel was open in the previous session, even when the session is otherwise being ignored.  The panels available are Clipboard History, Document List, Character Panel, Folder as Workspace, Project Panels, Document Map, Function List, and a catchall for all Plugin panels.  For changes to these settings to take effect, Notepad++ must be restarted.
 
-The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).  The
+The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).
 
-* `☐ Reverse default date time order (short & long formats)`: if checked, the short and long formats will insert the date then the time; if unchecked, the short and long formats will insert the time then the date.
+* `☐ Reverse default date time order (short & long formats)`: If checked, the short and long formats will insert the date then the time; if unchecked, the short and long formats will insert the time then the date.
 * `Custom Format`: Enter in the format string that will define the date and time display desired when inserting the customized time.
 
 Format | Description | Example
 ---|---|---
 --- | _Day_ | ---
-d | Day of the month as digits without leading zeros for single-digit days. | 1, 31
-dd | Day of the month as digits with leading zeros for single-digit days. | 01, 31
+d | Day of the month as digits without leading zeros for single-digit days | 1, 31
+dd | Day of the month as digits with leading zeros for single-digit days | 01, 31
 ddd | Abbreviated day of the week | Mon
 dddd | Day of the week | Monday
 --- | _Month_ | ---
-M | Month as digits without leading zeros for single-digit months. | 1
-MM | Month as digits with leading zeros for single-digit months. | 01
+M | Month as digits without leading zeros for single-digit months | 1
+MM | Month as digits with leading zeros for single-digit months | 01
 MMM | Abbreviated month | Nov
 MMMM | Full month | November
 --- | _Year_ | ---
-y | Year represented only by the last digit. | 9
-yy | Year represented only by the last two digits. A leading zero is added for single-digit years. | 99
+y | Year represented only by the last digit | 9
+yy | Year represented only by the last two digits - A leading zero is added for single-digit years. | 99
 yyyy | Year represented by a full four or five digits | 1999
 g, gg | Period/era string formatted | B.C., A.D.
 --- | _Time_ | ---
@@ -423,11 +423,11 @@ tt | Multi-character time marker string | AM, PM
 Sets the characters that are considered part of a "word" for quick selections using double-click, [Smart Highlighting](#highlighting), or the "match whole word only" in a normal search expression.  It is also used for [auto-completion](../auto-completion/#create-auto-completion-definition-files).  This setting does _not_ affect a [regular expression](../searching/#regular-expressions)'s interpretation of a word character or word boundary.
 
 * **Word character list**
-    * `☐ Use default Word character list as it is`: for Smart Highlighting (see above) or the Normal search mode in the Find and Replace dialogs, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only"
+    * `☐ Use default Word character list as it is`: For Smart Highlighting (see above) or the Normal search mode in the Find and Replace dialogs, will use the normal alphanumeric rules for determining what constitutes a word for "Match Whole Word Only".
         * The default "word characters" include anything that Unicode considers alphanumeric, plus the underscore "_" character.
-            * Includes: standard Latin characters, accented characters, letter-like symbols, superscript digits, and enclosed (circled) digits
-            * Excludes: punctuation, mathematical operators, box drawing, arrows, emoji, or other such symbols.
-    * `☐ Add your character as part of word`: sometimes, the default "word character list" isn't sufficient for you; if you want other characters to be considered in "whole word only", add them here
+            * Includes: Standard Latin characters, accented characters, letter-like symbols, superscript digits, and enclosed (circled) digits
+            * Excludes: Punctuation, mathematical operators, box drawing, arrows, emoji, or other such symbols
+    * `☐ Add your character as part of word`: Sometimes, the default "word character list" may not be sufficient to you; if you want other characters to be considered in "whole word only", add them here.
         * The value should be a string consisting of all the additional characters you would like to be included as a "word character".
         * Spaces are liable to cause problems, and are not recommended to be present in this entry.  If you try to add a space, the dialog box will show a warning message.
         * If you have characters in this box, then later come and delete them all out, it will not fully stop using those extra characters as delimiters until you  switch the preference back to using the default word character list, or restart Notepad++.
@@ -440,32 +440,32 @@ Sets the characters that are considered part of a "word" for quick selections us
 Some features may slow performance in large files. These features can be auto-disabled on opening a large file, using the settings in this section.  (This customization section is new to v8.4.7.  In previous versions, Notepad++ just quietly deactivated syntax highlighting on any files greater than 200MB, without user configurability.)
 
 NOTE:
-1. Modifying options here requires re-open currently opened large files to get proper behavior.
-2. If "Deactivate Word Wrap globally" is checked and you open a large file, "Word Wrap" will be disabled for all files. You can re-enable it via menu **View > Word Wrap**.
+1. Modifying options here requires you to re-open currently opened large files to get proper behavior.
+2. If "Deactivate Word Wrap globally" is checked and you open a large file, "Word Wrap" will be disabled for all files. You can re-enable it via **View > Word Wrap**.
 
 - **Large File Restriction**
     - `?`: This box provides some helpful hover text (the introductory paragraphs in this manual section were derived from this hover text).
-    - `☐ Enable Large File Restriction (no syntax highlighting)`: when checked, there will be no syntax highlighting for large files, and the other options below will come into effect; when unchecked, there will be no Large File Restrictions active, and Notepad++ will apply all syntax highlighting and other features, even on large files, despite any performance degredation.
+    - `☐ Enable Large File Restriction (no syntax highlighting)`: When checked, there will be no syntax highlighting for large files, and the other options below will come into effect; when unchecked, there will be no Large File Restrictions active, and Notepad++ will apply all syntax highlighting and other features, even on large files, despite any performance losses.
     - `Define Large File Size: ___ MB`: Put in "size limit" which will trigger Large File Restrictions.
     - `☐ Deactivate Word Wrap globally`: When checked, Notepad++ will deactivate the Word Wrap feature for _all_ files (whether large or small); when unchecked, Word Wrap features will not be affected when a large file is open.
     - `☐ Allow Auto-completion`: When checked, Auto-completion will still be available for large files.  When unchecked, large files will not allow Auto-completion.
     - `☐ Allow Smart Highlighting`: When checked, Smart Highlighting will still be available for large files.  When unchecked, large files will not allow Smart Highlighting.
     - `☐ Allow Brace Match`: When checked, the Brace Match feature will still be available for large files.  When unchecked, large files will not allow Brace Match.
-    - `☐ Allow URL Clickable Link`: When checked, the text that looks like a URL will be presented as a clickable link.  When unchecked, large files will not turn URL text into a clickable link.
+    - `☐ Allow URL Clickable Link`: When checked, text that looks like a URL will be presented as a clickable link.  When unchecked, large files will not turn URL text into clickable links.
 
 
 
 ### Cloud & Link
 
-* **Settings on cloud**: Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.  More information can be found in the [Config files location](../config-files/#configuration-files-location)
-    * `☐ No Cloud`: saves settings in the normal location
-    * `☐ Set your cloud location path here`: settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider
+* **Settings on cloud**: Allows saving your settings to the cloud instead of in the normal `%AppData%` or program-install folders.  More information can be found in the [Config files location](../config-files/#configuration-files-location).
+    * `☐ No Cloud`: Saves settings in the normal location.
+    * `☐ Set your cloud location path here`: Settings will go in the given directory, which is assumed to be in a folder that's synced to your cloud-provider.
 
 * **Clickable Link Settings**: Affects behavior of URLs in your document.
-    * `☐ Enable`: text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**
-    * `☐ No underline`: will remove the underline normally present on a link
-    * `☐ Enable fullbox mode`: the background color and foreground color will change on hoverover; when unchecked, just the foreground color will change
-    * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs. The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they do not need to be included in this entry box.
+    * `☐ Enable`: Text that appears to be a URL will allow you to double-click to open that URL in your default browser.  When you hover over the URL, it will change to the style defined in **Style Configurator > Global Styles > URL hovered**.
+    * `☐ No underline`: Will remove the underline normally present on a link.
+    * `☐ Enable fullbox mode`: The background color and foreground color will change on hover-over; when unchecked, just the foreground color will change.
+    * `URI Customized Schemes`: Space-separated list of additional schemes to recognize as URLs. The schemes `ftp:// http:// https:// mailto: file://` are always recognized, no matter what the contents of this setting, so they need not be included in this entry box.
 
 
 
@@ -474,39 +474,39 @@ NOTE:
 
 Set your search engine for "Search on Internet" command (found in the **Edit > On Selection** menu, or in the right-click context menu).  It will search for the word under the caret (or for the whole selection, if a selection is made).
 
-If you want to specify a search engine not listed, type the full URL, with the text `$(CURRENT_WORD)` as the placeholder for the search term (as shown in the example in the Preferences dialog box)
+If you want to specify a search engine not listed, type the full URL, with the text `$(CURRENT_WORD)` as the placeholder for the search term (as shown in the example in the Preferences dialog box).
 
 ### MISC.
 
 A variety of settings that didn't fit elsewhere
 
 * **Document Switcher**
-    * `☐ Enable`: hitting Ctrl+TAB will allow you to easily switch through all the open documents
-    * `☐ Enable MRU behavior`: it will default to selecting the most-recently-used file (or "MRU", for short) in the Ctrl+TAB list
-        - When checkmarked: Ctrl+TAB will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
-        - When not checkmarked: Ctrl+TAB will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
+    * `☐ Enable`: Hitting `Ctrl+TAB` will allow you to easily switch through all the open documents.
+    * `☐ Enable MRU behavior`: It will default to selecting the most recently used file (or "MRU", for short) in the `Ctrl+TAB` list.
+        - When checkmarked: `Ctrl+TAB` will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
+        - When not checkmarked: `Ctrl+TAB` will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
 * **Document Peeker**
-    * `☐ Peek on tab`: if you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar
-    * `☐ Peek on document map`: if you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document
+    * `☐ Peek on tab`: If you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar.
+    * `☐ Peek on document map`: If you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document.
 * **File Status Auto-Detection**
     * [pulldown]
-        * `Enable`: for the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++
-        * `Enable for all open files`: for all active files, check periodically to see if the file has been updated on disk
-        * `Disable`: will not check to see if the file has been updated on disk
-    * `☐ Update silently`: instead of prompting, will automatically reload the file from disk
-    * `☐ Scroll to the last line after update`: will scroll to the end of the file after reloading from disk (otherwise, the caret and scrolled-location stays where it was before the update)
-* `☐ Enable Notepad++ auto-updater`: will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
-* `☐ Mute all sounds`: when checked, a sound will provide feedback on certain actions (example: if a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when unchecked, Notepad++ will remain silent for those actions.
-* `☐ Autodetect character encoding`: when opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
-* `☐ Minimize to system tray`: place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized
-* `☐ Show only filename in title bar`: use just the file name (instead of the full path) of the active file in the Notepad++ title bar
-* `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: enables DirectWrite drawing
+        * `Enable`: For the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++.
+        * `Enable for all open files`: For all active files, check periodically to see if the file has been updated on disk.
+        * `Disable`: Will not check to see if the file has been updated on disk.
+    * `☐ Update silently`: Instead of prompting, will automatically reload the file from disk.
+    * `☐ Scroll to the last line after update`: Will scroll to the end of the file after reloading from disk (otherwise, the caret and scrolled-location stays where it was before the update).
+* `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
+* `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
+* `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
+* `☐ Minimize to system tray`: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
+* `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
+* `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
   * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
   * This is not on by default, because it may cause performance issues.
-* `☐ Enable Save All confirm dialog`: when Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Cancel** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future
-* `Session file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
-* `Workspace file ext.`: populate with a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
+* `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
+* `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
+* `Workspace file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 
 ## Style Configurator
 
