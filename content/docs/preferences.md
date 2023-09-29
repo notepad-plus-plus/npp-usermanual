@@ -168,18 +168,18 @@ These define the margin style, border width, and edge settings.
 These define properties of new documents (end-of-line format, encoding, and syntax language).
 
 * **Format (Line ending)**:
-    * `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
+    * `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: Newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
 * **Encoding**
-    * `ANSI`: characters are represented by a single 8-bit byte, and there are only 256 available code points
-    * `UTF-8`: this can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters
-        * `☐ Apply to opened ANSI files`: if you open an ANSI file, this allows it to be "upgraded" to UTF-8
-    * `UTF-8 with BOM`: this is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file
-    * `UTF-16 Big Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`)
-    * `UTF-16 Little Endian with BOM`: this encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v8.0.0, it was shown as `UCS-2`)
-    * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**)
-    * _Note_: the [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files
-* **Default Language**: this pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
-* `☐ Always open a new document in addition at startup` : with this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
+    * `ANSI`: Characters are represented by a single 8-bit byte, and there are only 256 available code points.
+    * `UTF-8`: This can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters.
+        * `☐ Apply to opened ANSI files`: If you open an ANSI file, this allows it to be "upgraded" to UTF-8.
+    * `UTF-8 with BOM`: This is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file.
+    * `UTF-16 Big Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-signficant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`).
+    * `UTF-16 Little Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-signficant byte first) (Prior to v8.0.0, it was shown as `UCS-2`).
+    * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**).
+    * _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
+* **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
+* `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
 
 
 ### Default Directory
@@ -187,24 +187,24 @@ These define properties of new documents (end-of-line format, encoding, and synt
 These affect open and save operations.
 
 * **Default Directory**:
-    * `Follow current document`: open/save dialogs will default to the current directory for the current file
-    * `Remember last used directory`: open/save dialogs will remember the last directory you used in the dialog on subsequent uses of the dialogs (regardless of where the current file is located).  _Note_: the last used directory will only be updated when the **Open** or **Save** option is selected; if you **Cancel** or escape out of dialog, the last used directory will not be updated and will keep its previous value.
-        - In older versions, the last used directory is not remembered across runs of Notepad++: if you restart Notepad++, when you first initiate a **Save As**, it will prompt with the directory the `notepad++.exe` file is in.  But starting in v8.5.5, the active session file actually tracks that directory.
+    * `Follow current document`: Open/save dialogs will default to the current directory for the current file.
+    * `Remember last used directory`: Open/save dialogs will remember the last directory you used in the dialog on subsequent uses of the dialogs (regardless of where the current file is located).  _Note_: The last used directory will only be updated when the **Open** or **Save** option is selected; if you **Cancel** or escape out of dialog, the last used directory will not be updated and will keep its previous value.
+        - In older versions, the last used directory is not remembered across runs of Notepad++: If you restart Notepad++, when you first initiate a **Save As**, it will prompt with the directory the `notepad++.exe` file is in.  But starting in v8.5.5, the active session file actually tracks that directory.
     * `___ ...`: this entry box with no label allows you to browse to a default directory, and all open/save dialogs will start in that directory
-* `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: when checked, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when unchecked, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++
+* `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: When checked, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when unchecked, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++.
 
 ### Recent Files History
 
-These change how the list of recent files is displayed in the File menu.
+These change how the list of recent files is displayed in the **File** menu.
 
-* `☐ Don't check at launch time`: will skip checking whether files in the Recent Files History list exist at launch time.
-    * this is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the Recent Files History list
-    * this is also useful if you like knowing what files were previously edited, even after you've deleted those files from the folder
-* `Max number of entries`: show the _n_ most recent files in the list
-* `☐ In Submenu`: will show the recent files in a "Recent Files" submenu of the File menu, rather than directly in the file menu
-* `☐ Only File Name`: will show just the file name, without the drive or path
-* `☐ Full File Name Path`: will show the full path, including drive, path, and file name
-* `☐ Customize Maximum Length`: will only list the first _n_ characters from the full file path
+* `☐ Don't check at launch time`: Will skip checking whether files in the Recent Files History list exist at launch time.
+    * This is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the Recent Files History list.
+    * This is also useful if you like knowing what files were previously edited, even after you've deleted those files from the folder.
+* `Max number of entries`: Show the _n_ most recent files in the list.
+* `☐ In Submenu`: Will show the recent files in a "Recent Files" submenu of the **File** menu, rather than directly in the **File** menu.
+* `☐ Only File Name`: Will show just the file name, without the drive or path.
+* `☐ Full File Name Path`: Will show the full path, including drive, path, and file name.
+* `☐ Customize Maximum Length`: Will only list the first _n_ characters from the full file path.
 
 _Note_: Please understand that the Recent Files History shows the history of files recently _closed_, not recently _opened_.
 
@@ -223,82 +223,82 @@ To unregister an extension, click it in the right column, and use the left arrow
 This affects the display of the main Language menu, and also affects the per-language tab settings.
 
 * **Language Menu**:
-    * `☐ Make language menu compact` will make submenus for languages that start with the same letter
-        * Under normal circumstances, this makes the list of items in the **Language** menu much shorter: the standard 80+ languages will be reduced to about 20 submenus and a few standalone **Language** menu entries
-        * For example, Perl and Python syntax highlighting would be selected through **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu
-    * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list
-        * If you have moved items to Disabled Items _and_ have checked `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**
+    * `☐ Make language menu compact` will make submenus for languages that start with the same letter.
+        * Under normal circumstances, this makes the list of items in the **Language** menu much shorter: the standard 80+ languages will be reduced to about 20 submenus and a few standalone **Language** menu entries.
+        * For example, Perl and Python syntax highlighting would be selected through the **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu.
+    * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list.
+        * If you have moved items to Disabled Items _and_ have checked `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**.
 * **Tab settings**:
-    * `[Default]` sets the tab behavior for the "default" condition
-    * `normal` sets the tab behavior for plain text
-    * other selections will choose which syntax-language the tab settings are being changed
-    * `☐ Use default value`: not visible on the `[Default]` selection.  For other languages, will use the values from the `[Default]` selection for that particular language
+    * `[Default]` sets the tab behavior for the "default" condition.
+    * `normal` sets the tab behavior for plain text.
+    * Other selections will choose for which syntax-language the tab settings are being changed.
+    * `☐ Use default value`: Not visible on the `[Default]` selection.  For other languages, will use the values from the `[Default]` selection for that particular language.
     * `Tab size : ___`: sets the width of the tab stop.  (For example, the picture below shows a tab size of 4, so the tab stops will be at 1, 5, 9. and so on.)
-    * `☐ Replace by space`: when set, hitting the Tab key will insert up to that number of space (U+0020) characters, such that the next character will be at the next tab stop; when not set, the Tab key will insert the literal ASCII Tab (U+0009) character.
+    * `☐ Replace by space`: When set, hitting the Tab key will insert up to that number of space (U+0020) characters, such that the next character will be at the next tab stop; when not set, the Tab key will insert the literal ASCII Tab (U+0009) character.
         - This setting affects only what is typed _after_ the setting is changed; turning this option on does not automatically change Tab characters that are already in your document.  To convert already-existing Tab characters, you may use a search-and-replace or use the built-in [**Edit > Blank Operations**](../editing/#edit-menu) commands.
         - Example: When `☐ Replace by space` is not set, then hitting the Tab key will insert the single Tab character in the file which will be _displayed_ as a gap wide enough to align the text to the next tab stop, as shown on the left of the image.  When `☑ Replace by space` is set, hitting the Tab key it will insert enough literal space characters so that the next character (after the spaces) will be aligned at the next tab stop, as shown in the right of the image.
 
             ![](../images/edit-tab-stops.png)
 
-            _The image has [**View > Show Symbol > Whitespace and Tab**](../views/#show-symbol) enabled to make the tab-characters vs space characters obvious._
-* `☐ Treat backslash as escape character for SQL`: this affects the **Language > SQL** handling of the `\` backslash character
+            _The image has_ [**View > Show Symbol > Show Space and Tab**](../views/#show-symbol) _enabled to make the tab-characters vs space characters obvious._
+* `☐ Treat backslash as escape character for SQL`: This affects the **Language > SQL** handling of the `\` backslash character.
 
 ### Highlighting
 
 Affects the highlighting of the selected text, which is referred to by the menu entries as the "Token".
 
 * **Style All Occurrences of Token** (previously **Mark All**)
-    * _Note_: this section of the preferences was renamed v8.1.4; it was known as **Mark All** in v8.0 - v8.1.3
-    * `☐ Match case`: Mark All will be case-sensitive
-    * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
+    * _Note_: This section of the preferences was renamed with v8.1.4; it was known as **Mark All** in v8.0 - v8.1.3.
+    * `☐ Match case`: Mark All will be case-sensitive.
+    * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences).
     * This setting section applies to the **Search** menu's **Mark All** submenu entries, and the equivalent [right-click Context Menu](../config-files/#the-context-menu-contextmenu-xml)'s **Style all occurrences of token** submenu entries, for applying "Style Tokens" to specific text.
 * **Smart Highlighting**
-    * `☐ Enable`: if you select a piece of text, Smart Highlighting will color all matching pieces of text.  It will use the style defined in **Style Configurator > Global Styles > Smart Highlighting**
-    * `☐ Highlight another view`: Smart Highlighting will also apply to the other "view" (when you have documents open in both of Notepad++ view panes)
-    * `Matching: ☐ Match case`: Smart Highlighting will be case-sensitive
-    * `Matching: ☐ Match whole word only`: Smart Highlighting will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences)
+    * `☐ Enable`: If you select a piece of text, Smart Highlighting will color all matching pieces of text.  It will use the style defined in **Style Configurator > Global Styles > Smart Highlighting**.
+    * `☐ Highlight another view`: Smart Highlighting will also apply to the other "view" (when you have documents open in both of Notepad++ view panes).
+    * `Matching: ☐ Match case`: Smart Highlighting will be case-sensitive.
+    * `Matching: ☐ Match whole word only`: Smart Highlighting will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences).
     * `Matching: ☐ Use Find dialog settings`
 * **Highlight Matching Tags**
-    * `☐ Enable`: in HTML/XML files, clicking in or highlighting in an opening or closing tag (between the angle brackets) will highlight both the opening and closing tag.  It will use the style defined in **Style Configurator > Global Styles > Tags match highlighting**
-    * `☐ Highlight tag attributes`: any attributes inside the active tag will be highlighted using the style defined in **Style Configurator > Global Styles > Tags attribute**
+    * `☐ Enable`: In HTML/XML files, clicking in or highlighting in an opening or closing tag (between the angle brackets) will highlight both the opening and closing tag.  It will use the style defined in **Style Configurator > Global Styles > Tags match highlighting**.
+    * `☐ Highlight tag attributes`: Any attributes inside the active tag will be highlighted using the style defined in **Style Configurator > Global Styles > Tags attribute**.
     * `☐ Highlight comment/php/asp zone`
 
 ### Print
 
-Affects how the text is formatted when sent to the printer
+Affects how the text is formatted when sent to the printer.
 
-* `☐ Print line number`: will include line numbers when printed
+* `☐ Print line number`: Will include line numbers when printed.
 * **Colour Options**
-    * `☐ WYSIWYG`: same colors will apply to printing as you see in the editor
-    * `☐ Invert`: black prints as white, light color prints as dark, and vice versa
-    * `☐ Black on White`: prints black text on white background, no highlighting
-    * `☐ No background colour`: same as WYSIWYG, except no background color is printed
-* **Margin Setting (Unit:mm)**: define the page margins, in mm
-* **Header and Footer**: define what will be printed in each page's header and footer sections
-    * Click in one of the `Left part`, `middle part`, or `right part` for header or footer;
-    * either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current caret position
-        * Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `c:\path\to\file.txt`
+    * `☐ WYSIWYG`: What you see is what you get. The same colors you see in the editor will apply to printing.
+    * `☐ Invert`: Black prints as white, light color prints as dark, and vice versa.
+    * `☐ Black on White`: Prints black text on white background, no highlighting.
+    * `☐ No background colour`: Same as WYSIWYG, except no background color is printed.
+* **Margin Setting (Unit:mm)**: Define the page margins, in mm.
+* **Header and Footer**: Define what will be printed in each page's header and footer sections.
+    * Click in one of the `Left part`, `Middle part`, or `Right part` for header or footer;
+    * Either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current caret position:
+        * Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `C:\path\to\file.txt`
         * Add **File name** ⇒ `$(FILE_NAME)` in the input box ⇒ will print something like `file.txt`
-        * Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `c:\path\to`
+        * Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `C:\path\to`
         * Add **Page** ⇒ `$(CURRENT_PRINTING_PAGE)` in the input box ⇒ will print the current page number.  (Sorry, there is no total-number-of-pages variable, so you cannot do `page # of #`.)
         * Add **Short date format** ⇒ `$(SHORT_DATE)` in the input box ⇒ will print something like `m/dd/yyyy` (possibly locale-dependent)
         * Add **Long date format** ⇒ `$(LONG_DATE)` in the input box ⇒ will print something like `Day, Month ##, YYYY` (possibly locale-dependent)
         * Add **Time** ⇒ `$(TIME)` in the input box ⇒ will print something like `HH:MM AM` (possibly locale-dependent)
-    * Font pulldown: use selected font for the header or footer (if left blank, use document's default font)
-    * Font size pulldown: define font size for header or footer
+    * Font pulldown: Use selected font for the header or footer (if left blank, use document's default font).
+    * Font size pulldown: Define font size for header or footer.
 
 ### Searching
 
 Affects the operations found in the **Find** dialog tabs.
 
 * **When Find Dialog is Invoked**
-    * `☐ Fill find field in Find dialog with selected word`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
+    * `☐ Fill Find Field with Selected Text`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
         * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
-* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change
-* `☐ Find dialog remains open after search that outputs to results window`: successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always
-* `☐ Confirm Replace All in All Opened Documents`: when checked, **Replace All in All Opened Documents** will ask for confirmation
-* `☐ Replace: Don't move to the following occurrence`: when checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0)
-* `☐ Search Result window: show only one entry per found line`: when checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3)
+* `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: Changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change.
+* `☐ Find dialog remains open after search that outputs to results window`: Successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always.
+* `☐ Confirm Replace All in All Opened Documents`: When checked, **Replace All in All Opened Documents** will ask for confirmation.
+* `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the caret to the subsequent match (added v8.0.0).
+* `☐ Search Result window: show only one entry per found line`: When checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3).
 
 ### Backup
 
