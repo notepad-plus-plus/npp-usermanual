@@ -114,6 +114,7 @@ When you right click on the title for a tab, you get a context menu for manipula
   - `Open Containing Folder in Explorer`: Opens this file's folder in the Windows Explorer
   - `Open Containing Folder in cmd`: Opens this file's folder in the `cmd` command prompt
   - `Open Containing Folder as Workspace`: Opens this file's folder as a [Folder as Workspace](../session/#folder-as-workspace)
+  - `Open in Default Viewer`: Opens this file in the default Windows, using the same rules as the [**File > Open in Default Viewer** menu action](../files/#file-menu).
 - `Rename`: Renames this file
 - `Move to Recyle Bin`: Deletes the current file (placing it safely in Window's Recycle Bin)
 - `Reload`: Reloads this file from disk
