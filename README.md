@@ -7,6 +7,7 @@ Summary
 =======
 
 * [Getting started](content/docs/getting-started.md)
+* [Working with Files](content/docs/files.md)
 * [Editing](content/docs/editing.md)
 * [Searching](content/docs/searching.md)
 * [Views](content/docs/views.md)
