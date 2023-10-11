@@ -415,6 +415,8 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `nativeLang.xml`: If you make a selection in the [**Settings > Preferences > General > Localization**](../preferences/#general), Notepad++ will copy the appropriate `localization\*.xml` to `nativeLang.xml`.
 
+- `noRestartAutomatically.xml`: Starting in Notepad++ v8.5.8, Notepad++ is a [Restarable App](../other-resources/#restartable-app).  If you would like to _disable_ Notepad++ from being restartable, add an empty config file called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).  If that file exists, and you'd like Notepad++ to be restartable again, just delete that file.
+
 - `nppLogNulContentCorruptionIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` in the case of certain crashes, which can help the developers debug issues resulting from the crash. If you want to prohibit that logfile from being created, delete this config file; but that will mean that you will not be able to provide the useful information to the developers if a crash causes issues for you; delete at your own risk. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder. (New to v8.1.9.3.)
 
 - `nppLogNetworkDriveIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `c:\temp\nppLogNetworkDriveIssue.log` in the case of certain network drive issues.  (New to v8.1.9.3.)
