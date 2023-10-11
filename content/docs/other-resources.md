@@ -56,6 +56,10 @@ _**† Warning**: editing your registry can be dangerous; edit your registry at 
 
 This section has moved to the ["Alternatives"](../shell-extension/#alternatives) section of the [Shell Extension (Right Click Context Entry)](../shell-extension/) page of the User Manual.
 
+## Restartable App
+
+Windows 10 and Windows 11 have a "restartable apps" feature (**Windows Start Button > Settings > Accounts > Sign In Options > Restart Apps**) which automatically saves the state of various "restartable apps" when you log out of Windows then back in.  Starting with v8.5.8, Notepad++ is now a "restartable app" -- so if you log out or reboot with Notepad++ running, and have that Windows setting active, then when you next log in, Notepad++ will reload right where you were.  If you would like to _disable_ Notepad++ from being restartable, add an empty [config file](../config-files/#other-configuration-files) called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).
+
 ## Notepad++ Cheat sheet
 
 ### Tabs
