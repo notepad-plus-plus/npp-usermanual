@@ -200,6 +200,7 @@ The Notepad++ [installer executable](../getting-started/#installer) accepts the 
     - Because it allows spaces in the path, this option **must** be the last argument on the installer command line, if included.
 
 It also implements an additional option:
+
 - `/noUpdater`: Disables the N++ inherent automatic updates (it does not install the WinGUP & PluginsAdmin updating components).
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
