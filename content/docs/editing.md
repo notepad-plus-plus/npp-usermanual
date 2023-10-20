@@ -83,7 +83,7 @@ The cloned document is the same document as its original one, but with the separ
 
 ![](../images/clonedDoc.gif)
 
-You can find more on cloning to other views or instances in the [Views > Move / Clone](../views/move-clone) section, and more on manipulating tabs through the tab bar in [Other Resources > Tabs](../other-resources/#tabs).
+You can find more on cloning to other views or instances in the [Views > Move / Clone](../views/#move-clone) section, and more on manipulating tabs through the tab bar in [Other Resources > Tabs](../other-resources/#tabs).
 
 ## Character Panel
 
