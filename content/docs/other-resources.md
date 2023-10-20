@@ -80,14 +80,14 @@ Windows 10 and Windows 11 have a "restartable apps" feature (**Windows Start But
   2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position.
   ![tabNavMoveRtLft](../images/tabNavMoveRtLft.gif)
 
-- To move a tab from one View to the other, you can use the techniques described in the [Editing > Dual View](../editing/#dual-view) section, including:
+- To move a tab from one View to the other, you can use the techniques described in the [Editing > Dual View](../editing/#dual-view) section or [Views > Move / Clone](../views/#move-clone) section, including:
   1. Use the menus: **View > Move/Clone Current Document > Move to Other View**
   2. Right Click on the tab's title and select **Move to Other View**
   3. Drag the tab's title into the editing pane for that same tab and select **Move to Other View**
   4. If the other View is already visible, drag the tab's title into the editing pane of the other View, and it will move
   ![move2view](../images/move2view.gif)
 
-- To clone a tab from one View into the other, you can use the techniques described in the [Editing > Clone Document](../editing/#dual-view) section, including:
+- To clone a tab from one View into the other, you can use the techniques described in the [Editing > Clone Document](../editing/#dual-view) or [Views > Move / Clone](../views/#move-clone) section section, including:
   1. Use the menus: **View > Move/Clone Current Document > Clone to Other View**
   2. Right Click on the tab's title and select **Clone to Other View**
   3. Drag the tab's title into the editing pane for that same tab and select **Clone to Other View**
