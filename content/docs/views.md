@@ -97,7 +97,7 @@ The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom O
 
 ## Move / Clone
 
-The **Move/Clone Current Document** submenu will allow you to affect where the current document is viewed -- either to allow [editing files side-by-side](../editing/dual-view), or editing in a separate instance of Notepad++ (using a completely separate window).
+The **Move/Clone Current Document** submenu will allow you to affect where the current document is viewed -- either to allow [editing files side-by-side](../editing/#dual-view), or editing in a separate instance of Notepad++ (using a completely separate window).
 
 ### Move / Clone to Other View
 
