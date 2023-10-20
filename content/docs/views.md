@@ -97,13 +97,13 @@ The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom O
 
 ## Move / Clone
 
-The **Move/Clone Current Document** submenu will allow you to affect where the current document is viewed.
+The **Move/Clone Current Document** submenu will allow you to affect where the current document is viewed -- either to allow [editing files side-by-side](../editing/dual-view), or editing in a separate instance of Notepad++ (using a completely separate window).
+
+### Move / Clone to Other View
 
 If you **Move to Other View**, the current file will be moved from one View to the other.  If there is currently only one View visible, this command will make the second View visible -- it may be to the right, below, to the left, or above the original View, depending on where the second view was last placed.  You can also accomplish this **Move to Other View** by dragging the tab from one View's tab-bar to the other, or right clicking on the tab and choosing the **Move to Other View** from that menu.
 
 If you **Clone to Other View**, the current file will be visible in both Views at the same time.
-
-If the current file is currently not modified (so no unsaved changes), you can also either **Move to New Instance** or **Clone to New Instance**, which will move the active file from this instance to a new instance of Notepad++, or make this file open in both the current Notepad++ and a new instance of Notepad++.  This will work to create a new instance of Notepad++ even if the [**Settings > Preferences > Multi-Instance**](../preferences/#multi-instance) is set to "mono-instance".
 
 To change the arrangement of the Views, right-click on the dotted bar between the two Views, and **Rotate Right** or **Rotate Left**, which will change the orientation from side-to-side to above-and-below.  Given the four possible arrangements of "File A" and "File B" in separate views shown below, doing **Rotate Right** will go in the sequence 1→2→3→4→1→..., and **Rotate Left** will go in the sequence 1→4→3→2→1→...  (The sequence repeats, and will start from whatever state you are currently in.)
 
@@ -113,6 +113,13 @@ Sequence | Arrangement | Notes
 2 | ![](../images/view-rotate-2.png) | TOP:"File A", BOTTOM:"File B"
 3 | ![](../images/view-rotate-3.png) | RIGHT:"File A", LEFT:"File B"
 4 | ![](../images/view-rotate-4.png) | BOTTOM:"File A", TOP:"File B"
+
+If there's only one View visible, dragging from the tab bar into the current View's editor panel will pop up a context menu that allows either moving or cloning to the other View as well.  Other ways to interact with the tab bar and Views can be found in [Other Resources > Tabs](../other-resources/#tabs).
+
+### Move / Clone to New Instance
+
+If the current file is currently not modified (so no unsaved changes), you can also either **Move to New Instance** or **Clone to New Instance**, which will move the active file from this instance to a new instance of Notepad++ (that is, a separate window rather than just another panel in the current window), or make this file open in _both_ the current Notepad++ _and_ a new instance of Notepad++.  This will work to create a new instance of Notepad++ even if the [**Settings > Preferences > Multi-Instance**](../preferences/#multi-instance) is set to "mono-instance".
+
 
 ## Tab
 
