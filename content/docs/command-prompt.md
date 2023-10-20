@@ -143,7 +143,7 @@ code | file
 * `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
 * `-x`: Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
 * `-y`: Move Notepad++ to indicated top position (*TopPos*) on the screen.
-* `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled
+* `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled.
 * `-nosession`: Launch Notepad++ without previous session.
 * `-notabbar`: Launch Notepad++ without tabbar.
 * `-ro`: Make the `filepath` read only.
@@ -153,15 +153,15 @@ code | file
 * `-openSession`: Open a session. `filepath` must be a session file.
 * `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
 * `-qn="Easter Egg Name"`: Launch [ghost typing](../ghost-typing/) to display easter egg via its *Easter Egg Name*.
-* `-qt="Text to Type"`: Launch [ghost typing](../ghost-typing/) to display a text via the given *Text to Type*
-* `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*
-* `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest
-* `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++
-* `-settingsDir="d:\your settings dir\"`: Override the default settings dir
-* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually
-* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0)
-* `-pluginMessage="text for plugin(s)"`: if plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2)
-* `filepath`: file or folder name to open (absolute or relative path name)
+* `-qt="Text to Type"`: Launch [ghost typing](../ghost-typing/) to display a text via the given *Text to Type*.
+* `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*.
+* `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest.
+* `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++.
+* `-settingsDir="d:\your settings dir\"`: Override the default settings dir.
+* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually.
+* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
+* `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
+* `filepath`: File or folder name to open (absolute or relative path name).
 
 The order of the options is not important.  Brackets indicate that the options
 are not required, and are _not_ part of the command-line argument.  The number
@@ -193,10 +193,13 @@ usage list.  These are intended for advanced usage or other special circumstance
 
 The Notepad++ [installer executable](../getting-started/#installer) accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
 
-- `/S` : silent installation
-- `/NCRC`: skips the installer's CRC check
-- `/D=c:\blah` or `/D=c:\path with spaces\blah` : overrides the default installation directory.
+- `/S` : Enables silent installation.
+- `/NCRC`: Skips the installer's CRC check.
+- `/D=c:\blah` or `/D=c:\path with spaces\blah` : Overrides the default installation directory.
     - Do _not_ put quotes around the path, even when there are spaces.
     - Because it allows spaces in the path, this option **must** be the last argument on the installer command line, if included.
+
+It also implements an additional option:
+- `/noUpdater`: Disables the N++ inherent automatic updates (it does not install the WinGUP & PluginsAdmin updating components).
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
