@@ -870,6 +870,19 @@ These special groups consume no characters. Their successful matching counts, bu
         - For variable-length lookbehind assertions from a limited set of constant data items, a construct such as `((?<=short)|(?<=longer))` is viable.  The individual lookbehinds still cannot include `+` or `*` or similar variable-length syntax.
         - If your desired lookbehind is more complicated than that, you can use `\K` (see above): instead of `(?<=a.*b)MATCH`, which won't work, use `a.*b\KMATCH`.  The `\K` workaround will only work if the desired lookbehind is the first part of your match, because _everything_ before the `\K` is excluded from the final match.
 
+#### Backtracking Control Verbs
+
+These will control how and when the regular expression will "backtrack" (go back to a previous point in the text and re-try the match with a different alternative or different number of characters consumed by the wildcard).
+
+- `(*PRUNE)` ⇒ Has no effect unless backtracked onto, in which case all the backtracking information prior to this point is discarded.
+- `(*SKIP)` ⇒ Behaves the same as `(*PRUNE)` except that it is assumed that no match can possibly occur prior to the current point in the string being searched. This can be used to optimize searches by skipping over chunks of text that have already been determined can not form a match.
+- `(*THEN)` ⇒ Has no effect unless backtracked onto, in which case all subsequent alternatives in a group of alternations are discarded.
+- `(*COMMIT)` ⇒ Has no effect unless backtracked onto, in which case all subsequent matching/searching attempts are abandoned.
+- `(*FAIL)` ⇒ Causes the match to fail unconditionally at this point, can be used to force the engine to backtrack.
+- `(*ACCEPT)` ⇒ Causes the pattern to be considered matched at the current point. Any half-open sub-expressions are closed at the current point.
+
+These can be confusing, so [Notepad++ Community Forum](https://community.notepad-plus-plus.org/)-regular `@guy038` has written up detailed [descriptions with examples](https://community.notepad-plus-plus.org/topic/19632/new-backtracking-control-verbs-feature-available-since-notepad-v7-7) of these verbs, and collected references to other resources to study more about them.
+
 ### Substitutions
 
 Substitution expressions (the contents of the **Replace with** entry) use similar syntax to the search expression, with the additional features described below.
