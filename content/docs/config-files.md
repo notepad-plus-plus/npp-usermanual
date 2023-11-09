@@ -122,7 +122,7 @@ Defines keyboard shortcuts for various types of commands. The shortcuts are most
 
 This file has the following nodes:
 
-1. `<InternalCommands>`: Keyboard shortcuts for Notepad++ menu commands that have been remapped by the. (Commands that use their default shortcuts are not listed here.)
+1. `<InternalCommands>`: Keyboard shortcuts for Notepad++ menu commands that have been remapped by the user. (Commands that have never changed from their default shortcuts are _not_ listed here.)
 1. `<Macros>`: Keyboard shortcuts for the macros listed in the lower part of the [**Macro**](../macros/) menu. Also defines what commands those macros execute.
 1. `<UserDefinedCommands>`: Keyboard shortcuts for the Run menu entries. Also defines what actions those entries take.
 1. `<PluginCommands>`: Keyboard shortcuts for plugin commands that have been remapped. (Commands that use their default shortcuts are not listed here.)
