@@ -160,7 +160,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
     - **ranDOm CasE** ⇒ each character gets a random case: `StArT mIxEd` ⇒ `StaRt mIxeD`
 * **Line Operations >** ⇒ submenu with actions that typically work on lines (also known as "rows") of your document
     * There is a method for duplicating data:
-        * **Duplicate Current Line**: duplicates the current line if no selection is active, or duplicates the selected text if a selection is active
+        * **Duplicate Current Line**: Duplicates the current line. (Prior to v8.6, if a selection was active it would duplicate just that selection, but starting in v8.6, selection state is ignored for this menu command; if you want the old behavior, the `Ctrl+D` shortcut is, by default, still assigned to the selection-aware duplication, under `SCI_SELECTIONDUPLICATE` in the [Shortcut Mapper](../preferences/#shortcut-mapper).)
     * There are two versions of the Remove Duplicates functionality:
         * **Remove Duplicate Lines**: leaves only the first instance of any full lines that have more than one copy anywhere in the active file; acts upon the line set spanned by the current selection, or the entire file if no active selection
         * **Remove Consecutive Duplicate Lines**: will only remove duplicates that are on the lines immediately following the first instance (still keeping the first instance); acts upon the line set spanned by the current selection, or the entire file if no active selection
