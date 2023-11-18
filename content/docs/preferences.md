@@ -87,7 +87,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
 * `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
 * `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
 * `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
-* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using Ctrl+Mouse click on the selection(s).
+* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using `Ctrl`+Mouse click on the selection(s).  (This option is removed in v8.6 and beyond, because `Ctrl`+Mouse multi-editing is now always available.)
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
