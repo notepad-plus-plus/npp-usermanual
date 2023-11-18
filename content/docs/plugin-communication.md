@@ -1185,14 +1185,14 @@ sessionFileName should be a full path name of an xml file.*
 
 **Parameters**:
 
-*wParam [in]*
-: int, must be zero.
+*wParam [out]*
+: BOOL* isValidXML, if the lParam pointer is null, then this parameter will be ignored. TRUE if XML is valid, otherwise FALSE. (added in v8.6)
 
 *lParam [in]*
 : const TCHAR * sessionFileName
 
 **Return value**:
-: Returns 0 if sessionFileName is NULL or an empty string else the number of files.
+: Returns 0 if sessionFileName is an empty string/NULL, or XML session file is corrupted/invalid, else the number of files.
 
 ---
 
