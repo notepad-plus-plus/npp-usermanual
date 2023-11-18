@@ -245,6 +245,17 @@ The Scintilla project, which Notepad++ uses to implement these traditional edito
 
 But with so many commands, and the fact that no documentation set is likely to ever explain _everything_ in the way that makes the most sense to you (what makes sense to one user might be really confusing to another), it might be fruitful to play with some of those commands to see for yourself what they do.  (Notepad++ doesn't let you edit text while the **Shortcut Mapper** is open: one possible method of doing this experimentation is to have two instances of Notepad++ running, and have the **Shortcut Mapper** open to the **Scintilla commands** in one instance, and play with using them in the editor in the other Notepad++ instance.)
 
+### Context Awareness
+
+Certain keyboard-shortcut commands are _context aware_.  For example,
+
+- `Tab` will insert a tab character or spaces (depending on [per-language settings](../preferences/#language)), but if you have a selection, it will indent the text by one tab-stop.
+- `Shift+Delete` will delete the current selection, or if there is no selection, it will delete the current line.  (The no-selection variant is new to v8.6.)
+- `Ctrl+C` will copy the current selection, or if there is no selection, it will copy the current line.  (The no-selection variant is new to v8.6.)
+- `Ctrl+X` will cut the current selection, or if there is no selection, it will cut the current line.  (The no-selection variant is new to v8.6.)
+
+Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
+
 ## Printing
 
 _The documentation on printing the active document has been moved to [Working with Files > Printing](../files/#printing)._
