@@ -259,9 +259,10 @@ But with so many commands, and the fact that no documentation set is likely to e
 Certain keyboard-shortcuts for editing commands are "context aware", meaning that they behave differently whether there is an active selection or not.  For example,
 
 - `Tab` will insert a tab character or spaces (depending on [per-language settings](../preferences/#language)) when typing normally, but if you have a selection, it will indent the text by one tab-stop.
-- `Shift+Delete` will delete the current selection, or if there is no selection, it will delete the current line.  (The no-selection variant is new to v8.6.)
-- `Ctrl+C` will copy the current selection, or if there is no selection, it will copy the current line.  (The no-selection variant is new to v8.6.)
-- `Ctrl+X` will cut the current selection, or if there is no selection, it will cut the current line.  (The no-selection variant is new to v8.6.)
+- `Shift+Delete` will delete the current selection, or if there is no selection, it will delete the current line (assuming you have not changed the shortcut `Shift+DEL` from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
+- `Ctrl+C` will copy the current selection, or if there is no selection, it will copy the current line (assuming you have not changed the shortcut `Ctrl+C` from `SCI_COPY` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
+- `Ctrl+X` will cut the current selection, or if there is no selection, it will cut the current line (assuming you have not changed the shortcut `Ctrl+X` from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
+
 
 Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
 
