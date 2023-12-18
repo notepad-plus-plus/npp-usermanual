@@ -485,7 +485,7 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
 * `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
-* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 5 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.  (Note that `\c☒` may not work if `☒` is outside of the [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane "BMP") -- that is, it only works if `☒` is in the Unicode character range U+0000 - U+FFFF; and the intention was mnemonically escape the ASCII control characters obtained by typing `Ctrl+☒`, it is expected that you will use a simple ASCII alphanumeric for the `☒`, like `\cA` or `\cA`.)
+* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 5 lowest order bits. For instance, `\c1`, `\cA` and `\ca` all stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting Ctrl+A in a terminal.  (Note that `\c☒` may not work if `☒` is outside of the [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane "BMP") -- that is, it only works if `☒` is in the Unicode character range U+0000 - U+FFFF. The intention of `\c☒` is to mnemonically escape the ASCII control characters obtained by typing `Ctrl+☒`, it is expected that you will use a simple ASCII alphanumeric for the `☒`, like `\cA` or `\ca`.)
 
 ##### Special Control escapes
 
