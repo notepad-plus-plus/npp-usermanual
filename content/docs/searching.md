@@ -385,7 +385,7 @@ Incremental search is similar to the searching capabilities found in your favori
 
 This command will show a small region at the bottom of the Notepad++, which has a few simple features.
 
-* Clicking the **X** button allows you to close the Incremental Search window and return to the editor window. If a control in the Incremental Search window currently has input focus, e.g. if you are typing into the Find box, another way to close the window is by pressing the Esc key.
+* Clicking the **X** button allows you to close the Incremental Search window and return to the editor window. If a control in the Incremental Search window currently has input focus, e.g. if you are typing into the Find box, another way to close the window is by pressing the `Esc` key.
 * The **Find** box is where you type your literal search term.  As you type, the editor window will move the selection to the next match for the contents of Find (hence, the "incremental" search because as you "incrementally" change the search term, it will update the match).
 * The **<** and **>** buttons navigate backward and forward through the search results (wrapping around when it reaches the end or start of the document).
 * If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
