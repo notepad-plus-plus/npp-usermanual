@@ -69,6 +69,92 @@ Animation showing enabling Multi-Editing, and example usage of making multiple c
 
 ![](../images/multiEdit.gif)
 
+### Multi-Editing HowTo
+
+Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  This section gives a tutorial in how to use this improved feature.
+
+The animation below is the demo of the feature that was published on the [v8.6 release announce](https://notepad-plus-plus.org/news/v86-20thyearanniversary/):
+
+![multiedit](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/79b59d65-6862-4e5d-b2c2-1d19d0f2f551)
+
+Here is a step-by-step guide that shows you how to transform from
+```bash
+# var1, var2, object1, object2, object3, flag1, flag2
+```
+to
+```javascript
+obj.var1 = param["var1"]
+obj.var2 = param["var2"]
+obj.object1 = param["object1"]
+obj.object2 = param["object2"]
+obj.object3 = param["object3"]
+obj.flag1 = param["flag1"]
+obj.flag2 = param["flag2"]
+```
+Once you understand how it work this part, the remain demo should be intuitive & easy to follow.
+
+#### Step 1
+Copy the line from `var1` to `flag2` and paste it, and add another comma at the end
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/724c867f-78de-4086-9adc-9d5a5cf48481)
+
+
+#### Step 2
+Select the first `,` of `var1,`
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/e544ff80-6758-449e-b762-d443471c22dd)
+
+
+#### Step 3
+Run **Edit > Multi-Select Next > Match Case Only** command 6 times.
+Note: You can always run this command via the menu, but it'll be much easier to use the shortcut (I assigned ***Ctlr-E*** to it).
+You can assign any available shortcut to **Multi-Select Next > Match Case Only** command via [Shortcut Mapper](../preferences/#shortcut-mapper).
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/0ac09902-0abb-4b11-8c83-bfdaa0b1c69b)
+
+#### Step 4
+Type `DELETE` twice and then `ENTER` once, then `ArrowUp` to move all carets up.
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/de872b16-6b18-42cf-b993-93cb7370be63)
+
+
+#### Step 5
+Type `obj.`
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/5f960695-a0d8-4f40-93b6-8eee3e164bba)
+
+#### Step 6
+Use `Ctrl+ArrowRight` to move the carets to the end of the words.
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/56aee7fc-cdc7-4603-9332-a9148ae882ef)
+
+#### Step 7
+Type ` = param[""]`
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/66fb36a1-042e-4d88-88cf-b8f4278c3e79)
+
+
+#### Step 8
+Put your caret after `obj.` of the 1st line, the `Alt+Shift+ArrowDown` to the last line.
+(Or you can use `Ctrl+ArrowLeft` to move carets after `obj.` column.)
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/d92f4e4a-1cd4-40c5-9990-43136db901f3)
+
+
+#### Step 9
+Use `Ctrl+Shift+ArrowRight` to multi-select the words, then copy them (`Ctrl-C`).
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/abecd307-10ef-4ebb-b0fd-3670bbde9aed)
+
+#### Step 10
+Move all carets to right by using `ArrowRight` to between `""`, then paste (`Ctrl-V`).
+
+![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/5e91706b-96fe-4adb-80c1-6fb2aaf1d6f9)
+
+#### Step 11
+Use what you learned from Steps 1 through 10 to continue trying to mimic the behavior of the demo animation.
+
+
 ## Dual View
 To create Dual View, drag and drop any tab that you want it to be in another view (or right click on the tab) then choose "Move to Other View" command from the popup context menu.
 Once you've got 2 views, you can move files between 2 views by drag-and-dropping.
@@ -222,7 +308,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
 * **On Selection >** ⇒ submenu with actions that use the currently-selected text as a filename or folder to open, or as a term for an internet search.  (Custom commands using the current selection can be added to the **Run** menu, using the [`<UserDefinedCommands>` section of `shortcuts.xml`](../config-files/#userdefinedcommands).)
 * **Multi-Select All >** ⇒ submenu with actions that work with the current selection or word under the caret
     - **Ignore Case & Whole Word** ⇒ If nothing is selected, it will determine the current word under the caret, and do a Multi-Select which finds all matches which match that string regardless of case, and regardless of whether the other matches are a whole word or not.  If a word or string is selected, it will Multi-Select all the strings which match the current selection.
-    - **Match Case Only** ⇒ If nothing is selected, it will determine the current word under the caret, and do a Multi-Select which finds all matches of that word, as long as the case exactly matches.  If a word or substring is selected, it will Multi-Select all the strings which match that selection, paying attention to case.  
+    - **Match Case Only** ⇒ If nothing is selected, it will determine the current word under the caret, and do a Multi-Select which finds all matches of that word, as long as the case exactly matches.  If a word or substring is selected, it will Multi-Select all the strings which match that selection, paying attention to case.
     - **Whole Word Only** ⇒ If nothing is selected, it will determine the current word under the caret, and do a Multi-Select which finds all whole-word matches, regardless of case.  If a word is selected, it will Multi-Select all the whole-words which match that selection, ignoring case.
     - **Match Case & Whole Word** ⇒ If nothing is selected, it will determine the current word under the caret, and do a Multi-Select which finds all whole-word matches which match that string, including case.  If a word is selected, it will do a Multi-Select which finds all whole-word matches which match that string, including case.
 * **Multi-Select Next >** ⇒ submenu with actions that add one more instance to the current multi-select
