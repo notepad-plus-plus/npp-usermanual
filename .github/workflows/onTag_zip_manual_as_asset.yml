@@ -51,4 +51,9 @@ jobs:
         asset_name: nppUserManual.zip
         tag: ${{ github.ref }}
         overwrite: true
-        body: "Some release text goes here"
+        body: |
+          ${{ github.event.head_commit.message }}
+
+# `body: | ...` derived from the following sources, in order to duplicate the original commit message in the artifact upload
+# - https://github.com/svenstaro/upload-release-action
+# - https://stackoverflow.com/questions/63619329/github-action-get-commit-message
