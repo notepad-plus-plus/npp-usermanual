@@ -70,7 +70,7 @@ where:
 **Parameters**:
 
 *wParam [in]*
-: int iView, which must bei eihter 0 (main view) or 1 (second view).
+: int iView, which must be either 0 (main view) or 1 (second view).
 
 *lParam [in]*
 : int index2Activate
