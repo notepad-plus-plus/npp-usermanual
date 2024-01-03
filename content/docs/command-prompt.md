@@ -149,6 +149,8 @@ code | file
 * `-ro`: Make the `filepath` read only.
 * `-systemtray`: Launch Notepad++ directly in system tray.
 * `-loadingTime`: Display Notepad++ loading time.
+    - Starting in v8.6.1, it shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
+    - In v8.6 or earlier, it just showed the total number of seconds for Notepad++ to load, without millisecond precision and without the listing of the times for individual loading stages.
 * `-alwaysOnTop`: Make Notepad++ always on top.
 * `-openSession`: Open a session. `filepath` must be a session file.
 * `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
