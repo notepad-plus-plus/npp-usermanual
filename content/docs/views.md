@@ -125,7 +125,7 @@ If the current file is currently not modified (so no unsaved changes), you can a
 
 The **Tab** sub-menu will allow you to navigate through the various open tabs of the active View.
 
-The numbered entries will activate the _Nth_ tab. The **Next tab** and **Previous tab** actions will activate the next or previous tab in the list of tabs (wrapping).
+The numbered entries will activate the _Nth_ tab (for 1st to 9th). The **Next tab** and **Previous tab** actions will activate the next or previous tab in the list of tabs (wrapping).  Starting in v8.6.1, the **First tab** and **Last tab** actions will activate the first or last tab (the latter is especially useful when there are more than 9 tabs; both are useful when your keyboard doesn't have easy access to a "numeric keypad" so you cannot use the default `Ctrl+Numpad#` shortcuts to go to the _1st_ or _Nth_ tab).
 
 The **Move Tab Forward** and **Move Tab Backward** will change the current file's position in the tab list one slot at a time, forward or backward.  The tab order can also be changed by dragging the tabs to the new position in the tab-bar.
 
