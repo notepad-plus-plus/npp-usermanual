@@ -59,19 +59,17 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 Multi-Editing mode (available via mouse usage only) allows you to make multiple carets by using `Ctrl+Click` for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.  You may place as many additional carets as you want.
 
-In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a `Ctrl+LeftClick+Drag` operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
+In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a `Ctrl+Click+Drag` operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
+
+Starting in v8.6.1, if you `Ctrl+Click` at a previous multi-caret location, or `Ctrl+Click` within a previous multi-selection region, that caret or selection region will be removed, while leaving other portions of your multi-selection still active.  (This effectively allows you to "undo" a _portion_ of the multi-selection without having to redo everything, and is useful in complex multi-selections when you accidentally `Ctrl+Clicked` in the wrong place or changed your mind.)
 
 Multi-Editing mode is only available when stream selection(s) are active; it doesn't work in conjunction with column-block selection.  Unlike stream selections, where with Multi-editing you can define two or more selections simultaneously, with column mode there can be only one active selection at a time.
 
-Whether or not you can use Multi-Editing mode is determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.
+Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  Starting in v8.6, Multi-Editing is always on, and that option has been removed.
 
-Animation showing enabling Multi-Editing, and example usage of making multiple carets:
-
-![](../images/multiEdit.gif)
+Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  The **Multi-Editing HowTo** (below) gives a tutorial in how to use this improved feature, including the new [**Edit** menu](#edit-menu) **...Multi-Select...** commands.
 
 ### Multi-Editing HowTo
-
-Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  This section gives a tutorial in how to use this improved feature.
 
 The animation below is the demo of the feature that was published on the [v8.6 release announce](https://notepad-plus-plus.org/news/v86-20thyearanniversary/):
 
