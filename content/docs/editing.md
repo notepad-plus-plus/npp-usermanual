@@ -271,7 +271,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
         * **As Decimals (Comma)** means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
         * **As Decimals (Dot)** means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
         * NOTE: Sorting is performed with the assumption that all line-endings in the file are uniform and match the current selection for the file being edited -- the quickest way to check that selection is to glance at the status bar, where the current line-ending type is shown either as `Windows (CR LF)`, `Unix (LF)` or `Macintosh (CR)`.  It might be desirable to check the line-ending types in your file before executing a sorting operation, and use the **Edit > EOL Conversion >** choices or right-click on the Status Bar's EOL indicator to fix the line endings if necessary.
-        * NOTE: If a [Column Mode](./#column-mode-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. This column-selection-based sort will be a "stable sort": if the keys are identical on two lines, then the order of those two lines will not change, even if text outside of the selected key columns is different.
+        * NOTE: If a [Column Mode](./#selection-modes-column-editor) selection is active, the sort will re-order all the lines included in the selection, but the sort key (the text that decides the sort order) will be limited to what is inside the column selection. This column-selection-based sort will be a "stable sort": if the keys are identical on two lines, then the order of those two lines will not change, even if text outside of the selected key columns is different.
 * **Comment/Uncomment >** ⇒ submenu with actions that add or remove comment syntax, based on the file's **Language** selection.  This makes use of the `commentLine`, `commentStart`, and `commentEnd` attributes of the active Language as defined in [langs.xml](../config-files/#keyword-lists-langsxml) to define the characters to use for making or clearing line comments (`commentLine`) and block comments (`commentStart` and `commentEnd`).
 * **Auto-Completion >** ⇒ submenu with actions that manually trigger [auto-completion](../auto-completion/) of function name, word, function parameter, and pathname.  While the automatic completion is affected by [**Preferences > Auto-Completion** settings](../preferences/#auto-completion) for setting minimum number of characters, and enabling which of the completions happen automatically, when you manually trigger one of the auto-completion actions through this menu or keyboard shortcut equivalents, completion will happen regardless of those settings (so you can manually trigger when there's fewer characters than the auto-trigger threshold, or you can manually trigger function completion when only word completion is active).
 * **EOL Conversion >** ⇒ submenu with actions that convert line endings between Windows (`CR LF`), Unix (`LF`), and old Macintosh (`CR`) values; these operations affect all of the lines of the current file
@@ -313,8 +313,8 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
     - Each submenu entry will be analogous to the **Multi-Select All** described above, but will only add a single match to the Multi-Selection (the next to occur after the current selection), rather than all matches.
 * **Undo the Latest Added Multi-Select** ⇒ If you have a Multi-Selection active, this command will take out the most-recently added substring.  (For example, if you had the text `the quick brown fox jumped over the lazy dog` and Multi-Selected `quick` then `dog`, then ran this command, your selection would only include `quick`.)
 * **Skip Current & Go to Next Multi-Select** ⇒ If you have text selected, this command will unselect the current string, and Multi-Select the first instance _after_ this one that matches what had been selected.
-* **Column Mode...** ⇒ dialog explaining [Column Mode](./#column-mode-column-editor)
-* **Column Editor** ⇒ runs the [Column Editor](./#column-mode-column-editor) dialog, described above
+* **Column Mode...** ⇒ dialog explaining [Column Mode](./#selection-modes-column-editor)
+* **Column Editor** ⇒ runs the [Column Editor](./#selection-modes-column-editor) dialog, described above
 * **Character Panel** ⇒ toggles the [Character Panel](#character-panel), described above
 * **Clipboard History** ⇒ allows you to re-access recent copy/paste values (double-click a row to paste that value)
 * **Set Read-Only** ⇒ toggles Notepad++'s read-only flag on the active file buffer.
@@ -349,6 +349,8 @@ Certain keyboard-shortcuts for editing commands are "context aware", meaning tha
 
 
 Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
+
+In order to disable the context-aware "line copy / cut / delete" feature, create the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml` (new to v8.6.1).
 
 ## Printing
 
