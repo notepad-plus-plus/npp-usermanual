@@ -417,6 +417,8 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `nativeLang.xml`: If you make a selection in the [**Settings > Preferences > General > Localization**](../preferences/#general), Notepad++ will copy the appropriate `localization\*.xml` to `nativeLang.xml`.
 
+- `noColumnToMultiSelect.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to not enable the [column-mode to multi-edit conversion](../editing/#multi-editing) feature (new to v8.6.1).  This file needs to be in `%AppData%\Notepad++\` for a normal installation and in the portable directory for a local configuration.
+
 - `noEasterEggs.xml`: This is a zero-byte file that is used as an indicator to `notepad++.exe` to not show the "Easter Eggs" in the **About Notepad++** dialog (accessed from the **?** menu or the default keyboard shortcut `F1`). This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
 - `noRestartAutomatically.xml`: Starting in Notepad++ v8.5.8, Notepad++ is a [Restarable App](../other-resources/#restartable-app).  If you would like to _disable_ Notepad++ from being restartable, add an empty config file called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).  If that file exists, and you'd like Notepad++ to be restartable again, just delete that file.
