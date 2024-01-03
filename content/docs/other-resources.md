@@ -130,6 +130,8 @@ When you right click on the title for a tab, you get a context menu for manipula
   - `Copy Filename`: Copies just the filename (no drive or directory) to the Windows Clipboard.
   - `Copy Current Dir. Path`: Copies the file's directory (drive and directory, but not the  filename) to the Windows Clipboard.
 - `Move Document >`
+  - `Move to Start`: Moves the tab to be the first in the list of active tabs for the current view. (New to v8.6.1.)
+  - `Move to End`: Moves the tab to be the last in the list of active tabs for the current view. (New to v8.6.1.)
   - `Move to Other View`: Moves the tab from one view to the other.
   - `Clone to Other View`: Makes a tab for the same file in the other view.
   - `Move to New Instance`: Moves the tab from this Notepad++ instance to a newly-created instance (only works on named files that have no unsaved changes).
