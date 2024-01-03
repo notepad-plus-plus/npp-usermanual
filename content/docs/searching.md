@@ -220,16 +220,25 @@ Other ways to navigate back to an editor window via the **Search results** windo
 The `Delete` key can be used to delete individual results, file matches or whole search matches in the **Search results** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing `Delete` when in a higher-level element of the tree removes that whole branch.  Thus:
 
 |*Pressing Delete when **Search results** active line starts with...*| *What is removed*                                                                              |
-|-----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-|the text: "Search"                                               | that "Search" line, all pathname lines under it, and all "Line" lines under the pathname lines |
-|a pathname                                                       | that pathname line and all "Line" lines under it                                                |
-|the text: "Line"                                                 | only that line                                                                                 |
+|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+|the text: "Search"                                                  | that "Search" line, all pathname lines under it, and all "Line" lines under the pathname lines |
+|a pathname                                                          | that pathname line and all "Line" lines under it                                               |
+|the text: "Line"                                                    | only that line                                                                                 |
 
 Multiple searches are listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
 
 If the source file lines are judged by Notepad++ to be too long when they are copied to be placed in the **Search results** window, they are truncated and **...** is added at the end.  In this case, matched text occurring in the line after the **...** position isn't emphasized.  However, using a method to return to the editor window (e.g. pressing `Enter`) results in the correct selection of matching text there.  The length limit is 1024 characters; this includes the match line number information and other formatting.
 
 If a search is conducted such that a match which spans two or more lines occurs, only the contents of the first line of that match is copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing `Enter`) results in the correct selection of multi-line matching text there.
+
+Starting in v8.6.1, the header rows for each search include a shorthand notation for the search options that were active when that search was run.
+For example: `Search "foo" (1 hit in 1 file of 1 searched) [Normal: Case/Word]` .
+
+- The shorthand notation for the options is found between the square brackets at the end of the header. (In the example, `[Normal: Case/Word]`)
+- The search mode is listed before the colon `:` and can be one of the values `Normal`, `Extended`, `Regex`, `Regex.` (The `.` in a regex variant reflects checkmark state of the `. matches newline` checkbox when the search was run.)
+- The options are found after the colon `:`, and can be one of the values `Case`, `Word`, or `Case/Word` .
+    - Those option indicators will be present if the `Match case` checkbox was checkmarked, `Match whole word only` checkbox was checkmarked, or both checkboxes were checkmarked.
+    - If neither of those checkboxes are checkmarked, then the shorthand notation will _only_ include the search mode, and not include a colon (since there is no option to follow the colon).
 
 #### `RightClick` commands in the client area of a **Search results** window's tab
 
