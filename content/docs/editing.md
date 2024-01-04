@@ -107,7 +107,7 @@ Select the first `,` of `var1,`
 
 #### Step 3
 Run **Edit > Multi-Select Next > Match Case Only** command 6 times.
-Note: You can always run this command via the menu, but it'll be much easier to use the shortcut (I assigned ***Ctlr-E*** to it).
+Note: You can always run this command via the menu, but it'll be much easier to use the shortcut (I assigned ***Ctrl-E*** to it).
 You can assign any available shortcut to **Multi-Select Next > Match Case Only** command via [Shortcut Mapper](../preferences/#shortcut-mapper).
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/0ac09902-0abb-4b11-8c83-bfdaa0b1c69b)
