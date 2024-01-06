@@ -311,7 +311,7 @@ Defines whether or not to perform saving sessions, periodic backup, and backup o
 
 * **Session snapshot and periodic backup**
     * `☐ Remember current session for next launch`: The current session is the current list of open files.  The next time you run Notepad++, it will open with that same list of files.
-    * `☐ Enable session snapshot and periodic backup`: This will auto-save your changed file once every N seconds to the listed directory (default to `%AppData%\Notepad++\backup\`).
+    * `☐ Enable session snapshot and periodic backup`: This will auto-save your changed file once every N seconds to the listed directory (default to `%AppData%\Notepad++\backup\`) -- auto-saving will not happen for a given file if that file has not been changed during that interval.
         * It is not possible to select this option without `☐ Remember current session ...` also being active.
         * This is also how you enable Notepad++ to remember unsaved changes.
         * This will allow you to exit Notepad++ and resume, remembering changes to files that hadn't been intentionally saved.
