@@ -1739,7 +1739,7 @@ see menuCmdID.h for all possible values.
 
 #### [2036] **NPPM_MODELESSDIALOG**
 *For each created dialog in your plugin, you should register it (and unregister while destroy it) to Notepad++ by using this message.
-If this message is ignored, then your dialog won't react with the key stroke messages such as TAB key.
+If this message is ignored, then your dialog won't react with the key stroke messages such as Ctrl-C, Ctrl-V or TAB key.
 For the good functioning of your plugin dialog, you're recommended to not ignore this message.*
 
 **Parameters**:
@@ -1755,7 +1755,7 @@ MODELESSDIALOGREMOVE is to unregister.
 is the handle of the dialog to be registered
 
 **Return value**:
-: Returns True
+: Returns the hadle of the dialog (hDlg) to be registered/unregistered on success, NULL on failure
 
 ---
 
