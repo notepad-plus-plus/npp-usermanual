@@ -119,8 +119,8 @@ for any technical questions/answers and the announcement of your new plugin.
   - [Official](https://github.com/npp-plugins/plugintemplate/) - This template is maintained by the developer of Notepad++.
   - [Docking Dialogue Interface](https://github.com/ThosRTanner/Docking_Dialogue_Interface) - ThosRTanner created a variant of a C++ template that helps clarify how to use a docking dialog, and gives an example plugin using that template.
 * C#
-  - [Original](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net) - User "kbilsted" was the original author/maintainer of this pack.  However, as of Jan 2024, this version of the plugin pack is "archived" and unmaintained.
-  - [Maintained](https://github.com/molsonkiko/NppCSharpPluginPack) - Mark Olson's fork of the original pack, with improvements and active maintenance.
+  - [NotepadPlusPlusPluginPack.Net](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net) - User "kbilsted" was the original author/maintainer of this pack.  However, as of Jan 2024, this version of the plugin pack is "archived" and unmaintained.
+  - [NppCSharpPluginPack](https://github.com/molsonkiko/NppCSharpPluginPack) - Mark Olson's fork of the original pack, with improvements and active maintenance (as of Jan 2024).
 * [D](https://gitlab.com/dokutoku/npp-api)
 * Delphi:
   - [Original (ANSI/UNICODE)](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
