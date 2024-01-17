@@ -1,9 +1,12 @@
-name: Zip Manual as Asset on Tag
+name: Zip Manual as Asset on Release
 
 on:
-  push:
-    tags:
-      - '*'
+  # push:
+  #  tags:
+  #    - '*'
+
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -51,8 +54,7 @@ jobs:
         asset_name: nppUserManual.zip
         tag: ${{ github.ref }}
         overwrite: true
-        body: |
-          ${{ github.event.head_commit.message }}
+        body: ${{ github.event.release.body }}
 
 # `body: | ...` derived from the following sources, in order to duplicate the original commit message in the artifact upload
 # - https://github.com/svenstaro/upload-release-action
