@@ -18,7 +18,10 @@ files and simply removing or adding them is enough.
 
 The Plugins Admin allows you to easily install plugins that are in the
 Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to
-install, then select the **Install** button.
+install, then select the **Install** button.  (If you just click on the name
+of the plugin, without placing a check mark in the checkbox, it will give
+you information on the plugin, but it will not allow you to click the
+**Install** button.)
 
 ![](/docs/images/pluginsAdmin.png)
 
