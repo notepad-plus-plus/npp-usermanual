@@ -26,6 +26,7 @@ you information on the plugin, but it will not allow you to click the
 ![](/docs/images/pluginsAdmin.png)
 
 The Plugins Admin has four tabs:
+
 - **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
 - **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
 - **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
@@ -43,6 +44,7 @@ with the same name of plugin binary name without file extension.
 
 For example, if the plugin you want to install is named `myAwesomePlugin.dll`,
 you should install it with one of the following paths:
+
 - `%PROGRAMFILES%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 64bit installation
 - `%PROGRAMFILES(x86)%\Notepad++\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ normal 32bit installation
 - `<portable notepad++ directory>\plugins\myAwesomePlugin\myAwesomePlugin.dll` ⇒ portable edition
@@ -144,6 +146,7 @@ Notepad++ has transitioned to the [ILexer5](https://www.scintilla.org/LexillaDoc
 A lexer plugin needs to define all methods of this interface to ensure a smooth interaction.
 
 The lexer functions to be exported by the plugin are
+
 - GetLexerCount
 - GetLexerName
 - CreateLexer
@@ -174,6 +177,7 @@ Notepad++ supported only the [ILexer4](https://www.scintilla.org/ScintillaDoc.ht
 A lexer should define all methods of this interface to ensure a smooth interaction.
 
 The additional lexer functions to be exported by the plugin are
+
 - GetLexerCount
 - GetLexerName
 - GetLexerStatusText
