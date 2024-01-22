@@ -589,12 +589,21 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 : int, must be zero.
 
 **Return value**:
-: Returns -1 on error, otherwise the encoding number. (see enum UniMode)
-
+: Returns -1 on error, otherwise the encoding number. Here are the possible values (enum UniMode):
+~~~
+0: ANSI
+1: UTF-8 with BOM
+2: UTF-16 Big Ending with BOM
+3: UTF-16 Little Ending with BOM
+4: UTF-8 without BOM
+5: uni7Bit
+6: UTF-16 Big Ending without BOM
+7: UTF-16 Little Ending without BOM
+~~~
 ---
 
 #### [2092] **NPPM_GETBUFFERFORMAT**
-*Gets the current format of the document with given bufferID.*
+*Gets the current EOL format of the document with given bufferID.*
 
 **Parameters**:
 
@@ -605,7 +614,13 @@ or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
 : int, must be zero.
 
 **Return value**:
-: Returns -1 on error, otherwise documents format (see formatType).
+: Returns -1 on error, otherwise documents EOL format type. Here are the possible values (EOL formatType):
+~~~
+0: Windows (CRLF)
+1: Macos (CR)
+2: Unix (LF)
+3. Unknown
+~~~
 
 ---
 
@@ -1394,7 +1409,8 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 : UINT_PTR bufferID
 
 *lParam [in]*
-: int, must be zero.
+: int priorityView,
+is main view (0), or sub view (1). So the search will check into the view of choice. However if the given bufferID cannot be found in the chosen view, the other view will be searched.  
 
 **Return value**:
 : Returns -1 if bufferID doesn't exist else the position.
@@ -1849,7 +1865,7 @@ if True then an alert message box will be launched.
 : int, must be zero.
 
 **Return value**:
-: Returns True
+: Returns FALSE when no file needs to be saved, else TRUE if there is at least one file saved.
 
 ---
 
@@ -1948,7 +1964,7 @@ Can only be done on new, unedited files.*
 : UINT_PTR bufferID
 
 *lParam [in]*
-: UniMode encoding
+: UniMode encoding - see **NPPM_GETBUFFERENCODING** enum UniMode valid values
 
 **Return value**:
 : Returns True on success, False otherwise.
@@ -1956,7 +1972,7 @@ Can only be done on new, unedited files.*
 ---
 
 #### [2093] **NPPM_SETBUFFERFORMAT**
-*Sets format to the document with the given bufferID.*
+*Sets EOL format to the document with the given bufferID.*
 
 **Parameters**:
 
@@ -1964,7 +1980,7 @@ Can only be done on new, unedited files.*
 : UINT_PTR bufferID
 
 *lParam [in]*
-: formatType format
+: formatType format - see **NPPM_GETBUFFERFORMAT** for valid values of EOL formatType
 
 **Return value**:
 : Returns True on success, False otherwise.
@@ -2058,13 +2074,13 @@ It may help some plugins to disable non-dynamic line number margins width to hav
 ---
 
 #### [2064] **NPPM_SETMENUITEMCHECK**
-*Sets or removes the check on a menu item.*
+*Sets or removes the check on a item of plugin menu and of tab bar (if any).*
 
 **Parameters**:
 
 *wParam [in]*
-: int cmdID,
-is the command ID which corresponds to the menu item
+: int pluginCmdID,
+is the plugin command ID which corresponds to the plugin menu item
 
 *lParam [in]*
 : BOOL doCheck
