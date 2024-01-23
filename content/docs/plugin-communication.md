@@ -559,8 +559,9 @@ view must be either 0 = main view or 1 = second view.*
 
 #### [2135] **NPPM_GETBOOKMARKID**
 *Returns the bookmark marker ID.
-This allows plugins to choose an ID different from the bookmark marker ID,
-or to intentionally make use of the bookmark marker ID.  (New to v8.4.7)*
+This allows plugins to choose an ID different from the bookmark marker ID, or to intentionally make use of the bookmark marker ID.
+The plugin authors are encouraged to use this API (instead of using the static number from Notepad++ source code) to get bookmark marker ID dynamically.
+It garantees plugins get always the right bookmark marker ID even it's been changed through the different Notepad++ versions. (New to v8.4.7)*
 
 **Parameters**:
 
@@ -1920,7 +1921,7 @@ The xml full path name has to be provided by sessionFileName.*
 ---
 
 #### [2118] **NPPM_SAVEFILE**
-*Saves a specific file.
+*Save the file (opened in Notepad++) with the given filename.
 filename must be the full file path for the file to be saved.*
 
 **Parameters**:
@@ -1932,7 +1933,7 @@ filename must be the full file path for the file to be saved.*
 : const TCHAR* filename
 
 **Return value**:
-: Returns True on success False otherwise
+: Returns True on success False on filename not found
 
 ---
 
