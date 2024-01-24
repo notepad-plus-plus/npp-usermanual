@@ -432,7 +432,7 @@ Notepad++ regular expressions ("regex") use the Boost regular expression library
 
 The Notepad++ Community has a [FAQ on other resources for regular expressions](https://notepad-plus-plus.org/community/topic/15765/faq-desk-where-to-find-regex-documentation).
 
-Note: Regular expression "backward" search is disallowed due to sometimes surprising results. If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to activate this option.
+Note: Regular expression "backward" search is disallowed due to sometimes surprising results. (For example[,](https://github.com/notepad-plus-plus/notepad-plus-plus/issues/3640#issuecomment-562273006) in the text `to the test they travelled`, a forward regex `t\w+` will find 5 results; the same regex searching backward will find 17 matches.) If you really need this feature, please see [**Allow regex backward search**](../preferences/#preferences-for-advanced-users) to learn how to activate this option.
 
 **Important Note**: Syntax that works in the **Find What:** box for searching will not always work in the **Replace with:** box for replacement.  There are different syntaxes.  The [Control Characters](#control-characters) and [Match by character code](#match-by-character-code) syntax work in both; other than that, see the individual sections for [Searches](#regex-special-characters-for-searches) vs [Substitutions](#substitutions) for which syntaxes are valid in which fields.
 
