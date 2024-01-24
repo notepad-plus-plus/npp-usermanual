@@ -321,7 +321,7 @@ view must be either 0 = main view or 1 = second view.*
 
 #### [2045] **NPPM_DESTROYSCINTILLAHANDLE**
 *If plugin called NPPM_CREATESCINTILLAHANDLE to create a Scintilla handle, it should call this message to destroy this handle while it exit.*
-*Not this message is deprecated. It is kept for the compatibility. Notepad++ will deallocate every createed Scintilla control on exit, this message returns TRUE but does nothing.*
+*Note: this message is deprecated. It is kept for the compatibility. Notepad++ will deallocate every createed Scintilla control on exit, this message returns TRUE but does nothing.*
 
 **Parameters**:
 
