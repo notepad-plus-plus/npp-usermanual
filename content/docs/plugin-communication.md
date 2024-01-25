@@ -2110,7 +2110,7 @@ If value is True, this message sets SC_EFF_QUALITY_LCD_OPTIMIZED else SC_EFF_QUA
 ---
 
 #### [2048] **NPPM_SETSTATUSBAR**
-*Sets value in the specified field of a statusbar.*
+*Sets a string in the specified field of a statusbar.*
 
 **Parameters**:
 
@@ -2125,11 +2125,11 @@ STATUSBAR_UNICODE_TYPE  4
 STATUSBAR_TYPING_MODE   5
 ~~~
 
-*lParam [out]*
-: TCHAR * value, pointer to the new value.
+*lParam [in]*
+: TCHAR* value, the string to set.
 
 **Return value**:
-: Returns 0 on failure, nonzero on success
+: Returns False on failure, True on success
 
 ---
 
