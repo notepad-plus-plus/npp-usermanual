@@ -150,6 +150,15 @@ struct toolbarIconsWithDarkMode {
 **Return value**:
 : Returns 0 on failure, nonzero on success
 
+**Examples:**
+If a plugin needs 4 menu item ID, the following code can be used:
+```
+    int idBegin;
+    BOOL isAllocatedSuccessful = ::SendMessage(nppData._nppHandle, NPPM_ALLOCATECMDID, 4, &idBegin);
+```
+if isAllocatedSuccessful is TRUE, and value of idBegin is 46581
+then menu iten ID 46581, 46582, 46583 and 46584 are preserved by Notepad++, and they are safe to be used by the plugin.
+
 ---
 
 #### [2137] **NPPM_ALLOCATEINDICATOR**
@@ -169,6 +178,15 @@ struct toolbarIconsWithDarkMode {
 **Other information**
 : If successful, `(*firstIndicatorID)+0` thru `(*firstIndicatorID)+numberOfIndicators-1` are the indicator numbers that have been set as reserved for use by the caller.
 
+**Examples:**
+If a plugin needs 1 indicator ID, the following code can be used:
+```
+    int idBegin;
+    BOOL isAllocatedSuccessful = ::SendMessage(nppData._nppHandle, NPPM_ALLOCATEINDICATOR, 1, &idBegin);
+```
+if isAllocatedSuccessful is TRUE, and value of idBegin is 7 
+then indicator ID 7 is preserved by Notepad++, and it is safe to be used by the plugin.
+
 ---
 
 #### [2106] **NPPM_ALLOCATEMARKER**
@@ -183,12 +201,23 @@ struct toolbarIconsWithDarkMode {
 : int * firstMarkerID
 
 **Return value**:
-: Returns 0 on failure, nonzero on success.
+: Returns 0 on failure, nonzero on success. firstMarkerID will also be set to 0 if unsuccessful
+
+**Examples:**
+If a plugin needs 3 marker ID, the following code can be used:
+```
+    int idBegin;
+    BOOL isAllocatedSuccessful = ::SendMessage(nppData._nppHandle, NPPM_ALLOCATEMARKER, 3, &idBegin);
+```
+if isAllocatedSuccessful is TRUE, and value of idBegin is 16 
+then marker ID 16, 17 and 18 are preserved by Notepad++, and they are safe to be used by the plugin.
 
 ---
 
-#### [2104] **NPPM_ALLOCATESUPPORTED**
-*Use to identify if subclassing is necessary*
+#### [2104] **NPPM_ALLOCATESUPPORTED** [DEPRECATED]
+*Deprecated in v8.6.2: the message has been made (since 2010 AD) for checking if NPPM_ALLOCATECMDID is supported. This message is no more needed.*
+
+*`NPPM_ALLOCATESUPPORTED_DEPRECATED` return True to indicate NPPM_ALLOCATECMDID is supported.*
 
 **Parameters**:
 
@@ -223,8 +252,7 @@ NPPM_CREATESCINTILLAHANDLE*
 ---
 
 #### [2044] **NPPM_CREATESCINTILLAHANDLE**
-*A plugin can create a Scintilla for its usage by sending this message to Notepad++.
-The handle should be destroyed by NPPM_DESTROYSCINTILLAHANDLE message while exit the plugin.*
+*A plugin can create a Scintilla for its usage by sending this message to Notepad++.*
 
 **Parameters**:
 
@@ -319,9 +347,10 @@ view must be either 0 = main view or 1 = second view.*
 
 ---
 
-#### [2045] **NPPM_DESTROYSCINTILLAHANDLE**
-*If plugin called NPPM_CREATESCINTILLAHANDLE to create a Scintilla handle, it should call this message to destroy this handle while it exit.*
-*Note: this message is deprecated. It is kept for the compatibility. Notepad++ will deallocate every createed Scintilla control on exit, this message returns TRUE but does nothing.*
+#### [2045] **NPPM_DESTROYSCINTILLAHANDLE** [DEPRECATED]
+*Deprecated in v8.6.2: this message returns TRUE but does nothing. It is kept for the compatibility. Notepad++ will deallocate every createed Scintilla control on exit*
+
+*`NPPM_DESTROYSCINTILLAHANDLE_DEPRECATED` is called to destroy a Scintilla handle.*
 
 **Parameters**:
 
@@ -728,7 +757,7 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [2047] **NPPM_GETCURRENTDOCINDEX**
-*Retrieves the current index of the current view.*
+*Retrieves the current index of the given view.*
 
 **Parameters**:
 
