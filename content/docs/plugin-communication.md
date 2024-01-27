@@ -1414,8 +1414,9 @@ First call should be made with length set to 0 and buffer set to NULL to retriev
 
 #### [2070] **NPPM_GETPLUGINSCONFIGDIR**
 *Retrieves the path of the plugin config directory.
-User is responsible to allocate a buffer which is large enough.
-MAX_PATH is suggested to use.*
+User should call this message twice:
+The 1st call with "pluginsConfDir" be NULL to get the required number of TCHAR (not including the terminating nul character)
+The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return value + 1, then call it again to get the path*
 
 **Parameters**:
 
@@ -1426,7 +1427,7 @@ MAX_PATH is suggested to use.*
 : TCHAR *pluginsConfDir
 
 **Return value**:
-: Returns True
+: Return: The 1st call - the number of TCHAR to copy; The 2nd call - False on failure, True on success
 
 ---
 
@@ -1946,7 +1947,7 @@ The xml full path name has to be provided by sessionFileName.*
 : const TCHAR *sessionFileName
 
 **Return value**:
-: Returns True
+: Returns sessionFileName on success, NULL otherwise
 
 ---
 
