@@ -14,7 +14,7 @@ on:
 
 jobs:
   deploy:
-    name: Continuous Deployment: Publish Online User Manual Website
+    name: Continuous Deployment to Publish Online User Manual Website
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'notepad-plus-plus' }}
 
