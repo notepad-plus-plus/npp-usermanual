@@ -8,16 +8,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repo
+    - name: 🚚 Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install hugo extended and httrack via chocolatey
+    - name: 📡 Install hugo extended and httrack via chocolatey
       working-directory: .
       run: |
            choco install hugo-extended --version 0.57.2
            choco install httrack
 
-    - name: Retrieve data from server
+    - name: 🔨 Build static HTML for site
       working-directory: .
       run: |
            cmd /c start hugo.exe server --theme book
@@ -30,15 +30,15 @@ jobs:
                $tmpname = "$($orgname).unedited"
                echo $tmpname
                Copy-Item $orgname $tmpname
-               get-content $tmpname | 
-                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | 
-                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} | 
-                    %{$_ -replace 'href="http://localhost:1313/','href="'} | 
+               get-content $tmpname |
+                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} |
+                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} |
+                    %{$_ -replace 'href="http://localhost:1313/','href="'} |
                     set-content $orgname
                Remove-Item $tmpname
            }
 
-    - name: Archive artifacts for hugo
+    - name: 🎉 Store zipfile as artifact
       uses: actions/upload-artifact@v4
       with:
           name: nppUserManual

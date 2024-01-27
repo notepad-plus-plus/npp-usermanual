@@ -1,24 +1,24 @@
-name: Deploy Online User Manual Website
+name: CD_Publish
 
 on:
+  #workflow_run:
+  #  workflows: CI_build
+  #  branches: master
+  #  types: completed
+  ##... the if below would start with `github.event.workflow_run_conclusion == 'success' &&`
   push:
-    tags:
-      - '*'
+    branches:
+      - 'master'
+
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Deploying Online User Manual Website
+  deploy:
+    name: Continuous Deployment: Publish Online User Manual Website
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'notepad-plus-plus' }}
 
     steps:
-    - name: check
-      working-directory: .
-      run: |
-        pwd
-        which ssh
-        which sftp
-
     - name: 🚚 Checkout repo
       uses: actions/checkout@v4
 
@@ -42,12 +42,3 @@ jobs:
           delete_remote_files: false
           local_path: './public/*'
           remote_path: '/var/www/npp-user-manual.org/public_html/'
-
-    #- name: check
-    #  working-directory: .
-    #  run: |
-    #    printf "%s" "${{ secrets.USERMANUAL_KEY }}" >../private_key.pem
-    #    chmod 600 ../private_key.pem
-    #    ls -latr ./public
-    #    ls -latr ..
-    #    ssh -o StrictHostKeyChecking=no -p ${{ secrets.USERMANUAL_PORT }} -i ../private_key.pem ${{ secrets.USERMANUAL_USERNAME }}@${{ secrets.USERMANUAL_HOST }} ls -latr /var/www/npp-user-manual.org/public_html/
