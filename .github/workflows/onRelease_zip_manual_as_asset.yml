@@ -14,16 +14,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repo
+    - name: 🚚 Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install hugo-extended and httrack via chocolatey
+    - name: 📡 Install hugo-extended and httrack via chocolatey
       working-directory: .
       run: |
            choco install hugo-extended --version 0.57.2
            choco install httrack
 
-    - name: Convert hugo site to standandalone HTML
+    - name: 🔨 Build static HTML for site
       working-directory: .
       run: |
            cmd /c start hugo.exe server --theme book
@@ -36,17 +36,17 @@ jobs:
                $tmpname = "$($orgname).unedited"
                echo $tmpname
                Copy-Item $orgname $tmpname
-               get-content $tmpname | 
-                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} | 
-                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} | 
-                    %{$_ -replace 'href="http://localhost:1313/','href="'} | 
+               get-content $tmpname |
+                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} |
+                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} |
+                    %{$_ -replace 'href="http://localhost:1313/','href="'} |
                     set-content $orgname
                Remove-Item $tmpname
            }
            Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
            Set-Location -Path ..
 
-    - name: Store zipfile as asset
+    - name: 🎉 Store zipfile as asset
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
