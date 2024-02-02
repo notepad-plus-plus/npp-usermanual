@@ -1,5 +1,5 @@
 ---
-title: Highlighting - Built-in Languages
+title: Syntax Highlighting - Built-in Languages
 weight: 70
 ---
 
