@@ -1,5 +1,5 @@
 ---
-title: Highlighting - User Defined Languages
+title: Syntax Highlighting - User Defined Languages
 weight: 80
 ---
 
