@@ -295,8 +295,8 @@ Affects the operations found in the **Find** dialog tabs.
 
 * **When Find Dialog is Invoked**
     * `Minimum Size for Auto-Checking 'In selection': _____`: Integer value used for deciding whether to automatically checkmark **☐ In Selection**.  (new to v8.5.8)
-        - When a search function is initiated while a stream selection is active in the editor, the **☐ In Selection** option will become automatically checkmarked if this setting is not `0` and the number of characters in the selection is above the specified value. Additionally, if this setting is non-zero, the **☐ In selection** option will be automatically cleared when a search is initiated with no stream selection active in the editor. When the setting is `0`, the user will entirely control the state of the **☐ In selection** checkbox (that is, the program won't change the check state at all). 
-        - The default value is `1024` characters.  
+        - When a search function is initiated while a stream selection is active in the editor, the **☐ In Selection** option will become automatically checkmarked if this setting is not `0` and the number of characters in the selection is above the specified value. Additionally, if this setting is non-zero, the **☐ In selection** option will be automatically cleared when a search is initiated with no stream selection active in the editor. When the setting is `0`, the user will entirely control the state of the **☐ In selection** checkbox (that is, the program won't change the check state at all).
+        - The default value is `1024` characters.
         - Allowed values: `0` characters is the smallest integer value allowed.  `1024` is the largest integer value allowed. If you enter an integer value greater than `1024` then the field value will change to `1024` immediately. If you attempt to enter a non-digit character (like a decimal point or a letter), the field will pop up an error message indicating that only digits are allowed to be entered.
     * `☐ Fill Find Field with Selected Text`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
         * `☐ Select Word Under Caret when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the caret; when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
@@ -494,10 +494,10 @@ If you want to specify a search engine not listed, type the full URL, with the t
 A variety of settings that didn't fit elsewhere
 
 * **Document Switcher**
-    * `☐ Enable`: Hitting `Ctrl+TAB` will allow you to easily switch through all the open documents.
-    * `☐ Enable MRU behavior`: It will default to selecting the most recently used file (or "MRU", for short) in the `Ctrl+TAB` list.
-        - When checkmarked: `Ctrl+TAB` will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
-        - When not checkmarked: `Ctrl+TAB` will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
+    * `☐ Enable`: When checkmarked, using <kbd>Ctrl+Tab</kbd> will allow you to use the [Document Switcher popup](../user-interface/#document-switcher) to switch through all the open documents.
+    * `☐ Enable MRU behavior`: It will default to selecting the most recently used file (or "MRU", for short) in the <kbd>Ctrl+Tab</kbd> list.
+        - When checkmarked: <kbd>Ctrl+Tab</kbd> will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
+        - When not checkmarked: <kbd>Ctrl+Tab</kbd> will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
 * **Document Peeker**
     * `☐ Peek on tab`: If you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar.
     * `☐ Peek on document map`: If you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document.
