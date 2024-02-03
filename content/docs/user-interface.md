@@ -104,3 +104,20 @@ For each function, there are 3 commands:
 - **Generate from Files** - Will calculate the hashes for one or more selected files.
 - **Generate from Selection into Clipboard** - Will use the text that is currently selected, calculate the hash, and put the hash results in the Clipboard.
 
+## Document Switcher
+
+The Document Switcher feature (which can be enabled or disabled using the **[Settings > Preferences > MISC](../preferences/#misc) > Document Switcher** settings) can be used to quickly switch between all the open files in the active View.
+
+When you hold the <kbd>Ctrl</kbd> key and then press and release the <kbd>Tab</kbd> key, the Document Switcher appears as a popup with a yellow background, showing the current list of tabs for the active View (or a partial list, if there are too many tabs); the popup will remain until you release the <kbd>Ctrl</kbd> key.  One tab in the list will be selected (displayed in bold), indicating which tab will be made activate when all keys have been released.  With the Document Switcher on screen, repeated press and release of the <kbd>Tab</kbd> key will move the selection (bold highlight) downward on the screen, to the next tab name in the list.  When the desired tab is selected (bold), release all keys to activate that selected tab.
+
+The first tab to be selected when you start the Document Switcher depends on the **[Settings > Preferences > MISC](../preferences/#misc) > Document Switcher > Enable MRU behavior** checkbox: When not checkmarked, the first-selected tab will be the tab to the right of the currently-active tab (or the first tab in the View, if the currently-active tab is the last in the View).  When that setting is checkmarked, the first-selected tab will be the tab that was active just before the current tab was activated (the "most recently used" tab).
+
+The order of the list of tabs matches the left-to-right order of the tab bar for the active View, when not in MRU mode.  When in MRU mode, it matches the "most recently used" order, with the most recent at the top of the list, and the least recent at the bottom.
+
+When cycling through the tabs in the Document Switcher, if the bottom entry in the list is reached and you again press and release <kbd>Tab</kbd>, the selection will move to the top of the list (that is, the bold highlight will move to the top of the list); or, if the list was too long to entirely be displayed, the <kbd>Tab</kbd> will scroll the Document Switcher, so the next entry down will be made visible and will be selected (displayed as bold), and the entry that was previous at the top of the list will scroll out of the visible popup.
+
+If you hold down <kbd>Shift</kbd> (while still holding the <kbd>Ctrl</kbd> key to keep you in Document Switcher mode), and then press and release the <kbd>Tab</kbd>, it will cause the selection (bold highlight) to move to the previous entry in the tab list, rather than the next.  (And in the long list scenario, it would scroll to the next tab above the top in the list, making that visible and scrolling the bottom tab in the list out of the visible popup.)
+
+The Document Switcher functionality can also be achieved using the just mouse (if you have a scroll wheel): Right-click in the editing area for a tab and hold the mouse button, then begin scrolling the mouse wheel (in either direction) to display the Document Switcher popup, and continued scrolling of the scroll wheel will change the selected tab in the list.  Releasing the right mouse button will cause the currently-selected tab to be activated in the current View.
+
+If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the first-selected tab and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
