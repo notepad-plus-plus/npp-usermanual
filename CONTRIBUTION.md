@@ -16,19 +16,23 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 
 ## Style Guide
 
-* First and foremost, when editing, keep it similar to what's already in that document.  
+* First and foremost, when editing, keep it similar to what's already in that document.
   * Do not arbitrarily change an existing style choice (like `-` vs `*` for bulleted lists, or `_..._` vs `*...*` for italics) without a good technical reason
   * If you are fixing an actual Markdown _error_ that causes the final user manual documentation to render incorrectly, that is allowed (and encouraged).
   * Many sections of the User Manual were written before this Style Guide, and the style chosen by the original author of that section has been "grandfathered in".  If you are changing something else in a small section of such a document, you can also update the style in that small section, but you should not make huge changes to the formatting without getting the agreement of the owner and/or maintainer(s) of the User Manual.
 
 * When referencing a menu item, like **File > Open**, make it bold, and use `>` as the separator-character between different levels.  <!-- This follows Microsoft documentation style for the separator character, so will make it more familiar to Windows users. -->
 
-* When referencing a setting in a dialog box, make it bold.  Examples:
-    * On the **Settings > Preferences > Backup** page, please enable **☑ Remember Current Session For Next Launch**"
-    * Use the checkbox **Search > Find > Search Mode: ☑ Regular Expression** to enable regular expressions in your search
+* When referencing a setting in a dialog box, make it bold.
+    * Examples:
+        * On the **Settings > Preferences > Backup** page, please enable **☑ Remember Current Session For Next Launch**"
+        * Use the checkbox **Search > Find > Search Mode: ☑ Regular Expression** to enable regular expressions in your search
     * The symbols `☐` and `☑` are used both for checkboxes and for radio buttons (because there aren't Unicode characters that are widely supported across fonts that are a good representation of a radio button)
+    * Historically, some pages have used `backtick monospace` text for the options themselves, to disambiguate between the menu entry, dialog tab name, and dialog section header from the option. Please choose the new style, except when doing so will clash with the existing styling in a section.
 
 * For text that you want to indicate as user-entered (such as regular expressions or values entered into dialog box prompts), and for filenames and directories, use backticks to set the `monospaced / code` formatting.
+
+* Use the `<kbd>...</kbd>` tag around keyboard shortcuts.  (Historically, the `backtick monospace` was used, but the `kbd` tag allows differentiated formatting, to make shortcuts more obvious.  Going forward, `kbd` tags should be used.)
 
 * Special symbols may be entered by pasting in Unicode characters or using the appropriate &amp;-entities.  Please stick to common characters that are likely to be rendered on a variety of platforms with a variety of fonts.
 
@@ -40,7 +44,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 
 * To link from one page in the user-manual docs to the top of another page, use the syntax `[link name](../page/)` .  *Note* that in the link syntax, `page` does _not_ include the `.md` extension.
 
-* To link to an anchor (like a heading) in another file, use `[link name](../page/#anchor)` ; or use `[link name](#anchor)` to link to an anchor (heading) in the same file.  The anchor names are the lower-case version of the section headers, with spaces replaced by hyphens.  
+* To link to an anchor (like a heading) in another file, use `[link name](../page/#anchor)` ; or use `[link name](#anchor)` to link to an anchor (heading) in the same file.  The anchor names are the lower-case version of the section headers, with spaces replaced by hyphens.
 
 * Example: from the [Themes](content/docs/themes/) page, you can link to the [**Preferences > Style Configurator**](content/docs/preferences/#style-configurator) using the syntax `[**Preferences > Style Configurator**](../preferences/#style-configurator)`.
 
@@ -48,7 +52,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 
 If you are making multiple PRs, please make sure you keep them separate.  If you make a first change to change A to B and submit it as PR #N, then using the same branch (or a new branch that started from the first branch) and change C to D and submit as PR #M, then PR #M will contain the same changes as #N, in addition to the new changes.  This will mean that if #N is rejected, #M will likely be rejected as well (because they contain the same changes that were rejected); and if #N is accepted (possibly with changes from the maintainers), then #M might come in conflict with #N; this also makes it harder to evaluate specifically what was intended for PR #M.
 
-The best way to avoid this problem is to 
+The best way to avoid this problem is to
 1. Fork from the main repository, or sync your existing fork with the main repository using GitHub's **Fetch Upstream > Fetch and Merge** feature
 2. Before making any new changes, create a branch specific to the one issue you are trying to fix
 3. Make those changes and submit a new PR from the _branch_ back to the main repository
