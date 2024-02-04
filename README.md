@@ -25,6 +25,7 @@ Summary
 * [Configuration Files Details](content/docs/config-files.md)
 * [Themes](content/docs/themes.md)
 * [Localization - User Interface Translation](content/docs/binary-translation.md)
+* [User Interface](content/docs/user-interface.md)
 * [Upgrading](content/docs/upgrading.md)
 * [Right Click - Edit with Notepad++](content/docs/shell-extension.md)
 * [Ghost Typing](content/docs/ghost-typing.md)
