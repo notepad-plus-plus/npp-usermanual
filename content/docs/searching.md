@@ -650,8 +650,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
-* `\G` ⇒ This "Continuation Escape" matches the end of the previous match.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current caret position, or the start of the highlighted text.
-
+* `\G` ⇒ This "Continuation Escape" matches the end of the previous match, or matches the start of the text being matched if no previous match was found.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current caret position, or the start of the highlighted text.  Because of that, if you are using it in an alternation, where you want to say "find any occurrence of something after some prefix, or after a previous match), you will want to make sure that your prefix includes the start-of-file `\A`, otherwise the `\G` portion may accidentally match start-of-file when you don't want that to occur.
 
 
 #### Capture Groups and Backreferences
