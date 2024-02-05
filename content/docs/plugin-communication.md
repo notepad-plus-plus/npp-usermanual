@@ -281,7 +281,7 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 : HWND pluginWindowHandle,
 
 **Return value**:
-: Returns The new encoding mode.
+: Returns succesful combinations of flags.
 
 **Other information**:
 
