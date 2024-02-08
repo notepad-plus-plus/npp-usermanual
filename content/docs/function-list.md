@@ -103,9 +103,11 @@ To avoid creating regressions in the Notepad++ codebase, it is important to run 
 Here are the steps to run unit tests:
 
 1. Create or sync your fork of the Notepad++ repository.
-2. Make sure you copy your modified function-list parser definition (xml file) into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`.
-3. Open PowerShell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
-4. Once you see "All tests are passed.", you can submit your PR.
+2. Copy all XML files from `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\installer\functionList\` to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`.
+3. Copy all XML files from `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\installer\filesForTesting\` to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`.
+4. Make sure you copy your modified function-list parser definition (xml file) into `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\bin\functionList\`.
+5. Open PowerShell, go to `[YOUR_SOURCES_DIR]\notepad-plus-plus\PowerEditor\Test\FunctionList\` to run `.\unitTestLauncher.ps1`.
+6. Once you see "All tests are passed.", you can submit your PR.
 
 #### Unit test file is absent
 
