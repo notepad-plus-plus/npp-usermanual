@@ -90,7 +90,8 @@ These influence editing (carets, code-folding, line wrapping, and more).
 * `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using `Ctrl`+Mouse click on the selection(s).  (This option is removed in v8.6 and beyond, because `Ctrl`+Mouse multi-editing is now always available.)
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
-* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad
+* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
+* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
 
 ### Dark Mode
 

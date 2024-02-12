@@ -352,7 +352,7 @@ Certain keyboard-shortcuts for editing commands are "context aware", meaning tha
 
 Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
 
-In order to disable the context-aware "line copy / cut / delete" feature, create the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml` (new to v8.6.1).
+In v8.6.1, you can disable the context-aware "line copy / cut / delete" feature, by creating the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml`.  This zero-byte config file was eliminated in v8.6.2, so the feature could not be disabled in that version.  And in v8.6.3, **[Settings > Preferences > Editing](../preferences/#editing) > ☐ Enable Copy/Cut Line without selection** was added to be able to control this behavior using the Preferences dialog.
 
 ### Drag-and-Drop Move or Copy
 
