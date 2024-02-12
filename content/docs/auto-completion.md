@@ -59,7 +59,28 @@ Some characters traditionally work in pairs, so that it makes sense to ask an ed
 
 Through [**Settings > Preferences > Auto-Completion**](../preferences/#auto-completion), the **Auto-Insert** options allow selection of any or all of five predefined characters—parenthesis, bracket, brace, double-quote and single quote (apostrophe)—to be automatically matched. Not only that, three custom pairs of characters may be specified. For instance, you might use Unicode open- and close- double quotes; with this feature, you can have both characters inserted when you type the opening quote mark. (Only single characters are allowed in these fields.)
 
-In each case, when the opening character is typed, the closing character will automatically be inserted, with the caret placed between the two.
+In each case, when the opening character is typed, the closing character will automatically be inserted, with the caret placed between the two.  However, there are a few restrictions, to prevent unwanted auto-insertion, such as `don''t`:
+
+- If your caret (the text insertion point) is between an empty pair of parentheses `()` or square brackets `[]` or curly brackets `{}`, it will perform auto-insertion.
+- If there are whitespace characters (like space or tab or the beginning or ending of a line) both before and after the caret, it will perform auto-insertion.
+- If there is whitespace before the caret and a closing parenthesis `)` or square bracket `]` or curly bracket `}` after the caret, it will perform auto-insertion.
+- If those conditions are not met, then it will _not_ perform auto-insertion.
+- Examples:
+
+    condition | before | after | auto-insert?
+    ---|---|---|---
+    empty parens | `()` | `("")` | yes
+    double space (left of both spaces) | `xyz  abc` | `xyz"  abc` | no
+    double space (between the spaces) | `xyz  abc` | `xyz "" abc` | yes
+    double space (right of both spaces) | `xyz  abc` | `xyz  "abc` | no
+    space then closing bracket (left of space) | `[ ]` | `["" ]` | yes
+    space then closing bracket (right of space) | `[ ]` | `[ ""]` | yes
+    letter curly | `r}` | `r"}` | no
+    punctuation paren | `,)` | `,")` | no
+    punctuation space paren (left of space) | `, )` | `," )` | no
+    punctuation space paren (right of space) | `, )` | `, "")` | yes
+    prevents `don''t` | `don` | `don'` | no
+
 
 Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this feature active, when editing HTML or XML files, after you type an opening tag, such as `<div>`, the program will automatically match it with the closing `</div>`, with the caret placed between the two tags so that content can be added. Matching will work even if attributes are entered while typing the opening tag. And if the opening tag is terminated with a slash (`/`) —such as `<hr/>` —then no matching tag is inserted. (In the case of `<hr>` entered without a slash, a matching close tag will still be inserted, even if unnecessary, for both HTML and XML editing. Consider this a push towards XML correctness in your HTML code.)
 
