@@ -354,6 +354,24 @@ Again, this manual will not enumerate all the context-aware commands.  The ones 
 
 In order to disable the context-aware "line copy / cut / delete" feature, create the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml` (new to v8.6.1).
 
+### Drag-and-Drop Move or Copy
+
+A "drag-and-drop" action on an active selection can be used for moving or copying that selection.
+
+![](../images/dragAndDrop.gif)
+
+- Moving text: Make a selection of the text you wish to move. Left-click on the selection and drag the selected text to its desired new location in the document and release the left mouse button.  During dragging, the mouse cursor will change to a box with a dashed outline to indicate that a move operation will take place when the mouse is released.  If you change your mind and wish to abort the move, simply press the <kbd>Esc</kbd> key while you still have the left-mouse button pressed.  While the dragging is occurring, if you decide you'd rather make a copy of the text, simply start pressing the <kbd>Ctrl</kbd> key, and it will be converted into a copy-action as described below.
+
+- Copying text: Make a selection of the text you wish to copy.  Left-click on the selection and start dragging the selected text to the location where you want the duplicate version of the text to be placed.  At some point after starting the drag operation, start pressing the <kbd>Ctrl</kbd> key.  When you've reached your desired destination, release the left mouse button and then release the <kbd>Ctrl</kbd> key.  When you start dragging, the mouse cursor will change to a box with a dashed outline; when you add the <kbd>Ctrl</kbd> key, the mouse cursor will add a smaller box with a `+` sign in it, to indicate that a copy operation will take place when the mouse is released.  If you change your mind and wish to abort the copy, simply press the <kbd>Esc</kbd> key while you still have the left-mouse button pressed.
+
+- _Notes:_
+
+    - When copying text, it is important that no modifier keys (<kbd>Shift</kbd>, <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, or other region-specific modifiers) are depressed/held when you _start_ dragging the text.  This will initially seem like a move operation, but adding in the <kbd>Ctrl</kbd> key **after** the drag has been started will turn it into a copy (and the mouse cursor will change accordingly).
+
+    - These techniques work well with column-block selections, but with multiple stream selections perhaps less so: the multiple selections will be "jammed" together with no intervening delimiter at the destination position in the document.  Of course, if the multiple selections were all full lines, they will still be full lines at their destination, so for this specific case the mouse move/copy is judged to work very well.
+
+
+
 ## Printing
 
 _The documentation on printing the active document has been moved to [Working with Files > Printing](../files/#printing)._
