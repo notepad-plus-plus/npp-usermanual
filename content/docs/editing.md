@@ -65,7 +65,7 @@ Starting in v8.6.1, if you `Ctrl+Click` at a previous multi-caret location, or `
 
 Multi-Editing mode is only available when stream selection(s) are active; it doesn't work in conjunction with column-block selection.  Unlike stream selections, where with Multi-editing you can define two or more selections simultaneously, with column mode there can be only one active selection at a time.
 
-Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  In v8.6 - v8.6.2, Multi-Editing is always on, and that option was been removed; starting in v8.6.3, that option was returned, but is now at [**Settings > Preferences > Editing 2 > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2).
+Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  In v8.6 - v8.6.2, Multi-Editing is always on, and that option was been removed; starting in v8.6.3, that option was returned, but is now at [**Settings > Preferences > Editing 2 > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2).
 
 Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  The [Multi-Editing HowTo](#multi-editing-howto) (below) gives a tutorial in how to use this improved feature, including the new [**Edit** menu](#edit-menu) **...Multi-Select...** commands.
 
@@ -352,7 +352,7 @@ Certain keyboard-shortcuts for editing commands are "context aware", meaning tha
 
 Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
 
-In v8.6.1, you can disable the context-aware "line copy / cut / delete" feature, by creating the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml`.  This zero-byte config file was eliminated in v8.6.2, so the feature could not be disabled in that version.  And in v8.6.3, **[Settings > Preferences > Editing](../preferences/#editing) > ☐ Enable Copy/Cut Line without selection** was added to be able to control this behavior using the Preferences dialog.
+In v8.6.1, you can disable the context-aware "line copy / cut / delete" feature, by creating the [zero-byte config file](../config-files/#other-configuration-files) `disableLineCopyCutDelete.xml`.  This zero-byte config file was eliminated in v8.6.2, so the feature could not be disabled in that version.  And in v8.6.3, **[Settings > Preferences > Editing](../preferences/#editing-1) > ☐ Enable Copy/Cut Line without selection** was added to be able to control this behavior using the Preferences dialog.
 
 ### Drag-and-Drop Move or Copy
 

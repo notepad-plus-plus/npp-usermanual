@@ -54,9 +54,13 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Hide menu bar (use Alt or F10 key to toggle)`: Sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key.
     * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
 
+### Editing
+
+Starting in v8.6.3, the **Editing** section in the **Preferences** dialog was split into [**Editing 1**](#editing-1) and [**Editing 2**](#editing-2).
+
 ### Editing 1
 
-These influence editing (carets, code-folding, line wrapping, and more).  (Starting in v8.6.3, the **Editing** preferences were split into **Editing 1** and **Editing 2**.)
+These influence editing (carets, code-folding, line wrapping, and more).
 
 * **Caret Settings**:
     * `Width`: [pulldown] Sets the width and shape of the typing caret:
@@ -562,10 +566,10 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Indent guideline style** [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is checked, there will be a thin dotted line for every level of indent.  The foreground sets the color of the dots; the background sets the color of the non-dot portion.
 * **Brace highlight style** [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the caret onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
 * **Bad brace colour** [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the caret at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
-* **Current line background colour** [background only] ⇒ The line containing the active editing caret will be marked using this background style.  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **Current Line Indicator**.
+* **Current line background colour** [background only] ⇒ The line containing the active editing caret will be marked using this background style.  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **Current Line Indicator**.
 * **Selected text colour** [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is checked, the "Smart Highlighting" style (below) will be colored overtop of the "Selected text colour". If the [configuration file `enableSelectFgColor.xml`](../config-files#other-configuration-files) exists (and you have v8.0.0 or newer), "Selected text colour" will honor the foreground color as well.
 * **Multi-selected text colour** [background only] ⇒ Text selected in "multi-select" mode will be indicated with this background. (New to v8.6)
-* **Caret colour** [foreground only] ⇒ This sets the color for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **Caret Settings**.
+* **Caret colour** [foreground only] ⇒ This sets the color for the current-text-position caret, which will either be `|` for insert mode or `_` for overwrite mode.  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **Caret Settings**.
 * **Multi-edit carets colour** [foreground only] ⇒ This sets the color for the current-text-position caret in multi-selection mode. (New to v8.6)
 * **Edge colour** [foreground only] ⇒ Color for the vertical edge from [Preferences > Margins/Border/Edge](#margins-border-edge).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Vertical Edge Settings**.
 * **Line number margin** [background and foreground] ⇒ If **Line Number > Display** is checked in [Preferences > Margins/Border/Edge](#margins-border-edge), this sets the style for those line numbers.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Line Number** settings.
@@ -587,8 +591,8 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Inactive tabs** [background and foreground] ⇒ Selects the color to be used for the filename displayed in the titlebars of all inactive tabs.
 * **URL hovered** [foreground only] ⇒ If [Preferences > Cloud & Link > Clickable Link Settings > Enable](#cloud-link) is checked, when your mouse cursor is hovering over a URL, or if the caret is inside the URL text, then the URL's foreground color will follow this setting.  The "Go to settings" link will take you to [Preferences > Cloud & Link](#cloud-link) so you can change **Clickable Link Settings**.
 * **Document map** [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
-* **EOL Custom Color** [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing).  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **EOL** settings.
-* **NPC Custom Color** [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing).  The "Go to settings" link will take you to [Preferences > Editing](#editing) so you can change **Non-Printing Characters** settings.
+* **EOL Custom Color** [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing-1).  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **EOL** settings.
+* **NPC Custom Color** [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing-1).  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **Non-Printing Characters** settings.
 
 ### Search result styles
 
