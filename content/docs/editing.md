@@ -65,11 +65,11 @@ Starting in v8.6.1, if you `Ctrl+Click` at a previous multi-caret location, or `
 
 Multi-Editing mode is only available when stream selection(s) are active; it doesn't work in conjunction with column-block selection.  Unlike stream selections, where with Multi-editing you can define two or more selections simultaneously, with column mode there can be only one active selection at a time.
 
-Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  Starting in v8.6, Multi-Editing is always on, and that option has been removed.
+Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  In v8.6 - v8.6.2, Multi-Editing is always on, and that option was been removed; starting in v8.6.3, that option was returned, but is now at [**Settings > Preferences > Editing 2 > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2).
 
 Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  The [Multi-Editing HowTo](#multi-editing-howto) (below) gives a tutorial in how to use this improved feature, including the new [**Edit** menu](#edit-menu) **...Multi-Select...** commands.
 
-With the improved Multi-Edit, Column Mode selections are treated more like Multi-Edit selections; in order to disable this treatment, create the [zero-byte config file](../config-files/#other-configuration-files) `noColumnToMultiSelect.xml` (new to v8.6.1).
+With the improved Multi-Edit, Column Mode selections are treated more like Multi-Edit selections; in order to disable this treatment, create the [zero-byte config file](../config-files/#other-configuration-files) `noColumnToMultiSelect.xml` (in v8.6.1-v8.6.2); going forward, instead of a zero-byte file, there is a second option in the [**Editing 2**](../preferences/#editing-2) preferences to **☐ Enable Column Selection to Multi-Editing**.
 
 ### Multi-Editing HowTo
 
