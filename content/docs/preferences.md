@@ -54,9 +54,9 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Hide menu bar (use Alt or F10 key to toggle)`: Sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the Alt or F10 key.
     * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.
 
-### Editing
+### Editing 1
 
-These influence editing (carets, code-folding, line wrapping, and more).
+These influence editing (carets, code-folding, line wrapping, and more).  (Starting in v8.6.3, the **Editing** preferences were split into **Editing 1** and **Editing 2**.)
 
 * **Caret Settings**:
     * `Width`: [pulldown] Sets the width and shape of the typing caret:
@@ -87,11 +87,17 @@ These influence editing (carets, code-folding, line wrapping, and more).
 * `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
 * `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
 * `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
-* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using `Ctrl`+Mouse click on the selection(s).  (This option is removed in v8.6 and beyond, because `Ctrl`+Mouse multi-editing is now always available.)
+* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using `Ctrl`+Mouse click on the selection(s).  (This option was removed in v8.6-v8.6.2, but returned in the new [**Editing 2**](#editing-2) preferences in v8.6.3.)
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
 * `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
+
+### Editing 2
+
+- `☐ Enable Multi-Editing (Ctrl+Mouse Click/Selection)`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).  (This option was in **Editing** preferences originally; it was removed in v8.6-v8.6.2; but it returned in the new **Editing 2** preferences in v8.6.3.)
+    - `☐ Enable Column Selection to Multi-Editing`: When checkmarked, a Column Selection will be converted into a Multi-Selection to give added power.  When not checkmarked, Column Selections will be independent of Multi-Selections, so it will behave more like v8.6-and-earlier, or v8.6.1-8.6.2 with the `noColumnToMultiSelect.xml` config file.  (New preference in v8.6.3.)
+
 
 ### Dark Mode
 

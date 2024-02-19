@@ -417,7 +417,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `nativeLang.xml`: If you make a selection in the [**Settings > Preferences > General > Localization**](../preferences/#general), Notepad++ will copy the appropriate `localization\*.xml` to `nativeLang.xml`.
 
-- `noColumnToMultiSelect.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to not enable the [column-mode to multi-edit conversion](../editing/#multi-editing) feature (new to v8.6.1).  This file needs to be in `%AppData%\Notepad++\` for a normal installation and in the portable directory for a local configuration.
+- `noColumnToMultiSelect.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to not enable the [column-mode to multi-edit conversion](../editing/#multi-editing) feature (new to v8.6.1).  This file needs to be in `%AppData%\Notepad++\` for a normal installation and in the portable directory for a local configuration.  Starting in v8.6.3, this zero-byte file was replaced by [**Settings > Preferences > Editing 2 > ☐ Enable Column Selection to Multi-Editing**](../preferences/#editing-2); if you used `noColumnToMultiSelect.xml` in v8.6.1-v8.6.2, to maintain the same behavior, you will need to make sure the new setting is not checkmarked; as of v8.6.3, this file is ignored and does nothing.
 
 - `noEasterEggs.xml`: This is a zero-byte file that is used as an indicator to `notepad++.exe` to not show the "Easter Eggs" in the **About Notepad++** dialog (accessed from the **?** menu or the default keyboard shortcut `F1`). This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.
 
