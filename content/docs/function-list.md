@@ -31,12 +31,14 @@ There are 3 kinds of parsers: function parser, class parser, and mixed parser.
 
 _Notes on regular expressions for parsers_:
 
-Other than the caveats below, the function list regular expressions follow the same syntax spelled out in the docs on [Searching: Regular Expressions](../searching/#regular-expressions):
+The function list regular expressions follow the same syntax spelled out in the docs on [Searching: Regular Expressions](../searching/#regular-expressions), with the following exceptions or clarifications:
 
 - The parser does not accept **regular expression look behind operations** in the expressions.
-- The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names)
+- The parser can only search for function names, it will not do **regular expression replacement or modification** (so you cannot add text to the matching names, or remove text from the middle; to remove text from the beginning or the end, use `\K` to reset the match, or use **look ahead operations**)
 - You _may_ use the `(?x)` modifier to allow additional whitespace and `#`-prefixed comments in your regular expression, as described in the docs on [regex search modifiers](../searching/#search-modifiers)
 - The parser defaults to `. matches newline` being turned on (the equivalent of `(?s)` inside a regex).  If you want `.` to _not_ match newlines, please include `(?-s)` in your FunctionList definition regular expressions.
+
+Because the Function List parser uses a subset of the same regular expression syntax that Notepad++ uses for **Search > Find** regular expressions, you can use Notepad++'s search dialog with **Search Mode** set to **☑ Regular Expression** to experiment with the searches.  (If you choose to use some other tool -- like one of the many web-based regex explainers -- to help you debug your expression for your Function List definition, please understand that there are many implementations of regular expressions, and even very similar implementations have subtle differences in behavior.  You would need to find a tool that uses the exact same Boost library version that Notepad++ uses to have their results be identical.  The [Searching: Regular Expressions](../searching/#regular-expressions) section should always list the version of the Boost library used by the most recent Notepad++.)
 
 ### Function parser
 The `<function>` node accepts the following attributes and contained elements:
