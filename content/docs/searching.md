@@ -442,7 +442,9 @@ In a regular expression (shortened into regex throughout), special characters in
 
 #### Single-character matches
 
-* `.` or `\C` ⇒ Matches any character. If you check the box which says **. matches newline**, the dot matches any character, including newline sequences (`\r` or `\n`).  With the option unchecked, `.` only matches characters within a line.
+* `.` or `\C` ⇒ Matches any character.
+    - If you check the box which says **. matches newline**, or use the `(?s)` [search modifier](#search-modifiers), then `.` or `\C` will match any character, including newline characters (`\r` or `\n`).  With the option unchecked, or using the `(?-s)` search modifier, `.` or `\C` only match characters within a line, and do not match the newline characters.
+    - Any Unicode character within the [Basic Multilingual Plane (BMP)](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane) (with a codepoint from U+0000 through U+FFFF) will be matched per these rules.  Any Unicode character that is beyond the BMP (with a codepoint from U+10000 through U+10FFFF) will be matched as two separate characters instead, since the "surrogate code" uses two characters.  (See the [Match by Character Code section](#match-by-character-code) for more on how surrogate codes work.)
 
 * `\X` ⇒ Matches a single non-combining character followed by any number (zero or more) combining characters. You can think of `\X` as a "`.` on steroids": it matches the whole [grapheme](https://en.wikipedia.org/wiki/Grapheme "character with all its modifiers") as a unit, not just the base character itself.  This is useful if you have a Unicode encoded text with accents as separate, combining characters.  For example, the letter `ǭ̳̚`, with four combining characters after the `o`, can be found either with the regex `(?-i)o\x{0304}\x{0328}\x{031a}\x{0333}` or with the shorter regex `\X` (the latter, being generic, matches more than just `ǭ̳̚`, inluding but not limited to `ą̳̄̚` or `o` alone); if you want to limit the `\X` in this example to just match a possibly-modified `o` (so "`o` followed by 0 or more modifiers"), use a lookahead before the `\X`: `(?=o)\X`, which would match `o` alone or `ǭ̳̚`, but not `ą̳̄̚`.
 
@@ -496,7 +498,7 @@ These next two only work with Unicode encodings (so the various UTF-8 and UTF-16
 
 * `\t` ⇒ The TAB control character 0x09 (tab, or hard tab, horizontal tab).
 
-* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 5 lowest order bits. For instance, `\cA` and `\ca` both stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting `Ctrl+A`` in a terminal.  (Note that `\c☒` will not work if `☒` is outside of the [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane "BMP") -- that is, it only works if `☒` is in the Unicode character range U+0000 - U+FFFF. The intention of `\c☒` is to mnemonically escape the ASCII control characters obtained by typing `Ctrl+☒`, it is expected that you will use a simple ASCII alphanumeric for the `☒`, like `\cA` or `\ca`.)
+* `\c☒` ⇒ The control character obtained from character ☒ by stripping all but its 5 lowest order bits. For instance, `\cA` and `\ca` both stand for the SOH control character 0x01.  You can think of this as "\c means ctrl", so `\cA` is the character you would get from hitting <kbd>Ctrl+A</kbd> in a terminal.  (Note that `\c☒` will not work if `☒` is outside of the [Basic Multilingual Plane (BMP)](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane "BMP") -- that is, it only works if `☒` is in the Unicode character range U+0000 - U+FFFF. The intention of `\c☒` is to mnemonically escape the ASCII control characters obtained by typing <kbd>Ctrl+☒</kbd>, it is expected that you will use a simple ASCII alphanumeric for the `☒`, like `\cA` or `\ca`.)
 
 ##### Special Control escapes
 
