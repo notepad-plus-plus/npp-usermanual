@@ -8,7 +8,7 @@ weight: 10
 
 Notepad++ has two modes for selecting text:  stream selection and column-mode selection.
 
-Normally when you select text by `LeftClick+Drag` with the mouse, or `Shift+Arrow` key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically.  Column mode is also referred to as column-block, rectangular selection, or rectangular block selection.
+Normally when you select text by <kbd>LeftClick+Drag</kbd> with the mouse, or <kbd>Shift+Arrow</kbd> key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically.  Column mode is also referred to as column-block, rectangular selection, or rectangular block selection.
 
 On the **Edit** menu is an entry **Column Mode** which when executed opens a text box window that explains the basics of column mode selection of text:
 
@@ -24,9 +24,9 @@ Truly, other ways to enter column-mode exist, e.g. try Alt+Shift+PageDown, but k
 
 As soon as you make a caret movement that doesn't intentionally keep you in column mode, your selection mode returns to the stream selection mode.  Similarly, if in stream mode, and you perform a caret movement that doesn't keep you selecting text, your stream selection will end and no text will be selected.
 
-When column-selecting with the mouse, once you stop making a column mode selection by letting up on the mouse's left click button, the only way to then alter the shape of the rectangular selection is with the keyboard (`Alt+Shift+Arrows`).
+When column-selecting with the mouse, once you stop making a column mode selection by letting up on the mouse's left click button, the only way to then alter the shape of the rectangular selection is with the keyboard (<kbd>Alt+Shift+Arrows</kbd>).
 
-Animation of using `Alt+LeftClick+Drag` or `Alt+Shift+Arrows` to make a selection in column mode:
+Animation of using <kbd>Alt+LeftClick+Drag</kbd> or <kbd>Alt+Shift+Arrows</kbd> to make a selection in column mode:
 
 ![](../images/columnMode.gif)
 
@@ -57,15 +57,15 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 ## Multi-Editing
 
-Multi-Editing mode (available via mouse usage only) allows you to make multiple carets by using `Ctrl+Click` for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.  You may place as many additional carets as you want.
+Multi-Editing mode (available via mouse usage only) allows you to make multiple carets by using <kbd>Ctrl+Click</kbd> for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.  You may place as many additional carets as you want.
 
 In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a `Ctrl+Click+Drag` operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
 
-Starting in v8.6.1, if you `Ctrl+Click` at a previous multi-caret location, or `Ctrl+Click` within a previous multi-selection region, that caret or selection region will be removed, while leaving other portions of your multi-selection still active.  (This effectively allows you to "undo" a _portion_ of the multi-selection without having to redo everything, and is useful in complex multi-selections when you accidentally `Ctrl+Clicked` in the wrong place or changed your mind.)
+Starting in v8.6.1, if you <kbd>Ctrl+Click</kbd> at a previous multi-caret location, or <kbd>Ctrl+Click</kbd> within a previous multi-selection region, that caret or selection region will be removed, while leaving other portions of your multi-selection still active.  (This effectively allows you to "undo" a _portion_ of the multi-selection without having to redo everything, and is useful in complex multi-selections when you accidentally <kbd>Ctrl+Clicked</kbd> in the wrong place or changed your mind.)
 
 Multi-Editing mode is only available when stream selection(s) are active; it doesn't work in conjunction with column-block selection.  Unlike stream selections, where with Multi-editing you can define two or more selections simultaneously, with column mode there can be only one active selection at a time.
 
-Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2) checkbox: with it checkmarked, `Ctrl+Click` will add caret locations; with it not checkmarked, Multi-Editing is disabled.  In v8.6 - v8.6.2, Multi-Editing is always on, and that option was been removed; starting in v8.6.3, that option was returned, but is now at [**Settings > Preferences > Editing 2 > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2).
+Before v8.6, whether or not you can use Multi-Editing mode was determined by the [**Settings > Preferences > Editing > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2) checkbox: with it checkmarked, <kbd>Ctrl+Click</kbd> will add caret locations; with it not checkmarked, Multi-Editing is disabled.  In v8.6 - v8.6.2, Multi-Editing is always on, and that option was been removed; starting in v8.6.3, that option was returned, but is now at [**Settings > Preferences > Editing 2 > ☑ Enable Multi-Editing (Ctrl+Mouse click/selection)**](../preferences/#editing-2).
 
 Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  The [Multi-Editing HowTo](#multi-editing-howto) (below) gives a tutorial in how to use this improved feature, including the new [**Edit** menu](#edit-menu) **...Multi-Select...** commands.
 
@@ -113,7 +113,7 @@ You can assign any available shortcut to **Multi-Select Next > Match Case Only**
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/0ac09902-0abb-4b11-8c83-bfdaa0b1c69b)
 
 #### Step 4
-Type `DELETE` twice and then `ENTER` once, then `ArrowUp` to move all carets up.
+Type <kbd>DELETE</kbd> twice and then <kbd>ENTER</kbd> once, then <kbd>ArrowUp</kbd> to move all carets up.
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/de872b16-6b18-42cf-b993-93cb7370be63)
 
@@ -124,7 +124,7 @@ Type `obj.`
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/5f960695-a0d8-4f40-93b6-8eee3e164bba)
 
 #### Step 6
-Use `Ctrl+ArrowRight` to move the carets to the end of the words.
+Use <kbd>Ctrl+ArrowRight</kbd> to move the carets to the end of the words.
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/56aee7fc-cdc7-4603-9332-a9148ae882ef)
 
@@ -135,19 +135,19 @@ Type ` = param[""]`
 
 
 #### Step 8
-Put your caret after `obj.` of the 1st line, the `Alt+Shift+ArrowDown` to the last line.
-(Or you can use `Ctrl+ArrowLeft` to move carets after `obj.` column.)
+Put your caret after `obj.` of the 1st line, the <kbd>Alt+Shift+ArrowDown</kbd> to the last line.
+(Or you can use <kbd>Ctrl+ArrowLeft</kbd> to move carets after `obj.` column.)
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/d92f4e4a-1cd4-40c5-9990-43136db901f3)
 
 
 #### Step 9
-Use `Ctrl+Shift+ArrowRight` to multi-select the words, then copy them (`Ctrl-C`).
+Use <kbd>Ctrl+Shift+ArrowRight</kbd> to multi-select the words, then copy them (<kbd>Ctrl+C</kbd>).
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/abecd307-10ef-4ebb-b0fd-3670bbde9aed)
 
 #### Step 10
-Move all carets to right by using `ArrowRight` to between `""`, then paste (`Ctrl-V`).
+Move all carets to right by using <kbd>ArrowRight</kbd> to between `""`, then paste (<kbd>Ctrl+V</kbd>).
 
 ![image](https://github.com/notepad-plus-plus/notepad-plus-plus/assets/90293/5e91706b-96fe-4adb-80c1-6fb2aaf1d6f9)
 
@@ -196,7 +196,7 @@ Notepad++ has a column in the margin section which indicates which lines have be
 - After the changes to the file are saved, any lines that have been changed since the file was loaded will be green. (This is `Modified but saved` in the image.)
     - _Note_: If you tell Notepad++ to reload the file from disk, _all_ lines will be green.
     - Multiple saves will leave those lines green, even if they weren't changed since the previous save.
-    - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use `Ctrl+W` then `Ctrl+Shift+T`).
+    - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use <kbd>Ctrl+W</kbd> then <kbd>Ctrl+Shift+T</kbd>).
 - If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (some call it "olive" or "yellow-green").  (This is `Revert to modified` in the image.)
 - If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan"). (This is `Revert to original` in the image.)
 
@@ -246,7 +246,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
     - **ranDOm CasE** ⇒ each character gets a random case: `StArT mIxEd` ⇒ `StaRt mIxeD`
 * **Line Operations >** ⇒ submenu with actions that typically work on lines (also known as "rows") of your document
     * There is a method for duplicating data:
-        * **Duplicate Current Line**: Duplicates the current line. (Prior to v8.6, if a selection was active it would duplicate just that selection, but starting in v8.6, selection state is ignored for this menu command; if you want the old behavior, the `Ctrl+D` shortcut is, by default, still assigned to the selection-aware duplication, under `SCI_SELECTIONDUPLICATE` in the [Shortcut Mapper](../preferences/#shortcut-mapper).)
+        * **Duplicate Current Line**: Duplicates the current line. (Prior to v8.6, if a selection was active it would duplicate just that selection, but starting in v8.6, selection state is ignored for this menu command; if you want the old behavior, the <kbd>Ctrl+D</kbd> shortcut is, by default, still assigned to the selection-aware duplication, under `SCI_SELECTIONDUPLICATE` in the [Shortcut Mapper](../preferences/#shortcut-mapper).)
     * There are two versions of the Remove Duplicates functionality:
         * **Remove Duplicate Lines**: leaves only the first instance of any full lines that have more than one copy anywhere in the active file; acts upon the line set spanned by the current selection, or the entire file if no active selection
         * **Remove Consecutive Duplicate Lines**: will only remove duplicates that are on the lines immediately following the first instance (still keeping the first instance); acts upon the line set spanned by the current selection, or the entire file if no active selection
@@ -334,7 +334,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
 
 There are also around a hundred editor commands that are accessible from keyboard shortcuts (though not all have a keyboard shortcut assigned by default).  Many of those commands are _not_ in the **Edit** menu (or any other Notepad++ menu).  These commands are listed in the [**Shortcut Mapper**](../preferences/#shortcut-mapper)'s **Scintilla commands** tab, and you can use the **Shortcut Mapper** to edit the assignments (add shortcuts or remove shortcuts) for these commands, whether they currently have a shortcut or not.
 
-They have somewhat cryptic names, but if you look at the portion of the name to the right of the `SCI_` prefix, it does give you a hint.  For example, `SCI_CUT` shows the shortcuts for the traditional Cut command, and `SCI_LINECUT` will cut the whole current line, rather than just the selection.  The ones that have `LINE` in the name work on complete lines; if it has `CHAR` in the name, it works on individual characters; if it has `WORD` in the name, it works on whole words; and if it has `WORDPART` in the name, it works on partial words (also called "subwords", like `MyCoolFunction` has the three subwords `My`, `Cool`, and `Function`); if it has `PARA` in the name, it works on paragraphs (a paragraph ends with two consecutive newlines -- so a blank line between paragraphs);  `HOME`, `END`, `PAGEUP`, and `PAGEDOWN` correspond to the motions often associated with those keys on your keyboard.  If it has `CUT`, `COPY`, `PASTE`, and `SELECT` in the name, it indicates a variant of the normal editor actions of cutting, copying, pasting, and selecting text; if it has `DELETE` or `DEL` in the name, it will delete what is indicated in the rest of the name; if it has `EXTEND` in the name, it "extends" the selection (adds to the selection; these are usually the `Shift+`-modified commands for growing the selection).  That should be enough to help you understand the basics of what each of those commands do.
+They have somewhat cryptic names, but if you look at the portion of the name to the right of the `SCI_` prefix, it does give you a hint.  For example, `SCI_CUT` shows the shortcuts for the traditional Cut command, and `SCI_LINECUT` will cut the whole current line, rather than just the selection.  The ones that have `LINE` in the name work on complete lines; if it has `CHAR` in the name, it works on individual characters; if it has `WORD` in the name, it works on whole words; and if it has `WORDPART` in the name, it works on partial words (also called "subwords", like `MyCoolFunction` has the three subwords `My`, `Cool`, and `Function`); if it has `PARA` in the name, it works on paragraphs (a paragraph ends with two consecutive newlines -- so a blank line between paragraphs);  `HOME`, `END`, `PAGEUP`, and `PAGEDOWN` correspond to the motions often associated with those keys on your keyboard.  If it has `CUT`, `COPY`, `PASTE`, and `SELECT` in the name, it indicates a variant of the normal editor actions of cutting, copying, pasting, and selecting text; if it has <kbd>DELETE</kbd> or `DEL` in the name, it will delete what is indicated in the rest of the name; if it has `EXTEND` in the name, it "extends" the selection (adds to the selection; these are usually the `Shift+`-modified commands for growing the selection).  That should be enough to help you understand the basics of what each of those commands do.
 
 The Scintilla project, which Notepad++ uses to implement these traditional editor commands, has [documentation](https://www.scintilla.org/ScintillaDoc.html) for those  commands: you can look at the `SCI_xxxx` in the shortcut mapper, then search for that text on [their ScintillaDoc page](https://www.scintilla.org/ScintillaDoc.html) to find out more about that command.
 
@@ -344,10 +344,10 @@ But with so many commands, and the fact that no documentation set is likely to e
 
 Certain keyboard-shortcuts for editing commands are "context aware", meaning that they behave differently whether there is an active selection or not.  For example,
 
-- `Tab` will insert a tab character or spaces (depending on [per-language settings](../preferences/#language)) when typing normally, but if you have a selection, it will indent the text by one tab-stop.
-- `Shift+Delete` will cut the current selection, or if there is no selection, it will delete the current line (assuming you have not changed the shortcut `Shift+DEL` from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (Yes, it cuts to the clipboard if there's a selection, but deletes the line without affecting the clipboard if there is a selection.) (The no-selection variant is new to v8.6.)
-- `Ctrl+C` will copy the current selection, or if there is no selection, it will copy the current line (assuming you have not changed the shortcut `Ctrl+C` from `SCI_COPY` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
-- `Ctrl+X` will cut the current selection, or if there is no selection, it will cut the current line (assuming you have not changed the shortcut `Ctrl+X` from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
+- <kbd>Tab</kbd> will insert a tab character or spaces (depending on [per-language settings](../preferences/#language)) when typing normally, but if you have a selection, it will indent the text by one tab-stop.
+- <kbd>Shift+Delete</kbd> will cut the current selection, or if there is no selection, it will delete the current line (assuming you have not changed the shortcut <kbd>Shift+DEL</kbd> from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (Yes, it cuts to the clipboard if there's a selection, but deletes the line without affecting the clipboard if there is a selection.) (The no-selection variant is new to v8.6.)
+- <kbd>Ctrl+C</kbd> will copy the current selection, or if there is no selection, it will copy the current line (assuming you have not changed the shortcut <kbd>Ctrl+C</kbd> from `SCI_COPY` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
+- <kbd>Ctrl+X</kbd> will cut the current selection, or if there is no selection, it will cut the current line (assuming you have not changed the shortcut <kbd>Ctrl+X</kbd> from `SCI_CUT` to anything else; if you do, this functionality will _not_ be accessible). (The no-selection variant is new to v8.6.)
 
 
 Again, this manual will not enumerate all the context-aware commands.  The ones listed above have been deemed especially useful, or are mentioned because they were added to give Notepad++ behavior that is similar to other popular text editors and coding environments.
