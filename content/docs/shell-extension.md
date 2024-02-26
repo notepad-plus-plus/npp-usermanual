@@ -43,7 +43,7 @@ If your installation process had problems with installing or updating the Shell 
 
 It should be noted that the Shell Extension can have difficulty loading a file into Notepad++ if Notepad++ is in Admin mode.
 
-In Windows 11, Microsoft significantly changed how Shell Extensions must be coded to get them to show up in the _main_ right-click menu.  In Notepad++ v8.5.1, Notepad++ has been working on improving its Shell Extension to get it to show **Edit with Notepad++** in the main right-click menu in Win 11, but different builds of Win 11 have subtly different behaviors.  If you are not seeing the entry, you might try using `Shift+F10` or `Shift+RightClick` instead of a normal `RightClick` to see if that shows the old-style Windows context-menu, and you might want to explore the alterntatives mentioned below.
+In Windows 11, Microsoft significantly changed how Shell Extensions must be coded to get them to show up in the _main_ right-click menu.  In Notepad++ v8.5.1, Notepad++ has been working on improving its Shell Extension to get it to show **Edit with Notepad++** in the main right-click menu in Win 11, but different builds of Win 11 have subtly different behaviors.  If you are not seeing the entry, you might try using <kbd>Shift+F10</kbd> or <kbd>Shift+RightClick</kbd> instead of a normal <kbd>RightClick</kbd> to see if that shows the old-style Windows context-menu, and you might want to explore the alterntatives mentioned below.
 
 ## Alternatives
 
