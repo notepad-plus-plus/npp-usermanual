@@ -14,21 +14,21 @@ All keyboard shortcuts mentioned below are the default values, but are configura
 There is a "Find" dialog box. This dialog box has one tab for each of the following features:
 
 * **Find** tab: Gives access to searching and counting.\
-  It can be invoked directly with **Search > Find** or the keyboard shortcut `Ctrl+F`.
+  It can be invoked directly with **Search > Find** or the keyboard shortcut <kbd>Ctrl+F</kbd>.
 
 * **Replace** tab: Similar to **Find** tab, but allows you to replace the matched text after it's found.\
-  It can be invoked directly with **Search > Replace** or the keyboard shortcut `Ctrl+H`.
+  It can be invoked directly with **Search > Replace** or the keyboard shortcut <kbd>Ctrl+H</kbd>.
 
 * **Find in Files** tab: Allows you to search and replace in multiple files with one action. The files used for the operation are specified by a directory.\
-  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut `Ctrl+Shift+F`.
+  It can be invoked directly with **Search > Find in Files** or the keyboard shortcut <kbd>Ctrl+Shift+F</kbd>.
 
 * **Find in Projects** tab: Similar to **Find in Files**, but Project Panel files are used instead of files from a directory.\
   It can be invoked over the context menu of the first line of a Project Panel.
 
 * **Mark** tab: Allows you to highlight all occurrences of the search target in the current document permanently.\
-  It can be invoked directly with **Search > Mark** or the keyboard shortcut `Ctrl+M`.
+  It can be invoked directly with **Search > Mark** or the keyboard shortcut <kbd>Ctrl+M</kbd>.
 
-*Note:*  Prior to v8.1.3, doing any of those keystrokes (`Ctrl+F`, `Ctrl+H`, `Ctrl+Shift+F`, or `Ctrl+M`) once would open the Find dialog or bring it into focus; from the main dialog, hitting `Ctrl+F` would re-center the dialog (no matter which tab of the dialog you were on); but you could not use the shortcuts for the other tabs to switch between the tabs.  In v8.1.3 through v8.3.2, once the dialog was active and in focus, hitting the keystrokes would switch between the tabs on that dialog; however, these versions of Notepad++ would _not_ re-center the dialog if you hit `Ctrl+F` again.  Starting in v8.3.3, the first hit of one of those shortcuts would bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog (as with v8.1.3), but hitting the shortcut for the tab you are already on will re-center the dialog (so `Ctrl+F, Ctrl+F` will center the Find dialog, `Ctrl+H, Ctrl+H` will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
+*Note:*  Prior to v8.1.3, doing any of those keystrokes (<kbd>Ctrl+F</kbd>, <kbd>Ctrl+H</kbd>, <kbd>Ctrl+Shift+F</kbd>, or <kbd>Ctrl+M</kbd>) once would open the Find dialog or bring it into focus; from the main dialog, hitting <kbd>Ctrl+F</kbd> would re-center the dialog (no matter which tab of the dialog you were on); but you could not use the shortcuts for the other tabs to switch between the tabs.  In v8.1.3 through v8.3.2, once the dialog was active and in focus, hitting the keystrokes would switch between the tabs on that dialog; however, these versions of Notepad++ would _not_ re-center the dialog if you hit <kbd>Ctrl+F</kbd> again.  Starting in v8.3.3, the first hit of one of those shortcuts would bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog (as with v8.1.3), but hitting the shortcut for the tab you are already on will re-center the dialog (so <kbd>Ctrl+F</kbd> then <kbd>Ctrl+F</kbd> will center the Find dialog, <kbd>Ctrl+H</kbd> then <kbd>Ctrl+H</kbd> will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
 
 *Note:*  Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Settings > Preferences > Searching > ☐ Find dialog remains open after search that outputs to results window**.
 
@@ -103,9 +103,9 @@ The various action buttons available include:
 
 * **Replace All in All Opened Documents**: Same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
-The above actions may be initiated via mouse by pressing the appropriate button, or via special `Alt` key combinations.  Notepad++ can underline a single character in the text of *most* of the buttons (oftentimes, it is automatic; however, if you ever cannot see the underlines, then just press the `Alt` key, and they will appear).  Pressing `Alt` and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The `Alt` technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its `Alt` key command.
+The above actions may be initiated via mouse by pressing the appropriate button, or via special <kbd>Alt</kbd> key combinations.  Notepad++ can underline a single character in the text of *most* of the buttons (oftentimes, it is automatic; however, if you ever cannot see the underlines, then just press the <kbd>Alt</kbd> key, and they will appear).  Pressing <kbd>Alt</kbd> and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The <kbd>Alt</kbd> technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its <kbd>Alt</kbd> key command.
 
-**Find Next** has a special way of being invoked by keyboard control.  Pressing `Enter` when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing `Shift+Enter` when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use Shift+Enter to search in the opposite direction* as a reminder of this capability.
+**Find Next** has a special way of being invoked by keyboard control.  Pressing <kbd>Enter</kbd> when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing <kbd>Shift+Enter</kbd> when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use <kbd>Shift+Enter</kbd> to search in the opposite direction* as a reminder of this capability.
 
 When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the caret (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your caret is not "touching" a word and that there is no active selection when invoking the find-family command.
 Aside:  This auto-copy feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  The line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
@@ -114,7 +114,7 @@ A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A
 
 Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become unchecked and disabled (greyed out).  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
-The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  For a given run of Notepad++, the search history can grow rather large; when Notepad++ is exited, it only saves the last 10 items in the history by default; number of search/replace terms retained may be changed by editing the `config.xml` configuration file, per [Preferences for Advanced Users](../preferences/#preferences-for-advanced-users).  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse (or, equivalently, pressing `Alt+down`) to "drop down" the box, or directly (without dropping) by using the `down` (and/or `up`) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an `up` or `down` arrow key when they really mean to press `left` or `right` arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.  Unwanted items in the histories may be removed by dropping-down the box, highlighting the item to be removed, and pressing the `Delete` key.
+The **Find what** and **Replace with** edit boxes have a dropdown arrow which allows the user to repeat searches conducted previously.  For a given run of Notepad++, the search history can grow rather large; when Notepad++ is exited, it only saves the last 10 items in the history by default; number of search/replace terms retained may be changed by editing the `config.xml` configuration file, per [Preferences for Advanced Users](../preferences/#preferences-for-advanced-users).  The **Find in Files** tab's **Filters** and **Directory** text boxes have this "history" feature as well.  This history can be activated by clicking on the down-arrow with the mouse (or, equivalently, pressing <kbd>Alt+down</kbd>) to "drop down" the box, or directly (without dropping) by using the <kbd>down</kbd> (and/or <kbd>up</kbd>) keys -- be careful though, sometimes when editing a control with the history feature, a user will accidentally hit an <kbd>up</kbd> or <kbd>down</kbd> arrow key when they really mean to press <kbd>left</kbd> or <kbd>right</kbd> arrow; this unfortunately wipes out the search/replace expression (as those are edited most often) that was being worked on and replaces it with some different text from the history buffer.  Unwanted items in the histories may be removed by dropping-down the box, highlighting the item to be removed, and pressing the <kbd>Delete</kbd> key.
 
 The **In selection** option will automatically be chosen by Notepad++ if a Find dialog window is opened when more than 1024 characters occur in the active selection.  The selected text will also be placed in the **Find what** box.  Running a **Count** or **Replace All** action without making other changes to the search parameters will result in *Count: 1 match* or *Replace All: 1 occurrence was replaced*, respectively, which is likely not what was intended.  The proper resolution for this situation is to change the **Find what** text if the intention is to search within-selection, or deselect **In selection** if the intention is to search for a fairly long block of text.
 
@@ -193,7 +193,7 @@ Bookmarks, whether visible or not, have a menu that can control and navigate Boo
 
 ### Search results window
 
-After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the `F7` keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
+After running one or more **Find All in ...** commands, a new **Search results** window appears, and within it is placed a **Search results** tab.  The **Search results** window may be opened and/or given input focus by using the menu command **Search > Search Results Window** or the <kbd>F7</kbd> keyboard shortcut.  *Note:*  That menu command will seem to not do anything if there haven't been any **Find All in ...** commands run since Notepad++ was opened.
 
 *Definition:*  **Find All in ...** commands include:
 
@@ -213,11 +213,11 @@ However, multiple findings of the same search term may be collapsed into one sea
 
 When the **Search results** window has input focus, the currently active line has a different background color, much like how the main editor window does by default.  Unlike the main editor window, where the current-line background feature may be turned off, the **Search results** window always has a background highlight for its active line.
 
-Use the up and down arrows to navigate within the **Search results** window when it has input focus.  Double-clicking with the mouse or hitting `ENTER` when input focus is on a specific match will move the editor window to that match and cause its text to be selected.
+Use the up and down arrows to navigate within the **Search results** window when it has input focus.  Double-clicking with the mouse or hitting <kbd>Enter</kbd> when input focus is on a specific match will move the editor window to that match and cause its text to be selected.
 
-Other ways to navigate back to an editor window via the **Search results** window matches include the **Search** menu items **Next Search Result** (keyboard: `F4`) and **Previous Search Result** (keyboard: `Shift+F4`).  These can be invoked regardless of where input focus is in Notepad++.
+Other ways to navigate back to an editor window via the **Search results** window matches include the **Search** menu items **Next Search Result** (keyboard: <kbd>F4</kbd>) and **Previous Search Result** (keyboard: <kbd>Shift+F4</kbd>).  These can be invoked regardless of where input focus is in Notepad++.
 
-The `Delete` key can be used to delete individual results, file matches or whole search matches in the **Search results** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing `Delete` when in a higher-level element of the tree removes that whole branch.  Thus:
+The <kbd>Delete</kbd> key can be used to delete individual results, file matches or whole search matches in the **Search results** window, depending on which type of line is active when the key is pressed.  As the result history is hierarchical, that is, tree-like, pressing <kbd>Delete</kbd> when in a higher-level element of the tree removes that whole branch.  Thus:
 
 |*Pressing Delete when **Search results** active line starts with...*| *What is removed*                                                                              |
 |--------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -227,9 +227,9 @@ The `Delete` key can be used to delete individual results, file matches or whole
 
 Multiple searches are listed under separate headers, which are "foldable", so you can hide or unhide results from previous searches.  When you run a new search, previous searches are folded closed.
 
-If the source file lines are judged by Notepad++ to be too long when they are copied to be placed in the **Search results** window, they are truncated and **...** is added at the end.  In this case, matched text occurring in the line after the **...** position isn't emphasized.  However, using a method to return to the editor window (e.g. pressing `Enter`) results in the correct selection of matching text there.  The length limit is 1024 characters; this includes the match line number information and other formatting.
+If the source file lines are judged by Notepad++ to be too long when they are copied to be placed in the **Search results** window, they are truncated and **...** is added at the end.  In this case, matched text occurring in the line after the **...** position isn't emphasized.  However, using a method to return to the editor window (e.g. pressing <kbd>Enter</kbd>) results in the correct selection of matching text there.  The length limit is 1024 characters; this includes the match line number information and other formatting.
 
-If a search is conducted such that a match which spans two or more lines occurs, only the contents of the first line of that match is copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing `Enter`) results in the correct selection of multi-line matching text there.
+If a search is conducted such that a match which spans two or more lines occurs, only the contents of the first line of that match is copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing <kbd>Enter</kbd>) results in the correct selection of multi-line matching text there.
 
 Starting in v8.6.1, the header rows for each search include a shorthand notation for the search options that were active when that search was run.
 For example: `Search "foo" (1 hit in 1 file of 1 searched) [Normal: Case/Word]` .
@@ -240,27 +240,27 @@ For example: `Search "foo" (1 hit in 1 file of 1 searched) [Normal: Case/Word]` 
     - Those option indicators will be present if the `Match case` checkbox was checkmarked, `Match whole word only` checkbox was checkmarked, or both checkboxes were checkmarked.
     - If neither of those checkboxes are checkmarked, then the shorthand notation will _only_ include the search mode, and not include a colon (since there is no option to follow the colon).
 
-#### `RightClick` commands in the client area of a **Search results** window's tab
+#### <kbd>RightClick</kbd> commands in the client area of a **Search results** window's tab
 
 ##### Copying text from the **Search results** window
 
-There are two ways to copy exact text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and press `Ctrl+C`, or `RightClick` to invoke the context menu and select **Copy**.  These two copy mechanisms produce identical results.  Another choice is to use the context menu's **Copy Selected Line(s)** command; this copies entire lines from the results, excluding search information (called "metadata").
+There are two ways to copy exact text from the **Search results** window:  Make sure input focus is in the **Search results** window by selecting some text and press <kbd>Ctrl+C</kbd>, or <kbd>RightClick</kbd> to invoke the context menu and select **Copy**.  These two copy mechanisms produce identical results.  Another choice is to use the context menu's **Copy Selected Line(s)** command; this copies entire lines from the results, excluding search information (called "metadata").
 
 More precisely:
 
-| `RightClick` item     | What gets copied when **`RightClick` > Copy Selected Line(s)** is run |
+| <kbd>RightClick</kbd> item     | What gets copied when **<kbd>RightClick</kbd> > Copy Selected Line(s)** is run |
 |-----------------------|-----------------------------------------------------------------------------------------------------|
-|a line with line # info|the entire line of the `RightClick` but without line number text                                     |
+|a line with line # info|the entire line of the <kbd>RightClick</kbd> but without line number text                            |
 |a pathname header line |all the lines for that single file without pathname or line number text                              |
 |a "search" header line |all the lines for that search (1 or more files) without search header, pathname or line number text  |
 
-*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual `Shift+Alt+arrow keys` or by holding `Alt+LeftClick` and dragging with the mouse.  This is really only practical when using the `Ctrl+C` method of copying; **`RightClick` > Copy Selected Line(s)** doesn't work this way.
+*Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual <kbd>Shift+Alt+arrow</kbd> keys or by holding <kbd>Alt+LeftClick</kbd> and dragging with the mouse.  This is really only practical when using the <kbd>Ctrl+C</kbd> method of copying; **<kbd>RightClick</kbd> > Copy Selected Line(s)** doesn't work this way.
 
 There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later).  The **Copy Pathname(s)** context menu command copies to the clipboard the full pathnames of all files appearing in **Search results**.
 
 ##### Other commands
 
-The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the `Delete` key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches with the intent to **Open all** afterwards may be the thing to do.
+The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the <kbd>Delete</kbd> key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches with the intent to **Open all** afterwards may be the thing to do.
 
 The **Select all** command is self-explanatory:  All text in the **Search results** tab is selected.
 
@@ -272,15 +272,15 @@ The **Fold all** and **Unfold all** commands perform the corresponding actions o
 
 ##### Searching in previously-found results (secondary searching)
 
-Assume that you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by `RightClick`ing the **Search results** window client area and selecting **Find in these search results...**.
+Assume that you have done a search and your results are in a tab in the **Search results** window.  Now you'd like to conduct a search but with a scope of only the files that have previous matches.  Or maybe you want to look only in the *lines* matched by previous searches, not only the matched files, tightening the search criteria even more.  Can you do this sort of second-level searching with Notepad++?  Yes, by using <kbd>RightClick</kbd> in the **Search results** window client area and selecting **Find in these search results...**.
 
 Selecting **Find in these search results...** will cause a window to pop up, which looks much like the standard **Find** window, but stripped down a bit.  Once you input your search parameters and choose **Find All**, a *new* **Search results** tab will open (in the **Search results** window) with the results of the "refined" search.
 
 The popup window has a parameter not available in the searches described earlier:  **☐ Search only in found lines**.  Checking this box limits the search to lines that appear in matched files in the parent **Search results** window.  Unchecking the box will cause the new search to examine previously matched files in their entirety.  When a search has been limited to previously-found lines, its results will indicate this by using this type of output:  `Search "___" (__ hits in __ files - Line Filter Mode: only display the filtered results)` as opposed to the normally seen:  `Search "___" (__ hits in __ files)`
 
-*Tip:*  Use the `RightClick` option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in these search results...** search will look in files matched by *all* previous searches whose results are still present in the parent **Search results** tab.
+*Tip:*  Use the <kbd>RightClick</kbd> option **Clear all** to limit the scope of these types of searches (before invoking the secondary search!) -- remember: a **Find in these search results...** search will look in files matched by *all* previous searches whose results are still present in the parent **Search results** tab.
 
-*Tip:*  Since the newly opened **Search results** window also has a `RightClick` menu, you may do another **Find in these search results...** based upon the new results, focusing your search for some bit of data even more.  This type of refinement may be repeated as often as desired.  [Note that the title bar of the window does *not* show the hit count of the currently active tab, but rather shows the hit count of the *first* **Search results** tab of the window.]
+*Tip:*  Since the newly opened **Search results** window also has a <kbd>RightClick</kbd> menu, you may do another **Find in these search results...** based upon the new results, focusing your search for some bit of data even more.  This type of refinement may be repeated as often as desired.  [Note that the title bar of the window does *not* show the hit count of the currently active tab, but rather shows the hit count of the *first* **Search results** tab of the window.]
 
 *Note:*  The commands that switch input focus to the **Search results** window always activate the *first* **Search results** tab, not any additional **Search results** tabs that may have been created.
 
@@ -288,7 +288,7 @@ The popup window has a parameter not available in the searches described earlier
 
 ##### Search results configuration options
 
-There are currently two ways to configure the **Search results** window behavior, both located in the `RightClick` context menu:
+There are currently two ways to configure the **Search results** window behavior, both located in the <kbd>RightClick</kbd> context menu:
 
 * **Word wrap long lines**
 * **Purge for every search**
@@ -304,9 +304,9 @@ _Note_: Clicking this option doesn't immediately purge the old results; instead,
 
 The following commands, available through the Search menu or keyboard shortcuts, perform a search without invoking a dialog (with the default shortcuts):
 
-* **Find Next (`F3`)/ Find Previous (`Shift+F3`)**: Repeat searching the current search target, either down or up.
+* **Find Next (<kbd>F3</kbd>)/ Find Previous (<kbd>Shift+F3</kbd>)**: Repeat searching the current search target, either down or up.
     - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous** commands.
-* **Select and Find Next (`Ctrl+F3`) / Select and Find Previous (`Ctrl+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
+* **Select and Find Next (<kbd>Ctrl+F3</kbd>) / Select and Find Previous (<kbd>Ctrl+Shift+F3</kbd>)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
         - copies the selected text to **Find what** box of **Find** window for future use, then uses that same string for this specific search
             - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
@@ -317,7 +317,7 @@ The following commands, available through the Search menu or keyboard shortcuts,
             - uses **☐ Wrap around** setting from **Find** window
             - uses **Search mode = Normal** (regardless of its current setting in the **Find** window)
         - (all mentions of the **Find** window in this search description are still true even if the **Find** window is not currently visible)
-* **Find (Volatile) Next (`Ctrl+Alt+F3`) / Find (Volatile) Previous (`Ctrl+Alt+Shift+F3`)**: Search for the word the caret is in, or the selected text, down or up.
+* **Find (Volatile) Next (<kbd>Ctrl+Alt+F3</kbd>) / Find (Volatile) Previous (<kbd>Ctrl+Alt+Shift+F3</kbd>)**: Search for the word the caret is in, or the selected text, down or up.
     - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** works as expected.
     - The specific search behavior:
         - uses the selected text as the search text, but does **not** overwrite the existing **Find what** value in the **Find** dialog
@@ -390,18 +390,18 @@ The [regular expressions](#regular-expressions) search mode (described [below](#
 
 ## Incremental Search
 
-Incremental search is similar to the searching capabilities found in your favorite web browser (like Firefox or Chrome).  You can launch it from the **Search > Incremental Search** menu, or the keyboard shortcut (Ctrl+Alt+I).
+Incremental search is similar to the searching capabilities found in your favorite web browser (like Firefox or Chrome).  You can launch it from the **Search > Incremental Search** menu, or the keyboard shortcut (<kbd>Ctrl+Alt+I</kbd>).
 
 This command will show a small region at the bottom of the Notepad++, which has a few simple features.
 
-* Clicking the **X** button allows you to close the Incremental Search window and return to the editor window. If a control in the Incremental Search window currently has input focus, e.g. if you are typing into the Find box, another way to close the window is by pressing the `Esc` key.
+* Clicking the **X** button allows you to close the Incremental Search window and return to the editor window. If a control in the Incremental Search window currently has input focus, e.g. if you are typing into the Find box, another way to close the window is by pressing the <kbd>Esc</kbd> key.
 * The **Find** box is where you type your literal search term.  As you type, the editor window will move the selection to the next match for the contents of Find (hence, the "incremental" search because as you "incrementally" change the search term, it will update the match).
 * The **<** and **>** buttons navigate backward and forward through the search results (wrapping around when it reaches the end or start of the document).
 * If the **☐ Highlight all** checkbox is not checked, it will only highlight the current match; if it is checked, all matches will be highlighted.
 * If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.
 * To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
 
-Starting in v8.6.1, the shortcut keys for **Find Next** and **Find Previous** (defaults are `F3` and `Shift-F3`, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
+Starting in v8.6.1, the shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
 
 ## Extended Search Mode
 
