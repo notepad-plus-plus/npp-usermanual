@@ -184,7 +184,7 @@ If a plugin needs 1 indicator ID, the following code can be used:
     int idBegin;
     BOOL isAllocatedSuccessful = ::SendMessage(nppData._nppHandle, NPPM_ALLOCATEINDICATOR, 1, &idBegin);
 ```
-if isAllocatedSuccessful is TRUE, and value of idBegin is 7 
+if isAllocatedSuccessful is TRUE, and value of idBegin is 7
 then indicator ID 7 is preserved by Notepad++, and it is safe to be used by the plugin.
 
 ---
@@ -209,7 +209,7 @@ If a plugin needs 3 marker ID, the following code can be used:
     int idBegin;
     BOOL isAllocatedSuccessful = ::SendMessage(nppData._nppHandle, NPPM_ALLOCATEMARKER, 3, &idBegin);
 ```
-if isAllocatedSuccessful is TRUE, and value of idBegin is 16 
+if isAllocatedSuccessful is TRUE, and value of idBegin is 16
 then marker ID 16, 17 and 18 are preserved by Notepad++, and they are safe to be used by the plugin.
 
 ---
@@ -1442,7 +1442,7 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 
 *lParam [in]*
 : int priorityView,
-is main view (0), or sub view (1). So the search will check into the view of choice. However if the given bufferID cannot be found in the chosen view, the other view will be searched.  
+is main view (0), or sub view (1). So the search will check into the view of choice. However if the given bufferID cannot be found in the chosen view, the other view will be searched.
 
 **Return value**:
 : Returns -1 if bufferID doesn't exist else the position.
@@ -1787,7 +1787,7 @@ see menuCmdID.h for all possible values.
 
 #### [2036] **NPPM_MODELESSDIALOG**
 *For each modeless dialog created in your plugin, you should register it (and unregister it when you destroy it) by using this message.
-If this message is not used, then your dialog won't react with the key stroke messages such as `Ctrl-C`, `Ctrl-V` or `TAB` key, so it is
+If this message is not used, then your dialog won't react with the key stroke messages such as <kbd>Ctrl-C</kbd>, <kbd>Ctrl-V</kbd> or <kbd>TAB</kbd> key, so it is
 highly recommended that you use this for all modeless dialogs in your plugin.*
 
 **Parameters**:
