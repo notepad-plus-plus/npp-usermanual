@@ -17,7 +17,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 ## Style Guide
 
 * First and foremost, when editing, keep it similar to what's already in that document.
-  * Do not arbitrarily change an existing style choice (like `-` vs `*` for bulleted lists, or `_..._` vs `*...*` for italics) without a good technical reason
+  * Do not arbitrarily change an existing style choice (like `-` vs `*` for bulleted lists, or `_..._` vs `*...*` for italics) without a good technical reason.
   * If you are fixing an actual Markdown _error_ that causes the final user manual documentation to render incorrectly, that is allowed (and encouraged).
   * Many sections of the User Manual were written before this Style Guide, and the style chosen by the original author of that section has been "grandfathered in".  If you are changing something else in a small section of such a document, you can also update the style in that small section, but you should not make huge changes to the formatting without getting the agreement of the owner and/or maintainer(s) of the User Manual.
 
@@ -32,7 +32,7 @@ If these guidelines and style guide are not followed, or if the reviewers otherw
 
 * For text that you want to indicate as user-entered (such as regular expressions or values entered into dialog box prompts), and for filenames and directories, use backticks to set the `monospaced / code` formatting.
 
-* Use the `<kbd>...</kbd>` tag around keyboard shortcuts.  (Historically, the `backtick monospace` was used, but the `kbd` tag allows differentiated formatting, to make shortcuts more obvious.  Going forward, `kbd` tags should be used.)
+* Use the `<kbd>...</kbd>` tag around keyboard shortcuts (like <kbd>Ctrl+F1</kbd>), individual keypress (like <kbd>Tab</kbd> or <kbd>Enter</kbd>), mouse instructions (<kbd>Ctrl+RightClick</kbd>), and similar.
 
 * Special symbols may be entered by pasting in Unicode characters or using the appropriate &amp;-entities.  Please stick to common characters that are likely to be rendered on a variety of platforms with a variety of fonts.
 
