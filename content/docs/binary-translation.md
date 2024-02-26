@@ -33,7 +33,7 @@ The process of teaching Notepad++ a new language is virtually identical to editi
             - These are used for quickly activating a menu entry from the keyboard when the menu is active.
                 - For example, the **File** menu's **New** command has an accelerator of `N` defined in the default English localization file, so when the **File** menu is displayed, typing `N` will run that command.
             - This is separate from the keyboard shortcut used while editing.
-                - For example, the **File** menu's **New** command has a default keyboard shortcut of `Ctrl+N`, which can be used anytime the editor section of Notepad++ is active.  But if you have the **File** menu showing, `Ctrl+N` does nothing; instead, you have to use the accelerator.
+                - For example, the **File** menu's **New** command has a default keyboard shortcut of <kbd>Ctrl+N</kbd>, which can be used anytime the editor section of Notepad++ is active.  But if you have the **File** menu showing, <kbd>Ctrl+N</kbd> does nothing; instead, you have to use the accelerator.
                 - Thus, even commands that have keyboard shortcuts should also have accelerators defined.
         - To define the accelerator character, you need to put an ampersand `&` before the appropriate character in your translation text.
             - Because the localization file is in XML, and `&` has a special meaning to XML, you need to use the string `&amp;` before the letter in your translation string.
