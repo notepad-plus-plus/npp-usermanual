@@ -1865,7 +1865,7 @@ if True then an alert message box will be launched.
 : TCHAR *filePathName2Reload
 
 **Return value**:
-: Returns True
+: Returns True if reloading file succeeds, False otherwise
 
 ---
 
