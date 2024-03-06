@@ -91,7 +91,44 @@ At the far right of the menu bar there are also icons `+` (to create a New file)
 
 ## Toolbar
 
-There is a toolbar which has icons for various common tasks.  The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  If you do not understand the icon, hovering over that icon will show the underlying action.
+There is a toolbar which has icons for various common tasks, which each run a specific menu action.  If you hover your mouse over that icon, it will show its name.  The toolbar actions include:
+
+- **New** ⇒ [**File > New**](../files/#file-menu): Creates a new file.
+- **Open** ⇒ [**File > Open**](../files/#file-menu): Opens an existing file.
+- **Save** ⇒ [**File > Save**](../files/#file-menu): Saves the active file.
+- **Save All** ⇒ [**File > Save All**](../files/#file-menu): Saves all active files.
+- **Close** ⇒ [**File > Close**](../files/#file-menu): Closes the active file.
+- **Close All** ⇒ [**File > Close ALl**](../files/#file-menu): Closes all open files.
+- **Print** ⇒ [**File > Print**](../files/#printing): Launch the Print dialog.
+- **Cut** ⇒ [**Edit > Cut**](../editing/#edit-menu): Cuts the selected text or line to the clipboard.
+- **Copy** ⇒ [**Edit > Copy**](../editing/#edit-menu): Copies the selected text or line to the clipboard.
+- **Paste** ⇒ [**Edit > Paste**](../editing/#edit-menu): Pastes the clipboard contents.
+- **Undo** ⇒ [**Edit > Undo**](../editing/#edit-menu): Reverts the text to its content before the previous operation.
+- **Redo** ⇒ [**Edit > Redo**](../editing/#edit-menu): Re-applies that action that was just reverted due to an Undo.
+- **Find** ⇒ [**Search > Find**](../searching/#find-replace-tabs): Launches the **Find** dialog.
+- **Replace** ⇒ [**Search > Replace**](../searching/#find-replace-tabs): Launches the **Replace** dialog.
+- **Zoom In** ⇒ [**View > Zoom > Zoom In**](views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
+- **Zoom Out** ⇒[**View > Zoom > Zoom In**](views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
+- **Synchronize Vertical Scrolling** ⇒ [**View > Synchronize Vertical Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, vertically.
+- **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
+- **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
+- **Show All Characters** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle showing all special characters.
+- **Show Indent Guide** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle dotted vertical line `⸽` showing tabstops.
+- **Define Your Language** ⇒ [**Language > User Defined Language > Define Your Language**](..//user-defined-language-system/): Toggles dialog to define a User Defined Language ("UDL").
+- **Document Map** ⇒ [**View > Document Map**](/views/#panels): Toggles display of the Document Map panel.
+- **Document List** ⇒ [**View > Document List**](/views/#panels): Toggles display of the Document List panel.
+- **Function List** ⇒ [**View > Function List**](/views/#panels): Toggles display of the [Function List](../function-list/) panel.
+- **Folder as Workspace** ⇒ [**View > Folder as Workspace**](/views/#panels): Toggles display of the [Folder as Workspace](/session/#folder-as-workspace) panel.
+- **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](/views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
+- **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
+- **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro. 
+- **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro. 
+- **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times. 
+- **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu. 
+
+Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
+
+The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](config-files/#toolbar-icon-customization-toolbaricons-xml).
 
 ## Tools Menu
 
