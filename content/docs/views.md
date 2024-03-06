@@ -83,7 +83,9 @@ U+FEFF    | zero-width no-break space    | ZWNBSP
 
 - **Show Control Characters & Unicode EOL**: When checked, the control characters in the ASCII/Unicode [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) will be shown in a small box, either as the Codepoint or as an Abbreviation.  In addition to the C0 and C1 control codes, this also influences the Unicode "End of Line" characters LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`).  (new to v8.5.3)
 
-- **Show All Characters**: When checked, this will check all of the previous **Show Symbol** options at the same time.
+- **Show All Characters**: If this option is not currently checkmarked, choosing this action will checkmark this menu entry _and_ all of the previous **Show Symbol** options at the same time, thus enabling viewing of all the special characters.  If this option is currently checkmarked, choosing this action will remove the checkmark from itself and all of the previous options at the same time, thus disabling viewing of all the special characters.  If you manually checkmark all the previous settings in this sub-menu, this one will automatically be checkmarked.  If you manually uncheckmark one or more of the previous settings in this sub-menu, this one will be uncheckmarked.
+
+    - The **¶** toolbar button is equivalent to activing this menu action, so it will toggle whether or not all special characters are shown.  It has two display modes, "active" and "inactive", which correspond to the checkmark state for the menu item.
 
 The remaining two entries in this sub-menu aren't affecting the glyphs of characters in the file; instead, they are showing information about Notepad++'s indentation and word-wrap:
 
