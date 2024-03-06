@@ -123,8 +123,8 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 - **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
 - **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro. 
 - **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro. 
-- **Run a Macro Multiple Times...** ⇒[**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times. 
-- **Save Current Recorded Macro...** ⇒[**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu. 
+- **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times. 
+- **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu. 
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
