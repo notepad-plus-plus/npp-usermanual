@@ -646,6 +646,32 @@ The message area will tell you if there are "no shortcut conflicts for this item
 
 The **Filter** input box allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  (For all but the `Scintilla commands` tab, this also filters based on Shortcut.)  There are no regular expression or wildcard syntax interpretations in the Filter.
 
+Starting in v8.6.5, when you type multiple space-separated character sequences ("tokens") as your **Filter**, it will try to match each token separately, in the same entry.  When filtering, it will search all the displayed fields for the dialog (whether in "Name" or "Shortcut" or "Plugin" column).  All of the tokens must be matched somewhere in the entry, but they can be in any order.  Some examples:
+
+**Shortcut Mapper > Plugin commands**
+| Name | Shortcut | Plugin | Filter | Match?
+|------|----------|--------|--------|--------
+| do thing | <kbd>Alt+G</kbd> | BlahLint | `lint do +` | Yes (`lint` from Plugin, `do` from Name, `+` from Shortcut)
+| do thing | <kbd>Alt+G</kbd> | BlahLint | `+G thing blah` | Yes (`+G` from Shortcut, `thing` from Name, `blah` from Plugin)
+| do thing | <kbd>Alt+G</kbd> | BlahLint | `lint foo +G` | No (`foo` not in any field, despite `lint` in Plugin and `+G` in Shortcut)
+
+**Shortcut Mapper > Scintilla commands**
+
+| Name | Shortcut | Filter | Match?
+|------|----------|--------|--------
+| foo baz | <kbd>Alt+H</kbd> or <kbd>Ctrl+Shift+Q</kbd> | `baz or` | Yes (`baz` from Name, `or` from Shorcut)
+| foo baz | <kbd>Alt+H</kbd> or <kbd>Ctrl+Shift+Q</kbd> | `+q foo` | Yes (`+q` from Shortcut, `foo` from Name)
+| foo baz | <kbd>Alt+H</kbd> or <kbd>Ctrl+Shift+Q</kbd> | `+q +z` | No (`+z` not in any field, despite `+q` in Shortcut)
+| foo baz | <kbd>Alt+H</kbd> or <kbd>Ctrl+Shift+Q</kbd> | `baz tab` | No (`tab` not in any field, despite `baz` in Name)
+
+**Shortcut Mapper > Main menu** or **Macros** or **Run commands**
+
+| Name | Shortcut | Filter | Match?
+|------|----------|--------|--------
+| cute kitty | <kbd>Alt+K</kbd> | `alt k` | Yes (`alt` from Shortcut, `k` in both Name and Shortcut)
+| cute kitty | <kbd>Alt+K</kbd> | `kit alt` | Yes (`kit` from Name, `alt` from Shortcut)
+| cute kitty | <kbd>Alt+K</kbd> | `cute q` | No (`q` not in any field, despite `cute` being in Name)
+
 Use the **Modify** button to edit the existing shortcut or to create a shortcut for an entry that has none.  The resulting dialog will show the Name of the active action.  There are checkboxes to enable the <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, and <kbd>Shift</kbd> key-modifiers.  The main key in the shortcut is defined by the pulldown menu.  Hitting **OK** will apply the added or changed shortcut and leave the dialog.  **Cancel** will undo your changes and leave the dialog.  (Please note that if you are using some localizations, the key you select [might not match](https://notepad-plus-plus.org/community/topic/17679/using-caret-circumflex-key-for-a-shortcut/10) <!-- TODO = this link should really refer to a submitted issue request, rather than a forum-topic --> what key you type: whatever key in your locale uses the same keycode as the standard US English keyboard will be the actual key.)
 
 In the `Scintilla commands` tab, you can actually assign more than one shortcut to a given Scintilla command, so there is an extra pane listing existing shortcuts, and additional **Add** and **Remove** buttons.  For more on the meaning of the `SCI_xxxx` names in the `Scintilla commands` tab, see the section on [Other Editing Commands and Shortcuts](../editing/#other-editing-commands-and-shortcuts).
