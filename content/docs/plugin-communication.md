@@ -2477,6 +2477,21 @@ The general layout of the following notifications look like this
 
 ---
 
+#### [1030] **NPPN_GLOBALMODIFIED**
+*To notify plugins that the current document is just modified by Replace All action.  (New in v8.6.5.)*
+
+    // For solving the performance issue (from v8.6.4), Notepad++ doesn't trigger SCN_MODIFIED during Replace All action anymore.
+    // As a result, the plugins which monitor SCN_MODIFIED should also monitor NPPN_GLOBALMODIFIED.
+    // This notification is implemented in Notepad++ v8.6.5.
+
+**Fields:**
+
+	code:		NPPN_FILESAVED
+	hwndFrom:	BufferID         // ID, not hwnd
+	idFrom:		0                // reserved for the future use; must be zero from v8.6.5
+
+---
+
 #### [1011] **NPPN_LANGCHANGED**
 *To notify plugins that the language in the current doc is just changed.*
 
