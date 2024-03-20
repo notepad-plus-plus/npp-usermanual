@@ -56,12 +56,18 @@ These affect the user interface (localization, toolbar, tab bar, and more).
 
 ### Editing
 
-Starting in v8.6.3, the **Editing** section in the **Preferences** dialog was split into [**Editing 1**](#editing-1) and [**Editing 2**](#editing-2).
+Starting in v8.6.3, the **Editing** section in the **Preferences** dialog was split into [**Editing 1**](#editing-1) and [**Editing 2**](#editing-2).  There was more re-arrangement in v8.6.5; check both tabs if you are having trouble finding a setting mentioned in one of those two groups of settings.
 
 ### Editing 1
 
 These influence editing (carets, code-folding, line wrapping, and more).
 
+* **Current Line Indicator**: Determines how the current line will be indicated.
+    - `☐ None`: No indicator for which line is the current line.
+    - `☐ Highlight Background`: Indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`.
+    - `☐ Frame`: Indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider.
+        - **Width**: Use a slider to set the width (in pixels) for the lines of the rectangle frame for the current line.
+    - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
 * **Caret Settings**:
     * `Width`: [pulldown] Sets the width and shape of the typing caret:
         - `1`, `2`, `3`: Width (in pixels) of the vertical-bar-style typing caret.
@@ -73,12 +79,19 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ Default`: Wraps from the last visible column to the first visible column.
     * `☐ Aligned`: Wraps from the last visible column to the same indent as the start of the unwrapped line.
     * `☐ Indent`: Wraps from the last visible column to the next level of indent compared to the start of the unwrapped line.
-* **Current Line Indicator**: Determines how the current line will be indicated.
-    - `☐ None`: No indicator for which line is the current line.
-    - `☐ Highlight Background`: Indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`.
-    - `☐ Frame`: Indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider.
-        - **Width**: Use a slider to set the width (in pixels) for the lines of the rectangle frame for the current line.
-    - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
+* `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
+* `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
+* `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
+* `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
+* `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
+* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
+* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
+
+### Editing 2
+
+- **Multi-Editing**:
+    - `☐ Enable Multi-Editing (Ctrl+Mouse Click/Selection)`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).  (This option was in **Editing** preferences originally; it was removed in v8.6-v8.6.2; but it returned in the new **Editing 2** preferences in v8.6.3.)
+        - `☐ Enable Column Selection to Multi-Editing`: When checkmarked, a Column Selection will be converted into a Multi-Selection to give added power.  When not checkmarked, Column Selections will be independent of Multi-Selections, so it will behave more like v8.6-and-earlier, or v8.6.1-8.6.2 with the `noColumnToMultiSelect.xml` config file.  This can only be checkmarked if  `☐ Enable Multi-Editing` is also checkmarked.  (New preference in v8.6.3.)
 * **EOL (CRLF)**: Changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is checked:
     - **Default**: Old behavior (`CR` and `LF` in reverse-video boxes)
     - **Plain Text**: `CR`, `LF`, and `CRLF` look like normal text.
@@ -88,19 +101,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
     - **Codepoint**: The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > NPC custom color**
     - **Apply to C0, C1 & Unicode EOL**: Applies these Non-Printing Characters settings to the [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) as well as the Unicode "End of Line" characters for LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`)
-* `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
-* `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
-* `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
-* `☐ Enable Multi-Editing`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).  (This option was removed in v8.6-v8.6.2, but returned in the new [**Editing 2**](#editing-2) preferences in v8.6.3.)
-* `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
-* `☐ Keep selection when right-click outside of selection`: Prevents right-click from cancelling an active selection.
-* `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
-* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
-
-### Editing 2
-
-- `☐ Enable Multi-Editing (Ctrl+Mouse Click/Selection)`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).  (This option was in **Editing** preferences originally; it was removed in v8.6-v8.6.2; but it returned in the new **Editing 2** preferences in v8.6.3.)
-    - `☐ Enable Column Selection to Multi-Editing`: When checkmarked, a Column Selection will be converted into a Multi-Selection to give added power.  When not checkmarked, Column Selections will be independent of Multi-Selections, so it will behave more like v8.6-and-earlier, or v8.6.1-8.6.2 with the `noColumnToMultiSelect.xml` config file.  (New preference in v8.6.3.)
+    - `☐ Prevent control character (C0 code) typing into document`: When checkmarked, if you hit a keyboard sequence like <kbd>Ctrl+E</kbd> which is not mapped to a shortcut, it will _not_ enter the ASCII control character equivalent.  With this uncheckmarked, the ASCII control character will be entered (and may be invisible, depending on your control-character settings here and in the [**View > Show Symbol >** menu](../views/#show-symbol).  (New preference in v8.6.5.)
 
 
 ### Dark Mode
@@ -171,7 +172,10 @@ These define the margin style, border width, and edge settings.
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
-* `☐ Display Change History`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles)
+* **Change History**:
+    * `☐ Show in the margin`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  
+    * `☐ Show in the text`: Shows a background color to indicate lines that have been changed, with the same rules as the margin version.  
+    * Colors: The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles).  The other colors are affected by the [**Change History modified, Change History revert modified, Change History revert origin, and Changed History saved**](#global-styles) styles.
 * `☐ Display bookmark`: Adds an additional margin to the left of the text editing area, to show a large shaded circle next to all lines that contain a bookmark, and green arrow symbols that bracket a range of hidden lines.
 
 ### New Document
@@ -575,6 +579,10 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Line number margin** [background and foreground] ⇒ If **Line Number > Display** is checked in [Preferences > Margins/Border/Edge](#margins-border-edge), this sets the style for those line numbers.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Line Number** settings.
 * **Bookmark margin** [background] ⇒ The background of the Bookmark margin will be set to this color, if the margin is enabled.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Bookmark**.
 * **Change History margin** [background] ⇒ The background of the Change History margin will use this color, if the margin is enabled. (new to v8.4.6)  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Change History**.
+* **Change History modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been modified since the last save; the in-text change history underline will use the foreground color. (New to v8.6.5)
+* **Change History revert modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save and then edited to something different; the in-text change history underline will use the foreground color. (New to v8.6.5)
+* **Change History revert origin** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save; the in-text change history underline will use the foreground color. (New to v8.6.5)
+* **Change History saved** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been saved since the last time it was modified this session; the in-text change history underline will use the foreground color. (New to v8.6.5)
 * **Fold** [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret is _not_ inside that folding-area.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
 * **Fold active** [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the caret _is_ inside that folding-area.  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
 * **Fold margin** [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`).  The "Go to settings" link will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
