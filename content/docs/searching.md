@@ -54,7 +54,7 @@ All the search dialogs have certain features in common, though some are not avai
     * With either ASCII or full Unicode text, if you want _full_ control of what counts as a "word" or a "word boundary", use **Search Mode** = **Regular Expression** instead of using **Normal** with **Match whole word only**: Regular expressions allow you full and precise control of what is allowed before and after what _you_ consider a "whole word", rather than relying on someone else's definition.
 
 * **☐ Match case**: If checked, searches must match in case (so a search for "it" will not find "It" or "IT").  The regular expression `i` flag will override this checkbox, where `(?i)` will make the search case insensitive, and `(?-i)` will make the search case sensitive.
-* **☐ Wrap Around**: If checked, when the search reaches the end of the document, it will wrap around to the beginning and continue searching.
+* **☐ Wrap around**: If checked, when the search reaches the end of the document, it will wrap around to the beginning and continue searching.  (See more in [**Wrap around** section, below](#wrap-around).)
 
 * **Search Mode**: This determines how the text in the **Find what** and **Replace with** text fields will be treated.
     * **☐ Normal**: All text is treated literally.
@@ -86,7 +86,7 @@ The various action buttons available include:
         - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
         - After selecting an action from this menu, that action is immediately performed, and the button changes its icon to indicate the new mode for that button.
     * Notepad++ v8.5.2 replaces the right-click menu with a pull-down menu (▼) on the swap button, to make it more obvious that it can be changed.
-* **Replace All**: With **☑ Wrap Around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap Around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
+* **Replace All**: With **☑ Wrap around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
@@ -99,7 +99,8 @@ The various action buttons available include:
         YES|-/-|-/-|ON |From  START of selection  to  END of selection
         -/-|ON |-/-|OFF|From  START of file       to  END of file
 
-        _The **Previous Selection** column indicates that a range of text has been selected already. The **Wrap Around** and **Backward Direction** and **In Selection** columns refer to the setting of the checkboxes described above. The **Range** column describes the range of the document that is affected by the **Replace All**. A value of "-/-" means that the setting does not influence the outcome for that combination of conditions._
+        _The **Previous Selection** column indicates that a range of text has been selected already. The **Wrap around** and **Backward Direction** and **In Selection** columns refer to the setting of the checkboxes described above. The **Range** column describes the range of the document that is affected by the **Replace All**. A value of "-/-" means that the setting does not influence the outcome for that combination of conditions._
+    * See more in [**Wrap around** section, below](#wrap-around).
 
 * **Replace All in All Opened Documents**: Same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
 
@@ -127,6 +128,16 @@ Notepad++ uses a flashing of the Find dialog window and the main Notepad++ windo
 If a search action is invoked by keyboard command with the Find dialog window open and input focus in the editing window, an unsuccessful search will result in input focus being changed to the Find window.
 
 *Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "FileSeek", "Everything" and many others.
+
+#### Wrap Around
+
+- When executing a **Find Next** or a single-step **Replace**, the document text is examined for a match starting at the caret position and proceeding forward toward the end-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the start-of-file (i.e., it wraps around) and text is examined until the caret position is reached (or a search hit occurs).
+
+- When executing a **Find Previous** or **▲** (or a **Find Next** with **☑ Backward direction** checkmarked) or a single-step _Replace_ (with **☑ Backward direction** checkmarked), the document text is examined for a match starting at the caret position and proceeding backward toward the start-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the end-of-file (i.e., it wraps around) and text is examined until the caret position is reached (or a search hit occurs).
+
+- In other single-file search actions, **☑ Wrap around** may be thought of as "affect entire file" and caret position becomes irrelevant; the file will be processed in one pass from start-of-file to end-of-file.
+
+- In multiple-file search actions (like **Find All in All Opened Documents**, or the **Find in Files** or **Find in Projects** tabs), the **☑ Wrap around** state is completely ignored, as those actions always start at the beginning of each file and search through to the end in the forward direction.
 
 ### Find in Files tab
 
@@ -177,7 +188,7 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * Otherwise, the matched pattern is highlighted according to the [**Settings > Style Configurator > Global Styles > Find Mark Style**](../preferences/#global-styles) setting.
 
-In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace-tabs), **Mark All** will search from the beginning of the document to the end if **Wrap Around** is checked; if **Wrap Around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace-tabs), **Mark All** will search from the beginning of the document to the end if **Wrap around** is checked; if **Wrap around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
 
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
