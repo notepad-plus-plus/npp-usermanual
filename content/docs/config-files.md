@@ -200,9 +200,9 @@ _Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file;
 
 Although it is possible for several commands to have the same name, this is confusing and thus discouraged.
 
-The run command may contain any valid command for the <abbr title="Operating System: Generally Windows. If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>. If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command. If it's not in your path, then you _should_ specify the full path. Note that Windows will launch your default browser if you put a URL in this. If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environment). For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.
+The run command may contain any valid command for the <abbr title="Operating System: Generally Windows. If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>. If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command. If it's not in your path, then you _should_ specify the full path. Note that Windows will launch your default browser if you put a URL in this. If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environment). For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.  (That same command in the **Run**-menu's **Run...** action dialog would need to be `"c:\program files\putty\putty.exe" -ssh -load "my session"` to encapsulate all the paths with spaces inside double-quotes.)
 
-There are a number of Notepad++-specific variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry.
+There are a number of Notepad++-specific variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry (whether creating the command in the `shortcuts.xml` or through the **Run > Run...** entry).
 
 Variable            | Description                       | Example
 --------------------|:---                               |:---
@@ -218,7 +218,9 @@ CURRENT_COLUMN      | the column number where the caret is currently located in 
 NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
 NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
 
-If you want access to a Windows environment variable (like `TMP`), use the standard `%`-notation for windows variables (like `%TMP%`).
+If the variable contains one or more space characters in the path, like `$(FULL_CURRENT_PATH)` being `C:\Path With Spaces\Goes\Here.txt`, then you should include quotes around the variable, like `"c:\Program Files\App Name\blah.exe" "$(FULL_CURRENT_PATH)"`
+
+If you want access to a Windows environment variable (like `TMP`), use the standard `%`-notation for Windows variables (like `%TMP%`).  If the variable references a path with one or more spaces in the name, then putting quotes around environment variables is required: for example, if `%TMP%` is defined as `C:\Users\First Last\Temp\`, then you will need to use `C:\AppDir\blah.exe "%TMP%"` as your command.
 
 ### v8.5.3 `shortcuts.xml` updates
 
