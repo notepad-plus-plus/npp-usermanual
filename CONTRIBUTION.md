@@ -8,7 +8,7 @@ After creating the issue, you are encouraged to make the changes and submit a Pu
 
 ## Pull Requests (PR)
 
-Plesae follow the guidelines below when submitting a PR.
+Please follow the guidelines below when submitting a PR.
 
 ### Guidelines for pull requests
 
