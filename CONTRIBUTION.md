@@ -1,5 +1,10 @@
 # Contribution
 
+## Your Contribution is Valued
+
+If you find something in our documentation that can be improved, please let us know by creating an issue in our [issue tracker](../../issues).
+
+After creating the issue, you are encouraged to make the changes and submit a Pull Request (PR), as described below.
 
 ## Pull Requests (PR)
 
