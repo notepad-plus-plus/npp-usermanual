@@ -4,11 +4,11 @@
 
 If you find something in our documentation that can be improved, please let us know by creating an issue in our [issue tracker](../../issues).
 
-After creating the issue, you are encouraged to make the changes and submit a Pull Request (PR), as described below.
+After creating the issue, you are encouraged to make the changes and submit a Pull Request (PR), following all the Guidelines on this page.
 
 ## Pull Requests (PR)
 
-Your pull requests are welcome to suggest changes to the user manual.
+Plesae follow the guidelines below when submitting a PR.
 
 ### Guidelines for pull requests
 
