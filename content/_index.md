@@ -8,7 +8,7 @@ Notepad++ User Manual
 
 This **Notepad++ User Manual** describes the Notepad++ application v8.x (currently up to v8.6.4).
 
-The documentation is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual), following our [contribution guidelines](per `https://github.com/peaceiris/actions-hugo/issues/647` and `https://github.com/peaceiris/actions-hugo/issues/644`, it's a common failing; the second seems to imply that @v2.6 should work).
+The documentation is built collaboratively, and [your contribution is very welcome](https://github.com/notepad-plus-plus/npp-usermanual), following our [contribution guidelines](https://github.com/notepad-plus-plus/npp-usermanual/blob/master/CONTRIBUTION.md).
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
