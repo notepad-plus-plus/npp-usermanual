@@ -39,11 +39,11 @@ jobs:
     #           Remove-Item $tmpname
     #       }
 
-    #- name: 🎉 Store zipfile as artifact -- Pure Hugo
-    #  uses: actions/upload-artifact@v4
-    #  with:
-    #      name: nppUserManual
-    #      path: ./httrack_output/nppUserManual/
+    - name: 🎉 Store zipfile as artifact -- Pure Hugo
+      uses: actions/upload-artifact@v4
+      with:
+          name: nppUserManual_pureHugo
+          path: ./static_html/
 
 
 
