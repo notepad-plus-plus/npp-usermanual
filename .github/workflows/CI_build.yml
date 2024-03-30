@@ -20,8 +20,8 @@ jobs:
     - name: 🔨 Build static HTML for site -- Pure Hugo
       working-directory: .
       run: |
-           hugo.exe --theme hugo-book-9
-           dir -recurse
+           hugo.exe -d static_html --theme hugo-book-9
+           dir static_html
     #       $env:Path += ";C:\Program Files\WinHTTrack\"
     #       httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
     #       Set-Location -Path httrack_output
