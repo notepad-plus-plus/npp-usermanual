@@ -2,4 +2,15 @@ baseURL = "https://npp-user-manual.org/"
 languageCode = "en-us"
 title = "Notepad++ User Manual"
 
-theme = "book"
+theme = "hugo-book-9"
+
+[params]
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'auto'
+
+[markup.goldmark.renderer]
+unsafe= true
+
+[markup.tableOfContents]
+startLevel = 1

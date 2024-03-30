@@ -43,7 +43,7 @@ notepad++ [--help] [-multiInst] [-noPlugin]
   should match an existing UDL.  Mutually exclusive with `-l` (UDL will take priority
   over standard syntax highlighter).  (new to v8.1.2)
 * `-L`: Apply indicated localization, *langCode* maps to the localization file name:
-    {{< expand "show Language Codes" >}}
+    {{< details "show Language Codes" >}}
 code | file
 ---|---
 `ab`, `abk` | `abkhazian.xml`
@@ -137,7 +137,7 @@ code | file
 `zh-tw`, `zh-hk`, `zh-sg` | `taiwaneseMandarin.xml`
 `zh`, `zh-cn` | `chineseSimplified.xml`
 `zu`, `zu-za` | `zulu.xml`
-    {{< /expand >}}
+    {{< /details >}}
 * `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
 * `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
 * `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.

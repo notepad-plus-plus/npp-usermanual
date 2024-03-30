@@ -28,11 +28,11 @@ In cases when either wParam, lParam or both are not used, they must be set to 0.
 
 The message IDs for each of these named messages, as well as the enums used with these messages, can be found in the source code in [Notepad_plus_msgs.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h).
 
-{{< expand "Aside: interpreting #defines" >}}
+{{< details "Aside: interpreting #defines" >}}
 If you are writing your plugin in C++ or similar languages, you should just include the `Notepad_plus_msgs.h` to get all the constants; but if you are using a different language for your plugin or other message-interface, you will need to translate those `#define` statements to constants or values appropriate to your language.
 
 When reading the `#define` for the various `NPPM_` constants, you need to notice that `NPPMSG` is defined as `(WM_USER + 1000)` near the top of the file, and you need to know that [`WM_USER`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-user) is the Windows standard constant with a value of `0x0400` (1024).  You may need to look up other `#define` values from elsewhere in the header file in order to fully resolve some of the values.  For example, `#define NPPM_SAVEALLFILES (NPPMSG + 39)` is really the integer 1024 + 1000 + 39 = 2063, so that is the value you need to use when defining your version of the `NPPM_SAVEALLFILES` constant.
-{{< /expand >}}
+{{< /details >}}
 
 You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h). Note, you need to use one of the two Scintilla handles as the first parameter to SendMessage api function.
 

@@ -1,0 +1,20 @@
+/* To be overridden by theme user */
+// @import "variables";
+
+
+kbd {
+    padding: 0px 3px;
+    /*background: var(--gray-400);*/
+
+    /* drop shadow */
+    -moz-box-shadow: 1px 1px 10px 1px var(--shadow);
+    -webkit-box-shadow: 1px 1px 10px 1px var(--shadow);
+    box-shadow: 1px 1px 10px 1px var(--shadow);
+
+    /* rounded corners */
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-radius: 4px;
+}

@@ -33,7 +33,7 @@ There are four entries that are grouped together, which can affect the rendering
 
 - **Show Non-Printing Characters**: When checked, the characters below will be shown in a small box, either as the Codepoint or as the Abbreviation, depending on [Settings > Preferences > Editing > Non-Printing Characters](../preferences/#editing-1).  The boxed characters are colored as "reverse text", and can be customized through [Global Styles > Default > NPC Custom color](../preferences/#global-styles "see Style Configurator > Global Styles") settings if the [Editing > Non-Printing Characters > Custom Color](../preferences/#editing-1) is checked.  (New to v8.5)
 
-    {{< expand "Table of Non-Printing Characters" >}}
+    {{< details "Table of Non-Printing Characters" >}}
 Codepoint | Character Name               | Abbreviation
 ----------|------------------------------|---------------
 U+0085    | next line                    | NEL
@@ -79,7 +79,7 @@ U+206E    | national digit shapes        | NADS
 U+206F    | nominal digit shapes         | NODS
 U+3000    | ideographic space            | IDSP
 U+FEFF    | zero-width no-break space    | ZWNBSP
-    {{< /expand >}}
+    {{< /details >}}
 
 - **Show Control Characters & Unicode EOL**: When checked, the control characters in the ASCII/Unicode [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) will be shown in a small box, either as the Codepoint or as an Abbreviation.  In addition to the C0 and C1 control codes, this also influences the Unicode "End of Line" characters LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`).  (new to v8.5.3)
 
