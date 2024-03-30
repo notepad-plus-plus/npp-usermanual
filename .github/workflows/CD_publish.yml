@@ -31,7 +31,7 @@ jobs:
 
     - name: 🔨 Build into ./public
       working-directory: .
-      run: hugo --theme book
+      run: hugo --theme hugo-book-9
 
     - name: 🎉 Deploy to npp-user-manual.org
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4

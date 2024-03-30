@@ -20,7 +20,7 @@ jobs:
     - name: 🔨 Build static HTML for site
       working-directory: .
       run: |
-           cmd /c start hugo.exe server --theme book
+           cmd /c start hugo.exe server --theme hugo-book-9
            $env:Path += ";C:\Program Files\WinHTTrack\"
            httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
            Set-Location -Path httrack_output
