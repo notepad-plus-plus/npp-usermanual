@@ -17,40 +17,71 @@ jobs:
     - name: 🚚 Checkout repo
       uses: actions/checkout@v4
 
-    - name: 📡 Install hugo-extended and httrack via chocolatey
+    - name: 📡 Install hugo-extended via chocolatey
       working-directory: .
       run: |
-           choco install hugo-extended --version 0.57.2
-           choco install httrack
+            choco install hugo-extended --version 0.68.3
 
     - name: 🔨 Build static HTML for site
       working-directory: .
       run: |
-           cmd /c start hugo.exe server --theme book
-           $env:Path += ";C:\Program Files\WinHTTrack\"
-           httrack.exe "http://127.0.0.1:1313/" -O "./httrack_output"
-           Set-Location -Path httrack_output
-           Rename-Item -Path 127.0.0.1_1313 -NewName nppUserManual
-           Get-ChildItem -Recurse "./nppUserManual" -Filter index.html | Foreach-Object {
+            hugo.exe -d static_html --theme hugo-book-9 --baseURL "http://localhost:1313"
+
+            # first do the changes that go in all the HTML files
+            Get-ChildItem -Recurse "./static_html" -Filter index.html | Foreach-Object {
                $orgname = $_.FullName
                $tmpname = "$($orgname).unedited"
-               echo $tmpname
                Copy-Item $orgname $tmpname
                get-content $tmpname |
-                    %{$_ -replace 'id="book-search-input" maxlength="64" readonly','id="book-search-input" maxlength="64" readonly hidden'} |
-                    %{$_ -replace 'href="http://localhost:1313/"','href="./index.html"'} |
-                    %{$_ -replace 'href="http://localhost:1313/','href="'} |
+                    %{$_ -replace 'id="book-search-input"','id="book-search-input" readonly hidden'} |
+                    %{$_ -replace 'integrity="','attr_integ_ignore="'} |
                     set-content $orgname
                Remove-Item $tmpname
-           }
-           Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
-           Set-Location -Path ..
+            }
+
+            # need different replacements at different depths
+            Copy-Item "./static_html/index.html" "./static_html/index.html.source"
+            get-content "./static_html/index.html.source" |
+                    %{$_ -replace '(href|content|src)="/','$1="./'} |
+                    %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="./'} |
+                    %{$_ -replace '((?:href|content|src)="\./[^"]*?)/"','$1/index.html"'} |
+                    set-content "./static_html/index.html"
+            Remove-Item "./static_html/index.html.source"
+
+            # need to delay the docs-level index, but save the existing copy, so that I can easily recurse
+            #   to the deep directories, and then do the docs-level
+            Copy-Item "./static_html/docs/index.html" "./static_html/docs/index.html.source"
+
+            # recurse to the deepest level
+            Get-ChildItem -Recurse "./static_html/docs" -Filter index.html | Foreach-Object {
+               $orgname = $_.FullName
+               $tmpname = "$($orgname).unedited"
+               Copy-Item $orgname $tmpname
+               get-content $tmpname |
+                    %{$_ -replace '(href|content|src)="/','$1="../../'} |
+                    %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../../'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    set-content $orgname
+               Remove-Item $tmpname
+            }
+
+            # now do the docs-level
+            get-content "./static_html/docs/index.html.source" |
+                    %{$_ -replace '(href|content|src)="/','$1="../'} |
+                    %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    set-content "./static_html/docs/index.html"
+            Remove-Item "./static_html/docs/index.html.source"
+
+            # now zip it
+            Rename-Item -Path static_html -NewName nppUserManual
+            Compress-Archive -Path nppUserManual -DestinationPath nppUserManual.zip
 
     - name: 🎉 Store zipfile as asset
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./httrack_output/nppUserManual.zip
+        file: ./nppUserManual.zip
         asset_name: nppUserManual.zip
         tag: ${{ github.ref }}
         overwrite: true

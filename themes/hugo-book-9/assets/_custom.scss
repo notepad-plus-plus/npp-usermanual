@@ -1,0 +1,71 @@
+/* To be overridden by theme user */
+// @import "variables";
+
+
+kbd {
+    padding: 0px 3px;
+    /*background: var(--gray-400);*/
+
+    /* drop shadow */
+    -moz-box-shadow: 1px 1px 10px 1px var(--shadow);
+    -webkit-box-shadow: 1px 1px 10px 1px var(--shadow);
+    box-shadow: 1px 1px 10px 1px var(--shadow);
+
+    /* rounded corners */
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-radius: 4px;
+}
+
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5 {
+  font-weight: 700;
+}
+.markdown h2, .markdown h3, .markdown h4  {
+  border-top-style: solid;
+  border-color: currentColor;
+}
+
+.markdown h5 , .markdown h6 {
+  border-top-style: dotted;
+  border-color: var(--gray-500);
+  font-variant: small-caps;
+}
+
+.markdown h2 {
+  color: var(--h2-color);
+  border-width: 5px;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  font-size: 2rem;
+}
+
+.markdown h3 {
+  color: var(--h3-color);
+  border-width: 3px;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.markdown h4 {
+  color: var(--h4-color);
+  border-width: 1px;
+  padding-top: .5rem;
+  font-size: 1.17rem;
+}
+
+.markdown h5 {
+  color: var(--h5-color);
+  border-width: 1px;
+  padding-top: .5rem;
+  font-size: 1rem;
+}
+
+.markdown h6 {
+  color: var(--h6-color);
+  border-width: 1px;
+  padding-top: .5rem;
+  /*font-size: 1.17rem;*/
+}

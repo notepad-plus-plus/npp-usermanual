@@ -22,16 +22,16 @@ jobs:
     - name: 🚚 Checkout repo
       uses: actions/checkout@v4
 
-    - name: 📡 Get Hugo-Extended v0.57.2
+    - name: 📡 Get Hugo-Extended v0.68.3
       #uses: peaceiris/actions-hugo@v2  # @v2 and @v2.6.0 giving node16-vs-node20 error in GitHub Actions
       uses: ricomariani/actions-hugo@16ab92f9dbb1f28bb75268a4a5eede16cdc2a6e2
       with:
-        hugo-version: '0.57.2'
+        hugo-version: '0.68.3'
         extended: true
 
     - name: 🔨 Build into ./public
       working-directory: .
-      run: hugo --theme book
+      run: hugo --theme hugo-book-9
 
     - name: 🎉 Deploy to npp-user-manual.org
       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
