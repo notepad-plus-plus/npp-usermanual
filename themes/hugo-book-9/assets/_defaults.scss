@@ -36,9 +36,6 @@ $hint-colors: (
   --gray-400: #bbc3ca;
   --gray-500: #adb5bd;
 
-  --shadow: #cad1d7;
-
-
   --color-link: #0055bb;
   --color-visited-link: #8440f1;
 
@@ -50,6 +47,16 @@ $hint-colors: (
   --hint-color-info: #6bf;
   --hint-color-warning: #fd6;
   --hint-color-danger: #f66;
+
+  // customizations
+  --shadow: #cad1d7;
+  --h2-color: #a0004e;
+  --h3-color: #00804e;
+  --h4-color: #004ed0;
+  --h5-color: initial;
+  --h6-color: initial;
+
+
 }
 
 @mixin theme-dark {
@@ -58,8 +65,6 @@ $hint-colors: (
   --gray-300: rgba(255, 255, 255, 0.3);
   --gray-400: rgba(255, 255, 255, 0.4);
   --gray-500: rgba(255, 255, 255, 0.5);
-
-  --shadow: rgba(255, 255, 255, 0.2);
 
   --color-link: #84b2ff;
   --color-visited-link: #b88dff;
@@ -72,4 +77,13 @@ $hint-colors: (
   --hint-color-info: #6bf;
   --hint-color-warning: #fd6;
   --hint-color-danger: #f66;
+
+  // customizations
+  --shadow: rgba(255, 255, 255, 0.2);
+  --h2-color: #c8009e;
+  --h3-color: #00C09e;
+  --h4-color: #009ee8;
+  --h5-color: initial;
+  --h6-color: initial;
+
 }
