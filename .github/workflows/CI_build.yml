@@ -67,8 +67,11 @@ jobs:
                     set-content "./static_html/docs/index.html"
             Remove-Item "./static_html/docs/index.html.source"
 
+            # rename before artifact
+            Rename-Item -Path static_html -NewName nppUserManual
+
     - name: 🎉 Store zipfile as artifact
       uses: actions/upload-artifact@v4
       with:
-          name: nppUserManual_pureHugo
-          path: ./static_html/
+          name: nppUserManual
+          path: ./nppUserManual/
