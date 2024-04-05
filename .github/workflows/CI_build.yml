@@ -14,7 +14,7 @@ jobs:
     - name: 📡 Install hugo-extended via chocolatey
       working-directory: .
       run: |
-           choco install hugo-extended --version 0.68.3
+           choco install hugo-extended --version=0.68.3
 
     - name: 🔨 Build static HTML for site
       working-directory: .
