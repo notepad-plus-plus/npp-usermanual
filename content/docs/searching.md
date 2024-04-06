@@ -649,9 +649,9 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `$`  ⇒ This matches the end of a line.
 
-* `\<`  ⇒ This matches the start of a word using Scintilla's definition of words.
+* `\<`  ⇒ This matches the start of a word using Boost's definition of words.
 
-* `\>`  ⇒ This matches the end of a word using Scintilla's definition of words.
+* `\>`  ⇒ This matches the end of a word using Boost's definition of words.
 
 * `\b` ⇒ Matches either the start or end of a word.
 
