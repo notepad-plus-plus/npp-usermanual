@@ -32,24 +32,34 @@ When a UDL other than the default **User Defined Language** is selected in the p
 
 ### UDL Configuration Tabs
 
-Ivan Radić has created the definitive guide to the nuts and bolts of UDL version 2.1, which is available at [https://ivan-radic.github.io/udl-documentation/](https://ivan-radic.github.io/udl-documentation/).  He explains the details of what each of the tabs in the **User Defined Language** dialog box will do, and how to use them to style your various keywords.  However, these descriptions will give you an overview of what each tab is for.
+The "Details" links throughout this section will give additional information on how each of the fields in the UDL dialog will affect the syntax highlighting.  You should start with the [Details: Parsing](../udl/introduction/) to find out more on the order that UDL parsing occurs
 
 * The **Folder & Default** tab allows setting the default style, setting up keywords (or characters) that will allow code folding, and setting up styles for those keywords.  The **Open**, **Middle**, and **Close** boxes under each folding-type define the triggers for the start, middle, and end of folding.  For example, with `if`, `else`, and `endif`, it will define fold regions so that you can fold from `if` to `else`, from `else` to `endif`, and (assuming there is no `else` clause) from `if` to `endif`.  **Folding in comment** allows comments to include folding; **Folding in code 1 style** allows the triggers to be touching something else (so with a trigger of `{`, it will match `if{` or `if {`), whereas **Folding in code 2 style** requires there be whitespace around the trigger (so `if{` would _not_ match an **Open**-trigger of `{`).
+    - [⇒ Details: Default Style](../udl/default/)
+    - [⇒ Details: Folding in Code](../udl/folding-in-code/)
+    - [⇒ Details: Folding in Comment](../udl/folding-in-comment/)
 
 * The **Keywords List** tab allows defining eight (8) different groups of keywords, so you can style different groups of words differently (like built-in functions vs. flow control keywords).  Separate each keyword by a space (and that means that spaces are not allowed in keywords unless you put quotes around the phrase).  If **☐ Prefix Mode** is checked for a given group, that means that it will match anything that _starts_ with your string (so a keyword of `for` would match `for`, `forth`, and `format` if that option is checked).
 
     As a point of interest, you shouldn't have a given keyword in more than one keyword-group _or_ folder-group.  If you want `if`/`else`/`endif` to cause block-folding, do not also put them in one of your keyword-groups.
+
+    - [⇒ Details: Keywords](../udl/keywords/)
+
 
 * The **Comment & Number** tab allows setting styles for comments and for numbers.
     * **Line Comment Position** allows you to decide whether "line comments" can start anywhere on the line, must start at the beginning, or can start anywhere on the line as long as it's only whitespace before the comment.
     * **☐ Allow folding of comments** will allow comments to be foldable.
     * **Comment line style** defines the style  for "line comments" -- comments that proceed from the opening-trigger to the end of the line.
     * **Comment style** defines the style for multiline-comments.
+        - [⇒ Details: Comments](../udl/comments/)
     * **Number style** defines the style for numbers.  The various **Prefix**es, **Suffix**es, and **Extra**s allow you to define extra numeric representations (useful for hexadecimal, binary, octal and similar representations, as well as for defining currency as a number).  The **Range** allows you to define a syntax for ranges, so that two numbers with a listed symbol in between will still be treated as a number.  (However, there may be conflicts if the **Range** setting matches one from **Operators & Delimiters**)
+        - [⇒ Details: Numbers](../udl/numbers/)
 
 * The **Operators & Delimiters** tab allows setting styles for operators and for delimiter pairs
     * **Operators 1** and **Operators 2** define two groups of operators (usually math and math-like operators).  The first defines operators that will be matched even if they are touching other characters (allowing `1+2`), whereas the second defines operators that must contain spaces to be recognized (like `1 + 2`).
+        - [⇒ Details: Operators](../udl/operators/)
     * The various **Delimiter** styles are pairs of **Open** and **Close** characters, where those characters and whatever comes between them will be styled per the rules defined for that entry.  This is useful for styling strings, parenthesized parameter lists, bracketed expressions, and anything else where it can have a .  The **Escape** entry allows defining a way of "escaping" the character so that the delimiter pair is not prematurely closed (such as `"` / `\` / `"` allowing `"this \" is an embedded quote character inside a string, escaped by the backslash"`).
+        - [⇒ Details: Delimiters](../udl/delimiters/)
 
 #### Unicode Support
 
