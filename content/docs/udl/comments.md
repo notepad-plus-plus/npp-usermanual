@@ -137,7 +137,7 @@ Just define Delimiter 2 (any delimiter will do, I'll use this one for demonstrat
 So, that every new line combination is covered.<br>
 "((EOL))" has been introduced just for this reason. It allows users to define Delimiter equivalent of Line comments.
 
-Notice how I wrapped EOL with special **double brace operator**. This operator has a special meaning in UDL 2.1 and it is explained in more detail in [Delimiters section]({{ site.baseurl }}/delimiters/). For this example it is enough to remember that it **expands EOL into an end of line character**.
+Notice how I wrapped EOL with special **double brace operator**. This operator has a special meaning in UDL 2.1 and it is explained in more detail in [Delimiters section](../delimiters/). For this example it is enough to remember that it **expands EOL into an end of line character**.
 
 As you can see, nesting of delimiters that imitate line comments works just as good.
 
