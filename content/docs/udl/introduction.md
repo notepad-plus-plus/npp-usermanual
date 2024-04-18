@@ -11,6 +11,8 @@ Users should understand this part before proceeding to read about other UDL 2.1 
 
 ## Introduction to UDL 1.0 internal logic
 
+To understand the UDL 2.1 logic, you will first need to understand the UDL 1.0 logic, even though Notepad++ hasn't used UDL 1.0 in years, because it teaches the basic concepts involved.
+
 ![](../images/introduction_01.png)
 
 In this picture you can see a set of three keywords.<br>

@@ -4,7 +4,7 @@ title: UDL > Folding in comment
 slug: folding-in-comment
 ---
 
-# Folding in comment
+# UDL &gt; Folding in comment
 
 This keyword set is new in UDL 2.1.<br>
 It allows you to fold anything as long as your language supports comments.<br>

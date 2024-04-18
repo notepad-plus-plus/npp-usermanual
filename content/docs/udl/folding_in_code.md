@@ -4,7 +4,7 @@ title: UDL > Folding in code
 slug: folding-in-code
 ---
 
-# Folding in code
+# UDL &gt; Folding in code
 
 Folding in code is quite different in UDL 2.1. Instead of two keyword sets (open and close), now we have three keyword sets (open, middle and close). Also, there are two Folding in code  groups: one for [forward (style1)]({{ site.baseurl }}/introduction/) and one for [backward (style2)]({{ site.baseurl }}/introduction/) search.
 
