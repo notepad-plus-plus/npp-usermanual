@@ -6,7 +6,7 @@ slug: folding-in-code
 
 # UDL &gt; Folding in code
 
-Folding in code is quite different in UDL 2.1. Instead of two keyword sets (open and close), now we have three keyword sets (open, middle and close). Also, there are two Folding in code  groups: one for [forward (style1)]({{ site.baseurl }}/introduction/) and one for [backward (style2)]({{ site.baseurl }}/introduction/) search.
+Folding in code is quite different in UDL 2.1. Instead of two keyword sets (open and close), now we have three keyword sets (open, middle and close). Also, there are two Folding in code  groups: one for [forward (style1)](../introduction/) and one for [backward (style2)](../introduction/) search.
 
 ## Example 1
 
@@ -23,7 +23,7 @@ As you can see both Folding 1 and Folding 2 create folding points, but they work
 
 ![](../images/folding_in_code_02.png)
 
-Note: forward and backward search concept is explained in more detail in [Introduction]({{ site.baseurl }}/introduction/) page.<br>
+Note: forward and backward search concept is explained in more detail in the [UDL Parser](../introduction/) page.<br>
 You should read that part if you haven't already.
 
 ## Example 2

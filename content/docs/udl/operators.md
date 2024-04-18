@@ -6,7 +6,7 @@ title: UDL > Operators
 # UDL &gt; Operators
 
 This section gives short explanation of operator options.<br>
-For detailed discussion about "forward" and "backward" search, please read section [Introduction]({{ site.baseurl }}/introduction/).
+For detailed discussion about "forward" and "backward" search, please read section on the [UDL Parser](../introduction/).
 
 ![Operators dialog](../images/operators_01.png)
 
