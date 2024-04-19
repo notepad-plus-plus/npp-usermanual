@@ -1289,68 +1289,101 @@ But it is about as hard to decrypt as a badly indented piece of code without a c
 
 #### Example 6
 
-This example gives more insight into using independent sub-expressions to prevent back-tracking when using Conditional Expressions.
+This example gives more insight about "atomic groups", which prevent any backtracking, and are particularly useful when using a conditional expression.
 
-Given the file:
+Given this text :
 ```
-  5 apples in a box
-100 apples in a box
-200 apples in a barrel
-250 apples in a box
-500 apples in a barrel
-```
-
-We want to match when there are 250 or fewer apples only when they are in a box; if there are more apples than 250, it should only match in a barrel.  Thus, `200 apples in a barrel` should _not_ match.
-
-First we need to construct a Conditional Expression for apples container:
-
-    (?('LEQ250')in a box|in a barrel)
-
-The `('LEQ250')` refers to some Capture Group which will catch quantity of apples comparing with our condition:
-
-    (?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)\D
-
-The trick here is that if we have alternatives in this Capture Group, we can't allow search to back-track to try a different alternative from the condition when the conditional fails.  Thus, we need to use an Independent sub-expression:
-
-    (?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)\D)
-
-But if we use Independent sub-expression we have other two problems:
-
-1. we have possibility for spaces appear before digits `\h*`
-2. we need to check where number ends `\D`
-
-Alternatives and Multiplying Operators need backtracking and so must be resolved inside the Independent sub-expression.  In our example `\h*\d` is definitive - `\h*` always stops before non-space (and a digit `\d` is not a space), but if you need to include some alternatives or multiplying operators inside your capture group, then include all of them, to give the Independent sub-expression the possibility to backtrack within itself.
-
-It is better to check for the end in a more general form, in order to not include patterns not needed for Capture Group inside Independent sub-expression; thus, we will use the positive lookahead (?=\D) Assertion.
-
-As a result we have the following regexp:
-
-    ^\h*(?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)(?=\D)) apples (?('LEQ250')in a box|in a barrel)
-
-With this expression, our search results are
-
-```
-File1 (4 hits)
-Line 1: 5 apples in a box
-Line 2: 100 apples in a box
-Line 4: 250 apples in a box
-Line 5: 500 apples in a barrel
+    0 apple in a box
+    0 apple in a barrel
+    5 apples in a box
+    5 apples in a barrel
+   27 apples in a box
+   27 apples in a barrel
+  100 apples in a box
+  100 apples in a barrel
+  200 apples in a box
+  200 apples in a barrel
+  250 apples in a box
+  250 apples in a barrel
+  251 apples in a box
+  251 apples in a barrel
+  300 apples in a box
+  300 apples in a barrel
+  500 apples in a box
+  500 apples in a barrel
+  999 apples in a box
+  999 apples in a barrel
+ 1000 apples in a box
+ 1000 apples in a barrel
+ 1234 apples in a box
+ 1234 apples in a barrel
+12345 apples in a box
+12345 apples in a barrel
 ```
 
-If we didn't use the Independent sub-expression, and instead used the regex
+Let's suppose that we want to match all the line contents :
 
-    ^\h*(?:(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+)(?=\D)) apples (?('LEQ250')in a box|in a barrel)
+- Ending with the word `box`, if there are less than or equal to 250 apples
 
-Our search results would incorrectly match line 3 (`200 apples in a barrel`):
+- Ending with the word `barrel` if there are more than 250 apples
+
+
+First, we construct a conditional expression :
+```
+(?('LEQ250')box|barrel)
+```
+
+The `('LEQ250')` refers to a named capture group, called `'LEQ250'`, which will catch the QUANTITY of apples to be compared.
+
+Secondly, we construct the regex catching the number of apples :
 
 ```
-File1 (5 hits)
-Line 1: 5 apples in a box
-Line 2: 100 apples in a box
-Line 3: 200 apples in a barrel
-Line 4: 250 apples in a box
-Line 5: 500 apples in a barrel
+(?:(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+) apples? in a )
 ```
+
+Note that the condition is the part `(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)` and, when the condition is not met, the simple `\d+` regex, which is outside the `'LEQ250'` group, is used instead.
+
+However the inner non-capturing group contains some alternatives. And we cannot allow the regex engine to backtrack in order to try other alternatives
+if a previous attempt failed. Thus, the syntax, below, uses an atomic group which never allows any backtracking process!
+
+```
+(?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+) apples? in a )
+```
+
+Finally, the whole regex structure is the concatenation of the two parts:
+
+```
+^\h*(?>(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+) apples? in a )(?('LEQ250')box|barrel)
+```
+
+_Note_: You may use an unnamed group, instead of the named `'LEQ250'` group. In this case, the regex would be simplified as :
+
+```
+^\h*(?>(?:(\d{1,2}|1\d\d|2[0-4]\d|250)|\d+) apples? in a )(?(1)box|barrel)
+           <-------- Group 1 ------->                        ^
+```
+
+Given the example text in a new tab, and using the **Search > Mark** tab, with the `Wrap-around` option checkmarked, it's easy to verify that :
+
+- Any line, ending with the word `box` and beginning with a number <= 250, is marked
+
+- Any line, ending with the word `barrel` and beginning with a number > 250, is marked
+
+
+It is important to note that if, instead of an atomic group, we used a classical non-capturing group, we would had gotten additional matches that we didn't want: the lines with number <= 250 and ending with the word `barrel`.
+
+Why this behaviour? Let's test the regex with the non-capturing group:
+
+```
+^\h*(?:(?:(?'LEQ250'\d{1,2}|1\d\d|2[0-4]\d|250)|\d+) apples? in a )(?('LEQ250')box|barrel)
+```
+
+Applying against our file in a new N++ tab, and after correctly matching the first line `0 apple in a box`, the current position of the regex engine is at the very beginning of the second line
+
+Then, the condition `\d{1,2}|1\d\d|2[0-4]\d|250` and, more precisely, `\d{1,2}`, is still met. Thus, the current second line should end with the word `box`. As it is, obviously, not the case, the regex engine backtracks and tries the second possible alternative `\d+`
+
+This time, as this part of the regex is outside the condition's definition, the condition `'LEQ250'` is NOT realized and the current second line must end with the word `barrel`, which is, indeed, the case. Therefore, the regex engine matches this second line, too, even though that was not intended. (The same reasoning applies for all the lines ending in `barrel` even though their number is not above 250.)
+
 
 ## Searching actions when recorded as macros
 
