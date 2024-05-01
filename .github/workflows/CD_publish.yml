@@ -24,7 +24,8 @@ jobs:
 
     - name: 📡 Get Hugo-Extended v0.68.3
       #uses: peaceiris/actions-hugo@v2  # @v2 and @v2.6.0 giving node16-vs-node20 error in GitHub Actions
-      uses: ricomariani/actions-hugo@16ab92f9dbb1f28bb75268a4a5eede16cdc2a6e2
+      #uses: ricomariani/actions-hugo@16ab92f9dbb1f28bb75268a4a5eede16cdc2a6e2
+      uses: peaceiris/actions-hugo@v3  # @v3 released in April; hopefully solves the node16 warning/error
       with:
         hugo-version: '0.68.3'
         extended: true
