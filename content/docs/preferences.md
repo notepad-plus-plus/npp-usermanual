@@ -531,7 +531,8 @@ A variety of settings that didn't fit elsewhere
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
   * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
-  * This is not on by default, because it may cause performance issues.
+  * This is checkmarked by default (starting in v8.6; before that, it defaulted to not being checkmarked).
+  * Some users notice performance issues when this is checkmarked; those affected may uncheckmark this option.
 * `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
 * `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
