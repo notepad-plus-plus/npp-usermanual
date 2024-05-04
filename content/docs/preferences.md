@@ -11,7 +11,9 @@ As noted in the [Configuration Files](../config-files) documentation, Notepad++ 
 
 ## Preferences
 
-For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is checked. For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is. (Checkbox states will be referred to as `checked` for `☑`, `unchecked` for `☐`, and `disabled` when it's greyed out so that you cannot toggle the state of the checkbox, and `enabled` if the grey has been removed.)
+For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is checked. For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is. (Checkbox states will be referred to as "checked" or "checkmarked" or "option XXX is on" for `☑`, "unchecked" or "uncheckmarked" or "option XXX is off" for `☐`, and "disabled" when it's greyed out so that you cannot toggle the state of the checkbox, and "enabled" if the grey has been removed.)
+
+If the "default" state of an option is described, it means the state that the option would be in when Notepad++ is first installed, without any settings changes.  If you have upgraded from a previous version of Notepad++, and had customized a particular option, your customized choice should not be overwritten.
 
 ### General
 
@@ -531,7 +533,7 @@ A variety of settings that didn't fit elsewhere
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
   * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
-  * This is checkmarked by default (starting in v8.6; before that, it defaulted to not being checkmarked).
+  * Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
   * Some users notice performance issues when this is checkmarked; those affected may uncheckmark this option.
 * `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
 * `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
