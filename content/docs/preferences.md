@@ -166,6 +166,10 @@ These define the margin style, border width, and edge settings.
         * `☐ Line mode`: The vertical edge is indicated by a solid vertical line.
         * `☐ Background mode`: The vertical edge is indicated by styling the _background_ of the text to the right of the edge.
         * `Number of columns: __ `: Sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page.
+* **Change History**:
+    * `☐ Show in the margin`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  
+    * `☐ Show in the text`: Shows a background color to indicate lines that have been changed, with the same rules as the margin version.  
+    * Colors: The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles).  The other colors are affected by the [**Change History modified, Change History revert modified, Change History revert origin, and Changed History saved**](#global-styles) styles.
 * **Line Number**:
     * `☐ Display`: Shows the line numbers to the left of the text.
         * `☐ Dynamic width`: The line number display will adjust its width based on the number of digits needed.
@@ -174,10 +178,6 @@ These define the margin style, border width, and edge settings.
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
-* **Change History**:
-    * `☐ Show in the margin`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  
-    * `☐ Show in the text`: Shows a background color to indicate lines that have been changed, with the same rules as the margin version.  
-    * Colors: The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles).  The other colors are affected by the [**Change History modified, Change History revert modified, Change History revert origin, and Changed History saved**](#global-styles) styles.
 * `☐ Display bookmark`: Adds an additional margin to the left of the text editing area, to show a large shaded circle next to all lines that contain a bookmark, and green arrow symbols that bracket a range of hidden lines.
 
 ### New Document
