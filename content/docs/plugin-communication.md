@@ -1513,6 +1513,36 @@ struct ShortcutKey {
 
 ---
 
+#### [2138] **NPPM_GETTABCOLORID**
+*Gets the tab color id for the given view and tab index.  (New to v8.6.8)*
+
+**Parameters**:
+
+*wParam [in]*
+: int, 0 for primary view, 1 for secondary view, -1 for currently-active view
+
+*lParam [in]*
+: int, zero-based tab index, i.e., use 0 for first tab, 1 for second tab, etc.; use -1 for active tab
+
+**Return value:**
+: int, the tab color id value:
+- -1 (no color)
+- 0 (yellow)
+- 1 (green)
+- 2 (blue)
+- 3 (orange)
+- 4 (pink)
+
+_Note_: There is no symmetric plugin command for setting the tab color. Plugins can use NPPM_MENUCOMMAND to set active tab's color with the desired tab color using these menu-command ids:
+- 44110 (no color)
+- 44111 (yellow)
+- 44112 (green)
+- 44113 (blue)
+- 44114 (orange)
+- 44115 (pink)
+
+---
+
 #### [2066] **NPPM_GETWINDOWSVERSION**
 *Retrieves the windows operating system version.*
 
