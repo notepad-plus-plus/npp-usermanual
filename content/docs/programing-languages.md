@@ -7,26 +7,26 @@ weight: 70
 
 Around 90 Programming Languages are supported by Notepad++:
 
-|                       |                        |                        |                        |                       |
-|-----------------------|------------------------|------------------------|------------------------|-----------------------|
-|ActionScript           | Ada                    | ASN.1                  | ASP                    | Assembly              |
-|AutoIt                 | AviSynth               | BaanC                  | Batch                  | BlitzBasic            |
-|C                      | C#                     | C++                    | CAML                   | CMake                 |
-|COBOL                  | CoffeeScript           | Csound                 | CSS                    | D                     |
-|Diff                   | Erlang                 | ESCRIPT                | Forth                  | Fortran fixed form    |
-|Fortran free form      | FreeBasic              | GDScript               | Gui4Cli                | Haskell               |
-|Hollywood              | HTML                   | ini                    | Inno Setup             | Intel HEX             |
-|Internal Search        | Java                   | JavaScript             | JavaScript             | json                  |
-|json5                  | JSP                    | KiXtart                | LaTeX                  | Lisp                  |
-|Lua                    | Makefile               | MATLAB                 | MMIXAL                 | mssql                 |
-|NFO                    | Nim                    | Nncrontab              | NSIS                   | Objective-C           |
-|OScript                | Pascal                 | Perl                   | PHP                    | PostScript            |
-|PowerShell             | Properties file        | PureBasic              | Python                 | R                     |
-|RC                     | REBOL                  | registry               | Ruby                   | Rust                  |
-|S-Record               | Scheme                 | Shell                  | Smalltalk              | Spice                 |
-|SQL                    | Swift                  | TCL                    | Tektronix extended HEX | TeX                   |
-|txt2tags               | TypeScript             | Verilog                | VHDL                   | Visual Basic          |
-|Visual Prolog          | XML                    | YAML                   |                        |                       |
+|                        |                        |                        |                        |                        |
+|------------------------|------------------------|------------------------|------------------------|------------------------|
+| ActionScript           | Ada                    | ASN.1                  | ASP                    | Assembly               |
+| AutoIt                 | AviSynth               | BaanC                  | Batch                  | BlitzBasic             |
+| C                      | C#                     | C++                    | CAML                   | CMake                  |
+| COBOL                  | CoffeeScript           | Csound                 | CSS                    | D                      |
+| Diff                   | Erlang                 | ESCRIPT                | Forth                  | Fortran fixed form     |
+| Fortran free form      | FreeBasic              | GDScript               | Go                     | Gui4Cli                |
+| Haskell                | Hollywood              | HTML                   | ini                    | Inno Setup             |
+| Intel HEX              | Internal Search        | Java                   | JavaScript             | json                   |
+| json5                  | JSP                    | KiXtart                | LaTeX                  | Lisp                   |
+| Lua                    | Makefile               | MATLAB                 | MMIXAL                 | mssql                  |
+| NFO                    | Nim                    | Nncrontab              | NSIS                   | Objective-C            |
+| OScript                | Pascal                 | Perl                   | PHP                    | PostScript             |
+| PowerShell             | Properties file        | PureBasic              | Python                 | R                      |
+| Raku                   | RC                     | REBOL                  | registry               | Ruby                   |
+| Rust                   | S-Record               | Scheme                 | Shell                  | Smalltalk              |
+| Spice                  | SQL                    | Swift                  | TCL                    | Tektronix extended HEX |
+| TeX                    | txt2tags               | TypeScript             | Verilog                | VHDL                   |
+| Visual Basic           | Visual Prolog          | XML                    | YAML                   |                        |
 
 For these languages, Notepad++ supports [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
@@ -40,6 +40,30 @@ Please note that in Notepad++ v8.3 and newer, Notepad++ has a feature will no lo
 on files that are over 200MB -- this prevents extreme performance slowdown caused by trying to
 syntax highlight extremely large files.  This threshold is configurable in
 [Settings > Preferences > Performance](../preferences/#performance) (starting in v8.4.7).
+
+### JavaScript
+
+Internally, there are actually two entries for JavaScript: in the [Style Configurator](../preferences/#style-configurator),
+these show up as "JavaScript" and "JavaScript (embedded)".  The first is for standalone JavaScript files (usually with `.js` 
+extension); the second is for when JavaScript is embedded in an HTML file -- so you can actually have different color rules
+for when the JavaScript is inside HTML and when it's a separate file.  (In the [`langs.xml`](../config-files/#keyword-lists-langsxml)
+and [`stylers.xml`](../config-files/#highlighting-schemes-stylersxml) config files, the standalone uses `name="javascript.js"`.)
+
+If you manually pick **Language > J > JavaScript**, the active file will use the standalone JavaScript settings.
+
+### Themes and Language Support
+
+There are times when a particular Theme will not have been updated to include syntax highlighting for a given Language.
+If a Language you need is missing in your chosen Theme, you can open the `%AppData%\Notepad++\themes\______.xml` for your Theme, 
+plus the `C:\Program Files\Notepad++\stylers.model.xml` (the locations of both those file can vary depending on your active 
+[Config Files Location](../config-files/#configuration-files-location) for `themes\______.xml`, and your `notepad++.exe` executable's
+directory for the `stylers.model.xml`, if you are not using a default installation).  Search in `stylers.model.xml` for the 
+`<LexerType...>` section for the missing Language, and copy that over to the appropriate location in your `themes\______.xml`.
+Close Notepad++ completely and re-run it: that Language should now be in the [Style Configurator](../preferences/#style-configurator)
+for your active theme, though depending on how different your Theme's color scheme is compared to the Default Theme, the colors
+may be jarring compared to your Theme's background color; but once it's in the Style Configurator, you may update the color scheme for 
+that Language in the Style Configurator. (If your Theme is a dark Theme, it might be better to copy from `themes\DarkModeDefault.xml` 
+instead of copying from `stylers.model.xml`.)
 
 ## Language Detection Priority
 
