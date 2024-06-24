@@ -2193,6 +2193,22 @@ STATUSBAR_TYPING_MODE   5
 
 ---
 
+#### [2139] **NPPM_SETUNTITLEDNAME**
+*Rename the tab name for an untitled tab.  (New in v8.6.9.)*
+
+**Parameters**:
+
+*wParam [in]*
+: UINT_PTR id - BufferID of the tab. -1 for currently active tab
+
+*lParam [in]*
+: TCHAR* newName - the desired new name of the tab
+
+**Return value**:
+:  Return TRUE upon success; FALSE upon failure
+
+---
+
 #### [2109] **NPPM_SHOWDOCLIST**
 *Show or hide the Document List panel.
 If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.*
