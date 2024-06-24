@@ -34,6 +34,10 @@ If you are writing your plugin in C++ or similar languages, you should just incl
 When reading the `#define` for the various `NPPM_` constants, you need to notice that `NPPMSG` is defined as `(WM_USER + 1000)` near the top of the file, and you need to know that [`WM_USER`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-user) is the Windows standard constant with a value of `0x0400` (1024).  You may need to look up other `#define` values from elsewhere in the header file in order to fully resolve some of the values.  For example, `#define NPPM_SAVEALLFILES (NPPMSG + 39)` is really the integer 1024 + 1000 + 39 = 2063, so that is the value you need to use when defining your version of the `NPPM_SAVEALLFILES` constant.
 {{< /details >}}
 
+{{< details "Aside: Internal Messages" >}}
+_Note_: Notepad++ header files other than `Notepad_plus_msgs.h` may define constants for internal messages, indicated by `NPPM_INTERNAL_xxx`.  If you are able to find such messages and understand how to use them, there is no way for Notepad++ to _prevent_ you from doing so; however, using internal messages is done **at your own risk**.  Such internal messages are not part of the official plugin interface, are not publically documented, and can change behavior or even be completely removed, without any documentation or announcement; this could cause your plugin to crash Notepad++, and the Notepad++ developer is likely to add your plugin to the "Disabled" list if he gets complaints of crashes that are caused by your plugin.  If you find there's an `NPPM_INTERNAL` message that you would like to use in your plugin, it is highly recommended that you put in an issue to request that the message be added to the public interface, and wait until it is public before trying to use that message.
+{{< /details >}}
+
 You can also communicate to the Scintilla editor instances inside Notepad++ by using the Scintilla messages, which are [documented at the Scintilla website](https://www.scintilla.org/ScintillaDoc.html), and the values can be found in [Scintilla.h](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h). Note, you need to use one of the two Scintilla handles as the first parameter to SendMessage api function.
 
 #### **Message Key**
@@ -2190,6 +2194,22 @@ STATUSBAR_TYPING_MODE   5
 
 **Return value**:
 : Returns False on failure, True on success
+
+---
+
+#### [2139] **NPPM_SETUNTITLEDNAME**
+*Rename the tab name for an untitled tab.  (New in v8.6.9.)*
+
+**Parameters**:
+
+*wParam [in]*
+: UINT_PTR id - BufferID of the tab. -1 for currently active tab
+
+*lParam [in]*
+: TCHAR* newName - the desired new name of the tab
+
+**Return value**:
+:  Return TRUE upon success; FALSE upon failure
 
 ---
 
