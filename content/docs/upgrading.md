@@ -12,6 +12,22 @@ If you used installation package when you originally installed, the Auto Update 
 ## Upgrade On-Demand
 Using the **? > Update Notepad++** menu command. This will check whether there is a new version and whether the safety delay is over. If so, you are presented with the opportunity to download and install the newer version.
 
+### Updater Dialog
+
+The Updater dialog is launched for either Auto-Trigger or for Upgrade On-Demand.
+
+If there is no auto-triggered update available, the dialog will just inform you of this (but see [No New Version Found](#no-new-version-found-safety-delay)).
+
+If there is a new version, the Updater dialog will allow you to choose:
+- **Yes**: Run the update.
+    - It will download the updater, ask if it's okay to close Notepad++, and the updater will run, asking you to confirm your setttings, and update Notepad++.
+- **Yes (Silent)**: Run a truly-silent upgrade of Notepad++.  (New to v8.6.9.)
+    - It will close the running Notepad++ (and all instances in multi-instance mode), do the update (without requiring clicking all the **Next** buttons to keep the same installed-options as you already have), and automatically run an instance of the updated Notepad++ -- so a true "upgrade and continue" experience.
+- **No**: Don't run the installer at this time.
+- **Never**: Don't run the installer at this time, and don't ask again in the future.
+    - See also: [**Settings > Preferences > MISC** > ☐ Enable Notepad++ auto-updater](https://npp-user-manual.org/docs/preferences/#misc)
+
+
 ## Upgrade Manually
 Going to the main website and downloading the latest installer and running it yourself.  You can watch the [Announcements](https://community.notepad-plus-plus.org/category/1/announcements) category in the [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) to see when new release-candidates or final versions are released.
 

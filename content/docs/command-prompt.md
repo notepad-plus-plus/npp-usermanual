@@ -200,6 +200,12 @@ The Notepad++ [installer executable](../getting-started/#installer) accepts the 
 - `/D=c:\blah` or `/D=c:\path with spaces\blah` : Overrides the default installation directory.
     - Do _not_ put quotes around the path, even when there are spaces.
     - Because it allows spaces in the path, this option **must** be the last argument on the installer command line, if included.
+- `/closeRunningNpp`: Will (try to) close existing Notepad++ before installing the new version.  (New to v8.6.9.)
+    - It will first try a "nice" close request (using [WM_CLOSE](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-close)).
+    - If the "nice" request wasn't successful after 5 seconds, it will kill the underlying process.
+    - If Notepad++ has multiple instances opened, it will close all instanaces.
+- `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++. (New to v8.6.9.)
+    - Only works if `/S` is also specified.
 
 It also implements an additional option:
 
