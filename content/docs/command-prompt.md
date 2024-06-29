@@ -203,7 +203,7 @@ The Notepad++ [installer executable](../getting-started/#installer) accepts the 
 - `/closeRunningNpp`: Will (try to) close existing Notepad++ before installing the new version.  (New to v8.6.9.)
     - It will first try a "nice" close request (using [WM_CLOSE](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-close)).
     - If the "nice" request wasn't successful after 5 seconds, it will kill the underlying process.
-    - If Notepad++ has multiple instances opened, it will close all instanaces.
+    - If Notepad++ has multiple instances opened, it will close all instances.
 - `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++. (New to v8.6.9.)
     - Only works if `/S` is also specified.
 
