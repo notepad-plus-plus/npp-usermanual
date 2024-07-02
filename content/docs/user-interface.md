@@ -5,21 +5,33 @@ weight: 175
 
 ## Tabs
 
-- The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the option to **Hide** the tab bar.
+The keyboard shortcuts described in this section are the default [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper) settings; if the Shortcut Mapper has been modified, the keystrokes may be different.
+
+The ```MOUSEWHEEL``` commands described require that the mouse pointer be hovered over the Tab Bar.
+
+If the description says it will "wrap", it means that if you try to go beyond the last tab, it will next go to the first tab; and if you try to go before the first tab, it will next go to the last tab.  If the descriptions says it does "not wrap", then trying to go beyond the last tab or before the first tab will just stay at the last or first tab without wrapping.
+
+- The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the options to **Hide** the tab bar or to **Lock** the tab bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
 
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
 
 - To switch and activate next/previous tab, there are multiple options:
-  1. Use <kbd>Ctrl</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to previous tab while down will take next tab.
-  2. Use <kbd>Ctrl</kbd> + <kbd>Page Up</kbd> for next tab and <kbd>Ctrl</kbd> + <kbd>Page Down</kbd> for previous tab.
+  1. Use <kbd>Ctrl</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to previous tab while down will take next tab. This method will wrap around.
+  2. Use <kbd>Ctrl</kbd> + <kbd>Page Up</kbd> for next tab and <kbd>Ctrl</kbd> + <kbd>Page Down</kbd> for previous tab. This method will wrap as well.
   3. Use <kbd>Ctrl</kbd> + <kbd>Tab</kbd> for next tab and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd> for previous tab. Using use <kbd>Ctrl</kbd> + <kbd>Tab</kbd> or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd> while MRU is enabled provides great user experience. To enable MRU you can follow `Settings->Preferences->MISC.->Document Switcher`, then checkmark both `Enable` and `Enable MRU Behavior`.
   ![tabNavNextPrev](../images/tabNavNextPrev.gif)
 
 - To move tab from one position to other position:
-  1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position.
-  2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position.
+  1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position. This will wrap.  
+      - If the Tab Bar is locked (using [**Tab Bar > Lock** preferences](../preferences/#general)), then <kbd>Shift</kbd> + ```MOUSEWHEEL``` will just activate the next or previous tab (without wrapping).
+  2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position. This will not wrap.
+      - This will move the tab order even if the Tab Bar is locked.
   ![tabNavMoveRtLft](../images/tabNavMoveRtLft.gif)
+
+- If there are more tabs than are visible on the Tab Bar, you can scroll the Tab Bar, to be able to see more
+  1. Use ```MOUSEWHELL``` to scroll: "up" will scroll so you can see earlier Tabs in the list, "down" will scroll so you can see later Tabs in the list.
+  2. There will also be ⏴⏵ arrow buttons: ⏴ will scroll so you can see earlier Tabs in the list, ⏵ will scroll so you can see later Tabs in the list.  (For a normal horizontal Tab Bar, the arrow buttons will be on the right of the Tab Bar; for a vertical Tab Bar, they will be at the bottom of the Tab Bar.)
 
 - To move a tab from one View to the other, you can use the techniques described in the [Editing > Dual View](../editing/#dual-view) section or [Views > Move / Clone](../views/#move-clone) section, including:
   1. Use the menus: **View > Move/Clone Current Document > Move to Other View**.
