@@ -40,11 +40,13 @@ jobs:
             }
 
             # need different replacements at different depths
+
+            # top level:
             Copy-Item "./static_html/index.html" "./static_html/index.html.source"
             get-content "./static_html/index.html.source" |
                     %{$_ -replace '(href|content|src)="/','$1="./'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="./'} |
-                    %{$_ -replace '((?:href|content|src)="\./[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\./[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content "./static_html/index.html"
             Remove-Item "./static_html/index.html.source"
 
@@ -52,7 +54,20 @@ jobs:
             #   to the deep directories, and then do the docs-level
             Copy-Item "./static_html/docs/index.html" "./static_html/docs/index.html.source"
 
-            # recurse to the deepest level
+            # recurse to the udl level
+            Get-ChildItem -Recurse "./static_html/docs/udl/" -Filter index.html | Foreach-Object {
+               $orgname = $_.FullName
+               $tmpname = "$($orgname).unedited"
+               Copy-Item $orgname $tmpname
+               get-content $tmpname |
+                    %{$_ -replace '(href|content|src)="/','$1="../../../'} |
+                    %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../../../'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/(#.*)?"','$1/index.html$2"'} |
+                    set-content $orgname
+               Remove-Item $tmpname
+            }
+
+            # recurse to the docs/<pagename>/ level
             Get-ChildItem -Recurse "./static_html/docs" -Filter index.html | Foreach-Object {
                $orgname = $_.FullName
                $tmpname = "$($orgname).unedited"
@@ -60,7 +75,7 @@ jobs:
                get-content $tmpname |
                     %{$_ -replace '(href|content|src)="/','$1="../../'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../../'} |
-                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content $orgname
                Remove-Item $tmpname
             }
@@ -69,7 +84,7 @@ jobs:
             get-content "./static_html/docs/index.html.source" |
                     %{$_ -replace '(href|content|src)="/','$1="../'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../'} |
-                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content "./static_html/docs/index.html"
             Remove-Item "./static_html/docs/index.html.source"
 
