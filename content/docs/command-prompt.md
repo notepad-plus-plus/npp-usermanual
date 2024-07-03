@@ -193,7 +193,7 @@ usage list.  These are intended for advanced usage or other special circumstance
 
 ## Installer Options
 
-The Notepad++ [installer executable](../getting-started/#installer) accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
+The Notepad++ [installer executable](../getting-started/#install-notepad-using-the-installer) accepts the [three NSIS command-line options](https://nsis.sourceforge.io/Which_command_line_parameters_can_be_used_to_configure_installers):
 
 - `/S` : Enables silent installation.
 - `/NCRC`: Skips the installer's CRC check.
