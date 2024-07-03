@@ -29,4 +29,4 @@ padding: 2px 1em;
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-Older versions are accessible from the "[User Manual History](docs/history)".
+Older versions are accessible from the "[User Manual History](./docs/history/)".
