@@ -44,7 +44,7 @@ jobs:
             get-content "./static_html/index.html.source" |
                     %{$_ -replace '(href|content|src)="/','$1="./'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="./'} |
-                    %{$_ -replace '((?:href|content|src)="\./[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\./[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content "./static_html/index.html"
             Remove-Item "./static_html/index.html.source"
 
@@ -60,7 +60,7 @@ jobs:
                get-content $tmpname |
                     %{$_ -replace '(href|content|src)="/','$1="../../'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../../'} |
-                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content $orgname
                Remove-Item $tmpname
             }
@@ -69,7 +69,7 @@ jobs:
             get-content "./static_html/docs/index.html.source" |
                     %{$_ -replace '(href|content|src)="/','$1="../'} |
                     %{$_ -replace '(href|content|src)="http://localhost:1313/','$1="../'} |
-                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/"','$1/index.html"'} |
+                    %{$_ -replace '((?:href|content|src)="\.[^"]*?)/(#.*)?"','$1/index.html$2"'} |
                     set-content "./static_html/docs/index.html"
             Remove-Item "./static_html/docs/index.html.source"
 
