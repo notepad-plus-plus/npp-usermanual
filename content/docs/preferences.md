@@ -137,8 +137,13 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Text` => choose the color for the menu bar entry names, and other normal text for most dialog boxes
      * `Darker text` => choose the color for the darker text for most dialog boxes
      * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "greyed out" or "disabled")
-     * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
      * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
+     * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
+     * `Edge highlight` => choose the color for the border of a highlighted control
+     * `Edge disabled` => choose the color for the border of a disabled control
+     * **Reset ⏷**: (New to v8.6.9)
+       - Clicking the text side of the button will reset the Customized tone to the default Black tone settings.
+       - Clicking the pull-down arrow ⏷ on the button will give you a menu to select one of the built-in tones: when you pick a name, it will then reset the Customized tone to the chosen name's tone settings.  For example, if you mostly want the Olive tone, but you want to change the `Link` color from yellow to bright green, you can select the Customized tone, **Reset ⏷** to `Olive`, then change the `Link` color.
 
 ### Margins/Border/Edge
 
