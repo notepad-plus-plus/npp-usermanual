@@ -245,19 +245,23 @@ This affects the display of the main Language menu, and also affects the per-lan
         * For example, Perl and Python syntax highlighting would be selected through the **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu.
     * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list.
         * If you have moved items to Disabled Items _and_ have checked `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**.
-* **Tab settings**:
-    * `[Default]` sets the tab behavior for the "default" condition.
-    * `normal` sets the tab behavior for plain text.
-    * Other selections will choose for which syntax-language the tab settings are being changed.
+* **Indent settings**:
+    * Renamed in v8.6.9.  (Previuosly called "Tab settings")
+    * Language selector panel:
+      - `[Default]` sets the tab behavior for the "default" condition.
+      - `normal` sets the tab behavior for plain text.
+      - Other selections will choose for which syntax-language the tab settings are being changed.
     * `☐ Use default value`: Not visible on the `[Default]` selection.  For other languages, will use the values from the `[Default]` selection for that particular language.
-    * `Tab size : ___`: sets the width of the tab stop.  (For example, the picture below shows a tab size of 4, so the tab stops will be at 1, 5, 9. and so on.)
-    * `☐ Replace by space`: When set, hitting the <kbd>Tab</kbd> key will insert up to that number of space (U+0020) characters, such that the next character will be at the next tab stop; when not set, the <kbd>Tab</kbd> key will insert the literal ASCII Tab (U+0009) character.
+    * `Indent size : ___`: sets the width of the tab stop.  (For example, the picture below shows a tab size of 4, so the tab stops will be at 1, 5, 9. and so on.)
+    * **Indent Using**: When set to `Space character(s)`, hitting the <kbd>Tab</kbd> key will insert up to that number of space (U+0020) characters, such that the next character will be at the next tab stop; when set to `Tab character`, the <kbd>Tab</kbd> key will insert the literal ASCII Tab (U+0009) character.
         - This setting affects only what is typed _after_ the setting is changed; turning this option on does not automatically change Tab characters that are already in your document.  To convert already-existing Tab characters, you may use a search-and-replace or use the built-in [**Edit > Blank Operations**](../editing/#edit-menu) commands.
-        - Example: When `☐ Replace by space` is not set, then hitting the <kbd>Tab</kbd> key will insert the single Tab character in the file which will be _displayed_ as a gap wide enough to align the text to the next tab stop, as shown on the left of the image.  When `☑ Replace by space` is set, hitting the <kbd>Tab</kbd> key it will insert enough literal space characters so that the next character (after the spaces) will be aligned at the next tab stop, as shown in the right of the image.
+        - Example: When set to `Tab character`, hitting the <kbd>Tab</kbd> key will insert the single Tab character in the file which will be _displayed_ as a gap wide enough to align the text to the next tab stop, as shown on the left of the image.  When `Space character(s)` is set, hitting the <kbd>Tab</kbd> key it will insert enough literal space characters so that the next character (after the spaces) will be aligned at the next tab stop, as shown in the right of the image.
 
             ![](../images/edit-tab-stops.png)
 
             _The image has_ [**View > Show Symbol > Show Space and Tab**](../views/#show-symbol) _enabled to make the tab-characters vs space characters obvious._
+        - Renamed in v8.6.9.  (Previously called `☐ Replace by space`")
+    * `☐ Backspace key unindents instead of removing single space`: If this is checkmarked, typing <kbd>Backspace</kbd> key when the caret is in the spaces at the beginning of a line will cause the text of the line to shift to the next-earlier tab stop (deleting 1..ℕ spaces, where ℕ is the tab stop size; the number of spaces deleted will be sufficient to move it to the tab stop) -- this makes this <kbd>Backspace</kbd> behave similarly to using <kbd>Shift+Tab</kbd> to unindent. If the option is not checkmarked, typing <kbd>Backspace</kbd> key when the caret is in the spaces at the beginning of a line will just delete a single space character.  (New to v8.6.9.)
 * `☐ Treat backslash as escape character for SQL`: This affects the **Language > SQL** handling of the `\` backslash character.
 
 ### Highlighting
@@ -689,6 +693,10 @@ The **Delete** button is usually disabled (greyed out).  However, in the `Macros
 The **Close** button will close the dialog box.
 
 _Please Note_: Notepad++ honors standard Windows behavior with keystrokes for menu accelerators: typing <kbd>Alt</kbd> with the first letter (or underlined letter) for a main menu entry will open that menu.  If you want to define <kbd>Alt+_Letter_</kbd> for some other action, you may do so using the **Shortcut Mapper**, and that accelerator will no longer work for the menu, but will instead access the action you mapped it to; undefining that new Mapper entry will allow Windows to treat that sequence as the accelerator again.  **Shortcut Mapper** cannot change or clear the Windows accelerator for a menu entry -- it can just preempt that accelerator key to use for something else.  (Because the `X` on the right of the menu bar, which closes the active tab, was created as a menu action on the main menu bar with the name "X" through version 8.4.2, its accelerator was therefore <kbd>Alt+X</kbd>; in v8.4.3, the name was changed to the symbol "✕" instead, so <kbd>Alt+X</kbd> will no longer activate that action; if you would like to make <kbd>Alt+X</kbd> work on v8.4.3-and-newer, you can go to the `Main menu` tab in the **Shortcut Mapper** and change the Shortcut for Close to <kbd>Alt+X</kbd> instead of the default <kbd>Ctrl+W</kbd>.)
+
+### Available Keys
+
+In the pulldown for Shortcut Mapper keys, the list of keys mostly matches a standard US keyboard (excepting the `<>` key, which US keyboards don't generally have).  It's not actually that _character_ that maps to Shortcut Mapper shortcut, but the underlying keyboard scancode, and how it maps to the Windows Virtual Key.  The Community Forum has a [FAQ](https://community.notepad-plus-plus.org/topic/19734/faq-list-of-notepad-key-combinations-available-for-shortcuts) which shows the full "Virtual Key" vs "US key description", showing which are available to the shortcut mapper (and which shortcuts are by default assigned to an action in Notepad++).  The FAQ also lists the equivalent keyboard keys for some major keyboards (including French, German, and Portuguese), and provides links to possible external websites that might help you figure out the mapping for your own keyboard.
 
 ### Configuration file: `shortcuts.xml`
 
