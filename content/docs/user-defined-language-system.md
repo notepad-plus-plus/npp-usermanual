@@ -14,10 +14,11 @@ The **Languages** menu on the menu-bar includes the list of built-in languages, 
 Using **Languages > Define Your Language...** will bring up a dialog box (which can be docked as a pane in the Notepad++ Window, or can be a floating dialog box).
 
 The main pulldowns and buttons are available, whichever configuration tab is active:
-
+* ![](../images/udl-main.png)
 * **User Language** pulldown lists all the existing UDL will allow you to select the UDL you would like to edit or examine.  There is a special entry for the default UDL, called **User Defined Language** here (though it shows up in the Notepad++ **Languages** menu as **User-Defined**), which can be used as a template for other UDL.
-* **Create New** will copy the default **User Defined Language** stylings and rules to a new name.
-* **Save As** will copy the currently-selected UDL, with all its stylings and rules, to a new name.
+* **Create new...** will copy the default **User Defined Language** stylings and rules to a new name.
+* **Save as...** will copy the currently-selected UDL, with all its stylings and rules, to a new name.
+    - Please note: [Naming your UDL is required](#naming-and-saving), either using **Create new...** or **Save as...**.  Any changes made to the default **User Language: `User Defined Language`** entry will be lost when you exit Notepad++.
 * **Import...** will [import](#import-a-udl) a UDL XML file into your current instance ([see below](#import-a-udl)).
 * **Export...** will save a UDL XML file to a location of your choosing; you can then share this with others, so that they can [import](#import-a-udl) your UDL for their own use.
 * **Dock** or **Undock** will toggle whether the UDL dialog is a standalone dialog, or docked in the Notepad++ window.
@@ -26,6 +27,7 @@ The main pulldowns and buttons are available, whichever configuration tab is act
 
 When a UDL other than the default **User Defined Language** is selected in the pulldown, the following will also be available:
 
+* ![](../images/udl-named.png)
 * **Rename** will rename the currently-selected UDL.
 * **Remove** will delete the currently-selected UDL.
 * **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.  For example **Ext.: `md mkdn`** will associate `file.mkdn` or `something.md` with your selected UDL.
@@ -84,32 +86,48 @@ Each of the categories of keywords, folding, operators, comments, and the like h
     - You cannot enable nesting "inside" keywords, operators, or folding categories, because you cannot have another piece of text "inside" of a keyword or operator or folding word or symbol.
        - One might argue that the folding categories do have an "inside", between the folding words or symbols.  However, only the folding words or symbols themselves get the style applied; the text between folding words or symbols takes on the UDL's default or whatever other style category applies.  Thinking of it another way, folding categories essentially always have nesting enabled for all the categories, because any of the categories will be styled when found inside a folding range.
 
+## Naming and Saving
+
+If you use the GUI to create a new User Defined Language using **Language > User Defined Languages > Define My Language...**, you _must_ use the **Create new...** or **Save as...** button to give it a name. If you leave it with the default `User Defined Language` from the original **User language:** pulldown menu, when you exit Notepad++, Notepad++ will forget all your changes.
+
+If you select a different UDL from the **User language:** pulldown, any changes you make to that UDL will automatically be saved when you exit Notepad++; once you have a name for a UDL, you no longer need to use the **Save as...** button (and in fact, using that button again will create a duplicate UDL with a new name).
+
+When you use **Create new...** or **Save as...**, it will save it in the `userDefineLang.xml`, as described in more detail in [UDL File Locations](#udl-file-locations).  If you want it to reside in a separate file instead of the default file, follow the instructions in [Keeping UDL Files Separate](#keeping-udl-files-separate).
+
+Summary:
+
+| Screenshot | Description |
+|---|---|
+| ![](../images/udl-main.png) | Changes made to this UDL will _not_ be present the next time you run Notepad++, because it's the default `User Defined Language` UDL, which is never saved. |
+| ![](../images/udl-named.png) | Changes made to this UDL _will_ be present the next time you run Notepad++, because it's been named `MyLanguageName`. |
+
+
 ## UDL File Locations
-
-Individual UDL files are stored in one of two `userDefineLangs` subfolders.  Each XML file in that folder is used to define one or more UDL.
-
-1. `%AppData%\Notepad++\userDefineLangs`: This is the default location for most Notepad++ installations.
-2. `<notepad++_directory>\userDefineLangs`: This is the location for portable versions, or if you turned on "local configuration mode" (or unchecked `Use %AppData%`) during the installation.  `<notepad++_directory>` refers to whatever folder the `notepad++.exe` application executable is located.
-3. `<alternate_directory>\userDefineLangs`: This is the location when using Cloud Configuration or `-settingsDir`option, as described in the [Config Files Location](../config-files/#configuration-files-location).
 
 If you created or imported a UDL using the **User Defined Languages** dialog inside Notepad++, they will be in the `userDefineLang.xml` file.  This single file often holds multiple UDL definitions.
 
 1. `%AppData%\Notepad++\userDefineLang.xml`: This is the default location for most Notepad++ installations.
-2. `<notepad++_directory>\userDefineLang.xml`: This is the location for portable or "local configuration mode" versions, as described above.
-3. `<alternate_directory>\userDefineLang.xml`: This is the location when using Cloud Configuration or `-settingsDir`option, as described in the [Config Files Location](../config-files/#configuration-files-location).
+2. `<notepad++_directory>\userDefineLang.xml`: This is the location for portable versions, or if you turned on "local configuration mode" (or unchecked `Use %AppData%`) during the installation.  `<notepad++_directory>` refers to whatever folder the `notepad++.exe` application executable is located.
+3. `<alternate_directory>\userDefineLang.xml`: This is the location when using Cloud Configuration or `-settingsDir` option, as described in the [Config Files Location](../config-files/#configuration-files-location).  `<alternate_directory>` refers to whatever directory you set the alternate configuration to use.
+
+Individual UDL files can also be stored in one of the `userDefineLangs\` subfolders (listed below).  Each XML file in the `userDefineLangs\` folder is used to define one or more UDL.  (The default UDL definitions that ship with Notepad++ for Markdown highlighting are stored in that directory.)
+
+1. `%AppData%\Notepad++\userDefineLangs\`: This is the default location for most Notepad++ installations.
+2. `<notepad++_directory>\userDefineLangs\`: This is the location for portable versions, or if you turned on "local configuration mode" (or unchecked `Use %AppData%`) during the installation.  `<notepad++_directory>` refers to whatever folder the `notepad++.exe` application executable is located.
+3. `<alternate_directory>\userDefineLangs\`: This is the location when using Cloud Configuration or `-settingsDir` option, as described in the [Config Files Location](../config-files/#configuration-files-location).  `<alternate_directory>` refers to whatever directory you set the alternate configuration to use.
 
 ### Keeping UDL Files Separate
 
-As mentioned, Notpad++ will default to using the `userDefineLang.xml` file to hold all created or imported UDL.  If you prefer to make use of the `userDefineLangs\` subfolder instead, you can use the following sequence from the UDL dialog:
+As mentioned, Notepad++ will default to using the `userDefineLang.xml` file to hold all created or imported UDL.  If you prefer to make use of the `userDefineLangs\` subfolder instead, you can use the following sequence from the UDL dialog:
 
 1. Use **Create New** (or **Save As**), and give it a name (`MyName` in this example).
-    - If you want to move an existing UDL from `userDefineLang.xml` to a separate file, instead of creating a new one, pick that existing UDL from the dropdown instead of using **Create New** or **SaveAs**.
+    - If you want to move an existing UDL from `userDefineLang.xml` to a separate file, instead of creating a new one, pick that existing UDL from the pulldown instead of using **Create New** or **SaveAs**.
 2. Use **Export**, and save to `...\userDefineLangs\MyName.xml` (where `...` is based on your active [UDL File Location](#udl-file-locations)).
 3. Use **Remove** to delete the current copy of `MyName` from the UDL dialog.
     - If you skip this step, you will have two copies of the same UDL name in step 5, which would be problematic.
 4. Exit Notepad++ and restart.
 5. **Language > MyName** will exist.
-6. To continue to define your language, go to **Language > User Defined Language > Define Your Language** and pick `MyName` from the dropdown, then edit the UDL settings to match your desired behavior.
+6. To continue to define your language, go to **Language > User Defined Language > Define Your Language** and pick `MyName` from the pulldown, then edit the UDL settings to match your desired behavior.
 
 ## UDL and Themes
 
