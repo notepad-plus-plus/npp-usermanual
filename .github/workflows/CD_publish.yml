@@ -43,4 +43,4 @@ jobs:
           ssh_private_key: ${{ secrets.USERMANUAL_KEY }}
           delete_remote_files: false
           local_path: './public/*'
-          remote_path: '~/nppusermanual/public_html/'
+          remote_path: 'nppusermanual/public_html/'
