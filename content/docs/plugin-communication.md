@@ -2567,7 +2567,7 @@ The general layout of the following notifications look like this
 ---
 
 #### [1001] **NPPN_READY**
-*To notify plugins that all the procedures of the launch of Notepad++ are done.*
+*To notify plugins that all the initialization for launching Notepad++ is complete.*
 
 **Fields:**
 
