@@ -1207,6 +1207,23 @@ MAX_PATH is suggested to use.*
 
 ---
 
+#### [2140] **NPPM_GETNATIVELANGFILENAME**
+*Get the Current native language file name string. Use it after getting NPPN_READY notification to find out which native language is used.*
+Users should call it with nativeLangFileName as NULL to get the required number of char (not including the terminating nul character), allocate language file name string buffer with the return value + 1, then call it again to get the current native language file name string.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen, which is "language file name string" buffer length
+
+*lParam [out]*
+: TCHAR * nativeLangFileName, language file name string receives all copied native language file name string
+
+**Return value**:
+: Returns the number of char copied/to copy
+
+---
+
 #### [2031] **NPPM_GETNBOPENFILES**
 *Retrieves the number of files currently open*
 
@@ -2550,6 +2567,20 @@ The general layout of the following notifications look like this
 	code:		NPPN_LANGCHANGED
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
+
+---
+
+#### [1031] **NPPN_NATIVELANGCHANGED**
+*To notify plugins that the current native language is just changed to another one.*
+
+    // Use NPPM_GETNATIVELANGFILENAME to get current native language file name.
+    // Use NPPM_GETMENUHANDLE(NPPPLUGINMENU, 0) to get submenu "Plugins" handle (HMENU)
+
+**Fields:**
+
+	code:		NPPN_NATIVELANGCHANGED
+	hwndFrom:	hwndNpp
+	idFrom:		0                    // reserved for the future use; must be zero from v8.6.5
 
 ---
 
