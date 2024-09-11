@@ -25,8 +25,8 @@ Around 90 Programming Languages are supported by Notepad++:
 | Raku                   | RC                     | REBOL                  | registry               | Ruby                   |
 | Rust                   | S-Record               | Scheme                 | Shell                  | Smalltalk              |
 | Spice                  | SQL                    | Swift                  | TCL                    | Tektronix extended HEX |
-| TeX                    | txt2tags               | TypeScript             | Verilog                | VHDL                   |
-| Visual Basic           | Visual Prolog          | XML                    | YAML                   |                        |
+| TeX                    | TOML                   | txt2tags               | TypeScript             | Verilog                |
+| VHDL                   | Visual Basic           | Visual Prolog          | XML                    | YAML                   |
 
 For these languages, Notepad++ supports [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
