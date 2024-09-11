@@ -242,7 +242,7 @@ To unregister an extension, click it in the right column, and use the left arrow
 
 ### Language
 
-This affects the display of the main Language menu, and also affects the per-language tab settings.
+This affects the display of the main Language menu, and other language-specific settings. (However, the per-language indentation ("tab" vs "space") settings have moved to the new [**Indentation** section](#indentation) as of v8.7.)
 
 * **Language Menu**:
     * `☐ Make language menu compact` will make submenus for languages that start with the same letter.
@@ -250,8 +250,14 @@ This affects the display of the main Language menu, and also affects the per-lan
         * For example, Perl and Python syntax highlighting would be selected through the **Language&nbsp;>&nbsp;P** submenu, rather than directly from the language menu.
     * `Available items ⇄ Disabled items`: by moving a language into the `Disabled items` column, it will no longer show up in the **Language** menu list.
         * If you have moved items to Disabled Items _and_ have checked `☑ Make language menu compact`, there may end up being empty letter-based subfolders in the **Language Menu**.
+* `☐ Treat backslash as escape character for SQL`: This affects the **Language > SQL** handling of the `\` backslash character.
+
+### Indentation
+
+These settings were all a part of the [**Language**](#language) settings before v8.7.
+
 * **Indent settings**:
-    * Renamed in v8.6.9.  (Previously called "Tab settings")
+    * Previously called the "Tab settings" (before v8.6.9).
     * Language selector panel:
       - `[Default]` sets the tab behavior for the "default" condition.
       - `normal` sets the tab behavior for plain text.
@@ -265,9 +271,13 @@ This affects the display of the main Language menu, and also affects the per-lan
             ![](../images/edit-tab-stops.png)
 
             _The image has_ [**View > Show Symbol > Show Space and Tab**](../views/#show-symbol) _enabled to make the tab-characters vs space characters obvious._
-        - Renamed in v8.6.9.  (Previously called `☐ Replace by space`")
+        - This option was previously called `☐ Replace by space`" (renamed in v8.6.9)
     * `☐ Backspace key unindents instead of removing single space`: If this is checkmarked, typing <kbd>Backspace</kbd> key when the caret is in the spaces at the beginning of a line will cause the text of the line to shift to the next-earlier tab stop (deleting 1..ℕ spaces, where ℕ is the tab stop size; the number of spaces deleted will be sufficient to move it to the tab stop) -- this makes this <kbd>Backspace</kbd> behave similarly to using <kbd>Shift+Tab</kbd> to unindent. If the option is not checkmarked, typing <kbd>Backspace</kbd> key when the caret is in the spaces at the beginning of a line will just delete a single space character.  (New to v8.6.9.)
-* `☐ Treat backslash as escape character for SQL`: This affects the **Language > SQL** handling of the `\` backslash character.
+* **Auto-indent**:
+  - `☐ None`: If you hit <kbd>Enter</kbd> at the end of a line that's indented, the next line will _not_ be indented.
+  - `☐ Basic`: If you hit <kbd>Enter</kbd> at the end of a line that's indented, the next line will be indented the same amount as the current line.
+  - `☐ Advanced`: If you hit <kbd>Enter</kbd> at the end of a line that's indented, the next line will usually be indented the same amount as the current line; but for programming languages that allow hierarchical blocks (like a `for(){...}` loop in C/C++), it can automatically add the extra indentation when you start a new block, and end the extra indentation when you close the block.
+  - This option was previously the `☐ Auto-indent` checkbox in the [**Auto-Completion** preferences](#auto-completion) (before v8.7), and would just allow between automatically indenting or not, always using the "advanced" algorithm (so in older versions, you cannot force Basic-style auto-indentation).
 
 ### Highlighting
 
@@ -402,7 +412,8 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ ''`
         * `☐ html/xml close tag`
         * `Matched pair [1,2,3]: __ __`: Define the open and close character(s) for three user-defined pairs.
-* `☐ Auto-indent`: When making a new line, automatically indent (following TAB or space settings for the active Language) based on the indent of the previous line.
+
+(If you are looking for the `☐ Auto-indent` option that used to be in this section of preferences, that has been moved to the [**Indentation** section](#indentation) of the preferences, starting in v8.7.)
 
 ### Multi-Instance and Date
 
