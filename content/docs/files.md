@@ -33,6 +33,7 @@ The **File** menu contains many of the normal file-operation actions found in mo
     - If the document had previously been saved to a file, this will create as new copy of the file, and Notepad++ will continue working with the document associated with the new file, leaving the old file with the contents that were last saved.
 - **Save a Copy As**: Saves the current document to the filesystem, prompting for the new filename to use.
     - The new file will be saved, but Notepad++ will continue to work with the document associated with the original filename.  So this action effectively creates a backup of the file, but allows you to continue working with the previous file, whereas **Save As** uses the original as the backup and allows you to keep working with the new file.
+    - Normally during execution of this command, the new file created is not opened into a Notepad++ editing tab. To open the new file as part of the process, hold down the <kbd>Shift</kbd> key while pressing the **Save** button in the **Save As** dialog.
 - **Save All**: Saves all documents that are currently open in either of Notepad++'s two Views.
 - **Rename**: Prompts for a new name to give to the current document.
     - If the document is associated with a file, Notepad++ will open a standard Windows dialog to save the file under a new name on the filesystem, and the old filename will no longer exist.
