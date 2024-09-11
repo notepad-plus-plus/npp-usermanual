@@ -54,7 +54,8 @@ If you manually pick **Language > J > JavaScript**, the active file will use the
 ### Themes and Language Support
 
 There are times when a particular Theme will not have been updated to include syntax highlighting for a given Language.
-If a Language you need is missing in your chosen Theme, you can open the `%AppData%\Notepad++\themes\______.xml` for your Theme, 
+If a Language you need is missing in your chosen Theme, you can open `%AppData%\Notepad++\stylers.xml` (if you use the 
+default theme) or the appropriate `%AppData%\Notepad++\themes\______.xml` file for your Theme, 
 plus the `C:\Program Files\Notepad++\stylers.model.xml` (the locations of both those file can vary depending on your active 
 [Config Files Location](../config-files/#configuration-files-location) for `themes\______.xml`, and your `notepad++.exe` executable's
 directory for the `stylers.model.xml`, if you are not using a default installation).  Search in `stylers.model.xml` for the 
@@ -64,6 +65,8 @@ for your active theme, though depending on how different your Theme's color sche
 may be jarring compared to your Theme's background color; but once it's in the Style Configurator, you may update the color scheme for 
 that Language in the Style Configurator. (If your Theme is a dark Theme, it might be better to copy from `themes\DarkModeDefault.xml` 
 instead of copying from `stylers.model.xml`.)
+
+Similarly, the Style Configurator lists Default Keyword Lists for the styles of some languages: those are defined in `%AppData%\Notepad++\langs.xml`, and the defaults are in `C:\Program Files\Notepad++\langs.model.xml`.  If `langs.model.xml` has been updated, then you can copy the updated or added keyword lists from there into your `langs.xml`.
 
 ## Language Detection Priority
 
