@@ -92,6 +92,7 @@ When you right click on the title for a tab, you get a context menu for manipula
 - `Apply Color to Tab >` (new to v8.4.6)
   - `Apply Color #`: Applies the indicated color to the highlight portion of the tab bar.  (Applying a different color will _change_ the color, not combine the colors together.  Each tab can only have one color.)
   - `Remove Color`: Removes the color of the tab, returning to the default color scheme.
+  - Starting in v8.7, these colors can be user-defined using the [**Style Configurator > Global Styles > Tab color _n_** and **Tab color dark mode _n_**](../preferences/#global-styles) background color settings.
 
 ## Menu Bar
 
