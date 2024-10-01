@@ -21,6 +21,8 @@ But you can also edit the underlying XML file: `stylers.xml` (the default theme)
 
 The easiest way to create a new theme is to copy an existing theme file to a new name in the `%AppData%\Notepad++\Themes\` directory (or equivalent), reload Notepad++, and then use the Style Configurator to edit the color and font settings (or edit the XML file directly, and reload).  For the "existing theme file" to copy from: for creating "light" theme, the best idea (to make sure it's as up-to-date as possible, to list all the current syntax highlighting languages and styles) is to copy `stylers.model.xml` from your installation directory and put the renamed copy in your `%AppData%\Notepad++\Themes\` directory; for creating a "dark" theme, start from a copy of `Themes\DarkModeDefault.xml`.
 
+(You have to exit Notepad++ and rerun the application to see a new theme that you've copied into your Themes directory, or to see any updates you've made by manually editing the XML file(s).)
+
 ## Sharing Themes
 
 You may share a theme (or someone may share with you) in a similar method to creating a new theme: copy the theme file, give it an appropriate name, and put it in your `Themes\` subdirectory: it's the same whether you are sharing across multiple users on the same computer, sharing across local computers, or sharing over the internet.
