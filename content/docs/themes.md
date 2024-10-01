@@ -27,7 +27,7 @@ The easiest way to create a new theme is to copy an existing theme file to a new
 
 You may share a theme (or someone may share with you) in a similar method to creating a new theme: copy the theme file, give it an appropriate name, and put it in your `Themes\` subdirectory: it's the same whether you are sharing across multiple users on the same computer, sharing across local computers, or sharing over the internet.
 
-Aside from the Themes that ship with Notepad++ when you install it, there is also an official [Notepad++ Themes Collection on GitHub](https://github.com/notepad-plus-plus/nppThemes), where you can make your Theme publically available, or grab a Theme that others have shared.
+Aside from the Themes that ship with Notepad++ when you install it, there is also an official [Notepad++ Themes Collection on GitHub](https://github.com/notepad-plus-plus/nppThemes), where you can make your Theme publicly available, or grab a Theme that others have shared.
 
 ## Keeping Stylers/Themes Up-To-Date
 
