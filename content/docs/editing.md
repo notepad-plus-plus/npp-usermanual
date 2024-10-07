@@ -6,11 +6,13 @@ weight: 10
 
 ## Selection modes & Column Editor
 
-Notepad++ has two modes for selecting text:  stream selection and column mode selection.
+Notepad++ has two modes for selecting text: stream selection and column mode selection.
 
-Normally when you select text by <kbd>LeftClick+Drag</kbd> with the mouse, or <kbd>Shift+Arrow</kbd> key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically.  Column mode is also referred to as column-block, rectangular selection, or rectangular block selection.
+Normally when you select text by <kbd>LeftClick+Drag</kbd> with the mouse, or <kbd>Shift+Arrow</kbd> key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically; column mode is also referred to as column-block, rectangular selection, or rectangular block selection, because it makes a rectangle of selected text.
 
-Most users are accustomed to stream selection mode, because it behaves similarly to other applications.  For completeness, it will be said that if the current selection is in stream mode selectino, and you perform a caret movement that doesn't keep you selecting text (such as clicking elsewhere, or using an arrow key without holding the <kbd>Shift</kbd> key), your stream selection will end and there will be no text actively selected.
+Most users are accustomed to stream selection mode, because it behaves similarly to other applications.  But to clarify _exiting_ stream selection: If you have a stream selection, and click in the text (whether inside or outside the current selection) without using the <kbd>Ctrl</kbd> or <kbd>Shift</kbd> modifiers, then you will no longer have a stream selection, and your typing caret will move to wherever in the text that you clicked; similarly, using the keyboard to arrow or <kbd>PageUp</kbd>/<kbd>PageDown</kbd> away from the text, you will no longer have a stream selection, and your typing caret will move as appropriate for the movement key you used.  Either way, if you made your selection from left-to-right, then the typing caret will end up on the right side of the old selection when you exit selection mode; similarly, if you made your selection from right-to-left, the typing caret will end up on the left side of the old selection when you exit selection mode.
+
+The next sub-sections will provide more detail for the Column Mode selection, as that is the mode that needs more clarification for users unaccustomed to rectangular selection.
 
 ### Entering Column Mode
 
