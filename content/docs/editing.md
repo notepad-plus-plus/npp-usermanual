@@ -6,9 +6,13 @@ weight: 10
 
 ## Selection modes & Column Editor
 
-Notepad++ has two modes for selecting text:  stream selection and column-mode selection.
+Notepad++ has two modes for selecting text:  stream selection and column mode selection.
 
 Normally when you select text by <kbd>LeftClick+Drag</kbd> with the mouse, or <kbd>Shift+Arrow</kbd> key commands, you make what is called a stream selection.  In this mode, the text that is selected is contiguous, left-to-right, top-to-bottom.  There is another mode of selection called column mode that you can enter in order to select text that isn't contiguous horizontally, but rather vertically.  Column mode is also referred to as column-block, rectangular selection, or rectangular block selection.
+
+Most users are accustomed to stream selection mode, because it behaves similarly to other applications.  For completeness, it will be said that if the current selection is in stream mode selectino, and you perform a caret movement that doesn't keep you selecting text (such as clicking elsewhere, or using an arrow key without holding the <kbd>Shift</kbd> key), your stream selection will end and there will be no text actively selected.
+
+### Entering Column Mode
 
 On the **Edit** menu is an entry **Column Mode** which when executed opens a text box window that explains the basics of column mode selection of text:
 
@@ -20,19 +24,27 @@ There are 3 ways to switch to column-select mode:
 
 3. (Keyboard or Mouse)  Put caret at desired start of column block position, then execute the **Begin/End Select in Column Mode** command; move caret to desired end of column block position, then execute the **Begin/End Select in Column Mode** command again.
 
-Truly, other ways to enter column-mode exist, e.g. try Alt+Shift+PageDown, but knowing the intricacies of these -- what works and what doesn't -- takes some really specialized knowledge.
-
-As soon as you make a caret movement that doesn't intentionally keep you in column mode, your selection mode returns to the stream selection mode.  Similarly, if in stream mode, and you perform a caret movement that doesn't keep you selecting text, your stream selection will end and no text will be selected.
+Other ways to enter column-mode exist, e.g. try Alt+Shift+PageDown, but knowing the intricacies of these -- what works and what doesn't -- takes some practice on the part of the user.
 
 When column-selecting with the mouse, once you stop making a column mode selection by letting up on the mouse's left click button, the only way to then alter the shape of the rectangular selection is with the keyboard (<kbd>Alt+Shift+Arrows</kbd>).
 
-Animation of using <kbd>Alt+LeftClick+Drag</kbd> or <kbd>Alt+Shift+Arrows</kbd> to make a selection in column mode:
+To help you understand, here is an animation of using <kbd>Alt+LeftClick+Drag</kbd> or <kbd>Alt+Shift+Arrows</kbd> to make a selection in column mode:
 
 ![](../images/columnMode.gif)
+
+### Leaving Column Mode
+
+As soon as you make a caret movement that doesn't intentionally keep you in column mode, your selection mode returns to the stream selection mode (such as hitting an arrow key without also holding <kbd>Alt+Shift</kbd>).  Alternatively, hitting the <kbd>Esc</kbd> key will also leave Column Mode.
+
+When you do leave Column Mode, the typing caret will be at the last corner of your selection. Thus, if you made your column selection from upper left to lower right of the rectangle, the caret will be in the lower right after you leave Column Mode; if you did your column selection from upper right to lower left, the caret will be in the lower left; if you do the column selection from lower left to upper right, then the caret will end up in the upper right; and if you do the column selection from lower right to upper left, then the caret will end up in the upper left.
+
+### Editing In Column Mode
 
 In column mode, typing will type the same thing in all the rows of the column.  If you copy/cut in column mode, then you copy/cut a rectangle of text, which can be pasted over an identical-sized rectangle elsewhere, or pasted into a separate document or separate application.  This is implemented for making working with rectangles of text (instead of whole lines of text) more convenient.
 
 In column mode selection, when text is copied/cut, artificial line-ending characters are introduced into the text.  Thus, pasting in column mode can sometimes lead to surprising results, especially when you simply want the text inserted as if it isn't a column block.  Example: You copy a column block that spans 10 lines and then move the caret to column 1 on an empty line in your document and perform the paste.  The first line of the data from the paste ends up fine, but for the remaining lines, the paste has pushed existing text on subsequent lines to the right before inserting the new columns.  The solution here is to first (before the paste), use the Enter key to insert enough blank lines in the document so that the paste won't do this.
+
+### Column Editor Dialog
 
 The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to insert text or numbers in every row of the active Column Mode selection:
 
@@ -50,7 +62,7 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
         ![](../images/colEdit-LeadingNone.png) | ![](../images/colEdit-LeadingZeros.png) | ![](../images/colEdit-LeadingSpaces.png)
         _examples shown with **View > Show Symbol > Show Spaces and Tab** to make the leading spaces obvious._
 
-        (Prior to v8.5.2, the only option was a checkbox for **☐ Leading zeros**, so unchecked was equivalent to "None" and checkmarked was equivalent to "Zeros")
+        (Prior to v8.5.2, the only option was a checkbox for **☐ Leading zeros**, so unchecked was equivalent to "None" and checkmarked was equivalent to "Zeros")
 
     * **Format** chooses between **Dec** (0-9), **Hex** (0-9,A-F), **Oct** (0-7), or **Bin** (0-1).
         _Note_: the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
@@ -59,7 +71,7 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 Multi-Editing mode (available via mouse usage only) allows you to make multiple carets by using <kbd>Ctrl+Click</kbd> for each additional caret.  This allows performing the same editing actions (typing, copy/cut/paste/delete, arrowing through the text) in multiple locations, even if they aren't lined up in a nice column, or even if there are lines between the carets that you don't want to affect.  You may place as many additional carets as you want.
 
-In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a `Ctrl+Click+Drag` operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
+In addition to placing additional carets, you may also make multiple selections.  After making an initial selection, do a <kbd>Ctrl+Click+Drag</kbd> operation to place a second selection in another location.  You may create as many such selections as you'd like.  A primary use for this type of selection might be so that you can copy several selections with one command, or to replace multiple selections with the same content if you begin typing or do a paste.
 
 Starting in v8.6.1, if you <kbd>Ctrl+Click</kbd> at a previous multi-caret location, or <kbd>Ctrl+Click</kbd> within a previous multi-selection region, that caret or selection region will be removed, while leaving other portions of your multi-selection still active.  (This effectively allows you to "undo" a _portion_ of the multi-selection without having to redo everything, and is useful in complex multi-selections when you accidentally <kbd>Ctrl+Clicked</kbd> in the wrong place or changed your mind.)
 
