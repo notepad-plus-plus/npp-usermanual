@@ -52,11 +52,11 @@ If you are editing source code, you might want to have a shortcut that will run 
 
 ### Getting External Help
 
-You could define **Run** menu entries to allow you to get help.  For example, running the command `https://en.wikipedia.org/wiki/Special:Search?search=$(CURRENT_WORD)` will look up the currently selected word (or the word where your caret is if you don't have a selection) in Wikipedia using your default browser.  Or running `https://docs.python.org/3/search.html?check_keywords=yes&amp;q=$(CURRENT_WORD)` will look up the current word in the Python 3 online documentation.
+You could define **Run** menu entries to allow you to get help.  For example, running the command `https://en.wikipedia.org/wiki/Special:Search?search=$(CURRENT_WORD)` will look up the currently selected word (or the word where your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is if you don't have a selection) in Wikipedia using your default browser.  Or running `https://docs.python.org/3/search.html?check_keywords=yes&amp;q=$(CURRENT_WORD)` will look up the current word in the Python 3 online documentation.
 
 ### A Filename in Your Text
 
-If your cursor or selection is on the name of a file in your text, you can open that file in the current Notepad++ instance by running:
+If your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") or selection is on the name of a file in your text, you can open that file in the current Notepad++ instance by running:
 ```
 "$(NPP_DIRECTORY)\notepad++.exe" "$(CURRENT_WORD)"
 ```

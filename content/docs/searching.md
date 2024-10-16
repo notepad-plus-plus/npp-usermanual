@@ -88,15 +88,15 @@ The various action buttons available include:
         - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
         - After selecting an action from this menu, that action is immediately performed, and the button changes its icon to indicate the new mode for that button.
     * Notepad++ v8.5.2 replaces the right-click menu with a pull-down menu (▼) on the swap button, to make it more obvious that it can be changed.
-* **Replace All**: With **☑ Wrap around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap around** unchecked, it searches from the caret to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the caret (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
+* **Replace All**: With **☑ Wrap around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap around** unchecked, it searches from the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
 
         Previous<br>Selection | Wrap Around | Backward Direction | In Selection | Range
         :-:|:-:|:-:|:-:|:----
-        NO |OFF|OFF|OFF|From  CARET location      to  END of file
+        NO |OFF|OFF|OFF|From  [CARET](#caret-and-cursor "cf. 'Caret and Cursor'") location      to  END of file
         YES|OFF|OFF|OFF|From  START of selection  to  END of file
-        NO |OFF|ON |OFF|From  START of file       to  CARET location
+        NO |OFF|ON |OFF|From  START of file       to  [CARET](#caret-and-cursor "cf. 'Caret and Cursor'") location
         YES|OFF|ON |OFF|From  START of file       to  END of selection
         YES|-/-|-/-|ON |From  START of selection  to  END of selection
         -/-|ON |-/-|OFF|From  START of file       to  END of file
@@ -110,7 +110,7 @@ The above actions may be initiated via mouse by pressing the appropriate button,
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing <kbd>Enter</kbd> when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing <kbd>Shift+Enter</kbd> when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use <kbd>Shift+Enter</kbd> to search in the opposite direction* as a reminder of this capability.
 
-When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the caret (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your caret is not "touching" a word and that there is no active selection when invoking the find-family command.
+When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is not "touching" a word and that there is no active selection when invoking the find-family command.
 Aside:  This auto-copy feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  The line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
 
 A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A valid **Replace with** edit box entry length ranges from 0 to 2046 characters.  Any text entered/pasted into these boxes beyond the 2046th character is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.
@@ -129,15 +129,15 @@ Notepad++ uses a flashing of the Find dialog window and the main Notepad++ windo
 
 If a search action is invoked by keyboard command with the Find dialog window open and input focus in the editing window, an unsuccessful search will result in input focus being changed to the Find window.
 
-*Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the caret to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "FileSeek", "Everything" and many others.
+*Disclaimer:*  It is Notepad++'s design intention to fulfill some basic searching/replacing capability.  As such, Notepad++ searching is not infinitely flexible and capable of meeting all needs.  For such power needs, please turn to external tools, some of which integrate well with Notepad++.  Integrating well means that after such tools produce results, they can tell Notepad++ which files to open and which line and column numbers to move the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") to, in order to work with matched results.  Examples of such power file/text searching tools might be:  "GrepWin", "PowerGREP", "FileSeek", "Everything" and many others.
 
 #### Wrap Around
 
-- When executing a **Find Next** or a single-step **Replace**, the document text is examined for a match starting at the caret position and proceeding forward toward the end-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the start-of-file (i.e., it wraps around) and text is examined until the caret position is reached (or a search hit occurs).
+- When executing a **Find Next** or a single-step **Replace**, the document text is examined for a match starting at the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position and proceeding forward toward the end-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the start-of-file (i.e., it wraps around) and text is examined until the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position is reached (or a search hit occurs).
 
-- When executing a "Find Previous" using **▲** (or executing a **Find Next**  with **☑ Backward direction** checkmarked) or a single-step _Replace_ (with **☑ Backward direction** checkmarked), the document text is examined for a match starting at the caret position and proceeding backward toward the start-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the end-of-file (i.e., it wraps around) and text is examined until the caret position is reached (or a search hit occurs).
+- When executing a "Find Previous" using **▲** (or executing a **Find Next**  with **☑ Backward direction** checkmarked) or a single-step _Replace_ (with **☑ Backward direction** checkmarked), the document text is examined for a match starting at the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position and proceeding backward toward the start-of-file; if the search text is not found and **☐ Wrap around** is not checkmarked, the search reports that it can't find the text and stops.  However, if **☑ Wrap around** is checkmarked in this situation, searching begins again from the end-of-file (i.e., it wraps around) and text is examined until the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position is reached (or a search hit occurs).
 
-- In other single-file search actions, **☑ Wrap around** may be thought of as "affect entire file" and caret position becomes irrelevant; the file will be processed in one pass from start-of-file to end-of-file.
+- In other single-file search actions, **☑ Wrap around** may be thought of as "affect entire file" and [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position becomes irrelevant; the file will be processed in one pass from start-of-file to end-of-file.
 
 - In multiple-file search actions (like **Find All in All Opened Documents**, or the **Find in Files** or **Find in Projects** tabs), the **☑ Wrap around** state is completely ignored, as those actions always start at the beginning of each file and search through to the end in the forward direction.
 
@@ -190,7 +190,7 @@ The Mark tab from the Find/Replace dialog will perform searches similar to the F
 
 * Otherwise, the matched pattern is highlighted according to the [**Settings > Style Configurator > Global Styles > Find Mark Style**](../preferences/#global-styles) setting.
 
-In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace-tabs), **Mark All** will search from the beginning of the document to the end if **Wrap around** is checked; if **Wrap around** is not checked, it will mark from the caret position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the caret position (if **Backward direction** is checked).
+In either case, the **Mark All** button will perform the marking.  Similar to [**Replace All**](#find-replace-tabs), **Mark All** will search from the beginning of the document to the end if **Wrap around** is checked; if **Wrap around** is not checked, it will mark from the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position to the end of the file (if **Backward direction** is not checked) or from the beginning of the file to the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position (if **Backward direction** is checked).
 
 To control whether highlighting or bookmarks accumulate over successive searches, use the **Clear all marks** button to remove marks, or check **Purge for each search** for this action to be performed automatically on each search.  When the **Clear all marks** button is pressed, any marked text will have the marking background coloring removed; additionally, any bookmarks previously set will be removed if the **Bookmark line** checkbox is checked.
 
@@ -319,23 +319,23 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 * **Find Next (<kbd>F3</kbd>)/ Find Previous (<kbd>Shift+F3</kbd>)**: Repeat searching the current search target, either down or up.
     - The "current search target" is whatever _Find what_ string was most-recently active from either the Find/Replace dialog or from the **Select and Find Next / Select and Find Previous** commands.
-* **Select and Find Next (<kbd>Ctrl+F3</kbd>) / Select and Find Previous (<kbd>Ctrl+Shift+F3</kbd>)**: Search for the word the caret is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
+* **Select and Find Next (<kbd>Ctrl+F3</kbd>) / Select and Find Previous (<kbd>Ctrl+Shift+F3</kbd>)**: Search for the word the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is in, or the selected text, down or up. The searched word or selection is stored in the find history, and the search can be repeated with **Find Next / Find Previous**.
     - The specific search behavior:
         - copies the selected text to **Find what** box of **Find** window for future use, then uses that same string for this specific search
-            - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
-            - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
+            - if there is no selection and the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is just at a single character position, it uses the word that the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position is a part of (if any)
+            - if the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is in whitespace with no selection active, it will not perform a search, and the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") will remain where it was
         - uses the following set of options:
             - uses **☐ Match case** setting from **Find** window
             - uses **☐ Match whole word only** setting from **Find** window
             - uses **☐ Wrap around** setting from **Find** window
             - uses **Search mode = Normal** (regardless of its current setting in the **Find** window)
         - (all mentions of the **Find** window in this search description are still true even if the **Find** window is not currently visible)
-* **Find (Volatile) Next (<kbd>Ctrl+Alt+F3</kbd>) / Find (Volatile) Previous (<kbd>Ctrl+Alt+Shift+F3</kbd>)**: Search for the word the caret is in, or the selected text, down or up.
-    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the caret and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** works as expected.
+* **Find (Volatile) Next (<kbd>Ctrl+Alt+F3</kbd>) / Find (Volatile) Previous (<kbd>Ctrl+Alt+Shift+F3</kbd>)**: Search for the word the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is in, or the selected text, down or up.
+    - The searched word or selection is not stored in the find history, and the search will not be repeatable with **Find Next / Find Previous**. ("Volatile" here means "not stored".)  However, because it will have moved the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") and selection to the next match, repeated **Find (Volatile) Next / Find (Volatile) Previous** works as expected.
     - The specific search behavior:
         - uses the selected text as the search text, but does **not** overwrite the existing **Find what** value in the **Find** dialog
-            - if there is no selection and the caret is just at a single character position, it uses the word that the caret position is a part of (if any)
-            - if the caret is in whitespace with no selection active, it will not perform a search, and the caret will remain where it was
+            - if there is no selection and the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is just at a single character position, it uses the word that the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position is a part of (if any)
+            - if the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is in whitespace with no selection active, it will not perform a search, and the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") will remain where it was
         - uses the least-strict set of options, providing the most flexibility in the results provided by a volatile search:
             - considers **☐ Match case** to be unchecked
             - considers **☐ Match whole word only** to be unchecked
@@ -344,16 +344,16 @@ The following commands, available through the Search menu or keyboard shortcuts,
 
 #### _Comparison between "Select and Find Next" and "Find (Volatile) Next"_
 
-Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or caret position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's **Find what** field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
+Both commands **Select and Find Next** and **Find (Volatile) Next** search based on the active selection or [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position. However, **Select and Find Next** stores the searched word so it's available to a subsequent **Find Next** action and to the **Find** dialog's **Find what** field, whereas **Find (Volatile) Next** does not store the search word for those uses.  Example sequence:
 
-- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your caret or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show **Find what** to be the active search value. (_Note_: See the section on [**Settings > Preferences > Searching**](../preferences/#searching), because those options can cause other text to overwrite the **Find what** field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
+- If you do **Select and Find Next** command with `word1` selected, then you can later use the normal **Find Next** command to search for `word1`, even if you have moved your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") or selection elsewhere to `word2`.  Further, if no new text has been selected, the **Find** and related dialogs will show **Find what** to be the active search value. (_Note_: See the section on [**Settings > Preferences > Searching**](../preferences/#searching), because those options can cause other text to overwrite the **Find what** field independently from the **Select and Find Next** action, making it appear that the search string wasn't stored.)
 
-- If your caret is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your caret onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
+- If your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is on word `word2`, **Find (Volatile) Next** will search for the next occurrence of `word2`. Now if you move your [caret](#caret-and-cursor "cf. 'Caret and Cursor'") onto `word3` and do **Find (Volatile) Next**, it will search for the next `word3`, and `word2` is forgotten.  This will _not_ override the "remembered" search, so running **Find Next** will still be looking for the old `word1` from the previous **Select and Find Next**, rather than `word2` or `word3` from the **Find (Volatile) Next** searches.
 
 
 ### Marking with a color/style and Highlighting
 
-Use the **Style All Occurrences of Token** or **Clear Style** submenus of the Search menu (previously called the **Mark All** or **Unmark All** submenus) to mark or unmark all occurrences of the selected text or word the caret is in (the "Token") if there is no active selection.  You have a choice of five different colors/styles (numbered 1 through 5) in which to mark text in this manner.  The **Style One Token** (previously, **Mark One**) submenu options work similarly, but only on the single occurrence of selected text or caret word.
+Use the **Style All Occurrences of Token** or **Clear Style** submenus of the Search menu (previously called the **Mark All** or **Unmark All** submenus) to mark or unmark all occurrences of the selected text or word the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") is in (the "Token") if there is no active selection.  You have a choice of five different colors/styles (numbered 1 through 5) in which to mark text in this manner.  The **Style One Token** (previously, **Mark One**) submenu options work similarly, but only on the single occurrence of selected text or [caret](#caret-and-cursor "cf. 'Caret and Cursor'") word.
 
 The settings for each of the 5 available colors/styles are [**Settings &gt; Style Configurator &gt; Global Styles > Mark style #**](../preferences/#global-styles).
 
@@ -361,7 +361,7 @@ If you've highlighted some groups of text in this manner, and you wish to copy t
 
 Note: In older versions of Notepad++, the **Mark All** submenu name can cause some confusion between an identically-named action button in the Mark tab of the Find family dialog.  The two types of "marking" are different but do share some features.  For example, the Copy Styled Text submenu commands will allow you to copy text that has been styled with number 1 through 5 styling OR text that has been marked using the Mark tab of Find.  This has been improved by renaming the menu to **Style All Occurrences of Token**.
 
-You can also cause all occurrences of the word at the caret to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [**Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting**](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
+You can also cause all occurrences of the word at the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") to get dynamically highlighted if you activate Smart Highlighting; the mark style then is [**Settings &gt; Style Configurator &gt; Global Styles &gt; Smart Highlighting**](../preferences/#global-styles). You may choose there whether the matching should be sensitive to case.
 
 You activate smart highlighting through [**Settings > Preferences > Highlighting > Smart highlighting > Enable**](../preferences/#highlighting).  You can change whether or not the smart highlighting is case sensitive or requires whole words using other options in that preferences dialog.
 
@@ -665,7 +665,7 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `\Z` ⇒ Matches like `\z` with an optional sequence of newlines before it. This is equivalent to `(?=\v*\z)`, which departs from the traditional Perl meaning for this escape.
 
-* `\G` ⇒ This "Continuation Escape" matches the end of the previous match, or matches the start of the text being matched if no previous match was found.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current caret position, or the start of the highlighted text.  Because of that, if you are using it in an alternation, where you want to say "find any occurrence of something after some prefix, or after a previous match), you will want to make sure that your prefix includes the start-of-file `\A`, otherwise the `\G` portion may accidentally match start-of-file when you don't want that to occur.
+* `\G` ⇒ This "Continuation Escape" matches the end of the previous match, or matches the start of the text being matched if no previous match was found.  In **Find All** or **Replace All** circumstances, this will allow you to anchor your next match at the end of the previous match.  If it is the first match of a **Find All** or **Replace All**, and any time you use a single **Find Next** or **Replace**, the "end of previous match" is defined to be the start of the search area -- the beginning of the document, or the current [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position, or the start of the highlighted text.  Because of that, if you are using it in an alternation, where you want to say "find any occurrence of something after some prefix, or after a previous match), you will want to make sure that your prefix includes the start-of-file `\A`, otherwise the `\G` portion may accidentally match start-of-file when you don't want that to occur.
 
 
 #### Capture Groups and Backreferences
@@ -971,7 +971,7 @@ Remember, to include literal parentheses, question marks, or colons in condition
 
 In normal or extended mode, there would be no point in looking for text of length 0; however, in regular expression mode, this can often happen. For example, to add something at the beginning of a line, you'll search for "^" and replace with whatever is to be added.
 
-Notepad++ would select the match, but there is no sensible way to select a stretch zero character long. When this happens, a tooltip very similar to function call tips is displayed instead, with a caret pointing upwards to the empty match.
+Notepad++ would select the match, but there is no sensible way to select a stretch zero character long. When this happens, a tooltip very similar to function call tips is displayed instead, with a circumflex character `^` pointing upwards to the empty match.
 
 
 ### Examples
@@ -1444,7 +1444,7 @@ Next will be a **1702** message that contains a bit-weighted number in **lParam*
 
 > Let's see how the example value 515 used above is decoded:
 
-> lParam="515" (decimal) = 203 (hex) = 0010 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-caret-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
+> lParam="515" (decimal) = 203 (hex) = 0010 0000 0011 (binary) = 512 + 2 + 1 = (***not*** Backward direction + Match case + Match whole word only).  Thus, this would represent a forward-from-[caret](#caret-and-cursor "cf. 'Caret and Cursor'")-towards-end-of-file search of exact case specified, with the additional qualifier that the match text must be bracketed by non-word characters.
 
 The last message in the sequence is a **1701** message, which encodes the Find family action to perform in **lParam**, which, when executed will conduct the action using all of the information encoded in the prior messages; let's do a **Replace in Files**, which has an integer value of 1660, for purposes of an example:
 
@@ -1487,7 +1487,7 @@ Skipping the 1702 message for the moment, the 1701 message has lParam="1615" whi
 
 Finally, let's consider the 1702 message.  Its pertinent part is lParam="786".  The best way to break that down into its component parts is to convert the number to binary and then determine how the one-bits in the binary contribute to the meaning.  786 in binary is 1100010010 (= 512 + 256 + 16 + 2), which breaks down as follows, and then reading the 1702 table from earlier we get the contributors to functionality:
 
-* `1000000000` = 512 - Backward direction _disabled_ (thus forward direction from caret toward bottom end of file)
+* `1000000000` = 512 - Backward direction _disabled_ (thus forward direction from [caret](#caret-and-cursor "cf. 'Caret and Cursor'") toward bottom end of file)
 
 * `0100000000` = 256 - Wrap around
 
