@@ -82,7 +82,7 @@ These influence editing (carets, code-folding, line wrapping, and more).
     * `☐ Aligned`: Wraps from the last visible column to the same indent as the start of the unwrapped line.
     * `☐ Indent`: Wraps from the last visible column to the next level of indent compared to the start of the unwrapped line.
 * `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
-* `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).
+* `☐ Enable virtual space`: Enables putting the caret beyond the end of the line (new to v8.4.3).  (Read more about this feature in [Editing > Virtual Space](../editing/virtual-space).)
 * `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from canceling an active selection.
@@ -172,8 +172,8 @@ These define the margin style, border width, and edge settings.
         * `☐ Background mode`: The vertical edge is indicated by styling the _background_ of the text to the right of the edge.
         * `Number of columns: __ `: Sets where the vertical edge will be, in numbers of columns (characters) from the left edge of the page.
 * **Change History**:
-    * `☐ Show in the margin`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).  
-    * `☐ Show in the text`: Shows a background color to indicate lines that have been changed, with the same rules as the margin version.  
+    * `☐ Show in the margin`: Shows a narrow column with a color to indicate lines that have been changed (orange), or lines that were changed in this session but have been saved (green), or changes that have been undone since the last change (light blue/green).
+    * `☐ Show in the text`: Shows a background color to indicate lines that have been changed, with the same rules as the margin version.
     * Colors: The background of this margin is set by the background color of the [**Global Styles > Change History Margin**](#global-styles).  The other colors are affected by the [**Change History modified, Change History revert modified, Change History revert origin, and Changed History saved**](#global-styles) styles.
 * **Line Number**:
     * `☐ Display`: Shows the line numbers to the left of the text.
