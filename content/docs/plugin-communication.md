@@ -727,7 +727,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 ---
 
 #### [4033] **NPPM_GETCURRENTCOLUMN**
-*Retrieves the column of the caret.*
+*Retrieves the column of the [caret](#caret-and-cursor "cf. 'Caret and Cursor'").*
 
 **Parameters**:
 
@@ -738,7 +738,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 : int, must be zero.
 
 **Return value**:
-: Returns the current, 0-based, column position of the caret.
+: Returns the current, 0-based, column position of the [caret](#caret-and-cursor "cf. 'Caret and Cursor'").
 
 ---
 
@@ -795,7 +795,7 @@ Please see the enum LangType for all possible values.
 ---
 
 #### [4032] **NPPM_GETCURRENTLINE**
-*Retrieves the line of the caret.*
+*Retrieves the line of the [caret](#caret-and-cursor "cf. 'Caret and Cursor'").*
 
 **Parameters**:
 
@@ -806,7 +806,7 @@ Please see the enum LangType for all possible values.
 : int, must be zero.
 
 **Return value**:
-: Returns the current, 0-based, line position of the caret.
+: Returns the current, 0-based, line position of the [caret](#caret-and-cursor "cf. 'Caret and Cursor'").
 
 ---
 
@@ -905,7 +905,7 @@ The returned value can be one of the following:
 ---
 
 #### [4030] **NPPM_GETCURRENTWORD**
-*Retrieves the word containing the caret.
+*Retrieves the word containing the [caret](#caret-and-cursor "cf. 'Caret and Cursor'").
 User is responsible to allocate a buffer which is large enough.*
 
 **Parameters**:
@@ -1068,8 +1068,8 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [4035] **NPPM_GETFILENAMEATCURSOR**
-*Retrieves the filename at the current caret position.
-Note, while this message has been created, and is used internally, to retrieve a filename at the current caret position, it does return anything which fulfils the requirements, even single words.*
+*Retrieves the filename at the current [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position.
+Note, while this message has been created, and is used internally, to retrieve a filename at the current [caret](#caret-and-cursor "cf. 'Caret and Cursor'") position, it does return anything which fulfills the requirements, even single words.*
 
 **Parameters**:
 

@@ -10,7 +10,7 @@ of actions. This is called a macro and can save a great deal of time. Macros
 can be played once, or multiple times, even as long as is required to run through
 an entire document. You can save them for later use and assign keystrokes to
 them for fast access (See [Shortcut Mapper](../preferences/#shortcut-mapper)).
-Macros are sensitive to the current position of the caret and will (normally
+Macros are sensitive to the current position of the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") and will (normally
 speaking) operate relative to it.
 
 
@@ -60,7 +60,7 @@ To play the current macro in the buffer or any saved macro once or multiple
 times, select **Macro > Run a Macro Multiple Times...** or press the button.
 A dialog will pop up allowing you to select what macro to perform (buffer
 macro or any saved macro) and how many times. You can also opt to perform the
-macro until the caret reaches the end of the current file (starting from
+macro until the [caret](#caret-and-cursor "cf. 'Caret and Cursor'") reaches the end of the current file (starting from
 its current position).
 
 Note that if no macros are available, this menu option is greyed out, and
