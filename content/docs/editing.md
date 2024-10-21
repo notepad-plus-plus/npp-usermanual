@@ -306,8 +306,8 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
     * **Trim Leading Space**: removes any space or tab characters occurring at the beginning of a line, before any non-whitespace characters
     * **Trim Leading and Trailing Spaces**: combines the functionalities of **Trim Trailing Space** and **Trim Leading Space** into one command
     * **EOL to Space**: replaces line-ending characters with a single space character (similar to **Join Lines** functionality, but acts upon the entire file rather than the active selection); note: "EOL" means "End Of Line" -- in other words, line-ending characters
-    * **Remove Unnecessary Blank and EOL**: performs a combined **Trim Leading and Trailing Spaces** and **EOL to Space** operation
-
+    * **Trim Both and EOL to Space**: performs a combined **Trim Leading and Trailing Spaces** and **EOL to Space** operation (known as **Remove Unnecessary Blank and EOL** before v8.4.9)
+        - NOTE about Trim-related commands: the trim occurs for the line of the selection, even if the selection doesn't include those leading and/or trailing spaces.  _Example_: if the line is some spaces, the text `words here`, and some more spaces, then even if the selection is just `words`, the trims will happen on the leading and/or trailing spaces, based on which menu command was chosen.
     * **TAB to Space**: replaces any tab characters with their equivalent number of spaces
     * **Space to TAB (All)**: consolidates space characters into an equivalent number of tab characters, wherever the spaces occur
     * **Space to TAB (Leading)**: consolidates space characters into an equivalent number of tab characters, but only where they occur before the first non-whitespace character on a line
@@ -324,7 +324,7 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
             ![](../images/edit-tab-stops.png)
 
             If you want a specific number of space characters to replace each tab character, instead of the above-described fill-to-tabstop behavior, you should use a replacement operation in Extended or Regular Expression search mode to replace `\t` with the number of space characters you desire.
-    * NOTE: All the **Blank Operations** commands will default to doing a global change through the whole document.  Starting in Notepad++ v8.4.9, if there is an active selection, the **Blank Operation** change will only apply to the selected text.
+    * NOTE: All the **Blank Operations** commands will default to doing a global change through the whole document.  Starting in Notepad++ v8.4.9, if there is a single active stream selection, the **Blank Operation** change will only apply to the selected text; if there is a multi-stream selection, then only the last selection added to the multi-stream will be affected; if there is a column-mode selection, _no_ trimming or tab-conversion will occur.
 
 * **Paste Special >** ⇒ submenu with actions that pastes HTML or RTF, and special versions of copy/cut/paste which handle NULL and other binary characters
     * Note: The HTML and RTF actions paste the HTML and RTF source code from the HTML or RTF entries in the Windows Clipboard; it does _not_ apply HTML or RTF formatting to what appears to be plain text in the Notepad++ editor window.
