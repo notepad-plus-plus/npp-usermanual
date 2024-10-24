@@ -2307,7 +2307,7 @@ The general layout of the following notifications look like this
 - **Description** informs about the usage of the notification and provides additional information if needed.
 - **Fields** are the parameters to be provided by the notification.
     - ***hwndFrom*** normally holds the **hwndNpp**, which means that the window handle for the current Notepad++ window is passed as that argument.  If it is shown as a `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
-    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the current editor buffer is passed as that argument.  If it is shown as `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
+    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (Caveat: this BufferID is not necessarily the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first, and possibly revert to the originally-active-file before finishing your activity to avoid confusing the user.)  If it is shown as `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
 
 ---
 ---
