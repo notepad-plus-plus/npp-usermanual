@@ -2307,7 +2307,8 @@ The general layout of the following notifications look like this
 - **Description** informs about the usage of the notification and provides additional information if needed.
 - **Fields** are the parameters to be provided by the notification.
     - ***hwndFrom*** normally holds the **hwndNpp**, which means that the window handle for the current Notepad++ window is passed as that argument.  If it is shown as a `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
-    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (Caveat: this BufferID is not necessarily the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first, and possibly revert to the originally-active-file before finishing your activity to avoid confusing the user.)  If it is shown as `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
+    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (_Warning_: this BufferID is often not the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first; a reasonable sequence for handling this is described in [Notification BufferID](#notification-bufferid).)  
+	If **_idFrom_** is shown as `0` or `NULL`, then that notification does not use this Field.  If **_idFrom_** needs a different value for a notification, a full description will be provided.
 
 ---
 ---
@@ -2453,6 +2454,8 @@ The general layout of the following notifications look like this
 	code:		NPPN_FILEBEFORESAVE
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
+
+NOTE: Many plugins or scripts which use this notification have wrongly assumed that the file being saved is always the active file, and try to perform actions on the active file, when they really needed to activate the file referenced by `BufferID` before performing actions.  (When a user invokes a normal **Save** action, this isn't normally a problem; however, **Save All** will save any changed files, even when they aren't the active buffer.)  A reasonable sequence for handling this (or any BufferID notification) is given in [Notification BufferID](#notification-bufferid) (below).
 
 ---
 
@@ -2669,3 +2672,17 @@ The general layout of the following notifications look like this
 	idFrom:		BufferID
 
 ---
+
+### Notification BufferID
+
+The BufferID received by a notification is not necessarily the _active_ buffer.  If you want to perform an action on the buffer that requires that it be active, you will have to activate that file first.  One reasonable sequence of events for doing some action on a specific BufferID in a callback is as follows:
+
+1. Store the BufferID of the active file (`keepBufferID`)
+    - [NPPM_GETCURRENTBUFFERID](#2084nppm_getcurrentbufferid) can be used to populate `keepBufferID`
+2. If the notification BufferID is not the `keepBufferID`, then activate the BufferID.
+	- [NPPM_GETPOSFROMBUFFERID](#2081nppm_getposfrombufferid)`(BufferID)` extracts a value p for the notification BufferID.
+	- Set `v = p >> 30`; set `i = p & 0x3FFFFFFF`.
+	- [NPPM_ACTIVATEDOC](#2052nppm_activatedoc)`(v,i)` will activate the notification BufferID
+3. Perform your actions on the notification BufferID, which is now active.
+4. Set the `keepBufferID` as the active file.
+    - use the same messages as in step 2, but starting with `NPPM_GETPOSFROMBUFFERID(keepBufferID)`
