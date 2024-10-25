@@ -69,15 +69,15 @@ where:
 ---
 
 #### [2052] **NPPM_ACTIVATEDOC**
-*Switches to the document by the given view and index.*
+*Switches to the document by the given viewIndex and docIndex.*
 
 **Parameters**:
 
 *wParam [in]*
-: int iView, which must be either 0 (main view) or 1 (second view).
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 *lParam [in]*
-: int index2Activate
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 **Return value**:
 : Returns True
@@ -660,18 +660,20 @@ It garantees plugins get always the right bookmark marker ID even it's been chan
 ---
 
 #### [2083] **NPPM_GETBUFFERIDFROMPOS**
-*Gets the document buffer ID from the given position.*
+*Gets the document buffer ID from the given docIndex and viewIndex.*
 
 **Parameters**:
 
 *wParam [in]*
-: int position, is 0 based
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 *lParam [in]*
-: int view, which should be either 0 (main view) or 1 (second view)
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 **Return value**:
-: Returns 0 if given position is invalid, otherwise the document buffer ID.
+: Returns 0 if given docIndex and viewIndex are invalid, otherwise the document buffer ID.
+
+
 
 ---
 
@@ -761,7 +763,7 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [2047] **NPPM_GETCURRENTDOCINDEX**
-*Retrieves the current index of the given view.*
+*Retrieves the current document's index in the given view.*
 
 **Parameters**:
 
@@ -769,10 +771,10 @@ MAX_PATH is suggested to use.*
 : int, must be zero.
 
 *lParam [in]*
-: int iView, which must bei eihter 0 (main view) or 1 (second view).
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 **Return value**:
-: Returns -1 if the view is invisible (hidden), otherwise is the current index.
+: Returns -1 if the view is invisible (hidden), otherwise returns the current document's index in the given view.
 
 ---
 
@@ -1453,8 +1455,9 @@ The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return valu
 ---
 
 #### [2081] **NPPM_GETPOSFROMBUFFERID**
-*Gets 0-based document position from given buffer ID, which is held in the 30 lowest bits of the return value on success.
-Bit 30 indicates which view has the buffer (clear for main view, set for sub view).*
+*Gets 0-based document viewIndex and docIndex from given buffer ID, encoded as a single 32-bit integer:
+The 30 lowest bits of the return value are the docIndex.
+Bit 30 indicates which viewIndex has the buffer (0 for main view, 1 for secondary view).*
 
 **Parameters**:
 
@@ -1462,11 +1465,11 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 : UINT_PTR bufferID
 
 *lParam [in]*
-: int priorityView,
-is main view (0), or sub view (1). So the search will check into the view of choice. However if the given bufferID cannot be found in the chosen view, the other view will be searched.
+: int priorityView, which must be either 0 (main view) or 1 (secondary view).
+However if the given bufferID cannot be found in the chosen priorityView, the other view will be searched.
 
 **Return value**:
-: Returns -1 if bufferID doesn't exist else the position.
+: Returns -1 if bufferID doesn't exist, else returns the encoded viewIndex and docIndex.
 
 ---
 #### [2122] **NPPM_GETSETTINGSONCLOUDPATH**
@@ -2266,18 +2269,20 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 ---
 
 #### [2073] **NPPM_TRIGGERTABBARCONTEXTMENU**
-*Triggers the tabbar context menu for the given view and index.*
+*Triggers the tabbar context menu for the given view and index.
+(Activates that tab and view if it's not already active.)*
 
 **Parameters**:
 
 *wParam [in]*
-: int whichView
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 *lParam [in]*
-: int index2Activate
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 **Return value**:
 : Returns True
+
 
 ---
 
