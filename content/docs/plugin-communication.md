@@ -1466,8 +1466,8 @@ Bit 30 indicates which viewIndex has the buffer (0 for main view, 1 for secondar
 
 *lParam [in]*
 : int priorityView, which must be either 0 (main view) or 1 (secondary view).
-It will give priority to the chosen view, but if the given bufferID cannot
-be found in the chosen view, the other view will be searched.
+It will search the chosen view first, but if the given bufferID cannot
+be found in the chosen view, the other view will also be searched.
 
 **Return value**:
 : Returns -1 if bufferID doesn't exist, else returns the encoded viewIndex and docIndex.
