@@ -13,6 +13,12 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 - The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the options to **Hide** the tab bar or to **Lock** the tab bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
 
+- If you click on a tab on the tab bar, that tab will become the active tab in the view.  
+
+- If you hover over a tab on the tab bar, there will be hover text:
+    - It will show the full file path for a file from the filesystem.
+    - If it's a new, unsaved tab, then the hover text will be the name of that tab (defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
+
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
 
