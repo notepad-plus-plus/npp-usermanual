@@ -69,15 +69,15 @@ where:
 ---
 
 #### [2052] **NPPM_ACTIVATEDOC**
-*Switches to the document by the given view and index.*
+*Switches to the document by the given viewIndex and docIndex.*
 
 **Parameters**:
 
 *wParam [in]*
-: int iView, which must be either 0 (main view) or 1 (second view).
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 *lParam [in]*
-: int index2Activate
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 **Return value**:
 : Returns True
@@ -660,18 +660,20 @@ It garantees plugins get always the right bookmark marker ID even it's been chan
 ---
 
 #### [2083] **NPPM_GETBUFFERIDFROMPOS**
-*Gets the document buffer ID from the given position.*
+*Gets the document buffer ID from the given docIndex and viewIndex.*
 
 **Parameters**:
 
 *wParam [in]*
-: int position, is 0 based
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 *lParam [in]*
-: int view, which should be either 0 (main view) or 1 (second view)
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 **Return value**:
-: Returns 0 if given position is invalid, otherwise the document buffer ID.
+: Returns 0 if given docIndex and viewIndex are invalid, otherwise the document buffer ID.
+
+
 
 ---
 
@@ -761,7 +763,7 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [2047] **NPPM_GETCURRENTDOCINDEX**
-*Retrieves the current index of the given view.*
+*Retrieves the current document's index in the given view.*
 
 **Parameters**:
 
@@ -769,10 +771,10 @@ MAX_PATH is suggested to use.*
 : int, must be zero.
 
 *lParam [in]*
-: int iView, which must bei eihter 0 (main view) or 1 (second view).
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 **Return value**:
-: Returns -1 if the view is invisible (hidden), otherwise is the current index.
+: Returns -1 if the view is invisible (hidden), otherwise returns the current document's index in the given view.
 
 ---
 
@@ -1453,8 +1455,9 @@ The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return valu
 ---
 
 #### [2081] **NPPM_GETPOSFROMBUFFERID**
-*Gets 0-based document position from given buffer ID, which is held in the 30 lowest bits of the return value on success.
-Bit 30 indicates which view has the buffer (clear for main view, set for sub view).*
+*Gets 0-based document viewIndex and docIndex from given buffer ID, encoded as a single 32-bit integer:
+The 30 lowest bits of the return value are the docIndex.
+Bit 30 indicates which viewIndex has the buffer (0 for main view, 1 for secondary view).*
 
 **Parameters**:
 
@@ -1462,11 +1465,12 @@ Bit 30 indicates which view has the buffer (clear for main view, set for sub vie
 : UINT_PTR bufferID
 
 *lParam [in]*
-: int priorityView,
-is main view (0), or sub view (1). So the search will check into the view of choice. However if the given bufferID cannot be found in the chosen view, the other view will be searched.
+: int priorityView, which must be either 0 (main view) or 1 (secondary view).
+It will search the chosen view first, but if the given bufferID cannot
+be found in the chosen view, the other view will also be searched.
 
 **Return value**:
-: Returns -1 if bufferID doesn't exist else the position.
+: Returns -1 if bufferID doesn't exist, else returns the encoded viewIndex and docIndex.
 
 ---
 #### [2122] **NPPM_GETSETTINGSONCLOUDPATH**
@@ -2266,18 +2270,20 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 ---
 
 #### [2073] **NPPM_TRIGGERTABBARCONTEXTMENU**
-*Triggers the tabbar context menu for the given view and index.*
+*Triggers the tabbar context menu for the given view and index.
+(Activates that tab and view if it's not already active.)*
 
 **Parameters**:
 
 *wParam [in]*
-: int whichView
+: int viewIndex, which must be either 0 (main view) or 1 (secondary view).
 
 *lParam [in]*
-: int index2Activate
+: int docIndex, a 0-based index which indicates which document to activate from the selected view's list of documents.
 
 **Return value**:
 : Returns True
+
 
 ---
 
@@ -2307,7 +2313,8 @@ The general layout of the following notifications look like this
 - **Description** informs about the usage of the notification and provides additional information if needed.
 - **Fields** are the parameters to be provided by the notification.
     - ***hwndFrom*** normally holds the **hwndNpp**, which means that the window handle for the current Notepad++ window is passed as that argument.  If it is shown as a `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
-    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the current editor buffer is passed as that argument.  If it is shown as `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
+    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (_Warning_: this BufferID is often not the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first; a reasonable sequence for handling this is described in [Notification BufferID](#notification-bufferid).)
+	If **_idFrom_** is shown as `0` or `NULL`, then that notification does not use this Field.  If **_idFrom_** needs a different value for a notification, a full description will be provided.
 
 ---
 ---
@@ -2453,6 +2460,8 @@ The general layout of the following notifications look like this
 	code:		NPPN_FILEBEFORESAVE
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
+
+NOTE: Many plugins or scripts which use this notification have wrongly assumed that the file being saved is always the active file, and try to perform actions on the active file, when they really needed to activate the file referenced by `BufferID` before performing actions.  (When a user invokes a normal **Save** action, this isn't normally a problem; however, **Save All** will save any changed files, even when they aren't the active buffer.)  A reasonable sequence for handling this (or any BufferID notification) is given in [Notification BufferID](#notification-bufferid) (below).
 
 ---
 
@@ -2669,3 +2678,33 @@ The general layout of the following notifications look like this
 	idFrom:		BufferID
 
 ---
+
+### Notification BufferID
+
+The BufferID received by a notification is not necessarily the _active_ buffer.  If you want to perform an action on the buffer that requires that it be active, you will have to activate that file first.  One reasonable sequence of events for doing some action on a specific BufferID in a callback is as follows:
+
+1. Store the BufferID of the active file (`keepBufferID`).
+    - [NPPM_GETCURRENTBUFFERID](#2084nppm_getcurrentbufferid) can be used to get the active file's BufferID:
+      ```
+      keepBufferID = NPPM_GETCURRENTBUFFERID()
+      ```
+2. If the notification BufferID is not the `keepBufferID`, then activate the BufferID.
+    - [NPPM_GETPOSFROMBUFFERID](#2081nppm_getposfrombufferid) extracts a value that's an encoded version of the view and document index for the buffer:
+      ```
+      value = NPPM_GETPOSFROMBUFFERID(BufferID)
+      view = value >> 30
+      docIndex = value & 0x3FFFFFFF
+      ```
+    - [NPPM_ACTIVATEDOC](#2052nppm_activatedoc) will activate the notification BufferID:
+      ```
+      NPPM_ACTIVATEDOC(view, docIndex)
+      ```
+3. Perform your actions on the notification BufferID, which is now active.
+4. Set the `keepBufferID` as the active file.
+    - Use the same messages as in step 2, but starting with `keepBufferID`:
+      ```
+      value = NPPM_GETCURRENTBUFFERID(keepBufferID)
+      view = value >> 30
+      docIndex = value & 0x3FFFFFFF
+      NPPM_ACTIVATEDOC(view, docIndex)
+      ```
