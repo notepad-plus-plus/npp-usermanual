@@ -2307,7 +2307,7 @@ The general layout of the following notifications look like this
 - **Description** informs about the usage of the notification and provides additional information if needed.
 - **Fields** are the parameters to be provided by the notification.
     - ***hwndFrom*** normally holds the **hwndNpp**, which means that the window handle for the current Notepad++ window is passed as that argument.  If it is shown as a `0` or `NULL`, then that notification does not use this Field.  If it is something else, a full description will be provided.
-    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (_Warning_: this BufferID is often not the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first; a reasonable sequence for handling this is described in [Notification BufferID](#notification-bufferid).)  
+    - ***idFrom*** normally holds the **BufferID**, which means that the buffer identification integer for the editor buffer of the relevant file is passed as that argument. (_Warning_: this BufferID is often not the _active_ buffer, and if you want to perform an action on it that requires that it be active, you will have to activate that file first; a reasonable sequence for handling this is described in [Notification BufferID](#notification-bufferid).)
 	If **_idFrom_** is shown as `0` or `NULL`, then that notification does not use this Field.  If **_idFrom_** needs a different value for a notification, a full description will be provided.
 
 ---
@@ -2677,16 +2677,28 @@ NOTE: Many plugins or scripts which use this notification have wrongly assumed t
 
 The BufferID received by a notification is not necessarily the _active_ buffer.  If you want to perform an action on the buffer that requires that it be active, you will have to activate that file first.  One reasonable sequence of events for doing some action on a specific BufferID in a callback is as follows:
 
-1. Store the BufferID of the active file (`keepBufferID`)
+1. Store the BufferID of the active file (`keepBufferID`).
     - [NPPM_GETCURRENTBUFFERID](#2084nppm_getcurrentbufferid) can be used to get the active file's BufferID:
-      `keepBufferID = NPPM_GETCURRENTBUFFERID()`
+      ```
+      keepBufferID = NPPM_GETCURRENTBUFFERID()
+      ```
 2. If the notification BufferID is not the `keepBufferID`, then activate the BufferID.
     - [NPPM_GETPOSFROMBUFFERID](#2081nppm_getposfrombufferid) extracts a value that's an encoded version of the view and document index for the buffer:
-      `value = NPPM_GETPOSFROMBUFFERID(BufferID)` 
-      `view = value >> 30`
-      `docIndex = value & 0x3FFFFFFF`
-    - [NPPM_ACTIVATEDOC](#2052nppm_activatedoc)`(view, docIndex)` will activate the notification BufferID:
-      `NPPM_ACTIVATEDOC(view, docIndex)`
+      ```
+      value = NPPM_GETPOSFROMBUFFERID(BufferID)
+      view = value >> 30
+      docIndex = value & 0x3FFFFFFF
+      ```
+    - [NPPM_ACTIVATEDOC](#2052nppm_activatedoc) will activate the notification BufferID:
+      ```
+      NPPM_ACTIVATEDOC(view, docIndex)
+      ```
 3. Perform your actions on the notification BufferID, which is now active.
 4. Set the `keepBufferID` as the active file.
-    - use the same messages as in step 2, but starting with `value = NPPM_GETCURRENTBUFFERID(keepBufferID)`
+    - Use the same messages as in step 2, but starting with `keepBufferID`:
+      ```
+      value = NPPM_GETCURRENTBUFFERID(keepBufferID)
+      view = value >> 30
+      docIndex = value & 0x3FFFFFFF
+      NPPM_ACTIVATEDOC(view, docIndex)
+      ```
