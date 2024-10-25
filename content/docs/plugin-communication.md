@@ -2678,11 +2678,15 @@ NOTE: Many plugins or scripts which use this notification have wrongly assumed t
 The BufferID received by a notification is not necessarily the _active_ buffer.  If you want to perform an action on the buffer that requires that it be active, you will have to activate that file first.  One reasonable sequence of events for doing some action on a specific BufferID in a callback is as follows:
 
 1. Store the BufferID of the active file (`keepBufferID`)
-    - [NPPM_GETCURRENTBUFFERID](#2084nppm_getcurrentbufferid) can be used to populate `keepBufferID`
+    - [NPPM_GETCURRENTBUFFERID](#2084nppm_getcurrentbufferid) can be used to get the active file's BufferID:
+      `keepBufferID = NPPM_GETCURRENTBUFFERID()`
 2. If the notification BufferID is not the `keepBufferID`, then activate the BufferID.
-	- [NPPM_GETPOSFROMBUFFERID](#2081nppm_getposfrombufferid)`(BufferID)` extracts a value p for the notification BufferID.
-	- Set `v = p >> 30`; set `i = p & 0x3FFFFFFF`.
-	- [NPPM_ACTIVATEDOC](#2052nppm_activatedoc)`(v,i)` will activate the notification BufferID
+    - [NPPM_GETPOSFROMBUFFERID](#2081nppm_getposfrombufferid) extracts a value that's an encoded version of the view and document index for the buffer:
+      `value = NPPM_GETPOSFROMBUFFERID(BufferID)` 
+      `view = value >> 30`
+      `docIndex = value & 0x3FFFFFFF`
+    - [NPPM_ACTIVATEDOC](#2052nppm_activatedoc)`(view, docIndex)` will activate the notification BufferID:
+      `NPPM_ACTIVATEDOC(view, docIndex)`
 3. Perform your actions on the notification BufferID, which is now active.
 4. Set the `keepBufferID` as the active file.
-    - use the same messages as in step 2, but starting with `NPPM_GETPOSFROMBUFFERID(keepBufferID)`
+    - use the same messages as in step 2, but starting with `value = NPPM_GETCURRENTBUFFERID(keepBufferID)`
