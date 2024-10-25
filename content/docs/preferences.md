@@ -545,10 +545,15 @@ A variety of settings that didn't fit elsewhere
         * `Disable`: Will not check to see if the file has been updated on disk.
     * `☐ Update silently`: Instead of prompting, will automatically reload the file from disk.
     * `☐ Scroll to the last line after update`: Will scroll to the end of the file after reloading from disk (otherwise, the [caret](#caret-and-cursor "typing/insertion cursor") and scrolled-location stays where it was before the update).
+* **System Tray** dropdown
+    - `No action to` **system tray**: Neither minimizing Notepad++ nor closing Notepad++ will place the Notepad++ icon on the system tray.
+    - `Minimize to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
+    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed. (New to v8.7.1.)
+    - The dropdown is new to v8.7.1.  In previous versions, there was just a checkbox for `☐ Minimize to system tray`, and there was no `Close to` option available.
+    - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
 * `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
 * `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
-* `☐ Minimize to system tray`: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
 * `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.

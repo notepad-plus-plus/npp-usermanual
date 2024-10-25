@@ -170,3 +170,23 @@ If you hold down <kbd>Shift</kbd> (while still holding the <kbd>Ctrl</kbd> key t
 The Document Switcher functionality can also be achieved using just the mouse (if you have a scroll wheel): Right-click in the editing area for a tab and hold the right mouse button, then begin scrolling the mouse wheel (in either direction) to display the Document Switcher popup; further scrolling of the scroll wheel will change which tab is shown in bold in the list. Releasing the right mouse button will cause the tab that is currently bold to be activated. An alternate way to activate a tab using the mouse, while the right mouse button is still held and the Document Switcher is displayed, is to left-click on one of the tab names from the list, which will immediately make that entry bold, activate the tab, and close the popup (even though you haven't let go of the right mouse button yet).
 
 Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
+
+## System Tray
+
+When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).  
+
+When on the system tray, Notepad++ will not show up in the Windows <kbd>Alt+Tab</kbd> list of applications to switch between, nor will it show up in the main Task Manager's main Applications list; however, it will still show up tine Task Manager's Details list, which shows all the executable files running.
+
+If you left-click on the Notepad++ system tray icon, it will activate the Notepad++ application: the main Notepad++ window will be shown again, and the icon will move from the system tray back to the taskbar.
+
+If you right-click on the Notepad++ system tray icon, it will show a context menu:
+- `Activate`: Shows main Notepad++ window.
+- `New`: Shows main Notepad++ with a new file tab created.
+- `New and Paste`: Shows main Notepad++ with a new file tab created, and it will paste the current contents of the clipboard into that new tab.
+- `Open...`: Shows main Notepad++ window, and immediately calls **File > Open** so that you can open a file right away.
+- `Find in Files`: Shows the **Find in Files** dialog, and allows you to run a search and/or replace action _without_ showing the main Notepad++ window.  
+	- If you run a search, the Search Results window or panel would be populated:
+		- If the Search Results had been previously docked as a panel in Notepad++ (the default state for Search Results), then the next time you activate Notepad++, the Search Results panel will be visible with the results you obtained.
+		- If the Search Results had been previously undocked and in a separate window from Notepad++, then the undocked Search Results window will usually become visible at this point, even though the main Notepad++ window is not visible.  You can use the normal Search Results navigation: so double-clicking on a result will activate Notepad++, showing the result you chose in the active Notepad++ view.
+	- If you ran a replace action, those replacements will have occurred, even though the Notepad++ window is not visible and no results are shown.
+- `Close Tray Icon`: Completely closes/exits Notepad++, and icon will be removed from the System Tray
