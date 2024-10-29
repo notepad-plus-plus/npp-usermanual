@@ -673,7 +673,7 @@ When selecting the command, there are generally two columns: Name and Shortcut. 
 
 The message area will tell you if there are "no shortcut conflicts for this item" (when the shortcut for the selected action is not used anywhere else; or it will give you the name of the tab, followed by the Name for the action, which uses the same shortcut as the currently-selected action.
 
-The **Filter** input box allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  (For all but the `Scintilla commands` tab, this also filters based on Shortcut.)  There are no regular expression or wildcard syntax interpretations in the Filter.
+The **Filter** input box allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  (Starting in v8.1.3, this also filters based on Shortcut, except for `Scintilla commands` tab; starting in v8.6.5, the shortcut filters also work on `Scintilla commands`.) There are no regular expression or wildcard syntax interpretations in the Filter.
 
 Starting in v8.6.5, when you type multiple space-separated character sequences ("tokens") as your **Filter**, it will try to match each token separately, in the same entry.  When filtering, it will search all the displayed fields for the dialog (whether in "Name" or "Shortcut" or "Plugin" column).  All of the tokens must be matched somewhere in the entry, but they can be in any order.  Some examples:
 
