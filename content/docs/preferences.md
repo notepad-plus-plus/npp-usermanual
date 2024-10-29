@@ -678,6 +678,7 @@ The **Filter** input box allows you to enter a piece of literal text, and it wil
 Starting in v8.6.5, when you type multiple space-separated character sequences ("tokens") as your **Filter**, it will try to match each token separately, in the same entry.  When filtering, it will search all the displayed fields for the dialog (whether in "Name" or "Shortcut" or "Plugin" column).  All of the tokens must be matched somewhere in the entry, but they can be in any order.  Some examples:
 
 **Shortcut Mapper > Plugin commands**
+
 | Name | Shortcut | Plugin | Filter | Match?
 |------|----------|--------|--------|--------
 | do thing | <kbd>Alt+G</kbd> | BlahLint | `lint do +` | Yes (`lint` from Plugin, `do` from Name, `+` from Shortcut)
