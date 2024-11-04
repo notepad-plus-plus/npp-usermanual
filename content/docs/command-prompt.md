@@ -147,7 +147,7 @@ code | file
 * `-nosession`: Launch Notepad++ without previous session.
 * `-notabbar`: Launch Notepad++ without tabbar.
 * `-ro`: Make the `filepath` read only.
-* `-systemtray`: Launch Notepad++ directly in system tray.
+* `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray).
 * `-loadingTime`: Display Notepad++ loading time.
     - Starting in v8.6.1, it shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
     - In v8.6 or earlier, it just showed the total number of seconds for Notepad++ to load, without millisecond precision and without the listing of the times for individual loading stages.

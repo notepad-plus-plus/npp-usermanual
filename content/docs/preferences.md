@@ -545,10 +545,15 @@ A variety of settings that didn't fit elsewhere
         * `Disable`: Will not check to see if the file has been updated on disk.
     * `☐ Update silently`: Instead of prompting, will automatically reload the file from disk.
     * `☐ Scroll to the last line after update`: Will scroll to the end of the file after reloading from disk (otherwise, the [caret](#caret-and-cursor "typing/insertion cursor") and scrolled-location stays where it was before the update).
+* **System Tray** dropdown
+    - `No action to` **system tray**: Neither minimizing Notepad++ nor closing Notepad++ will place the Notepad++ icon on the system tray.
+    - `Minimize to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
+    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed. (New to v8.7.1.)
+    - The dropdown is new to v8.7.1.  In previous versions, there was just a checkbox for `☐ Minimize to system tray`, and there was no `Close to` option available.
+    - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
 * `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
 * `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
-* `☐ Minimize to system tray`: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
 * `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
 * `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
   * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
@@ -588,6 +593,9 @@ Some of these styles apply to the background only, some apply to the foreground 
    - Global override takes precedence over any other color or font defined elsewhere, and will mask any per-language settings.
    - Unless you want to turn off all syntax highlighting for all the programming languages, you likely don't want to use the `Global override` settings.
    - Do not use this if all you are trying to do is set the color for Normal Text files (`.txt`): for those, use the `Default style` below.
+   - Starting in v8.7.1, there is a `What is Global override?` link which you can hover over to find out more about the global overrides; and new installations and new portable copies will have **Global override** at the _end_ of the list of **Global Styles** instead of the beginning, to better emphasize that **Global override** is more drastic than you usually need.
+       - If you upgrade from an older version of Notepad++ to v8.7.1 or newer, the **Global override** will not necessarily be moved to the end of the list.
+       - In such a case, or even if you are in an older version of Notepad++, you can edit [`%AppData%\Notepad++\stylers.xml` (or your active theme file)](../config-files/#highlighting-schemes-stylersxml) following the advice for [editing configuration files](../config-files/#editing-configuration-files), and move the `<WidgetStyle name="Global override" ... />` element from the top of the `<GlobalStyles>` section to the end of that section; after saving, exiting Notepad++, and restarting the app, **Global override** will be moved to the end of the list.
 * **Default style** [background and foreground] ⇒ This sets the base font and colors for all languages -- so any unstyled text will use these settings.
    - As described previously, `Default Style` is used to set the color for Normal Text (`.txt` files, and anything else that isn't highlighted by a lexer).
    - Also, as described a few paragraphs earlier, the highlighters for specific languages will inherit from this `Default Style` for things like font and possibly color, if there is no value defined for that language.
