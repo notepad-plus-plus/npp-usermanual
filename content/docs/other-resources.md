@@ -63,7 +63,7 @@ reg delete HKCR\Applications\notepad.exe /v NoOpenWith /f
 
 **Note**: Windows 11 introduced UWP version of Notepad that use the same technique as described (but with undocumented [UseFilter](https://www.geoffchappell.com/studies/windows/win32/ntdll/api/rtl/rtlexec/openimagefileoptionskey.htm)) to replace the built-in Notepad. As UWP apps are started differently than regular apps, they cannot be replaced the same way and UWP Notepad must be uninstalled. Otherwise it would start when opening text files or when run from **Start Menu**. What\`s more, to be able to again use built-in Notepad (now redirected to Notepad++) to open text files the `NoOpenWith` registry value must be removed (based on [How to Restore Old Classic Notepad in Windows 11](https://www.winhelponline.com/blog/restore-old-classic-notepad-windows/)).
 
-#### Undo the Notepad Replacement Hack
+### Undo the Notepad Replacement Hack
 
 For Windows 7 - Windows 10, use the the following command to undo the replacement:
 
