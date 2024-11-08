@@ -439,6 +439,28 @@ In extended mode, these escape sequences (a backslash followed by a single chara
 
 † NOTE: While some of these Extended Search Mode escape sequences look like regular expression escape sequences, they are not identical.  Ones marked with † are different from or not available in regular expressions.
 
+### Automatic Switch to Extended Search Mode
+
+There is actually a situation where Notepad++ will automatically change your search from Normal to Extended Search Mode.
+
+Assume you have the text:
+```txt
+456
+abc
+123
+456
+abc
+123
+```
+
+If you were already in Normal Search Mode, and have the [**Settings > Preferences > Searching**](../preferences/#searching) set to `☑ Fill Find Field with Selected Text`, and then selected two lines of text (the first `abc` and `123` pair), then run the **Find** dialog, the **Find what** box will appear to contain the two lines concatenated with each other (`abc123`), but internally, it will search for the two distinct lines separated by a newline sequence, even though it's in Normal Search Mode.  However, if you run **Find All in Current Document**, the **Search Results** window will show the search as **`Search "abc\r\n123" (2 hits in 1 file of 1 searched) [Extended]`**, showing that Notepad++ actually changed to Extended Search Mode for doing the **Find All...** action.  And if you open the **Find** dialog again, you will see that the dialog is in Extended Search Mode now.
+
+The same is true for **Find All in All Opened Documents** and the **Find in Files** and **Find in Projects** searches as well.
+
+So what you need to bear in mind is that if you are in Normal Search Mode and try to search for all occurrences of a multiline string, it can change to Extended Search Mode behind the scenes.  If your selected text happened to have literal text that matches an Extended Search Mode escape sequence, then the search might not do what you think it should.
+
+The best advice is to not search for multiline text if you are in Normal Search Mode, especially if your multi-line selection includes literal backslash-followed-by-letter sequences; but if you choose to do so, understand that the **Find All ...** family of searches can change the mode from Normal Search Mode to Extended Search Mode.
+
 ## Regular Expressions
 
 Notepad++ regular expressions ("regex") use the Boost regular expression library v1.85 (as of NPP v8.6.6), which was originally based on PCRE (Perl Compatible Regular Expression) syntax, only departing from it in very minor ways. Complete documentation on the precise implementation is to be found on the Boost pages for [search syntax](https://www.boost.org/doc/libs/1_85_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html) and [replacement syntax](https://www.boost.org/doc/libs/1_85_0/libs/regex/doc/html/boost_regex/format/boost_format_syntax.html).  (Some users have misunderstood this paragraph to mean that they can use one of the regex-explainer websites that accepts PCRE and expect anything that works there to also work in Notepad++; this is not accurate.  There are many different "PCRE" implimentations, and Boost itself does not claim to be "PCRE", though both Boost and PCRE variants have the same origins in an early version of Perl's regex engine.  If your regex-explainer does not claim to use the same Boost engine as Notepad++ uses, there _will_ be differences between the results from your chosen website and the results that Notepad++ gives.)
