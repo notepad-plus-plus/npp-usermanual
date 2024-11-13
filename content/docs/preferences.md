@@ -47,7 +47,8 @@ These affect the user interface (localization, toolbar, tab bar, and more).
       * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
       * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
     * `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
-    * `☐ Darken inactive tabs`: Change the fill-color on inactive tabs to a darker color.
+    * `☐ Darken inactive tabs`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
+        - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
     * `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
     * `☐ Show close button on each tab`: Add the close button to each tab's entry on the tab bar.
     * `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
@@ -631,7 +632,8 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Active tab focused indicator** [foreground only] ⇒  If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the active tab in the active view.
 * **Active tab unfocused indicator** [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, and if both editor views are visible, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
 * **Active tab text** [foreground only] ⇒ Selects the color to be used for the filename displayed in the titlebar of the active tab.
-* **Inactive tabs** [background and foreground] ⇒ Selects the color to be used for the filename displayed in the titlebars of all inactive tabs.
+* **Inactive tabs** [background and foreground] ⇒ Foreground: selects the color to be used for the filename text displayed in all inactive tabs.  Background: selects the color to be used to fill in the background of all inactive tabs.
+  - Note: for the background setting to affect the inactive tabs, **[Preferences > General**](#general) > `☐ Darken inactive tabs`** must be checkmarked; otherwise, inactive tabs will use the same background color as the active tab instead of using the background color defined here.
 * **Tab color *n*** (1 ≤ *n* ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Light Mode. (Added v8.7)
 * **Tab color dark mode *n*** (1 ≤ *n* ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Dark Mode. (Added v8.7)
 * **URL hovered** [foreground only] ⇒ If [Preferences > Cloud & Link > Clickable Link Settings > Enable](#cloud-link) is checked, when your mouse cursor is hovering over a URL, or if the [caret](#caret-and-cursor "typing/insertion cursor") is inside the URL text, then the URL's foreground color will follow this setting.  The "Go to settings" link will take you to [Preferences > Cloud & Link](#cloud-link) so you can change **Clickable Link Settings**.
