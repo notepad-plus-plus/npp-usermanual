@@ -791,10 +791,10 @@ This menu shows the active syntax highlighter lexer (including [User Defined Lan
 The following settings are for rather specific needs and could cause some confusion if they are changed from default behavior. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
 
 * Allow regex backward search: Backward regex searching is forbidden by default due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
-```
-<FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" regexBackward4PowerUser="yes">
-```
-Simply add `regexBackward4PowerUser="yes"` if this option is absent.
+   ```
+   <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" regexBackward4PowerUser="yes">
+   ```
+   Simply add `regexBackward4PowerUser="yes"` if this option is absent.
 
 * Change the number of expressions that can be saved in the [Find/Replace](../searching/) dialog's Find, Replace, Filters, and Directory fields.  They are set in the `<FindHistory ...>` tag inside `config.xml`, using the attributes:
     * `nbMaxFindHistoryFind` => changes the number of **Find what** entries that are saved in the history (0 .. 30, default = 10)
@@ -803,10 +803,18 @@ Simply add `regexBackward4PowerUser="yes"` if this option is absent.
     * `nbMaxFindHistoryFilter` => changes the number of **Filter(s)** entries that are saved in the history (0 .. 20, default = 10)
 
 * Changing the command-line interpreter used: By default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
-```
-<GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
-```
-If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
-```
-<GUIConfig name="commandLineInterpreter">"C:\path\with spaces\to\cli.exe"</GUIConfig>
-```
+   ```
+   <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+   ```
+   If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
+   ```
+   <GUIConfig name="commandLineInterpreter">"C:\path\with spaces\to\cli.exe"</GUIConfig>
+   ```
+* Control whether tab coloring follows theme or not: 
+  - By default, in Light Mode, the tab colors will follow the theme's settings for **[Settings > Style Configurator > Global Styles](#global-styles) > Active tab text** foreground and **Inactive tabs** foreground and background colors; in Dark Mode, the tab colors will _not_ follow those settings (because many users use Dark themes that don't set that color, which would mess up the user interface for those users, and they wouldn't be able to fix it, because the style wouldn't be listed in the theme).
+  - There are two hidden settings in the Dark Mode section of the XML:
+    ```
+    <GUIConfig name="DarkMode" ... darkTabUseTheme="no" ... lightTabUseTheme="yes" />
+    ```
+    - `darkTabUseTheme="no"` _(default)_ or `"yes"`: If `"no"`, Dark Mode will ignore those two style settings for tab colors; if `"yes"`, Dark Mode will use those two style settings for tab colors.
+    - `lightModeUseTheme="yes"` _(default)_ or `"no"`: If `"no"`, Light Mode will ignore those two style settings for tab colors; if `"yes"`, Light Mode will use those two style settings for tab colors.
