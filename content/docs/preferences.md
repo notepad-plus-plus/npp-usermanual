@@ -812,7 +812,7 @@ The following settings are for rather specific needs and could cause some confus
    ```
 * Control whether tab coloring follows theme or not: 
   - By default, in Light Mode, the tab colors will follow the theme's settings for **[Settings > Style Configurator > Global Styles](#global-styles) > Active tab text** foreground and **Inactive tabs** foreground and background colors; in Dark Mode, the tab colors will _not_ follow those settings (because many users use Dark themes that don't set that color, which would mess up the user interface for those users, and they wouldn't be able to fix it, because the style wouldn't be listed in the theme).
-  - There are two hidden settings in the Dark Mode section of the XML:
+  - There are two hidden settings in the Dark Mode section of the XML (new in v8.4.8):
     ```
     <GUIConfig name="DarkMode" ... darkTabUseTheme="no" ... lightTabUseTheme="yes" />
     ```
