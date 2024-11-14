@@ -818,3 +818,6 @@ The following settings are for rather specific needs and could cause some confus
     ```
     - `darkTabUseTheme="no"` _(default)_ or `"yes"`: If `"no"`, Dark Mode will ignore those two style settings for tab colors; if `"yes"`, Dark Mode will use those two style settings for tab colors.
     - `lightModeUseTheme="yes"` _(default)_ or `"no"`: If `"no"`, Light Mode will ignore those two style settings for tab colors; if `"yes"`, Light Mode will use those two style settings for tab colors.
+  - Also, the `darkTabIconSet` and `lightTabIconSet` attributes in that same tag (not shown) both have hidden option values available.
+    - In the GUI, they can be set to use the alternate icon or not.
+    - But by manually editing the file, you can also force it to use the icon set defined by the opposite mode (use the light icon set in dark mode, or the dark icon set in light mode).  Values can be `"0"` value for light icons,`"2"` for dark icons and, `"1"` is for alternate icons.
