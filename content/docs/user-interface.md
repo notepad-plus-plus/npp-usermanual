@@ -179,7 +179,7 @@ Some users have wondered about a "yellow flash" they have seen when using Notepa
 
 ## Status Bar
 
-If you have not hidden the Status Bar using the **[Settings > Preferences > General](../preferences/general/) > Status Bar > ☑ Hide** checkbox, then the bottom of the Notepad++ window will contain a status bar.  
+If you have not hidden the Status Bar using the **[Settings > Preferences > General](../preferences/#general) > Status Bar > ☑ Hide** checkbox, then the bottom of the Notepad++ window will contain a status bar.  
 
 If the Notepad++ window is wide enough, it will contain six sections, as seen in this screenshot:
 
