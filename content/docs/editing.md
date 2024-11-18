@@ -9,11 +9,13 @@ When editing in Notepad++, the insertion point in the editing window where your 
 
 ## Typing Mode
 
-As with many other text editors and other Windows applications, Notepad++ allows two different typing modes: "insertion mode" and "overwrite mode".  
+As with many other text editors and other Windows applications, Notepad++ allows two different typing modes: "insertion mode" and "overwrite mode".
 - In insertion mode, text is typed at the position of the caret, and any characters that came after the caret remain after the caret.  For example: if you had `ab‸cd` (where `‸` indicates the typing caret, not the literal `‸` character), then typing `xyz` would end up with `abxyz‸cd`.
 - In overwrite mode, also known as "type over mode", text is typed at the position of the caret, and any characters that came after the caret will be overwritten.  For example: if you had `ab‸cd` (where `‸` indicates the typing caret, not the literal `‸` character), then typing `xyz` would end up with `abxyz‸`, with the `cd` no longer being there.
 
-To toggle between insertion mode and overwrite mode, use the <kbd>Insert</kbd> key on your keyboard.  Alternatively, if the [Status Bar](../user-interface/#status-bar) is visible, it will show `INS` or `OVR` to indicate the typing mode, and clicking that indicator will toggle the mode.
+While in insertion mode, the caret-position indicator will be either a vertical bar (like `|`) or a shaded box (like `▒`), depending on [**Settings > Preferences > Editing 1 > Caret Settings**](../preferences/#editing-1).  When in overwrite mode, the caret-position indicator will be an underline (like `_`).  The speed of the blinking for the caret-position indicator can also be set in the same preferences section.
+
+To toggle between insertion mode and overwrite mode, use the <kbd>Insert</kbd> key on your keyboard.  Alternatively, if the [Status Bar](../user-interface/#status-bar) is not hidden using **[Settings > Preferences > General](../preferences/#general) > Status Bar > `☐ Hide`**, one field in the Status Bar will show `INS` or `OVR` to indicate the typing mode, and clicking on that indicator will toggle the mode.
 
 ## Selection modes & Column Editor
 
