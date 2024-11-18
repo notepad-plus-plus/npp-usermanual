@@ -196,10 +196,10 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
     - Double-clicking or right-clicking this field will bring up a copy of the **Language** menu.
 2. Document Size: Shows the length of the file (in bytes, not characters, since in many encodings, some characters take more than one byte to encode) and the number of lines in the file.
     - Double-clicking this field will bring up the **[View > Summary](../views/#file-summary)** dialog.
-3. Current Position: 
-    - `Ln : ℕ`: Indicates which line the [caret](#caret-and-cursor "typing/insertion cursor") is on.
-    - `Col : ℕ`: Indicates which column of the current line the [caret](#caret-and-cursor "typing/insertion cursor") is on.
-    - `Pos : ℕ`: Indicates which byte of the file the [caret](#caret-and-cursor "typing/insertion cursor") is on.  (Only shown when there is no active selection.)
+3. Current Position of the [caret](#caret-and-cursor "typing/insertion cursor"): 
+    - `Ln : ℕ`: Indicates the [caret](#caret-and-cursor "typing/insertion cursor") is on Line `ℕ`. (Line 1 is the start of the document).
+    - `Col : ℕ`: Indicates the [caret](#caret-and-cursor "typing/insertion cursor") is on Column `ℕ` of the current Line. (Column 1 indicates the caret is at the start of the line.)
+    - `Pos : ℕ`: When there is no active selection, this sub-field indicates which byte of the file the [caret](#caret-and-cursor "typing/insertion cursor") is on.  (1 indicates the caret is before the first byte in the document.)
     - `Sel : ℕ | ℒ`: When there is an active [stream selection](../editing/#selection-modes--column-editor/), `ℕ` shows how many characters (not bytes) are in the stream selection, and `ℒ` shows how many lines are included in the stream selection.
     - `Sel ℙ : ℕ | ℒ`: When there is an active [mutli-editing selection](../editing/#multi-editing/), `ℙ` shows how many separate selection segments make up the multi-selection; `ℕ` shows how many characters (not bytes) are in the multi-selection (throughout all the segments); and `ℒ` shows how many lines are included in the multi-selection.
     - `Sel : ℒxℕ -> ℙ`: When there is an active [column-mode selection](../editing/#selection-modes--column-editor/), `ℒ` shows the number of lines in the column-mode selection (the height of the rectangle), `ℕ` shows the number of characters across (the width of the rectangle), and `ℙ` shows the total number of characters in the column-mode selection.
