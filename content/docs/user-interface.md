@@ -177,6 +177,14 @@ The Document Switcher functionality can also be achieved using just the mouse (i
 
 Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
 
+## Scrolling in Panels
+
+Many of the panels have the ability to scroll: the graphical scrollbars can be dragged for fine control of scrolling, or click in the "empty" area of the scrollbar to scroll a screenfull at a time.  (With some OS versions, the scrollbars may require that you move the mouse over the scrollbar area before the scrollbar is obvious.)
+
+For most panels with scrolling ability, if the panel is active, then the <kbd>MOUSEWHEEL</kbd> can be used to scroll in the vertical direction (<kbd>MOUSEWHEEL Up</kbd> scrolls toward the beginning of the document, <kbd>MOUSEWHEEL Down</kbd> toward the end); or, if there is a horizontal scrollbar but no vertical scrollbar, it can scroll horizontally instead. (Most panels do not have an equivalent mouse control for scrolling horizontally; though if your mouse has a second scroll wheel, that might work, depending on how your mouse's driver works.)
+
+For the editor [View(s)](../views/), the vertical scrollbar and <kbd>MOUSEWHEEL</kbd> scrolling are active when there are enough lines of text to occupy more than one screen (or even when fewer lines, if [**Settings > Preferences > Editing 1 > ☑ Enable scrolling beyond last line**](../preferences/#editing-1) is checkmarked).  The horizontal scrollbar is visible when [**View > Word wrap**](../views/#wrapping) is on and there is enough text on a line to go beyond the physical width of the View; if it's visible, then <kbd>Shift</kbd> + <kbd>MOUSEWHEEL Down</kbd> will horizontally scroll toward the end of the line, and <kbd>Shift</kbd> + <kbd>MOUSEWHEEL Up</kbd> will horizontally scroll toward the beginning of the line (and a mouse with a second wheel may also be able to scroll the editor View horizontally, depending on how your mouse's driver works).
+
 ## Status Bar
 
 If you have not hidden the Status Bar using the **[Settings > Preferences > General](../preferences/#general) > Status Bar > ☑ Hide** checkbox, then the bottom of the Notepad++ window will contain a status bar.
