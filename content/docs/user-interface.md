@@ -177,6 +177,39 @@ The Document Switcher functionality can also be achieved using just the mouse (i
 
 Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
 
+## Status Bar
+
+If you have not hidden the Status Bar using the **[Settings > Preferences > General](../preferences/general/) > Status Bar > ☑ Hide** checkbox, then the bottom of the Notepad++ window will contain a status bar.  
+
+If the Notepad++ window is wide enough, it will contain six sections, as seen in this screenshot:
+
+![sb-full](../images/sb-full.png)
+
+If the Notepad++ window is too narrow, the first section will be missing, as seen here:
+
+![sb-narrow](../images/sb-narrow.png)
+
+1. Document Type: shows what type of file is being edited.
+    - It will be the full name of the Language shown as active in the **[Language](../programming-languages/)** menu.  For example, if **Language > XML** is active, the Document Type field will show `eXtensible Markup Language file`.
+    - If the Language is a [UDL](../user-defined-language-system/), the name of the UDL will be prefixed by `User Defined language file -` to make it obvious that it's a UDL, not a built-in language.
+    - This field will not be visible if the Notepad++ window is too narrow.
+    - Double-clicking or right-clicking this field will bring up a copy of the **Language** menu.
+2. Document Size: Shows the length of the file (in bytes, not characters, since in many encodings, some characters take more than one byte to encode) and the number of lines in the file.
+    - Double-clicking this field will bring up the **[View > Summary](../views/#file-summary)** dialog.
+3. Current Position: 
+    - `Ln : ℕ`: Indicates which line the [caret](#caret-and-cursor "typing/insertion cursor") is on.
+    - `Col : ℕ`: Indicates which column of the current line the [caret](#caret-and-cursor "typing/insertion cursor") is on.
+    - `Pos : ℕ`: Indicates which byte of the file the [caret](#caret-and-cursor "typing/insertion cursor") is on.  (Only shown when there is no active selection.)
+    - `Sel : ℕ | ℒ`: When there is an active [stream selection](../editing/#selection-modes--column-editor/), `ℕ` shows how many characters (not bytes) are in the stream selection, and `ℒ` shows how many lines are included in the stream selection.
+    - `Sel ℙ : ℕ | ℒ`: When there is an active [mutli-editing selection](../editing/#multi-editing/), `ℙ` shows how many separate selection segments make up the multi-selection; `ℕ` shows how many characters (not bytes) are in the multi-selection (throughout all the segments); and `ℒ` shows how many lines are included in the multi-selection.
+    - `Sel : ℒxℕ -> ℙ`: When there is an active [column-mode selection](../editing/#selection-modes--column-editor/), `ℒ` shows the number of lines in the column-mode selection (the height of the rectangle), `ℕ` shows the number of characters across (the width of the rectangle), and `ℙ` shows the total number of characters in the column-mode selection.
+    - Double-clicking this field will bring up the [**Search** menu's](../searching/) **Go to...** dialog.
+4. End-of-File Format: Shows whether the active document is using `Windows (CR LF)` line endings (`\r\n`), `Unix (LF)` line endings (`\n`), or `Mac (CR)` line endings (`\r`, for ancient pre-OSX Mac-format files).
+    - Double-clicking or right-clicking this field will bring up the [**Edit** menu's](../editing/#edit-menu) **EOL Conversion** sub-menu.
+5. File Encoding: Shows the file encoding or character set.
+    - Double-clicking or right-clicking this field will bring up the [**Encoding** menu](../preferences/#encoding-menu).
+6. Typing Mode: Shows which [typing mode](../editing/#typing-mode) is active -- insert or overwrite.
+
 ## System Tray
 
 When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).  
