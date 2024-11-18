@@ -208,7 +208,8 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
     - Double-clicking or right-clicking this field will bring up the [**Edit** menu's](../editing/#edit-menu) **EOL Conversion** sub-menu.
 5. File Encoding: Shows the file encoding or character set.
     - Double-clicking or right-clicking this field will bring up the [**Encoding** menu](../preferences/#encoding-menu).
-6. Typing Mode: Shows which [typing mode](../editing/#typing-mode) is active -- insert or overwrite.
+6. Typing Mode: Shows which [typing mode](../editing/#typing-mode) is active -- insert (`INS`) or overwrite (`OVR`).
+    - Left-Clicking this field will toggle the value.
 
 ## System Tray
 
