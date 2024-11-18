@@ -190,7 +190,7 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
 ![sb-narrow](../images/sb-narrow.png)
 
 1. Document Type: shows what type of file is being edited.
-    - It will be the full name of the Language shown as active in the **[Language](../programming-languages/)** menu.  For example, if **Language > XML** is active, the Document Type field will show `eXtensible Markup Language file`.
+    - It will be the full name of the Language shown as active in the **[Language](../programing-languages/)** menu.  For example, if **Language > XML** is active, the Document Type field will show `eXtensible Markup Language file`.
     - If the Language is a [UDL](../user-defined-language-system/), the name of the UDL will be prefixed by `User Defined language file -` to make it obvious that it's a UDL, not a built-in language.
     - This field will not be visible if the Notepad++ window is too narrow.
     - Double-clicking or right-clicking this field will bring up a copy of the **Language** menu.
