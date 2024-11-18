@@ -25,10 +25,10 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * To make changes to your localization, edit the language file `localization\<languagename>.xml`, as per the instructions in the [Binary Translation](../binary-translation/) section.
         * _NOTE_: After making changes to the XML file in the `localization` directory, or after upgrading to a new version of Notepad++, you need to refresh the `nativeLang.xml`: use the **Localization** drop-down to change the **Localization** to another language then change it back immediately to your preferred language, or skip the "another language" step and just click on the preferred language -- either way ends up with copying the file to `nativeLang.xml` and immediately updating Notepad++'s text for menus and dialogs.  (Unlike many configuration files, exiting Notepad++ and restarting the application will _not_ bring in the new settings from an edited `localization\<languagename>.xml`; you _must_ re-choose the desired **Localization** for the changes to be applied.)
         * _NOTE_: After changing the Localization in this Preferences dialog, certain translatable strings, like the tooltip/hover text in dialog boxes, will not refresh until Notepad++ is restarted.  If it ever looks like your Localization didn't fully activate, try exiting all instances of Notepad++ then restarting the application.
-* **Status bar**: There will be a Status Bar along the bottom of the Notepad++ window, showing file type, [caret](#caret-and-cursor "typing/insertion cursor") location, line-ending style, encoding, and INS/DEL mode.
-    * `☐ Hide`: The status bar will be hidden
+* **Status bar**: 
+    * `☐ Hide`: Without checkmarking this option, there will be a [status bar](../user-interface/#status-bar) along the bottom of the Notepad++ window showing information about the current document. The status bar will be hidden when this option is checkmarked.
 * **Toolbar**:
-    * `☐ Hide`: The icon-based toolbar will be hidden.
+    * `☐ Hide`: The icon-based [toolbar](../user-interface/#toolbar) will be hidden.
     * There is a radio-button set of choices for the icons (updated v8.0.0):
         * `Fluent UI: small`: Uses small versions of the Fluent UI icons.
         * `Fluent UI: large`: Uses large versions of the Fluent UI icons.
@@ -667,7 +667,7 @@ There is also a `<GlobalStyles>` section, with `<WidgetStyle>` entries correspon
 
 If you find no syntax highlighting to be applied when a particular programming language is selected from the Languages menu, check which theme you are using in the Style Configurator dialog.  If your selected theme does not include settings for a given programming language, it cannot apply the highlighting.  You can edit the theme's XML file, pasting in the appropriate `<LexerType>` from a different theme (or the default `stylers.xml`) into your theme file; save the file, exit and reload Notepad++; now, the language should be listed in your theme's Style Configurator languages list, and you should be able to set the colors to match the other languages in your theme.
 
-If you change a color in your Style Configurator, but the color doesn't change in the editor, it may be that you don't have the right language lexer selected: In the main Notepad++ window, the lower-left of the status bar will list the active lexer, or you can check the Language menu for which entry has the `•` to indicate it's selected.
+If you change a color in your Style Configurator, but the color doesn't change in the editor, it may be that you don't have the right language lexer selected: In the main Notepad++ window, the lower-left of the [status bar](../user-interface/#status-bar) will list the active lexer, or you can check the **Language** menu for which entry has the `•` to indicate it's selected.
 
 ## Shortcut Mapper
 

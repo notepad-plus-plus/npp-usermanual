@@ -7,6 +7,16 @@ weight: 10
 
 When editing in Notepad++, the insertion point in the editing window where your text will be typed is called the "caret", and is indicated by either a vertical bar or a box around the insertion location, depending on [Caret settings](../preferences/#editing-1). This is separate from the mouse cursor, which is the graphical pointer that moves freely as you move your mouse, not limited to the editing window, and can be used for changing the caret location and for interacting with the rest of the user interface. (Some also call the "caret" the "typing cursor" or "[text insertion/selection cursor](https://en.wikipedia.org/wiki/Caret_navigation)" or sometimes just the "cursor".  The name "caret" comes from the "[proofreader's caret](https://en.wikipedia.org/wiki/Caret_(proofreading))" `‸` or `^`, which is used to indicate where text needs to be inserted in a manuscript. The Notepad++ user interface and this manual both try to disambiguate the two by using "caret" for the typing cursor and "cursor" for the mouse cursor.)
 
+## Typing Mode
+
+As with many other text editors and other Windows applications, Notepad++ allows two different typing modes: "insertion mode" and "overwrite mode".
+- In insertion mode, text is typed at the position of the caret, and any characters that came after the caret remain after the caret.  For example: if you had `ab‸cd` (where `‸` indicates the typing caret, not the literal `‸` character), then typing `xyz` would end up with `abxyz‸cd`.
+- In overwrite mode, also known as "type over mode", text is typed at the position of the caret, and any characters that came after the caret will be overwritten.  For example: if you had `ab‸cd` (where `‸` indicates the typing caret, not the literal `‸` character), then typing `xyz` would end up with `abxyz‸`, with the `cd` no longer being there.
+
+While in insertion mode, the caret-position indicator will be either a vertical bar (like `|`) or a shaded box (like `▒`), depending on [**Settings > Preferences > Editing 1 > Caret Settings**](../preferences/#editing-1).  When in overwrite mode, the caret-position indicator will be an underline (like `_`).  The speed of the blinking for the caret-position indicator can also be set in the same preferences section.
+
+To toggle between insertion mode and overwrite mode, use the <kbd>Insert</kbd> key on your keyboard.  Alternatively, if the [Status Bar](../user-interface/#status-bar) is not hidden using **[Settings > Preferences > General](../preferences/#general) > Status Bar > `☐ Hide`**, one field in the Status Bar will show `INS` or `OVR` to indicate the typing mode, and clicking on that indicator will toggle the mode.
+
 ## Selection modes & Column Editor
 
 Notepad++ has two modes for selecting text: stream selection and column mode selection.

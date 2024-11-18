@@ -13,7 +13,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 - The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the options to **Hide** the tab bar or to **Lock** the tab bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
 
-- If you click on a tab on the tab bar, that tab will become the active tab in the view.  
+- If you click on a tab on the tab bar, that tab will become the active tab in the view.
 
 - If you hover over a tab on the tab bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
@@ -29,7 +29,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
   ![tabNavNextPrev](../images/tabNavNextPrev.gif)
 
 - To move tab from one position to other position:
-  1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position. This will wrap.  
+  1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position. This will wrap.
       - If the Tab Bar is locked (using [**Tab Bar > Lock** preferences](../preferences/#general)), then <kbd>Shift</kbd> + ```MOUSEWHEEL``` will just activate the next or previous tab (without wrapping).
   2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position. This will not wrap.
       - This will move the tab order even if the Tab Bar is locked.
@@ -141,10 +141,10 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 - **Folder as Workspace** ⇒ [**View > Folder as Workspace**](/views/#panels): Toggles display of the [Folder as Workspace](/session/#folder-as-workspace) panel.
 - **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](/views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
 - **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
-- **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro. 
-- **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro. 
-- **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times. 
-- **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu. 
+- **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro.
+- **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro.
+- **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times.
+- **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu.
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
@@ -177,9 +177,44 @@ The Document Switcher functionality can also be achieved using just the mouse (i
 
 Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
 
+## Status Bar
+
+If you have not hidden the Status Bar using the **[Settings > Preferences > General](../preferences/#general) > Status Bar > ☑ Hide** checkbox, then the bottom of the Notepad++ window will contain a status bar.
+
+If the Notepad++ window is wide enough, it will contain six sections, as seen in this screenshot:
+
+![sb-full](../images/sb-full.png)
+
+If the Notepad++ window is too narrow, the first section will be missing, as seen here:
+
+![sb-narrow](../images/sb-narrow.png)
+
+1. Document Type: shows what type of file is being edited.
+    - It will be the full name of the Language shown as active in the **[Language](../programing-languages/)** menu.  For example, if **Language > XML** is active, the Document Type field will show `eXtensible Markup Language file`.
+    - If the Language is a [UDL](../user-defined-language-system/), the name of the UDL will be prefixed by `User Defined language file -` to make it obvious that it's a UDL, not a built-in language.
+    - This field will not be visible if the Notepad++ window is too narrow.
+    - Double-clicking or right-clicking this field will bring up a copy of the **Language** menu.
+2. Document Size: Shows the length of the file (in bytes, not characters, since in many encodings, some characters take more than one byte to encode) and the number of lines in the file.
+    - Double-clicking this field will bring up the **[View > Summary](../views/#file-summary)** dialog.
+3. Current Position of the [caret](#caret-and-cursor "typing/insertion cursor"):
+    - `Ln : ℕ`: Indicates the [caret](#caret-and-cursor "typing/insertion cursor") is on Line `ℕ`. (Line 1 is the start of the document).
+    - `Col : ℕ`: Indicates the [caret](#caret-and-cursor "typing/insertion cursor") is on Column `ℕ` of the current Line. (Column 1 indicates the caret is at the start of the line.)
+    - `Pos : ℕ`: When there is no active selection, this sub-field indicates which byte of the file the [caret](#caret-and-cursor "typing/insertion cursor") is on.  (1 indicates the caret is before the first byte in the document.  In many encodings, some or all characters may take up multiple bytes; there is more discussion on bytes-vs-characters in the description of the [**Go to...**](../searching/#other-search-menu-commands) command.)
+    - `Sel : ℕ | ℒ`: When there is an active [stream selection](../editing/#selection-modes--column-editor), `ℕ` shows how many characters (not bytes) are in the stream selection, and `ℒ` shows how many lines are included in the stream selection.
+    - `Sel ℙ : ℕ | ℒ`: When there is an active [mutli-editing selection](../editing/#multi-editing), `ℙ` shows how many separate selection segments make up the multi-selection; `ℕ` shows how many characters (not bytes) are in the multi-selection (throughout all the segments); and `ℒ` shows how many lines are included in the multi-selection.
+    - `Sel : ℒxℕ -> ℙ`: When there is an active [column-mode selection](../editing/#selection-modes--column-editor), `ℒ` shows the number of lines in the column-mode selection (the height of the rectangle), `ℕ` shows the number of characters across (the width of the rectangle), and `ℙ` shows the total number of characters in the column-mode selection.
+    - Double-clicking this field will bring up the [**Search** menu's **Go to...** dialog](../searching/#other-search-menu-commands).
+    - _Note: The `ℕ`, `ℒ`, and `ℙ` in these descriptions are placeholders for numbers, not meant to indicate the literal value seen.  For example, it doesn't literally say `Ln : ℕ` -- it will say `Ln : 5` if it's on line 5, or `Ln : 7` if it's on line 7._
+4. End-of-File Format: Shows whether the active document is using `Windows (CR LF)` line endings (`\r\n`), `Unix (LF)` line endings (`\n`), or `Mac (CR)` line endings (`\r`, for ancient pre-OSX Mac-format files).
+    - Double-clicking or right-clicking this field will bring up the [**Edit** menu's](../editing/#edit-menu) **EOL Conversion** sub-menu.
+5. File Encoding: Shows the file encoding or character set.
+    - Double-clicking or right-clicking this field will bring up the [**Encoding** menu](../preferences/#encoding-menu).
+6. Typing Mode: Shows which [typing mode](../editing/#typing-mode) is active -- insert (`INS`) or overwrite (`OVR`).
+    - Left-Clicking this field will toggle the value.
+
 ## System Tray
 
-When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).  
+When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).
 
 When on the system tray, Notepad++ will not show up in the Windows <kbd>Alt+Tab</kbd> list of applications to switch between, nor will it show up in the main Task Manager's main Applications list; however, it will still show up tine Task Manager's Details list, which shows all the executable files running.
 
@@ -190,7 +225,7 @@ If you right-click on the Notepad++ system tray icon, it will show a context men
 - `New`: Shows main Notepad++ with a new file tab created.
 - `New and Paste`: Shows main Notepad++ with a new file tab created, and it will paste the current contents of the clipboard into that new tab.
 - `Open...`: Shows main Notepad++ window, and immediately calls **File > Open** so that you can open a file right away.
-- `Find in Files`: Shows the **Find in Files** dialog, and allows you to run a search and/or replace action _without_ showing the main Notepad++ window.  
+- `Find in Files`: Shows the **Find in Files** dialog, and allows you to run a search and/or replace action _without_ showing the main Notepad++ window.
 	- If you run a search, the Search Results window or panel would be populated:
 		- If the Search Results had been previously docked as a panel in Notepad++ (the default state for Search Results), then the next time you activate Notepad++, the Search Results panel will be visible with the results you obtained.
 		- If the Search Results had been previously undocked and in a separate window from Notepad++, then the undocked Search Results window will usually become visible at this point, even though the main Notepad++ window is not visible.  You can use the normal Search Results navigation: so double-clicking on a result will activate Notepad++, showing the result you chose in the active Notepad++ view.

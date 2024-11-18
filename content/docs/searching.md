@@ -3,6 +3,8 @@ title: Searching
 weight: 20
 ---
 
+# Search Actions
+
 There are multiple methods to search (and replace) text in files. You can also mark search results with a bookmark on their lines, or highlight the textual results themselves.  Generating a count of matches is also possible.
 
 There are three main built-in search mechanisms: the standard (dialog-based) Find / Replace / Find In Files / Mark, the dialog-free Next / Previous search-navigation, and the Incremental Search.
@@ -415,6 +417,26 @@ This command will show a small region at the bottom of the Notepad++, which has 
 * To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
 
 Starting in v8.6.1, the shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
+
+## Other Search-menu Commands
+
+There are a few **Search**-menu commands that don't fit within other categories:
+
+- **Go to...**: brings up a dialog that allows you to navigate to a specific location in the document:
+  ![goto dialog](../images/goto.png)
+  - `☐ Line`: When this radio button is selected, the **Go** action will move the caret to a specific line number in the document (line 1 is the first line).
+  - `☐ Offset`: When this radio button is selected, the **Go** action will move the caret to a specific byte in the document (0 puts the caret before the first byte).  If you choose an offset that would put the caret in the middle of a multi-byte character, the caret will go after that character.  For example, if your file starts with `☺1` (in UTF-8 mode, where `☺` is encoded by 3 bytes), then an offset of 0 will put the caret before the `☺`; an offset of 1 or 2 or 3 will put the caret between the `☺` and `1`; and an offset of 4 will put the caret after the `1`.
+  - `You are here`: Shows the current location of the caret, in the current Line/Offset units.
+  - `You want to go to ____`: This is where to input the location to move the caret, in the current Line/Offset units.
+  - `You can't go further than`: This is the end of the file, in the current Line/Offset units.
+  - **Go**: Moves the caret to the given location.
+  - **I'm going nowhere**: Exits the dialog without moving the caret.  (This is the same as a **Cancel** action in most dialog boxes.)
+- **Go to Matching Brace**: Allows parentheses and braces navigation.  If the caret is on the opening parenthesis `(` or bracket `[` or brace `{`, then this command will move the caret to the matching closing-character `)` or `]` or `}`; similarly, if the caret is on the closing character, the command will move the caret to the matching opening-character.  (The [**Style Configurator > Global Styles > Brace Highlight Style**](../preferences/#global-styles) will be used to highlight the opening and closing pairs of characters.)
+- **Select All In-between {} [] or ()**: Will select all the text in between a matching pair of `{}` or `[]` or `()`; the selection will include the surrounding pair of braces, brackets, or parentheses.
+
+# Search Syntax
+
+Normal Search Mode just uses literal text.  For more complicated searches, use either [Extended Search Mode](#extended-search-mode) or [Regular Expression Search Mode](#regular-expressions), which each have their own syntax, described below.
 
 ## Extended Search Mode
 
@@ -1408,6 +1430,7 @@ Then, the condition `\d{1,2}|1\d\d|2[0-4]\d|250` and, more precisely, `\d{1,2}`,
 
 This time, as this part of the regex is outside the condition's definition, the condition `'LEQ250'` is NOT realized and the current second line must end with the word `barrel`, which is, indeed, the case. Therefore, the regex engine matches this second line, too, even though that was not intended. (The same reasoning applies for all the lines ending in `barrel` even though their number is not above 250.)
 
+# Search Macros
 
 ## Searching actions when recorded as macros
 
