@@ -416,6 +416,26 @@ This command will show a small region at the bottom of the Notepad++, which has 
 
 Starting in v8.6.1, the shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
 
+## Other Search-menu Commands
+
+There are a few **Search**-menu commands that don't fit within other categories:
+
+- **Go to...**: brings up a dialog that allows you to navigate to a specific location in the document:
+  ![goto dialog](../images/goto.png)
+  - `☐ Line`: When this radio button is selected, the **Go** action will move the caret to a specific line number in the document (line 1 is the first line).
+  - `☐ Offset`: When this radio button is selected, the **Go** action will move the caret to a specific byte in the document (0 puts the caret before the first byte).  If you choose an offset that would put the caret in the middle of a multi-byte character, the caret will go after that character.  For example, if your file starts with `☺1` (in UTF-8 mode, where `☺` is encoded by 3 bytes), then an offset of 0 will put the caret before the `☺`; an offset of 1 or 2 or 3 will put the caret between the `☺` and `1`; and an offset of 4 will put the caret after the `1`.
+  - `You are here`: Shows the current location of the caret, in the current Line/Offset units.
+  - `You want to go to ____`: This is where to input the location to move the caret, in the current Line/Offset units.
+  - `You can't go further than`: This is the end of the file, in the current Line/Offset units.
+  - **Go**: Moves the caret to the given location.
+  - **I'm going nowhere**: Exits the dialog without moving the caret.  (This is the same as a **Cancel** action in most dialog boxes.)
+- **Go to Matching Brace**: Allows parentheses and braces navigation.  If the caret is on the opening parenthesis `(` or bracket `[` or brace `{`, then this command will move the caret to the matching closing-character `)` or `]` or `}`; similarly, if the caret is on the closing character, the command will move the caret to the matching opening-character.  (The [**Style Configurator > Global Styles > Brace Highlight Style**](../preferences/#global-styles) will be used to highlight the opening and closing pairs of characters.)
+- **Select All In-between {} [] or ()**: Will select all the text in between a matching pair of `{}` or `[]` or `()`; the selection will include the surrounding pair of braces, brackets, or parentheses.
+
+## Search Syntax
+
+Normal Search Mode just uses literal text.  For more complicated searches, use either [Extended Search Mode](#extended-search-mode) or [Regular Expression Search Mode](#regular-expressions), which each have their own syntax, described below.
+
 ## Extended Search Mode
 
 In extended mode, these escape sequences (a backslash followed by a single character and optional material) have special meaning, and will not be interpreted literally.

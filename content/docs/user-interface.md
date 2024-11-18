@@ -203,7 +203,7 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
     - `Sel : ℕ | ℒ`: When there is an active [stream selection](../editing/#selection-modes--column-editor/), `ℕ` shows how many characters (not bytes) are in the stream selection, and `ℒ` shows how many lines are included in the stream selection.
     - `Sel ℙ : ℕ | ℒ`: When there is an active [mutli-editing selection](../editing/#multi-editing/), `ℙ` shows how many separate selection segments make up the multi-selection; `ℕ` shows how many characters (not bytes) are in the multi-selection (throughout all the segments); and `ℒ` shows how many lines are included in the multi-selection.
     - `Sel : ℒxℕ -> ℙ`: When there is an active [column-mode selection](../editing/#selection-modes--column-editor/), `ℒ` shows the number of lines in the column-mode selection (the height of the rectangle), `ℕ` shows the number of characters across (the width of the rectangle), and `ℙ` shows the total number of characters in the column-mode selection.
-    - Double-clicking this field will bring up the [**Search** menu's](../searching/) **Go to...** dialog.
+    - Double-clicking this field will bring up the [**Search** menu's **Go to...** dialog](../searching/#other-search-menu-commands).
 4. End-of-File Format: Shows whether the active document is using `Windows (CR LF)` line endings (`\r\n`), `Unix (LF)` line endings (`\n`), or `Mac (CR)` line endings (`\r`, for ancient pre-OSX Mac-format files).
     - Double-clicking or right-clicking this field will bring up the [**Edit** menu's](../editing/#edit-menu) **EOL Conversion** sub-menu.
 5. File Encoding: Shows the file encoding or character set.
