@@ -3,6 +3,8 @@ title: Searching
 weight: 20
 ---
 
+# Search Actions
+
 There are multiple methods to search (and replace) text in files. You can also mark search results with a bookmark on their lines, or highlight the textual results themselves.  Generating a count of matches is also possible.
 
 There are three main built-in search mechanisms: the standard (dialog-based) Find / Replace / Find In Files / Mark, the dialog-free Next / Previous search-navigation, and the Incremental Search.
@@ -432,7 +434,7 @@ There are a few **Search**-menu commands that don't fit within other categories:
 - **Go to Matching Brace**: Allows parentheses and braces navigation.  If the caret is on the opening parenthesis `(` or bracket `[` or brace `{`, then this command will move the caret to the matching closing-character `)` or `]` or `}`; similarly, if the caret is on the closing character, the command will move the caret to the matching opening-character.  (The [**Style Configurator > Global Styles > Brace Highlight Style**](../preferences/#global-styles) will be used to highlight the opening and closing pairs of characters.)
 - **Select All In-between {} [] or ()**: Will select all the text in between a matching pair of `{}` or `[]` or `()`; the selection will include the surrounding pair of braces, brackets, or parentheses.
 
-## Search Syntax
+# Search Syntax
 
 Normal Search Mode just uses literal text.  For more complicated searches, use either [Extended Search Mode](#extended-search-mode) or [Regular Expression Search Mode](#regular-expressions), which each have their own syntax, described below.
 
@@ -1428,6 +1430,7 @@ Then, the condition `\d{1,2}|1\d\d|2[0-4]\d|250` and, more precisely, `\d{1,2}`,
 
 This time, as this part of the regex is outside the condition's definition, the condition `'LEQ250'` is NOT realized and the current second line must end with the word `barrel`, which is, indeed, the case. Therefore, the regex engine matches this second line, too, even though that was not intended. (The same reasoning applies for all the lines ending in `barrel` even though their number is not above 250.)
 
+# Search Macros
 
 ## Searching actions when recorded as macros
 
