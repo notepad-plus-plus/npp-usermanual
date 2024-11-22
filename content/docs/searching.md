@@ -271,7 +271,7 @@ More precisely:
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual <kbd>Shift+Alt+arrow</kbd> keys or by holding <kbd>Alt+LeftClick</kbd> and dragging with the mouse.  This is really only practical when using the <kbd>Ctrl+C</kbd> method of copying; **<kbd>RightClick</kbd> > Copy Selected Line(s)** doesn't work this way.
 
-There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later).  The **Copy Pathname(s)** context menu command copies to the clipboard the full pathnames of all files appearing in **Search results**.
+There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later).  The **Copy Selected Pathname(s)** context menu command copies to the clipboard the full pathnames of all the files for any lines selected in in **Search results** (known as **Copy Pathname(s)** prior to v8.7.2).  Starting in v8.7.2, if you have selected search results, or if the [caret](#caret-and-cursor "typing/insertion cursor") is on just one of the search result entries, then this action will copy the pathname associated with each search result entry highlighted (or just the one at the caret); if you have no selection, but the selection [caret](#caret-and-cursor "typing/insertion cursor") is on one of the pathname headers, this action will copy that pathname.  Running this action on never-saved files, like the `new 1` tabs (even if they've been manually renamed but not yet saved), will use the tab's name as the "pathname", since there is no filesystem path associated with such tabs.
 
 ##### Other commands
 
@@ -284,6 +284,8 @@ The contents of the **Search results** tab are in the form of a tree.  When Note
 The user can fold/unfold "branches" of this tree.  To fold, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be folded (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To unfold an individual item that has previously been folded (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and shown again.
 
 The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once. (These were called **Collapse all** and **Uncollapse all** before v8.4.6.)
+
+Starting in v8.7.2, **Open selected pathname(s)** will open the file(s) associated with selected search results (following the same selection/[caret](#caret-and-cursor "typing/insertion cursor") logic as **Copy Selected Pathname(s)** (described above); if the file is already opened, it will not be opened a second time (but it will activate that file's tab if there's only one in the selection.)
 
 ##### Searching in previously-found results (secondary searching)
 
