@@ -233,7 +233,7 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
 
 ## System Tray
 
-When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).
+When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  When that preference is set to **Minimize / Close to system tray** (new to v8.7.2), either minimizing _or_ closing Notepad++ will move the application to the Windows system tray. You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).
 
 When on the system tray, Notepad++ will not show up in the Windows <kbd>Alt+Tab</kbd> list of applications to switch between, nor will it show up in the main Task Manager's main Applications list; however, it will still show up tine Task Manager's Details list, which shows all the executable files running.
 
