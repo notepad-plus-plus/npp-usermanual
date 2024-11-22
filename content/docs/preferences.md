@@ -49,8 +49,11 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
     * `☐ Darken inactive tabs`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
         - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
+        - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
     * `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
     * `☐ Show close button on each tab`: Add the close button to each tab's entry on the tab bar.
+        - In v8.7.2 and newer, the close button is hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    * `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
     * `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
     * `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 * **Menu**

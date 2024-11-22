@@ -18,6 +18,8 @@ If the description says it will "wrap", it means that if you try to go beyond th
 - If you hover over a tab on the tab bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
     - If it's a new, unsaved tab, then the hover text will be the name of that tab (defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
+    - Hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below). 
+    - If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Darken inactive tabs** is checked, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
 
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
@@ -57,9 +59,18 @@ If the description says it will "wrap", it means that if you try to go beyond th
   ![tabNavNewDoubleClick](../images/tabNavNewDoubleClick.gif)
 
 - To close a tab using the tab bar:
-  1. If **Settings > Preferences > General > Tab Bar > Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
-  2. If **Settings > Preferences > General > Tab Bar > Double click to close document** is checked, you can double-click the tab's title to close that tab.
+  1. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
+      - When set to show, the close button will always be visible on the active tab
+      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its 
+  2. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
+  
+- To pin a tab using the tab bar:
+  1. Ensure **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
+  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.  
+  3. Clicking that icon will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the tab bar (before any unpinned tabs, but after any tabs that are already pinned).
+  4. Pinned tabs will show the filled-in pin icon whether or not they are active.
+  5. Clicking the filled-in pin icon will unpin the tab.
 
 ### Tab Bar Right Click Menu
 
