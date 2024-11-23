@@ -2398,13 +2398,24 @@ The general layout of the following notifications look like this
 ---
 
 #### [1003] **NPPN_FILEBEFORECLOSE**
-*To notify plugins that the current file is about to be closed*
+*To notify plugins that the file referenced by the BufferID is about to be closed.*
 
 **Fields:**
 
 	code:		NPPN_FILEBEFORECLOSE
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
+
+_Usage Note_: It is useful to store the name of the file that's about to be closed, which can be obtained
+using [NPPM_GETFULLPATHFROMBUFFERID](#2082nppm_getfullpathfrombufferid); plugins need to access this
+information now, rather than while handling [NPPN_FILECLOSED](#1005nppn_fileclosed), because the
+`BufferID`-to-FullPathName mapping will no longer be valid by the time `NPPN_FILECLOSED` is processed.
+
+Also remember, the `BufferID` is not necessarily for the active file; **Close All**, or clicking the close
+button on an inactive tab, or other such file-closing actions, can easily trigger the non-active file to be
+closed; if you need to issue one or more messages that work on the active file, you will need to follow the
+directions in the [Notification BufferID](#notification-bufferid) section (below) while doing the processing
+on the file that's about to be closed.
 
 ---
 
@@ -2466,13 +2477,22 @@ NOTE: Many plugins or scripts which use this notification have wrongly assumed t
 ---
 
 #### [1005] **NPPN_FILECLOSED**
-*To notify plugins that the current file is just closed*
+*To notify plugins that the file that used to be referenced by BufferID has been closed*
 
 **Fields:**
 
 	code:		NPPN_FILECLOSED
 	hwndFrom:	hwndNpp
 	idFrom:		BufferID
+
+_Usage Note_: By the time this notification is handled, the file that used
+to be referenced by `BufferID` is no longer available (unless the same file
+ was open in both Views, for example by having been cloned to the other
+View).  If the plugin needs to do any processing regarding the actual file
+that was closed (including getting its path or other meta-information), the
+ plugin will need to respond to [NPPN_FILEBEFORECLOSE](#1003nppn_filebeforeclose)
+ and store the information; it can then use that stored information while handling
+ this notification.
 
 ---
 
