@@ -64,6 +64,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
       - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its 
   2. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
+  3. You can middle-click on the tab's title to close that tab.
   
 - To pin a tab using the tab bar:
   1. Ensure **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
