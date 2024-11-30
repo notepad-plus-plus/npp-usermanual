@@ -305,6 +305,23 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
             * The sequence `10` will sort before `2`, because it sorts character-by-character of each collection of characters, and the character `1` comes before the character `2`
         * **Ignoring case** means that lowercase `a` will sort the same as uppercase `A`, and both will come before either `Z` or `z`
         * **As Integers** means that `10` will sort as being bigger than `2`
+            - Note that sorting as integers will sort IP addresses (like `192.168.0.1` and `8.8.8.8`) reasonably (as `8.8.8.8` before `192.168.0.1`).
+            - Note that if you have the same non-numeric prefixes on your numbers (like `xyz9` and `xyz11`), it will sort the numeric portion as integers.
+            - Note that if you have right-aligned numbers, with leading spaces before numbers of different lengths, the spaces will change the ordering from what you expect:
+                ```
+                   1
+                  10
+                 100
+                1000
+                ```
+                will be sorted as
+                ```
+                 100
+                  10
+                   1
+                1000
+                ```
+                because integers prefixed by spaces come before integers without spaces (because spaces are lexicographically earlier than digits; in this example, that means `1000` is last, because it had no space prefix), but integers prefixed with one space will be sorted before integers prefixed with two spaces.
         * **As Decimals (Comma)** means it will recognize `10,234` and `9,876` as decimal numbers and sort them numerically
         * **As Decimals (Dot)** means it will recognize `10.234` and `9.876` as decimal numbers and sort them numerically
         * NOTE: Sorting is performed with the assumption that all line-endings in the file are uniform and match the current selection for the file being edited -- the quickest way to check that selection is to glance at the status bar, where the current line-ending type is shown either as `Windows (CR LF)`, `Unix (LF)` or `Macintosh (CR)`.  It might be desirable to check the line-ending types in your file before executing a sorting operation, and use the **Edit > EOL Conversion >** choices or right-click on the Status Bar's EOL indicator to fix the line endings if necessary.
