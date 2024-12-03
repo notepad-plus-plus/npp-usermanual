@@ -83,6 +83,7 @@ When you right click on the title for a tab, you get a context menu for manipula
   - `Close All to the Left`: Closes all files that are to the right of this file on the tab bar.
   - `Close All to the Right`: Closes all files that are to the left of this file on the tab bar.
   - `Close All Unchanged`: Closes all files that do not have unsaved changes (leaves only files that have unsaved changes).
+- `Pin` or `Unpin`: Pins or unpins the active tab, if **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked. (New in v8.7.3)
 - `Save`: Saves the file (disabled/grayed out if there are no unsaved changes).
 - `Save As`: Allows you to save the current file under a new name.
 - `Open Into >`:
