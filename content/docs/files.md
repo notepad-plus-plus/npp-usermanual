@@ -44,6 +44,7 @@ The **File** menu contains many of the normal file-operation actions found in mo
     - If there are multiple files that you are prompted for, you will also get **Yes to All** to save all changed files, and **No to All** to lose changes from all changed files.
 - **Close Multiple Documents >**:
     - **Close All but Active Document**: Closes all open documents, except the document that is actively being edited.
+    - **Close All but Pinned Documents**: Closes all open documents, unless their tab has been pinned.
     - **Close All to the Left**: Closes all the open documents that are to the left of the active document on the current View's tab bar.
     - **Close All to the Right**: Closes all the open documents that are to the right of the active document on the current View's tab bar.
     - **Close All Unchanged**: Closes all open documents that have not been edited since they were last opened or created.

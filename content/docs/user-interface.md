@@ -79,7 +79,8 @@ When you right click on the title for a tab, you get a context menu for manipula
 
 - `Close`: Closes this file's tab.
 - `Close Multiple Tabs >`:
-  - `Close All But This`: Closes all files except this file.
+  - `Close All BUT This`: Closes all files, except this tab's file.
+  - `Close All BUT Pinned`: Closes all files, except any pinned tab's files.
   - `Close All to the Left`: Closes all files that are to the right of this file on the tab bar.
   - `Close All to the Right`: Closes all files that are to the left of this file on the tab bar.
   - `Close All Unchanged`: Closes all files that do not have unsaved changes (leaves only files that have unsaved changes).
