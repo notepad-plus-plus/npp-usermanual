@@ -85,6 +85,7 @@ Creating a PR yourself to enable a not-yet-active lexer should only be attempted
     - An aside on the keyword lists: The `lexilla/Lexers/LexXyzPdq.cxx` will contain one or more `WordList` variables; usually in `LexerXyzPdq::WordListSet()`, you will see a mapping between the word list index and th `WordList` variable.  That index corresponds to the `LIST_#` constant used when calling `setLexer()`.
 - `PowerEditor/src/ScintillaComponent/ScintillaEditView.cpp`
     - add the language to `LanguageNameInfo ScintillaEditView::_langNameInfoArray[]`, just before the `L_EXTERNAL` entry.  The table below describes that value that needs to go in each column of that data structure.
+
         | Column       | Example        | Description |
         |--------------|----------------|-------------|
         | `_langName`  | `xyzpdq`       | Unique string to identify the language.  Will be used as the `<Language name="xyzpdq" ... />` attribute in `langs.xml` |
@@ -92,6 +93,7 @@ Creating a PR yourself to enable a not-yet-active lexer should only be attempted
         | `_longName`  | `Xyz Pdq file` | This is the text that appears in the **Status Bar**'s file type field |
         | `_langID`    | `L_XYZPDQ`     | This is the `L_XYZPDQ` entry you added to the enum |
         | `_lexerID`   | `xyzpdq`       | This is the name of the lexer, as defined in the `lexilla/Lexers/LexXyzPdq.cxx`, in the `LexerModule` instantiation |
+
     - add your language to the big `switch` block in `ScintillaEditView::defineDocType()`; it should call `setXyzPdqLexer(); break`
     - add in the definition for your `setXyzPdqLexer()`
         - If it's just calling `setLexer()`, you can actually define it in the `.h`, as described above.
