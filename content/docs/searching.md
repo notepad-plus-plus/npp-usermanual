@@ -168,7 +168,9 @@ To find only files that have no extension, you cannot just say `*.` despite this
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
-* **☐ Follow current doc** ⇒ If checked, it will default to searching the folder that contains the current active document (this sets the `fifFolderFollowsDoc` in `config.xml`).
+* **☐ Follow current doc** ⇒ If checked, it will default to searching the folder that contains the current active document.
+    - If this is checked, it will set that "default" directory to the current document's directory when you launch **Find in Files** dialog, or if you toggle the checkbox off and then back on.  If you manually change the directory (either through typing, or using the `...` button), it will search the newly-entered directory, rather than using the directory it defaulted to.  The next time you launch the dialog, it will update the default directory again (assuming the option is still checked).
+    - The state of this checkbox is saved in the `fifFolderFollowsDoc` attribute in `config.xml`, so your choice for this option _is_ remembered from one run of Notepad++ to the next.
 * **☐ In all sub-folders** ⇒ If checked, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ If checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
