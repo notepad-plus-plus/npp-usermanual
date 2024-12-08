@@ -809,6 +809,8 @@ The following settings are for rather specific needs and could cause some confus
     * `nbMaxFindHistoryPath` => changes the number of **Directory** entries that are saved in the history (0 .. 30, default = 10)
     * `nbMaxFindHistoryFilter` => changes the number of **Filter(s)** entries that are saved in the history (0 .. 20, default = 10)
 
+* Make the **Find in Files** Filter field automatically populate based on the file type / extension of the current file when you launch the dialog.  This can be set by changing the `<Find History ...>` tag inside `config.xml`, using the attribute `fifFilterFollowsDoc`: set it to `fifFilterFollowsDoc="yes"` to make Notepad++ automatically populate that Filter field every time you launch the **Find in Files** dialog (however, you can override that filter by typing a new filter; and changing the active tab or opening a new file after the dialog is already shown will _not_ update that field automatically); if it is set to `fifFilterFollowsDoc="no"` (default), then the Filter field will not change when you launch **Find in Files**, and will instead remember the last value you entered into the field (if any).
+
 * Changing the command-line interpreter used: By default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
    ```
    <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
