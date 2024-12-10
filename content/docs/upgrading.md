@@ -31,7 +31,7 @@ If there is a new version, the Updater dialog will allow you to choose:
 ## Upgrade Manually
 Going to the main website and downloading the latest installer and running it yourself.  You can watch the [Announcements](https://community.notepad-plus-plus.org/category/1/announcements) category in the [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) to see when new release-candidates or final versions are released.
 
-<a name="new-version-available-but-auto-updater-find-nothing"></a>
+<a name="new-version-available-but-auto-updater-find-nothing" reasonLink="https://github.com/notepad-plus-plus/wingup/blob/21e375caf17360fb86f757612052d5a785261d96/src/winmain.cpp#L780" reasonDesc="wingup links to this anchor, so it needs to always exist, even though the safety-delay header has been rephrased"></a>
 ## No New Version Found: Safety Delay
 
 There are two reasons that would cause there to be no new version found during an auto-triggered upgrade check or an on-demand upgrade check:
