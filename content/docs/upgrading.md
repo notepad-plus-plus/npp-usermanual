@@ -31,14 +31,16 @@ If there is a new version, the Updater dialog will allow you to choose:
 ## Upgrade Manually
 Going to the main website and downloading the latest installer and running it yourself.  You can watch the [Announcements](https://community.notepad-plus-plus.org/category/1/announcements) category in the [Notepad++ Community Forum](https://community.notepad-plus-plus.org/) to see when new release-candidates or final versions are released.
 
+<a name="new-version-available-but-auto-updater-find-nothing"></a>
 ## No New Version Found: Safety Delay
+
 There are two reasons that would cause there to be no new version found during an auto-triggered upgrade check or an on-demand upgrade check:
 
 First, there might not be a new version.
 
 Second, if there is a new version available, it may not have been triggered for auto-update yet. In order to avoid to spreading a new version which contains regressions or critical bugs, we wait for users' feedback before triggering the auto-update, often one to two weeks.  If a critical bug or regression is found, the auto-update will _not_ be triggered for that release. On the other hand, after a reasonable delay, if we are confident there are no critical issues, the auto-update will be triggered.  This safety delay prevents bad bugs or regressions from being widely spread throughout the Notepad++ user-base, limiting the exposure to those users who are watching for release announcements and are willing to manually upgrade Notepad++.
 
-The safety delay will never prevent you from downloading the installer or portable zip package yourself.
+The safety delay will never prevent you from downloading the installer or portable zip package yourself by [downloading and upgrading manually](#upgrade-manually).
 
 ## WinGUp Project
 The [WinGUp](http://wingup.org/) project was started for the need of Notepad++ for upgrading Notepad++ automatically.  It has since become a more generic solution for updating purposes. [This project has been forked](https://github.com/notepad-plus-plus/wingup) for more Notepad++ specific need so Plugin Admin can share its basic functionalities.
