@@ -84,7 +84,7 @@ code | file
 `it`, `it-ch` | `italian.xml`
 `ja` | `japanese.xml`
 `ka` | `georgian.xml`
-`kab` | `kabyle.xml`
+`keb` | `kabyle.xml`
 `kk` | `kazakh.xml`
 `kn` | `kannada.xml`
 `ko`, `ko-kp`, `ko-kr` | `korean.xml`
