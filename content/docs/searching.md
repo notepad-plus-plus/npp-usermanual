@@ -273,6 +273,13 @@ More precisely:
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual <kbd>Shift+Alt+arrow</kbd> keys or by holding <kbd>Alt+LeftClick</kbd> and dragging with the mouse.  This is really only practical when using the <kbd>Ctrl+C</kbd> method of copying; **<kbd>RightClick</kbd> > Copy Selected Line(s)** doesn't work this way.
 
+[!!TODO!! ](# "Need to fill in version number before release")In v8.x.y, the algorithm is standardized to:
+- If the selection/[caret](#caret-and-cursor "typing/insertion cursor") intersects any `Line` line(s), copy only the intersected `Line` line(s).
+- If the selection/[caret](#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a "path" line, copy all of the child `Line` line(s) under that path line.
+- Finally, if the selection/[caret](#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a `Search` line, copy all of the child `Line` lines(s) under that search tree (which could contain many "path" subtrees, all with `Line` line(s) that would be copied).
+
+##### Copying path(s) from the **Search results** window
+
 There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later). The **Copy Selected Pathname(s)** context menu command (known as **Copy Pathname(s)** from v8.0.0 to v8.7.1) copies to the clipboard the full pathnames of all the files for any lines selected in **Search results**. The list copied to the clipboard will contain one line for each pathname. From v8.0.0 to v8.7.1, **Copy Pathname(s)** would copy all pathnames from all prior searches. Starting in v8.7.2, if you have selected search results that include a pathname line (even partially), or if the [caret](#caret-and-cursor "typing/insertion cursor") with no selected text is on one of the search result pathname lines, then this action will copy the pathname associated with each search result entry so selected. Running this action on never-saved files, like the `new 1` tabs (even if they've been manually renamed but not yet saved), will use the tab's name as the "pathname", since there is no filesystem path associated with such tabs. To mimic the behavior of **Copy Pathname(s)** from earlier software in v8.7.2 and later, select all text in search-results before running the action.
 
 ##### Other commands
