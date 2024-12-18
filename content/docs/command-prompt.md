@@ -84,7 +84,7 @@ code | file
 `it`, `it-ch` | `italian.xml`
 `ja` | `japanese.xml`
 `ka` | `georgian.xml`
-`keb` | `kabyle.xml`
+`kab` | `kabyle.xml` (spelling fixed to `kab` in v!!TBD!! must use `keb` instead of `kab` in v8.7.4 and earlier)
 `kk` | `kazakh.xml`
 `kn` | `kannada.xml`
 `ko`, `ko-kp`, `ko-kr` | `korean.xml`
