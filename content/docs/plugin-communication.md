@@ -2224,7 +2224,7 @@ STATUSBAR_TYPING_MODE   5
 **Parameters**:
 
 *wParam [in]*
-: UINT_PTR id - BufferID of the tab. -1 for currently active tab
+: UINT_PTR id - BufferID of the tab.
 
 *lParam [in]*
 : TCHAR* newName - the desired new name of the tab
