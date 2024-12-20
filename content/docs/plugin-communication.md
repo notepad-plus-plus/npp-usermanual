@@ -1219,7 +1219,7 @@ Users should call it with nativeLangFileName as NULL to get the required number 
 : size_t strLen, which is "language file name string" buffer length
 
 *lParam [out]*
-: TCHAR * nativeLangFileName, language file name string receives all copied native language file name string
+: CHAR * nativeLangFileName, language file name string receives all copied native language file name string
 
 **Return value**:
 : Returns the number of char copied/to copy
