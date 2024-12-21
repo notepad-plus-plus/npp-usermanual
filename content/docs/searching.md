@@ -274,7 +274,7 @@ More precisely:
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual <kbd>Shift+Alt+arrow</kbd> keys or by holding <kbd>Alt+LeftClick</kbd> and dragging with the mouse.  This is really only practical when using the <kbd>Ctrl+C</kbd> method of copying; **<kbd>RightClick</kbd> > Copy Selected Line(s)** doesn't work this way.
 
-[!!TODO!! ](# "Need to fill in version number before release")In v8.x.y, the algorithm is standardized to:
+In v8.7.5, the algorithm is standardized to:
 - If the selection/[caret](#caret-and-cursor "typing/insertion cursor") intersects any `Line` line(s), copy only the intersected `Line` line(s).
 - If the selection/[caret](#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a "path" line, copy all of the child `Line` line(s) under that path line.
 - Finally, if the selection/[caret](#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a `Search` line, copy all of the child `Line` lines(s) under that search tree (which could contain many "path" subtrees, all with `Line` line(s) that would be copied).
