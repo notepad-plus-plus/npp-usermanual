@@ -311,7 +311,7 @@ If 2 above lines are in *overrideMap.xml*, function list will load your parsers 
 ```
 <association id= "krl.xml"				userDefinedLangName="KRL"/>
 ```
-Here you define a parser rule file name for your KRL UDL. While you open a file which is recognized as KRL file, then function list engin will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one (with the name "KRL") to make it work.
+Here you define a parser rule file name for your KRL UDL. When you open a file which is recognized as a KRL file, then the function list engine will load `functionList\krl.xml` to show the KRL function list. If you have no KRL UDL defined in your Notepad++, you have to define a dummy one (with the name "KRL") to make it work.
 
 The `functionList\`_languagename_`.xml` parser file itself, whether it's for a builtin language or a UDL-based language, requires the structure `<NotepadPlus><functionList><parser...>...</parser></functionList></NotepadPlus>`, where the attributes and contents of the `<parser>` are described in the documents section about [How to Customize Function List](../function-list/#how-to-customize-function-list). You can look at any of the [default parser files](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/) for examples of working Function List configurations.
 
