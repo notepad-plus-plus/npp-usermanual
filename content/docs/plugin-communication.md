@@ -248,7 +248,7 @@ NPPM_CREATESCINTILLAHANDLE*
 : int, must be zero.
 
 *lParam [in]*
-: const TCHAR * lexer_name, the name of the lexer
+: const wchar_t * lexer_name, the name of the lexer
 
 **Return value**:
 : Returns the ILexer pointer created by Lexilla.
@@ -392,10 +392,10 @@ You may need this message if you want to communicate with another plugin "dockab
 **Parameters**:
 
 *wParam [in]*
-: const TCHAR * windowName
+: const wchar_t * windowName
 
 *lParam [in]*
-: const TCHAR * moduleName
+: const wchar_t * moduleName
 
 **Return value**:
 : Returns NULL if moduleName is NULL. If windowName is NULL, then the first found window handle which matches with the moduleName will be returned
@@ -435,18 +435,18 @@ Notice that rcFloat and iPrevCont shouldn't be filled. They are used internally*
 ~~~
 typedef struct {
 	HWND        hClient;   // client Window Handle
-	const TCHAR *pszName;  // name of plugin (shown in window)
+	const wchar_t *pszName;  // name of plugin (shown in window)
 	int         dlgID;     // a funcItem provides the function pointer to start a dialog. Please parse here these ID
 
 	// user modifications
 	UINT        uMask;       // mask params: look to above defines
 	HICON       hIconTab;    // icon for tabs
-	const TCHAR *pszAddInfo; // for plugin to display additional informations
+	const wchar_t *pszAddInfo; // for plugin to display additional informations
 
 	// internal data, do not use !!!
 	RECT          rcFloat;        // floating position
 	int           iPrevCont;      // stores the privious container (toggling between float and dock)
-	const TCHAR*  pszModuleName;  // it's the plugin file name. It's used to identify the plugin
+	const wchar_t*  pszModuleName;  // it's the plugin file name. It's used to identify the plugin
 } tTbData;
 ~~~
 **Return value**:
@@ -498,7 +498,7 @@ name should be the same value as previously used to register the dialog.*
 : int, must be zero.
 
 *lParam [in]*
-: TCHAR* name
+: wchar_t* name
 
 **Return value**:
 : Returns True
@@ -551,7 +551,7 @@ If disableOrNot is True, path column is hidden otherwise it is visible.*
 : int, must be zero.
 
 *lParam [in]*
-: TCHAR * fullPathName2Open
+: wchar_t * fullPathName2Open
 
 **Return value**:
 : Returns The return value is True (1) if the operation is successful, otherwise False (0).
@@ -712,7 +712,7 @@ Please see the enum LangType for all possible values.
 
 #### [2133] **NPPM_GETCURRENTCMDLINE**
 *Get the Current Command Line string. (New to v8.4.2).
-Users should call it with commandLineStr as NULL to get the required number of TCHAR (not including the terminating nul character),
+Users should call it with commandLineStr as NULL to get the required number of wchar_t (not including the terminating nul character),
 allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
 
 **Parameters**:
@@ -721,10 +721,10 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 : size_t strLen
 
 *lParam [out]*
-: TCHAR * commandLineStr
+: wchar_t * commandLineStr
 
 **Return value**:
-: Returns the number of TCHAR copied/to copy.
+: Returns the number of wchar_t copied/to copy.
 
 ---
 
@@ -755,7 +755,7 @@ MAX_PATH is suggested to use.*
 : size_t directoryPathLen
 
 *lParam [out]*
-: TCHAR * directoryPath
+: wchar_t * directoryPath
 
 **Return value**:
 : Returns True on success and False if provided directoryPath buffer is not large enough
@@ -822,7 +822,7 @@ User is responsible to allocate a buffer which is large enough.*
 : size_t strLen
 
 *lParam [out]*
-: TCHAR * strLine
+: wchar_t * strLine
 
 **Return value**:
 : Returns True on success and False if provided strLine buffer is not large enough
@@ -916,7 +916,7 @@ User is responsible to allocate a buffer which is large enough.*
 : size_t currentWordLen
 
 *lParam [out]*
-: TCHAR * currentWord
+: wchar_t * currentWord
 
 **Return value**:
 : Returns True on success and False if provided currentWord buffer is not large enough
@@ -1044,7 +1044,7 @@ MAX_PATH is suggested to use.*
 : size_t extensionLen
 
 *lParam [out]*
-: TCHAR * extension
+: wchar_t * extension
 
 **Return value**:
 : Returns True on success and False if provided extension buffer is not large enough
@@ -1062,7 +1062,7 @@ MAX_PATH is suggested to use.*
 : size_t fileNameLen
 
 *lParam [out]*
-: TCHAR * fileName
+: wchar_t * fileName
 
 **Return value**:
 : Returns True on success and False if provided fileName buffer is not large enough
@@ -1079,7 +1079,7 @@ Note, while this message has been created, and is used internally, to retrieve a
 : INT length
 
 *lParam [out]*
-: TCHAR* buffer
+: wchar_t* buffer
 
 **Return value**:
 : Returns True if the size of the provided buffer is large enough, False otherwise.
@@ -1097,7 +1097,7 @@ MAX_PATH is suggested to use.*
 : size_t fullPathLen
 
 *lParam [out]*
-: TCHAR * fullPath
+: wchar_t * fullPath
 
 **Return value**:
 : Returns True on success and False if provided fullPath buffer is not large enough
@@ -1115,7 +1115,7 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 : UINT_PTR bufferID
 
 *lParam [out]*
-: TCHAR * buffer
+: wchar_t * buffer
 
 **Return value**:
 : Returns -1 if bufferID does not exist, otherwise the number of chars copied/to copy.
@@ -1133,7 +1133,7 @@ Second call is sent with correctly allocated buffer to retrieve the description.
 : int langTypeID
 
 *lParam [out]*
-: TCHAR* buffer
+: wchar_t* buffer
 
 **Return value**:
 : Returns The number of characters needed or copied
@@ -1152,7 +1152,7 @@ Second call is sent with correctly allocated buffer to retrieve the language nam
 : int langTypeID
 
 *lParam [out]*
-: TCHAR* buffer
+: wchar_t* buffer
 
 **Return value**:
 : Returns The number of characters needed or copied
@@ -1202,7 +1202,7 @@ MAX_PATH is suggested to use.*
 : size_t namePartLen
 
 *lParam [out]*
-: TCHAR * namePart
+: wchar_t * namePart
 
 **Return value**:
 : Returns True on success and False if provided namePart buffer is not large enough
@@ -1258,7 +1258,7 @@ sessionFileName should be a full path name of an xml file.*
 : BOOL* isValidXML, if the lParam pointer is null, then this parameter will be ignored. TRUE if XML is valid, otherwise FALSE. (added in v8.6)
 
 *lParam [in]*
-: const TCHAR * sessionFileName
+: const wchar_t * sessionFileName
 
 **Return value**:
 : Returns 0 if sessionFileName is an empty string/NULL, or XML session file is corrupted/invalid, else the number of files.
@@ -1293,7 +1293,7 @@ MAX_PATH is suggested to use.*
 : size_t nppDirLen
 
 *lParam [out]*
-: TCHAR * nppDir
+: wchar_t * nppDir
 
 **Return value**:
 : Returns True on success and False if provided nppDir buffer is not large enough
@@ -1309,7 +1309,7 @@ MAX_PATH is suggested to use.*
 : INT length
 
 *lParam [out]*
-: TCHAR* buffer
+: wchar_t* buffer
 
 **Return value**:
 : Returns True if the provided buffer size was big enough to write the full path to it, False otherwise.
@@ -1367,7 +1367,7 @@ User is responsible to allocate an big enough fileNames array.*
 **Parameters**:
 
 *wParam [out]*
-: TCHAR ** fileNames,
+: wchar_t ** fileNames,
 receives the full path names of all the opened files in Notepad++
 
 *lParam [in]*
@@ -1386,7 +1386,7 @@ User is responsible to allocate an big enough fileNames array.*
 **Parameters**:
 
 *wParam [out]*
-: TCHAR ** fileNames,
+: wchar_t ** fileNames,
 receives the full path names of the opened files in the primary view
 
 *lParam [in]*
@@ -1406,7 +1406,7 @@ User is responsible to allocate an big enough fileNames array.*
 **Parameters**:
 
 *wParam [out]*
-: TCHAR ** fileNames,
+: wchar_t ** fileNames,
 receives the full path names of the opened files in the second view
 
 *lParam [in]*
@@ -1428,17 +1428,17 @@ First call should be made with length set to 0 and buffer set to NULL to retriev
 : SIZE_T length
 
 *lParam [out]*
-: TCHAR* buffer
+: wchar_t* buffer
 
 **Return value**:
-: Returns the number of TCHAR copied to buffer without trailing NULL.
+: Returns the number of wchar_t copied to buffer without trailing NULL.
 
 ---
 
 #### [2070] **NPPM_GETPLUGINSCONFIGDIR**
 *Retrieves the path of the plugin config directory.
 User should call this message twice:
-The 1st call with "pluginsConfDir" be NULL to get the required number of TCHAR (not including the terminating nul character)
+The 1st call with "pluginsConfDir" be NULL to get the required number of wchar_t (not including the terminating nul character)
 The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return value + 1, then call it again to get the path*
 
 **Parameters**:
@@ -1447,10 +1447,10 @@ The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return valu
 : int strLen
 
 *lParam [out]*
-: TCHAR *pluginsConfDir
+: wchar_t *pluginsConfDir
 
 **Return value**:
-: Return: The 1st call - the number of TCHAR to copy; The 2nd call - False on failure, True on success
+: Return: The 1st call - the number of wchar_t to copy; The 2nd call - False on failure, True on success
 
 ---
 
@@ -1487,7 +1487,7 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 maximum bytes to read for the path string, including the final NULL byte
 
 *lParam [out]*
-: TCHAR *settingsOnCloudPath,
+: wchar_t *settingsOnCloudPath,
 the path for cloud settings obtained by this message
 
 **Return value**:
@@ -1501,12 +1501,12 @@ the path for cloud settings obtained by this message
 **Parameters**:
 
 *wParam [out]*
-: TCHAR ** sessionFileArray,
+: wchar_t ** sessionFileArray,
 the array in which the files' full path of the same group are written.
 To allocate the array with the proper size, send message NPPM_GETNBSESSIONFILES.
 
 *lParam [in]*
-: const TCHAR * sessionFileName,
+: const wchar_t * sessionFileName,
 the path to the session file from which you retrieve the files
 
 **Return value**:
@@ -1781,10 +1781,10 @@ _Note_: There is no symmetric plugin command for setting the tab color. Plugins 
 **Parameters**:
 
 *wParam [in]*
-: TCHAR * dir2Search or NULL
+: wchar_t * dir2Search or NULL
 
 *lParam [in]*
-: TCHAR * filter or NULL
+: wchar_t * filter or NULL
 
 **Return value**:
 : Returns True
@@ -1800,7 +1800,7 @@ _Note_: There is no symmetric plugin command for setting the tab color. Plugins 
 : int, must be zero.
 
 *lParam [in]*
-: const TCHAR * sessionFileName
+: const wchar_t * sessionFileName
 
 **Return value**:
 : Returns True
@@ -1868,7 +1868,7 @@ For example, plugin X can execute a command of plugin Y if plugin X knows the co
 **Parameters**:
 
 *wParam [in]*
-: TCHAR * destModuleName,
+: wchar_t * destModuleName,
 is the complete module name (with the extesion .dll) of plugin with which you want to communicate (plugin Y).
 
 *lParam [out]*
@@ -1876,7 +1876,7 @@ is the complete module name (with the extesion .dll) of plugin with which you wa
 ~~~
 struct CommunicationInfo {
 	long internalMsg;
-	const TCHAR * srcModuleName;
+	const wchar_t * srcModuleName;
 	void * info; // defined by plugin
 };
 ~~~
@@ -1917,7 +1917,7 @@ If doAlertOrNot is True, then a message box will display to ask user to reload t
 if True then an alert message box will be launched.
 
 *lParam [in]*
-: TCHAR *filePathName2Reload
+: wchar_t *filePathName2Reload
 
 **Return value**:
 : Returns True if reloading file succeeds, False otherwise
@@ -1982,7 +1982,7 @@ saveAsCopy must be either 0 to save, or 1 to save a copy of the current filename
 : int saveAsCopy
 
 *lParam [in]*
-: TCHAR* filename
+: wchar_t* filename
 
 **Return value**:
 : Returns True on success, False otherwise
@@ -1999,7 +1999,7 @@ The xml full path name has to be provided by sessionFileName.*
 : int, must be zero.
 
 *lParam [in]*
-: const TCHAR *sessionFileName
+: const wchar_t *sessionFileName
 
 **Return value**:
 : Returns sessionFileName on success, NULL otherwise
@@ -2016,7 +2016,7 @@ filename must be the full file path for the file to be saved.*
 : int, must be zero.
 
 *lParam [in]*
-: const TCHAR* filename
+: const wchar_t* filename
 
 **Return value**:
 : Returns True on success False on filename not found
@@ -2037,7 +2037,7 @@ Note, contrary to NPPM_SAVECURRENTSESSION, which saves the current opened files,
 : sessionInfo*
 
 **Return value**:
-: Returns On success a TCHAR* to full path of the session filename to be saved or NULL otherwise
+: Returns On success a wchar_t* to full path of the session filename to be saved or NULL otherwise
 
 ---
 
@@ -2211,7 +2211,7 @@ STATUSBAR_TYPING_MODE   5
 ~~~
 
 *lParam [in]*
-: TCHAR* value, the string to set.
+: wchar_t* value, the string to set.
 
 **Return value**:
 : Returns False on failure, True on success
@@ -2227,7 +2227,7 @@ STATUSBAR_TYPING_MODE   5
 : UINT_PTR id - BufferID of the tab.
 
 *lParam [in]*
-: TCHAR* newName - the desired new name of the tab
+: wchar_t* newName - the desired new name of the tab
 
 **Return value**:
 :  Return TRUE upon success; FALSE upon failure
@@ -2262,7 +2262,7 @@ If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.
 : int, must be zero.
 
 *lParam [in]*
-: TCHAR *filePathName2switch
+: wchar_t *filePathName2switch
 
 **Return value**:
 : Returns True
