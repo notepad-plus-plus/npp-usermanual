@@ -1019,7 +1019,7 @@ Puts that mode in the output object. (Added v8.3.3)*
 **Parameters**:
 
 *wParam [in]*
-: const tChar\* languageName, the name of the language to get
+: const wchar_t\* languageName, the name of the language to get
 
 *lParam [out]*
 : ExternalLexerAutoIndentMode &autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, with values:
@@ -2130,7 +2130,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 **Parameters**:
 
 *wParam [in]*
-: const tChar\* languageName, the name of the language to set
+: const wchar_t\* languageName, the name of the language to set
 
 *lParam [in]*
 : ExternalLexerAutoIndentMode autoIndentMode, an object of the enumeration class ExternalLexerAutoIndentMode, where you supply one of the following values:
