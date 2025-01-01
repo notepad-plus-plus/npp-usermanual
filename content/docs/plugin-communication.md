@@ -1372,7 +1372,7 @@ receives the full path names of all the opened files in Notepad++
 
 *lParam [in]*
 : int nbFile,
-is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value.
+is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant ALL_OPEN_FILES, then allocate fileNames array with this value (noting the size requirements for an [Array of Path Strings](#array-of-path-strings)).
 
 **Return value**:
 : Returns The number of files copied into fileNames array.
@@ -1391,7 +1391,7 @@ receives the full path names of the opened files in the primary view
 
 *lParam [in]*
 : int nbFile,
-is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value.
+is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES message with constant PRIMARY_VIEW, then allocate fileNames array with this value (noting the size requirements for an [Array of Path Strings](#array-of-path-strings)).
 
 
 **Return value**:
@@ -1411,7 +1411,7 @@ receives the full path names of the opened files in the second view
 
 *lParam [in]*
 : int nbFile,
-is the size of your fileNames array. You should get this value by using NPPM_GETNBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value.
+is the size of your fileNames array. You should get this value by using NPPM_GETNBOPENFILES message with constant SECOND_VIEW, then allocate fileNames array with this value (noting the size requirements for an [Array of Path Strings](#array-of-path-strings)).
 
 **Return value**:
 : Returns The number of files copied into fileNames array.
@@ -1503,7 +1503,7 @@ the path for cloud settings obtained by this message
 *wParam [out]*
 : wchar_t ** sessionFileArray,
 the array in which the files' full path of the same group are written.
-To allocate the array with the proper size, send message NPPM_GETNBSESSIONFILES.
+To allocate the array with the proper size, use the message NPPM_GETNBSESSIONFILES to get the number of strings needed, then allocate each path entry string (noting the size requirements for an [Array of Path Strings](#array-of-path-strings)).
 
 *lParam [in]*
 : const wchar_t * sessionFileName,
@@ -2728,3 +2728,13 @@ The BufferID received by a notification is not necessarily the _active_ buffer. 
       docIndex = value & 0x3FFFFFFF
       NPPM_ACTIVATEDOC(view, docIndex)
       ```
+
+### Array of Path Strings
+
+Some of the messages have a `wchar_t **` type, which is an array of wide-character strings.  
+All such messages require you to pre-allocate the array, with enough strings, and enough
+_wide_ characters (2 bytes each) for each string.  Since these messages are dealing with paths,
+you should allocate enough per string for [`MAX_PATH`](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file "MS Learn: MAX_PATH")
+_wide characters_: if your programming interface allocates strings based on number of bytes,
+then you will need to allocate `2*MAX_PATH` for the number of bytes, to be able to hold
+`MAX_PATH` wide characters.
