@@ -259,11 +259,18 @@ Position | Name | Value format | Meaning
 :--------|:-----|:-------------|:---
 1  |  name  |  string  |  The name of the language.
 2  |  ext  |  string  |  The list of file extensions associated to this language by default. Lists are space separated, without leading periods.
-3  |  commentLine  |  string  |  The character(s) that prelude a comment extending to the end of the physical line. Use "" if the feature is not supported.
-4  |  commentStart  |  string  |  The character(s) that start a block comment. Use "" if the feature is not supported.
-5  |  commentEnd  |  string  |  The character(s) that end a block comment. Use "" if the feature is not supported.
-6  |  exclude  |  "yes"/"no"  |  Set to yes" to remove from the Language menu, else "no" or no attribute.
-7  |  tabSettings  |  integer  |  If present, the value encodes the number of spaces a tab is equivalent to: value + 128 if the Replace tabs vy spaces is checked, else raw value. The default value of 4 is used if attribute is absent.
+3  |  commentLine  |  string  |  The character(s) that prelude a comment extending to the end of the physical line when using the **[Edit > Comment/Uncomment](https://npp-user-manual.org/docs/editing/#edit-menu:~:text=columns%20is%20different.-,Comment/Uncomment,-%3E%20%E2%87%92%20submenu%20with) > Single line** actions. Set to "" if single-line comments are not supported for the current Language.
+4  |  commentStart  |  string  |  The character(s) that start a block comment when using the **[Edit > Comment/Uncomment](https://npp-user-manual.org/docs/editing/#edit-menu:~:text=columns%20is%20different.-,Comment/Uncomment,-%3E%20%E2%87%92%20submenu%20with) > Block Comment/Uncomment** actions. Set to "" if block comments are not supported for the current Language.
+5  |  commentEnd  |  string  |  The character(s) that end a block comment when using the **[Edit > Comment/Uncomment](https://npp-user-manual.org/docs/editing/#edit-menu:~:text=columns%20is%20different.-,Comment/Uncomment,-%3E%20%E2%87%92%20submenu%20with) > Block Comment/Uncomment** actions. Set to "" if block comments are not supported for the current Language.
+6  |  exclude  |  `"yes"`/`"no"`  |  Set to `"yes"` to hide this Language from the Language menu; otherwise, set to `"no"` or don't include this attribute.  Reflects the **[Settings > Preferences > Language](../preferences/#language)** having the Language in the **Disabled** list (`"yes"`) vs **Available** list (`"no"`).
+7  |  tabSettings  |  integer  |  If present, the attribute value encodes the number of spaces a tab is equivalent to, reflecting **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings** for the active language. (More on this attribute, below)
+8  |  backspaceUnindent | `"yes"`/`"no"` | If present, reflects the state of the **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings > `☐ Backspace key unindents...`** checkbox.  (New to v8.6.9)
+
+The value used in the `tabSettings` attribute value depends on the **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings**:
+- If it is set to use `☑ Tab character`, then the value stored in this XML attribute is the same as in the preference's **Indent Size** value.
+- If it is set to use `☑ Space character(s)`, then the value stored in this XML attribute is 128 higher than the preference's **Indent Size** value (so a value of `4` in the preference dialog would be stored here as `tabSettings="132"`).
+- If it is set to use `☑ Use Default Value`, then this attribute will be `tabSettings="-1"`.
+- If this `<Language...>` entry is missing the `tabSettings` attribute, it will behave as if it had `tabSettings="-1"`.
 
 Inside each of the languages, you _could_ add keywords. However, it's better to use [**Settings > Style Configurator**](../preferences/#style-configurator) and make use of the user-defined keywords box for a given category (when available). These user-defined keywords are stored in [`stylers.xml`](#highlighting-schemes-stylers-xml) (described below).
 
