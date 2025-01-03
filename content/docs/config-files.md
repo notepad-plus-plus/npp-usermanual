@@ -186,14 +186,14 @@ When not empty, this node contains `<Command>` tags, which have the command stri
 **Attributes for the `<Command>` tag**
 
 
-Position | Name | Value format | Meaning
-:--------|:-----|:-------------|:---
-1  |  name  |  string  |  The name of the Run command.
-2  |  Ctrl  |  "yes"/"no"  |  The key mapped to has the Control modifier
-3  |  Alt  |  "yes"/"no"  |  The key mapped to has the Alt modifier
-4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
-5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
-6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu (new to v8.4.8)
+| Position | Name | Value format | Meaning
+|:--------|:-----|:-------------|:---
+| 1  |  name  |  string  |  The name of the Run command.
+| 2  |  Ctrl  |  "yes"/"no"  |  The key mapped to has the Control modifier
+| 3  |  Alt  |  "yes"/"no"  |  The key mapped to has the Alt modifier
+| 4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
+| 5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
+| 6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu (new to v8.4.8)
 
 _Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file; it is not available in the Shortcut Mapper or any other GUI element.
 
@@ -201,21 +201,23 @@ Although it is possible for several commands to have the same name, this is conf
 
 The run command may contain any valid command for the <abbr title="Operating System: Generally Windows. If you use Notepad++ in a Linux WINE environment or similar, could you create a pull request clarifying whether it's windows-style command syntax or linux-style command syntax.">Windows OS</abbr>. If you use a command that can be found in your PATH (like `cmd.exe`), then you don't need to specify the full path to the command. If it's not in your path, then you _should_ specify the full path. Note that Windows will launch your default browser if you put a URL in this. If the command, or one of its arguments, has an embedded space, then put quotes around it (like you would for any command line environment). For example, `<Command name="Run Putty" ... >"c:\program files\putty\putty.exe" -ssh -load "my session"</Command>` shows the quotes around the executable and one of the arguments, because both have spaces.  (That same command in the **Run**-menu's **Run...** action dialog would need to be `"c:\program files\putty\putty.exe" -ssh -load "my session"` to encapsulate all the paths with spaces inside double-quotes.)
 
-There are a number of Notepad++-specific variables available, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry (whether creating the command in the `shortcuts.xml` or through the **Run > Run...** entry).
+#### Variables for Run Commands
 
-Variable            | Description                       | Example
---------------------|:---                               |:---
-FULL_CURRENT_PATH   | The full path to the active file  | `E:\My Web\main\welcome.html`
-CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
-FILE_NAME           | The active file's name            | `welcome.html`
-NAME_PART           | The filename without extension    | `welcome`
-EXT_PART            | The extension (with the `.`)      | `.html`
-CURRENT_WORD        | the active selection in Notepad++, or the word under the [caret](#caret-and-cursor "typing/insertion cursor") |
-CURRENT_LINE        | the line number where the [caret](#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `1`
-CURRENT_LINESTR     | the text of the current line (added v8.3.2)  | `The quick brown fox jumps over the lazy dog`
-CURRENT_COLUMN      | the column number where the [caret](#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `5`
-NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
-NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
+There are a number of Notepad++-specific variables available for Run commands, which are accessed in the form `$(VARIABLE_NAME)`, which can be used to supply portions of the command entry (whether creating the command in the `shortcuts.xml` or through the **Run > Run...** entry).
+
+| Variable            | Description                       | Example
+|:--------------------|:---                               |:---
+| FULL_CURRENT_PATH   | The full path to the active file  | `E:\My Web\main\welcome.html`
+| CURRENT_DIRECTORY   | The active file's directory       | `E:\My Web\main`
+| FILE_NAME           | The active file's name            | `welcome.html`
+| NAME_PART           | The filename without extension    | `welcome`
+| EXT_PART            | The extension (with the `.`)      | `.html`
+| CURRENT_WORD        | the active selection in Notepad++, or the word under the [caret](#caret-and-cursor "typing/insertion cursor") |
+| CURRENT_LINE        | the line number where the [caret](#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `1`
+| CURRENT_LINESTR     | the text of the current line (added v8.3.2)  | `The quick brown fox jumps over the lazy dog`
+| CURRENT_COLUMN      | the column number where the [caret](#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `5`
+| NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
+| NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
 
 If the variable contains one or more space characters in the path, like `$(FULL_CURRENT_PATH)` being `C:\Path With Spaces\Goes\Here.txt`, then you should include quotes around the variable, like `"c:\Program Files\App Name\blah.exe" "$(FULL_CURRENT_PATH)"`
 
