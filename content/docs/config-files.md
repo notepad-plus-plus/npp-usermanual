@@ -142,7 +142,7 @@ All the types of commands in `shortcuts.xml` have a `key` attribute, which uses 
 
 When not empty, this node is made of `<Macro>` nodes, each of which represents an individual macro. Each `<Macro>` holds a non-empty list of `<Action>` tags which represent individual macro steps. These steps are either Scintilla commands or Notepad++ commands, not raw keystrokes. For more details on macro recording, see [Macros](../macros/).
 
-**Attributes for the `<Macro>` node**
+#### Attributes for the `<Macro>` node
 
 Position | Name | Value format | Meaning
 :--------|:-----|:-------------|:---
@@ -157,19 +157,18 @@ _Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file;
 
 Although it is possible for several macros to share the same name or shortcut, this practice is highly discouraged.
 
-**Attributes for the `<Action>` tag**
+#### Attributes for the `<Action>` tag
 
-
-Position | Name | Value format | Meaning
-:--------|:-----|:-------------|:---
-1  | type  |  integer  | `0` for Scintilla messages that do not pass a string as second parameter
-   |       |           | `1` for Scintilla messages that pass a string as second parameter
-   |       |           | `2` for Notepad++ defined commands
-   |       |           | `3` for search and replace recording
-2  | message  |  integer  | `0` if `type=2`, otherwise use the message id
-3  | wParam  |  integer  |  Command id when `type=2` or `type=3`, else actual first parameter of the message. Use `0` if the message or command doesn't require a wParam.
-4  | lParam  |  integer |  `0` unless `type=0` and the second parameter of the message is actually used, or scalar value used when `type=3`.
-5  | sParam  |  string  |  `""` unless `type=1` or `type=3`, in which case this is the string pointed by the second parameter of the message.
+|Position | Name    | Value format | Meaning
+|:--------|:--------|:-------------|:---
+| 1       | type    |  integer     | `0` for Scintilla messages that do not pass a string as second parameter
+|         |         |              | `1` for Scintilla messages that pass a string as second parameter
+|         |         |              | `2` for Notepad++ defined commands
+|         |         |              | `3` for search and replace recording
+| 2       | message |  integer     | `0` if `type=2`, otherwise use the message id
+| 3       | wParam  |  integer     | Command id when `type=2` or `type=3`, else actual first parameter of the message. Use `0` if the message or command doesn't require a wParam.
+| 4       | lParam  |  integer     | `0` unless `type=0` and the second parameter of the message is actually used, or scalar value used when `type=3`.
+| 5       | sParam  |  string      | `""` unless `type=1` or `type=3`, in which case this is the string pointed by the second parameter of the message.
 
 The full list of Scintilla messages for `type=0` and `type=1` Scintilla messages, as well as a concise documentation, can be found in [Scintilla.iface](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.iface). More details on those messages can be found in the [Scintilla Docs](https://scintilla.org/ScintillaDoc.html). You can use any Scintilla message that does not return a value, that passes an integer in `wParam`, and uses either an integer or string in `lParam`. There are some messages that require strings in the `wParam`, or various data structures in one or both parameters: those will not work in a macro. (For more on the messaging system, see [Plugin Communication](../plugin-communication/).)
 
