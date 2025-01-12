@@ -374,7 +374,7 @@ It needs **Plugin List** (see next section) to work.
 
 ## Plugin List
 
-A list in JSON format wrapped in a dll contains the most poplular Notepad++ plugins.
+A list in JSON format wrapped in a dll contains the most popular Notepad++ plugins.
 This list which is maintained by the team, is also an open source project hosted
 in the GitHub: https://github.com/notepad-plus-plus/nppPluginList/.
 Any plugin is welcome to join in the list.
