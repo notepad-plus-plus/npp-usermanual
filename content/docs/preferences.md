@@ -51,9 +51,11 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
         - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
     * `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
-    * `☐ Show close button on each tab`: Add the close button to each tab's entry on the tab bar.
-        - In v8.7.2 and newer, the close button is hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    * `☐ Show close button`: Add the close button to each tab's entry on the tab bar.
+        - In v8.7.6 and newer, if the option is checkmarked, Notepad++ shows the close button on the active tab or on all tabs (depending on `☐ Show buttons on inactive tabs` below); when this option is not checkmarked, no tabs show the close button
+        - In v8.7.2-8.7.5, it was `Show close button on each tab`, and it caused the close button to be hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
     * `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
+    * `☐ Show buttons on inactive tabs`: When checkmarked, the close button and pin tab icons will always be visible on all tabs, whether or not the tab is active (if their respective options, above, are also checkmarked); when not checkmarked, the close button and pin tab icons will be hidden on inactive tabs, and only visible on active tabs or when hovering over inactive tabs.
     * `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
     * `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 * **Menu**
