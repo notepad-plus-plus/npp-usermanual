@@ -445,6 +445,7 @@ There are a few **Search**-menu commands that don't fit within other categories:
   - `You can't go further than`: This is the end of the file, in the current Line/Offset units.
   - **Go**: Moves the caret to the given location.
   - **I'm going nowhere**: Exits the dialog without moving the caret.  (This is the same as a **Cancel** action in most dialog boxes.)
+  - Starting in v8.7.6, you can copy the the numbers from the `You are here` and `You want to go to` fields by selecting the numbers and using `Ctrl+C` or the Right Click menu.
 - **Go to Matching Brace**: Allows parentheses and braces navigation.  If the caret is adjacent to the opening parenthesis `(` or bracket `[` or brace `{`, then this command will move the caret to just before the matching closing-character `)` or `]` or `}`; similarly, if the caret is on the closing character, the command will move the caret to just before the matching opening-character.  (The [**Style Configurator > Global Styles > Brace Highlight Style**](../preferences/#global-styles) will be used to highlight the opening and closing pairs of characters.)
 - **Select All In-between {} [] or ()**: Will select all the text in between a matching pair of braces `{}` or brackets `[]` or parentheses `()` if the command is activated when the caret is adjacent to one of those characters; the resulting selection will include the surrounding pair of braces, brackets, or parentheses.
 
