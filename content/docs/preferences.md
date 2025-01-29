@@ -680,6 +680,8 @@ If you change a color in your Style Configurator, but the color doesn't change i
 
 ## Shortcut Mapper
 
+The Shortcut Mapper allows mapping specific key-combinations to specific actions inside Notepad++.  Starting in v8.7.6, the Shortcut Mapper will allow using the keys unique to the keyboard that was active when Notepad++ was started, and will properly display the character associated with that key (if the keyboard is changed, Notepad++ will have to be restarted to recognize the new keyboard); in all earlier versions, the only keys available were those from the en-US keyboard, and if the active keyboard had a different character associated with a given keycode, the en-US character shown in Notepad++ would be different from the key actually pressed on the keyboard for keyboard-specific keys.
+
 The Shortcut Mapper dialog presents five tabs:
 
 1. `Main menu`: Used for items in the main Notepad++ menu items, like File, Edit, Search, View, Encoding, Language, Settings, Run, and ? (Help/About) menus.
