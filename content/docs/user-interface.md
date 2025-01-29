@@ -18,7 +18,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
 - If you hover over a tab on the tab bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
     - If it's a new, unsaved tab, then the hover text will be the name of that tab (defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
-    - Hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below). 
+    - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > General](../preferences/#general) > Tab Bar** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
     - If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Darken inactive tabs** is checked, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
 
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
