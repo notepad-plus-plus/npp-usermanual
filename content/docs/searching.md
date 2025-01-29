@@ -175,6 +175,8 @@ The **Directory** is the containing folder for where to search.  It has three op
 * **☐ In all sub-folders** ⇒ If checked, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ If checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
+If there is no **Directory** defined, Notepad++ will have nothing to search.  Starting in v8.7.6, if the **Directory** field is empty when you click **Find All**, Notepad++ will move the dialog input focus to the **Directory** field, to make it more clear that you need to tell it what directory to search.  
+
 ### Find in Projects tab
 
 Find in Projects allows both finding and replacing search items in [Project Panels](../session). The files used for these operations are specified by the following check marks:
