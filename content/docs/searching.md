@@ -285,9 +285,15 @@ In v8.7.5, the algorithm is standardized to:
 
 There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later). The **Copy Selected Pathname(s)** context menu command (known as **Copy Pathname(s)** from v8.0.0 to v8.7.1) copies to the clipboard the full pathnames of all the files for any lines selected in **Search results**. The list copied to the clipboard will contain one line for each pathname. From v8.0.0 to v8.7.1, **Copy Pathname(s)** would copy all pathnames from all prior searches. Starting in v8.7.2, if you have selected search results that include a pathname line (even partially), or if the [caret](#caret-and-cursor "typing/insertion cursor") with no selected text is on one of the search result pathname lines, then this action will copy the pathname associated with each search result entry so selected. Running this action on never-saved files, like the `new 1` tabs (even if they've been manually renamed but not yet saved), will use the tab's name as the "pathname", since there is no filesystem path associated with such tabs. To mimic the behavior of **Copy Pathname(s)** from earlier software in v8.7.2 and later, select all text in search-results before running the action.
 
+##### Opening path(s) from the **Search results** window
+
+Prior to v8.7.2, the **Open all** command in the **Search Results** right-click context menu would open _all_ the files from your **Search Results** window.  If you had done multiple searches that were still listed in that window, _all_ of those files will be opened.  there was no way to open just a few of the files, or just the files from a particular search.
+
+Starting in v8.7.2, that **Open all** command was removed, and was replaced with **Open selected pathname(s)**, which will open the file(s) associated with selected search results, following the same selection/[caret](#caret-and-cursor "typing/insertion cursor") logic as **Copy Selected Pathname(s)** (described above); if the file is already opened, it will not be opened a second time (but it will activate that file's tab if there's only one in the selection).  If you want the old **Open all**-style behavior, you can use <kbd>Ctrl+A</kbd> (or **Select all**) then **Open selected pathname(s)**.
+
 ##### Other commands
 
-The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the <kbd>Delete</kbd> key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  An example of this would be the **Open all** command which opens *all* files listed in the **Search results** tab that have previously had hits.  If the search history in **Search results** is really long, it may not be desirable to open all files listed there, so using **Clear all** before doing some new searches with the intent to **Open all** afterwards may be the thing to do.
+The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the <kbd>Delete</kbd> key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  
 
 The **Select all** command is self-explanatory:  All text in the **Search results** tab is selected.
 
@@ -296,8 +302,6 @@ The contents of the **Search results** tab are in the form of a tree.  When Note
 The user can fold/unfold "branches" of this tree.  To fold, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be folded (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To unfold an individual item that has previously been folded (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and shown again.
 
 The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once. (These were called **Collapse all** and **Uncollapse all** before v8.4.6.)
-
-Starting in v8.7.2, **Open selected pathname(s)** will open the file(s) associated with selected search results (following the same selection/[caret](#caret-and-cursor "typing/insertion cursor") logic as **Copy Selected Pathname(s)** (described above); if the file is already opened, it will not be opened a second time (but it will activate that file's tab if there's only one in the selection.)
 
 ##### Searching in previously-found results (secondary searching)
 
