@@ -84,7 +84,7 @@ where:
 
 ---
 
-#### [2117] **NPPM_ADDSCNMODIFIEDFLAGS**
+#### [2141] **NPPM_ADDSCNMODIFIEDFLAGS**
 *Add needed `SCN_MODIFIED` flags so your plugin will recieve the notification `SCN_MODIFIED` of these events for your specific treatments. (New to v8.7.7.)*
 
 *By default, Notepad++ only forwards `SCN_MODIFIED` with the following 5 flags/events `SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT | SC_PERFORMED_UNDO | SC_PERFORMED_REDO | SC_MOD_CHANGEINDICATOR` to plugins.*
