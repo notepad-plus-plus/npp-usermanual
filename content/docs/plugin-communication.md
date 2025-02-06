@@ -84,9 +84,50 @@ where:
 
 ---
 
+#### [2117] **NPPM_ADDSCNMODIFIEDFLAGS**
+*Add needed `SCN_MODIFIED` flags so your plugin will recieve the notification `SCN_MODIFIED` of these events for your specific treatments. (New to v8.7.7.)*
+
+*By default, Notepad++ only forwards `SCN_MODIFIED` with the following 5 flags/events `SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT | SC_PERFORMED_UNDO | SC_PERFORMED_REDO | SC_MOD_CHANGEINDICATOR` to plugins.*
+*If your plugin need to process other events of `SCN_MODIFIED`, you should add the flags you need by sending this message to Notepad++, just after recieving NPPN_READY.*
+*Even if your plugin only uses flags/events that are in those 5, it is recommended to notify Notepad++ of that need.*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: unsigned long scnMotifiedFlags2Add, a bitwise-OR of the `SCN_MODIFIED` constants indicating which flags/events your plugin needs Notepad++ to forward.
+
+**Return value**:
+: Returns True
+
+**Example:**
+The following tells Notepad++ that your plugin needs the `SC_MOD_DELETETEXT` and `SC_MOD_INSERTTEXT` flags/events:
+```
+	extern "C" __declspec(dllexport) void beNotified(SCNotification* notifyCode)
+	{
+		switch (notifyCode->nmhdr.code)
+		{
+			case NPPN_READY:
+			{
+				// Add SC_MOD_DELETETEXT and SC_MOD_INSERTTEXT notifications
+				::SendMessage(nppData._nppHandle, NPPM_ADDSCNMODIFIEDFLAGS, 0, SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT); 
+			}
+			break;
+			...
+		}
+		...
+	}
+```
+
+**Recommendation**:
+It is best practice to include _all_ flags/events that are needed by your plugin, even if they are in the list of default flags (like the `SC_MOD_DELETETEXT` and `SC_MOD_INSERTTEXT` are in the example), as this clearly communicates to Notepad++ the needs of your plugin.  (It is possible, in the future, that the list of default flags/events will be changed, or that Notepad++ may be able to provide more performance optimizations if  plugins indicate all the flags/events that they need.)
+
+---
+
 #### [2065] **NPPM_ADDTOOLBARICON** [DEPRECATED]
-*Deprecated in v8.0.  Use NPPM_ADDTOOLBARICON_FORDARKMODE instead.  Does not support
-the Darkmode icons.*
+*Deprecated in v8.0.  Use NPPM_ADDTOOLBARICON_FORDARKMODE instead.  Does not support the Darkmode icons.*
 
 *`NPPM_ADDTOOLBARICON_DEPRECATED`: Adds an icon to the toolbar.
 This function only makes sense if called on response to NPPN_TBMODIFICATION notification.
@@ -1211,7 +1252,8 @@ MAX_PATH is suggested to use.*
 
 #### [2140] **NPPM_GETNATIVELANGFILENAME**
 *Get the Current native language file name string. Use it after getting NPPN_READY notification to find out which native language is used.*
-Users should call it with nativeLangFileName as NULL to get the required number of char (not including the terminating nul character), allocate language file name string buffer with the return value + 1, then call it again to get the current native language file name string.*
+
+*Users should call it with nativeLangFileName as NULL to get the required number of char (not including the terminating nul character), allocate language file name string buffer with the return value + 1, then call it again to get the current native language file name string.*
 
 **Parameters**:
 
