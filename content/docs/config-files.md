@@ -306,16 +306,16 @@ Defines what counts as a "function" for **View > Function List**. There are some
 The `functionList` folder contains a separate XML file (function list parse rule) for each language's function list capability.
 Each function list parse rule links to a language with the language default name. For example the file name of php language parse rule is `php.xml`, the file name of Java language parse rule is `java.xml`, Check [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) for the naming list of all supported programming languages.
 
-[overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) is optional. When you need to override a default parser rule or to define a function list parser for your User Defined Language (UDL), you modify this file.
+For built-in languages that already have Function List behavior, editing [overrideMap.xml](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/functionList/overrideMap.xml) is optional: if you edit the existing `functionList\XYZ.xml` for that language, you don't need to edit `overrideMap.xml`; however, if you create a new `functionList\my_XYZ.xml` that you want to use instead of the default function list definition for XYZ, then you need to copy the an `<association id="{filename.xml}"... />` for language XYZ from inside the `<!-- ... -->` comment block, paste it outside that block, and point the to the new file using `id="my_XYZ.xml`.   If you need to link to a function list parser name "udl_ABC.xml" for your User Defined Language (UDL) named "ABC", you need to modify this file to add an `<association id="udl_ABC.xml" userDefinedLangName="ABC">` : the `id` must match the filename exactly, and the `userDefinedLangName` must match the name of your UDL, as seen in the **Language** menu and UDL dialog.
 
-- Override a default parser rule examples
+- Example: Override default parser rules for two languages:
 ```
 <association id= "anotherPhpParser.xml"			 langID= "1" />
 <association id= "myPerlRule.xml"			 langID= "21"/>
 ```
-If 2 above lines are in *overrideMap.xml*, function list will load your parsers `anotherPhpParser.xml` and `myPerlRule.xml` instead of loaoding `php.xml` and `perl.xml` while showing PHP and Perl function list respectively.
+If 2 above lines are in `overrideMap.xml`, function list will load your parsers `anotherPhpParser.xml` and `myPerlRule.xml` instead of loaoding `php.xml` and `perl.xml` while showing PHP and Perl function list respectively.
 
-- Define your UDL example
+- Example: Set the parser rule for your UDL called "KRL":
 ```
 <association id= "krl.xml"				userDefinedLangName="KRL"/>
 ```
