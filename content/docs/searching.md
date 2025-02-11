@@ -175,7 +175,9 @@ The **Directory** is the containing folder for where to search.  It has three op
 * **☐ In all sub-folders** ⇒ If checked, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ If checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
-If there is no **Directory** defined, Notepad++ will have nothing to search.  Starting in v8.7.6, if the **Directory** field is empty when you click **Find All**, Notepad++ will move the dialog input focus to the **Directory** field, to make it more clear that you need to tell it what directory to search.  
+If there is no **Directory** defined, Notepad++ will have nothing to search.  Starting in v8.7.6, if the **Directory** field is empty when you click **Find All**, Notepad++ will move the dialog input focus to the **Directory** field, to make it more clear that you need to tell it what directory to search.
+
+**Note**: During **Find in Files**, the contents of the editing-buffer in Notepad++ take priority over what's on disk for whether or not there is a match in a given file.  For example, assume that `editme.txt` originally just said `foo`, but that you have `editme.txt` open and have added the word `blah` but not yet saved it; if you **Find in Files** for `blah` in the directory that includes `editme.txt`, it will show that `editme.txt` contains a match, even though the file on disk does not, because Notepad++'s editing-buffer for that file _does_ contain the text.  To say it another way, if the file is being edited in Notepad++, the **Find in Files** search will use the content that Notepad++ sees, regardless of whether the saved file on your computer's filesystem contains a match.
 
 ### Find in Projects tab
 
