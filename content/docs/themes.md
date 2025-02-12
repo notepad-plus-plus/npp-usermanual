@@ -23,6 +23,8 @@ The easiest way to create a new theme is to copy an existing theme file to a new
 
 (You have to exit Notepad++ and rerun the application to see a new theme that you've copied into your Themes directory, or to see any updates you've made by manually editing the XML file(s).)
 
+Theme and styler XML files need to be encoded as UTF-8 with no BOM (see [Config File Encoding](../config-files/#configuration-file-encoding)).
+
 ## Sharing Themes
 
 You may share a theme (or someone may share with you) in a similar method to creating a new theme: copy the theme file, give it an appropriate name, and put it in your `Themes\` subdirectory: it's the same whether you are sharing across multiple users on the same computer, sharing across local computers, or sharing over the internet.

@@ -52,6 +52,10 @@ If changes are made in the Notepad++ UI to settings which are stored in configur
 
 The `config.xml` file may be overwritten by Notepad++ on exit, even if you follow this procedure, so that sequence won't reliably work for `config.xml`. To edit `config.xml`, close all instances of Notepad++; edit `config.xml` in some "other" editor and save; reload Notepad++ and the changes should take effect. (For the "other" editor, you _could_ use something like Windows' builtin notepad.exe. But it would be better if you had another portable Notepad++ somewhere on your machine, and use that portable Notepad++ to edit your main Notepad++'s `config.xml`, thus never having to use a non-Notepad++ editor: so close your main Notepad++, run the portable Notepad++ and open your main `config.xml`, edit and save, exit the portable Notepad++, then re-run the main Notepad++, and everything should be updated.)
 
+### Configuration File Encoding
+
+The Notepad++ XML configuration files are expected to be in UTF-8 encoding (with no BOM), and so should use the prolog of `<?xml version="1.0" encoding="UTF-8" ?>`.  If you use the BOM character at the beginning of a UTF-8 encoded XML file, or if you use another encoding like UTF-16, Notepad++ will not be able to read that configuration file.
+
 ## Configuration Files during Upgrades
 
 When you use the installer to upgrade your existing copy of Notepad++ (either manually, or through the **?**-menu's **Upgrade Notepad++**, or through Notepad++'s auto-update feature), the installer will avoid overwriting configuration files that you have customized -- this is to prevent you losing your preferred settings and customizations.
@@ -63,6 +67,10 @@ For the `config.xml` (which contains the settings from the GUI's **Settings > Pr
 1. On a new installation (running the installer when there isn't a previous Notepad++, or when there isn't a `config.xml` file and/or settings directory for the active user).
 2. When you run Notepad++, and there is no `config.xml` (either because there isn't a `config.xml` file and/or settings file for the current user, or the `config.xml` has been deleted), so Notepad++ writes a complete `config.xml` with all default values.
 3. When your `config.xml` is missing the attribute/value pair for a given setting.
+
+<hr>
+
+# Specifics on Configuration Files
 
 ## The context menu: `contextMenu.xml`
 

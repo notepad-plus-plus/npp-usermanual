@@ -100,6 +100,8 @@ Notepad++ uses XML configuration files to define the per-language function and p
 
 The syntax of AutoComplete files is simple, but does have a few rules, most importantly correct syntax and proper sorting. If the syntax is incorrect, the XML file will fail to load and AutoComplete will be not be available for that file type.
 
+Auto-completion XML files need to be encoded as UTF-8 with no BOM (see [Config File Encoding](../config-files/#configuration-file-encoding)).
+
 Improper sorting (see below) can cause the AutoComplete function to behave erratic, causing it to fail on certain words.
 
 The basic character set used to recognize keywords is made of letters `a-z`, `A-Z`, digits `0-9`, and the underscore `_`.  Punctuation might work for auto-completion; however, if you want to use the parameter hints, you should not use punctuation in the keyword name.
@@ -131,6 +133,8 @@ In the `<AutoComplete>` element you can add the `language` attribute, but it is 
 Auto-complete files files are located in the `autoCompletion\` subfolder of the Notepad++ installation folder (unlike some config files, these will _not_ work in the `%AppData%\Notepad++\` hierarchy). These files are optional: you need only one for each language for which you'll use Auto Completion or calltips. They are also supported for User Defined Languages, and bear the name `<Language name>.xml`.
 
 Note: Create a `normal.xml` AutoComplete file for adding custom suggestions to the default language, Normal Text \[i.e., language set to "None (Normal Text)"\].
+
+Auto-completion XML files need to be encoded as UTF-8 with no BOM (see [Config File Encoding](../config-files/#configuration-file-encoding)).
 
 Under the usual `<NotepadPlus>` tag is a `<AutoComplete>` tag. It has an optional, unused `language` attribute, which you can use for any descriptive purpose.
 
