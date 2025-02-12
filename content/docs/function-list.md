@@ -14,6 +14,8 @@ In order to make Function List work for your language, you should modify (or add
 
 To customize the Function List, you need to edit the XML file for the language you are defining.  This section describes the structure and requirements for each XML element.
 
+Function List XML files need to be encoded as UTF-8 with no BOM (see [Config File Encoding](../config-files/#configuration-file-encoding)).
+
 The `<parser>` node accepts the three attributes:
 
 - `id`: Unique ID for this parser.

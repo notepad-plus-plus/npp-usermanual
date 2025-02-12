@@ -64,6 +64,12 @@ For the `config.xml` (which contains the settings from the GUI's **Settings > Pr
 2. When you run Notepad++, and there is no `config.xml` (either because there isn't a `config.xml` file and/or settings file for the current user, or the `config.xml` has been deleted), so Notepad++ writes a complete `config.xml` with all default values.
 3. When your `config.xml` is missing the attribute/value pair for a given setting.
 
+## Configuration File Encoding
+
+The Notepad++ XML configuration files are expected to be in UTF-8 encoding (with no BOM), and so should use the prolog of `<?xml version="1.0" encoding="UTF-8" ?>`.  If you use the BOM character at the beginning of a UTF-8 encoded XML file, or if you use another encoding like UTF-16, Notepad++ will not be able to read that configuration file.
+
+# Specifics on Configuration Files
+
 ## The context menu: `contextMenu.xml`
 
 <!-- http://web.archive.org/web/20190518131311/http://docs.notepad-plus-plus.org/index.php/Context_Menu -->

@@ -132,6 +132,8 @@ Auto-complete files files are located in the `autoCompletion\` subfolder of the 
 
 Note: Create a `normal.xml` AutoComplete file for adding custom suggestions to the default language, Normal Text \[i.e., language set to "None (Normal Text)"\].
 
+Auto-completion XML files need to be encoded as UTF-8 with no BOM (see [Config File Encoding](../config-files/#configuration-file-encoding)).
+
 Under the usual `<NotepadPlus>` tag is a `<AutoComplete>` tag. It has an optional, unused `language` attribute, which you can use for any descriptive purpose.
 
 The contents of a `<AutoComplete>` start with an autoclosing `<Environment>` tag, with the following attributes:
