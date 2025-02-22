@@ -77,6 +77,8 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 When you right click on the title for a tab, you get a context menu for manipulating that tab.
 
+By default, the commands available in that context menu are described below.  If you would like to add other commands to that context menu, or remove commands you don't want to "clutter" that context menu, you can follow the instructions for [customizing the tab context menu using `tabContextMenu.xml`](config-files/#the-context-menu-tabcontextmenuxml).
+
 - `Close`: Closes this file's tab.
 - `Close Multiple Tabs >`:
   - `Close All BUT This`: Closes all files, except this tab's file.
