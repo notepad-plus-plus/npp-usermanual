@@ -175,7 +175,8 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
-The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](config-files/#toolbar-icon-customization-toolbaricons-xml).
+The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  You can hide or show individual toolbar buttons, as described in [Toolbar Icon Visibility](config-files/#toolbar-icon-visibility-toolbarbuttonsconfxml) (new to v8.7.8).  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](../config-files/#toolbar-icon-customization-toolbariconsxml).
+
 
 ## Document Switcher
 

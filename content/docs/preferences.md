@@ -561,16 +561,24 @@ A variety of settings that didn't fit elsewhere
     - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is minimized or closed. (New to v8.7.2.)
     - The dropdown is new to v8.7.1.  In previous versions, there was just a checkbox for `☐ Minimize to system tray`, and there was no `Close to` option available.
     - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
+* **Direct Write rendering mode** dropdown
+    - DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
+    - There are four options (new to v8.7.8):
+        - `GDI (most compatible)`: This version is "most compatible", but it's because it doesn't have any of the features available in the other DirectWrite choices.
+        - `DirectWrite (default)`: This is the "normal" DirectWrite mode, and matches `☑ Use DirectWrite` from v8.7.7 and earlier.  This is the default for a new installation of Notepad++.
+        - `DirectWrite (retain frames)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (retain frames)".
+        - `DirectWrite (draw to GDI DC)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (draw to GDI DC)".
+        - If you have having trouble rendering certain glyphs for Unicode characters (like various Asian characters or emoji), or having trouble with other rendering issues, you may want to try each of the four settings, to see which works best for you.
+    - Before v8.7.8, this was a checkbox: `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
+      - Unchecked is equivalent to the v8.7.8 `GDI (most compatible)`; checked is equivalent to v8.7.8 `DirectWrite (default)`.
+      - The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
+      - Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
+      - Some users notice performance issues when this is checkmarked; those affected may uncheckmark this option.
+      - Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
 * `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
 * `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
 * `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
-* `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
-  * DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
-  * The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
-  * Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
-  * Some users notice performance issues when this is checkmarked; those affected may uncheckmark this option.
-  * Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
 * `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
 * `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
 * `Workspace file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance) settings.
@@ -581,7 +589,7 @@ The Style Configurator dialog has three regions: Select theme, language and styl
 
 The "Select theme:" pulldown allows you to select which theme you want.  [Themes](../themes/) are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.
 
-The "Language:" selection list lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule to edit for the given language.
+The "Language:" pulldown (it was a selection list before v8.7.8) lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule to edit for the given language.
 
 On all but "Language: Global Styles", there will also be a "Default ext." box, which is an un-editable list of the default file extensions associated with that Language; and the "User ext." box, where you can add a user-defined list of additional extensions (space separated, don't use the . in the extension), which says which other extensions you want to apply this language's formatting to.  (Please note that any changes you make in the Style Configurator dialog box for a specific language only applies to that language and only applies to the selected [theme](../themes/): If you add a user-defined extension to a language in the `Default (stylers.xml)` theme, it will not affect the list of user-defined extensions for that language in any of the other themes.)
 
@@ -599,13 +607,6 @@ Unlike most of the other items listed in the "Languages" column, which are langu
 
 Some of these styles apply to the background only, some apply to the foreground only, and some apply to both.
 
-* **Global override** [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are checked will override even the per-language settings; any that are not checked will not use the global-override settings for that attribute.
-   - Global override takes precedence over any other color or font defined elsewhere, and will mask any per-language settings.
-   - Unless you want to turn off all syntax highlighting for all the programming languages, you likely don't want to use the `Global override` settings.
-   - Do not use this if all you are trying to do is set the color for Normal Text files (`.txt`): for those, use the `Default style` below.
-   - Starting in v8.7.1, there is a `What is Global override?` link which you can hover over to find out more about the global overrides; and new installations and new portable copies will have **Global override** at the _end_ of the list of **Global Styles** instead of the beginning, to better emphasize that **Global override** is more drastic than you usually need.
-       - If you upgrade from an older version of Notepad++ to v8.7.1 or newer, the **Global override** will not necessarily be moved to the end of the list.
-       - In such a case, or even if you are in an older version of Notepad++, you can edit [`%AppData%\Notepad++\stylers.xml` (or your active theme file)](../config-files/#highlighting-schemes-stylersxml) following the advice for [editing configuration files](../config-files/#editing-configuration-files), and move the `<WidgetStyle name="Global override" ... />` element from the top of the `<GlobalStyles>` section to the end of that section; after saving, exiting Notepad++, and restarting the app, **Global override** will be moved to the end of the list.
 * **Default style** [background and foreground] ⇒ This sets the base font and colors for all languages -- so any unstyled text will use these settings.
    - As described previously, `Default Style` is used to set the color for Normal Text (`.txt` files, and anything else that isn't highlighted by a lexer).
    - Also, as described a few paragraphs earlier, the highlighters for specific languages will inherit from this `Default Style` for things like font and possibly color, if there is no value defined for that language.
@@ -651,6 +652,13 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Document map** [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
 * **EOL Custom Color** [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing-1).  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **EOL** settings.
 * **Non-printing characters Custom Color** [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing-1).  The "Go to settings" link will take you to [Preferences > Editing](#editing-1) so you can change **Non-Printing Characters** settings.  (Previously labled as **NPC Custom Color**.)
+* **Global override** [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are checked will override even the per-language settings; any that are not checked will not use the global-override settings for that attribute.
+   - Global override takes precedence over any other color or font defined elsewhere, and will mask any per-language settings.
+   - Unless you want to turn off all syntax highlighting for all the programming languages, you likely don't want to use the `Global override` settings.
+   - Do not use this if all you are trying to do is set the color for Normal Text files (`.txt`): for those, use the `Default style` below.
+   - Starting in v8.7.1, there is a `What is Global override?` link which you can hover over to find out more about the global overrides; and new installations and new portable copies will have **Global override** at the _end_ of the list of **Global Styles** instead of the beginning, to better emphasize that **Global override** is more drastic than you usually need.
+       - If you upgrade from an older version of Notepad++ to v8.7.1 or newer, the **Global override** will not necessarily be moved to the end of the list.
+       - In such a case, or even if you are in an older version of Notepad++, you can edit [`%AppData%\Notepad++\stylers.xml` (or your active theme file)](../config-files/#highlighting-schemes-stylersxml) following the advice for [editing configuration files](../config-files/#editing-configuration-files), and move the `<WidgetStyle name="Global override" ... />` element from the top of the `<GlobalStyles>` section to the end of that section; after saving, exiting Notepad++, and restarting the app, **Global override** will be moved to the end of the list.
 
 ### Search result styles
 
