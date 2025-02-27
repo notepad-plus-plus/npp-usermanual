@@ -347,6 +347,21 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 5. Copy the `<parser...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
    - Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section. It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block. Make sure it ends up with the structure described above.
 
+## Toolbar Icon Visibility: `toolbarButtonsConf.xml`
+
+This configuration file allows you to override the visibility of any of the default or plugin toolbar icons.  (New to v8.7.8)
+
+The installation directory comes with a file called `toolbarButtonsConf_example.xml`: you can copy that to `%APPDATA%\Notepad++\toolbarButtonsConf.xml` (or other appropriate [Config Files Location](#configuration-files-location)).  Once copied, edit `toolbarButtonsConf.xml`, edit it (see details below), and save, then restart Notepad++ to see the changes go into effect.
+
+Set the `<Standard hideAll="...">` attribute to `yes` or `no` to decide whether or not to hide all of the built-in toolbar icons.  Set `<Plugin hideAll="...">` attribute to `yes` or `no` to decide whether or not to hide all of the toolbar icons from all plugins.
+
+You can change the `hide="no"` to `hide="yes"` (or vice versa) on any of the `<Button>` elements to toggle the visibility on specific toolbar buttons.
+
+- For the `<Standard>` buttons, you can edit the `hide` or `name` attribute values, but **do not** edit the `index` or `id` values (which are required in order to properly map ).  The `name` is based on the default English name for that command, but you can change that value if it helps you understand which command you are editing -- the `name="..."` value you set will _not_ affect the Notepad++ GUI at all.
+- For the `<Plugin>` buttons, you can edit the `hide` value to be `yes` or `no` as appropriate; and the name, as with `<Standard>` buttons, is solely for your reference and never used by Notepad++.
+    - The _order_ of the `<Button>` tags corresponds exactly to the order that the plugin buttons are on the toolbar; there is no `index` or `id` attribute to help with mapping, and the `name` is ignored (and is just a useful reference for you).
+    - You must keep the `hide="yes"` entries lined up with the appropriate plugin buttons, as you install or upgrade your plugins, otherwise you will likely end up hiding the wrong buttons at some point.
+
 ## Toolbar Icon Customization: `toolbarIcons.xml`
 
 This configuration file allows you to override the current toolbar icons. (New to v8.4.2)  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.

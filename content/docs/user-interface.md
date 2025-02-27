@@ -61,14 +61,14 @@ If the description says it will "wrap", it means that if you try to go beyond th
 - To close a tab using the tab bar:
   1. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
       - When set to show, the close button will always be visible on the active tab
-      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its 
+      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its
   2. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
   3. You can middle-click on the tab's title to close that tab.
-  
+
 - To pin a tab using the tab bar:
   1. Ensure **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
-  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.  
+  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.
   3. Clicking that icon will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the tab bar (before any unpinned tabs, but after any tabs that are already pinned).
   4. Pinned tabs will show the filled-in pin icon whether or not they are active.
   5. Clicking the filled-in pin icon will unpin the tab.
@@ -164,7 +164,8 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
-The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](config-files/#toolbar-icon-customization-toolbaricons-xml).
+The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  You can hide or show individual toolbar buttons, as described in [Toolbar Icon Visibility](config-files/#toolbar-icon-visibility-toolbarbuttonsconfxml) (new to v8.7.8).  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](../config-files/#toolbar-icon-customization-toolbariconsxml).
+
 
 ## Tools Menu
 

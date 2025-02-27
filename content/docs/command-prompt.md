@@ -30,13 +30,22 @@ notepad++ [--help] [-multiInst] [-noPlugin]
   Notepad++ simultaneously.
 * `-noPlugin`: Launch Notepad++ without loading any plugin.
 * `-l`: Open file or display ghost typing with syntax highlighting of choice.
-  *Language* is a short identifier string, of which the following are allowed:
-  `normal`, `php`, `c`, `cpp`, `cs`, `objc`, `d`, `java`, `rc`, `html`, `xml`,
-  `makefile`, `pascal`, `batch`, `ini`, `nfo`, `asp`, `sql`, `vb`, `javascript`,
-  `css`, `perl`, `python`, `lua`, `tex`, `cobol`, `fortran`, `bash`,
-  `actionscript`, `nsis`, `tcl`, `lisp`, `scheme`, `asm`, `diff`, `props`,
-  `postscript`, `ruby`, `smalltalk`, `vhdl`, `kix`, `autoit`, `Gui4Cli`,
-  `powershell`, `caml`, `ada`, `verilog`, `matlab`, `haskell`, `inno`, `cmake`, `yaml`, `r` and `jsp`.
+  *Language* is a short identifier string: the full list can be found in `langs.model.xml`
+  (as the names of each `<Language name="...">` element).
+  {{< details "show example Programming Language identifiers" >}}
+  `normal`, `actionscript`, `ada`, `asm`, `asn1`, `asp`, `autoit`, `avs`,
+  `baanc`, `bash`, `batch`, `blitzbasic`, `c`, `caml`, `cmake`, `cobol`,
+  `coffeescript`, `cpp`, `cs`, `csound`, `css`, `d`, `diff`, `erlang`,
+  `escript`, `forth`, `fortran`, `fortran77`, `freebasic`, `gdscript`, `go`,
+  `gui4cli`, `haskell`, `hollywood`, `html`, `ihex`, `ini`, `inno`, `java`,
+  `javascript`, `javascript`, `json`, `json5`, `jsp`, `kix`, `latex`, `lisp`,
+  `makefile`, `matlab`, `mmixal`, `mssql`, `nfo`, `nim`, `nncrontab`, `nsis`,
+  `objc`, `oscript`, `pascal`, `perl`, `php`, `postscript`, `powershell`,
+  `props`, `purebasic`, `python`, `r`, `raku`, `rc`, `rebol`, `registry`,
+  `ruby`, `rust`, `sas`, `scheme`, `smalltalk`, `spice`, `sql`, `srec`,
+  `swift`, `tcl`, `tehex`, `tex`, `toml`, `txt2tags`, `typescript`, `vb`,
+  `verilog`, `vhdl`, `visualprolog`, `xml`, `yaml`.
+ {{< /details >}}
 * `-udl="My UDL Name"`: Open file with User Defined Language (UDL) syntax
   highlighting `My UDL Name` active.  If the UDL name does not conain spaces, the
   quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
