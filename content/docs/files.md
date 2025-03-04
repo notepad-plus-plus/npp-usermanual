@@ -69,6 +69,29 @@ For the **Save As** and similar dialogs, there is a **Save as Type** pulldown fi
 
 For the **Save As** dialog, the `☐ Append extension checkbox` described in the [Preference Toggles in Other Dialogs](preferences/#preference-toggles-in-other-dialogs) will allow the dialog to automatically add the _first_ extension in the list for the active filter.  If you want a different extension for that type, or if that option is not checkmarked, you can always type the filename with extension to explicitly define the extension you want for the file you are currently saving.  (So normally, doing **Save As** filtered for C++ will automatically add the `.cpp` extension; but if you want it to be `.cxx` or `.h`, you can just type that as part of the **File name** entry rather than letting Notepad++ auto-append the extension.)
 
+### Alternates to File Menu
+
+Many of the actions from the **File** menu have multiple ways to access them, as described in the [User Interface](../user-interface/) and in other appropriate User Manual sections.
+
+For example,
+- **File > Open** has many ways of accomplishing the same thing:
+    - The default [keyboard shortcut](../preferences/#shortcut-mapper) is <kbd>Ctrl+N</kbd>.
+    - The [toolbar](../user-interface/#toolbar) has an icon **New**.
+    - The [menu bar](../user-interface/#menu-bar) can have a `+` icon to create a new file.
+    - You can double-click in the empty space in the [tab bar](../user-interface/#tabs).
+    - You can use the right-click menu of the [system tray icon](../user-interface/#system-tray)
+- **File > Close** also has many ways of accomplishing the same thing:
+    - The default [keyboard shortcut](../preferences/#shortcut-mapper) is <kbd>Ctrl+W</kbd>.
+    - The [toolbar](../user-interface/#toolbar) has an icon **Close**.
+    - The [menu bar](../user-interface/#menu-bar) can have an `X` icon to close the active file.
+    - The [User Interface > Tabs](../user-interface/#tabs) section explains three more:
+        - You can click the `X` of a given tab's title to close it, if [**Settings > Preferences > General > Tab Bar > Show close button**](../preferences/#general) is set.
+        - You can double-click on the tab's title to close it, if [**Settings > Preferences > General > Tab Bar > ☐ Double click to close document**](../preferences/#general) is set.
+        - You can middle-click on the tab's title to close it.
+    - You can use the [right-click menu](../user-interface/#tab-bar-right-click-menu) of the tab's title.
+
+In general, it's redundant to explain all the alternate methods in multiple locations in the Manual, so if you are looking for a way to perform an action from the **File** menu in some other location, you can use your browser's **Find in Page** feature (often <kbd>Ctrl+F</kbd> or similar) to search the [User Interface](../user-interface/) page for the action you are looking for.  And studying that page will allow you to familiarize yourself with the various locations where such features might be found.
+
 ## Printing
 
 The **File > Print** action will pull up a Windows-standard print dialog, from which you can choose your printer and send your text to the selected printer.  Normally, it will print the whole document, but you can use the print dialog to choose only certain pages; if you have an active selection in the editor, only the selected text will be printed.
