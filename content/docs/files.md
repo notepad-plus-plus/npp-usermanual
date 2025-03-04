@@ -69,7 +69,7 @@ For the **Save As** and similar dialogs, there is a **Save as Type** pulldown fi
 
 For the **Save As** dialog, the `☐ Append extension checkbox` described in the [Preference Toggles in Other Dialogs](preferences/#preference-toggles-in-other-dialogs) will allow the dialog to automatically add the _first_ extension in the list for the active filter.  If you want a different extension for that type, or if that option is not checkmarked, you can always type the filename with extension to explicitly define the extension you want for the file you are currently saving.  (So normally, doing **Save As** filtered for C++ will automatically add the `.cpp` extension; but if you want it to be `.cxx` or `.h`, you can just type that as part of the **File name** entry rather than letting Notepad++ auto-append the extension.)
 
-### Alternates to File Menu
+### Alternatives to File Menu
 
 Many of the actions from the **File** menu have multiple ways to access them, as described in the [User Interface](../user-interface/) and in other appropriate User Manual sections.
 
