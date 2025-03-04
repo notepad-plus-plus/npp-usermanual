@@ -3,6 +3,25 @@ title: User Interface
 weight: 175
 ---
 
+## Menu Bar
+
+The menu bar of Notepad++ has a variety of menus, including [**File**](../files/#file-menu) (for generic file operations like open and close), [**Edit**](../editing#edit-menu), [**Search**](../searching/), and [**View**](../views/), **Encoding** (which affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar), **Language** (for syntax highlighting of [built-in languages](../programming-languages/) and [User Defined Languages](../user-defined-language-system/)), [**Settings**](../preferences/), **Tools** (with a couple of built-in utilities), [**Macro**](../macros/), [**Run**](../config-files/#userdefinedcommands) (for running external commands), [**Plugins**](../plugins/), and the **Window** menu (for accessing open files already open in Notepad++).  (Many of the commands from those menus can also be found elsewhere in the User Interface, so you can search this page for a specific term if you are looking for alternative access to a specific menu command.)
+
+It also contains the **?** menu, which is a **Help**-style menu, including actions that list the [command line arguments](../command-prompt/); actions that take you to the Notepad++ [home page](https://notepad-plus-plus.org/), the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus), this [user manual](/), and the [Community Forum](https://community.notepad-plus-plus.org); actions for the updater and proxy; the **Debug Info** (which is critical information when asking for help at the Community Forum or when creating a feature request or bug report at the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus/issues)) and **About**.
+
+At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (Before v8.4.3, only the `X` existed in that area of the menu bar.  Starting in v8.4.5, these can be made hidden using [Settings > Preferences > General > Menu](../preferences/#general).)
+
+### Tools Menu
+
+This menu contains commands related to running [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) , including [MD5](https://en.wikipedia.org/wiki/MD5),
+[SHA-1](https://en.wikipedia.org/wiki/SHA-1), and the SHA-256 and SHA-512 algorithms from [SHA-2](https://en.wikipedia.org/wiki/SHA-2).  (SHA-1 and SHA-512 were added in v8.5.5.)  These are useful for comparing the hashes for downloaded files to officially-published hashes, and for generating those hashes for files that you are publishing.
+
+For each function, there are 3 commands:
+
+- **Generate** - You can enter text in the upper field, and it will give you the hash output in the other field.  You can copy those results to the Clipboard through the button.  You can optionally checkmark **☑ Treat each line as a separate string** to get N different hashes for N different strings at the same time, rather than a single hash that covers the entire input text.
+- **Generate from Files** - Will calculate the hashes for one or more selected files.
+- **Generate from Selection into Clipboard** - Will use the text that is currently selected, calculate the hash, and put the hash results in the Clipboard.
+
 ## Tabs
 
 The keyboard shortcuts described in this section are the default [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper) settings; if the Shortcut Mapper has been modified, the keystrokes may be different.
@@ -61,14 +80,14 @@ If the description says it will "wrap", it means that if you try to go beyond th
 - To close a tab using the tab bar:
   1. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
       - When set to show, the close button will always be visible on the active tab
-      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its 
+      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its
   2. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
   3. You can middle-click on the tab's title to close that tab.
-  
+
 - To pin a tab using the tab bar:
   1. Ensure **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
-  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.  
+  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.
   3. Clicking that icon will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the tab bar (before any unpinned tabs, but after any tabs that are already pinned).
   4. Pinned tabs will show the filled-in pin icon whether or not they are active.
   5. Clicking the filled-in pin icon will unpin the tab.
@@ -116,14 +135,6 @@ By default, the commands available in that context menu are described below.  If
   - `Remove Color`: Removes the color of the tab, returning to the default color scheme.
   - Starting in v8.7, these colors can be user-defined using the [**Style Configurator > Global Styles > Tab color _n_** and **Tab color dark mode _n_**](../preferences/#global-styles) background color settings.
 
-## Menu Bar
-
-The menu bar of Notepad++ has a variety of menus, including **File** (for generic file operations like open and close), [**Edit**](../editing#edit-menu), [**Search**](../searching/), and [**View**](../views/), **Encoding** (which affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar), **Language** (for [syntax highlighting](../programming-languages/)), [**Settings**](../preferences/), **Tools** (with a couple of built-in utilities), [**Macro**](../macros/), [**Run**](../config-files/#userdefinedcommands) (for running external commands), [**Plugins**](../plugins/), and the **Window** menu (for accessing open files already open in Notepad++).
-
-It also contains the **?** menu, which is a **Help**-style menu, including actions that list the [command line arguments](../command-prompt/); actions that take you to the Notepad++ [home page](https://notepad-plus-plus.org/), the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus), this [user manual](/), and the [Community Forum](https://community.notepad-plus-plus.org); actions for the updater and proxy; the **Debug Info** (which is critical information when asking for help at the Community Forum or when creating a feature request or bug report at the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus/issues)) and **About**.
-
-At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (Before v8.4.3, only the `X` existed in that area of the menu bar.  Starting in v8.4.5, these can be made hidden using [Settings > Preferences > General > Menu](../preferences/#general).)
-
 ## Toolbar
 
 There is a toolbar which has icons for various common tasks, which each run a specific menu action.  If you hover your mouse over that icon, it will show its name.  The toolbar actions include:
@@ -165,17 +176,6 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
 The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](config-files/#toolbar-icon-customization-toolbaricons-xml).
-
-## Tools Menu
-
-This menu contains commands related to running [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) , including [MD5](https://en.wikipedia.org/wiki/MD5),
-[SHA-1](https://en.wikipedia.org/wiki/SHA-1), and the SHA-256 and SHA-512 algorithms from [SHA-2](https://en.wikipedia.org/wiki/SHA-2).  (SHA-1 and SHA-512 were added in v8.5.5.)  These are useful for comparing the hashes for downloaded files to officially-published hashes, and for generating those hashes for files that you are publishing.
-
-For each function, there are 3 commands:
-
-- **Generate** - You can enter text in the upper field, and it will give you the hash output in the other field.  You can copy those results to the Clipboard through the button.  You can optionally checkmark **☑ Treat each line as a separate string** to get N different hashes for N different strings at the same time, rather than a single hash that covers the entire input text.
-- **Generate from Files** - Will calculate the hashes for one or more selected files.
-- **Generate from Selection into Clipboard** - Will use the text that is currently selected, calculate the hash, and put the hash results in the Clipboard.
 
 ## Document Switcher
 
