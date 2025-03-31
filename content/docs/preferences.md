@@ -564,17 +564,18 @@ A variety of settings that didn't fit elsewhere
     - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
 * **Direct Write rendering mode** dropdown
     - DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
-    - There are four options (new to v8.7.8):
+    - There are five options (third and fourth added v8.7.8, fifth in v8.7.9):
         - `GDI (most compatible)`: This version is "most compatible", but it's because it doesn't have any of the features available in the other DirectWrite choices.
-        - `DirectWrite (default)`: This is the "normal" DirectWrite mode, and matches `☑ Use DirectWrite` from v8.7.7 and earlier.  This is the default for a new installation of Notepad++.
-        - `DirectWrite (retain frames)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (retain frames)".
-        - `DirectWrite (draw to GDI DC)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (draw to GDI DC)".
+        - `DirectWrite (default)`: This is the "normal" DirectWrite mode.  This is the default for a new installation of Notepad++.
+        - `DirectWrite (retain frames)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (retain frames)" (new to v8.7.8).
+        - `DirectWrite (draw to GDI DC)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (draw to GDI DC)" (new to v8.7.8).
+        - `DirectWrite (DirectX 11)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (DirectX 11)" (new to v8.7.9).
         - If you have having trouble rendering certain glyphs for Unicode characters (like various Asian characters or emoji), or having trouble with other rendering issues, you may want to try each of the four settings, to see which works best for you.
     - Before v8.7.8, this was a checkbox: `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
       - Unchecked is equivalent to the v8.7.8 `GDI (most compatible)`; checked is equivalent to v8.7.8 `DirectWrite (default)`.
       - The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
       - Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
-      - Some users notice performance issues when this is checkmarked; those affected may uncheckmark this option.
+      - Some users notice performance issues when this is checkmarked; those affected should choose `GDI (most compatible)` (or uncheckmark the option in older versions).
       - Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
 * `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 * `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
