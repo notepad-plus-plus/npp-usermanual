@@ -51,7 +51,7 @@ In v8.2 and earlier, both the <kbd>Tab</kbd> and <kbd>Enter</kbd> keys would be 
 
 If auto completion is turned off, you can manually force the completion of what you've typed, limiting the selection to either the list of functions or the list of words. By default, these functions are bound to <kbd>Ctrl+Space</kbd> (functions) or <kbd>Ctrl+Enter</kbd> (words); they are also available in the [Edit menu](../editing/#edit-menu). Typing one of these keystrokes or using those menu commands attempts an immediate completion: if there is a single matching entry in the wordlist, that entry is used, with no display of a list. If there are multiple matching entries, the list is displayed just as if auto-completion were triggered at the same point.
 
-Note: Manual "Function completion" (currently) shows a list of all the functions in the wordlist, even if they don't match the current prefix—unless no function matches the prefix, in which case no list is shown. Manual "Word completion" shows only the matching words.
+Note: Manual "Function completion" (currently) shows a list of all the functions in the wordlist, even if they don't match the current prefix—unless no function matches the prefix, in which case no list is shown. Manual "Word completion" shows only the matching words (or, if there's only one matching word, it will just complete the word without showing the list first).
 
 ### Auto-insertion
 
@@ -86,7 +86,7 @@ Additionally, Auto-Insert supports automatic HTML & XML tag closure. With this f
 
 ### Displayed Completion List
 
-When you use [Manual Completion](#manual-completion), the list will only show the items that were manually triggered -- so either only the word list or only the function list.  If [Automatic completion](#automatic-completion) is triggered, the list will show both words and functions that match.  As of v8.3.1, the completion list will use the <i>fx</i> icon to help the user tell the difference between the "[Function completion](#function-completion)" items (keywords and functions from the configuration file will get the <i>fx</i> icon) and "[Word completion](#word-completion)" items (words from the active document will _not_ have the icon).
+When you use [Manual Completion](#manual-completion), the list will only show the items that were manually triggered -- so either only the word list or only the function list.  If [Automatic completion](#automatic-completion) is triggered, the list will show both words and functions that match.  The completion list will use icons to help the user tell the difference between the "[Function completion](#function-completion)" items (functions from the auto-completion configuration file) and "[Word completion](#word-completion)" items (words from the active document): functions from the auto-completion file (keyword entries with the `func="yes"` attribute) will get the "fx" icon ![](../images/ac_ico_fx.png); other keywords from the auto-completion file (keyword entries with `func="no"` or no `func` attribute), will get a "cube"-shaped symbol ![](../images/ac_ico_box.png); word-completion words will not have an icon.
 
 ## Auto-completion Settings
 
