@@ -377,38 +377,57 @@ It needs **Plugin List** (see next section) to work.
 A list in JSON format wrapped in a dll contains the most popular Notepad++ plugins.
 This list which is maintained by the team, is also an open source project hosted
 in the GitHub: https://github.com/notepad-plus-plus/nppPluginList/.
-Any plugin is welcome to join in the list.
+Any publicly-downloadable plugin is welcome to be submitted to the list.
 
 ### Test your plugins locally
 
 For testing your plugin for listing, installation, removal and update under
-Plugin Admin, you need Notepad++ binary in debug mode
+Plugin Admin, these are the steps you need:
+
+1. Get a recent Notepad++ installation; or, recommended, a portable unzip
+    - (For the purpose of these instructions, the directory of this installation
+      or portable unzip will be referred to as `<DebugDirectory>`)
+2. Get a debug binary, which is required for trying out the locally-edited nppPluginList:
+    - the debug binaries might be available for
 [32-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x32.zip)
 or [64-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x64.zip),
-the latest version of wingup
-[32-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/wingup.release.x32.zip)
-or
-[64-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/wingup.release.x64.zip)
-and nppPluginList.json (you should rename it from `pl.x64.json` or `pl.x86.json`,
-according your plugin's architecture). Replace `notepad++.exe` and `GUP.exe` of your
-Notepad++ installation by downloaded ones, copy `pl.x64.json` or `pl.x86.json` to
-`<NPP_INST_DIR>\plugins\Config\nppPluginList.json`, then
-you're all set - the menu item **Plugins Admin** will be under menu **Plugins** of your
-debug mode notepad++.exe. Launch this command will launch the **Plugins Admin** dialog
-and the rest should be intuitive.
+depending on your architecture.
+    - If those links give you problems, you can also git a debug binary from a recent build on
+GitHub.
+        1. Go to https://github.com/notepad-plus-plus/notepad-plus-plus/releases/latest
+        2. Click on the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> near the top of that page.
+        3. Click one of the **details** links (it doesn’t actually matter which) in the popup.
+        4. Click on the **🏠 Summary** link, and scroll down to the **Artifacts** section
+        5. Download the artifact `Notepad++.MSVC.<XXX>.Debug`, which will download a zipfile.  The `<XXX>` is the Architecture of the installation:
+            - `x86`: for 32-bit Notepad++
+            - `x64`: for 64-bit Notepad++
+            - `ARM64`: for ARM64 builds of Notepad++
+        6. Extract the `.exe` from the downloaded zipfile, rename it to `notepad++.<XXX>.dbg.exe`, and save it alongside the normal `notepad++.exe` in the `<DebugDirectory>`.
+    - If it's been so long since the last release that GitHub has cleaned out the last release's Artifacts,
+      go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
+      click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (sub-steps 4-6, above)
+3. Get the JSON for nppPluginList:
+    - If you have a fork of the nppPluginList repo (with a branch for making your copies), you can use the copies there.
+    - If you haven't done a fork yet (you will need to in order to create a PR), you can access them from https://github.com/notepad-plus-plus/nppPluginList/tree/master/src as well.
+    - Grab the `pl.<XXX>.json` as appropriate, and save it as `<DebugDirectory>\Plugins\Config\nppPluginList.json`
+4. Edit `nppPluginList.json`, adding or updating the entry for your plugin per the rules in the next section, below.
+5. Launch the `<DebugDirectory>\notepad++.<XXX>.dbg.exe`.
+6. You should be able to use **Plugins > Plugins Admin** to install your new or updated plugin.
 
 ### Rules for adding your plugins into list
 
-1. Architecture: your 32-bits plugin should be added to
-   [pl.x86.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x86.json),
-   64-bits plugin should be added to [pl.x64.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x64.json).
-2. Unicity: the value of **folder-name** of your plugin should be unique in the list.
+1. Architecture:
+   - The 32-bit copy of the plugin should be added to
+   [pl.x86.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x86.json)
+   - The 64-bit copy of the plugin should be added to [pl.x64.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.x64.json)
+   - The ARM64 copy of the plugin should be added to [pl.arm64.json](https://github.com/notepad-plus-plus/nppPluginList/blob/master/src/pl.arm64.json)
+2. Uniqueness: the value of **folder-name** of your plugin should be unique in the list.
    it means if there's already another same name plugin in the list, you have to rename
    your plugin's folder-name (and your plugin). Keep in mind that your plugin binary
    name (w/o the extension .dll) should be always the same as the folder-name,
    otherwise your plugins won't be loaded.
-3. Security: the value of **id** is plugin package's (zip file) finger print in
-   SHA-256. This id is checked with the downloaded dll to avoid
+3. Security: the value of **id** is the SHA-256 fingerprint of the plugin package's zip file.
+   This id is checked against the downloaded zipfile to avoid
    [MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
    You can use Notepad++ to get your plugin's SHA-256 hash
    (Menu: **Tools > SHA-256 > Generate from files...**) or some online sha256 generators.
@@ -418,10 +437,11 @@ and the rest should be intuitive.
    Please check [Microsoft's document about binary version](https://docs.microsoft.com/en-us/windows/desktop/menurc/versioninfo-resource)
    for setting the version correctly onto your DLL.
 5. Download location: the value of **repository** is the URL where Plugin Admin can
-   download the plugin to install/update it.
+   download the plugin to install/update it.  (It must be a link to a downloadable `.zip`,
+   not just a link to the repository.)
 6. Packaging: Only zip package is supported. Your plugin (DLL) should have the same
    name as the **folder-name** and the plugin DLL file should be placed at the root
-   level of the ZIP file. Otherwise Plugin Admin won't install it. Any additionals
+   level of the ZIP file. Otherwise Plugin Admin won't install it. Any additional
    files (DLL or data) can be placed at the root level or in an arbitrary subfolder.
 7. Compatibility: In March 2022, two new parameters were added to the JSON file format,
    to indicate your plugin's compatibility with various versions of Notepad++, called
@@ -463,8 +483,8 @@ and the rest should be intuitive.
        through Notepad++ v8.2.1, the two attributes in the JSON should look like:
        ```
        "version": "2.7",
-	   "npp-compatible-versions": "[8.3.1,]",
-	   "old-versions-compatibility": "[,2.6][,8.2.1]",
+       "npp-compatible-versions": "[8.3.1,]",
+       "old-versions-compatibility": "[,2.6][,8.2.1]",
        ```
        (Where the first line gives the recent plugin version, the second line is telling
        what versions of Notepad++ the new plugin works with, and the third line explains
@@ -482,10 +502,10 @@ and the rest should be intuitive.
 
 ### Do your PR to join plugin list
 
-Once your test has been done, and everything is ok, you can fork and do your PR on:
-https://github.com/notepad-plus-plus/nppPluginList/. Only the json part you should
-modify. The json file will be built into the a binary (`nppPluginList.dll`), which will
-be signed (for thes sake of security) and be included in the official distribution.
+Once your test has been done, and everything is working, you can fork and do your PR on:
+https://github.com/notepad-plus-plus/nppPluginList/. Only modify the JSON files for your
+submission.  Those JSON files will be built into the a binary (`nppPluginList.dll`), which will
+be signed (for the sake of security) and be included in the official distribution.
 
 ### Questions & support
 
