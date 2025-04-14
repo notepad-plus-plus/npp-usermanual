@@ -98,7 +98,7 @@ Before v8.6, whether or not you can use Multi-Editing mode was determined by the
 
 Starting in v8.6, Multi-Edit became the default, and was significantly enhanced.  The [Multi-Editing HowTo](#multi-editing-howto) (below) gives a tutorial in how to use this improved feature, including the new [**Edit** menu](#edit-menu) **...Multi-Select...** commands.
 
-With the improved Multi-Edit, Column Mode selections are treated more like Multi-Edit selections; in order to disable this treatment, create the [zero-byte config file](../config-files/#other-configuration-files) `noColumnToMultiSelect.xml` (in v8.6.1-v8.6.2); going forward, instead of a zero-byte file, there is a second option in the [**Editing 2**](../preferences/#editing-2) preferences to **☐ Enable Column Selection to Multi-Editing**.
+With the improved Multi-Edit, Column Mode selections are treated more like Multi-Edit selections; in order to disable this treatment in v8.6.1-v8.6.2, create the [zero-byte config file](../config-files/#other-configuration-files) `noColumnToMultiSelect.xml`; starting in v8.6.3, instead of a zero-byte file, there is a second option in the [**Editing 2**](../preferences/#editing-2) preferences to **☐ Enable Column Selection to Multi-Editing**.  (See the [warning (below)](#column-mode-to-multi-edit-warning).)
 
 ### Multi-Editing HowTo
 
@@ -183,6 +183,29 @@ Move all [caret](#caret-and-cursor "typing/insertion cursor")s to right by using
 #### Step 11
 Use what you learned from Steps 1 through 10 to continue trying to mimic the behavior of the demo animation.
 
+### Column-Mode to Multi-Edit Warning
+
+When Notepad++ 8.6.3-and-newer converts a Column-Mode selection to a Multi-Edit selection, it honors the order of the selection: if your column selection was made from the bottom to the top, then, when it gets converted to Multi-Edit selection, the order of the Multi-Edit selection will be from the bottom to the top.
+
+For example:
+1. Create the file:
+   ```
+   abc
+   def
+   ghi
+   ```
+2. Put the cursor after the `g` and use <kbd>Alt+Shift+arrows</kbd> to select the column including `g`, `d`, and `a` from bottom to top.  This gives a normal column selection.
+3. Cut that text, to put the column into the clipboard.
+4. <kbd>ArrowRight</kbd> then <kbd>ArrowLeft</kbd> to convert from Column-mode to Multi-Edit.
+5. Paste the text (<kbd>Ctrl+V</kbd>).
+6. Your file now looks like:
+   ```
+   gbc
+   def
+   ahi
+   ```
+
+This might be non-intuitive behavior from your perspective, but it makes internal sense, because Multi-Edit honors the order you do things in for the list of selections, and you started your column at the bottom, so the `g` came before the `a`.  It is something to understand, if you are using the Column-Mode to Multi-Edit conversion feature of Notepad++.  If you want to have access to the Column-Mode-to-Multi-Edit conversion, but this behavior confuses you too much, then it is recommended that you always start Column-Mode selections from the top, rather than from the bottom.
 
 ## Dual View
 To create Dual View, drag and drop any tab that you want it to be in another view (or right click on the tab) then choose "Move to Other View" command from the popup context menu.
