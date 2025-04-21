@@ -35,7 +35,7 @@ jobs:
       run: hugo --theme hugo-book-9
 
     - name: 🎉 Deploy to npp-user-manual.org
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.6
       with:
           username: ${{ secrets.USERMANUAL_USERNAME }}
           server: ${{ secrets.USERMANUAL_HOST }}
