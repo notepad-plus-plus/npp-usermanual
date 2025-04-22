@@ -30,13 +30,48 @@ You can also load a session file using the [`-openSession` command line argument
 
 When you load a session: If you are set to "Default (Mono-instance)" [in the Multi-instance settings](../preferences/#multi-instance-and-date), then the files from that session are _added_ to the current instance of Notepad++ (files already open will remain open, even if they aren't in the session you loaded); if you are set to  either "Open session in new instance" or "Always in multi-instance mode", then the files from the session you are loading are opened in a new Notepad++ instance.
 
-*Note*: As of Notepad++ v8.2, the loaded session is saved automatically on exit of Notepad++, if the [Multi-instance settings](../preferences/#multi-instance-and-date) is **not** set to "Default (Mono-instance)".
+*Note*: As of Notepad++ v8.2, the loaded session is saved automatically on exit of Notepad++, if the [Multi-instance settings](../preferences/#multi-instance-and-date) is set to `Open session in a new instance`.
 
 *Caveat*: Unlike the default `session.xml`, which follows the **[Settings > Preferences > Backup]() > `☐ Enable session snapshot and periodic backup`** option and will keep new unnamed/unsaved documents in the main session when enabled, manual sessions do not follow that setting: if you have one or more new unsaved/unnamed documents, and use **File > Save Session...**, those documents will _not_ be included in the saved session.  If you want a document to be included when you **File > Save Session...**, you need to have previously saved that document to a file on your filesystem.
 
-### Inaccessible Files
+### Open Sessions Separately
 
-Sometimes, when you load a session, you might temporarily not be able to access a certain file -- for example, if your network drive is temporarily inaccessbile, or your internet connection is down so a cloud-based folder is out-of-date.  Starting in Notepad++ v8.6, there is a [**Settings > Preferences > Backup**](../preferences/#backup) option to `☐ Remember inaccessible files from past session` when you load a session (either through the menu or the default session).  With this checkmarked, if Notepad++ cannot find the files mentioned, it will ask if you want to create "placeholders": if you do, then there will be empty read-only tabs in Notepad++, and the next time you load the session, if the files are accessible again, Notepad++ will load those files again; if you choose to not create the placeholders, then those files _will be removed from the session file_, and loading that session in the future _will not_ attempt to load those inaccessible files anymore.  If you choose to let Notepad++ create a placeholder file but later close it, Notepad++ will also modify your session file when it exits, and it will no longer attempt to load those inaccessible files, because they are not in your session any more.  If you want Notepad++ to load the inaccessible files the next time you load the session, you _must_ choose to create the placeholders and _must not_ close the placeholder tabs in Notepad++.  Also, for the placeholder files, if the inaccessible file becomes available again while Notepad++ is still open, it will prompt you to reload the file (just like Notepad++ does when it notices a file has been changed by an external program) -- you will want to say **Yes** to this prompt for Notepad++ to again show the contents of the previously-inaccessible file.
+Some people want to be able to open a new instance of Notepad++ when they double-click on or otherwise open a session file, instead of having to use the **File > Open Session...** command.
+
+- Notepad++ needs to be in one of the two ["multi-instance mode" options](../preferences/#multi-instance-and-date):
+    - If you want to manually save changes to the session, and not have Notepad++ save that session, you can choose `☑ Always in multi-instance mode`.  This will allow you to open or close files from that session without your session file being overwritten, so the next time you open that session, it will go back to the original.  **File > Save Session...** will still be usable for actually changing the session for next time.
+    - If you want Notepad++ to automatically save your custom session whenever you exit Notepad++, so that the session file will always remember which files have been closed or opened, then you need to be in **`☑ Open session in a new instance (and save session automatically on exit)`** mode.
+- The **[Settings > Preferences > Backup](../preferences/#backup) > `☐ Remember current session for next launch`** must be _off_ (because, if that option is on, then only one Notepad++ instance gets to write a session file when it's closed, so your custom session's instance might not be the one to save changes)
+- Pick a unique file extension to always use for Notepad++ sessions (for example, `.nps` for "**N**ote**p**ad++ **S**ession").  There are then two possible ways to automatically associate those with Notepad++:
+    1. You can set **[Settings > Preferences > MISC](../preferences/#misc) > Session file ext. `____`** to your extension (like `nps`, without the leading `.` dot) inside Notepad++; and from Windows Explorer, right-click on a session file and tell it to _always_ **Open With** Notepad++.
+        - A side effect of this method is that if you use Notepad++'s **File > Open** (or equivalent) on a file with the same extension, it will treat it as a session file, and open the files from that session rather than letting you edit the underlying XML text of that session file.  Thus, if you _want_ to be able to edit the session-file XML manually in Notepad++, do _not_ use this method.
+    2. You can set up a new file association in the Windows registry, which will associate your chosen extension (using `nps` in this example) with Notepad++, calling it with the [command line options](../command-prompt) `-openSession -multiInst` to make sure that it opens the file as a session file
+        - For this method, you do _not_ need to set the MISC preference from the first option.
+        - Here is an example `nps_as_session_file.reg` registry file, which you can run from Windows Explorer:
+            ```
+            Windows Registry Editor Version 5.00
+
+            [HKEY_CURRENT_USER\SOFTWARE\Classes\.nps]
+            @="Notepad++_session_file"
+
+            [HKEY_CURRENT_USER\SOFTWARE\Classes\Notepad++_session_file]
+
+            [HKEY_CURRENT_USER\SOFTWARE\Classes\Notepad++_session_file\shell]
+
+            [HKEY_CURRENT_USER\SOFTWARE\Classes\Notepad++_session_file\shell\open]
+
+            [HKEY_CURRENT_USER\SOFTWARE\Classes\Notepad++_session_file\shell\open\command]
+            @="\"C:\\Program Files\\Notepad++\\notepad++.exe\" -openSession -multiInst \"%1\""
+            ```
+            _Note_: If you used a different extension than `.nps`, you need to edit this file to use your extension, before running it.
+        - Instead of using a registry file, you could set the same Keys and Values using `regedit.exe`, or any other way you know how to edit your registry.
+        - _**Warning**: Always make sure you understand what you are doing when editing the registry.  If mistakes are made in any registry edit, whether through a `blah.reg` or by using `regedit.exe`, you can actually cause Windows to stop working.  The registry instructions above have been verified as reasonable, but your computer is your responsibility, not of the authors of or contributors to Notepad++ or this User Manual._
+        - After editing your registry, you might have to log out of Windows and back in, or restart your computer, for the changes to take effect.
+- After one of those two options has been implemented, double-clicking on your session file will open a new instance of Notepad++ with just the files from the session file.
+
+### Inaccessible Files in an Active Session
+
+Sometimes, when you load a session, you might temporarily not be able to access a certain file -- for example, if your network drive is temporarily inaccessible, or your internet connection is down so a cloud-based folder is out-of-date.  Starting in Notepad++ v8.6, there is a [**Settings > Preferences > Backup**](../preferences/#backup) option to `☐ Remember inaccessible files from past session` when you load a session (either through the menu or the default session).  With this checkmarked, if Notepad++ cannot find the files mentioned, it will ask if you want to create "placeholders": if you do, then there will be empty read-only tabs in Notepad++, and the next time you load the session, if the files are accessible again, Notepad++ will load those files again; if you choose to not create the placeholders, then those files _will be removed from the session file_, and loading that session in the future _will not_ attempt to load those inaccessible files anymore.  If you choose to let Notepad++ create a placeholder file but later close it, Notepad++ will also modify your session file when it exits, and it will no longer attempt to load those inaccessible files, because they are not in your session any more.  If you want Notepad++ to load the inaccessible files the next time you load the session, you _must_ choose to create the placeholders and _must not_ close the placeholder tabs in Notepad++.  Also, for the placeholder files, if the inaccessible file becomes available again while Notepad++ is still open, it will prompt you to reload the file (just like Notepad++ does when it notices a file has been changed by an external program) -- you will want to say **Yes** to this prompt for Notepad++ to again show the contents of the previously-inaccessible file.
 
 ## Folder as Workspace
 
