@@ -63,7 +63,7 @@ Some people want to be able to open a new instance of Notepad++ when they double
             [HKEY_CURRENT_USER\SOFTWARE\Classes\Notepad++_session_file\shell\open\command]
             @="\"C:\\Program Files\\Notepad++\\notepad++.exe\" -openSession -multiInst \"%1\""
             ```
-            _Note_: If you used a different extension than `.nps`, you need to edit this file to use your extension, before running it.
+            _Note_: If you used a different extension than `.nps`, you need to edit this file to use your extension, before running it.  Also, if you want this setting to be system-wide rather than just for the current user, you have to replace `HKEY_CURRENT_USER` with `HKEY_LOCAL_MACHINE` throughout that file, before running it.
         - Instead of using a registry file, you could set the same Keys and Values using `regedit.exe`, or any other way you know how to edit your registry.
         - _**Warning**: Always make sure you understand what you are doing when editing the registry.  If mistakes are made in any registry edit, whether through a `blah.reg` or by using `regedit.exe`, you can actually cause Windows to stop working.  The registry instructions above have been verified as reasonable, but your computer is your responsibility, not of the authors of or contributors to Notepad++ or this User Manual._
         - After editing your registry, you might have to log out of Windows and back in, or restart your computer, for the changes to take effect.
