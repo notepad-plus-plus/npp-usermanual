@@ -347,7 +347,10 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 5. Copy the `<parser...>...</parser>` section from the old `functionList.xml` to the `functionList\blah.xml`
    - Please note that the `blah.xml` should _not_ contain a `<parsers>` section, _just_ the `<parser>` section. It will cause problems with the Function List if you wrap it in the `<parsers>...</parsers>` block. Make sure it ends up with the structure described above.
 
-## Toolbar Icon Visibility: `toolbarButtonsConf.xml`
+
+## Toolbar Customization
+
+### Toolbar Icon Visibility: `toolbarButtonsConf.xml`
 
 This configuration file allows you to override the visibility of any of the default or plugin toolbar icons.  (New to v8.7.8)
 
@@ -362,39 +365,55 @@ You can change the `hide="no"` to `hide="yes"` (or vice versa) on any of the `<B
     - The _order_ of the `<Button>` tags corresponds exactly to the order that the plugin buttons are on the toolbar; there is no `index` or `id` attribute to help with mapping, and the `name` is ignored (and is just a useful reference for you).
     - You must keep the `hide="yes"` entries lined up with the appropriate plugin buttons, as you install or upgrade your plugins, otherwise you will likely end up hiding the wrong buttons at some point.
 
-## Toolbar Icon Customization: `toolbarIcons.xml`
+### Toolbar Icon Customization
+<a name="toolbar-icon-customization-toolbariconsxml"></a>
 
-This configuration file allows you to override the current toolbar icons. (New to v8.4.2)  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.
+Notepad++ also allows customization of the icons used for the toolbar buttons (new to v8.4.2).  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.
 
-Aside from the `toolbarIcons.xml` file, you need to create icons. You will populate and place the configuration file and icon files as described below:
+- In v8.4.2 - v8.7.9, the configuration file `toolbarIcons.xml` was used
+- In v8.8 and newer, this was merged into the `toolbarButtonsConf.xml` ([above](#toolbar-icon-visibility-toolbarbuttonsconfxml)), so the same will be used for both Toolbar Customization tasks.
 
-1. Put the file `toolbarIcons.xml` (Note 1) in the main configuration folder (Note 2).
+Aside from the config file, you need to create icons. You will populate and place the configuration file and icon files as described below:
+
+1. Put the file `toolbarButtonsConf.xml` (Note 1) in the main configuration folder (Note 2) (called `<CONFIGDIR>` in the examples below).
 2. Create a new sub-folder called `toolbarIcons\` in that same folder.
-3. Edit the file `toolbarIcons.xml`: put the icon set name you want in the `icoFolderName` attribute (Note 3).
+3. Edit the file `toolbarButtonsConf.xml`: put the icon set name you want in the `icoFolderName` attribute (Note 3).
    for example: `<ToolBarIcons icoFolderName="myAwesomeIcons" />`
-4. Go into `toolbarIcons\` folder and create a new folder with the exact name of the icon set name you provided in `icoFolderName`, for example `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
-5. Put all your customized icons into `[toolbarIcons.xml's folder]\toolbarIcons\myAwesomeIcons\`.
+4. Go into `toolbarIcons\` folder and create a new folder with the exact name of the icon set name you provided in `icoFolderName`, for example `<CONFIGDIR>\toolbarIcons\myAwesomeIcons\`.
+5. Put all your customized icons into `<CONFIGDIR>\toolbarIcons\myAwesomeIcons\`.
 6. Now it is the magic moment: Relaunch Notepad++ and you'll see your icon set instead of the default icons.
    - This overrides the icons for any of the **Settings > Preferences > General > Toolbar** icon-set selections.
    - If you have **Settings > Preferences > General > Toolbar** set to any of the three "small" choices, it will scale the icon to 16x16; if you use one of the two "large" choices, it will scale to 32x32. So if you are going to use a "large" icon set, you should make sure the icons are defined as 32x32.
-   - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the necessary `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), restart Notepad++, and you will have the old 32x32 "standard (large)" icons back.
+   - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the necessary `toolbarButtonsConf.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), restart Notepad++, and you will have the old 32x32 "standard (large)" icons back.
    - Troubleshooting: if you started Notepad++ with one of the "small" choices selected but have 32x32 icons in your custom icons, it will scale them to 16x16, which is fine for small modes; but if you switch to a "large" option, it might scale the 16x16 back to 32x32 rather than using the true-32x32 from the icon file, which makes for a pixelated ("klunky") large icon: if this happens, leave it with "large" selected, then exit Notepad++ completely and restart: on the subsequent starts, it will use the full 32x32 resolution.
 
 _Notes_:
 
-- Note 1: The content of `toolbarIcons.xml` is as follows:
-    ```xml
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <NotepadPlus>
-        <ToolBarIcons icoFolderName="myAwesomeIcons" />
-    </NotepadPlus>
-    ```
+- Note 1: 
+    - For v8.8 and newer, `toolbarButtonsConf.xml` will have:
+        ```xml
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <NotepadPlus>
+            <ToolbarButtons>
+                ...
+            </ToolbarButtons>
+            <ToolBarIcons icoFolderName="myAwesomeIcons" />
+        </NotepadPlus>
+        ```
+        You can copy the example from `<installationDir>\toolbarButtonsConf_example.xml` to use as a start for `toolbarButtonsConf.xml`.  This example file has plenty of comments, to help you understand what's needed.
+    - The content of the v8.4.2-v8.7.9 `toolbarIcons.xml` is as follows:
+        ```xml
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <NotepadPlus>
+            <ToolBarIcons icoFolderName="myAwesomeIcons" />
+        </NotepadPlus>
+        ```
 
 - Note 2: This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
 
-- Note 3: If the `icoFolderName` value is an empty string, the path of icons will be `[toolbarIcons.xml's folder]\toolbarIcons\default\` folder.
+- Note 3: If the `icoFolderName` value is an empty string, the path of icons will be `<CONFIGDIR>\toolbarIcons\default\` folder.
 
-### Set of Icons
+#### Set of Icons
 
 For each of the 45 toolbar icons that can be customized, use the specific file name listed below. (Some toolbar buttons have two icons, one for when the button is enabled and one when the button is disabled.)
 
@@ -433,7 +452,7 @@ For each of the 45 toolbar icons that can be customized, use the specific file n
 |31     |  playback-multiple.ico   |  playback-multiple_disabled.ico |
 |32     |  save-macro.ico          |  save-macro_disabled.ico        |
 
-It's not necessary to have a complete set of 45 icons in the directory: any icons not in the directory will just use the built-in icon instead.
+It is not necessary to have a complete set of 45 icons in the directory: any icons not in the directory will just use the built-in icon instead.
 
 You can have multiple icon set directories; to switch between icon sets, you just edit the `icoFolderName`, save the config file, and relaunch Notepad++.
 
