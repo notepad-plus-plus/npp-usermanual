@@ -30,15 +30,15 @@ The ```MOUSEWHEEL``` commands described require that the mouse pointer be hovere
 
 If the description says it will "wrap", it means that if you try to go beyond the last tab, it will next go to the first tab; and if you try to go before the first tab, it will next go to the last tab.  If the descriptions says it does "not wrap", then trying to go beyond the last tab or before the first tab will just stay at the last or first tab without wrapping.
 
-- The tab bar settings can be found at [**Settings > Preferences > General > Tab Bar**](../preferences/#general), including the options to **Hide** the tab bar or to **Lock** the tab bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
+- The Tab Bar settings can be found at [**Settings > Preferences > Tab Bar**](../preferences/#tab-bar) (a sub-page of **General** settings before v8.8), including the options to **Hide** the Tab Bar or to **Lock** the Tab Bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
 
-- If you click on a tab on the tab bar, that tab will become the active tab in the view.
+- If you click on a tab on the Tab Bar, that tab will become the active tab in the view.
 
-- If you hover over a tab on the tab bar, there will be hover text:
+- If you hover over a tab on the Tab Bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
     - If it's a new, unsaved tab, then the hover text will be the name of that tab (defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
-    - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > General](../preferences/#general) > Tab Bar** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
-    - If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Darken inactive tabs** is checked, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > Tab Bar](../preferences/#tab-bar)** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
+    - If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Change inactive tab color** is checked (known as **General > Tab Bar > ☐ Darken inactive tabs** prior to v8.8), hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
 
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
@@ -51,7 +51,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 - To move tab from one position to other position:
   1. Use <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will move currently selected tab to previous position while down will move to next position. This will wrap.
-      - If the Tab Bar is locked (using [**Tab Bar > Lock** preferences](../preferences/#general)), then <kbd>Shift</kbd> + ```MOUSEWHEEL``` will just activate the next or previous tab (without wrapping).
+      - If the Tab Bar is locked (using [**Tab Bar > Lock** preferences](../preferences/#tab-bar)), then <kbd>Shift</kbd> + ```MOUSEWHEEL``` will just activate the next or previous tab (without wrapping).
   2. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Up</kbd> for previous position and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Page Down</kbd> for next position. This will not wrap.
       - This will move the tab order even if the Tab Bar is locked.
   ![tabNavMoveRtLft](../images/tabNavMoveRtLft.gif)
@@ -73,23 +73,28 @@ If the description says it will "wrap", it means that if you try to go beyond th
   3. Drag the tab's title into the editing pane for that same tab and select **Clone to Other View**.
   ![clonedDoc](../images/clonedDoc.gif)
 
-- To create a new file tab using the tab bar:
-  1. If there is empty area to the right of the last tab in the tab bar, double click there and a new tab will be created.
+- To create a new file tab using the Tab Bar:
+  1. If there is empty area to the right of the last tab in the Tab Bar, double click there and a new tab will be created.
   ![tabNavNewDoubleClick](../images/tabNavNewDoubleClick.gif)
 
-- To close a tab using the tab bar:
-  1. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
+- To close a tab using the Tab Bar:
+  1. If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
       - When set to show, the close button will always be visible on the active tab
       - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its
-  2. If **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
+  2. If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
   3. You can middle-click on the tab's title to close that tab.
 
-- To pin a tab using the tab bar:
-  1. Ensure **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
-  2. The active tab (and any tabs you hover over) will have a hollow "pin" icon.
-  3. Clicking that icon will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the tab bar (before any unpinned tabs, but after any tabs that are already pinned).
-  4. Pinned tabs will show the filled-in pin icon whether or not they are active.
+- To pin a tab using the Tab Bar:
+  1. Ensure **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Enable pin tab feature** is checkmarked.
+  2. Depending on the state of **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Enable pin tab feature** (new to v8.8), the behavior is different:
+     - If that setting is not checkmarked (this is the behavior prior to v8.8):
+        1. The active tab (and any tabs you hover over) will have a hollow "pin" icon.
+        2. Clicking that hollow icon,  will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the Tab Bar (before any unpinned tabs, but after any tabs that are already pinned).
+     - If that setting is checkmarked (only available starting in v8.8):
+        1. You must use the [Tab Bar Right Click context menu](#tab-bar-right-click-menu) to `Pin` a tab.
+        2. Once pinned, the Tab's icon will change to a filled-in "pin", and will move the tab to the left side of the Tab Bar (before any unpinned tabs, but after any tabs that are already pinned).
+  3. Pinned tabs will show the filled-in pin icon whether or not they are active.
   5. Clicking the filled-in pin icon will unpin the tab.
 
 ### Tab Bar Right Click Menu
@@ -102,8 +107,8 @@ By default, the commands available in that context menu are described below.  If
 - `Close Multiple Tabs >`:
   - `Close All BUT This`: Closes all files, except this tab's file.
   - `Close All BUT Pinned`: Closes all files, except any pinned tab's files.
-  - `Close All to the Left`: Closes all files that are to the right of this file on the tab bar.
-  - `Close All to the Right`: Closes all files that are to the left of this file on the tab bar.
+  - `Close All to the Left`: Closes all files that are to the right of this file on the Tab Bar.
+  - `Close All to the Right`: Closes all files that are to the left of this file on the Tab Bar.
   - `Close All Unchanged`: Closes all files that do not have unsaved changes (leaves only files that have unsaved changes).
 - `Pin` or `Unpin`: Pins or unpins the active tab, if **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked. (New in v8.7.3)
 - `Save`: Saves the file (disabled/grayed out if there are no unsaved changes).
@@ -131,7 +136,7 @@ By default, the commands available in that context menu are described below.  If
   - `Move to New Instance`: Moves the tab from this Notepad++ instance to a newly-created instance (only works on named files that have no unsaved changes).
   - `Open in New Instance`: Makes a tab in a new Notepad++ instance which contains the same file as this tab (only works on named files that have no unsaved changes).
 - `Apply Color to Tab >` (new to v8.4.6)
-  - `Apply Color #`: Applies the indicated color to the highlight portion of the tab bar.  (Applying a different color will _change_ the color, not combine the colors together.  Each tab can only have one color.)
+  - `Apply Color #`: Applies the indicated color to the highlight portion of the Tab Bar.  (Applying a different color will _change_ the color, not combine the colors together.  Each tab can only have one color.)
   - `Remove Color`: Removes the color of the tab, returning to the default color scheme.
   - Starting in v8.7, these colors can be user-defined using the [**Style Configurator > Global Styles > Tab color _n_** and **Tab color dark mode _n_**](../preferences/#global-styles) background color settings.
 
@@ -184,7 +189,7 @@ The Document Switcher feature (which can be enabled or disabled using the **[Set
 
 When you hold the <kbd>Ctrl</kbd> key and then press and release the <kbd>Tab</kbd> key, the Document Switcher appears as a popup with a yellow background, showing the current list of tabs (or a partial list, if there are too many tabs); the popup will remain until you release the <kbd>Ctrl</kbd> key.  One tab in the list will be shown in bold, indicating which tab will be made activate when all keys have been released.  With the Document Switcher on screen, repeated press and release of the <kbd>Tab</kbd> key will move the bold indicator downward on the screen, to the next tab name in the list.  When the desired tab is bold, release all keys to activate that tab.
 
-The first tab to be shown in bold when you start the Document Switcher depends on the **[Settings > Preferences > MISC](../preferences/#misc) > Document Switcher > Enable MRU behavior** checkbox: When not checkmarked, the first tab name in bold will be the tab to the right of the currently-active tab (or the first tab in the tab bar, if the currently-active tab is the last in the tab bar; or the first tab in the other View, if the currently-active tab is the last in the active View); in this mode, the order of the tabs in the Document Switcher is the same as the order of the tabs in the tab bar, with the files from the active View above those from the alternate View when both Views are active.  When that setting is checkmarked, the first tab name in bold will be the tab that was active just before the current tab was activated (the "most recently used" tab); in this mode, the order of the tabs in the Document Switcher is the "most recently used" order, with the most recent at the top of the list, and the least recent at the bottom, with the tabs from both Views mixed together in usage order regardless of which View they are from.
+The first tab to be shown in bold when you start the Document Switcher depends on the **[Settings > Preferences > MISC](../preferences/#misc) > Document Switcher > Enable MRU behavior** checkbox: When not checkmarked, the first tab name in bold will be the tab to the right of the currently-active tab (or the first tab in the Tab Bar, if the currently-active tab is the last in the Tab Bar; or the first tab in the other View, if the currently-active tab is the last in the active View); in this mode, the order of the tabs in the Document Switcher is the same as the order of the tabs in the Tab Bar, with the files from the active View above those from the alternate View when both Views are active.  When that setting is checkmarked, the first tab name in bold will be the tab that was active just before the current tab was activated (the "most recently used" tab); in this mode, the order of the tabs in the Document Switcher is the "most recently used" order, with the most recent at the top of the list, and the least recent at the bottom, with the tabs from both Views mixed together in usage order regardless of which View they are from.
 
 When cycling through the tabs in the Document Switcher, if the bottom entry in the list is reached and you again press and release <kbd>Tab</kbd>, the bold indicator will move to the top of the list; or, if the list was too long to entirely be displayed, the <kbd>Tab</kbd> will scroll the Document Switcher, so the bold indicator will move to next entry down, and the entry that was previous at the top of the list will scroll out of the visible popup.
 

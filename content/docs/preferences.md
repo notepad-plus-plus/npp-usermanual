@@ -17,7 +17,7 @@ If the "default" state of an option is described, it means the state that the op
 
 ### General
 
-These affect the user interface (localization, toolbar, tab bar, and more).
+These affect the user interface (localization, toolbar, tab bar, and more).  In v8.8, the [Toolbar](#toolbar) and [Tab Bar](#tab-bar) sections were separated to their own sections.
 
 * **Localization**:
     * [pulldown]: Set the language for the Notepad++ user interface.
@@ -25,42 +25,63 @@ These affect the user interface (localization, toolbar, tab bar, and more).
         * To make changes to your localization, edit the language file `localization\<languagename>.xml`, as per the instructions in the [Binary Translation](../binary-translation/) section.
         * _NOTE_: After making changes to the XML file in the `localization` directory, or after upgrading to a new version of Notepad++, you need to refresh the `nativeLang.xml`: use the **Localization** drop-down to change the **Localization** to another language then change it back immediately to your preferred language, or skip the "another language" step and just click on the preferred language -- either way ends up with copying the file to `nativeLang.xml` and immediately updating Notepad++'s text for menus and dialogs.  (Unlike many configuration files, exiting Notepad++ and restarting the application will _not_ bring in the new settings from an edited `localization\<languagename>.xml`; you _must_ re-choose the desired **Localization** for the changes to be applied.)
         * _NOTE_: After changing the Localization in this Preferences dialog, certain translatable strings, like the tooltip/hover text in dialog boxes, will not refresh until Notepad++ is restarted.  If it ever looks like your Localization didn't fully activate, try exiting all instances of Notepad++ then restarting the application.
-* **Status bar**:
-    * `☐ Hide`: Without checkmarking this option, there will be a [status bar](../user-interface/#status-bar) along the bottom of the Notepad++ window showing information about the current document. The status bar will be hidden when this option is checkmarked.
-* **Toolbar**:
-    * `☐ Hide`: The icon-based [toolbar](../user-interface/#toolbar) will be hidden.
-    * There is a radio-button set of choices for the icons (updated v8.0.0):
-        * `Fluent UI: small`: Uses small versions of the Fluent UI icons.
-        * `Fluent UI: large`: Uses large versions of the Fluent UI icons.
-        * `Filled Fluent UI: small`: Uses small versions of the Fluent UI icons, in a filled (or reverse-video) style.
-        * `Filled Fluent UI: large`: Uses large versions of the Fluent UI icons, in a filled (or reverse-video) style.
-        * `Standard icons: small`: These are the small version of the traditional (pre-v8.0.0) icons.
-* **Document List Panel**:  (This section removed in v8.1.5.)
-    * `☐ Disable extension column`: Prior to v8.1.5, if checked, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
-    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels).
-* **Tab Bar**:
-    * `☐ Hide`: The tab bar for the open files will not be visible.
-    * `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
-    * `☐ Vertical`: Have the tabs on their side on the left, rather than along the top.
-    * `☐ Reduce`: Make the tab bar vertical region and font size smaller.
-    * `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
-      * The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
-      * _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
-    * `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
-    * `☐ Darken inactive tabs`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
-        - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
-        - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
-    * `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
-    * `☐ Show close button`: Add the close button to each tab's entry on the tab bar.
-        - In v8.7.6 and newer, if the option is checkmarked, Notepad++ shows the close button on the active tab or on all tabs (depending on `☐ Show buttons on inactive tabs` below); when this option is not checkmarked, no tabs show the close button
-        - In v8.7.2-8.7.5, it was `Show close button on each tab`, and it caused the close button to be hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
-    * `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
-    * `☐ Show buttons on inactive tabs`: When checkmarked, the close button and pin tab icons will always be visible on all tabs, whether or not the tab is active (if their respective options, above, are also checkmarked); when not checkmarked, the close button and pin tab icons will be hidden on inactive tabs, and only visible on active tabs or when hovering over inactive tabs.
-    * `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
-    * `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 * **Menu**
     * `☐ Hide menu bar (use <kbd>Alt</kbd> or <kbd>F10</kbd> key to toggle)`: Sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the <kbd>Alt</kbd> or <kbd>F10</kbd> key.
     * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.  Notepad++ must be restarted after checkmarking this option in order to see these; in v8.7.6, they can be hidden immediately (in prior versions, hiding them also required re-starting).
+* **Status bar**:
+    * `☐ Hide`: Without checkmarking this option, there will be a [status bar](../user-interface/#status-bar) along the bottom of the Notepad++ window showing information about the current document. The status bar will be hidden when this option is checkmarked.
+* **Document List Panel**:  (This section removed in v8.1.5.)
+    * `☐ Disable extension column`: Prior to v8.1.5, if checked, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
+    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels).
+
+### Toolbar
+
+These settings affect the appearance of the [Toolbar](../user-interface/#toolbar).  (Before v8.8, these Toolbar settings were a section of the [General](#general) settings above.)
+
+- `☐ Hide`: The icon-based [toolbar](../user-interface/#toolbar) will be hidden.
+- There is a radio-button set of choices for the icons (updated v8.0.0):
+    - `Fluent UI: small`: Uses small versions of the Fluent UI icons.
+    - `Fluent UI: large`: Uses large versions of the Fluent UI icons.
+    - `Filled Fluent UI: small`: Uses small versions of the Fluent UI icons, in a filled (or reverse-video) style.
+    - `Filled Fluent UI: large`: Uses large versions of the Fluent UI icons, in a filled (or reverse-video) style.
+    - `Standard icons: small`: These are the small version of the traditional (pre-v8.0.0) icons.
+
+In v8.8, a new section was added, for being able to change the colors of the Fluent UI icons:
+- **Colorization**:
+    - `☐ Complete`: All the foreground in the Fluent UI icons are given the selected color.
+    - `☐ Partial`: (default) Highlights in the foreground in the Fluent UI icons are given the selected color, but the rest of the foreground is black.
+    - **Color choice**:
+        - The named colors will set the icon foreground color.
+        - `☐ Default`: Icons will be black when `Complete` is selected, or use blue highlights when `Partial` is selected.
+        - `☐ System Accent`: Will use the Windows OS's system accent color.  (The **(?)** hover text explains how to use **Windows Settings > Personalization > Colors** to select the system accent color.)
+        - `☐ Custom`: Use a standard Windows color dialog to choose any RGB color desired.
+
+### Tab Bar
+
+These settings affect the appearance and behavior of the [Tab Bar](../user-interface/#tabs).  (Before v8.8, these Tab Bar settings were a section of the [General](#general) settings above.)
+
+- `☐ Hide`: The tab bar for the open files will not be visible.
+- `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
+- `☐ Vertical`: Have the tabs on their side on the left, rather than along the top.
+- `☐ Reduce`: Make the tab bar vertical region and font size smaller.
+- `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
+    - The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
+    - _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
+- `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
+- `☐ Change inactive tab color`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
+    - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
+    - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    - Previously named `Darken inactive tabs`
+- `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
+- `☐ Show close button`: Add the close button to each tab's entry on the tab bar.
+    - In v8.7.6 and newer, if the option is checkmarked, Notepad++ shows the close button on the active tab or on all tabs (depending on `☐ Show buttons on inactive tabs` below); when this option is not checkmarked, no tabs show the close button
+    - In v8.7.2-8.7.5, it was `Show close button on each tab`, and it caused the close button to be hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+- `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
+- `☐ Show only pinned button`: When the pin tab feature is on and this setting is on, the "pin" icon will only be shown when it's pinned, but _not_ shown when it's not pinned. If this setting is off, a gray pin will be visible when the tab is not pinned.  When the pin tab feature is off, this option will be grayed out. (New in v8.8)
+- `☐ Show buttons on inactive tabs`: When checkmarked, the close button and pin tab icons will always be visible on all tabs, whether or not the tab is active (if their respective options, above, are also checkmarked); when not checkmarked, the close button and pin tab icons will be hidden on inactive tabs, and only visible on active tabs or when hovering over inactive tabs.
+- `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
+- `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
+
 
 ### Editing
 
