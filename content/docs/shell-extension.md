@@ -53,7 +53,9 @@ If you are willing to edit your registry[†](#registry-edit-warning "edit your 
 
 ### Manual "Edit with Notepad++" Action
 
-You can manually add an "Edit with Notepad++" action to your registry using your favorite registry-editing method[†](#registry-edit-warning "edit your registry at your own risk").  You could save the appropriate script below as a `.reg` file and run it, and it will update your registry for you.  Or you can use `regedit.exe` to use the GUI to edit the keys and values mentioned in the `.reg` files.  (To remove the manual entry, just remove the keys that are populated by these scripts or that you populated in regedit.)
+For the older classic Windows context menu (for Windows 10 and earlier), you can manually add an "Edit with Notepad++" action to your registry using your favorite registry-editing method[†](#registry-edit-warning "edit your registry at your own risk").  You could save the appropriate script below as a `.reg` file and run it, and it will update your registry for you.  Or you can use `regedit.exe` to use the GUI to edit the keys and values mentioned in the `.reg` files.  (To remove the manual entry, just remove the keys that are populated by these scripts or that you populated in regedit.)
+
+_(If you are using Windows 11, see the [workarounds (below)](#windows-11-right-click-workarounds).)_
 
 #### SINGLE USER
 
