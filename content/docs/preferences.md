@@ -61,13 +61,15 @@ In v8.8, a new section was added, for being able to change the colors of the Flu
 These settings affect the appearance and behavior of the [Tab Bar](../user-interface/#tabs).  (Before v8.8, these Tab Bar settings were a section of the [General](#general) settings above.)
 
 - `☐ Hide`: The tab bar for the open files will not be visible.
-- `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
 - `☐ Vertical`: Have the tabs on their side on the left, rather than along the top.
+- `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
+- `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
+- `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
+- `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 - `☐ Reduce`: Make the tab bar vertical region and font size smaller.
 - `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
     - The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
     - _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
-- `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
 - `☐ Change inactive tab color`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
     - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
     - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
@@ -79,8 +81,6 @@ These settings affect the appearance and behavior of the [Tab Bar](../user-inter
 - `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
 - `☐ Show only pinned button`: When the pin tab feature is on and this setting is on, the "pin" icon will only be shown when it's pinned, but _not_ shown when it's not pinned. If this setting is off, a gray pin will be visible when the tab is not pinned.  When the pin tab feature is off, this option will be grayed out. (New in v8.8)
 - `☐ Show buttons on inactive tabs`: When checkmarked, the close button and pin tab icons will always be visible on all tabs, whether or not the tab is active (if their respective options, above, are also checkmarked); when not checkmarked, the close button and pin tab icons will be hidden on inactive tabs, and only visible on active tabs or when hovering over inactive tabs.
-- `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
-- `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 
 
 ### Editing
