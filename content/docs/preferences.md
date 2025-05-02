@@ -247,8 +247,8 @@ These affect open and save operations.
 
 These change how the list of recent files is displayed in the **File** menu.
 
-* `☐ Don't check at launch time`: Will skip checking whether files in the Recent Files History list exist at launch time.
-    * This is useful if you have files on a network drive which intermittently isn't visible, and want files to remain in the Recent Files History list.
+* `☐ Don't check at launch time`: Will skip checking whether files in the Recent Files History list exist at "launch time" (when you launch the application: that is, when Notepad++ is executed and is starting up).
+    * This is useful if you have files on a network drive which intermittently aren't visible, but you want to make sure files to remain in the Recent Files History list.
     * This is also useful if you like knowing what files were previously edited, even after you've deleted those files from the folder.
 * `Max number of entries`: Show the _n_ most recent files in the list.
 * `☐ In Submenu`: Will show the recent files in a "Recent Files" submenu of the **File** menu, rather than directly in the **File** menu.
