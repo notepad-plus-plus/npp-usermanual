@@ -13,21 +13,21 @@ Around 90 Programming Languages are supported by Notepad++:
 | AutoIt                 | AviSynth               | BaanC                  | Batch                  | BlitzBasic             |
 | C                      | C#                     | C++                    | CAML                   | CMake                  |
 | COBOL                  | CoffeeScript           | Csound                 | CSS                    | D                      |
-| Diff                   | Erlang                 | ESCRIPT                | Forth                  | Fortran fixed form     |
-| Fortran free form      | FreeBasic              | GDScript               | Go                     | Gui4Cli                |
-| Haskell                | Hollywood              | HTML                   | ini                    | Inno Setup             |
-| Intel HEX              | Internal Search        | Java                   | JavaScript             | json                   |
-| json5                  | JSP                    | KiXtart                | LaTeX                  | Lisp                   |
-| Lua                    | Makefile               | MATLAB                 | MMIXAL                 | mssql                  |
-| NFO                    | Nim                    | Nncrontab              | NSIS                   | Objective-C            |
-| OScript                | Pascal                 | Perl                   | PHP                    | PostScript             |
-| PowerShell             | Properties file        | PureBasic              | Python                 | R                      |
-| Raku                   | RC                     | REBOL                  | registry               | Ruby                   |
-| Rust                   | SAS                    | S-Record               | Scheme                 | Shell                  |
-| Smalltalk              | Spice                  | SQL                    | Swift                  | TCL                    |
-| Tektronix extended HEX | TeX                    | TOML                   | txt2tags               | TypeScript             |
-| Verilog                | VHDL                   | Visual Basic           | Visual Prolog          | XML                    |
-| YAML                   |                        |                        |                        |                        |
+| Diff                   | Erlang                 | ErrorList              | ESCRIPT                | Forth                  |
+| Fortran fixed form     | Fortran free form      | FreeBasic              | GDScript               | Go                     |
+| Gui4Cli                | Haskell                | Hollywood              | HTML                   | ini                    |
+| Inno Setup             | Intel HEX              | Internal Search        | Java                   | JavaScript             |
+| json                   | json5                  | JSP                    | KiXtart                | LaTeX                  |
+| Lisp                   | Lua                    | Makefile               | MATLAB                 | MMIXAL                 |
+| mssql                  | NFO                    | Nim                    | Nncrontab              | NSIS                   |
+| Objective-C            | OScript                | Pascal                 | Perl                   | PHP                    |
+| PostScript             | PowerShell             | Properties file        | PureBasic              | Python                 |
+| R                      | Raku                   | RC                     | REBOL                  | registry               |
+| Ruby                   | Rust                   | SAS                    | S-Record               | Scheme                 |
+| Shell                  | Smalltalk              | Spice                  | SQL                    | Swift                  |
+| TCL                    | Tektronix extended HEX | TeX                    | TOML                   | txt2tags               |
+| TypeScript             | Verilog                | VHDL                   | Visual Basic           | Visual Prolog          |
+| XML                    | YAML                   |                        |                        |                        |
 
 For these languages, Notepad++ supports [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
@@ -42,15 +42,34 @@ on files that are over 200MB -- this prevents extreme performance slowdown cause
 syntax highlight extremely large files.  This threshold is configurable in
 [Settings > Preferences > Performance](../preferences/#performance) (starting in v8.4.7).
 
-### JavaScript
+### Notes on Specific Languages
+
+#### JavaScript
 
 Internally, there are actually two entries for JavaScript: in the [Style Configurator](../preferences/#style-configurator),
-these show up as "JavaScript" and "JavaScript (embedded)".  The first is for standalone JavaScript files (usually with `.js`
-extension); the second is for when JavaScript is embedded in an HTML file -- so you can actually have different color rules
-for when the JavaScript is inside HTML and when it's a separate file.  (In the [`langs.xml`](../config-files/#keyword-lists-langsxml)
-and [`stylers.xml`](../config-files/#highlighting-schemes-stylersxml) config files, the standalone uses `name="javascript.js"`.)
+these show up as "JavaScript" and "JavaScript (embedded)".  The first is for
+standalone JavaScript files (usually with `.js` extension); the second is for when JavaScript is embedded in an HTML
+file -- so you can actually have different color rules for when the JavaScript is inside HTML and when it's a separate
+file.  (In the [`langs.xml`](../config-files/#keyword-lists-langsxml) and [`stylers.xml`](../config-files/#highlighting-schemes-stylersxml)
+config files, the standalone uses `name="javascript.js"`.)
 
 If you manually pick **Language > J > JavaScript**, the active file will use the standalone JavaScript settings.
+
+#### ErrorList
+
+The ErrorList language, available starting in v8.8.1, is useful for looking at logfiles, error output from compilers,
+and colorful terminal outputs (like from the Windows PowerShell window or a Linux shell window), or anything else which
+uses [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). The syntax highlighting for this language will
+ include coloring the various error outputs, as well as applying the _foreground_ color specified from ANSI escape codes
+ (it will _not_ change the background color, even if the ANSI escape sequence does).
+
+While this Language is active, if you toggle **[View > Show Symbol](../views/#show-symbol) > Show Control Characters &
+Unicode EOL** (or **Show All Characters**, or use the [Toolbar](../user-interface/#toolbar) equivalents):
+when control characters or all characters are
+shown, then ANSI escape sequences will look like <kbd>ESC</kbd>`[31m`, and will take up space in the view; when control
+character are not shown (or when **Show All Characters** is toggled off), then the entire escape sequence will be
+hidden.  (This is different than in other lexers, where turning off the control character visibility would just hide the
+ `ESC` character, but not the rest of the ANSI escape sequence.)
 
 ### Themes and Language Support
 
