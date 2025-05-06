@@ -372,6 +372,7 @@ Notepad++ also allows customization of the icons used for the toolbar buttons (n
 
 - In v8.4.2 - v8.7.9, the configuration file `toolbarIcons.xml` was used
 - In v8.8 and newer, this was merged into the `toolbarButtonsConf.xml` ([above](#toolbar-icon-visibility-toolbarbuttonsconfxml)), so the same will be used for both Toolbar Customization tasks.
+    - If you had `toolbarIcons.xml` in an earlier version, and you upgrade to v8.8 or newer, you will have to copy the `<ToolBarIcons icoFolderName="myAwesomeIcons" />` from the old `toolbarIcons.xml` file into `toolbarButtonsConf.xml`
 
 Aside from the config file, you need to create icons. You will populate and place the configuration file and icon files as described below:
 
