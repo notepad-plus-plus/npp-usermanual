@@ -124,11 +124,10 @@ for any technical questions/answers and the announcement of your new plugin.
   - [Official](https://github.com/npp-plugins/plugintemplate/) - This template is maintained by the developer of Notepad++.
   - [Docking Dialogue Interface](https://github.com/ThosRTanner/Docking_Dialogue_Interface) - ThosRTanner created a variant of a C++ template that helps clarify how to use a docking dialog, and gives an example plugin using that template.
 * C#
-  - [NotepadPlusPlusPluginPack.Net](https://github.com/kbilsted/NotepadPlusPlusPluginPack.Net) - User "kbilsted" was the original author/maintainer of this pack.  However, as of Jan 2024, this version of the plugin pack is "archived" and unmaintained.
-  - [NppCSharpPluginPack](https://github.com/molsonkiko/NppCSharpPluginPack) - Mark Olson's fork of the original pack, with improvements and active maintenance (as of Jan 2024).
+  - [NppCSharpPluginPack](https://github.com/molsonkiko/NppCSharpPluginPack) - Mark Olson's fork of the original "kblisted" pack, with improvements and active maintenance.
+  - [Npp.DotNet.Plugin](https://www.nuget.org/packages/Npp.DotNet.Plugin) - AOT-compatible port of the .NET Framework plugin template for Notepad++.
 * [D](https://gitlab.com/dokutoku/npp-api)
 * Delphi:
-  - [Original (ANSI/UNICODE)](https://sourceforge.net/projects/npp-plugins/files/DelphiPluginTemplate/DelphiPluginTemplate%202.0%20UNICODE/DelphiPluginTemplate2.zip/download)
   - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): This version has the headers necessary to work with Notepad++ v8.3.3 and newer.
 
 ### Header Files
