@@ -120,7 +120,7 @@ In brief, the structure of the context menu file is as follows
 
 ## The context menu: `tabContextMenu.xml`
 
-Starting in v8.4.8, the [tab-bar context menu](user-interface/#tab-bar-right-click-menu) (the popup menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
+Starting in v8.4.8, the [tab-bar context menu](../user-interface/#tab-bar-right-click-menu) (the popup menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
 
 The format is the same as the `contextMenu.xml` described [above](#context-menu-syntax-summary), except the "Intermediate Node" is `<TabContextMenu>` instead of `<ScintillaContextMenu>`.
 
@@ -390,7 +390,7 @@ Aside from the config file, you need to create icons. You will populate and plac
 
 _Notes_:
 
-- Note 1: 
+- Note 1:
     - For v8.8 and newer, `toolbarButtonsConf.xml` will have:
         ```xml
         <?xml version="1.0" encoding="UTF-8" ?>
