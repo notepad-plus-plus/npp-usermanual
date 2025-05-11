@@ -101,7 +101,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 When you right click on the title for a tab, you get a context menu for manipulating that tab.
 
-By default, the commands available in that context menu are described below.  If you would like to add other commands to that context menu, or remove commands you don't want to "clutter" that context menu, you can follow the instructions for [customizing the tab context menu using `tabContextMenu.xml`](config-files/#the-context-menu-tabcontextmenuxml).
+By default, the commands available in that context menu are described below.  If you would like to add other commands to that context menu, or remove commands you don't want to "clutter" that context menu, you can follow the instructions for [customizing the tab context menu using `tabContextMenu.xml`](../config-files/#the-context-menu-tabcontextmenuxml).
 
 - `Close`: Closes this file's tab.
 - `Close Multiple Tabs >`:
@@ -158,8 +158,8 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 - **Redo** ⇒ [**Edit > Redo**](../editing/#edit-menu): Re-applies that action that was just reverted due to an Undo.
 - **Find** ⇒ [**Search > Find**](../searching/#find-replace-tabs): Launches the **Find** dialog.
 - **Replace** ⇒ [**Search > Replace**](../searching/#find-replace-tabs): Launches the **Replace** dialog.
-- **Zoom In** ⇒ [**View > Zoom > Zoom In**](views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
-- **Zoom Out** ⇒[**View > Zoom > Zoom In**](views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
+- **Zoom In** ⇒ [**View > Zoom > Zoom In**](../views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
+- **Zoom Out** ⇒[**View > Zoom > Zoom In**](../views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
 - **Synchronize Vertical Scrolling** ⇒ [**View > Synchronize Vertical Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, vertically.
 - **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
 - **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
