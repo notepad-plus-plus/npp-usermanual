@@ -159,7 +159,7 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 - **Find** ⇒ [**Search > Find**](../searching/#find-replace-tabs): Launches the **Find** dialog.
 - **Replace** ⇒ [**Search > Replace**](../searching/#find-replace-tabs): Launches the **Replace** dialog.
 - **Zoom In** ⇒ [**View > Zoom > Zoom In**](../views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
-- **Zoom Out** ⇒[**View > Zoom > Zoom In**](../views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
+- **Zoom Out** ⇒[**View > Zoom > Zoom Out**](../views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
 - **Synchronize Vertical Scrolling** ⇒ [**View > Synchronize Vertical Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, vertically.
 - **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
 - **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
