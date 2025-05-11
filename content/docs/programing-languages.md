@@ -152,7 +152,7 @@ Once you have thoroughly tested your code updates, and verified that it can prop
 When opening an existing file, Notepad++ has an algorithm for trying to decide which language a given file is, with the following priorities:
 
 1. A language defined at the [command line using `-l`](../command-prompt/) is applied.
-2. If the file is in the active [session file](session/) (the automatic `session.xml` or a manually-controlled session), it will use the language stored in that session.
+2. If the file is in the active [session file](../session/) (the automatic `session.xml` or a manually-controlled session), it will use the language stored in that session.
 3. If the file extension is a "known extension" (whether it's from the [Style Configurator](../preferences/#style-configurator)'s default extension list [in `langs.xml` or `langs.model.xml`] or user-defined extension list [from `stylers.xml` or `themes\<ThemeName>.xml`] for a built-in language, or the [User Defined Language](../user-defined-language-system/)'s extension settings [from `userDefineLang.xml` or `userDefineLangs\<UDLName>.xml`]), Notepad++ will use that language.
 4. If the filename matches one of a few specific names, Notepad++ knows what language they should be:
 
