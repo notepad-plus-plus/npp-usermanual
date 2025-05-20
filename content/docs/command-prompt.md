@@ -172,6 +172,7 @@ code | file
 * `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually.
 * `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
 * `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
+    - You can only give Notepad++ _one_ `-pluginMessage` argument.  If you have multiple pieces of information you want to pass to one or more plugins, they have to be joined together, such as, `-pluginMessage="arg1=Val1;arg2=Val2"`, and the plugin has to know how to split the contents of that message into the pieces that the plugin needs.
 * `filepath`: File or folder name to open (absolute or relative path name).
 
 The order of the options is not important.  Brackets indicate that the options
@@ -197,8 +198,9 @@ usage list.  These are intended for advanced usage or other special circumstance
   a command-line option when you try to print the file from the Explorer Context menu.
   Enabling this option allows Notepad++ to recognize that option, and convert it internally
   to the official `-quickPrint` option.
-* `-z`: Causes Notepad++ to ignore the next command line argument (a single word, or a phrase in quotes). The only intended and
-  supported use for this option is for the [Notepad Replacement](../other-resources/#notepad-replacement) syntax.
+* `-z`: Causes Notepad++ to ignore the next command line argument (a single word, or a phrase in quotes).
+    - The only intended and supported use for this option is for the [Notepad Replacement](../other-resources/#notepad-replacement) syntax.  Any other use for this option is unsupported and not guaranteed to work.
+    - There can only be one `-z` per command-line, because that is all that is required for [Notepad Replacement](../other-resources/#notepad-replacement).
 
 ## Installer Options
 
