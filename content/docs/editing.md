@@ -252,9 +252,7 @@ Notepad++ has a column in the margin section which indicates which lines have be
 - When the file is first loaded (or a new file is created), no lines have a color in that margin column.
 - If a line is changed (added or edited) since the most recent load or save, it will be orange. (This is `Modified but unsaved` in the image.)
 - After the changes to the file are saved, any lines that have been changed since the file was loaded will be green. (This is `Modified but saved` in the image.)
-    - _Note_: If you tell Notepad++ to reload the file from disk, _all_ lines will be green.
-    - Multiple saves will leave those lines green, even if they weren't changed since the previous save.
-    - The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use <kbd>Ctrl+W</kbd> then <kbd>Ctrl+Shift+T</kbd>).
+    - _Note_: In v8.4.6 - v8.5.4, if you tell Notepad++ to reload the file from disk, _all_ lines would be green.  Multiple saves will leave those lines green, even if they weren't changed since the previous save.  The only way to get back to having no color in the margin is to close the file and reload it (easy enough to do with **File > Close** followed by **File > Recent Files > Restore Recent Closed Files**, or with default shortcuts, use <kbd>Ctrl+W</kbd> then <kbd>Ctrl+Shift+T</kbd>).  Starting in v8.5.5, reloading the file from disk will reset the Change History margin back to un-colored rather than all-green.
 - If the file is saved, if you use **Undo** to go back to the previous modified state, it will be a pale green (some call it "olive" or "yellow-green").  (This is `Revert to modified` in the image.)
 - If the file is saved, if you use **Undo** to go back to the original state of that line (the text it had when the file was originally loaded), it will be a pale blue (some call it "cyan"). (This is `Revert to original` in the image.)
 
