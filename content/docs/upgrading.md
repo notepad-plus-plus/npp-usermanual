@@ -57,9 +57,10 @@ If you have a portable edition of Notepad++, unzipping the contents from the new
     - Your original installation is in `c:\PortableNpp\`
         - For these instructions, this is assumed to be where you want the upgraded copy of Notepad++ to end up.
         - These instructions will refer to this as "the Destination".
-    - You have the ComparePlus plugin, or otherwise understand how to compare contents of similar files
-    - You have read and understood the [Online UserManual section on Editing Configuration Files](https://npp-user-manual.org/docs/config-files/#editing-configuration-files)
+    - You have the ComparePlus plugin, or otherwise understand how to compare contents of similar files.
+    - You have read and understood the [Online UserManual section on Editing Configuration Files](https://npp-user-manual.org/docs/config-files/#editing-configuration-files).
     - Make sure you have recently exited Notepad++ and restarted it, without having made any configuration changes in the GUI since restarting it, as per "Editing Configuration Files".
+    - You have already backed up `c:\PortableNpp\` so that you can easily undo any accidental changes.
 2. Unzip the new portable zipfile into `c:\PortableNpp.temp\`
     - This is just being used to temporarily store the new version of Notepad++.
     - These instructions will refer to this as the "Temporary" version.
@@ -105,4 +106,4 @@ _Note: a similar procedure can be used when you think your installed copy of Not
 
 ## Upgrading Plugins
 
-Neither the installer/updater nor manually upgrading your portable edition will affect your plugins, though upgrading either should update the `nppPluginList.dll` used to determine what plugins the **Plugins Admin**.  After upgrading Notepad++, you should go to [**Plugins > Plugins Admin > Updates**](../plugins/#install-using-plugins-admin) to check to see if any of your plugins should be updated.  (To clarify: The installer may also update any of the default plugins, including NppExport, NppConverter, and MIME Tools; however, if you don't use the installer, those can be upgraded using **Plugins Admin**'s **Updates** tab, as well.)
+Neither the installer/updater nor manually upgrading your portable edition will affect (nearly all of) your plugins, though upgrading either edition should update the `nppPluginList.dll` used to determine what plugins the **Plugins Admin**.  After upgrading Notepad++ by any means, you should go to [**Plugins > Plugins Admin > Updates**](../plugins/#install-using-plugins-admin) to check to see if any of your plugins should be updated.  (To clarify: The installer may also update any of the default plugins, including NppExport, NppConverter, and MIME Tools; however, if you don't use the installer, those can be upgraded using **Plugins Admin**'s **Updates** tab, as well.)
