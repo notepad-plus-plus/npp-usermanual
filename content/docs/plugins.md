@@ -423,7 +423,7 @@ GitHub.
 2. Uniqueness: the value of **folder-name** of your plugin should be unique in the list.
    it means if there's already another same name plugin in the list, you have to rename
    your plugin's folder-name (and your plugin). Keep in mind that your plugin binary
-   name (w/o the extension .dll) should be always the same as the folder-name,
+   name (w/o the extension .dll) should be always the same as the **folder-name**,
    otherwise your plugins won't be loaded.
 3. Security: the value of **id** is the SHA-256 fingerprint of the plugin package's zip file.
    This id is checked against the downloaded zipfile to avoid
@@ -440,9 +440,11 @@ GitHub.
    not just a link to the repository.)
 6. Packaging: Only zip package is supported. Your plugin (DLL) should have the same
    name as the **folder-name** and the plugin DLL file should be placed at the root
-   level of the ZIP file. Otherwise Plugin Admin won't install it. Any additional
+   level of the ZIP file, otherwise Plugins Admin won't install it. Any additional
    files (DLL or data) can be placed at the root level or in an arbitrary subfolder.
-7. Compatibility: In March 2022, two new parameters were added to the JSON file format,
+   - If you have a `doc/` subfolder in your zipfile, the contents of that folder will
+     be installed into `plugins/doc/`**folder-name**`/`
+8. Compatibility: In March 2022, two new parameters were added to the JSON file format,
    to indicate your plugin's compatibility with various versions of Notepad++, called
    `npp-compatible-versions` and `old-versions-compatibility`.
 
