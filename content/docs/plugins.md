@@ -395,11 +395,11 @@ depending on your architecture.
         1. Go to https://github.com/notepad-plus-plus/notepad-plus-plus/releases/latest
         2. Click on the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> near the top of that page.
            - If there isn't, you might have to go to the commit page for that release: there will be a link like `‒○‒ 123abcd` (the `‒○‒` symbol followed by usually 7 hexadecimal digits).  Click on that, and on _that_ page, there should be the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span>, near the "**Commit 123abcd**" header and the name and date of the commit; for example:
-           ```
-           Commit 123abcd
-           donho committed on Jan 1 ⋅ ✓ 12/12
-           ```
-           GitHub occasionally rearranges things, but you should be able to find the ✓ or ✗ as described, or in a similar location.  If you cannot, move on to **C.**, below.
+              ```
+              Commit 123abcd
+              donho committed on Jan 1 ⋅ ✓ 12/12
+              ```
+              GitHub occasionally rearranges things, but you should be able to find the ✓ or ✗ as described, or in a similar location.  If you cannot, move on to **C.**, below.
         3. Click one of the **details** links (it doesn’t actually matter which) in the popup.
         4. Click on the **🏠 Summary** link, and scroll down to the **Artifacts** section
            - If there is no **Artifacts** section, then move to **C.**, below.
