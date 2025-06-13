@@ -387,24 +387,31 @@ Plugin Admin, these are the steps you need:
     - (For the purpose of these instructions, the directory of this installation
       or portable unzip will be referred to as `<DebugDirectory>`)
 2. Get a debug binary, which is required for trying out the locally-edited nppPluginList:
-    - the debug binaries might be available for
+    - **A.** The debug binaries might be available for
 [32-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x32.zip)
 or [64-bit](https://notepad-plus-plus.org/assets/pluginListTestTools/npp.debug.x64.zip),
 depending on your architecture.
-    - If those links give you problems, you can also git a debug binary from a recent build on
-GitHub.
+    - **B.** If those links give you problems, you can also get a debug binary from a recent release on GitHub.
         1. Go to https://github.com/notepad-plus-plus/notepad-plus-plus/releases/latest
         2. Click on the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> near the top of that page.
+           - If there isn't, you might have to go to the commit page for that release: there will be a link like `‒○‒ 123abcd` (the `‒○‒` symbol followed by usually 7 hexadecimal digits).  Click on that, and on _that_ page, there should be the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span>, near the "**Commit 123abcd**" header and the name and date of the commit; for example:
+              ```
+              Commit 123abcd
+              donho committed on Jan 1 ⋅ ✓ 12/12
+              ```
+              GitHub occasionally rearranges things, but you should be able to find the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> as described, or in a similar location.  If you cannot, move on to **C.**, below.
         3. Click one of the **details** links (it doesn’t actually matter which) in the popup.
         4. Click on the **🏠 Summary** link, and scroll down to the **Artifacts** section
+           - If there is no **Artifacts** section, then move to **C.**, below.
         5. Download the artifact `Notepad++.MSVC.<XXX>.Debug`, which will download a zipfile.  The `<XXX>` is the Architecture of the installation:
             - `x86`: for 32-bit Notepad++
             - `x64`: for 64-bit Notepad++
             - `ARM64`: for ARM64 builds of Notepad++
         6. Extract the `.exe` from the downloaded zipfile, rename it to `notepad++.<XXX>.dbg.exe`, and save it alongside the normal `notepad++.exe` in the `<DebugDirectory>`.
-    - If it's been so long since the last release that GitHub has cleaned out the last release's Artifacts,
-      go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
-      click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (sub-steps 4-6, above)
+    - **C.** If it's been so long since the last release that GitHub has cleaned out the last release's Artifacts, 
+      or if you are having difficulty finding the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> because they have moved,
+      you can go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
+      click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (that is, steps **B.** 4-6, above)
 3. Get the JSON for nppPluginList:
     - If you have a fork of the nppPluginList repo (with a branch for making your copies), you can use the copies there.
     - If you haven't done a fork yet (you will need to in order to create a PR), you can access them from https://github.com/notepad-plus-plus/nppPluginList/tree/master/src as well.
