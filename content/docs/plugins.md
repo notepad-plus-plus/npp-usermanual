@@ -399,7 +399,7 @@ depending on your architecture.
               Commit 123abcd
               donho committed on Jan 1 ⋅ ✓ 12/12
               ```
-              GitHub occasionally rearranges things, but you should be able to find the ✓ or ✗ as described, or in a similar location.  If you cannot, move on to **C.**, below.
+              GitHub occasionally rearranges things, but you should be able to find the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> as described, or in a similar location.  If you cannot, move on to **C.**, below.
         3. Click one of the **details** links (it doesn’t actually matter which) in the popup.
         4. Click on the **🏠 Summary** link, and scroll down to the **Artifacts** section
            - If there is no **Artifacts** section, then move to **C.**, below.
