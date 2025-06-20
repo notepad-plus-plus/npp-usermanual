@@ -221,5 +221,7 @@ It also implements additional Notepad++\-specific options:
     - If Notepad++ has multiple instances opened, it will close all instances.
 - `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++. (New to v8.6.9.)
     - Only works if `/S` is also specified.
+- `/relaunchNppAfterSilentInstall`: If Notepad++ was running when silent install was initiated, it will automatically run the newly-installed Notepad++ after installation is complete. (New to v8.8.2.)
+    - Only works if `/S` is also specified.
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
