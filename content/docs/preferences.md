@@ -599,7 +599,12 @@ A variety of settings that didn't fit elsewhere
       - Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
       - Some users notice performance issues when this is checkmarked; those affected should choose `GDI (most compatible)` (or uncheckmark the option in older versions).
       - Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
-* `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
+* **Auto-updater** dropdown (more optoins starting in v8.8.2):
+	- `Disable`: Will not automatically check for updates.  You can still use **? > Update Notepad++** or download a newer installer from the [official downloads page](https://notepad-plus-plus.org/downloads/).
+	- `Enable on Notepad++ Startup`: Will automatically check for updates.  If one is available, it will ask if you would like to upgrade when Notepad++ first launches.
+	- `Enable on Notepad++ Exit`: Will automatically check for updates.  If one is avaialable, it will ask if you would like to upgrade when Notepad++ is closed.
+	- In v8.8.1 and earlier, this was just a checkbox: `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
+	- See the section on [upgrading Notepad++](../upgrading/)
 * `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
 * `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
 * `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
