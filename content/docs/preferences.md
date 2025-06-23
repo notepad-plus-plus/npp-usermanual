@@ -230,6 +230,7 @@ These define properties of new documents (end-of-line format, encoding, and synt
     * _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
 * **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
 * `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
+* `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab (new to v8.8.2).
 
 
 ### Default Directory

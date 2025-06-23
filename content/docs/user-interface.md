@@ -36,7 +36,10 @@ If the description says it will "wrap", it means that if you try to go beyond th
 
 - If you hover over a tab on the Tab Bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
-    - If it's a new, unsaved tab, then the hover text will be the name of that tab (defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
+    - If it's a new, unsaved tab, then the hover text will be the name of that tab
+		- Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
+		- The name of a new tab defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  
+			- Starting in v8.8.2, there is a preference in [**Settings > Preferences > New Document**](../preferences/#new-document) to allow using the first line of the document as the tab's name, instead of `new #` or similar.
     - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > Tab Bar](../preferences/#tab-bar)** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
     - If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Change inactive tab color** is checked (known as **General > Tab Bar > ☐ Darken inactive tabs** prior to v8.8), hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
 
