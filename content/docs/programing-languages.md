@@ -70,6 +70,15 @@ shown, then ANSI escape sequences will look like <kbd>ESC</kbd>`[31m`, and will 
 character are not shown (or when **Show All Characters** is toggled off), then the entire escape sequence will be
 hidden.  (This is different than in other lexers, where turning off the control character visibility would just hide the
  `ESC` character, but not the rest of the ANSI escape sequence.)
+ 
+In v8.8.1, this defaulted to applying the ErrorList lexer to files ending in `.err` or `.log`; in v8.8.2, this was changed 
+to be just for `.err` (since there are so many different types of `.log` files).  However, if you installed from v8.8.1 and 
+updated to v8.8.2 or newer, the `.log` will _not_ be taken out of your default list of extensions; to fix that, you can edit 
+`%AppData%\Notepad++\langs.xml` (or appropriate path depending on your [config file location](../config-files/#configuration-files-location)), 
+search for `"errorlist"`, and remove `log` from the `ext="err log"` to become `ext="err"`, then save `langs.xml` and restart
+Notepad++ (paying attention to the [editing configuration files](../config-files/#editing-configuration-files) instructions).
+If you had installed Notepad++ before v8.8.1, and want access to the ErrorList lexer, you will need to see [Configuration Files
+During Upgrades](../config-files/#configuration-files-during-upgrades).
 
 ### Themes and Language Support
 
