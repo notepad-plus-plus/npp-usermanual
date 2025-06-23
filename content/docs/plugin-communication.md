@@ -1098,7 +1098,7 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [2142] **NPPM_GETTOOLBARICONSETCHOICE**
-*Get Notepad++ toobar icon set choice (Fluent UI: small, Fluent UI: large, Filled Fluent UI: small, Filled Fluent UI: large and Standard icons: small).*
+*Get Notepad++ toobar icon set choice (Fluent UI: small, Fluent UI: large, Filled Fluent UI: small, Filled Fluent UI: large and Standard icons: small). (new to v8.8.2)*
 
 **Parameters**:
 
@@ -2765,7 +2765,7 @@ that was closed (including getting its path or other meta-information), the
 ---
 
 #### [1032] **NPPN_TOOLBARICONSETCHANGED**
-*To notify plugins that toolbar icon set selection has changed.*
+*To notify plugins that toolbar icon set selection has changed. (new to v8.8.2)*
 
 **Fields:**
 
