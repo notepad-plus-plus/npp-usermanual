@@ -330,48 +330,53 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 
 **Other information**:
 
+- `dmFlags` values in `NppDarkMode` namespace:
+
+    ```
+        namespace NppDarkMode
+        {
+            // Standard flags for main parent after its children are initialized.
+            constexpr ULONG dmfInit =               0x0000000BUL;
+
+            // Standard flags for main parent usually used in NPPN_DARKMODECHANGED.
+            constexpr ULONG dmfHandleChange =       0x0000000CUL;
+        };
+    ```
+
 - Docking panels don't need to call NPPM_DARKMODESUBCLASSANDTHEME for main hwnd.
 
 - Subclassing is applied automatically unless DWS_USEOWNDARKMODE flag is used.
 
 - Might not work properly in C# plugins.
 
-- `dmFlags` values in `NppDarkMode` namespace:
+- It is important for the message to be sent _after_ controls are initialized, otherwise it may not affect all controls correctly.
 
-```
-	namespace NppDarkMode
-	{
-		// Standard flags for main parent after its children are initialized.
-		constexpr ULONG dmfInit =               0x0000000BUL;
-
-		// Standard flags for main parent usually used in NPPN_DARKMODECHANGED.
-		constexpr ULONG dmfHandleChange =       0x0000000CUL;
-	};
-```
+- For v8.5.4 - v8.8.1, this message did not affect some controls, including tabbed-interface controls, progress bars, and URL links; 
+  starting in v8.8.2, those controls are included in the subclassing from this message.
 
 **Examples:**
 
 - after controls initializations in WM_INITDIALOG, in WM_CREATE or after CreateWindow:
 
-```
-auto success = static_cast<ULONG>(::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(NppDarkMode::dmfInit), reinterpret_cast<LPARAM>(mainHwnd)));
-```
+    ```
+    auto success = static_cast<ULONG>(::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(NppDarkMode::dmfInit), reinterpret_cast<LPARAM>(mainHwnd)));
+    ```
 
 - handling dark mode change:
 
-```
-extern "C" __declspec(dllexport) void beNotified(SCNotification * notifyCode)
+    ```
+    extern "C" __declspec(dllexport) void beNotified(SCNotification * notifyCode)
 
-	switch (notifyCode->nmhdr.code)
-	{
-		case NPPN_DARKMODECHANGED:
-		{
-			::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(dmfHandleChange), reinterpret_cast<LPARAM>(mainHwnd));
-			::SetWindowPos(mainHwnd, nullptr, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED); // to redraw titlebar and window
-			break;
-		}
-	}
-```
+        switch (notifyCode->nmhdr.code)
+        {
+            case NPPN_DARKMODECHANGED:
+            {
+                ::SendMessage(nppData._nppHandle, NPPM_DARKMODESUBCLASSANDTHEME, static_cast<WPARAM>(dmfHandleChange), reinterpret_cast<LPARAM>(mainHwnd));
+                ::SetWindowPos(mainHwnd, nullptr, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED); // to redraw titlebar and window
+                break;
+            }
+        }
+    ```
 
 ---
 
@@ -1092,6 +1097,29 @@ MAX_PATH is suggested to use.*
 
 ---
 
+#### [2142] **NPPM_GETTOOLBARICONSETCHOICE**
+*Get Notepad++ toobar icon set choice (Fluent UI: small, Fluent UI: large, Filled Fluent UI: small, Filled Fluent UI: large and Standard icons: small).*
+
+**Parameters**:
+
+*wParam [in]*
+: int, must be zero.
+
+*lParam [in]*
+: int, must be zero.
+
+**Return value**:
+: Return toolbar icon set choice as an integer value. Here are 5 possible values:
+  - `0`: Fluent UI: small
+  - `1`: Fluent UI: large
+  - `2`: Filled Fluent UI: small
+  - `3`: Filled Fluent UI: large
+  - `4`: Standard icons: small
+
+
+
+---
+
 #### [4027] **NPPM_GETFILENAME**
 *Retrieves the file name of current document.
 User is responsible to allocate a buffer which is large enough.
@@ -1402,8 +1430,10 @@ ADD_ZERO_PADDING == FALSE
 
 ---
 
-#### [2032] **NPPM_GETOPENFILENAMES**
-*Retrieves the open files of both views.
+#### [2032] **NPPM_GETOPENFILENAMES** [DEPRECATED]
+*Deprecated in v8.8.2.  It is kept for the compatibility. Use [`NPPM_GETBUFFERIDFROMPOS`](#2083nppm_getbufferidfrompos) & [`NPPM_GETFULLPATHFROMBUFFERID`](#2082nppm_getfullpathfrombufferid) instead.*
+
+*`NPPM_GETOPENFILENAMES_DEPRECATED`: Retrieves the open files of both views.
 User is responsible to allocate an big enough fileNames array.*
 
 **Parameters**:
@@ -1421,8 +1451,10 @@ is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES 
 
 ---
 
-#### [2041] **NPPM_GETOPENFILENAMESPRIMARY**
-*Retrieves the open files of the main view.
+#### [2041] **NPPM_GETOPENFILENAMESPRIMARY** [DEPRECATED]
+*Deprecated in v8.8.2.  It is kept for the compatibility. Use [`NPPM_GETBUFFERIDFROMPOS`](#2083nppm_getbufferidfrompos) & [`NPPM_GETFULLPATHFROMBUFFERID`](#2082nppm_getfullpathfrombufferid) instead.*
+
+*`NPPM_GETOPENFILENAMESPRIMARY_DEPRECATED`: Retrieves the open files of the main view.
 User is responsible to allocate an big enough fileNames array.*
 
 **Parameters**:
@@ -1441,8 +1473,10 @@ is the size of the fileNames array. Get this value by using NPPM_GETNBOPENFILES 
 
 ---
 
-#### [2042] **NPPM_GETOPENFILENAMESSECOND**
-*Retrieves the open files of the secondary view.
+#### [2042] **NPPM_GETOPENFILENAMESSECOND** [DEPRECATED]
+*Deprecated in v8.8.2.  It is kept for the compatibility. Use [`NPPM_GETBUFFERIDFROMPOS`](#2083nppm_getbufferidfrompos) & [`NPPM_GETFULLPATHFROMBUFFERID`](#2082nppm_getfullpathfrombufferid) instead.*
+
+*`NPPM_GETOPENFILENAMESSECOND_DEPRECATED`: Retrieves the open files of the secondary view.
 User is responsible to allocate an big enough fileNames array.*
 
 **Parameters**:
@@ -2727,6 +2761,24 @@ that was closed (including getting its path or other meta-information), the
 	code:		NPPN_TBMODIFICATION
 	hwndFrom:	hwndNpp
 	idFrom:		0
+
+---
+
+#### [1032] **NPPN_TOOLBARICONSETCHANGED**
+*To notify plugins that toolbar icon set selection has changed.*
+
+**Fields:**
+
+	code:		NPPN_TOOLBARICONSETCHANGED
+	hwndFrom:	hwndNpp
+	idFrom:		iconSetChoice
+
+The value of `iconSetChoice` will be one of the following values:
+  - `0`: Fluent UI: small
+  - `1`: Fluent UI: large
+  - `2`: Filled Fluent UI: small
+  - `3`: Filled Fluent UI: large
+  - `4`: Standard icons: small
 
 ---
 
