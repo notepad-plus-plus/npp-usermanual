@@ -9,6 +9,8 @@ Notepad++ is an actively maintained piece of software, and new versions come fas
 ## Auto-Trigger
 If you used installation package when you originally installed, the Auto Update feature is active by default. Every 15 days auto-updater (WinGUp) will be launched for checking, and you will be notified if a new version is available. You are presented with the option of installing that newer version.
 
+Depending on the [**Settings > Preferences > MISC** > Auto-updater](../preferences/#misc) dropdown choice, auto-triggered update will either be disabled, or will prompt you when you first launch Notepad++, or will prompt you when you exit out of Notepad++.
+
 ## Upgrade On-Demand
 Using the **? > Update Notepad++** menu command. This will check whether there is a new version and whether the safety delay is over. If so, you are presented with the opportunity to download and install the newer version.
 
@@ -25,7 +27,7 @@ If there is a new version, the Updater dialog will allow you to choose:
     - It will close the running Notepad++ (and all instances in multi-instance mode), do the update (without requiring clicking all the **Next** buttons to keep the same installed-options as you already have), and automatically run an instance of the updated Notepad++ -- so a true "upgrade and continue" experience.
 - **No**: Don't run the installer at this time.
 - **Never**: Don't run the installer at this time, and don't ask again in the future.
-    - See also: [**Settings > Preferences > MISC** > ☐ Enable Notepad++ auto-updater](../preferences/#misc)
+
 
 
 ## Upgrade Manually
