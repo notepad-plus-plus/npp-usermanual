@@ -122,8 +122,8 @@ By default, the commands available in that context menu are described below.  If
 - `Move to Recycle Bin`: Deletes the current file (placing it safely in Window's Recycle Bin).
 - `Reload`: Reloads this file from disk.
 - `Print`: Prints this file.
-- `Read-Only`: Sets this file's Notepad++\-specific read-only flag (see more in the [**Edit** menu description](../editing/#edit-menu)).
-- `Clear Read-Only Flag`: Clears this file's read-only flag for the Windows OS (see more in the [**Edit** menu description](../editing/#edit-menu)).
+- `Read-Only in Notepad++`: Sets this file's Notepad++\-specific read-only flag (see more in the [**Edit** menu description](../editing/#edit-menu)) (renamed in v8.8.2).
+- `Read-Only Attribute in Windows`: Clears this file's read-only flag for the Windows OS (see more in the [**Edit** menu description](../editing/#edit-menu)) (renamed in v8.8.2).
 - `Copy to Clipboard >`
   - `Copy Full File Path`: Copies the full file path (drive, directory, and filename) to the Windows Clipboard.
   - `Copy Filename`: Copies just the filename (no drive or directory) to the Windows Clipboard.
