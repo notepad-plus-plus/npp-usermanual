@@ -22,6 +22,41 @@ For each function, there are 3 commands:
 - **Generate from Files** - Will calculate the hashes for one or more selected files.
 - **Generate from Selection into Clipboard** - Will use the text that is currently selected, calculate the hash, and put the hash results in the Clipboard.
 
+### Window Menu
+
+This menu allows various ways of activating and manipulating the tabs for open files already open in the active view of Notepad++.  (If both [Views](../views/) are enabled, only the files and tabs from the active view will be visible in this menu.  Changing the active View will change which list of files to work with.)
+
+- **Sort By >**: Allows sorting the tabs by:
+    - **Name A to Z**: alphabetical order of the tab's name
+    - **Name Z to A**: reverse alphabetical order of the tab's name
+    - **Path A to Z**: alphabetical order of the file's full path (drive, directory, and filename)
+    - **Path Z to A**: reverse alphabetical order of the file's full path (drive, directory, and filename)
+    - **Type A to Z**: alphabetical order of the filetype (based on Language and extension)
+    - **Type Z to A**: reverse alphabetical order of the filetype (based on Language and extension)
+    - **Content Length Ascending**: length of file content, shortest to longest
+    - **Content Length Descending**: length of file content, longest to shortest
+- **Windows...**: Launches a dialog with a grid-based interface for accessing files opened in Notepad++
+    - Clicking on a column's header in the grid will sort the grid based on that Attribute
+        - Column `Name`: filename (or text displayed in the tab's title, for unsaved files)
+        - Column `Path`: full path (drive, directory, and filename)
+        - Column `Type`: file type (based on Language and extension)
+        - Column `Size`: lenght of the content of the file
+    - Buttons:
+        - **Activate**: Makes the selected file(s) the active tab in Notepad++.
+        - **Save**: Saves the selected file(s).
+        - **Close window(s)**: Closes the tab(s) for the selected file(s).
+        - **Sort Tabs**: Applies the current sorting of the grid to the order of tabs in the Tab Bar.
+    - Clicking on a row of the grid:
+        - A single-click on a row will select that file for the various button actions.
+        - Multiple files can be selected using <KBD>Ctrl+Click</KBD> individually on each file to add/remove from the selection, or <KBD>Shift+Click</KBD> to extend the selection.
+        - Double-clicking on a row of the grid will make that file's tab be the active tab for editing.
+    - If there are two [Views](../views/) visible, this menu's file list will only show the files in the active [View](../views/).
+- Files: the rest of the main **Window** menu is the list of files currently open in Notepad++.
+    - If there are too many, they won't all be accessible from the menu; use the **Windows...** action to launch the dialog to access the remaining files.
+    - Files that have unsaved edits will be marked with an `*` after the filename (new to v8.8.2).
+    - If there are two [Views](../views/) visible, this menu's file list will only show the files in the active [View](../views/).
+    - The file for the active tab (of the active [View](../views/)) will be marked with a checkmark `✔` icon.
+
 ## Tabs
 
 The keyboard shortcuts described in this section are the default [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper) settings; if the Shortcut Mapper has been modified, the keystrokes may be different.
