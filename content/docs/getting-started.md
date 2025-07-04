@@ -54,3 +54,31 @@ The portable editions of Notepad++ can be removed by deleting the directory they
 Windows is particular about what goes into "Program Files", and restricts permissions there, usually requiring Administrator Privilege to install or edit there.
 
 When Notepad++ is placed in "Program Files" (whether through the installer or through unzipping a portable edition there), it intentionally does _not_ honor the [doLocalConf.xml](../config-files/#other-configuration-files) that comes from the "Do not Use %APPDATA%" setting or unzipping a portable edition there or manually creating the file, and will instead use your `%AppData%\Notepad++` directory for [storing settings](../config-files/#configuration-files-location) despite that file being there.
+
+## Notepad++ Self-Signed Certificate Authority for Binaries
+
+Notepad++ has always had difficulty getting a Certificate Authority to issue a code-signing certificate to "Notepad++" instead of to an individual, since Notepad++ is not a registered business.  In the lead-up to [v8.8.2 release](https://notepad-plus-plus.org/news/8.8.2-available-in-1-week-without-certificate/), Don was unable to get a signing certificate for "Notepad++", so v8.8.2 was released unsigned.  However, having the installer and executables and DLLs unsigned causes issues with installing Notepad++, and many virus scanners will give a "false positive" virus warning because of the missing signature.
+
+To rectify this, there is now a self-signed Notepad++ Root Certificate Authority (CA) certificate.  Starting with v8.8.3, this Root CA certificate is used to create a signing certificate for Notepad++'s installer and other binaries.   Since this is not one of the "traditional" Certificate Authority entities, the Notepad++ Root CA certificate is not already included in your Windows installation, unlike the "big name" authorities.  
+
+Assuming you trust the download connection, and trust Notepad++ to correctly issue signing certificates to itself for signing Notepad++ binaries, the following instructions can be followed so that your computer is made aware that signatures coming from the Notepad++ Root CA are valid:
+1. Download the x509 CA root certificate from https://notepad-plus-plus.org/notepadroot.crt
+2. Open the certificate in the built-in Windows certificate viewer
+    - Usually, double-clicking the downloaded `notepadroot.crt` file is sufficient.
+    - Alternately, right clicking and choosing **Open** can also open it.
+    - Under unusual circumstances, right clicking and choosing **Open With**, then choosing `Crypto Shell Extensions` is required.
+3. Once it's open
+    - The **General** tab will say something akin to "This CA Root certificate is not trusted" at this point.  That is expected, because you have not yet told Windows to trust it.
+    - On the **General** tab, click **Install Certificate**
+    - Pick `Current User` and click **Next**
+    - _Don't_ pick `Automatically select...`, because that will default to "Intermediate Certification Authorities", which isn't sufficient level of trust for Windows.
+    - Instead, pick `Place all certificates in the following store`, and **Browse...** to `Trusted Root Certification Authorities`, then click **Ok** then **Next**
+    - On the next page, with a summary of what you are doing, you can click **Finish**
+    - Windows will pop up a security warning, because you are putting it in the Trusted Root CA . Make sure you understand the implications of moving forward with YES.
+    - Once you see "The import was successful", you can close that popup with **OK**
+    - You can also close the Certificate at this point.
+4. If you open the certificate again, the **General** tab now shows the certificate's purpose, and the **Certification Path** tab will show it's trusted.
+5. If you ever want to _remove_ that Trusted Root CA certificate (for example, if you stop trusting Notepad++'s certification/signature):
+    - Use `Win+R` to bring up **Run** dialog, and run `certmgr.msc` .
+    - Navigate to `Trusted Root Certification Authorities` > `Certificates` .
+    - Scroll down until you find `Notepad++ Root Certificate`, and right click on it, then **Delete** and **Yes**.
