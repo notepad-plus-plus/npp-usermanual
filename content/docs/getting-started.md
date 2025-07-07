@@ -62,9 +62,9 @@ Notepad++ has always had difficulty getting a Certificate Authority to issue a c
 To rectify this, there is now a self-signed Notepad++ Root Certificate Authority (CA) certificate.  Starting with v8.8.3, this Root CA certificate is used to create a signing certificate for Notepad++'s installer and other binaries.   Since this is not one of the "traditional" Certificate Authority entities, the Notepad++ Root CA certificate is not already included in your Windows installation, unlike the "big name" authorities.  
 
 Assuming you trust the download connection, and trust Notepad++ to correctly issue signing certificates to itself for signing Notepad++ binaries, the following instructions can be followed so that your computer is made aware that signatures coming from the Notepad++ Root CA are valid:
-1. Download the x509 CA root certificate from https://notepad-plus-plus.org/notepadroot.crt
+1. Download the x509 CA root certificate from https://notepad-plus-plus.org/nppRoot.crt
 2. Open the certificate in the built-in Windows certificate viewer
-    - Usually, double-clicking the downloaded `notepadroot.crt` file is sufficient.
+    - Usually, double-clicking the downloaded `nppRoot.crt` file is sufficient.
     - Alternately, right clicking and choosing **Open** can also open it.
     - Under unusual circumstances, right clicking and choosing **Open With**, then choosing `Crypto Shell Extensions` is required.
 3. Once it's open
@@ -90,3 +90,7 @@ Two more hints, if you are having trouble locating the certificate after you thi
     - **Contains** = `Notepad++`
     - **Look in Field** = `Issued By` or `Issued To` (the two might give different results, so may need to try both)
     - Click **Find Now**
+
+Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
+- Download the file from https://notepad-plus-plus.org/nppRevoke.crl (if your browser just shows the contents, do a **Save As**, or come back to this page, and use the right-click **Save Link As** or equivalent).
+- From inside `certmgr.msc` with the **Trusted Root Certification Authorities > Certificates** selected, **Actions > All Tasks > Import**, and navigate to the `nppRevoke.crl`.  This will revoke any certificates from that list.
