@@ -82,3 +82,11 @@ Assuming you trust the download connection, and trust Notepad++ to correctly iss
     - Use `Win+R` to bring up **Run** dialog, and run `certmgr.msc` .
     - Navigate to `Trusted Root Certification Authorities` > `Certificates` .
     - Scroll down until you find `Notepad++ Root Certificate`, and right click on it, then **Delete** and **Yes**.
+
+Two more hints, if you are having trouble locating the certificate after you think you've installed it per the instructions above:
+1. If you accidentally picked `Local Machine` instead of `Current User` in step 3, then `certgr.msc` will not be able to see/remove it; you would have to use `certlm.msc` instead (and may have to give UAC permission).
+2. In either `certmgr.msc` or `certlm.msc`, you can search for Notepad++ certificates by using **Action > Find Certificates...**
+    - **Find In** = `All certificate stores`
+    - **Contains** = `Notepad++`
+    - **Look in Field** = `Issued By` or `Issued To` (the two might give different results, so may need to try both)
+    - Click **Find Now**
