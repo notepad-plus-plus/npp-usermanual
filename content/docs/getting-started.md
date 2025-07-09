@@ -59,7 +59,7 @@ When Notepad++ is placed in "Program Files" (whether through the installer or th
 
 Notepad++ has always had difficulty getting a Certificate Authority to issue a code-signing certificate to "Notepad++" instead of to an individual, since Notepad++ is not a registered business.  In the lead-up to [v8.8.2 release](https://notepad-plus-plus.org/news/8.8.2-available-in-1-week-without-certificate/), Don was unable to get a signing certificate for "Notepad++", so v8.8.2 was released unsigned.  However, having the installer and executables and DLLs unsigned causes issues with installing Notepad++, and many virus scanners will give a "false positive" virus warning because of the missing signature.
 
-To rectify this, there is now a self-signed Notepad++ Root Certificate Authority (CA) certificate.  Starting with v8.8.3, this Root CA certificate is used to create a signing certificate for Notepad++'s installer and other binaries.   Since this is not one of the "traditional" Certificate Authority entities, the Notepad++ Root CA certificate is not already included in your Windows installation, unlike the "big name" authorities.  
+To rectify this, there is now a self-signed Notepad++ Root Certificate Authority (CA) certificate.  Starting with v8.8.3, this Root CA certificate is used to create a signing certificate for Notepad++'s installer and other binaries.   Since this is not one of the "traditional" Certificate Authority entities, the Notepad++ Root CA certificate is not already included in your Windows installation, unlike the "big name" authorities.
 
 Assuming you trust the download connection, and trust Notepad++ to correctly issue signing certificates to itself for signing Notepad++ binaries, the following instructions can be followed so that your computer is made aware that signatures coming from the Notepad++ Root CA are valid:
 1. Download the x509 CA root certificate from https://notepad-plus-plus.org/nppRoot.crt
@@ -94,3 +94,19 @@ Two more hints, if you are having trouble locating the certificate after you thi
 Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
 - Download the file from https://notepad-plus-plus.org/nppRevoke.crl (if your browser just shows the contents, do a **Save As**, or come back to this page, and use the right-click **Save Link As** or equivalent).
 - From inside `certmgr.msc` with the **Trusted Root Certification Authorities > Certificates** selected, **Actions > All Tasks > Import**, and navigate to the `nppRevoke.crl`.  This will revoke any certificates from that list.
+
+### Current Root Certificate Authority Details
+
+- Download links:
+    - Primary Location: https://notepad-plus-plus.org/nppRoot.crt
+    - Secondary Location: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/nppRoot.crt
+    - Tertiary Location: https://npp-user-manual.org/docs/certs/nppRoot.crt
+        - _Note_: If you would like to cross-verify that the certificates are all the same, you can grab the certificate from each of those locations, and compare to each other and the values published below.
+- **Name**: `Notepad++ Root Certificate`
+- **Serial Number**: `7A137FBEA48E8D469D2B43D49EBBCB21`
+- **Thumbprint**: `C80539FF7076D22E73A01F164108DAFBF06E45E4`
+- **SHA256**: `443B4543C3A682804540849793556FFD3A6CE5D4721C9ADFDA6450223DDD54D7`
+- **Created**: `2025-07-09`
+- **Expires**: `2055-07-09`
+    - Please note: the dates are based on the time in France.  Depending on your timezone, the date shown in your certificate viewer may show a different day.
+
