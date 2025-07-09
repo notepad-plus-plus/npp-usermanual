@@ -99,7 +99,11 @@ Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
 
 - Download links:
     - Primary Location: https://notepad-plus-plus.org/nppRoot.crt
-    - Secondary Location: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/nppRoot.crt
+    - Secondary Location: the Notepad++ GitHub repository
+        - GitHub repo page: https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/nppRoot.crt
+            - From here, you can use the "raw" buttons in the browser to get the raw contents or save the raw contents to disk.  You cannot just "save link as" on the github.com URL and download a valid certificate.
+        - Raw (downloadable) link: https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/refs/heads/master/nppRoot.crt
+            - This URL can be directly downloaded (with the caveat found in the note, below)
     - Tertiary Location: https://npp-user-manual.org/docs/certs/nppRoot.crt
         - _Note_: If you would like to cross-verify that the certificates are all the same, you can grab the certificate from each of those locations, and compare to each other and the values published below.
 - **Name**: `Notepad++ Root Certificate`
@@ -110,3 +114,4 @@ Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
 - **Expires**: `2055-07-09`
     - Please note: the dates are based on the time in France.  Depending on your timezone, the date shown in your certificate viewer may show a different day.
 
+Please note: the notepad-plus-plus.org and npp-user-manual.org hosts may require that you respond to an "I am a human, not a robot" page, or otherwise do a human-verification before it allows you to see any pages on those websites, let alone download a file, so if you've never visited the main sites, just following those direct links (or trying to save-link-target-as) may be blocked.  The hosts may also require that javascript be enabled in your browser as part of their not-a-robot check, so command-line based downloaders (`Invoke-WebRequest` or `wget` or similar) or standalone file-download utilities (that don't have a fully-featured web browser behind them) might also be blocked.  If you are blocked, go to https://notepad-plus-plus.org and https://npp-user-manual.org in your browser, and make sure that you get access to the website; for as long as the hosts/providers cache your "I am a human" credentials, the direct URLs should work after that, at least in that browser.
