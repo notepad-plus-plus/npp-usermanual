@@ -107,7 +107,7 @@ Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
     - Tertiary Location: https://npp-user-manual.org/docs/certs/nppRoot.crt
         - _Note_: If you would like to cross-verify that the certificates are all the same, you can grab the certificate from each of those locations, and compare to each other and the values published below.
 - **Name**: `Notepad++ Root Certificate`
-- **Serial Number**: `7A137FBEA48E8D469D2B43D49EBBCB21`
+- **Serial Number**: `63a633d265f1ffed66c5c67cbd9b7189`
 - **Thumbprint**: `C80539FF7076D22E73A01F164108DAFBF06E45E4`
 - **SHA256**: `443B4543C3A682804540849793556FFD3A6CE5D4721C9ADFDA6450223DDD54D7`
 - **Created**: `2025-07-09`
