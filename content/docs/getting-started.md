@@ -109,7 +109,6 @@ Also, Notepad++ publishes a "Revocation List" to invalidate older certificates.
 - **Name**: `Notepad++ Root Certificate`
 - **Serial Number**: `63a633d265f1ffed66c5c67cbd9b7189`
 - **Thumbprint**: `C80539FF7076D22E73A01F164108DAFBF06E45E4`
-- **SHA256**: `443B4543C3A682804540849793556FFD3A6CE5D4721C9ADFDA6450223DDD54D7`
 - **Created**: `2025-07-09`
 - **Expires**: `2055-07-09`
     - Please note: the dates are based on the time in France.  Depending on your timezone, the date shown in your certificate viewer may show a different day.
