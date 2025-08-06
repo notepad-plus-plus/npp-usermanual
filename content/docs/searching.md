@@ -45,6 +45,7 @@ To get a smaller version of the Dialog, with many of the options hidden, use the
 All the search dialogs have certain features in common, though some are not available (greyed out) under certain circumstances.
 
 * **Find what** edit box with dropdown history: This is the text you are searching for.
+    - Limited to 2046 characters through v8.8.3; limited to 16383 characters starting in v8.8.4.  The dialog will warn you if you go beyond the limit (new to v8.8.4).
 * **Replace with** edit box with dropdown history: This is the text that will replace what was matched.
 
 * **☐ In selection**: If you have a region of text selected, and this option is checked, **Count**, **Replace All**, or **Mark All** will only operate within the selected text, rather than the whole document (other buttons, such as **Find Next**, will continue to work on the whole document).
