@@ -80,6 +80,29 @@ Notepad++ (paying attention to the [editing configuration files](../config-files
 If you had installed Notepad++ before v8.8.1, and want access to the ErrorList lexer, you will need to see [Configuration Files
 During Upgrades](../config-files/#configuration-files-during-upgrades).
 
+#### MS-DOS Style
+
+The **Language > M > MS-DOS Style**, which shows up in the [Style Configurator](../preferences/#style-configurator)
+as **Language: `DOS Style`** and uses `*.nfo` as the default file extension, is intended for ASCII art.  
+This Language assumes that the file will be using the old DOS box-drawing characters and similar, so defaults to 
+OEM-US [encoding](../preferences/#encoding-menu).  It also changes the line spacing to help the characters properly meet, 
+and hardcodes the Lucida Console font to make sure that they are presented correctly.
+In older versions of the application, that font could not be changed (the 
+**Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** is disabled); 
+however, starting in v8.8.4, you can _manually_ edit the `stylers.xml` or your selected theme's XML if you add the `fontName` field to the XML:
+
+1. Following the advice on [Editing Configuration Files](../config-files/#editing-configuration-files), edit `%AppData%\Notepad++\stylers.xml`
+   or your theme's XML (paying attention to your setup's [Configuration Files Location](../config-files/#configuration-files-location)).
+2. Go to the `<LexerType ...` entry with `name="nfo"` (easiest is to just search `name="nfo"`).
+3. On the `<WordsStyle name="DEFAULT" ... />` line inside that tag, add the `fontName="xyz"` (where `xyz` is the name of your font).
+    - If you don't remember the exact name of your font, just add `fontName=""` .
+4. Save the file, exit Notepad++, and restart Notepad++
+5. Now MS-DOS Style `*.nfo` files will use the `xyz` font.
+    - Once you've set `fontName="xyz"` or `fontName=""` and restarted, the 
+	  **Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** chooser will be enabled, and will 
+	  allow you to change the font name from the GUI, so you can set it back to Lucida Console, or, if you didn't know your 
+	  exact font name, you could choose the actual font name from the GUI rather than typing it from memory.
+
 ### Themes and Language Support
 
 There are times when a particular Theme will not have been updated to include syntax highlighting for a given Language.
