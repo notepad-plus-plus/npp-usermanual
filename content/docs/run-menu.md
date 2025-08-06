@@ -4,7 +4,7 @@ linktitle: run-menu
 weight: 100
 ---
 
-The **Run** menu allows you to run arbitrary external commands from inside Notepad++, and to save the commands into new entries in the **Run** menu and even to assign keyboard shortcuts to those saved commands.  Because of the variable syntax (defined in the [Configuration Files Details > User Defined Commands](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) section of this manual), you can even use the filename or the current selected text or similar as arguments to the programs. [That section of the manual](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) also describes the underlying format of how saved **Run**-menu commands are stored in the `shortcuts.xml` config file.
+The **Run** menu allows you to run arbitrary external commands from inside Notepad++, and to save the commands into new entries in the **Run** menu and even to assign keyboard shortcuts to those saved commands.  Because of the variable syntax (defined in the [Configuration Files Details > User Defined Commands](../config-files/#userdefinedcommands) section of this manual), you can even use the filename or the current selected text or similar as arguments to the programs. [That section of the manual](../config-files/#userdefinedcommands) also describes the underlying format of how saved **Run**-menu commands are stored in the `shortcuts.xml` config file.
 
 ## Dialog
 
@@ -12,7 +12,7 @@ The **Run > Run...** menu entry launches the **Run...** dialog, which is the way
 
 You can type any command that you could type from the Windows OS **Run** dialog (`Win+R` or **Start Menu > Run**).  If you prefix the command with `cmd.exe /c` (making sure to use appropriate syntax), it will run the command in an old Windows command prompt window; prefixing with `cmd.exe /k` will run it in the command prompt window and will keep the window open after the command is done.  If you use a valid PowerShell command starting with `powershell.exe`, it will run the command in the PowerShell environment.
 
-The **Program to Run** entry field allows you to type the command to run.  If the command is not in your PATH, you will need to use `c:\full\path\to\application.exe`.  If you need a path that has spaces in it, make sure to use quotes around the path, like `"c:\program files\myapp\myapplication.exe" "d:\some other\file name\as argument.txt"` (following `cmd.exe` argument quoting rules).  The pulldown for this entry remembers previous commands you've run in this instance of Notepad++.  The `...` button allows you to browse for the program executable to run.  The `+` button allows you to easily insert any of the [user-defined command variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) into your command (new to v8.8.4).
+The **Program to Run** entry field allows you to type the command to run.  If the command is not in your PATH, you will need to use `c:\full\path\to\application.exe`.  If you need a path that has spaces in it, make sure to use quotes around the path, like `"c:\program files\myapp\myapplication.exe" "d:\some other\file name\as argument.txt"` (following `cmd.exe` argument quoting rules).  The pulldown for this entry remembers previous commands you've run in this instance of Notepad++.  The `...` button allows you to browse for the program executable to run.  The `+` button allows you to easily insert any of the [user-defined command variables](../config-files/#variables-for-run-commands) into your command (new to v8.8.4).
 
 The **Run** button actually runs the command.
 
@@ -26,7 +26,7 @@ If you've saved commands, they will show up underneath the **Run...** entry in t
 
 ## Manage Shortcuts
 
-**Run > Modify Shortcut / Delete Command** will allow you to add or change or delete the shortcut for a command, or remove the command from the **Run** menu, using the [Shortcut Mapper](https://npp-user-manual.org/docs/preferences/#shortcut-mapper) interface.  But in short: stay on the **Run Commands** tab of the **Shortcut Mapper** to deal with the **Run** menu entries; **Modify** will allow you to add or edit a shortcut; **Clear** will remove the shortcut but leave the command in the menu; **Delete** will completely remove the command from the menu; **Close** will exit the **Shortcut Mapper** dialog.
+**Run > Modify Shortcut / Delete Command** will allow you to add or change or delete the shortcut for a command, or remove the command from the **Run** menu, using the [Shortcut Mapper](../preferences/#shortcut-mapper) interface.  But in short: stay on the **Run Commands** tab of the **Shortcut Mapper** to deal with the **Run** menu entries; **Modify** will allow you to add or edit a shortcut; **Clear** will remove the shortcut but leave the command in the menu; **Delete** will completely remove the command from the menu; **Close** will exit the **Shortcut Mapper** dialog.
 
 ## Example Usage
 
@@ -74,9 +74,9 @@ If you can run it from `cmd.exe` or `powershell.exe` in a single command line, y
 
 If a single-line command isn't sufficient for your needs, you may want to consider one of the following options:
 
-1. Write a batch file: writing a windows `.bat` or `.cmd` or `.ps1` file using cmd.exe or powershell syntax will allow you to specify a group of commands; you can then just use the **Run > Run...**  to call that batch file to do your more complicated task.  You can pass any of the [special variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) as arguments to this batch file.
+1. Write a batch file: writing a windows `.bat` or `.cmd` or `.ps1` file using cmd.exe or powershell syntax will allow you to specify a group of commands; you can then just use the **Run > Run...**  to call that batch file to do your more complicated task.  You can pass any of the [special variables](../config-files/#userdefinedcommands) as arguments to this batch file.
 
-2. Use the [NppExec plugin](https://github.com/d0vgan/nppexec/): this plugin can be installed from the **Plugins > Plugins Admin** interface, and gives you access to a custom batch language, but with extended features that give you access to all the [special variables](https://npp-user-manual.org/docs/config-files/#userdefinedcommands) plus extra access to the internals of the Notepad++ interface.  This also allows you to view the output of commands in an embedded interactive console window that can be docked in Notepad++.  (Does not use the **Run** menu.)
+2. Use the [NppExec plugin](https://github.com/d0vgan/nppexec/): this plugin can be installed from the **Plugins > Plugins Admin** interface, and gives you access to a custom batch language, but with extended features that give you access to all the [special variables](../config-files/#userdefinedcommands) plus extra access to the internals of the Notepad++ interface.  This also allows you to view the output of commands in an embedded interactive console window that can be docked in Notepad++.  (Does not use the **Run** menu.)
 
 3. Use [PythonScript](https://github.com/bruderstein/PythonScript) or [LuaScript](https://github.com/dail8859/LuaScript) or [jN Notepad++](https://github.com/sieukrem/jn-npp-plugin/wiki) plugins (or similar) to write a script in your favorite programming language (and all those languages should give you access to any feature of that language, plus a way to access applications that live on your filesystem).  These may provide interactive console windows to give you even more flexibility. (Does not use the **Run** menu.)
 
