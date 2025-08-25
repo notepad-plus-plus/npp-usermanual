@@ -206,4 +206,4 @@ For case insensitive sorting, treat lowercase letters as uppercase, that is, sub
 
 ## Validating autoCompletion files
 
-If you are developing an autoCompletion file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](# "URL TBD").
+If you are developing an autoCompletion file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml "Community Forum FAQ: Validating Config-File XML").

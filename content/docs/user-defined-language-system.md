@@ -188,4 +188,4 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 
 ### Validating User Defined Language defintion files
 
-If you are developing a User Defined Definition by editing the raw XML file (instead of just using the UDL GUI interface) and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml).
+If you are developing a User Defined Definition by editing the raw XML file (instead of just using the UDL GUI interface) and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml "Community Forum FAQ: Validating Config-File XML").
