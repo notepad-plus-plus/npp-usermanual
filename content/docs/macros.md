@@ -78,3 +78,5 @@ The contents of a macro definition can be edited only in the `shortcuts.xml`
 file: there is no built-in interface in Notepad++.  For more information on
 the details of how the macros are stored, and the syntax involved, see the
 [**Configuration Files Details**: **<Macros>** section](../config-files/#macros).
+
+Some information on the limitations of Macros and possible workarounds can be found in the community page [FAQ: Automating Notepad++](https://community.notepad-plus-plus.org/topic/25400/faq-automating-notepad).
