@@ -176,15 +176,15 @@ Remember that the call tip shows up when you type the opening parenthesis after 
 
 #### Names
 
-For both call tips and autocompletion to work, keywords must be words, ie identifiers most languages would readily accept. This means that only the 26 Latin alphabet letters in either lower or upper case (no diacritics), digits and the underscore are safe to use. Additional allowed characters will work if they are not whitespace. Autocompletion may cope with spaces or blanks, call tips won't. This is a Scintilla limitation.
+For both [parameter hint call tips](#parameter-hints) and function autocompletion to work, keywords must be "words": the easiest way to think of words is that it must be characters that most programming languages would readily accept as identifiers (variable names, function names, etc); this means that only the 26 Latin alphabet letters in either lower or upper case (no diacritics), digits and the underscore character `_` are guaranteed to work.  If you just care about function name completion, then spaces can work; also, for funtion-name completion only, any non-"word", non-space ASCII character that is defined in the **[Settings > Preferences > Delimiters](/preferences/#delimiter) > ☑ Add your character as part of word** entry field will work; however, spaces or non-"word" characters found in the list in the preferences will prevent Notepad++ from being able to display parameter hints for any function name keyword that uses those non-"word" characters.  (Special characters, outside of the ASCII range, will not work for function name or allowing parameter hint autocompletion, even if you use XML entity notation; sorry.)
 
 #### Special Characters
 
-If you want to include special characters in the `retVal` or `descr` attributes and have it render properly in the call tip popup, or if you want to have non-ASCII characters in the auto-completion text, you need to use [hexadecimal XML numeric entities](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references), in the form _&amp;#xhhhh;_.  So `&#x00A0;` will insert a non-breaking space, or `&#x2190;` to get an &#x2190; arrow.
+If you want to include special characters in the `retVal` or `descr` attributes and have it render properly in the call tip popup, or if you want to have non-ASCII characters in the overload parameter text, you need to use [hexadecimal XML numeric entities](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references), in the form _&amp;#xhhhh;_ (you do not need to prefix the `0` characters if it uses fewer than four hex digits).  So `&#x00A0;` or `&#xA0;` will insert a non-breaking space, or `&#x2190;` to get an &#x2190; arrow.  (The `&#160;` decimal-XML numeric entity notation, unfortunately, will not work.  Use the hexadecimal version of the notation, like `&#xA0;`.)
 
 #### Sorting
 
-The `<KeyWord>` tag list must be sorted by `name` in ascending order. **Failure to do so will result in a non working file, without a warning.**
+The `<KeyWord>` tag list must be sorted by `name` in ascending order. **Failure to do so may result in a non working file, without a warning**; even if you previously were successful with getting an unsorted list to work, that is not a guarantee that it will continue to work in the future, or after edits.
 
 Now which sorting, case sensitive or insensitive? It depends on the value of the ignoreCase `<Environment>` attribute. If set to `"yes"`, use case insensitive sorting, which considers all letters to be in upper case. Otherwise, use case sensitive sorting.
 
