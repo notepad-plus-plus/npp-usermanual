@@ -173,6 +173,9 @@ code | file
 * `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
 * `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
     - You can only give Notepad++ _one_ `-pluginMessage` argument.  If you have multiple pieces of information you want to pass to one or more plugins, they have to be joined together, such as, `-pluginMessage="arg1=Val1;arg2=Val2"`, and the plugin has to know how to split the contents of that message into the pieces that the plugin needs.
+    - Every plugin defines their own usage of the message.
+        - Plugin users will need to check the documentation for the specific plugin to see what exact synatax it wants.
+        - Plugin authors are [encouraged](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") to use the example above as a guideline and convention for how to interpret their portion of the `-pluginMessage` , to make sure that multiple plugins would be able to handle their own portions of the `-pluginMessage` string, without interfering with each other.
 * `filepath`: File or folder name to open (absolute or relative path name).
 
 The order of the options is not important.  Brackets indicate that the options
