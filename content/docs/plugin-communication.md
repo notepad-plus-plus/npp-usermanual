@@ -2436,15 +2436,29 @@ The general layout of the following notifications look like this
 	hwndFrom:	hwndNpp
 	idFrom:		pluginMessage, where pluginMessage is pointer of type wchar_t
 
-**Recommendation**: Multiple plugins might be wanting to make use of the one `-pluginMessage` command-line argument.  To "play nice" with the other plugins, please follow these conventions from this example command-line option: `-pluginMessage="PluginOne=Val1;DifferentPlugin=Val2"`
-- Each plugin should preface its section of the message string with the plugin name (or other uniquely-identifying information)
-    - If a plugin wants multiple sections of a string, it could do something like `-pluginMessage="PluginOne:arg1=Val1;DifferentPlugin=Val2;PluginOne:arg2=Val3"`, and just pay attention to the two sections that start with its name.
-	- Alternately, something like `-pluginMessage="PluginOne={keyA:valA, keyB:valB};DifferentPlugin=Val2"` would also be reasonable.
-- It is easier to read if an `=` is used inside the string to join the name of the plugin to the remainder of the text it wants to use
-- Each plugin should treat `;` as a separator between one plugin's portion and another (so PluginOne should ignore everything from the `;` onward, and DifferentPlugin should ignore everything before the `;`)
-- It is a bad idea to assume that yours is the only plugin using this command-line argument, and ignoring this convention will likely make things more difficult for users of your plugin.
+**Details**:
 
-Using the plugin name as the prefix and the `;` separator will prevent one plugin from accidentally misinterpreting another plugin's expected text.  As long as a plugin's parsing honors these primary aspects of the convention, it is likely to "play nice" with others.
+User can pass arguments to plugins via command line argument using:
+```
+-pluginMessage="PLUGIN1_ARG1=V1;PLUGIN1_ARG2=V2;PLUGIN2_ARG=V;..."
+```
+
+The full string (`wchar_t*`) will be delivered to all plugins via the `NPPN_CMDLINEPLUGINMSG` notification. Each plugins can parse and extract the arguments relevant to itself.
+
+To avoid the collisions among plugins, the following protocol should be followed:
+1. Each plugin must use its unique namespace (its folder name in plugins directory) as a prefix for its argument names.
+2. The symbol `;` must be used as the delimiter between arguments when there are 2 or more arguments in the pluginMessage string.
+3. The symbol `=` must be used as delimiter between argument names and their values.
+
+**Example** (via the command line):
+```
+-pluginMessage="NppExecScriptPath=C:\Program Files\Notepad++\plugins\NppExec\init.py;NppExecArg2=arg2Value;mimeToolsSettings=disable;pluginYInfo=show"
+```
+
+**Interpretation**:
+- Plugin "NppExec" processes: `NppExecScriptPath=C:\Program Files\Notepad++\plugins\NppExec\init.py` & `NppExecArg2=arg2Value`
+- Plugin "mimeTools" processes: `mimeToolsSettings=disable`
+- Plugin "pluginY" processes: `pluginYInfo=show`
 
 ---
 
