@@ -2443,7 +2443,7 @@ User can pass arguments to plugins via command line argument using:
 -pluginMessage="PLUGIN1_ARG1=V1;PLUGIN1_ARG2=V2;PLUGIN2_ARG=V;..."
 ```
 
-The full string (`wchar_t*`) will be delivered to all plugins via the `NPPN_CMDLINEPLUGINMSG` notification. Each plugins can parse and extract the arguments relevant to itself.
+The full string (`wchar_t*`) will be delivered to all plugins via the `NPPN_CMDLINEPLUGINMSG` notification. Each plugin can parse and extract the arguments relevant to itself.
 
 To avoid the collisions among plugins, the following protocol should be followed:
 1. Each plugin must use its unique namespace (its folder name in plugins directory) as a prefix for its argument names.
@@ -2456,7 +2456,7 @@ To avoid the collisions among plugins, the following protocol should be followed
 ```
 
 **Interpretation**:
-- Plugin "NppExec" processes: `NppExecScriptPath=C:\Program Files\Notepad++\plugins\NppExec\init.py` & `NppExecArg2=arg2Value`
+- Plugin "NppExec" processes: `NppExecScriptPath=C:\Program Files\Notepad++\plugins\NppExec\init.py` and `NppExecArg2=arg2Value`
 - Plugin "mimeTools" processes: `mimeToolsSettings=disable`
 - Plugin "pluginY" processes: `pluginYInfo=show`
 
