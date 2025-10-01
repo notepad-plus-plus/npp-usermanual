@@ -67,22 +67,25 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
 
 ![](../images/columnEditor.gif)
 
-* The **Text to Insert** will use the same text in every row.
-* The **Number to Insert** will insert increasing numbers.
-    * **Initial number** sets the starting number.
-    * **Increase by** will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
-    * **Repeat** will repeat the same number _n_ times.  Defaults to 1 if left blank.
-    * **Leading** is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.
+- The **Text to Insert** will use the same text in every row.
+- The **Number to Insert** will insert increasing numbers.
+    - **Initial number** sets the starting number.
+    - **Increase by** will change the step between numbers.  With a value of `0` (or if left empty), it will insert the same number every time.
+    - **Repeat** will repeat the same number _n_ times.  Defaults to 1 if left blank.
+    - **Leading** is a pull-down selector that will allow choosing between no leading characters, leading zeros, or leading spaces.
 
         None | Zeros | Spaces
         ---|---|---
         ![](../images/colEdit-LeadingNone.png) | ![](../images/colEdit-LeadingZeros.png) | ![](../images/colEdit-LeadingSpaces.png)
-        _examples shown with **View > Show Symbol > Show Spaces and Tab** to make the leading spaces obvious._
+
+        _examples shown with **View > Show Symbol > Show Spaces and Tab** to make the leading/trailing spaces obvious._
 
         (Prior to v8.5.2, the only option was a checkbox for **☐ Leading zeros**, so unchecked was equivalent to "None" and checkmarked was equivalent to "Zeros")
 
-    * **Format** chooses between **Dec** (0-9), **Hex** (0-9,A-F), **Oct** (0-7), or **Bin** (0-1).
-        _Note_: the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
+    - **Format** chooses between **Dec** (decimal: `0`-`9`), **Hex** (hexadecimal: `0`-`9`,`A`-`F`), **Oct** (octal: `0`-`7`), or **Bin** (binary: `0`-`1`).
+        - In v8.8.5 and earlier, the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
+        - Starting in v8.8.6, the numerical boxes above are always in the format selected.  (Example: so if **Hex** is chosen, you would enter `B` in the **Increase by** to count using every eleventh hexadecimal number ⇒ `1`, `C`, `17`, `22`, `2D`, ...)
+        - Starting in v8.8.6, there is a selector to choose whether hexadecimal will use Upper Case `A-F` or Lower Case `a-f` when outputting the numbers.
 
 ## Multi-Editing
 
@@ -410,9 +413,9 @@ Below the **Begin/End Select** entries, there are a number of sub-menus to the *
         - *Note*: this toggle does _not_ affect the Windows Operating System's read-only attribute on the file; if Windows has marked this file as read-only, this menu entry will be greyed out and you cannot toggle it by clicking on it.  See the **Read-Only Attribute in Windows** (below) for more on the OS flag.
         - In v8.8.1 and earlier, this was called **Set Read-Only**, and was directly in the top-level **Edit** menu rather than a submenu.
         - In v8.8.2-v8.8.5, this was called **Read-Only in Notepad++**, and was directly in the top-level **Edit** menu rather than a submenu.
-    - **Read-Only for All Documents**: 
+    - **Read-Only for All Documents**:
         - Sets the read-only status on all documents, rather than just the active document.  (Equivalent to checkmarking **Read-Only on Current Document** for each open document.)
-    - **Clear Read-Only for All Documents**: 
+    - **Clear Read-Only for All Documents**:
         - Clears the read-only status on all documents.  (Equivalent to clearing **Read-Only on Current Document** for each open document.)
 * **Read-Only Attribute in Windows** ⇒ toggles the Windows Operating System (OS) read-only attribute on a file.
     - When a file is locked in Windows, this menu-entry will have a checkmark `✔`, and the tab will have an icon of a disk with an `F` ([original-style icons](../preferences/#tab-bar) in [Light Mode](../preferences/#dark-mode)) or a lock with an `F` (with [alternate icons](../preferences/#tab-bar) or in [Dark Mode]](../preferences/#dark-mode)) (new to v8.8.2).
