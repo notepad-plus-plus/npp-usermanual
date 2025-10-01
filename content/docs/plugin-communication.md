@@ -1528,6 +1528,8 @@ The 2nd call to allocate "pluginsConfDir" buffer with the 1st call's return valu
 **Return value**:
 : Return: The 1st call - the number of wchar_t to copy; The 2nd call - False on failure, True on success
 
+_Note_: This gives the top level path for the plugin configuration hierarchy.  Unless you are certain that your plugin will always only have one configuration file, it is best to use a subdirectory of this plugin configuration directory (named the same as your plugin DLL), so all your plugin's configuration files can be kept isolated from those of other plugins.
+
 ---
 
 #### [2081] **NPPM_GETPOSFROMBUFFERID**
@@ -1549,6 +1551,29 @@ be found in the chosen view, the other view will also be searched.
 : Returns -1 if bufferID doesn't exist, else returns the encoded viewIndex and docIndex.
 
 ---
+
+#### [2143] **NPPM_GETSETTINGSDIRPATH**
+*Get path for the active Notepad++ settings: it will use `-settingsDir` path if that's defined; if not, it will use the Cloud directory, if that's enabled; if not, it will use the AppData settings directory; or, finally, the portable or installation path. This allows plugins to have one interface to find out where the active Notepad++ settings are stored, whichever location they are currently set to.*
+
+*First call should be made with buffer set to NULL to retrieve the actual size needed. Second call is sent with correctly allocated buffer, +1 for trailing null, to retrieve the full path file name.*
+
+**Parameters**:
+
+*wParam [in]*
+: size_t strLen,
+maximum bytes to read for the path string, including the final NULL byte
+
+*lParam [out]*
+: wchar_t *settingsDirPath,
+the path for active settings directory obtained by this message
+
+**Return value**:
+: Returns the length of the path string. If the return value is 0, then the "strLen" is not enough to copy the path, or the settings path could not be determined.
+
+_Note_: This message is for the active Notepad++ configuration location.  If you are looking for the settings directory for plugins (`...\Plugins\Config\`), use [NPPM_GETPLUGINSCONFIGDIR](#2070nppm_getpluginsconfigdir) instead.
+
+---
+
 #### [2122] **NPPM_GETSETTINGSONCLOUDPATH**
 *Get settings on cloud path. It's useful if plugins want to store its settings on Cloud, if this path is set.*
 
@@ -1563,11 +1588,13 @@ Second call is sent with correctly allocated buffer, +1 for trailing null, to re
 maximum bytes to read for the path string, including the final NULL byte
 
 *lParam [out]*
-: wchar_t *settingsOnCloudPath,
+: wchar_t \*settingsOnCloudPath,
 the path for cloud settings obtained by this message
 
 **Return value**:
 : Returns the length of the path string
+
+_Note_: This message is for the Notepad++ settings-on-cloud path only.  If you are looking for the active settings directory, whether it is `-settingsDir`, cloud, `%AppData%`, or portable/installation, use [NPPM_GETSETTINGSDIRPATH](#2243nppm_getsettingsdirpath) instead; if you are looking for the settings directory for plugins (`...\Plugins\Config\`), use [NPPM_GETPLUGINSCONFIGDIR](#2070nppm_getpluginsconfigdir) instead.
 
 ---
 
