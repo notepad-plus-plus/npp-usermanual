@@ -10,26 +10,24 @@ to control its startup and affect its behavior.
 ## Help usage
 
 ```
-notepad++ [--help] [-multiInst] [-noPlugin]
-  [-l<Language>] [-udl="My UDL Name"]
-  [-L<langCode>]
-  [-n<line>] [-c<column>] [-p<pos>] [-x<left-pos>] [-y<TopPos>]
-  [-monitor] [-nosession] [-notabbar] [-ro] [-systemtray] [-loadingTime]
-  [-alwaysOnTop] [-openSession] [-r]
+notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>]
+  [-udl="My UDL Name"] [-L<langCode>] [-n<line>] [-c<column>] [-p<pos>]
+  [-x<left-pos>] [-y<TopPos>] [-monitor] [-nosession] [-notabbar]
+  [-ro] [-fullReadOnly] [-fullReadOnlySavingForbidden]
+  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-r]
   [-qn="Easter Egg Name" | -qt="Text to Type" | -qf="D:\path to\file"]
-  [-qSpeed(1|2|3)] [-quickPrint]
-  [-settingsDir="d:\your settings dir\"] [-openFoldersAsWorkspace]
-  [-titleAdd="additional title bar text"]
+  [-qSpeed(1|2|3)] [-quickPrint] [-settingsDir="d:\your settings dir\"]
+  [-openFoldersAsWorkspace] [-titleAdd="additional title bar text"]
   [-pluginMessage="text for plugin(s)"]
   [filepath]
 ```
 
-* `--help`: The help message for command line arguments. It will be shown before
+- `--help`: The help message for command line arguments. It will be shown before
   Notepad++'s launch.
-* `-multiInst`: Launch another Notepad++ instance, so user can have several
+- `-multiInst`: Launch another Notepad++ instance, so user can have several
   Notepad++ simultaneously.
-* `-noPlugin`: Launch Notepad++ without loading any plugin.
-* `-l`: Open file or display ghost typing with syntax highlighting of choice.
+- `-noPlugin`: Launch Notepad++ without loading any plugin.
+- `-l`: Open file or display ghost typing with syntax highlighting of choice.
   *Language* is a short identifier string: the full list can be found in `langs.model.xml`
   (as the names of each `<Language name="...">` element).
   {{< details "show example Programming Language identifiers" >}}
@@ -46,12 +44,12 @@ notepad++ [--help] [-multiInst] [-noPlugin]
   `swift`, `tcl`, `tehex`, `tex`, `toml`, `txt2tags`, `typescript`, `vb`,
   `verilog`, `vhdl`, `visualprolog`, `xml`, `yaml`.
  {{< /details >}}
-* `-udl="My UDL Name"`: Open file with User Defined Language (UDL) syntax
+- `-udl="My UDL Name"`: Open file with User Defined Language (UDL) syntax
   highlighting `My UDL Name` active.  If the UDL name does not conain spaces, the
   quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
   should match an existing UDL.  Mutually exclusive with `-l` (UDL will take priority
   over standard syntax highlighter).  (new to v8.1.2)
-* `-L`: Apply indicated localization, *langCode* maps to the localization file name:
+- `-L`: Apply indicated localization, *langCode* maps to the localization file name:
     {{< details "show Language Codes" >}}
 code | file
 ---|---
@@ -147,41 +145,43 @@ code | file
 `zh`, `zh-cn` | `chineseSimplified.xml`
 `zu`, `zu-za` | `zulu.xml`
     {{< /details >}}
-* `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
-* `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
-* `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
-* `-x`: Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
-* `-y`: Move Notepad++ to indicated top position (*TopPos*) on the screen.
-* `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled.
-* `-nosession`: Launch Notepad++ without previous session.
-* `-notabbar`: Launch Notepad++ without tabbar.
-* `-ro`: Make the `filepath` read only.
-* `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray).
-* `-loadingTime`: Display Notepad++ loading time.
+- `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
+- `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
+- `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
+- `-x`: Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
+- `-y`: Move Notepad++ to indicated top position (*TopPos*) on the screen.
+- `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled.
+- `-nosession`: Launch Notepad++ without previous session.
+- `-notabbar`: Launch Notepad++ without tabbar.
+- `-ro`: Make the `filepath` read only.
+- `-fullReadOnly`: Open all files read-only by default, toggling the R/O off and saving is allowed.
+- `-fullReadOnlySavingForbidden`: Open all files read-only by default, toggling the R/O off and saving is disabled.
+- `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray).
+- `-loadingTime`: Display Notepad++ loading time.
     - Starting in v8.6.1, it shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
     - In v8.6 or earlier, it just showed the total number of seconds for Notepad++ to load, without millisecond precision and without the listing of the times for individual loading stages.
-* `-alwaysOnTop`: Make Notepad++ always on top.
-* `-openSession`: Open a session. `filepath` must be a session file.
-* `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
-* `-qn="Easter Egg Name"`: Launch [ghost typing](../ghost-typing/) to display easter egg via its *Easter Egg Name*.
-* `-qt="Text to Type"`: Launch [ghost typing](../ghost-typing/) to display a text via the given *Text to Type*.
-* `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*.
-* `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest.
-* `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++.
-* `-settingsDir="d:\your settings dir\"`: Override the default settings dir.
-* `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually.
-* `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
-* `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
-    - You can only give Notepad++ _one_ `-pluginMessage` argument.  
+- `-alwaysOnTop`: Make Notepad++ always on top.
+- `-openSession`: Open a session. `filepath` must be a session file.
+- `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
+- `-qn="Easter Egg Name"`: Launch [ghost typing](../ghost-typing/) to display easter egg via its *Easter Egg Name*.
+- `-qt="Text to Type"`: Launch [ghost typing](../ghost-typing/) to display a text via the given *Text to Type*.
+- `-qf="D:\path to\file"`: Launch [ghost typing](../ghost-typing/) to display a file content via the file path *D:\path to\file*.
+- `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest.
+- `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++.
+- `-settingsDir="d:\your settings dir\"`: Override the default settings dir.
+- `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually.
+- `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
+- `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
+    - You can only give Notepad++ _one_ `-pluginMessage` argument.
     - If you have multiple pieces of information you want to pass to one or more plugins, they have to be joined together in that same single argument.
-        - Each plugin will use the plugin name as the prefix for its sub-argument names.  
+        - Each plugin will use the plugin name as the prefix for its sub-argument names.
         - Each sub-argument will be in `name=value` format.
         - Each sub-argument should be separated by a `;` semicolon.
-        - Example: 
+        - Example:
            ```
            -pluginMessage="NppExecScriptPath=C:\Program Files\Notepad++\plugins\NppExec\init.py;NppExecArg2=arg2Value;mimeToolsSettings=disable;pluginYInfo=show"
            ```
-* `filepath`: File or folder name to open (absolute or relative path name).
+- `filepath`: File or folder name to open (absolute or relative path name).
 
 The order of the options is not important.  Brackets indicate that the options
 are not required, and are _not_ part of the command-line argument.  The number
