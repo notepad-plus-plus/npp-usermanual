@@ -27,15 +27,15 @@ The **File** menu contains many of the normal file-operation actions found in mo
     - If you have [**Settings > Preferences > MISC > File Status Auto-detection**](../preferences/#misc) turned on, you Notepad++ can automatically run the equivalent of this command for you, without you having to use this menu entry.
     - Any [bookmarks](../searching/#manipulating-bookmarks) or [token styling](../searching/#marking-with-a-color-style-and-highlighting) that you previously had set will be cleared.
     - Any [change history](../editing/#change-history) recorded for the file will be reset, and the file will appear with no change-history margin colors.
-- **Save**: Saves the current document to the filesystem using the same filename.
+- **Save**: Saves the current document to the filesystem using the same filename. (Follows [file permissions](#file-permissions)).
     - If the document does not currently have a file associated with it, this action will be grayed out and the menu entry cannot be used.  Use **File > Save As** instead.
-- **Save As**: Saves the current document to the filesystem, prompting for the new filename to use.
+- **Save As**: Saves the current document to the filesystem, prompting for the new filename to use. (Follows [file permissions](#file-permissions)).
     - If the document had previously been saved to a file, this will create as new copy of the file, and Notepad++ will continue working with the document associated with the new file, leaving the old file with the contents that were last saved.
-- **Save a Copy As**: Saves the current document to the filesystem, prompting for the new filename to use.
+- **Save a Copy As**: Saves the current document to the filesystem, prompting for the new filename to use. (Follows [file permissions](#file-permissions)).
     - The new file will be saved, but Notepad++ will continue to work with the document associated with the original filename.  So this action effectively creates a backup of the file, but allows you to continue working with the previous file, whereas **Save As** uses the original as the backup and allows you to keep working with the new file.
     - Normally during execution of this command, the new file created is not opened into a Notepad++ editing tab. To open the new file as part of the process, hold down the <kbd>Shift</kbd> key while pressing the **Save** button in the **Save As** dialog.
-- **Save All**: Saves all documents that are currently open in either of Notepad++'s two Views.
-- **Rename**: Prompts for a new name to give to the current document.
+- **Save All**: Saves all documents that are currently open in either of Notepad++'s two Views. (Follows [file permissions](#file-permissions)).
+- **Rename**: Prompts for a new name to give to the current document. (Follows [file permissions](#file-permissions)).
     - If the document is associated with a file, Notepad++ will open a standard Windows dialog to save the file under a new name on the filesystem, and the old filename will no longer exist.
     - If the document is a new, unsaved document, it will change the name displayed in the Tab for the current document.  If you later do a **Save As**, it will use that as the default suggested name in the **Save As** dialog.
 - **Close**: Closes the active document, prompting to save if it has been modified since it was opened or created.
@@ -91,6 +91,13 @@ For example,
     - You can use the [right-click menu](../user-interface/#tab-bar-right-click-menu) of the tab's title.
 
 In general, it's redundant to explain all the alternate methods in multiple locations in the Manual, so if you are looking for a way to perform an action from the **File** menu in some other location, you can use your browser's **Find in Page** feature (often <kbd>Ctrl+F</kbd> or similar) to search the [User Interface](../user-interface/) page for the action you are looking for.  And studying that page will allow you to familiarize yourself with the various locations where such features might be found.
+
+### File Permissions
+
+Notepad++ must honor Windows OS file permissions and restrictions.  If the normal user cannot write a file (for example, if it's in `C:\Program Files\...` or `C:\Windows\...`), then Notepad++ needs Administrative privileges to write the file.
+
+- In v8.8.5 and earlier, if you try to save a file that you don't have permission for, Notepad++ will put up a "Save Failed" dialog, letting you know that it couldn't be saved, and suggesting you relaunch Notepad++ in Administrator mode: if you do this, any changes you made will be lost, so copy the contents of the file into the Windows clipboard before letting the dialog exit/restart Notepad++, then you'll have to paste in the updated file before saving.
+- In v8.8.6 and newer, it will no longer pop up the Notepad++ dialog; instead, Notepad++ will ask the OS for elevated Administrator permissions, and the Operating System will give you the UAC ("User Account Control") popup, which will ask if you want to allow Notepad++ to make changes to your system (or may ask for a username and password, if your account isn't in the Administrator group on your computer); once confirmed, the OS will allow Notepad++ to write the file.
 
 ## Printing
 
