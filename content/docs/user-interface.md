@@ -35,12 +35,15 @@ This menu allows various ways of activating and manipulating the tabs for open f
     - **Type Z to A**: reverse alphabetical order of the filetype (based on Language and extension)
     - **Content Length Ascending**: length of file content, shortest to longest
     - **Content Length Descending**: length of file content, longest to shortest
+    - **Modified Time Ascending**: time last modified, most recent at end (new to v8.8.6)
+    - **Modified Time Descending**: time last modified, most recent at beginning (new to v8.8.6)
 - **Windows...**: Launches a dialog with a grid-based interface for accessing files opened in Notepad++
     - Clicking on a column's header in the grid will sort the grid based on that Attribute
         - Column `Name`: filename (or text displayed in the tab's title, for unsaved files)
         - Column `Path`: full path (drive, directory, and filename)
         - Column `Type`: file type (based on Language and extension)
-        - Column `Size`: lenght of the content of the file
+        - Column `Size`: length of the content of the file
+        - Column `Modified time`: time that the file was last modified (new to v8.8.6)
     - Buttons:
         - **Activate**: Makes the selected file(s) the active tab in Notepad++.
         - **Save**: Saves the selected file(s).
