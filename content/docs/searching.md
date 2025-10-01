@@ -45,7 +45,9 @@ To get a smaller version of the Dialog, with many of the options hidden, use the
 All the search dialogs have certain features in common, though some are not available (greyed out) under certain circumstances.
 
 * **Find what** edit box with dropdown history: This is the text you are searching for.
-    - Limited to 2046 characters through v8.8.3; limited to 16383 characters starting in v8.8.4.  The dialog will warn you if you go beyond the limit (new to v8.8.4).
+    - Limited to 2046 bytes through v8.8.3; limited to 16383 bytes starting in v8.8.4.
+      - The dialog will warn you if you go beyond the limit (new to v8.8.4).
+      - _Note_: The length limit is actually bytes, not characters.  For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.
 * **Replace with** edit box with dropdown history: This is the text that will replace what was matched.
 
 * **☐ In selection**: If you have a region of text selected, and this option is checked, **Count**, **Replace All**, or **Mark All** will only operate within the selected text, rather than the whole document (other buttons, such as **Find Next**, will continue to work on the whole document).
@@ -113,10 +115,11 @@ The above actions may be initiated via mouse by pressing the appropriate button,
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing <kbd>Enter</kbd> when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing <kbd>Shift+Enter</kbd> when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use <kbd>Shift+Enter</kbd> to search in the opposite direction* as a reminder of this capability.
 
-When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the [caret](#caret-and-cursor "typing/insertion cursor") (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your [caret](#caret-and-cursor "typing/insertion cursor") is not "touching" a word and that there is no active selection when invoking the find-family command.
-Aside:  This auto-copy feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  The line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
+When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the [caret](#caret-and-cursor "typing/insertion cursor") (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your [caret](#caret-and-cursor "typing/insertion cursor") is not "touching" a word and that there is no active selection when invoking the find-family command.  Starting in v8.8.4, the number of characters that will auto-fill using this feature can be adjusted by changing the value of [**Settings > Preferences > Searching > ____: Max Characters to Auto-Fill Find Field from Selection**](../preferences/#searching).
 
-A valid **Find what** edit box entry length ranges from 1 to 2046 characters.  A valid **Replace with** edit box entry length ranges from 0 to 2046 characters.  Any text entered/pasted into these boxes beyond the 2046th character is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.
+Aside:  This auto-fill-find-field feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  Alternately, starting in v8.8.4, multi-line text can be pasted into the **Find what** or **Replace with** boxes.  Whichever method used to populate the field(s) with multi-line data, the line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
+
+A valid **Find what** edit box entry length ranges from 1 to ℕ=2046 bytes (v8.8.3 and earlier) or ℕ=16383 bytes (v8.8.4 and newer).  A valid **Replace with** edit box entry length ranges from 0 to ℕ bytes.  Any text entered/pasted into these fields beyond the ℕth byte is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.  (_Note_: The length is actually in bytes, not characters. For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.)
 
 Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become unchecked and disabled (greyed out).  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
@@ -297,7 +300,7 @@ Starting in v8.7.2, that **Open all** command was removed, and was replaced with
 
 ##### Other commands
 
-The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the <kbd>Delete</kbd> key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.  
+The **Search results** window/tab accumulates results from every **Find All in ...** search the user does; the results from old searches remain until the user removes them.  Individual results can be deleted with the <kbd>Delete</kbd> key, or all previous results can be deleted by invoking **Clear all**.  Stale results can be removed to reduce visual clutter, or when it is desired that a follow-on action should not be affected by old results.
 
 The **Select all** command is self-explanatory:  All text in the **Search results** tab is selected.
 
