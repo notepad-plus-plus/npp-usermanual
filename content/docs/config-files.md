@@ -393,8 +393,8 @@ Aside from the config file, you need to create icons. You will populate and plac
    - If you have **Settings > Preferences > General > Toolbar** set to any of the three "small" choices, it will scale the icon to 16x16; if you use one of the two "large" choices, it will scale to 32x32. So if you are going to use a "large" icon set, you should make sure the icons are defined as 32x32.
    - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the v8.4.2-style `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), merge `toolbarIons.xml` into the `toolbarButtonsConf.xml` as described above, restart Notepad++, and you will have the pre-v8.0-style 32x32 "Big Icons" (but they are different icons than just a big version of the "standard icons", sorry).
    - Troubleshooting: if you started Notepad++ with one of the "small" choices selected but have 32x32 icons in your custom icons, it will scale them to 16x16, which is fine for small modes; but if you switch to a "large" option, it might scale the 16x16 back to 32x32 rather than using the true-32x32 from the icon file, which makes for a pixelated ("klunky") large icon: if this happens, leave it with "large" selected, then exit Notepad++ completely and restart: on the subsequent starts, it will use the full 32x32 resolution.
-   - Transparency: To get part of the icon transparent, you need to make sure your icon editor is able to save in 32bpp mode (8-bits each for alpha/transparency, red, green, and blue).  Some icon editors only support 24bpp (no alpha/transparency information).
-   - Recommendation: Every `.ico` file used for custom toolbars should include a 16x16 32bpp image and a 32x32 32bpp image, so that you have full control of the exact appearance on large and small toolbars, and allow transparency.
+   - Transparency: To get part of the icon transparent, you need to make sure your icon editor is able to save in 32bpp mode (8-bits each for alpha/transparency, red, green, and blue).  Some icon editors only support 24bpp (no alpha/transparency information).  Alternately, some editors will allow you to use a 8bpp (256-color palette) with 1 of those 256 indexes allocated to transparency; using this format will allow creating much smaller `.ico` files, assuming 255 colors is sufficient for your icon needs.
+   - Recommendation: Every `.ico` file used for custom toolbars should include a 16x16 image and a 32x32 image, with color depth set to either 32bpp or 8bpp-with-transparency, so that you have full control of the exact appearance on large and small toolbars, and allow transparent pixels.
 
 _Notes_:
 
@@ -510,6 +510,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 ## Validating Config-File XML
 
 If you are developing a config file by editing the raw XML file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml "Community Forum FAQ: Validating Config-File XML").
+
 
 
 
