@@ -1594,7 +1594,7 @@ the path for cloud settings obtained by this message
 **Return value**:
 : Returns the length of the path string
 
-_Note_: This message is for the Notepad++ settings-on-cloud path only.  If you are looking for the active settings directory, whether it is `-settingsDir`, cloud, `%AppData%`, or portable/installation, use [NPPM_GETNPPSETTINGSDIRPATH](#2243NPPM_GETNPPSETTINGSDIRPATH) instead; if you are looking for the settings directory for plugins (`...\Plugins\Config\`), use [NPPM_GETPLUGINSCONFIGDIR](#2070nppm_getpluginsconfigdir) instead.
+_Note_: This message is for the Notepad++ settings-on-cloud path only.  If you are looking for the active settings directory, whether it is `-settingsDir`, cloud, `%AppData%`, or portable/installation, use [NPPM_GETNPPSETTINGSDIRPATH](#2143nppm_getnppsettingsdirpath) instead; if you are looking for the settings directory for plugins (`...\Plugins\Config\`), use [NPPM_GETPLUGINSCONFIGDIR](#2070nppm_getpluginsconfigdir) instead.
 
 ---
 
