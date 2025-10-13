@@ -70,13 +70,8 @@ Assuming you trust the download connection, and trust Notepad++ to correctly iss
 3. Once it's open
     - The **General** tab will say something akin to "This CA Root certificate is not trusted" at this point.  That is expected, because you have not yet told Windows to trust it.
     - On the **General** tab, click **Install Certificate**
-    - Pick one of `Current User` or `Local Machine` and click **Next**
-      - All things being equal, the recommendation is to pick `Current User`, because it affects the fewest number of people (namely, just you, not every user of your computer).
-      - If your computer only ever has a single login username, then it doesn't technically matter which, but `Current User` is recommended.
-      - If your computer can have different people log in with their own account, and you are not the IT/decision-maker for every user on the computer, then just pick `Current User` so that you don't inflict your choice to trust the Notepad++ certificate on other users of the machine.
-      - If you are the IT or decision maker for the computer, and you want to make sure that every user on the machine will be able to see the Notepad++ Root Certificate, then pick `Local Machine`.
-      - Picking `Local Machine` may require elevated "UAC" permission ("administrator rights").  If you do not have the ability to grant UAC permission, choose `Current User`.
-      - After reading these details, if you are still uncertain of which to pick, choose `Current User`.
+    - Pick one `Local Machine` and click **Next**
+      - These instructions originally recommended `Current User` instead, because it doesn't require UAC/Admin permission.  But there are other issues when you do that, so it is now recommended to pick `Local Machine` to give the best chance of working.
     - _Don't_ pick `Automatically select...`, because that will default to "Intermediate Certification Authorities", which isn't sufficient level of trust for Windows.
     - Instead, pick `Place all certificates in the following store`, and **Browse...** to `Trusted Root Certification Authorities`, then click **Ok** then **Next**.
     - On the next page, with a summary of what you are doing, you can click **Finish**.
@@ -86,15 +81,15 @@ Assuming you trust the download connection, and trust Notepad++ to correctly iss
 4. If you open the certificate again, the **General** tab now shows the certificate's purpose, and the **Certification Path** tab will show it's trusted.
 5. If you ever want to _remove_ that Trusted Root CA certificate (for example, if you stop trusting Notepad++'s certification/signature):
     - Use `Win+R` to bring up **Run** dialog, and run either `certmgr.msc` or `certlm.msc`.
-      - If you chose `Current User` as the installation location above, use `certmgr.msc`.
+      - If you chose `Current User` as the installation location above, use `certmgr.msc`.  But the recommendation above is to now use `Local Machine` if possible.
       - If you chose `Local Machine` as the installation location above, use `certlm.msc`.  You may need to use elevated UAC permission.
       - If you run the wrong msc, you will not be able to see the certificate.
     - Navigate to `Trusted Root Certification Authorities` > `Certificates` .
     - Scroll down until you find `Notepad++ Root Certificate`, and right click on it, then **Delete** and **Yes**.
 
 Two more hints, if you are having trouble locating the certificate after you think you've installed it per the instructions above:
-1. Remember that picking `Current User` or `Local Machine` decides whether you should use `certgr.msc` or `certlm.msc` , so run the right utility:     - If you chose `Current User` as the installation location above, use `certmgr.msc`.
-    - If you chose `Current User` as the installation location above, use `certmgr.msc`.
+1. Remember that picking `Current User` or `Local Machine` decides whether you should use `certgr.msc` or `certlm.msc` , so run the right utility:
+    - If you chose `Current User` as the installation location above, use `certmgr.msc`.  But the recommendation above is to now use `Local Machine` if possible.
     - If you chose `Local Machine` as the installation location above, use `certlm.msc`.  You may need to use elevated UAC permission.
     - If you run the wrong msc, you will not be able to see the certificate to verify or uninstall it.
 2. In either `certmgr.msc` or `certlm.msc`, you can search for Notepad++ certificates by using **Action > Find Certificates...**
