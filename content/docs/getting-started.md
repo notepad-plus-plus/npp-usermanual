@@ -70,7 +70,7 @@ Assuming you trust the download connection, and trust Notepad++ to correctly iss
 3. Once it's open
     - The **General** tab will say something akin to "This CA Root certificate is not trusted" at this point.  That is expected, because you have not yet told Windows to trust it.
     - On the **General** tab, click **Install Certificate**
-    - Pick one `Local Machine` and click **Next**
+    - Pick `Local Machine` and click **Next**
       - These instructions originally recommended `Current User` instead, because it doesn't require UAC/Admin permission.  But there are other issues when you do that, so it is now recommended to pick `Local Machine` to give the best chance of working.
     - _Don't_ pick `Automatically select...`, because that will default to "Intermediate Certification Authorities", which isn't sufficient level of trust for Windows.
     - Instead, pick `Place all certificates in the following store`, and **Browse...** to `Trusted Root Certification Authorities`, then click **Ok** then **Next**.
