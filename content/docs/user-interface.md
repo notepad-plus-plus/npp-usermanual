@@ -5,9 +5,22 @@ weight: 175
 
 ## Menu Bar
 
-The menu bar of Notepad++ has a variety of menus, including [**File**](../files/#file-menu) (for generic file operations like open and close), [**Edit**](../editing#edit-menu), [**Search**](../searching/), and [**View**](../views/), **Encoding** (which affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar), **Language** (for syntax highlighting of [built-in languages](../programming-languages/) and [User Defined Languages](../user-defined-language-system/)), [**Settings**](../preferences/), **Tools** (with a couple of built-in utilities), [**Macro**](../macros/), [**Run**](../config-files/#userdefinedcommands) (for running external commands), [**Plugins**](../plugins/), and the **Window** menu (for accessing open files already open in Notepad++).  (Many of the commands from those menus can also be found elsewhere in the User Interface, so you can search this page for a specific term if you are looking for alternative access to a specific menu command.)
+The menu bar of Notepad++ has a variety of menus:
+- [**File**](../files/#file-menu) ⇒ Generic file operations like open and close
+- [**Edit**](../editing#edit-menu) ⇒ Commands to help with editing the active file
+- [**Search**](../searching/) ⇒ Search and Replace and Bookmark
+- [**View**](../views/) ⇒ Manipulate the Notepad++ editor Views and change visibility of Notepad++ panels and similar elements
+- [**Encoding**](../preferences/#encoding-menu) ⇒ Affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar
+- [**Language**](../preferences/#language-menu) ⇒ Syntax highlighting of [built-in languages](../programing-languages/) and [User Defined Languages](../user-defined-language-system/)
+- [**Settings**](../preferences/) ⇒ Change preferences, Style Configurator settings, and shortcut key sequences
+- [**Tools**](#tools-menu) ⇒ Built-in utilities to take various hashes of files
+- [**Macro**](../macros/) ⇒ Simple Notepad++ automation
+- [**Run**](../config-files/#userdefinedcommands) ⇒ Run external commands
+- [**Plugins**](../plugins/) ⇒ Access plugins and the Plugins Admin interface
+- [**Window**](#window-menu) ⇒ Access and arrange files already open in Notepad++
+- [**?**](#-menu-help-and-update) ⇒ Help, Upgrade, and About
 
-It also contains the **?** menu, which is a **Help**-style menu, including actions that list the [command line arguments](../command-prompt/); actions that take you to the Notepad++ [home page](https://notepad-plus-plus.org/), the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus), this [user manual](/), and the [Community Forum](https://community.notepad-plus-plus.org); actions for the updater and proxy; the **Debug Info** (which is critical information when asking for help at the Community Forum or when creating a feature request or bug report at the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus/issues)) and **About**.
+Many of the commands from those menus can also be found elsewhere in the User Interface, so you can search this page for a specific term if you are looking for alternative access to a specific menu command.
 
 At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (Before v8.4.3, only the `X` existed in that area of the menu bar.  Starting in v8.4.5, these can be made hidden using [Settings > Preferences > General > Menu](../preferences/#general).)
 
@@ -60,6 +73,24 @@ This menu allows various ways of activating and manipulating the tabs for open f
     - If there are two [Views](../views/) visible, this menu's file list will only show the files in the active [View](../views/).
     - The file for the active tab (of the active [View](../views/)) will be marked with a checkmark `✔` icon.
 
+### `?` Menu: Help and Update
+
+The **?** menu is a **Help**-style menu.  It includes the following actions:
+- **Command Line Arguments** ⇒ List Notepad++'s available [command line arguments](../command-prompt/) in a popup.
+- **Notepad++ Home** ⇒ Open the Notepad++ [home page](https://notepad-plus-plus.org/) in your browser.
+- **Notepad++ Project Page** ⇒ Open the Notepad++ [project page](https://github.com/notepad-plus-plus/notepad-plus-plus) in your browser.
+- **Notepad++ Online User Manual** ⇒ Open this [user manual](/) in your browser.
+- **Notepad++ Community (Forum)** ⇒ Open the [Community Forum](https://community.notepad-plus-plus.org) in your browser.
+- **Update Notepad++** ⇒ Update Notepad++ [on demand](../upgrading/#upgrade-on-demand).
+- **Set Updater Proxy...** ⇒ Allows you to set the web proxy settings, which are used by the updater and **Plugins Admin**.
+    - **Proxy Server: `__.__.__.__`** ⇒ Set the IP address (IPv4) for the proxy server.
+    - **Port: `____`** ⇒ Set the port for the proxy server.
+    - You can only change these settings when running Notepad++ in Admin mode.  If you are not running as Administrator, this menu will ask you to relaunch Notepad++ in Admin mode.
+    - You only need to set these Proxy settings if you are having trouble with the updater or **Plugins Admin**, and/or you know that your IT department (or equivalent) requires proxy settings for accessing the internet.
+- **Debug Info** ⇒ Provides critical information when asking for help at the Community Forum or when creating a feature request or bug report at the [project page](https://github.com/notepad-plus-plus/notepad-plus-plus/issues).  Includes information about the current version of Notepad++, various aspects of Notepad++ configuration, certain information about your Windows environment, and a list of installed Plugins and their versions.
+- **About** ⇒ Displays a dialog with version and license information for Notepad++.
+
+
 ## Tabs
 
 The keyboard shortcuts described in this section are the default [**Settings > Shortcut Mapper**](../preferences/#shortcut-mapper) settings; if the Shortcut Mapper has been modified, the keystrokes may be different.
@@ -76,7 +107,7 @@ If the description says it will "wrap", it means that if you try to go beyond th
     - It will show the full file path for a file from the filesystem.
     - If it's a new, unsaved tab, then the hover text will be the name of that tab
 		- Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
-		- The name of a new tab defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).  
+		- The name of a new tab defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).
 			- Starting in v8.8.2, there is a preference in [**Settings > Preferences > New Document**](../preferences/#new-document) to allow using the first line of the document as the tab's name, instead of `new #` or similar.
     - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > Tab Bar](../preferences/#tab-bar)** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
     - If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Change inactive tab color** is checked (known as **General > Tab Bar > ☐ Darken inactive tabs** prior to v8.8), hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
@@ -223,6 +254,7 @@ Plugins can put additional buttons on the toolbar, to perform actions provided b
 
 The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  You can hide or show individual toolbar buttons, as described in [Toolbar Icon Visibility](../config-files/#toolbar-icon-visibility-toolbarbuttonsconfxml) (new to v8.7.8).  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](../config-files/#toolbar-icon-customization).
 
+If there are more buttons on your Toolbar than will fit in the current window width, you can access the missing button's actions through the `»` pulldown at the right edge of the Toolbar.
 
 ## Document Switcher
 
