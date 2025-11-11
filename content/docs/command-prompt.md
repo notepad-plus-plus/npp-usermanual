@@ -169,7 +169,9 @@ code | file
 - `-qSpeed(1|2|3)`: [Ghost typing](../ghost-typing/) speed. Value from 1 to 3 for slow, fast, and fastest.
 - `-quickPrint`: Print the file given as argument `filepath` then quit Notepad++.
 - `-settingsDir="d:\your settings dir\"`: Override the default settings dir.
-- `-openFoldersAsWorkspace`: Any folders listed as arguments will be opened as a workspace, rather than opening all the contained files individually.
+- `-openFoldersAsWorkspace`: Any paths listed as arguments will be opened under the [Folder as Workspace](session/#folder-as-workspace), rather than opening all the contained files individually.
+    - If this option is used, _all_ paths will be interpreted under the rule, "if a path is a folder, put it in the **Folder As Workspace** panel, and don’t open any file-paths directly".  Thus, do not try to combine opening  individual documents _and_ a folder for **Folder As Workspace** in the same command-line, as the individual documents will not be opened.
+    - This option will not influence an existing instance of Notepad++: if you run this command line while a single-instance setup of Notepad++ is already running, this will _not_ open the **Folder as Workspace** panel in that instance, nor will it add the folder(s) from the command-line to an already-open **Folder as Workspace** panel.
 - `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
 - `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
     - You can only give Notepad++ _one_ `-pluginMessage` argument.
@@ -233,3 +235,4 @@ It also implements additional Notepad++\-specific options:
     - Only works if `/S` is also specified.
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
+
