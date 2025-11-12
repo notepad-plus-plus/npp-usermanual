@@ -229,10 +229,12 @@ It also implements additional Notepad++\-specific options:
     - It will first try a "nice" close request (using [WM_CLOSE](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-close)).
     - If the "nice" request wasn't successful after 5 seconds, it will kill the underlying process.
     - If Notepad++ has multiple instances opened, it will close all instances.
+    - Note: As of now, this Notepad++ app closing enforcement functionality is limited only to the session in which the Notepad++ installer is running. So for a multi-user session environment, there still exists a possibility of an unexpected access denied fail while updating the Notepad++ app binaries (loaded & locked in another session).
 - `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++. (New to v8.6.9.)
     - Only works if `/S` is also specified.
 - `/relaunchNppAfterSilentInstall`: If Notepad++ was running when silent install was initiated, it will automatically run the newly-installed Notepad++ after installation is complete. (New to v8.8.2.)
     - Only works if `/S` is also specified.
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
+
 
