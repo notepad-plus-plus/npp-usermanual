@@ -61,11 +61,16 @@ In v8.8, a new section was added, for being able to change the colors of the Flu
 These settings affect the appearance and behavior of the [Tab Bar](../user-interface/#tabs).  (Before v8.8, these Tab Bar settings were a section of the [General](#general) settings above.)
 
 - `☐ Hide`: The tab bar for the open files will not be visible.
+
+**Behavior**:
 - `☐ Vertical`: Have the tabs on their side on the left, rather than along the top.
 - `☐ Multi-line`: If there are enough tabs, they will wrap to a second line.
 - `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
 - `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
 - `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
+- `Max. tab label length: ____`: When set to ℕ>0, it will limit the number of characters for the tab title on the Tab Bar to ℕ, so if the length of the filename or tab title is less than ℕ, it will show in full, otherwise it will show a total of ℕ letters of the title (counting three characters for the `...` ellipsis at the end).  When set to `0`, there will be no limit.  (New to v8.8.8.)
+
+**Look & Feel**: 
 - `☐ Reduce`: Make the tab bar vertical region and font size smaller.
 - `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
     - The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
