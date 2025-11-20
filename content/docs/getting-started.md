@@ -15,7 +15,7 @@ You may visit the Notepad++ website at https://notepad-plus-plus.org/
 
 Download the latest version of Notepad++ from https://notepad-plus-plus.org/downloads/
 
-Determine whether your system requires the 64-bit or ARM 64-bit or 32-bit build of Notepad++, according to your machine and operating system, then choose the package you want to download for that architecture. Most users use the installer as it's the easiest route, however Notepad++ is also available in "portable" or "mini-portable" 7z and zip formats.
+Determine whether your system requires the 64-bit or ARM 64-bit or 32-bit build of Notepad++, according to your machine and operating system, then choose the package you want to download for that architecture. Most users use the exe-based installer as it's the easiest route, however Notepad++ is also available in "portable" or "mini-portable" 7z and zip formats; also, as of v8.8.8, there is an MSI installer so that IT departments can deploy Notepad++ across an organization.
 
 
 ## Install Notepad++ using the installer
@@ -32,6 +32,10 @@ The installer should also install the [Shell Extension](../shell-extension/) to 
 If you are doing managed installation or otherwise want to control the installer from the command line, the installer has a few [command line options](../command-prompt/#installer-options).
 
 The installed version of Notepad++ can be removed using the standard Windows OS's "Add/Remove Programs" interface for removing installed programs (or similar, depending on your OS version).
+
+### MSI Installer
+
+Starting with v8.8.8, there is an MSI version of the installer as well.  It is intended for IT departments to deploy Notepad++ across an organization (technically, anyone can try to use the MSI installer, but the developer recommends that normal users just use the `exe`-based installer, not the MSI installer).  Microsoft documents command-line options that can be used to influence MSI installation using [short-name options](https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options) and [long-name options](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options).
 
 ## Install Notepad++ from 7z or zip
 
