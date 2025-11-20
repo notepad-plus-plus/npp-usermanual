@@ -237,4 +237,7 @@ It also implements additional Notepad++\-specific options:
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
 
+### MSI Installer Options
+
+Starting with v8.8.8, there is an MSI version of the installer as well.  It is intended for IT departments to deploy Notepad++ across an organization.  Microsoft documents command-line options that can be used to influence MSI installation using [short-name options](https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options) and [long-name options](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options).
 
