@@ -225,7 +225,7 @@ These define properties of new documents (end-of-line format, encoding, and synt
 * **Format (Line ending)**:
     * `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: Newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
 * **Encoding**
-    * `ANSI`: Characters are represented by a single 8-bit byte, and there are only 256 available code points.
+    * `ANSI`: Characters are represented by a single 8-bit byte, and there are only 256 available code points. (As of Notepad++ version 8.8.8, this option is unavailable when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. See the explanation under [Encoding and Use Unicode UTF-8 for worldwide language support](#UseUnicodeUTF8) for more information.)
     * `UTF-8`: This can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters.
         * `☐ Apply to opened ANSI files`: If you open an ANSI file, this allows it to be "upgraded" to UTF-8.
     * `UTF-8 with BOM`: This is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file.
@@ -850,6 +850,16 @@ The `Convert to ...` entries below the separator line will change the encoding (
 The entries above the separator line (without `Convert to` in the name) show the file's active encoding or character set.  If you change that setting manually, it will leave the bytes in the file the same and change the glyph or glyph sequence that is shown, based on the updated interpretation of the bytes.  For example, if you enter the `€` in a UTF-8 encoded file, and then manually select `Encoding > ANSI`, suddenly those characters will look something like `â‚¬` (depending on the active Windows code page); this is because UTF-8 `€` is the three bytes 0xE2 0x82 0xAC, and those three bytes represent three characters when interpreted as ANSI.  Or, if you are starting with a character set of **Western European > OEM-US** (the old DOS box-drawing character set) with the `▓` grey box, if you change to character set to **Western European > Windows-1252**, it will become the `²` superscript 2.
 
 In general, if you want the glyph to stay the same and change the bytes on the disk, then use the `Convert to...` entries; whereas if the glyphs shown don't match what you think the bytes of the data should represent, you probably need to use one of the upper entries to change the interpretation of the bytes.
+
+##### Encoding and Use Unicode UTF-8 for worldwide language support {#UseUnicodeUTF8}
+
+As of Notepad++ version 8.8.8, the `ANSI` and `Convert to ANSI` entries on the **Encoding** menu are disabled when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. When that setting is in effect, the system default code page, which ordinarily defines “ANSI” in Windows, *is* UTF-8; attempting to treat UTF-8 as an ordinary code page does not work properly, which caused erratic behavior prior to version 8.8.8. Since the traditional concept of “ANSI” has no consistent meaning when that Windows setting is enabled, Notepad++ disables `ANSI` encoding.
+
+Reports suggest that some new installations of Windows 11 enable **Use Unicode UTF-8 for worldwide language support** by default. In Notepad++ you can check the state of this setting by selecting **Debug Info...** from the **?** menu. If the line `Current ANSI codepage` shows `65001` then **Use Unicode UTF-8 for worldwide language support** is enabled; otherwise, it is not.
+
+When Notepad++ loads a file that is recognizably not UTF-8 or UTF-16, it will try to guess the encoding if [MISC > Autodetect character encoding](#misc) is enabled; if autodetection is not enabled or does not yield a positive result, it will make an assumption based on the system locale. Notepad++ then assigns an appropriate encoding from the `Character sets` sub-menus.
+
+**Use Unicode UTF-8 for worldwide language support** is found in Windows Control Panel under **Region** on the **Administrative** tab by clicking the **Change system locale...** button. From Windows **Settings**, you can get there by going to **Time & language** > **Language** or **Language & region** > **Administrative language settings** > **Change system locale**.
 
 #### Language Menu
 
