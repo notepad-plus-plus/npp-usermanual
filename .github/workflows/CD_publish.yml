@@ -20,7 +20,7 @@ jobs:
 
     steps:
     - name: 🚚 Checkout repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: 📡 Get Hugo-Extended v0.68.3
       #uses: peaceiris/actions-hugo@v2  # @v2 and @v2.6.0 giving node16-vs-node20 error in GitHub Actions
