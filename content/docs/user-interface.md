@@ -10,7 +10,7 @@ The menu bar of Notepad++ has a variety of menus:
 - [**Edit**](../editing#edit-menu) ⇒ Commands to help with editing the active file
 - [**Search**](../searching/) ⇒ Search and Replace and Bookmark
 - [**View**](../views/) ⇒ Manipulate the Notepad++ editor Views and change visibility of Notepad++ panels and similar elements
-- [**Encoding**](../preferences/#encoding-menu) ⇒ Affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar
+- [**Encoding**](../encoding/#encoding-menu) ⇒ Affects how the bytes of the file are interpreted as text -- whether ANSI or UTF-8 or similar
 - [**Language**](../preferences/#language-menu) ⇒ Syntax highlighting of [built-in languages](../programing-languages/) and [User Defined Languages](../user-defined-language-system/)
 - [**Settings**](../preferences/) ⇒ Change preferences, Style Configurator settings, and shortcut key sequences
 - [**Tools**](#tools-menu) ⇒ Built-in utilities to take various hashes of files
@@ -311,7 +311,7 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
 4. End-of-File Format: Shows whether the active document is using `Windows (CR LF)` line endings (`\r\n`), `Unix (LF)` line endings (`\n`), or `Mac (CR)` line endings (`\r`, for ancient pre-OSX Mac-format files).
     - Double-clicking or right-clicking this field will bring up the [**Edit** menu's](../editing/#edit-menu) **EOL Conversion** sub-menu.
 5. File Encoding: Shows the file encoding or character set.
-    - Double-clicking or right-clicking this field will bring up the [**Encoding** menu](../preferences/#encoding-menu).
+    - Double-clicking or right-clicking this field will bring up the [**Encoding** menu](../encoding/#encoding-menu).
 6. Typing Mode: Shows which [typing mode](../editing/#typing-mode) is active -- insert (`INS`) or overwrite (`OVR`).
     - Left-Clicking this field will toggle the value.
 

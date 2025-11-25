@@ -70,7 +70,7 @@ These settings affect the appearance and behavior of the [Tab Bar](../user-inter
 - `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
 - `Max. tab label length: ____`: When set to ℕ>0, it will limit the number of characters for the tab title on the Tab Bar to ℕ, so if the length of the filename or tab title is less than ℕ, it will show in full, otherwise it will show a total of ℕ letters of the title (counting three characters for the `...` ellipsis at the end).  When set to `0`, there will be no limit.  (New to v8.8.8.)
 
-**Look & Feel**: 
+**Look & Feel**:
 - `☐ Reduce`: Make the tab bar vertical region and font size smaller.
 - `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
     - The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
@@ -222,20 +222,21 @@ These define the margin style, border width, and edge settings.
 
 These define properties of new documents (end-of-line format, encoding, and syntax language).
 
-* **Format (Line ending)**:
-    * `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: Newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
-* **Encoding**
-    * `ANSI`: Characters are represented by a single 8-bit byte, and there are only 256 available code points. (As of Notepad++ version 8.8.8, this option is unavailable when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. See the explanation under [Encoding and Use Unicode UTF-8 for worldwide language support](#UseUnicodeUTF8) for more information.)
-    * `UTF-8`: This can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters.
-        * `☐ Apply to opened ANSI files`: If you open an ANSI file, this allows it to be "upgraded" to UTF-8.
-    * `UTF-8 with BOM`: This is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file.
-    * `UTF-16 Big Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-significant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`).
-    * `UTF-16 Little Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-significant byte first) (Prior to v8.0.0, it was shown as `UCS-2`).
-    * The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**).
-    * _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
-* **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
-* `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
-* `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab (new to v8.8.2).
+- **Format (Line ending)**:
+    - `Windows (CR LF)` / `Unix (LF)` / `Macintosh (CR)`: Newly-created files will use the normal Windows-style line ending, Unix/Linux/*nix-style line ending, or old Mac-style line ending.  (Please note that modern MacOS X uses Unix-style line endings.)
+- **Encoding**
+    - `ANSI`: A family of encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page) -- most "ANSI" codepages are sets of 256 characters (8-bits); but Windows also allows you to set the "ANSI" codepage to Japanese/Shift-JIS, Simplified Chinese/GBK, Korean Unified Hangul Code, and Traditional Chinese/Big5; and starting in recent Windows 11, also to set the codepage to Unicode UTF-8.
+        - As of Notepad++ version 8.8.8, this option will be disabled when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. See the explanation under [Encoding and Use Unicode UTF-8 for worldwide language support](../encoding/#UseUnicodeUTF8) for more information.)
+    - `UTF-8`: This can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters.
+        - `☐ Apply to opened ANSI files`: If you open an ANSI file, this allows it to be "upgraded" to UTF-8.
+    - `UTF-8 with BOM`: This is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF "BOM" character (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file.
+    - `UTF-16 Big Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-significant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`).
+    - `UTF-16 Little Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-significant byte first) (Prior to v8.0.0, it was shown as `UCS-2`).
+    - The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**).
+    - _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
+- **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
+- `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
+- `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab (new to v8.8.2).
 
 
 ### Default Directory
@@ -653,7 +654,7 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Brace highlight style** [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the [caret](#caret-and-cursor "typing/insertion cursor") onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
 * **Bad brace colour** [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the [caret](#caret-and-cursor "typing/insertion cursor") at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
 * **Current line background colour** [background only] ⇒ The line containing the active editing [caret](#caret-and-cursor "typing/insertion cursor") will be marked using this background style.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Editing](#editing-1) so you can change **Current Line Indicator**.
-* **Selected text colour** [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is checked, the "Smart Highlighting" style (below) will be colored overtop of the "Selected text colour". 
+* **Selected text colour** [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is checked, the "Smart Highlighting" style (below) will be colored overtop of the "Selected text colour".
     - In v8.0 - v8.7.9, if the [configuration file `enableSelectFgColor.xml`](../config-files/#other-configuration-files) exists, then **Selected text colour** will honor the foreground color as well.
     - In v8.8 and newer, if [Settings > Preferences > Editing 1 > `☐  Apply custom color to selected text foreground`](#editing-1) is checkmarked, then **Selected text colour** will honor the foreground color as well.
     - Otherwise, **Selected text colour** will only honor the background color setting, not the foreground color.
@@ -702,7 +703,7 @@ Some of these styles apply to the background only, some apply to the foreground 
        - If you upgrade from an older version of Notepad++ to v8.7.1 or newer, the **Global override** will not necessarily be moved to the end of the list.
        - In such a case, or even if you are in an older version of Notepad++, you can edit [`%AppData%\Notepad++\stylers.xml` (or your active theme file)](../config-files/#highlighting-schemes-stylersxml) following the advice for [editing configuration files](../config-files/#editing-configuration-files), and move the `<WidgetStyle name="Global override" ... />` element from the top of the `<GlobalStyles>` section to the end of that section; after saving, exiting Notepad++, and restarting the app, **Global override** will be moved to the end of the list.
 
-<a name="gotosettings-footnote">🛈</a>: On the Styles that mention a "Go to settings" link, that link will open the correct panel of the [**Settings > Preferences**](#preferences) dialog; 
+<a name="gotosettings-footnote">🛈</a>: On the Styles that mention a "Go to settings" link, that link will open the correct panel of the [**Settings > Preferences**](#preferences) dialog;
 and, starting in v8.8.4, it will do a popup "speech bubble" or similar to indicate which is the correct setting on that preference panel.
 
 
@@ -835,31 +836,8 @@ The View menu contains many toggles that affect Notepad++, many of which decide 
 
 #### Encoding Menu
 
-These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](#misc) preference will affect what encoding will be selected when the file is first read from disk.
+These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](#misc) preference will affect what encoding will be selected when the file is first read from disk.  The entries above the horizontal line (**ANSI**, **UTF-8** and similar, and the **Character Sets** submenu) are used to control the active interpretation of the bytes of the file, and show the active choice, and are thus "menu-based settings".  These settings, and the various **Convert To...** actions below the line, are described in the separate section on [Encoding](../encoding/).
 
-There are the major encodings found at the beginning of the **Encodings** menu:
-- `ANSI`: A family of 8-bit encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page).  Whatever code page your OS is set to use (and thus the one that shows up in the **?**-menu's **Debug Info** as `Current ANSI codepage`), that is what the `ANSI` encoding refers to.  (It was named generically, because historically, people have thought of their default codepage as the "ANSI" codepage.  In the US, that code page is usually Windows-1252, but it depends on your Windows settings.)
-- [`UTF-8`](https://en.wikipedia.org/wiki/UTF-8): This encoding uses variable-width multi-byte sequences to represent Unicode characters, either without or with the BOM character at the start of the file.  (The BOM isn't technically part of the UTF-8 spec, because there isn't a Little Endian or Big Endian variant of UTF-8 -- the bytes are always in a predefined order.  However, many applications use the BOM codepoint to indicate that the file should be interpreted as UTF-8, and Notepad++ supports reading and writing the file with the BOM sequence to support those external applications file-format needs.)
-- [`UTF-16`](https://en.wikipedia.org/wiki/UTF-16): This encoding uses two-byte Big Endian or Little Endian sequences to represent Unicode characters.
-- The various `Character sets` found in the sub-menus allow you to specify any of the various international 8-bit sets of characters that provide a limited set of less than 256 glyphs, rather than the full suite Unicode character.  You can use one of these encodings to be able to edit a file from one character set, even if your Windows code page is at a different code page.  For example, this allows you to edit a file using the Eastern European ISO 9959-2 character set even if your copy of Windows is setup for Windows 1252.
-
-The `... with BOM` entries indicate that it uses the Unicode [Byte Order Mark](https://en.wikipedia.org/wiki/Byte_order_mark "BOM") at the start of the file to indicate the correct byte order (big endian or little endian), and in the case of UTF-8, to make it unambiguous that the file is meant to be a UTF-8 Unicode file rather than another 8-bit encoding.
-
-The `Convert to ...` entries below the separator line will change the encoding (the underlying bytes stored on disk) of the active file, without changing the glyphs.  So if you just have the Euro currency symbol `€` in your file, it will be stored as byte 0x80 if you `Convert to ANSI` (and are in a Western-European codepage in Windows), as the three-byte sequence 0xE2 0x82 0xAC if you `Convert to UTF-8`, and as the two byte sequence 0x20 0xAC if you `Convert to UTF-16 BE BOM`.
-
-The entries above the separator line (without `Convert to` in the name) show the file's active encoding or character set.  If you change that setting manually, it will leave the bytes in the file the same and change the glyph or glyph sequence that is shown, based on the updated interpretation of the bytes.  For example, if you enter the `€` in a UTF-8 encoded file, and then manually select `Encoding > ANSI`, suddenly those characters will look something like `â‚¬` (depending on the active Windows code page); this is because UTF-8 `€` is the three bytes 0xE2 0x82 0xAC, and those three bytes represent three characters when interpreted as ANSI.  Or, if you are starting with a character set of **Western European > OEM-US** (the old DOS box-drawing character set) with the `▓` grey box, if you change to character set to **Western European > Windows-1252**, it will become the `²` superscript 2.
-
-In general, if you want the glyph to stay the same and change the bytes on the disk, then use the `Convert to...` entries; whereas if the glyphs shown don't match what you think the bytes of the data should represent, you probably need to use one of the upper entries to change the interpretation of the bytes.
-
-##### Encoding and Use Unicode UTF-8 for worldwide language support {#UseUnicodeUTF8}
-
-As of Notepad++ version 8.8.8, the `ANSI` and `Convert to ANSI` entries on the **Encoding** menu are disabled when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. When that setting is in effect, the system default code page, which ordinarily defines “ANSI” in Windows, *is* UTF-8; attempting to treat UTF-8 as an ordinary code page does not work properly, which caused erratic behavior prior to version 8.8.8. Since the traditional concept of “ANSI” has no consistent meaning when that Windows setting is enabled, Notepad++ disables `ANSI` encoding.
-
-Reports suggest that some new installations of Windows 11 enable **Use Unicode UTF-8 for worldwide language support** by default. In Notepad++ you can check the state of this setting by selecting **Debug Info...** from the **?** menu. If the line `Current ANSI codepage` shows `65001` then **Use Unicode UTF-8 for worldwide language support** is enabled; otherwise, it is not.
-
-When Notepad++ loads a file that is recognizably not UTF-8 or UTF-16, it will try to guess the encoding if [MISC > Autodetect character encoding](#misc) is enabled; if autodetection is not enabled or does not yield a positive result, it will make an assumption based on the system locale. Notepad++ then assigns an appropriate encoding from the `Character sets` sub-menus.
-
-**Use Unicode UTF-8 for worldwide language support** is found in Windows Control Panel under **Region** on the **Administrative** tab by clicking the **Change system locale...** button. From Windows **Settings**, you can get there by going to **Time & language** > **Language** or **Language & region** > **Administrative language settings** > **Change system locale**.
 
 #### Language Menu
 
