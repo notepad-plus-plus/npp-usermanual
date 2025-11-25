@@ -70,11 +70,11 @@ shown, then ANSI escape sequences will look like <kbd>ESC</kbd>`[31m`, and will 
 character are not shown (or when **Show All Characters** is toggled off), then the entire escape sequence will be
 hidden.  (This is different than in other lexers, where turning off the control character visibility would just hide the
  `ESC` character, but not the rest of the ANSI escape sequence.)
- 
-In v8.8.1, this defaulted to applying the ErrorList lexer to files ending in `.err` or `.log`; in v8.8.2, this was changed 
-to be just for `.err` (since there are so many different types of `.log` files).  However, if you installed from v8.8.1 and 
-updated to v8.8.2 or newer, the `.log` will _not_ be taken out of your default list of extensions; to fix that, you can edit 
-`%AppData%\Notepad++\langs.xml` (or appropriate path depending on your [config file location](../config-files/#configuration-files-location)), 
+
+In v8.8.1, this defaulted to applying the ErrorList lexer to files ending in `.err` or `.log`; in v8.8.2, this was changed
+to be just for `.err` (since there are so many different types of `.log` files).  However, if you installed from v8.8.1 and
+updated to v8.8.2 or newer, the `.log` will _not_ be taken out of your default list of extensions; to fix that, you can edit
+`%AppData%\Notepad++\langs.xml` (or appropriate path depending on your [config file location](../config-files/#configuration-files-location)),
 search for `"errorlist"`, and remove `log` from the `ext="err log"` to become `ext="err"`, then save `langs.xml` and restart
 Notepad++ (paying attention to the [editing configuration files](../config-files/#editing-configuration-files) instructions).
 If you had installed Notepad++ before v8.8.1, and want access to the ErrorList lexer, you will need to see [Configuration Files
@@ -83,12 +83,12 @@ During Upgrades](../config-files/#configuration-files-during-upgrades).
 #### MS-DOS Style
 
 The **Language > M > MS-DOS Style**, which shows up in the [Style Configurator](../preferences/#style-configurator)
-as **Language: `DOS Style`** and uses `*.nfo` as the default file extension, is intended for ASCII art.  
-This Language assumes that the file will be using the old DOS box-drawing characters and similar, so defaults to 
-OEM-US [encoding](../preferences/#encoding-menu).  It also changes the line spacing to help the characters properly meet, 
+as **Language: `DOS Style`** and uses `*.nfo` as the default file extension, is intended for ASCII art.
+This Language assumes that the file will be using the old DOS box-drawing characters and similar, so defaults to
+OEM-US [encoding](../encoding/).  It also changes the line spacing to help the characters properly meet,
 and hardcodes the Lucida Console font to make sure that they are presented correctly.
-In older versions of the application, that font could not be changed (the 
-**Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** is disabled); 
+In older versions of the application, that font could not be changed (the
+**Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** is disabled);
 however, starting in v8.8.4, you can _manually_ edit the `stylers.xml` or your selected theme's XML if you add the `fontName` field to the XML:
 
 1. Following the advice on [Editing Configuration Files](../config-files/#editing-configuration-files), edit `%AppData%\Notepad++\stylers.xml`
@@ -98,9 +98,9 @@ however, starting in v8.8.4, you can _manually_ edit the `stylers.xml` or your s
     - If you don't remember the exact name of your font, just add `fontName=""` .
 4. Save the file, exit Notepad++, and restart Notepad++
 5. Now MS-DOS Style `*.nfo` files will use the `xyz` font.
-    - Once you've set `fontName="xyz"` or `fontName=""` and restarted, the 
-	  **Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** chooser will be enabled, and will 
-	  allow you to change the font name from the GUI, so you can set it back to Lucida Console, or, if you didn't know your 
+    - Once you've set `fontName="xyz"` or `fontName=""` and restarted, the
+	  **Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** chooser will be enabled, and will
+	  allow you to change the font name from the GUI, so you can set it back to Lucida Console, or, if you didn't know your
 	  exact font name, you could choose the actual font name from the GUI rather than typing it from memory.
 
 ### Themes and Language Support
