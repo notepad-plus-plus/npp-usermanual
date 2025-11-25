@@ -23,16 +23,26 @@ In general, if you want the glyph to stay the same and change the bytes on the d
 
 ## Encoding Auto-Detection
 
-If [MISC > Autodetect character encoding](#misc) is enabled, Notepad++ will attempt to algorithmically determine the encoding of the file. If the file you open is encoded in UTF-16 (which always has the BOM character), or in UTF-8 with the BOM, then Notepad++ will use the encoding based on the BOM.  If the file is an XML file, then if the encoding is defined in the declaration/prolog, Notepad++ will use that encoding for the file.  Failing that, Notepad++ will also analyze some of the byte sequences in the file, and if they match patterns common to UTF-8 or one of the character sets, then Notepad++ will use that encoding.
+If the file you open is encoded in UTF-16 (which always has the byte order mark "BOM" character), or in UTF-8 with the BOM, then Notepad++ will use the encoding based on the BOM.
 
-If autodetection is not enabled, or if autodetection does not yield a positive result, Notepad++ will choose the encoding based on the system locale.
+If the file is an XML or HTML file, then if the encoding is defined in the declaration/prolog, Notepad++ will use that encoding for the file.
+
+Failing that, if [MISC > Autodetect character encoding](#misc) is enabled, Notepad++ will also analyze some of the byte sequences in the file, and if they match patterns common to one of the character sets, then Notepad++ will use that encoding.
+
+If it still doesn't have an encoding, then Notepad++ will look to see if it's 100% ASCII (in which case, it chooses "ANSI" or "UTF-8" depending on the [**Apply to opened ANSI files**](../preferences/#new-document) setting); or if all of the non-ASCII bytes follow the rules for valid UTF-8, it will use that encoding.
+
+Finally, if the encoding has not yet been decided (regardless of the autodetection status), Notepad++ will choose the encoding based on the system locale or set it to "ANSI".
 
 If you find that your text with accented characters often gets misinterpreted by Notepad++ (Windows-1255 encoded Hebrew is a common incorrectly-chosen encoding), and if you always or usually just use files that are in the same localization as your Windows is set to, it's generally recommended to turn off character-encoding autodetection, and Notepad++ will be able to use your system setting without incorrectly guessing some other encoding.
 
 ## Encoding and Use Unicode UTF-8 for worldwide language support {#UseUnicodeUTF8}
 
-As of Notepad++ version 8.8.8, the **ANSI** and **Convert to ANSI** entries on the **Encoding** menu are disabled when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. When that setting is in effect, the system default code page, which ordinarily defines “ANSI” in Windows, *is* UTF-8; attempting to treat UTF-8 as an ordinary code page does not work properly, which caused erratic behavior prior to version 8.8.8. Since the traditional concept of “ANSI” has no consistent meaning when that Windows setting is enabled, Notepad++ disables `ANSI` encoding.
+As of Notepad++ version 8.8.8, the **ANSI** and **Convert to ANSI** entries on the **Encoding** menu are disabled when the Windows setting **Use Unicode UTF-8 for worldwide language support** is enabled. When that setting is in effect, the system default code page, which ordinarily defines “ANSI” in Windows, *is* UTF-8; attempting to treat UTF-8 as an ordinary code page does not work properly, which caused erratic behavior prior to version 8.8.8. Since the traditional concept of “ANSI” has no consistent meaning when that Windows setting is enabled, Notepad++ disables `ANSI` encoding.  (But even with that OS option set, Notepad++ can still choose one of the Character Set encodings; it just manually selects that entry, not setting it to "ANSI".)
 
 Some Windows 11 installations are coming with that option turned on by default.  If you need to be able to use the **Convert to ANSI** action, and you find it's disabled in Notepad++ v8.8.8 or newer (or if that conversion doesn't behave as expected on older versions of Notepad++), you can verify in **?**-menu's **Debug Info**: it will show `Current ANSI codepage: 65001` if that Windows OS option is on.  If you want to chance that Windows OS setting, Microsoft provides multiple paths to that setting, but two of the common ways to find it are:
 1. Windows **Control Panel > Clock & Region** (or just **Region**), go to the **Administrative** tab on the dialog, using the **Change System Locale** button, and toggle the **Use Unicode UTF-8 for worldwide language support** checkmark.
 2. Windows **Settings > Time & Language**, in the **Language** (or **Language & Region**) section, find the **Use Unicode UTF-8 for worldwide language support** toggle (it may be not show, in which case, look under the **Windows Display Language** ▼ pulldown to show it).
+
+## Encoding During Editing
+
+It should be clarified: when Notepad++ reads the file, it actually converts the file from whatever encoding it is on the disk, and internally uses the UTF-8 encoding when doing editing and searching -- it's just during file-read and file-write that the file's encoding is utilized.
