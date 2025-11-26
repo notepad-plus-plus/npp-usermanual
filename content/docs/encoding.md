@@ -5,7 +5,7 @@ weight: 155
 
 ## Encoding Menu
 
-These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](#misc) preference will affect what encoding will be selected when the file is first read from disk.
+These entries influence the file encoding of the active file -- how the underlying bytes of the file are interpreted as glyphs, and how the characters you enter are saved as underlying bytes.  The [New Document](../preferences/#new-document) preferences will influence which Encoding is selected for a new file, and the [MISC > Autodetect character encoding](../preferences/  #misc) preference will affect what encoding will be selected when the file is first read from disk.
 
 There are the major encodings found at the beginning of the **Encodings** menu:
 - `ANSI`: A family of encodings based on the active [Windows Code Page](https://en.wikipedia.org/wiki/Windows_code_page) -- most "ANSI" codepages are sets of 256 characters (8-bits); but Windows also allows you to set the "ANSI" codepage to Japanese/Shift-JIS, Simplified Chinese/GBK, Korean Unified Hangul Code, and Traditional Chinese/Big5; and starting in recent Windows 11, also to set the codepage to Unicode UTF-8, which is described more [below](#UseUnicodeUTF8).  Whatever code page your OS is set to use (and thus the one that shows up in the **?**-menu's **Debug Info** as `Current ANSI codepage`), that is what the `ANSI` encoding refers to.  (It was named generically, because historically, people have thought of their default codepage as the "ANSI" codepage.  In the US, that code page is usually Windows-1252, but it depends on your Windows settings.)
@@ -27,7 +27,7 @@ If the file you open is encoded in UTF-16 (which always has the byte order mark 
 
 If the file is an XML or HTML file, then if the encoding is defined in the declaration/prolog, Notepad++ will use that encoding for the file.
 
-Failing that, if [MISC > Autodetect character encoding](#misc) is enabled, Notepad++ will also analyze some of the byte sequences in the file, and if they match patterns common to one of the character sets, then Notepad++ will use that encoding.
+Failing that, if [MISC > Autodetect character encoding](../preferences/#misc) is enabled, Notepad++ will also analyze some of the byte sequences in the file, and if they match patterns common to one of the character sets, then Notepad++ will use that encoding.
 
 If it still doesn't have an encoding, then Notepad++ will look to see if it's 100% ASCII (in which case, it chooses "ANSI" or "UTF-8" depending on the [**Apply to opened ANSI files**](../preferences/#new-document) setting); or if all of the non-ASCII bytes follow the rules for valid UTF-8, it will use that encoding.
 
