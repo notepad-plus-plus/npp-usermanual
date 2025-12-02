@@ -88,9 +88,9 @@ Each of the categories of keywords, folding, operators, comments, and the like h
 
 ## Naming and Saving
 
-If you use the GUI to create a new User Defined Language using **Language > User Defined Languages > Define My Language...**, you _must_ use the **Create new...** or **Save as...** button to give it a name. If you leave it with the default `User Defined Language` from the original **User language:** pulldown menu, when you exit Notepad++, Notepad++ will forget all your changes.
+If you use the GUI to create a new User Defined Language using **Language > User Defined Languages > Define My Language...**, you _must_ use the **Create new...** or **Save as...** button to give it a name. If you leave it with the default `User Defined Language` from the original **User language:** pulldown menu, when you exit Notepad++, Notepad++ will forget all your changes and that language will no longer exist.
 
-If you select a different UDL from the **User language:** pulldown, any changes you make to that UDL will automatically be saved when you exit Notepad++; once you have a name for a UDL, you no longer need to use the **Save as...** button (and in fact, using that button again will create a duplicate UDL with a new name).
+If you select an existing UDL from the **User language:** pulldown (or after you have used **Save as...** to give your new UDL a name), any changes you make to that UDL after that point will apply _immediately_ to that language, so you can watch the formatting or keywords change as you make the changes.  Then, when you exit Notepad++, those changes will _automatically_ be saved permanently to the UDL definition file; there is no **Save** button for UDL, because the saves happen automatically.  Once you have a name for a UDL, you no longer need to use the **Save as...** button (and in fact, using that button again will create a duplicate UDL with a new name).
 
 When you use **Create new...** or **Save as...**, it will save it in the `userDefineLang.xml`, as described in more detail in [UDL File Locations](#udl-file-locations).  If you want it to reside in a separate file instead of the default file, follow the instructions in [Keeping UDL Files Separate](#keeping-udl-files-separate).
 
