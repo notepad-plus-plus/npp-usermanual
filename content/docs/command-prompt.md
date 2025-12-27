@@ -241,3 +241,4 @@ It also implements additional Notepad++\-specific options:
 
 Starting with v8.8.8, there is an MSI version of the installer as well.  It is intended for IT departments to deploy Notepad++ across an organization.  Microsoft documents command-line options that can be used to influence MSI installation using [short-name options](https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options) and [long-name options](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options).
 
+Notepad++'s MSI installer allows the `NOUPDATER` and `REBOOT` variables that can be passed in to the `msiexec` execution of the MSI, such as `msiexec /i Notepad++.msi NOUPDATER=1` ([*](https://community.notepad-plus-plus.org/post/103948 "see reference")).

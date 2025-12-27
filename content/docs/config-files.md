@@ -509,6 +509,13 @@ You can have multiple icon set directories; to switch between icon sets, you jus
     - After this file is created, Notepad++ won't check any more whether `shortcuts.xml` has been updated
     - See [v8.5.3 `shortcuts.xml` updates](#v8-5-3-shortcuts-xml-updates) (above) and this Notepad++ Community [FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
 
+### Logfiles
+
+Notepad++ doesn't normally create logfiles.  However, there are some circumstances when it does:
+- As described above, if `nppLogNulContentCorruptionIssue.xml` exists, then the logfile `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` will be created during crash events. (New to v8.1.9.3.)
+- As described above, if `nppLogNetworkDriveIssue.xml` exists, then `c:\temp\nppLogNetworkDriveIssue.log` will be created during certain network drive issues. (New to v8.1.9.3.)
+- Starting in v8.9, security errors will be automatically logged to `%LOCALAPPDATA%\Notepad++\log\securityError.log`.
+
 ## Validating Config-File XML
 
 If you are developing a config file by editing the raw XML file and would like to be able to validate that you have correct XML syntax while you are doing so, you can see the instructions in the [Notepad++ Community "Validating Config-File XML" FAQ](https://community.notepad-plus-plus.org/topic/24136/faq-desk-validating-config-file-xml "Community Forum FAQ: Validating Config-File XML").
