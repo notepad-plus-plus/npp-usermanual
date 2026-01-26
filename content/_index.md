@@ -30,3 +30,5 @@ padding: 2px 1em;
 <p>&nbsp;</p>
 
 Older versions are accessible from the "[User Manual History](./docs/history/)".
+
+<!-- Does this comment show up? -->
