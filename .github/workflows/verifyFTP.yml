@@ -13,4 +13,4 @@ jobs:
 
       - name: List remote directory
         run: |
-          lftp -c "open -u ${{ secrets.USERMANUAL_USERNAME }},${{ secrets.USERMANUAL_KEY}} ${{ secrets.USERMANUAL_HOST}}; ls -l"
+          lftp -c "open -u ${{ secrets.USERMANUAL_USERNAME }},${{ secrets.USERMANUAL_KEY}} ${{ secrets.USERMANUAL_HOST}}; ls -lat"
