@@ -51,6 +51,6 @@ jobs:
         server: ${{ secrets.USERMANUAL_HOST }}
         port: ${{ secrets.USERMANUAL_PORT }}
         username: ${{ secrets.USERMANUAL_USERNAME }}
-        password: ${{ secrets.USERMANUAL_FTPPASSWORD }}
+        password: ${{ secrets.USERMANUAL_KEY }}
         local-dir: './public/'
-        server-dir: 'nppusermanual/public_html/'
+        server-dir: './'    # on the new server, the usermanual user automatically starts in the right directory for deployment
