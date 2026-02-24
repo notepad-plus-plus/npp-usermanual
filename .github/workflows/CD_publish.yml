@@ -34,12 +34,22 @@ jobs:
       working-directory: .
       run: hugo --theme hugo-book-9
 
+    #- name: 📂 Deploy to npp-user-manual.org 🎉
+    #  uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+    #  with:
+    #    server: ${{ secrets.USERMANUAL_HOST }}
+    #    port: ${{ secrets.USERMANUAL_PORT }}
+    #    username: ${{ secrets.USERMANUAL_USERNAME }}
+    #    password: ${{ secrets.USERMANUAL_KEY }}
+    #    local-dir: './public/'
+    #    server-dir: './'    # on the new server, the usermanual user automatically starts in the right directory for deployment
     - name: 📂 Deploy to npp-user-manual.org 🎉
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.6
       with:
-        server: ${{ secrets.USERMANUAL_HOST }}
-        port: ${{ secrets.USERMANUAL_PORT }}
-        username: ${{ secrets.USERMANUAL_USERNAME }}
-        password: ${{ secrets.USERMANUAL_KEY }}
-        local-dir: './public/'
-        server-dir: './'    # on the new server, the usermanual user automatically starts in the right directory for deployment
+          username: ${{ secrets.USERMANUAL_USERNAME }}
+          server: ${{ secrets.USERMANUAL_HOST }}
+          port: ${{ secrets.USERMANUAL_PORT }}
+          ssh_private_key: ${{ secrets.USERMANUAL_KEY }}
+          delete_remote_files: false
+          local_path: './public/*'
+          remote_path: './'
