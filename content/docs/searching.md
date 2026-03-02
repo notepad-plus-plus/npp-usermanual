@@ -1458,6 +1458,29 @@ Then, the condition `\d{1,2}|1\d\d|2[0-4]\d|250` and, more precisely, `\d{1,2}`,
 
 This time, as this part of the regex is outside the condition's definition, the condition `'LEQ250'` is NOT realized and the current second line must end with the word `barrel`, which is, indeed, the case. Therefore, the regex engine matches this second line, too, even though that was not intended. (The same reasoning applies for all the lines ending in `barrel` even though their number is not above 250.)
 
+#### Example 7
+
+There's an easy way to perform a replacement on things that do _not_ match a particular expression, using the `(*SKIP)(*FAIL)` combination in regular-expression mode.
+
+For instance, in order to surround any word with two `-` characters, except for words already surrounded by curly braces, `{}`:
+
+```txt
+This is a test with some {text} to see {if} it works
+```
+
+- Find What: `{[^}]*}(*SKIP)(*F)|\b\w+\b`
+- Replace With: `-$0-`
+- Search Mode: Regular Expression
+
+This ends up with
+```
+-This- -is- -a- -test- -with- -some- {text} -to- -see- {if} -it- -works-
+```
+
+The first part of the find expression matches the content inside the curly braces. The `(*SKIP)` makes sure that if it reaches this point, it won't try to backtrack and retry this section of the alternation.  The `(*FAIL)` makes it automatically fail this match at that point.  The `(*SKIP)(*FAIL)` combination thus makes it jump out of the current side of the alternation (because it failed and won't backtrack anymore), and thus try to second half of the alternation.  The second half of alternation matches the indiviual words tokens that don't have braces, which is where you really want the hyphens around.
+
+A good way to remember the `(*SKIP)(*FAIL)` syntax usage is "**What I _don't_ want to match`(*SKIP)(*FAIL)|`What I _do_ want to match**".
+
 # Search Macros
 
 ## Searching actions when recorded as macros
