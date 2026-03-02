@@ -980,6 +980,13 @@ These will control how and when the regular expression will "backtrack" (go back
 
 These can be confusing, so [Notepad++ Community Forum](https://community.notepad-plus-plus.org/)-regular `@guy038` has written up detailed [descriptions with examples](https://community.notepad-plus-plus.org/topic/19632/new-backtracking-control-verbs-feature-available-since-notepad-v7-7) of these verbs, and collected references to other resources to study more about them.
 
+#### Invalid Regular Expression: Complexity
+
+Sometimes, when you run a complicated regular expression, you get `Find: Invalid Regular Expression` on the dialog's status bar, and the hover text explains, "The complexity of  matching the regular expression exceeded predefined bounds".  This is not actually an _invalid_ regex, but rather a regex that the engine is not sure whether it can complete. When the regex engine is processing alternatives and [multiplying operators](#multiplying-operators) or similar constructs, it can get to the point where it's unsure if it found an infinite loop or a recursion which goes too deep (often, this is when it's examined the same piece of the text too many times); when it hits that point, it errors out.  One of the best ways to fix such expressions is to limit backtracking; this can be accomplished through a variety of means:
+- Use [possessive quantifiers](#multiplying-operators) to make matches "greedy" so they don't backtrack.
+- Use [backtracking control verbs](#backtracking-control-verbs) to force when backtracking occurs, which may help make it more efficient.
+- If you can break regular expressions at alternation points (for example, `(?:a)|(?:b)` where `a` and `b` are each complicated expressions), and do the two sides in separate expressions (example, split it into running regex `(?:a)` and then running regex `(?:b)`), then there are less choices for the engine to try to make, and thus less backtracking.
+
 ### Substitutions
 
 Substitution expressions (the contents of the **Replace with** entry) use similar syntax to the search expression, with the additional features described below.
