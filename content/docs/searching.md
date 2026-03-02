@@ -1464,7 +1464,7 @@ There's an easy way to perform a replacement on things that do _not_ match a par
 
 For instance, in order to surround any word with two `-` characters, except for words already surrounded by curly braces, `{}`:
 
-```txt
+```
 This is a test with some {text} to see {if} it works
 ```
 
