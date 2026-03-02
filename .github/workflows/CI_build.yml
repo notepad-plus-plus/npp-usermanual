@@ -86,7 +86,7 @@ jobs:
             Rename-Item -Path static_html -NewName nppUserManual
 
     - name: 🎉 Store zipfile as artifact
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
           name: nppUserManual
           path: ./nppUserManual/
