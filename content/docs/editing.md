@@ -447,102 +447,103 @@ But with so many commands, and the fact that no documentation set is likely to e
 
 Scintilla's documentation on the "[Keyboard Commands](https://www.scintilla.org/ScintillaDoc.html#KeyboardCommands)" can be rather sparse, and skips some of their commands, so the following table attempts to summarize each of those commands:
 
-Message                        | Description
--------------------------------|-------------
-`SCI_BACKTAB`                  | In the middle of text, moves [caret](#key "typing cursor") [one tab](#key "TAB character or ℕ space characters") earlier; if at the first non-space character on a line, un-indents by [one tab](#key "TAB character or ℕ space characters")
-`SCI_CANCEL`                   | Cancels autocompletions or calltips; if there are multiple selections, gets rid of all but the main selection; if there is a rectangle selection, gets rid of the selection and places [caret](#key "typing cursor") at the end of the rectangle (last corner selected)
-`SCI_CHARLEFT`                 | Moves [caret](#key "typing cursor") one character left
-`SCI_CHARLEFTEXTEND`           | Moves [caret](#key "typing cursor") one character left, extending normal stream-mode selection
-`SCI_CHARLEFTRECTEXTEND`       | Moves [caret](#key "typing cursor") one character left, extending rectangle (column-mode) selection
-`SCI_CHARRIGHT`                | Moves [caret](#key "typing cursor") one character right
-`SCI_CHARRIGHTEXTEND`          | Moves [caret](#key "typing cursor") one character right, extending normal stream-mode selection
-`SCI_CHARRIGHTRECTEXTEND`      | Moves [caret](#key "typing cursor") one character right, extending rectangle (column-mode) selection
-`SCI_DELETEBACK`               | Moves [caret](#key "typing cursor") one character back, deleting the character it moved over (normal <kbd>Backspace</kbd> action); if [caret](#key "typing cursor") was at the beginning of the line, it will delete the newline and merge the current line with the previous line
-`SCI_DELETEBACKNOTLINE`        | Moves [caret](#key "typing cursor") one character back, deleting the character it moved over, unless [caret](#key "typing cursor") is at the beginning of a line
-`SCI_DELLINELEFT`              | Deletes line from [caret](#key "typing cursor") to beginning of line ([caret](#key "typing cursor") will be at beginning of the line)
-`SCI_DELLINERIGHT`             | Deletes line from [caret](#key "typing cursor") to end of line ([caret](#key "typing cursor") will be at the end of the line)
-`SCI_DELWORDLEFT`              | Deletes from [caret](#key "typing cursor") to the beginning of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"); if [caret](#key "typing cursor") was after a space character, th to the beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters")
-`SCI_DELWORDRIGHT`             | Deletes from [caret](#key "typing cursor") to the end of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"), plus any horizontal whitespace that comes after
-`SCI_DELWORDRIGHTEND`          | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it deletes from [caret](#key "typing cursor") to the end of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"), not including any horizontal whitespace that comes after
-`SCI_DOCUMENTEND`              | Moves [caret](#key "typing cursor") to end of document
-`SCI_DOCUMENTENDEXTEND`        | Moves [caret](#key "typing cursor") to end of document, extending normal stream-mode selection
-`SCI_DOCUMENTSTART`            | Moves [caret](#key "typing cursor") to start of document
-`SCI_DOCUMENTSTARTEXTEND`      | Moves [caret](#key "typing cursor") to start of document, extending normal stream-mode selection
-`SCI_EDITTOGGLEOVERTYPE`       | Toggles Overtype/Insert mode
-`SCI_FORMFEED`                 | Adds the formfeed (U+000C) character at the current character (and moves [caret](#key "typing cursor") after the new character)
-`SCI_HOME`                     | Moves [caret](#key "typing cursor") to the beginning of the current line
-`SCI_HOMEDISPLAY`              | Moves [caret](#key "typing cursor") to the beginning of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the beginning of the full line
-`SCI_HOMEDISPLAYEXTEND`        | Moves [caret](#key "typing cursor") to the beginning of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the beginning of the full line; either way, extending normal stream-mode selection
-`SCI_HOMEEXTEND`               | Moves [caret](#key "typing cursor") to the beginning of the current line, extending normal stream-mode selection
-`SCI_HOMERECTEXTEND`           | Moves [caret](#key "typing cursor") to the beginning of the current line, extending rectangle (column-mode) selection
-`SCI_HOMEWRAP`                 | Works like `SCI_HOMEDISPLAY`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOME`
-`SCI_HOMEWRAPEXTEND`           | Works like `SCI_HOMEDISPLAYEXTEND`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOMEEXTEND`
-`SCI_LINECOPY`                 | Copies full current line (including any newline ending) to clipboard
-`SCI_LINECUT`                  | Cuts full current line (including any newline ending) to clipboard
-`SCI_LINEDEDENT`               | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it selects the entire line, un-indents the current line by [one tab](#key "TAB character or ℕ space characters"), and moves [caret](#key "typing cursor") to the beginning of the line
-`SCI_LINEDELETE`               | Deletes full current line (including any newline ending), without affecting clipboard
-`SCI_LINEDOWN`                 | Moves [caret](#key "typing cursor") down one line
-`SCI_LINEDOWNEXTEND`           | Moves [caret](#key "typing cursor") down one line, extending normal stream-mode selection
-`SCI_LINEDOWNRECTEXTEND`       | Moves [caret](#key "typing cursor") down one line, extending rectangle (column-mode) selection
-`SCI_LINEDUPLICATE`            | Duplicates full current line (putting newline ending between old and new), without affecting clipboard
-`SCI_LINEEND`                  | Moves [caret](#key "typing cursor") to the end of the current line
-`SCI_LINEENDDISPLAY`           | Moves [caret](#key "typing cursor") to the end of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the end of the full line
-`SCI_LINEENDDISPLAYEXTEND`     | Moves [caret](#key "typing cursor") to the end of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the end of the full line
-`SCI_LINEENDEXTEND`            | Moves [caret](#key "typing cursor") to the end of the current line, extending normal stream-mode selection
-`SCI_LINEENDRECTEXTEND`        | Moves [caret](#key "typing cursor") to the end of the current line, extending rectangle (column-mode) selection
-`SCI_LINEENDWRAP`              | Works like `SCI_LINEENDDISPLAY`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_LINEEND`
-`SCI_LINEENDWRAPEXTEND`        | Works like `SCI_LINEENDDISPLAYEXTEND`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_LINEENDEXTEND`
-`SCI_LINEINDENT`               | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it selects the entire line, indents the current line by [one tab](#key "TAB character or ℕ space characters"), and moves [caret](#key "typing cursor") to the beginning of the line
-`SCI_LINEREVERSE`              | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it will reverse the line order in a multi-line selection
-`SCI_LINESCROLLDOWN`           | Scrolls viewport down one line (so that one more line is visible at the bottom, one less at the top)
-`SCI_LINESCROLLUP`             | Scrolls viewport up one line (so that one more line is visible at the top, one less at the bottom)
-`SCI_LINETRANSPOSE`            | Swaps [caret](#key "typing cursor") line with the line above (does nothing if [caret](#key "typing cursor") is on the first line of the document)
-`SCI_LINEUP`                   | Moves [caret](#key "typing cursor") up one line
-`SCI_LINEUPEXTEND`             | Moves [caret](#key "typing cursor") up one line, extending normal stream-mode selection
-`SCI_LINEUPRECTEXTEND`         | Moves [caret](#key "typing cursor") up one line, extending rectangle (column-mode) selection
-`SCI_LOWERCASE`                | Converts all uppercase characters of the current selection to lowercase
-`SCI_MOVESELECTEDLINESDOWN`    | Moves all the lines included in the current selection down one line (so one line from below the selection moves to before the selection); does nothing if the selection includes the last line of the document
-`SCI_MOVESELECTEDLINESUP`      | Moves all the lines included in the current selection up one line (so one line from above the selection moves to after the selection); does nothing if the selection includes the first line of the document
-`SCI_NEWLINE`                  | Adds a newline sequence after the current [caret](#key "typing cursor") (and moves [caret](#key "typing cursor") after, following indentation rules)
-`SCI_PAGEDOWN`                 | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible)
-`SCI_PAGEDOWNEXTEND`           | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible), extending normal stream-mode selection
-`SCI_PAGEDOWNRECTEXTEND`       | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible), extending rectangle (column-mode) selection
-`SCI_PAGEUP`                   | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible)
-`SCI_PAGEUPEXTEND`             | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible), extending normal stream-mode selection
-`SCI_PAGEUPRECTEXTEND`         | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible), extending rectangle (column-mode) selection
-`SCI_PARADOWN`                 | Moves [caret](#key "typing cursor") to the beginning of the next [paragraph](#key "separated by blank line(s)")
-`SCI_PARADOWNEXTEND`           | Moves [caret](#key "typing cursor") to the beginning of the next [paragraph](#key "separated by blank line(s)"), extending the normal stream-mode selection
-`SCI_PARAUP`                   | Moves [caret](#key "typing cursor") to the beginning of the current [paragraph](#key "separated by blank line(s)") if inside a [paragraph](#key "separated by blank line(s)"), or to the beginning of the previous [paragraph](#key "separated by blank line(s)") if [caret](#key "typing cursor") is not in a [paragraph](#key "separated by blank line(s)") or already at the beginning of the current [paragraph](#key "separated by blank line(s)")
-`SCI_PARAUPEXTEND`             | Moves [caret](#key "typing cursor") to the beginning of the current [paragraph](#key "separated by blank line(s)") if inside a [paragraph](#key "separated by blank line(s)"), or to the beginning of the previous [paragraph](#key "separated by blank line(s)") if [caret](#key "typing cursor") is not in a [paragraph](#key "separated by blank line(s)") or already at the beginning of the current [paragraph](#key "separated by blank line(s)"), extending the normal stream-mode selection
-`SCI_SCROLLTOEND`              | Scrolls the viewport to the end of the document, without changing the active selection
-`SCI_SCROLLTOSTART`            | Scrolls the viewport to the beginning of the document, without changing the active selection
-`SCI_SELECTIONDUPLICATE`       | Duplicates the current selection (so there are two copies where there used to be one)
-`SCI_STUTTEREDPAGEDOWN`        | Moves [caret](#key "typing cursor") to the last line of the current page, or to the last line of the next page if [caret](#key "typing cursor") is already there
-`SCI_STUTTEREDPAGEDOWNEXTEND`  | Moves [caret](#key "typing cursor") to the last line of the current page, or to the last line of the next page if [caret](#key "typing cursor") is already there, extending normal stream-mode selection
-`SCI_STUTTEREDPAGEUP`          | Moves [caret](#key "typing cursor") to the first line of the current page, or to the first line of the previous page if [caret](#key "typing cursor") is already there
-`SCI_STUTTEREDPAGEUPEXTEND`    | Moves [caret](#key "typing cursor") to the first line of the current page, or to the first line of the previous page if [caret](#key "typing cursor") is already there, extending normal stream-mode selection
-`SCI_TAB`                      | In the middle or at the end of a line of text, inserts a tab character or a tab-width set of spaces; at the beginning of the line, indents entire line by entire tab character or tab-width
-`SCI_UPPERCASE`                | Converts all lowercase characters of the current selection to uppercase
-`SCI_VCHOME`                   | Works like `SCI_HOME`, except goes to the first non-blank character of the line instead of beginning of the line (ie, it honors indentation); when already at indented-beginning, executes `SCI_HOME` instead
-`SCI_VCHOMEDISPLAY`            | Works like `SCI_HOMEDISPLAY`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAY` instead
-`SCI_VCHOMEDISPLAYEXTEND`      | Works like `SCI_HOMEDISPLAYEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAYEXTEND` instead
-`SCI_VCHOMEEXTEND`             | Works like `SCI_HOMEEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEEXTEND` instead
-`SCI_VCHOMERECTEXTEND`         | Works like `SCI_HOMERECTEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMERECTEXTEND` instead
-`SCI_VCHOMEWRAP`               | Works like `SCI_HOMEWRAP`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAP` instead
-`SCI_VCHOMEWRAPEXTEND`         | Works like `SCI_HOMEWRAPEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAPEXTEND` instead
-`SCI_VERTICALCENTRE`[caret](#key "typing cursor")      | Scrolls the viewport so the line with the [caret](#key "typing cursor") is centered in the viewport
-`SCI_WORDLEFT`                 | Moves [caret](#key "typing cursor") to beginning of current [word](#key "sequence of alphanumeric characters or of punctuation characters"), or beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters") if [caret](#key "typing cursor") is in whitespace or already at the beginning of a [word](#key "sequence of alphanumeric characters or of punctuation characters")
-`SCI_WORDLEFTEND`              | Moves [caret](#key "typing cursor") to end of previous [word](#key "sequence of alphanumeric characters or of punctuation characters")
-`SCI_WORDLEFTENDEXTEND`        | Moves [caret](#key "typing cursor") to end of previous [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
-`SCI_WORDLEFTEXTEND`           | Moves [caret](#key "typing cursor") to beginning of current [word](#key "sequence of alphanumeric characters or of punctuation characters"), or beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters") if [caret](#key "typing cursor") is in whitespace or already at the beginning of a [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
-`SCI_WORDPARTLEFT`             | Same as `SCI_WORDLEFT`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
-`SCI_WORDPARTLEFTEXTEND`       | Same as `SCI_WORDLEFTEXTEND`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
-`SCI_WORDPARTRIGHT`            | Same as `SCI_WORDRIGHT`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
-`SCI_WORDPARTRIGHTEXTEND`      | Same as `SCI_WORDRIGHTEXTEND`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
-`SCI_WORDRIGHT`                | Moves [caret](#key "typing cursor") to beginning of next [word](#key "sequence of alphanumeric characters or of punctuation characters")
-`SCI_WORDRIGHTEND`             | Moves [caret](#key "typing cursor") to end of this [word](#key "sequence of alphanumeric characters or of punctuation characters"), or end of next [word](#key "sequence of alphanumeric characters or of punctuation characters") if the [caret](#key "typing cursor") is already at the end of a [word](#key "sequence of alphanumeric characters or of punctuation characters")
-`SCI_WORDRIGHTENDEXTEND`       | Moves [caret](#key "typing cursor") to end of this [word](#key "sequence of alphanumeric characters or of punctuation characters"), or end of next [word](#key "sequence of alphanumeric characters or of punctuation characters") if the [caret](#key "typing cursor") is already at the end of a [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending normal stream-mode selection
-`SCI_WORDRIGHTEXTEND`          | Moves [caret](#key "typing cursor") to beginning of next [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
+Message                        | Default Shortcut | Description
+-------------------------------|------------------|-------------
+`SCI_BACKTAB`                  | <kbd>Shift+Tab</kbd>      | In the middle of text, moves [caret](#key "typing cursor") [one tab](#key "TAB character or ℕ space characters") earlier; if at the first non-space character on a line, un-indents by [one tab](#key "TAB character or ℕ space characters")
+`SCI_CANCEL`                   | <kbd>Esc</kbd>      | Cancels autocompletions or calltips; if there are multiple selections, gets rid of all but the main selection; if there is a rectangle selection, gets rid of the selection and places [caret](#key "typing cursor") at the end of the rectangle (last corner selected)
+`SCI_CHARLEFTEXTEND`           | <kbd>Shift+Left</kbd>      | Moves [caret](#key "typing cursor") one character left, extending normal stream-mode selection
+`SCI_CHARLEFTRECTEXTEND`       | <kbd>Alt+Shift+Left</kbd>      | Moves [caret](#key "typing cursor") one character left, extending rectangle (column-mode) selection
+`SCI_CHARLEFT`                 | <kbd>Left</kbd>      | Moves [caret](#key "typing cursor") one character left
+`SCI_CHARRIGHTEXTEND`          | <kbd>Shift+Right</kbd>      | Moves [caret](#key "typing cursor") one character right, extending normal stream-mode selection
+`SCI_CHARRIGHTRECTEXTEND`      | <kbd>Alt+Shift+Right</kbd>      | Moves [caret](#key "typing cursor") one character right, extending rectangle (column-mode) selection
+`SCI_CHARRIGHT`                | <kbd>Right</kbd>      | Moves [caret](#key "typing cursor") one character right
+`SCI_DELETEBACKNOTLINE`        | <kbd>DEL</kbd>      | Moves [caret](#key "typing cursor") one character back, deleting the character it moved over, unless [caret](#key "typing cursor") is at the beginning of a line
+`SCI_DELETEBACK`               | <kbd>Backspace / Shift+Backspace</kbd>      | Moves [caret](#key "typing cursor") one character back, deleting the character it moved over (normal <kbd>Backspace</kbd> action); if [caret](#key "typing cursor") was at the beginning of the line, it will delete the newline and merge the current line with the previous line
+`SCI_DELLINELEFT`              | <kbd>Ctrl+Shift+Backspace</kbd>      | Deletes line from [caret](#key "typing cursor") to beginning of line ([caret](#key "typing cursor") will be at beginning of the line)
+`SCI_DELLINERIGHT`             | <kbd>Ctrl+Shift+DEL</kbd>      | Deletes line from [caret](#key "typing cursor") to end of line ([caret](#key "typing cursor") will be at the end of the line)
+`SCI_DELWORDLEFT`              | <kbd>Ctrl+Backspace</kbd>      | Deletes from [caret](#key "typing cursor") to the beginning of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"); if [caret](#key "typing cursor") was after a space character, th to the beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters")
+`SCI_DELWORDRIGHTEND`          |  | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it deletes from [caret](#key "typing cursor") to the end of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"), not including any horizontal whitespace that comes after
+`SCI_DELWORDRIGHT`             | <kbd>Ctrl+DEL</kbd>      | Deletes from [caret](#key "typing cursor") to the end of the current [word](#key "sequence of alphanumeric characters or of punctuation characters"), plus any horizontal whitespace that comes after
+`SCI_DOCUMENTENDEXTEND`        | <kbd>Ctrl+Shift+End</kbd>      | Moves [caret](#key "typing cursor") to end of document, extending normal stream-mode selection
+`SCI_DOCUMENTEND`              | <kbd>Ctrl+End</kbd>      | Moves [caret](#key "typing cursor") to end of document
+`SCI_DOCUMENTSTARTEXTEND`      | <kbd>Ctrl+Shift+Home</kbd>      | Moves [caret](#key "typing cursor") to start of document, extending normal stream-mode selection
+`SCI_DOCUMENTSTART`            | <kbd>Ctrl+Home</kbd>      | Moves [caret](#key "typing cursor") to start of document
+`SCI_EDITTOGGLEOVERTYPE`       | <kbd>INS</kbd>      | Toggles Overtype/Insert mode
+`SCI_FORMFEED`                 |  | Adds the formfeed (U+000C) character at the current character (and moves [caret](#key "typing cursor") after the new character)
+`SCI_HOMEDISPLAYEXTEND`        |  | Moves [caret](#key "typing cursor") to the beginning of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the beginning of the full line; either way, extending normal stream-mode selection
+`SCI_HOMEDISPLAY`              | <kbd>Alt+Home</kbd>      | Moves [caret](#key "typing cursor") to the beginning of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the beginning of the full line
+`SCI_HOMEEXTEND`               |  | Moves [caret](#key "typing cursor") to the beginning of the current line, extending normal stream-mode selection
+`SCI_HOMERECTEXTEND`           |  | Moves [caret](#key "typing cursor") to the beginning of the current line, extending rectangle (column-mode) selection
+`SCI_HOMEWRAPEXTEND`           |  | Works like `SCI_HOMEDISPLAYEXTEND`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOMEEXTEND`
+`SCI_HOMEWRAP`                 |  | Works like `SCI_HOMEDISPLAY`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOME`
+`SCI_HOME`                     |  | Moves [caret](#key "typing cursor") to the beginning of the current line
+`SCI_LINECOPY`                 | <kbd>Ctrl+Shift+X</kbd>      | Copies full current line (including any newline ending) to clipboard
+`SCI_LINECUT`                  | <kbd>Ctrl+L</kbd>      | Cuts full current line (including any newline ending) to clipboard
+`SCI_LINEDEDENT`               |  | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it selects the entire line, un-indents the current line by [one tab](#key "TAB character or ℕ space characters"), and moves [caret](#key "typing cursor") to the beginning of the line
+`SCI_LINEDELETE`               | <kbd>Ctrl+Shift+L</kbd>      | Deletes full current line (including any newline ending), without affecting clipboard
+`SCI_LINEDOWNEXTEND`           | <kbd>Shift+Down</kbd>      | Moves [caret](#key "typing cursor") down one line, extending normal stream-mode selection
+`SCI_LINEDOWNRECTEXTEND`       | <kbd>Alt+Shift+Down</kbd>      | Moves [caret](#key "typing cursor") down one line, extending rectangle (column-mode) selection
+`SCI_LINEDOWN`                 | <kbd>Down</kbd>      | Moves [caret](#key "typing cursor") down one line
+`SCI_LINEDUPLICATE`            |  | Duplicates full current line (putting newline ending between old and new), without affecting clipboard
+`SCI_LINEENDDISPLAYEXTEND`     |  | Moves [caret](#key "typing cursor") to the end of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the end of the full line
+`SCI_LINEENDDISPLAY`           | <kbd>Alt+End</kbd>      | Moves [caret](#key "typing cursor") to the end of the wrapped-portion of the line (when in line-wrap mode), otherwise moves it to the end of the full line
+`SCI_LINEENDEXTEND`            |  | Moves [caret](#key "typing cursor") to the end of the current line, extending normal stream-mode selection
+`SCI_LINEENDRECTEXTEND`        | <kbd>Alt+Shift+End</kbd>      | Moves [caret](#key "typing cursor") to the end of the current line, extending rectangle (column-mode) selection
+`SCI_LINEENDWRAPEXTEND`        | <kbd>Shift+End</kbd>      | Works like `SCI_LINEENDDISPLAYEXTEND`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_LINEENDEXTEND`
+`SCI_LINEENDWRAP`              | <kbd>End</kbd>      | Works like `SCI_LINEENDDISPLAY`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_LINEEND`
+`SCI_LINEEND`                  |  | Moves [caret](#key "typing cursor") to the end of the current line
+`SCI_LINEINDENT`               |  | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it selects the entire line, indents the current line by [one tab](#key "TAB character or ℕ space characters"), and moves [caret](#key "typing cursor") to the beginning of the line
+`SCI_LINEREVERSE`              |  | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it will reverse the line order in a multi-line selection
+`SCI_LINESCROLLDOWN`           | <kbd>Ctrl+Down</kbd>      | Scrolls viewport down one line (so that one more line is visible at the bottom, one less at the top)
+`SCI_LINESCROLLUP`             | <kbd>Ctrl+Up</kbd>      | Scrolls viewport up one line (so that one more line is visible at the top, one less at the bottom)
+`SCI_LINETRANSPOSE`            | <kbd>Ctrl+T</kbd>      | Swaps [caret](#key "typing cursor") line with the line above (does nothing if [caret](#key "typing cursor") is on the first line of the document)
+`SCI_LINEUPEXTEND`             | <kbd>Shift+Up</kbd>      | Moves [caret](#key "typing cursor") up one line, extending normal stream-mode selection
+`SCI_LINEUPRECTEXTEND`         | <kbd>Alt+Shift+Up</kbd>      | Moves [caret](#key "typing cursor") up one line, extending rectangle (column-mode) selection
+`SCI_LINEUP`                   | <kbd>Up</kbd>      | Moves [caret](#key "typing cursor") up one line
+`SCI_LOWERCASE`                |  | Converts all uppercase characters of the current selection to lowercase
+`SCI_MOVESELECTEDLINESDOWN`    |  | Moves all the lines included in the current selection down one line (so one line from below the selection moves to before the selection); does nothing if the selection includes the last line of the document
+`SCI_MOVESELECTEDLINESUP`      |  | Moves all the lines included in the current selection up one line (so one line from above the selection moves to after the selection); does nothing if the selection includes the first line of the document
+`SCI_NEWLINE`                  | <kbd>Enter / Shift+Enter</kbd>      | Adds a newline sequence after the current [caret](#key "typing cursor") (and moves [caret](#key "typing cursor") after, following indentation rules)
+`SCI_PAGEDOWNEXTEND`           | <kbd>Shift+Page down</kbd>      | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible), extending normal stream-mode selection
+`SCI_PAGEDOWNRECTEXTEND`       | <kbd>Alt+Shift+Page down</kbd>      | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible), extending rectangle (column-mode) selection
+`SCI_PAGEDOWN`                 | <kbd>Page down</kbd>      | Moves [caret](#key "typing cursor") down one page of text (or to the end of the document, if a full page movement isn't possible)
+`SCI_PAGEUPEXTEND`             | <kbd>Shift+Page up</kbd>      | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible), extending normal stream-mode selection
+`SCI_PAGEUPRECTEXTEND`         | <kbd>Alt+Shift+Page up</kbd>      | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible), extending rectangle (column-mode) selection
+`SCI_PAGEUP`                   | <kbd>Page up</kbd>      | Moves [caret](#key "typing cursor") up one page of text (or to the beginning of the document, if a full page movement isn't possible)
+`SCI_PARADOWNEXTEND`           | <kbd>Ctrl+Shift+]</kbd>      | Moves [caret](#key "typing cursor") to the beginning of the next [paragraph](#key "separated by blank line(s)"), extending the normal stream-mode selection
+`SCI_PARADOWN`                 | <kbd>Ctrl+]</kbd>      | Moves [caret](#key "typing cursor") to the beginning of the next [paragraph](#key "separated by blank line(s)")
+`SCI_PARAUPEXTEND`             | <kbd>Ctrl+Shift+[</kbd>      | Moves [caret](#key "typing cursor") to the beginning of the current [paragraph](#key "separated by blank line(s)") if inside a [paragraph](#key "separated by blank line(s)"), or to the beginning of the previous [paragraph](#key "separated by blank line(s)") if [caret](#key "typing cursor") is not in a [paragraph](#key "separated by blank line(s)") or already at the beginning of the current [paragraph](#key "separated by blank line(s)"), extending the normal stream-mode selection
+`SCI_PARAUP`                   | <kbd>Ctrl+[</kbd>      | Moves [caret](#key "typing cursor") to the beginning of the current [paragraph](#key "separated by blank line(s)") if inside a [paragraph](#key "separated by blank line(s)"), or to the beginning of the previous [paragraph](#key "separated by blank line(s)") if [caret](#key "typing cursor") is not in a [paragraph](#key "separated by blank line(s)") or already at the beginning of the current [paragraph](#key "separated by blank line(s)")
+`SCI_SCROLLTOEND`              | <kbd>Ctrl+Y / Ctrl+Shift+Z</kbd>      | Scrolls the viewport to the end of the document, without changing the active selection
+`SCI_SCROLLTOSTART`            |  | Scrolls the viewport to the beginning of the document, without changing the active selection
+`SCI_SELECTALL`                | <kbd>Ctrl+A</kbd> | Selects all the text in the current document
+`SCI_SELECTIONDUPLICATE`       | <kbd>Ctrl+D</kbd>      | Duplicates the current selection (so there are two copies where there used to be one)
+`SCI_STUTTEREDPAGEDOWNEXTEND`  |  | Moves [caret](#key "typing cursor") to the last line of the current page, or to the last line of the next page if [caret](#key "typing cursor") is already there, extending normal stream-mode selection
+`SCI_STUTTEREDPAGEDOWN`        |  | Moves [caret](#key "typing cursor") to the last line of the current page, or to the last line of the next page if [caret](#key "typing cursor") is already there
+`SCI_STUTTEREDPAGEUPEXTEND`    |  | Moves [caret](#key "typing cursor") to the first line of the current page, or to the first line of the previous page if [caret](#key "typing cursor") is already there, extending normal stream-mode selection
+`SCI_STUTTEREDPAGEUP`          |  | Moves [caret](#key "typing cursor") to the first line of the current page, or to the first line of the previous page if [caret](#key "typing cursor") is already there
+`SCI_TAB`                      | <kbd>Tab</kbd>      | In the middle or at the end of a line of text, inserts a tab character or a tab-width set of spaces; at the beginning of the line, indents entire line by entire tab character or tab-width
+`SCI_UPPERCASE`                |  | Converts all lowercase characters of the current selection to uppercase
+`SCI_VCHOMEDISPLAYEXTEND`      |  | Works like `SCI_HOMEDISPLAYEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAYEXTEND` instead
+`SCI_VCHOMEDISPLAY`            |  | Works like `SCI_HOMEDISPLAY`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAY` instead
+`SCI_VCHOMEEXTEND`             |  | Works like `SCI_HOMEEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEEXTEND` instead
+`SCI_VCHOMERECTEXTEND`         | <kbd>Alt+Shift+Home</kbd>      | Works like `SCI_HOMERECTEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMERECTEXTEND` instead
+`SCI_VCHOMEWRAPEXTEND`         | <kbd>Shift+Home</kbd>      | Works like `SCI_HOMEWRAPEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAPEXTEND` instead
+`SCI_VCHOMEWRAP`               | <kbd>Home</kbd>      | Works like `SCI_HOMEWRAP`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAP` instead
+`SCI_VCHOME`                   |  | Works like `SCI_HOME`, except goes to the first non-blank character of the line instead of beginning of the line (ie, it honors indentation); when already at indented-beginning, executes `SCI_HOME` instead
+`SCI_VERTICALCENTRE`[caret](#key "typing cursor")      |  | Scrolls the viewport so the line with the [caret](#key "typing cursor") is centered in the viewport
+`SCI_WORDLEFTENDEXTEND`        |  | Moves [caret](#key "typing cursor") to end of previous [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
+`SCI_WORDLEFTEND`              |  | Moves [caret](#key "typing cursor") to end of previous [word](#key "sequence of alphanumeric characters or of punctuation characters")
+`SCI_WORDLEFTEXTEND`           | <kbd>Ctrl+Shift+Left</kbd>      | Moves [caret](#key "typing cursor") to beginning of current [word](#key "sequence of alphanumeric characters or of punctuation characters"), or beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters") if [caret](#key "typing cursor") is in whitespace or already at the beginning of a [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
+`SCI_WORDLEFT`                 | <kbd>Ctrl+Left</kbd>      | Moves [caret](#key "typing cursor") to beginning of current [word](#key "sequence of alphanumeric characters or of punctuation characters"), or beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters") if [caret](#key "typing cursor") is in whitespace or already at the beginning of a [word](#key "sequence of alphanumeric characters or of punctuation characters")
+`SCI_WORDPARTLEFTEXTEND`       | <kbd>Ctrl+Shift+/</kbd>      | Same as `SCI_WORDLEFTEXTEND`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
+`SCI_WORDPARTLEFT`             | <kbd>Ctrl+/</kbd>      | Same as `SCI_WORDLEFT`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
+`SCI_WORDPARTRIGHTEXTEND`      | <kbd>Ctrl+Shift+\</kbd>      | Same as `SCI_WORDRIGHTEXTEND`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
+`SCI_WORDPARTRIGHT`            | <kbd>Ctrl+\</kbd>      | Same as `SCI_WORDRIGHT`, except will also stop for each part of a [CamelCase](#key) or [underscore_separated](#key) word, as well
+`SCI_WORDRIGHTENDEXTEND`       | <kbd>Ctrl+Shift+Right</kbd>      | Moves [caret](#key "typing cursor") to end of this [word](#key "sequence of alphanumeric characters or of punctuation characters"), or end of next [word](#key "sequence of alphanumeric characters or of punctuation characters") if the [caret](#key "typing cursor") is already at the end of a [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending normal stream-mode selection
+`SCI_WORDRIGHTEND`             |  | Moves [caret](#key "typing cursor") to end of this [word](#key "sequence of alphanumeric characters or of punctuation characters"), or end of next [word](#key "sequence of alphanumeric characters or of punctuation characters") if the [caret](#key "typing cursor") is already at the end of a [word](#key "sequence of alphanumeric characters or of punctuation characters")
+`SCI_WORDRIGHTEXTEND`          |  | Moves [caret](#key "typing cursor") to beginning of next [word](#key "sequence of alphanumeric characters or of punctuation characters"), extending the normal stream-mode selection
+`SCI_WORDRIGHT`                | <kbd>Ctrl+Right</kbd>      | Moves [caret](#key "typing cursor") to beginning of next [word](#key "sequence of alphanumeric characters or of punctuation characters")
 
 <a name="key">**Key**</a>:
 - ‼️ = Not available in Notepad++ [Shortcut Mapper](../preferences/#shortcut-mapper), as of v8.8.1.  However, plugins (including the scripting plugins like PythonScript or NppExec) can send these messages to the editor, even though keyboard shortcuts cannot.
