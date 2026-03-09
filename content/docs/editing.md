@@ -477,13 +477,6 @@ Message                        | Description
 `SCI_HOMERECTEXTEND`           | Moves [caret](#key "typing cursor") to the beginning of the current line, extending rectangle (column-mode) selection
 `SCI_HOMEWRAP`                 | Works like `SCI_HOMEDISPLAY`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOME`
 `SCI_HOMEWRAPEXTEND`           | Works like `SCI_HOMEDISPLAYEXTEND`, except when [caret](#key "typing cursor") is at the beginning of the wrapped-portion of the line, in which case it acts like `SCI_HOMEEXTEND`
-`SCI_VCHOME`                   | Works like `SCI_HOME`, except goes to the first non-blank character of the line instead of beginning of the line (ie, it honors indentation); when already at indented-beginning, executes `SCI_HOME` instead
-`SCI_VCHOMEDISPLAY`            | Works like `SCI_HOMEDISPLAY`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAY` instead
-`SCI_VCHOMEDISPLAYEXTEND`      | Works like `SCI_HOMEDISPLAYEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAYEXTEND` instead
-`SCI_VCHOMEEXTEND`             | Works like `SCI_HOMEEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEEXTEND` instead
-`SCI_VCHOMERECTEXTEND`         | Works like `SCI_HOMERECTEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMERECTEXTEND` instead
-`SCI_VCHOMEWRAP`               | Works like `SCI_HOMEWRAP`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAP` instead
-`SCI_VCHOMEWRAPEXTEND`         | Works like `SCI_HOMEWRAPEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAPEXTEND` instead
 `SCI_LINECOPY`                 | Copies full current line (including any newline ending) to clipboard
 `SCI_LINECUT`                  | Cuts full current line (including any newline ending) to clipboard
 `SCI_LINEDEDENT`               | [‼️](#key "not in Shortcut Mapper") If a plugin sends this message, it selects the entire line, un-indents the current line by [one tab](#key "TAB character or ℕ space characters"), and moves [caret](#key "typing cursor") to the beginning of the line
@@ -530,6 +523,13 @@ Message                        | Description
 `SCI_STUTTEREDPAGEUPEXTEND`    | Moves [caret](#key "typing cursor") to the first line of the current page, or to the first line of the previous page if [caret](#key "typing cursor") is already there, extending normal stream-mode selection
 `SCI_TAB`                      | In the middle or at the end of a line of text, inserts a tab character or a tab-width set of spaces; at the beginning of the line, indents entire line by entire tab character or tab-width
 `SCI_UPPERCASE`                | Converts all lowercase characters of the current selection to uppercase
+`SCI_VCHOME`                   | Works like `SCI_HOME`, except goes to the first non-blank character of the line instead of beginning of the line (ie, it honors indentation); when already at indented-beginning, executes `SCI_HOME` instead
+`SCI_VCHOMEDISPLAY`            | Works like `SCI_HOMEDISPLAY`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAY` instead
+`SCI_VCHOMEDISPLAYEXTEND`      | Works like `SCI_HOMEDISPLAYEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEDISPLAYEXTEND` instead
+`SCI_VCHOMEEXTEND`             | Works like `SCI_HOMEEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEEXTEND` instead
+`SCI_VCHOMERECTEXTEND`         | Works like `SCI_HOMERECTEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMERECTEXTEND` instead
+`SCI_VCHOMEWRAP`               | Works like `SCI_HOMEWRAP`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAP` instead
+`SCI_VCHOMEWRAPEXTEND`         | Works like `SCI_HOMEWRAPEXTEND`, except goes to the first non-blank character (indented beginning); when already at indented beginning, executes `SCI_HOMEWRAPEXTEND` instead
 `SCI_VERTICALCENTRE`[caret](#key "typing cursor")      | Scrolls the viewport so the line with the [caret](#key "typing cursor") is centered in the viewport
 `SCI_WORDLEFT`                 | Moves [caret](#key "typing cursor") to beginning of current [word](#key "sequence of alphanumeric characters or of punctuation characters"), or beginning of the previous [word](#key "sequence of alphanumeric characters or of punctuation characters") if [caret](#key "typing cursor") is in whitespace or already at the beginning of a [word](#key "sequence of alphanumeric characters or of punctuation characters")
 `SCI_WORDLEFTEND`              | Moves [caret](#key "typing cursor") to end of previous [word](#key "sequence of alphanumeric characters or of punctuation characters")
