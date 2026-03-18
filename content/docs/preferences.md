@@ -118,9 +118,10 @@ These influence editing ([carets](#caret-and-cursor "typing/insertion cursor"), 
 * `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from canceling an active selection.
+* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
 * `☐ Apply custom color to selected text foreground`: Allows the foreground color to be specified in **[Settings > Style Configurator > Language: `Global Styles`](#global-styles) > Style: `Selected text colour`**, rather than just the background color.  (New to v8.8.  Replaces the old zero-byte config file `enableSelectFgColor.xml`.)
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
-* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
+* `☐ Disable selected text drag-and-drop`: When checkmarked, you will no longer be able to select text then drag-and-drop the selection to move that section of text in the document.  (This checkmark if you find yourself accidentally dragging selected text to a new location instead of starting a new selection, and want to prevent that accidental edit.)
 
 ### Editing 2
 
@@ -381,6 +382,7 @@ Affects the operations found in the **Find** dialog tabs.
 - `☐ Confirm Replace All in All Opened Documents`: When checked, **Replace All in All Opened Documents** will ask for confirmation.
 - `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the [caret](#caret-and-cursor "typing/insertion cursor") to the subsequent match (added v8.0.0).
 - `☐ Search Result window: show only one entry per found line`: When checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3).
+- `☐ Find in Files: Ignore unsaved changes in opened files`: When checked, the **Find in Files** will search the copy of the file on disk, rather than whatever copy might be open in Notepad++.  Without this checked, Notepad++ will search any unsaved changes instead of what's still on disk. (added v8.9.3).
 
 ### Backup
 
