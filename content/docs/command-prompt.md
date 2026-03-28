@@ -211,6 +211,7 @@ usage list.  These are intended for advanced usage or other special circumstance
 * `-z`: Causes Notepad++ to ignore the next command line argument (a single word, or a phrase in quotes).
     - The only intended and supported use for this option is for the [Notepad Replacement](../other-resources/#notepad-replacement) syntax.  Any other use for this option is unsupported and not guaranteed to work.
     - There can only be one `-z` per command-line, because that is all that is required for [Notepad Replacement](../other-resources/#notepad-replacement).
+    - When using [Notepad Replacement](../other-resources/#notepad-replacement), the `-z` must be the last option in the Notepad-replacement registry entry, otherwise the `-z` will cause Notepad++ to ignore whatever option or argument you put after it, rather than ignoring the `notepad.exe` path, it will ignore your extra option and will try to open `notepad.exe` as a text file, which you don't want.
 
 ## Installer Options
 
