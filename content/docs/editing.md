@@ -61,9 +61,11 @@ In column mode, typing will type the same thing in all the rows of the column.  
 
 In column mode selection, when text is copied/cut, artificial line-ending characters are introduced into the text.  Thus, pasting in column mode can sometimes lead to surprising results, especially when you simply want the text inserted as if it isn't a column block.  Example: You copy a column block that spans 10 lines and then move the [caret](#caret-and-cursor "typing/insertion cursor") to column 1 on an empty line in your document and perform the paste.  The first line of the data from the paste ends up fine, but for the remaining lines, the paste has pushed existing text on subsequent lines to the right before inserting the new columns.  The solution here is to first (before the paste), use the Enter key to insert enough blank lines in the document so that the paste won't do this.
 
-### Column Editor Dialog
+### Column / Multi-Selection Editor Dialog
 
-The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to insert text or numbers in every row of the active Column Mode selection:
+<a name="column-editor-dialog"></a>
+
+The Column / Multi-Selection Editor dialog, accessed via **Edit > Column Editor**, allows you to insert text or numbers in every row of the active Column Mode selection or Multi-Edit selection:
 
 ![](../images/columnEditor.gif)
 
@@ -86,6 +88,8 @@ The Column Editor dialog, accessed via **Edit > Column Editor**, allows you to i
         - In v8.8.5 and earlier, the numerical boxes above are always in decimal, even if a different format is chosen for display.  (Example: to get `F`-`1F`, column-select 17 rows and set the initial number to `15` -- it will not allow `F`.)
         - Starting in v8.8.6, the numerical boxes above are always in the format selected.  (Example: so if **Hex** is chosen, you would enter `B` in the **Increase by** to count using every eleventh hexadecimal number ⇒ `1`, `C`, `17`, `22`, `2D`, ...)
         - Starting in v8.8.6, there is a selector to choose whether hexadecimal will use Upper Case `A-F` or Lower Case `a-f` when outputting the numbers.
+
+_Note_: If it's a multi-edit selection, it will number from top to bottom, even if your multi-selection started in a different order (so if you click near the end, then `Ctrl+click` near the top, the first number will go near the top and the second number near the end).  Similarly, if you start your column-selection from the bottom and end at the top, it will still number from the top to the bottom.
 
 ## Multi-Editing
 
