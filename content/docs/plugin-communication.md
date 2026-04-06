@@ -151,6 +151,8 @@ struct toolbarIconsWithDarkMode {
 **Return value**:
 : Returns True
 
+_Notes: [data structure source](#caveat-on-data-structures)_
+
 ---
 
 #### [2125] **NPPM_ADDTOOLBARICON_FORDARKMODE**
@@ -178,6 +180,8 @@ struct toolbarIconsWithDarkMode {
 
 **Return value**:
 : Returns True
+
+_Notes: [data structure source](#caveat-on-data-structures)_
 
 ---
 
@@ -497,6 +501,8 @@ typedef struct {
 ~~~
 **Return value**:
 : Returns True
+
+_Notes: [data structure source](#caveat-on-data-structures)_
 
 ---
 
@@ -972,7 +978,7 @@ User is responsible to allocate a buffer which is large enough.*
 #### [2132] **NPPM_GETDARKMODECOLORS**
 *Retrieves the colors used in Dark Mode.
 User is responsible to allocate a buffer which is large enough.
-(Added v8.4.1)*
+(Added v8.4.1; data structured updated v8.4.3)*
 
 **Parameters**:
 
@@ -992,19 +998,23 @@ namespace NppDarkMode
 {
     struct Colors
     {
-        COLORREF background = 0;
-        COLORREF softerBackground = 0;
-        COLORREF hotBackground = 0;
-        COLORREF pureBackground = 0;
-        COLORREF errorBackground = 0;
-        COLORREF text = 0;
-        COLORREF darkerText = 0;
-        COLORREF disabledText = 0;
-        COLORREF linkText = 0;
-        COLORREF edge = 0;
+		COLORREF background = 0;
+		COLORREF softerBackground = 0; // ctrl background color
+		COLORREF hotBackground = 0;
+		COLORREF pureBackground = 0;   // dlg background color
+		COLORREF errorBackground = 0;
+		COLORREF text = 0;
+		COLORREF darkerText = 0;
+		COLORREF disabledText = 0;
+		COLORREF linkText = 0;
+		COLORREF edge = 0;
+		COLORREF hotEdge = 0;			// new to v8.4.3
+		COLORREF disabledEdge = 0;		// new to v8.4.3
     };
 }
 ```
+
+_Notes: [data structure source](#caveat-on-data-structures)_
 
 ---
 
@@ -1639,6 +1649,8 @@ struct ShortcutKey {
 **Return value**:
 : Returns True if this function call is successful and shortcut is enable, otherwise False
 
+_Notes: [data structure source](#caveat-on-data-structures)_
+
 ---
 
 #### [2138] **NPPM_GETTABCOLORID**
@@ -1990,6 +2002,8 @@ The returned value is TRUE if Notepad++ found the plugin by its module name (des
 
 **Return value**:
 : Returns True if Notepad++ found the plugin by its module name (destModuleName), and pass the info (communicationInfo) to the module, False otherwise.
+
+_Notes: [data structure source](#caveat-on-data-structures)_
 
 ---
 
@@ -2779,6 +2793,8 @@ that was closed (including getting its path or other meta-information), the
 
 	idFrom:		cmdID, the ID of the command shortcut
 
+_Notes: [data structure source](#caveat-on-data-structures)_
+
 ---
 
 #### [1009] **NPPN_SHUTDOWN**
@@ -2882,3 +2898,7 @@ you should allocate enough per string for [`MAX_PATH`](https://learn.microsoft.c
 _wide characters_: if your programming interface allocates strings based on number of bytes,
 then you will need to allocate `2*MAX_PATH` for the number of bytes, to be able to hold
 `MAX_PATH` wide characters.
+
+### Caveat on Data Structures
+
+The canonical source for internal data structures used by messages and notifications is the `Notepad_plus_msgs.h` file from the most recent [plugin template](https://github.com/npp-plugins/plugintemplate), or [that file](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h) from the Notepad++ source code repository.  If the structure is known to have changed between versions, it may be pointed out here; when it does change, you will either need to restrict your destination version(s) to those that use the same structure definition as your plugin, or choose between the structure definitions on-the-fly based on the active Notepad++ version.
