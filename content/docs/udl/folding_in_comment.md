@@ -6,8 +6,12 @@ slug: folding-in-comment
 
 # UDL &gt; Folding in comment
 
-This keyword set is new in UDL 2.1.<br>
-It allows you to fold anything as long as your language supports comments.<br>
+This keyword set is new in UDL 2.1.
+
+It allows you to fold anything as long as your language supports comments.
+
+The logic and meaning of **open**, **middle**, and **close** fields are the same as in the [folding in code](../folding_in_code/), but is only triggered by text inside comments.
+
 Let's demonstrate it by using C++ comments.
 
 ## Example 1
