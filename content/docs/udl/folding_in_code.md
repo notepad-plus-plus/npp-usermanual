@@ -6,7 +6,13 @@ slug: folding-in-code
 
 # UDL &gt; Folding in code
 
-Folding in code is quite different in UDL 2.1. Instead of two keyword sets (open and close), now we have three keyword sets (open, middle and close). Also, there are two Folding in code  groups: one for [forward (style1)](../introduction/) and one for [backward (style2)](../introduction/) search.
+Folding in code is quite different in UDL 2.1. Instead of two keyword sets (open and close), now we have three keyword sets (**open**, **middle** and **close**). Also, there are two Folding in code  groups: one for [forward (style1)](../introduction/) and one for [backward (style2)](../introduction/) search.
+
+The **open** field is used for the keyword(s) or symbol(s) that indicate the start of a folding block; the **close** field is used for the keyword(s) or symbol(s) that indicate the end of the folding block; the **middle** allows ending one block and starting the next (at the same level) with a single keyword (and is used for things like the `else-if` and `else` blocks in an `if`/`else-if`/`else`/`end-if` sequence).  
+
+If you define both an **open** and a **close**, then you can do arbitrary nesting of folding-inside-folding. 
+
+Under most circumstances, it does not make sense to have an `else` without a starting `if`, so the UDL folding processing was designed to have **middle** function correctly when there is an **open** before it; if **open** has not defined any keywords or symbols, or if the UDL parses the file and finds a **middle** keyword not preceded by an **open** keyword, then it may have a fold indicator at the **middle**, but there may be unexpected side effects: if you want to make sure **middle** folding works as expected, make sure to use an **open** keyword before it.
 
 ## Example 1
 
