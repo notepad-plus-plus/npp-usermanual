@@ -408,7 +408,7 @@ depending on your architecture.
             - `x64`: for 64-bit Notepad++
             - `ARM64`: for ARM64 builds of Notepad++
         6. Extract the `.exe` from the downloaded zipfile, rename it to `notepad++.<XXX>.dbg.exe`, and save it alongside the normal `notepad++.exe` in the `<DebugDirectory>`.
-    - **C.** If it's been so long since the last release that GitHub has cleaned out the last release's Artifacts, 
+    - **C.** If it's been so long since the last release that GitHub has cleaned out the last release's Artifacts,
       or if you are having difficulty finding the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> because they have moved,
       you can go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
       click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (that is, steps **B.** 4-6, above)

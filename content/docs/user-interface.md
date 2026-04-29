@@ -239,11 +239,11 @@ There is a toolbar which has icons for various common tasks, which each run a sp
     - Starting in v8.6.9, there is a drop-down menu available from this toolbar icon.  Clicking the button will still toggle from showing all to showing none.  But if you click the drop-down instead (or right click anywhere on the icon), you will see the full [**View > Show Symbol**](../views/#show-symbol) submenu, from which you can manually select which special characters to show and which not to.
 - **Show Indent Guide** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle dotted vertical line `⸽` showing tabstops.
 - **Define Your Language** ⇒ [**Language > User Defined Language > Define Your Language**](..//user-defined-language-system/): Toggles dialog to define a User Defined Language ("UDL").
-- **Document Map** ⇒ [**View > Document Map**](/views/#panels): Toggles display of the Document Map panel.
-- **Document List** ⇒ [**View > Document List**](/views/#panels): Toggles display of the Document List panel.
-- **Function List** ⇒ [**View > Function List**](/views/#panels): Toggles display of the [Function List](../function-list/) panel.
-- **Folder as Workspace** ⇒ [**View > Folder as Workspace**](/views/#panels): Toggles display of the [Folder as Workspace](/session/#folder-as-workspace) panel.
-- **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](/views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
+- **Document Map** ⇒ [**View > Document Map**](../views/#panels): Toggles display of the Document Map panel.
+- **Document List** ⇒ [**View > Document List**](../views/#panels): Toggles display of the Document List panel.
+- **Function List** ⇒ [**View > Function List**](../views/#panels): Toggles display of the [Function List](../function-list/) panel.
+- **Folder as Workspace** ⇒ [**View > Folder as Workspace**](../views/#panels): Toggles display of the [Folder as Workspace](../session/#folder-as-workspace) panel.
+- **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](../views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
 - **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
 - **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro.
 - **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro.
