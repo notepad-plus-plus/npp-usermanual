@@ -1,0 +1,27 @@
+name: Test Markdown
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: 🚚 Checkout repo
+      uses: actions/checkout@v6
+
+    - name: 📡 Set up Python 3.13
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13' # Uses the latest patch version of the given
+
+    - name: 📡 Install python modules
+      working-directory: .
+      run: |
+            python -m pip install --upgrade pip
+            python -m pip install -r requirements.txt
+
+    - name: ❓ Validate Markdown Links
+      working-directory: .
+      run: python -X utf8 .tests\check_links.py

@@ -14,12 +14,12 @@ jobs:
     - name: 📡 Install hugo-extended via chocolatey
       working-directory: .
       run: |
-           choco install hugo-extended --version=0.68.3
+            choco install hugo-extended --version=0.68.3
 
     - name: 🔨 Build static HTML for site
       working-directory: .
       run: |
-           hugo.exe -d static_html --theme hugo-book-9 --baseURL "http://localhost:1313"
+            hugo.exe -d static_html --theme hugo-book-9 --baseURL "http://localhost:1313"
 
             # first do the changes that go in all the HTML files
             Get-ChildItem -Recurse "./static_html" -Filter index.html | Foreach-Object {
