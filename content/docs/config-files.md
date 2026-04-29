@@ -16,7 +16,7 @@ Please note that Notepad++ writes the configuration files when it exits, which i
 
 ## Configuration Files Location
 
-In a standard installation, the per-user configuration files go in `%AppData%\Notepad++\`. (For a refresher course on `%AppData%`, see the [Community Forum FAQ's `%AppData%` entry](https://community.notepad-plus-plus.org/topic/15740/faq-desk-what-is-appdata).)  The machine-wide configuration files go in the executable directory (so usually `c:\program files\notepad++\`). When Notepad++ is looking for [shortcuts](#keyboard-shortcuts-shortcuts-xml), [stylers and themes](#highlighting-schemes-stylers-xml), [function list](#function-list) definitions, and [user defined language](#other-configuration-files:~:text=Configuration%20location%20for%20the%20User%20Defined%20Languages%20feature) definitions (and usually the [default session file](https://npp-user-manual.org/docs/config-files/#other-configuration-files:~:text=session.xml%3A%20Stores%20the%20current%20session%20information), though that has exceptions enumerated below), it will try to read from the per-user directory; if the right file isn't found there, then it will check machine-wide configuration files.
+In a standard installation, the per-user configuration files go in `%AppData%\Notepad++\`. (For a refresher course on `%AppData%`, see the [Community Forum FAQ's `%AppData%` entry](https://community.notepad-plus-plus.org/topic/15740/faq-desk-what-is-appdata).)  The machine-wide configuration files go in the executable directory (so usually `c:\program files\notepad++\`). When Notepad++ is looking for [shortcuts](#keyboard-shortcuts-shortcutsxml), [stylers and themes](#highlighting-schemes-stylersxml), [function list](#function-list) definitions, and [user defined language](#other-configuration-files:~:text=Configuration%20location%20for%20the%20User%20Defined%20Languages%20feature) definitions (and usually the [default session file](https://npp-user-manual.org/docs/config-files/#other-configuration-files:~:text=session.xml%3A%20Stores%20the%20current%20session%20information), though that has exceptions enumerated below), it will try to read from the per-user directory; if the right file isn't found there, then it will check machine-wide configuration files.
 
 In a portable installation, the configuration files all go in the same directory as the `notepad++.exe` executable (or the appropriate subdirectory), and there is no per-user configuration location. An installation is treated as "portable" if the zero-byte `doLocalConf.xml` file is present alongside the `notepad++.exe` executable (see also [Undoing Portable](#undoing-portable), below). The **?** menu's **Debug Info** will show `Local Conf mode: ON` for a portable version.
 
@@ -293,7 +293,7 @@ The value used in the `tabSettings` attribute value depends on the **[Settings >
 - If it is set to use `☑ Use Default Value`, then this attribute will be `tabSettings="-1"`.
 - If this `<Language...>` entry is missing the `tabSettings` attribute, it will behave as if it had `tabSettings="-1"`.
 
-Inside each of the languages, you _could_ add keywords. However, it's better to use [**Settings > Style Configurator**](../preferences/#style-configurator) and make use of the user-defined keywords box for a given category (when available). These user-defined keywords are stored in [`stylers.xml`](#highlighting-schemes-stylers-xml) (described below).
+Inside each of the languages, you _could_ add keywords. However, it's better to use [**Settings > Style Configurator**](../preferences/#style-configurator) and make use of the user-defined keywords box for a given category (when available). These user-defined keywords are stored in [`stylers.xml`](#highlighting-schemes-stylersxml) (described below).
 
 The order of the `ext` list here determines the order of extensions in the file-type pulldowns of the Windows-common-dialogs like **Open**, **Save**, and **Save As** dialogs.  The automatically-added extension will be the first extension from this `ext` list.
 
@@ -521,7 +521,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
     - This file is created the first time you save a recorded macro after upgrading from Notepad++ v8.5.2 (or older) to Notepad++ v8.5.3 (or newer)
     - When this file is created, it will also create `shortcuts.xml.v8.5.2.backup`
     - After this file is created, Notepad++ won't check any more whether `shortcuts.xml` has been updated
-    - See [v8.5.3 `shortcuts.xml` updates](#v8-5-3-shortcuts-xml-updates) (above) and this Notepad++ Community [FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
+    - See [v8.5.3 `shortcuts.xml` updates](#v853-shortcutsxml-updates) (above) and this Notepad++ Community [FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
     - As of v8.9.3, this is no longer used.
 
 ### Logfiles
