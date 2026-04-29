@@ -112,7 +112,7 @@ The following tells Notepad++ that your plugin needs the `SC_MOD_DELETETEXT` and
 			case NPPN_READY:
 			{
 				// Add SC_MOD_DELETETEXT and SC_MOD_INSERTTEXT notifications
-				::SendMessage(nppData._nppHandle, NPPM_ADDSCNMODIFIEDFLAGS, 0, SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT); 
+				::SendMessage(nppData._nppHandle, NPPM_ADDSCNMODIFIEDFLAGS, 0, SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT);
 			}
 			break;
 			...
@@ -355,7 +355,7 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 
 - It is important for the message to be sent _after_ controls are initialized, otherwise it may not affect all controls correctly.
 
-- For v8.5.4 - v8.8.1, this message did not affect some controls, including tabbed-interface controls, progress bars, and URL links; 
+- For v8.5.4 - v8.8.1, this message did not affect some controls, including tabbed-interface controls, progress bars, and URL links;
   starting in v8.8.2, those controls are included in the subclassing from this message.
 
 **Examples:**
@@ -781,7 +781,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 ---
 
 #### [4033] **NPPM_GETCURRENTCOLUMN**
-*Retrieves the column of the [caret](#caret-and-cursor "typing/insertion cursor").*
+*Retrieves the column of the [caret](../editing/#caret-and-cursor "typing/insertion cursor").*
 
 **Parameters**:
 
@@ -792,7 +792,7 @@ allocate commandLineStr buffer with the return value + 1, then call it again to 
 : int, must be zero.
 
 **Return value**:
-: Returns the current, 0-based, column position of the [caret](#caret-and-cursor "typing/insertion cursor").
+: Returns the current, 0-based, column position of the [caret](../editing/#caret-and-cursor "typing/insertion cursor").
 
 ---
 
@@ -849,7 +849,7 @@ Please see the enum LangType for all possible values.
 ---
 
 #### [4032] **NPPM_GETCURRENTLINE**
-*Retrieves the line of the [caret](#caret-and-cursor "typing/insertion cursor").*
+*Retrieves the line of the [caret](../editing/#caret-and-cursor "typing/insertion cursor").*
 
 **Parameters**:
 
@@ -860,7 +860,7 @@ Please see the enum LangType for all possible values.
 : int, must be zero.
 
 **Return value**:
-: Returns the current, 0-based, line position of the [caret](#caret-and-cursor "typing/insertion cursor").
+: Returns the current, 0-based, line position of the [caret](../editing/#caret-and-cursor "typing/insertion cursor").
 
 ---
 
@@ -959,7 +959,7 @@ The returned value can be one of the following:
 ---
 
 #### [4030] **NPPM_GETCURRENTWORD**
-*Retrieves the word containing the [caret](#caret-and-cursor "typing/insertion cursor").
+*Retrieves the word containing the [caret](../editing/#caret-and-cursor "typing/insertion cursor").
 User is responsible to allocate a buffer which is large enough.*
 
 **Parameters**:
@@ -1149,8 +1149,8 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [4035] **NPPM_GETFILENAMEATCURSOR**
-*Retrieves the filename at the current [caret](#caret-and-cursor "typing/insertion cursor") position.
-Note, while this message has been created, and is used internally, to retrieve a filename at the current [caret](#caret-and-cursor "typing/insertion cursor") position, it does return anything which fulfills the requirements, even single words.*
+*Retrieves the filename at the current [caret](../editing/#caret-and-cursor "typing/insertion cursor") position.
+Note, while this message has been created, and is used internally, to retrieve a filename at the current [caret](../editing/#caret-and-cursor "typing/insertion cursor") position, it does return anything which fulfills the requirements, even single words.*
 
 **Parameters**:
 
@@ -2891,7 +2891,7 @@ The BufferID received by a notification is not necessarily the _active_ buffer. 
 
 ### Array of Path Strings
 
-Some of the messages have a `wchar_t **` type, which is an array of wide-character strings.  
+Some of the messages have a `wchar_t **` type, which is an array of wide-character strings.
 All such messages require you to pre-allocate the array, with enough strings, and enough
 _wide_ characters (2 bytes each) for each string.  Since these messages are dealing with paths,
 you should allocate enough per string for [`MAX_PATH`](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file "MS Learn: MAX_PATH")
