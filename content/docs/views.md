@@ -95,7 +95,9 @@ The remaining two entries in this sub-menu aren't affecting the glyphs of charac
 
 ## Zoom
 
-The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom Out** (shrink the text), or **Restore Default Zoom** (which will change the text size back to default settings).  These actions all act only on the current View, so if you have two Views visible, only one will be affected.  Zooming can also be accomplished by holding down the <kbd>Ctrl</kbd> key and using the mouse wheel to go up (enlarge) or down (shrink).
+The **Zoom** sub-menu will allow you to **Zoom In** (enlarge the text), **Zoom Out** (shrink the text), or **Restore Default Zoom** (which will change the text size back to default settings).  These actions all act only on the current View, so if you have two Views visible, only one will be affected.  Zooming can also be accomplished by holding down the <kbd>Ctrl</kbd> key and using the mouse wheel to go up (enlarge) or down (shrink), or by using the keyboard shortcuts listed in the **Zoom** menu or [**Shorcut Mapper** dialog](../preferences/#shortcut-mapper).
+
+Starting in v8.9.5, there is also a **Synchronize Across Views** command: if you have two Views visible, then you can use this command to have it so if you zoom one View, the other View will also zoom.  Selecting this again with un-synchronize the Views' zoom levels, so you can make the Views have separate zooms.
 
 ## Move / Clone
 
