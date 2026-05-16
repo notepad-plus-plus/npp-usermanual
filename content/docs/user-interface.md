@@ -216,39 +216,39 @@ By default, the commands available in that context menu are described below.  If
 
 There is a toolbar which has icons for various common tasks, which each run a specific menu action.  If you hover your mouse over that icon, it will show its name.  The toolbar actions include:
 
-- **New** ⇒ [**File > New**](../files/#file-menu): Creates a new file.
-- **Open** ⇒ [**File > Open**](../files/#file-menu): Opens an existing file.
-- **Save** ⇒ [**File > Save**](../files/#file-menu): Saves the active file.
-- **Save All** ⇒ [**File > Save All**](../files/#file-menu): Saves all active files.
-- **Close** ⇒ [**File > Close**](../files/#file-menu): Closes the active file.
-- **Close All** ⇒ [**File > Close ALl**](../files/#file-menu): Closes all open files.
-- **Print** ⇒ [**File > Print**](../files/#printing): Launch the Print dialog.
-- **Cut** ⇒ [**Edit > Cut**](../editing/#edit-menu): Cuts the selected text or line to the clipboard.
-- **Copy** ⇒ [**Edit > Copy**](../editing/#edit-menu): Copies the selected text or line to the clipboard.
-- **Paste** ⇒ [**Edit > Paste**](../editing/#edit-menu): Pastes the clipboard contents.
-- **Undo** ⇒ [**Edit > Undo**](../editing/#edit-menu): Reverts the text to its content before the previous operation.
-- **Redo** ⇒ [**Edit > Redo**](../editing/#edit-menu): Re-applies that action that was just reverted due to an Undo.
-- **Find** ⇒ [**Search > Find**](../searching/#find-replace-tabs): Launches the **Find** dialog.
-- **Replace** ⇒ [**Search > Replace**](../searching/#find-replace-tabs): Launches the **Replace** dialog.
-- **Zoom In** ⇒ [**View > Zoom > Zoom In**](../views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
-- **Zoom Out** ⇒[**View > Zoom > Zoom Out**](../views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
-- **Synchronize Vertical Scrolling** ⇒ [**View > Synchronize Vertical Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, vertically.
-- **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
-- **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
-- **Show All Characters** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle showing all special characters.
+- ![](../images/icons/standard/newFile.png)          ![](../images/icons/fluent/new.png)                     **New** ⇒ [**File > New**](../files/#file-menu): Creates a new file.
+- ![](../images/icons/standard/openFile.png)         ![](../images/icons/fluent/open.png)                    **Open** ⇒ [**File > Open**](../files/#file-menu): Opens an existing file.
+- ![](../images/icons/standard/saveFile.png)         ![](../images/icons/fluent/save.png)                    **Save** ⇒ [**File > Save**](../files/#file-menu): Saves the active file.
+- ![](../images/icons/standard/saveAll.png)          ![](../images/icons/fluent/saveall.png)                 **Save All** ⇒ [**File > Save All**](../files/#file-menu): Saves all active files.
+- ![](../images/icons/standard/closeFile.png)        ![](../images/icons/fluent/close.png)                   **Close** ⇒ [**File > Close**](../files/#file-menu): Closes the active file.
+- ![](../images/icons/standard/closeAll.png)         ![](../images/icons/fluent/closeall.png)                **Close All** ⇒ [**File > Close ALl**](../files/#file-menu): Closes all open files.
+- ![](../images/icons/standard/print.png)            ![](../images/icons/fluent/print.png)                   **Print** ⇒ [**File > Print**](../files/#printing): Launch the Print dialog.
+- ![](../images/icons/standard/cut.png)              ![](../images/icons/fluent/cut.png)                     **Cut** ⇒ [**Edit > Cut**](../editing/#edit-menu): Cuts the selected text or line to the clipboard.
+- ![](../images/icons/standard/copy.png)             ![](../images/icons/fluent/copy.png)                    **Copy** ⇒ [**Edit > Copy**](../editing/#edit-menu): Copies the selected text or line to the clipboard.
+- ![](../images/icons/standard/paste.png)            ![](../images/icons/fluent/paste.png)                   **Paste** ⇒ [**Edit > Paste**](../editing/#edit-menu): Pastes the clipboard contents.
+- ![](../images/icons/standard/undo.png)             ![](../images/icons/fluent/undo.png)                    **Undo** ⇒ [**Edit > Undo**](../editing/#edit-menu): Reverts the text to its content before the previous operation.
+- ![](../images/icons/standard/redo.png)             ![](../images/icons/fluent/redo.png)                    **Redo** ⇒ [**Edit > Redo**](../editing/#edit-menu): Re-applies that action that was just reverted due to an Undo.
+- ![](../images/icons/standard/find.png)             ![](../images/icons/fluent/find.png)                    **Find** ⇒ [**Search > Find**](../searching/#find-replace-tabs): Launches the **Find** dialog.
+- ![](../images/icons/standard/findReplace.png)      ![](../images/icons/fluent/findrep.png)                 **Replace** ⇒ [**Search > Replace**](../searching/#find-replace-tabs): Launches the **Replace** dialog.
+- ![](../images/icons/standard/zoomIn.png)           ![](../images/icons/fluent/zoomIn.png)                  **Zoom In** ⇒ [**View > Zoom > Zoom In**](../views/#zoom): Temporarily enlarge the visible rendering of the text (does not change anything in the file).
+- ![](../images/icons/standard/zoomOut.png)          ![](../images/icons/fluent/zoomOut.png)                 **Zoom Out** ⇒[**View > Zoom > Zoom Out**](../views/#zoom): Temporarily shrink the visible rendering of the text (does not change anything in the file).
+- ![](../images/icons/standard/syncV.png)            ![](../images/icons/fluent/syncV.png)                   **Synchronize Vertical Scrolling** ⇒ [**View > Synchronize Vertical Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, vertically.
+- ![](../images/icons/standard/syncH.png)            ![](../images/icons/fluent/syncH.png)                   **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
+- ![](../images/icons/standard/wrap.png)             ![](../images/icons/fluent/wrap.png)                    **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
+- ![](../images/icons/standard/allChars.png)         ![](../images/icons/fluent/allChars.png)                **Show All Characters** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle showing all special characters.
     - Starting in v8.6.9, there is a drop-down menu available from this toolbar icon.  Clicking the button will still toggle from showing all to showing none.  But if you click the drop-down instead (or right click anywhere on the icon), you will see the full [**View > Show Symbol**](../views/#show-symbol) submenu, from which you can manually select which special characters to show and which not to.
-- **Show Indent Guide** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle dotted vertical line `⸽` showing tabstops.
-- **Define Your Language** ⇒ [**Language > User Defined Language > Define Your Language**](..//user-defined-language-system/): Toggles dialog to define a User Defined Language ("UDL").
-- **Document Map** ⇒ [**View > Document Map**](../views/#panels): Toggles display of the Document Map panel.
-- **Document List** ⇒ [**View > Document List**](../views/#panels): Toggles display of the Document List panel.
-- **Function List** ⇒ [**View > Function List**](../views/#panels): Toggles display of the [Function List](../function-list/) panel.
-- **Folder as Workspace** ⇒ [**View > Folder as Workspace**](../views/#panels): Toggles display of the [Folder as Workspace](../session/#folder-as-workspace) panel.
-- **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](../views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
-- **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
-- **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro.
-- **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro.
-- **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times.
-- **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu.
+- ![](../images/icons/standard/indentGuide.png)      ![](../images/icons/fluent/indentGuide.png)             **Show Indent Guide** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle dotted vertical line `⸽` showing tabstops.
+- ![](../images/icons/standard/udl.png)              ![](../images/icons/fluent/udl.png)                     **Define Your Language** ⇒ [**Language > User Defined Language > Define Your Language**](..//user-defined-language-system/): Toggles dialog to define a User Defined Language ("UDL").
+- ![](../images/icons/standard/docMap.png)           ![](../images/icons/fluent/docMap.png)                  **Document Map** ⇒ [**View > Document Map**](../views/#panels): Toggles display of the Document Map panel.
+- ![](../images/icons/standard/docList.png)          ![](../images/icons/fluent/docList.png)                 **Document List** ⇒ [**View > Document List**](../views/#panels): Toggles display of the Document List panel.
+- ![](../images/icons/standard/funcList.png)         ![](../images/icons/fluent/funcList.png)                **Function List** ⇒ [**View > Function List**](../views/#panels): Toggles display of the [Function List](../function-list/) panel.
+- ![](../images/icons/standard/fileBrowser.png)      ![](../images/icons/fluent/fileBrowser.png)             **Folder as Workspace** ⇒ [**View > Folder as Workspace**](../views/#panels): Toggles display of the [Folder as Workspace](../session/#folder-as-workspace) panel.
+- ![](../images/icons/standard/monitoring.png)       ![](../images/icons/fluent/monitoring.png)              **Monitoring (tail -f)** ⇒ [**View > Monitoring (tail -f)**](../views/#live-file-monitoring): Toggles the Live File Monitoring feature, which updates the file as its changed by another external process.
+- ![](../images/icons/standard/startRecord.png)      ![](../images/icons/fluent/startrecord.png)             **Start Recording** ⇒ [**Macro > Start Recording**](../macros/#record-a-macro): Starts recording actions in Notepad++ as a macro.
+- ![](../images/icons/standard/stopRecord.png)       ![](../images/icons/fluent/stoprecord.png)              **Stop Recording** ⇒ [**Macro > Stop Recording**](../macros/#record-a-macro): Stops recording actions in Notepad++ as a macro.
+- ![](../images/icons/standard/playRecord.png)       ![](../images/icons/fluent/playrecord.png)              **Playback** ⇒ [**Macro > Playback**](../macros/#play-a-recorded-macro): Plays back a recorded macro.
+- ![](../images/icons/standard/playRecord_m.png)     ![](../images/icons/fluent/playrecord_m.png)            **Run a Macro Multiple Times...** ⇒ [**Macro > Run a Macro Multiple Times...**](../macros/#play-a-recorded-macro-multiple-times): Plays back a recorded macro multiple times.
+- ![](../images/icons/standard/saveRecord.png)       ![](../images/icons/fluent/saverecord.png)              **Save Current Recorded Macro...** ⇒ [**Macro > Save Current Recorded Macro...**](../macros/#save-a-recorded-macro): Saves a recorded macro to a named slot in the **Macro** menu.
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
