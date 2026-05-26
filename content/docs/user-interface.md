@@ -187,7 +187,8 @@ By default, the commands available in that context menu are described below.  If
 - `Save As`: Allows you to save the current file under a new name.
 - `Open Into >`:
   - `Open Containing Folder in Explorer`: Opens this file's folder in the Windows Explorer.
-  - `Open Containing Folder in cmd`: Opens this file's folder in the `cmd` command prompt.
+  - `Open Containing Folder in cmd`: Opens this file's folder in the `cmd` command prompt.  (Through v8.9.6, this was influenced by the [`commandLineInterpreter` advanced-user config](../preferences/#preferences-for-advanced-users); the advanced config was removed in v8.9.6.1.)
+  - `Open Containing Folder in PowerShell`: Opens an instance of Windows PowerShell command-line, starting in the folder which contains the active file. (New to v8.9.6.1.)
   - `Open Containing Folder as Workspace`: Opens this file's folder as a [Folder as Workspace](../session/#folder-as-workspace).
   - `Open in Default Viewer`: Opens this file in the default Windows, using the same rules as the [**File > Open in Default Viewer** menu action](../files/#file-menu).
 - `Rename`: Renames this file.

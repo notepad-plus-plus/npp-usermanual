@@ -866,14 +866,17 @@ The following settings are for rather specific needs and could cause some confus
 
 * Make the **Find in Files** Filter field automatically populate based on the file type / extension of the current file when you launch the dialog.  This can be set by changing the `<Find History ...>` tag inside `config.xml`, using the attribute `fifFilterFollowsDoc`: set it to `fifFilterFollowsDoc="yes"` to make Notepad++ automatically populate that Filter field every time you launch the **Find in Files** dialog (however, you can override that filter by typing a new filter; and changing the active tab or opening a new file after the dialog is already shown will _not_ update that field automatically); if it is set to `fifFilterFollowsDoc="no"` (default), then the Filter field will not change when you launch **Find in Files**, and will instead remember the last value you entered into the field (if any).
 
-* Changing the command-line interpreter used: By default, **File > Open Containing Folder > cmd** will launch the `cmd.exe` command-line interpreter.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section:
-   ```
-   <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
-   ```
-   If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there are spaces, make sure to use quotes around the path:
-   ```
-   <GUIConfig name="commandLineInterpreter">"C:\path\with spaces\to\cli.exe"</GUIConfig>
-   ```
+* Changing the command-line interpreter used:
+    - Starting in v8.9.6.1, the `commandLineInterpreter` config mentioned below will _not_ work any more.  Instead, the [File menu](../files/#file-menu) and [Tab Bar context menu](../user-interface/#tab-bar-right-click-menu) that reference opening in `cmd` have added another entry to also open in PowerShell.
+    - Through v8.9.6, **[File > Open Containing Folder](../files/#file-menu) > cmd** will launch the `cmd.exe` command-line interpreter by default.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section, like:
+        ```
+        <GUIConfig name="commandLineInterpreter">powershell</GUIConfig>
+        ```
+        If your command-line interpreter is not in your path, make sure to include the drive and folder in the contents of that tag.  If there  are spaces, make sure to use quotes around the path:
+        ```
+        <GUIConfig name="commandLineInterpreter">"C:\path\with spaces\to\cli.exe"</GUIConfig>
+        ```
+        This was removed in v8.9.6.1 for security reasons.
 * Control whether tab coloring follows theme or not:
   - By default, in Light Mode, the tab colors will follow the theme's settings for **[Settings > Style Configurator > Global Styles](#global-styles) > Active tab text** foreground and **Inactive tabs** foreground and background colors; in Dark Mode, the tab colors will _not_ follow those settings (because many users use Dark themes that don't set that color, which would mess up the user interface for those users, and they wouldn't be able to fix it, because the style wouldn't be listed in the theme).
   - There are two hidden settings in the Dark Mode section of the XML (new in v8.4.8):

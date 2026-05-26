@@ -15,7 +15,8 @@ The **File** menu contains many of the normal file-operation actions found in mo
 - **Open**: Opens an existing file from the filesystem, and displays that document in a Tab in the active View.
 - **Open Containing Folder >**:
     - **Explorer**: Opens an instance of the Windows Explorer, starting in the folder (also known as the "directory") which contains the active file.
-    - **cmd**: Opens an instance of Windows' `cmd.exe`, starting in the folder which contains the active file.
+    - **cmd**: Opens an instance of Windows' `cmd.exe`, starting in the folder which contains the active file. (Through v8.9.6, this was influenced by the [`commandLineInterpreter` advanced-user config](../preferences/#preferences-for-advanced-users); the advanced config was removed in v8.9.6.1.)
+    - **PowerShell**: Opens an instance of Windows PowerShell command-line, starting in the folder which contains the active file. (New to v8.9.6.1.)
     - **Folder as Workspace**: Opens the active file's folder in Notepad++'s [Folder as Workspace](../session/#folder-as-workspace) panel.
 - **Open in Default Viewer**: This will make use of the Windows "filetype association" for the active file (based on the file extension).
     - It does the equivalent of double-clicking on a file in Windows Explorer.
