@@ -342,25 +342,31 @@ _Note_: If you select a whole word and have the `☐ Match whole word only` opti
 
 Affects how the text is formatted when sent to the printer.
 
-* `☐ Print line number`: Will include line numbers when printed.
-* **Color Options**
-    * `☐ WYSIWYG`: What you see is what you get. The same colors you see in the editor will apply to printing.
-    * `☐ Invert`: Black prints as white, light color prints as dark, and vice versa.
-    * `☐ Black on White`: Prints black text on white background, no highlighting.
-    * `☐ No background color`: Same as WYSIWYG, except no background color is printed.
-* **Margin Setting (Unit:mm)**: Define the page margins, in mm.
-* **Header and Footer**: Define what will be printed in each page's header and footer sections.
-    * Click in one of the `Left part`, `Middle part`, or `Right part` for header or footer;
-    * Either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current [caret](../editing/#caret-and-cursor "typing/insertion cursor") position:
-        * Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `C:\path\to\file.txt`
-        * Add **File name** ⇒ `$(FILE_NAME)` in the input box ⇒ will print something like `file.txt`
-        * Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `C:\path\to`
-        * Add **Page** ⇒ `$(CURRENT_PRINTING_PAGE)` in the input box ⇒ will print the current page number.  (Sorry, there is no total-number-of-pages variable, so you cannot do `page # of #`.)
-        * Add **Short date format** ⇒ `$(SHORT_DATE)` in the input box ⇒ will print something like `m/dd/yyyy` (possibly locale-dependent)
-        * Add **Long date format** ⇒ `$(LONG_DATE)` in the input box ⇒ will print something like `Day, Month ##, YYYY` (possibly locale-dependent)
-        * Add **Time** ⇒ `$(TIME)` in the input box ⇒ will print something like `HH:MM AM` (possibly locale-dependent)
-    * Font pulldown: Use selected font for the header or footer (if left blank, use document's default font).
-    * Font size pulldown: Define font size for header or footer.
+- **Color Options**
+    - `☐ WYSIWYG`: What you see is what you get. The same colors you see in the editor will apply to printing.
+    - `☐ Invert`: Black prints as white, light color prints as dark, and vice versa.
+    - `☐ Black on White`: Prints black text on white background, no highlighting.
+    - `☐ No background color`: Same as WYSIWYG, except no background color is printed.
+- **Margin Setting (Unit:mm)**: Define the page margins, in mm.
+- **Header and Footer**: Define what will be printed in each page's header and footer sections.
+    - Click in one of the `Left part`, `Middle part`, or `Right part` for header or footer;
+    - Either type in text for literal text, or use the `Variable:` drop-down and `Add` button to add one of the variables at the current [caret](../editing/#caret-and-cursor "typing/insertion cursor") position:
+        - Add **Full file name path** ⇒ `$(FULL_CURRENT_PATH)` in the input box ⇒ will print something like `C:\path\to\file.txt`
+        - Add **File name** ⇒ `$(FILE_NAME)` in the input box ⇒ will print something like `file.txt`
+        - Add **File directory** ⇒ `$(CURRENT_DIRECTORY)` in the input box ⇒ will print something like `C:\path\to`
+        - Add **Page** ⇒ `$(CURRENT_PRINTING_PAGE)` in the input box ⇒ will print the current page number.  (Sorry, there is no total-number-of-pages variable, so you cannot do `page # of #`.)
+        - Add **Short date format** ⇒ `$(SHORT_DATE)` in the input box ⇒ will print something like `m/dd/yyyy` (possibly locale-dependent)
+        - Add **Long date format** ⇒ `$(LONG_DATE)` in the input box ⇒ will print something like `Day, Month ##, YYYY` (possibly locale-dependent)
+        - Add **Time** ⇒ `$(TIME)` in the input box ⇒ will print something like `HH:MM AM` (possibly locale-dependent)
+    - Font pulldown: Use selected font for the header or footer (if left blank, use document's default font).
+    - Font size pulldown: Define font size for header or footer.
+- `☐ Print line number`: Will include line numbers when printed.
+- `☐ Print formfeed as page break`: When on, the formfeed character (`FF`, ASCII 12, U+000C) will cause the printed version to add a PageBreak next to the `FF` character. (New in v8.9.7.)
+    - If **[View > Show Symbol](../views/#show-symbol) > Show Control Characters & Unicode EOL** is also on, the `FF` glyph will still be printed _and_ the page will be split.
+        - If the `FF` is _before_ the end-of-line (EOL) sequence, the `FF` glyph will be on the old page, and everything after the newline on the new page.
+        - If the `FF` is _after_ the EOL, the `FF` glyph will be on the new page.
+    - The formfeed-as-page-break option is not intended for having the `FF` in the middle of the line: manual page breaks should be at the beginning or end of a logical line, not in the middle.  Use the `FF` next to the EOL for expected results.  
+
 
 ### Searching
 

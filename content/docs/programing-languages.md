@@ -13,21 +13,21 @@ Around 90 Programming Languages are supported by Notepad++:
 | AutoIt                 | AviSynth               | BaanC                  | Batch                  | BlitzBasic             |
 | C                      | C#                     | C++                    | CAML                   | CMake                  |
 | COBOL                  | CoffeeScript           | Csound                 | CSS                    | D                      |
-| Diff                   | Erlang                 | ErrorList              | ESCRIPT                | Forth                  |
-| Fortran fixed form     | Fortran free form      | FreeBasic              | GDScript               | Go                     |
-| Gui4Cli                | Haskell                | Hollywood              | HTML                   | ini                    |
-| Inno Setup             | Intel HEX              | Internal Search        | Java                   | JavaScript             |
-| json                   | json5                  | JSP                    | KiXtart                | LaTeX                  |
-| Lisp                   | Lua                    | Makefile               | MATLAB                 | MMIXAL                 |
-| mssql                  | NFO                    | Nim                    | Nncrontab              | NSIS                   |
-| Objective-C            | OScript                | Pascal                 | Perl                   | PHP                    |
-| PostScript             | PowerShell             | Properties file        | PureBasic              | Python                 |
-| R                      | Raku                   | RC                     | REBOL                  | registry               |
-| Ruby                   | Rust                   | SAS                    | S-Record               | Scheme                 |
-| Shell                  | Smalltalk              | Spice                  | SQL                    | Swift                  |
-| TCL                    | Tektronix extended HEX | TeX                    | TOML                   | txt2tags               |
-| TypeScript             | Verilog                | VHDL                   | Visual Basic           | Visual Prolog          |
-| XML                    | YAML                   |                        |                        |                        |
+| Diff                   | Erlang                 | ErrorList              | EscapeSequence (ANSI)  | ESCRIPT                | 
+| Forth                  | Fortran fixed form     | Fortran free form      | FreeBasic              | GDScript               |
+| Go                     | Gui4Cli                | Haskell                | Hollywood              | HTML                   |
+| ini                    | Inno Setup             | Intel HEX              | Internal Search        | Java                   |
+| JavaScript             | json                   | json5                  | JSP                    | KiXtart                |
+| LaTeX                  | Lisp                   | Lua                    | Makefile               | MATLAB                 |
+| MMIXAL                 | mssql                  | NFO                    | Nim                    | Nncrontab              |
+| NSIS                   | Objective-C            | OScript                | Pascal                 | Perl                   |
+| PHP                    | PostScript             | PowerShell             | Properties file        | PureBasic              |
+| Python                 | R                      | Raku                   | RC                     | REBOL                  |
+| registry               | Ruby                   | Rust                   | SAS                    | S-Record               |
+| Scheme                 | Shell                  | Smalltalk              | Spice                  | SQL                    |
+| Swift                  | TCL                    | Tektronix extended HEX | TeX                    | TOML                   |
+| txt2tags               | TypeScript             | Verilog                | VHDL                   | Visual Basic           |
+| Visual Prolog          | XML                    | YAML                   |                        |                        |
 
 For these languages, Notepad++ supports [syntax highlighting](../preferences/#style-configurator) (customizable),
 syntax folding, [auto-completion](../auto-completion/) (customizable),
