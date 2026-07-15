@@ -127,8 +127,7 @@ for any technical questions/answers and the announcement of your new plugin.
   - [NppCSharpPluginPack](https://github.com/molsonkiko/NppCSharpPluginPack) - Mark Olson's fork of the original "kblisted" pack, with improvements and active maintenance.
   - [Npp.DotNet.Plugin](https://www.nuget.org/packages/Npp.DotNet.Plugin) - AOT-compatible port of the .NET Framework plugin template for Notepad++.
 * [D](https://gitlab.com/dokutoku/npp-api)
-* Delphi:
-  - [Modern (32-bit/64-bit)](https://bitbucket.org/rdipardo/delphiplugintemplate/get/default.zip): This version has the headers necessary to work with Notepad++ v8.3.3 and newer.
+* [Delphi / Lazarus](https://github.com/rdipardo/delphiplugintemplate#readme)
 
 ### Header Files
 
