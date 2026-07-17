@@ -147,11 +147,11 @@ The contents of a `<AutoComplete>` start with an autoclosing `<Environment>` tag
 5. `terminal`: the character(s) which mark the end of a prototype, when the language allows C-style separate prototyping. Defaults to `";"`. Leave it out if the language does not support separate prototyping, or set it to some illegal character.
 6. `additionalWordChar`: character(s) that may be part of words and which are not a lower or upper case letter, a digit or the underscore. The value is a string with all these extra characters, in any order and without separators. The string is empty by default.
 
-NOTE: Spaces can't be used as the character for the attributes.
+NOTE: You cannot use spaces in the values of any attributes of the `<Environment>` tag, so a space cannot be the start or end of the function, nor a parameter separator, nor the terminal, nor the additional word character.
 
 Any attribute can be omitted, and the `<Environment>` tag as well. The practice is not recommended though.
 
-Following is a list of `<KeyWord>` tags. They are either auto-closing, for keywords that are not routines, or not when they are. Each such tag has a mandatory `name` attribute, the keyword/routine name to recognise. The list **must be sorted according to this attribute and the value of the `<Environment>` ignoreCase attribute**. See subsections below for more on keyword names and sorting.
+Following is a list of `<KeyWord>` tags. The tag shouod be auto-closing (`<Keyword .... />`) for keywords that are not routines/functions; or not auto-closing (`<KeyWord name="xxx">...</KeyWord>`) when they are routines/functions. Each such tag has a mandatory `name` attribute, the keyword/routine name to recognise. The list **must be sorted according to this attribute and the value of the `<Environment>` ignoreCase attribute**. See subsections below for more on keyword names and sorting.  The `<KeyWord>`-tag's `name="..."` attribute value (which stores the actual text for auto-completion) cannot include spaces, and should only contain punctuation that's included in the `additionalWordChar` list from the `<Environment>` tag above.
 
 When a `<KeyWord>` tag is not auto-closing, it must have a second attribute, `func="yes"`. The contents are a nonempty, unsorted list of `<Overload>` tags, each of which describes a possible signature for the routine. `<Overload>` has a `retVal` attribute, which you would set to the initial comment in the call tip. In C/C++, this traditionally would be the return type; `""` is a permitted value. Furthermore, the `<Overload>` tag has an optional `descr` attribute, which can be used to add a description of the function. Tip: You can use `&#x0a;` to insert line breaks.
 
