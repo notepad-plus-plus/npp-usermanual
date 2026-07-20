@@ -54,12 +54,11 @@ Users occasionally want to reset their `stylers.xml` or selected theme back to t
 - If you are using one of the other themes, and _not_ using a portable copy of Notepad++:
     - Exit all instances of Notepad++.
     - Go to `%AppData%\Notepad++\themes\`, or the `themes\` subdirectory of the appropriate [configuration files location](../config-files/#configuration-files-location), and delete the customized theme file(s) you wish to reset.
-    - Restart Notepad++: it will use the copy of the theme from the installation/executable directory (see NOTE, below), which will normally be the unedited version.
+    - Restart Notepad++: it will use the copy of the theme from the installation/executable directory, which will normally be the unedited version.
+    - If you have manually edited your installation-directory's theme files (whether with a normal installation, or one of the other [configuration files locations](../config-files/#configuration-files-location)), which is not recommended, you will have to follow a similar procedure to the portable instructions, copying the themes from a portable zipfile, and putting them in your installation directory's `themes\` subdirectory before you restart Notepad++.
 - If you are using one of the other themes, and you _are_ using a portable copy of Notepad++:
     - Exit all instances of Notepad++.
     - Go to the portable directory, in the `themes\` subdirectory, and delete the customized theme file(s) you wish to reset.
     - Grab your portable zipfile (`.zip` or `.7z`) for your current version of Notepad++, and extract the original theme file(s) back into your portable directory's `themes\` subdirectory.
         - If you no longer have your zipfile, you can go to the [official downloads site](https://notepad-plus-plus.org/downloads/) to grab a fresh copy of the same version's zipfile.
     - Restart Notepad++, and your theme will be back to the original.
-
-_NOTE_: If you have manually edited your installation-directory's theme files (whether with a normal installation, or one of the other ), which is not recommended, you will have to follow a similar procedure to the portable instructions, copying the themes from a portable zipfile, and putting them in your installation directory's `themes\` subdirectory.
