@@ -42,3 +42,24 @@ When you install/update Notepad++, the installer will populate `<installation_di
 However, except for a new installation (where you don't already have `%AppData%\Notepad++\stylers.xml`), your copy of the the default theme and any themes you have in the `%AppData%\Notepad++\Themes` will _not_ be updated or overwritten (because the Developer doesn't want you to lose any customizations).  If you use the default theme, and have not customized any styles in the Style Configurator, then the easiest way to update the default theme is to exit Notepad++, delete `%AppData%\Notepad++\stylers.xml`, and restart Notepad++, which will recreate your `stylers.xml` from the most-recent `stylers.model.xml`; however, if you had any Style Configurator customizations (including colors, fonts, or per-language user-defined extensions or user-defined keywords), they _will_ be lost if you delete `stylers.xml`.
 
 When a new version of Notepad++ is released, the Developer ensures `stylers.model.xml` and `Themes\DarkModeDefault.xml` are up-to-date, but the Developer relies on volunteers to submit PR to update the other themes, so many of them can be missing languages or specific styles.  So if you want to update a Theme that's missing languages or specific styles, or if you want to edit `stylers.xml` without losing any of your customizations, then you will want to open up your `stylers.xml` or other theme's XML simultaneously with `stylers.model.xml`; you can then go section-by-section and line-by-line (the ComparePlus plugin could be helpful for this), and copy over any of the `<LexerType...>` sections that don't exist in yours (note they may be in a different order), or any `<WordsStyle...>` missing from a `<LexerType...>` or any `<WidgetStyle...>` that is missing from your `<GlobalStyles>` section.  This can be a tedious process, so if you're willing to install the PythonScript plugin, you can find a script in the Notepad++ Community Forum's "[Config Files Need Updating, Too](https://community.notepad-plus-plus.org/topic/26049/config-files-need-updating-too)" post (or, alternatively, a standalone plugin that does it), which will automate the process of keeping your themes (and default language keywords) up-to-date.  But this script or ConfigUpdater plugin are _not_ needed once you upgrade to Notepad++ v8.9.
+
+## Resetting Stylers/Themes
+
+Users occasionally want to reset their `stylers.xml` or selected theme back to the default out-of-the-box condition.  The exact instructions depend on whether you are using `stylers.xml` or one of the other themes, and whether you are using a portable copy of Notepad++ or not (which affects your [configuration files location](../config-files/#configuration-files-location)).
+
+- If you are using the Default (`stylers.xml`) theme:
+    - Exit all instances of Notepad++.
+    - Delete `%AppData%\Notepad++\stylers.xml` for a normal installation (or your cloud directory or `-settingsDir` or portable folder copy of `stylers.xml`).
+    - Restart Notepad++: it will regenerate `stylers.xml` in the right place, based on the `stylers.model.xml` found in your Notepad++ executable's directory.
+- If you are using one of the other themes, and _not_ using a portable copy of Notepad++:
+    - Exit all instances of Notepad++.
+    - Go to `%AppData%\Notepad++\themes\`, or the `themes\` subdirectory of the appropriate [configuration files location](../config-files/#configuration-files-location), and delete the customized theme file(s) you wish to reset.
+    - Restart Notepad++: it will use the copy of the theme from the installation/executable directory (see NOTE, below), which will normally be the unedited version.
+- If you are using one of the other themes, and you _are_ using a portable copy of Notepad++:
+    - Exit all instances of Notepad++.
+    - Go to the portable directory, in the `themes\` subdirectory, and delete the customized theme file(s) you wish to reset.
+    - Grab your portable zipfile (`.zip` or `.7z`) for your current version of Notepad++, and extract the original theme file(s) back into your portable directory's `themes\` subdirectory.
+        - If you no longer have your zipfile, you can go to the [official downloads site](https://notepad-plus-plus.org/downloads/) to grab a fresh copy of the same version's zipfile.
+    - Restart Notepad++, and your theme will be back to the original.
+
+_NOTE_: If you have manually edited your installation-directory's theme files (whether with a normal installation, or one of the other ), which is not recommended, you will have to follow a similar procedure to the portable instructions, copying the themes from a portable zipfile, and putting them in your installation directory's `themes\` subdirectory.
