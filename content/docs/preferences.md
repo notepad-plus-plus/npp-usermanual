@@ -657,7 +657,7 @@ Some language/style combinations (like **Perl > INSTRUCTION WORD**) will additio
 
 The Save & Close button will save the settings and close the dialog.  The Cancel button will exit the dialog without updating the style settings.  The Transparency checkbox will allow you to apply transparency to the Style Configurator dialog box.
 
-You cannot reset your `stylers.xml` or theme back to the original condition from within the Style Configurator.  Instead, see the section on [Resetting Stylers/Themes](../themes/#resetting-stylers-themes) in the [Themes](../themes/) documentation.
+You cannot reset your `stylers.xml` or theme back to the original condition from within the Style Configurator.  Instead, see the section on [Resetting Stylers/Themes](../themes/#resetting-stylersthemes) in the [Themes](../themes/) documentation.
 
 ### Global Styles
 
