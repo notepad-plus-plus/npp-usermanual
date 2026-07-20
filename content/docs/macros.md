@@ -80,3 +80,7 @@ the details of how the macros are stored, and the syntax involved, see the
 [**Configuration Files Details**: **<Macros>** section](../config-files/#macros).
 
 Some information on the limitations of Macros and possible workarounds can be found in the community page [FAQ: Automating Notepad++](https://community.notepad-plus-plus.org/topic/25400/faq-automating-notepad).
+
+## Macro Security
+
+Starting in v8.9.6.2, the Run menu added extra security-warning that will notify you if the `shortcuts.xml` was modified manually or outside of Notepad++ (if your file was customized when you upgraded from a version before this to this version or later, the notification will also be used the first time you run a saved entry from the Run menu).  In v8.9.7, this protection was extended to also apply to the Macro menu.  You can read more in the [Config Files > shortucts.xml Security](../config-files/#shortcutsxml-security) section; but in brief, open `shortcuts.xml`, verify that your `<UserDefinedCommands>` and `<Macros>` entries look correct, then use **Run > Validate shortcuts.xml** to inform Notepad++ that everything looks reasonable.  (This security step prevents a malicious outside actor from overwriting your `shortcuts.xml` to include a malicious macro or run-menu command, by warning you when there's an unexpected change to the file.)
