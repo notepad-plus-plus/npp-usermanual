@@ -243,11 +243,14 @@ If the variable contains one or more space characters in the path, like `$(FULL_
 
 If you want access to a Windows environment variable (like `TMP`), use the standard `%`-notation for Windows variables (like `%TMP%`).  If the variable references a path with one or more spaces in the name, then putting quotes around environment variables is required: for example, if `%TMP%` is defined as `C:\Users\First Last\Temp\`, then you will need to use `C:\AppDir\blah.exe "%TMP%"` as your command.
 
-#### Run-menu Security
+#### shortcuts.xml Security
+<a name="run-menu-security"></a>
 
-Starting in v8.6.9.1, extra security was added to the shortcuts file (specifically for the run-menu entries):
+Starting in v8.6.9.1, extra security was added to the shortcuts file (originally, just for the Run-menu entries):
 - In v8.9.6.1, any saved Run-menu entry that tried to execute outside certain trusted locations (the Windows and System32 directories from the OS, and Program Files), it would pop a warning dialog every time that Run-menu entry is chosen.
 - In v8.9.6.2, this behavior was modified: instead of prompting every time, the first time you run such an entry after `shortcuts.xml` has been modified, or the first time after updating from v8.9.6.1-or-earlier to v8.9.6.2-or-later, Notepad++ will warn you that `shortcuts.xml` has changed, will open the file so you can review it to make sure there were no unexpected changes; after you are sure, use **Run > Validate shortcuts.xml** to save a signature of the current `shortcuts.xml`, so that Notepad++ can detect changes.  After that, Notepad++ will allow you to execute such Run-menu entries without interruption (until `shortcuts.xml` is changed again).  To be clear, if the changes to `shortcuts.xml` come from within the GUI (saving a new Run-menu command, saving a new macro, updating a keyboard shortcut), Notepad++ will automatically save the new signature, so it won't prompt you; it is only if the `shortcuts.xml` is changed manually (by editing the XML text) that you will have to use **Run > Validate shortcuts.xml**: most users should only rarely (if ever) need to use that action, except one time after upgrading from v8.9.6.1-or-earlier to something v8.9.6.2-or-later.
+- In v8.9.7, this behavior was extended to also cover macros, so that running a macro would also trigger the HMAC verification.
+    - If you have a scripting plugin like PythonScript or LuaScript, and one of your scripts runs menu commands, and/or has a shortcut assigned, this security warning may be triggered once as well.
 
 ### v8.5.3 `shortcuts.xml` updates
 
