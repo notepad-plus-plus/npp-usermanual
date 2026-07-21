@@ -11,7 +11,7 @@ As noted in the [Configuration Files](../config-files) documentation, Notepad++ 
 
 ## Preferences
 
-For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is checked. For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is. (Checkbox states will be referred to as "checked" or "checkmarked" or "option XXX is on" for `☑`, "unchecked" or "uncheckmarked" or "option XXX is off" for `☐`, and "disabled" when it's greyed out so that you cannot toggle the state of the checkbox, and "enabled" if the grey has been removed.)
+For the descriptions below, if it's a checkbox `☐`, the description applies if the checkbox is checked. For options where the opposite behavior might not be obvious, it may also explicitly describe what the unchecked behavior is. (Checkbox states will be referred to as "checked" or "checkmarked" or "option XXX is on" for `☑`, "unchecked" or "uncheckmarked" or "option XXX is off" for `☐`, and "disabled" when it's grayed out so that you cannot toggle the state of the checkbox, and "enabled" if the gray has been removed.)
 
 If the "default" state of an option is described, it means the state that the option would be in when Notepad++ is first installed, without any settings changes.  If you have upgraded from a previous version of Notepad++, and had customized a particular option, your customized choice should not be overwritten.
 
@@ -72,7 +72,7 @@ These settings affect the appearance and behavior of the [Tab Bar](../user-inter
 
 **Look & Feel**:
 - `☐ Reduce`: Make the tab bar vertical region and font size smaller.
-- `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/grey disk-icons to checkmark/pencil/lock symbols, respectively
+- `☐ Alternate icons`: Change the "saved"/"edited"/"read-only" icons from blue/red/gray disk-icons to checkmark/pencil/lock symbols, respectively
     - The alternate icons option is designed to improve the user experience for visually-impaired users, and any who prefer different symbols rather than different colors to distinguish the status of each file.
     - _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
 - `☐ Change inactive tab color`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
@@ -170,7 +170,7 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Error` => choose the color for the error indicator on the Incremental Search bar
      * `Text` => choose the color for the menu bar entry names, and other normal text for most dialog boxes
      * `Darker text` => choose the color for the darker text for most dialog boxes
-     * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "greyed out" or "disabled")
+     * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "grayed out" or "disabled")
      * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
      * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
      * `Edge highlight` => choose the color for the border of a highlighted control
@@ -365,7 +365,7 @@ Affects how the text is formatted when sent to the printer.
     - If **[View > Show Symbol](../views/#show-symbol) > Show Control Characters & Unicode EOL** is also on, the `FF` glyph will still be printed _and_ the page will be split.
         - If the `FF` is _before_ the end-of-line (EOL) sequence, the `FF` glyph will be on the old page, and everything after the newline on the new page.
         - If the `FF` is _after_ the EOL, the `FF` glyph will be on the new page.
-    - The formfeed-as-page-break option is not intended for having the `FF` in the middle of the line: manual page breaks should be at the beginning or end of a logical line, not in the middle.  Use the `FF` next to the EOL for expected results.  
+    - The formfeed-as-page-break option is not intended for having the `FF` in the middle of the line: manual page breaks should be at the beginning or end of a logical line, not in the middle.  Use the `FF` next to the EOL for expected results.
 
 
 ### Searching
@@ -413,19 +413,25 @@ Defines whether or not to perform saving sessions, periodic backup, and backup o
 * **Backup on save**
     - `☐ None`: No additional backup will be performed when the file is saved.
     - `☐ Simple backup`: It will save a copy of the existing file, with the same name and extension, but with `.bak` appended, in the location defined.
-        - If the `Custom Backup Directory` is turned on and defined, it will save the simple backup in that defined directory; for example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt` will save its simple backup as `C:\myCustomBackupFolder\file.txt.bak`
-            - _Note_: If you are editing two files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will only contain _one_ backup file (`a.txt.bak`), with the contents of whichever file was saved most recently.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backup of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
-        - If the `Custom Backup Directory` is not turned on and defined, it will save the simple backup in the same directory as the original file; for example, saving `C:\path\to\file.txt` will save its simple backup as `C:\path\to\file.txt.bak`.
+        - If the `☐ Custom Backup Directory` is turned on and defined as a full directory path, it will save the simple backup in that defined directory.
+            - For example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt` will save its simple backup as `C:\myCustomBackupFolder\file.txt.bak`
+            - _Note_: If you are editing two files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will only contain _one_ backup file (`a.txt.bak`), with the contents of whichever file was saved most recently.  Turning off `☐ Custom Backup Directory` will eliminate this problem, because then the backup of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
+        - If the `☐ Custom Backup Directory` is turned on but the field is left blank, or if it is not turned on (so the field is grayed out and disabled), it will save the simple backup in the same directory as the original file; for example, saving `C:\path\to\file.txt` will save its simple backup as `C:\path\to\file.txt.bak`.
     - `☐ Verbose backup`: It will save a copy of the existing file, with a date-and-timestamp added to the filename (in the format `yyyy-mm-dd_hhmmss`) as well as the `.bak` extension.
-        - If the `Custom Backup Directory` is turned on and defined, it will save it in that directory; for example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt file` would be backed up as `C:\myCustomBackupFolder\file.txt.2021-06-28_073650.bak`
-            - _Note_: If you are editing multiple files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will contain verbose backup files for nearly all individual saves; however, if it happens that both files were saved within the same second (by being really fast, or using Save All), then only _one_ backup file will exist with that timestamp (`a.txt.2021-06-28-073722.bak`), with the contents of whichever file happened to be saved last in that second.  Turning off `Custom Backup Directory` will eliminate this problem, because then the backups of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
-        - If the `Custom Backup Directory` is not turned on and defined, it will save it in the `.\nppBackup\` subdirectory of the file's current directory; for example, saving `C:\path\to\file.txt` will create a backup called `C:\path\to\nppBackup\file.txt.2021-06-28_073650.bak`
-    - `☐ Custom Backup Directory`: Leave blank to put the backup in the same directory as the file; set to a directory to have all files backed up to one directory.
-    - In case it's not clear: the "Backup on Save" feature will always save the previous version of the file -- that is, the file that was saved to disk just before the save of the main file.  For example:
+        - If the `☐ Custom Backup Directory` is turned on and given a full directory path, it will save it in that directory; for example, if it is set as `C:\myCustomBackupFolder\`, then the file `C:\path\to\file.txt file` would be backed up as `C:\myCustomBackupFolder\file.txt.2021-06-28_073650.bak`
+            - _Note_: If you are editing multiple files with the same name which are in separate directories (like `C:\path\a.txt` and `C:\other\a.txt`), the Custom Backup directory will contain verbose backup files for nearly all individual saves; however, if it happens that both files were saved within the same second (by being really fast, or using Save All), then only _one_ backup file will exist with that timestamp (`a.txt.2021-06-28-073722.bak`), with the contents of whichever file happened to be saved last in that second.  Turning off `☐ Custom Backup Directory` will eliminate this problem, because then the backups of a file will reside in the same directory as the original, so there will not be name conflicts on the backups.
+        - If the `☐ Custom Backup Directory` is turned on but the field is left blank, or if it is turned off (so the field is grayed out and disabled), Notepad++ will save the verbose backup in the `.\nppBackup\` subdirectory of the file's current directory; for example, saving `C:\path\to\file.txt` will create a backup called `C:\path\to\nppBackup\file.txt.2021-06-28_073650.bak`
+    - `☐ Custom Backup Directory`: Set the field to a full directory path to have all files backed up to one directory.
+        - If you leave this field blank when the checkbox is checkmarked:
+            - Simple backup will go in the same directory as the original file.
+            - Verbose backup will go in the `.\nppBackup\` subdirectory relative to the original file.
+        - The entry field will not work with a relative directory.
+        - This checkbox will be grayed out when **Backup on save** is set to `☐ None`, but will be available for `☐ Simple backup` or `☐ Verbose backup`
+    - The "Backup on Save" feature will always save the previous version of the file -- that is, the file that was saved to disk just before the save of the main file.  For example:
         - Open filename `c:\realpath\file.txt` when Notepad++ it set to `Simple` Backup on Save, to the custom directory `c:\custom\backup\`; see that the file contents starts as `a b c` .
         - Edit the contents to `d e f`, and hit save.  Now `c:\realpath\file.txt` contains `d e f` and `c:\custom\backup\file.txt.bak` contains `a b c` .
         - Edit the contents to `x y z`, and hit save.  Now `c:\realpath\file.txt` contains `x y z` and `c:\custom\backup\file.txt.bak` contains `d e f` .
-        - The backup-on-save file is thus always one version behind the main file (hence, it's a backup of your previous version).
+        - The backup-on-save file is thus always one version behind the main file (hence, it's a backup of your previous version, so you can easily go back by copying from the backup to the original).
 
 #### Important backup information
 
@@ -445,7 +451,7 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ Word completion`: Will auto-complete words only, based on words that already exist in the current file.
         * `☐ Function and word completion`: Will auto-complete both function names and words.
     * `From _n_th character`: Must type at least _n_ characters before auto-completion activates.
-        * If `☐ Enable auto-completion on each input` is unchecked, the _n_th character entry will be disabled (greyed out).
+        * If `☐ Enable auto-completion on each input` is unchecked, the _n_th character entry will be disabled (grayed out).
     * `☐ Ignore numbers`: Won't try to auto-complete when typing numbers.
     * **Insert Selection**: v8.2.1 added a new section.
         * `☐ TAB`: Toggles whether TAB will accept your choice.
@@ -804,7 +810,7 @@ For entries on all the tabs except the `Scintilla commands` tab, the **Clear** b
 
 For entries on the `Scintilla commands` tab, the **Clear** button is disabled and will not work; instead, select **Modify** to get into the mode that allows you to edit `Scintilla commands` shortcuts: if there are multiple shortcuts listed in the left pane, click on the shortcut you wish to remove, and click the **Remove** button; if there is only one shortcut remaining in the left pane, click on it, choose `None` from the key-combo pulldown menu on the right, then click **Apply**.  Either way, when done deleting shortcuts from this command, hit **OK** to finish.
 
-The **Delete** button is usually disabled (greyed out).  However, in the `Macros` and `Run commands` menu, the **Delete** button will be enabled (not greyed out), and clicking it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
+The **Delete** button is usually disabled (grayed out).  However, in the `Macros` and `Run commands` menu, the **Delete** button will be enabled (not grayed out), and clicking it will remove the selected entry from the menu -- so it will not only not have a shortcut, but it won't be in the menu the next time you run Notepad++.
 
 The **Close** button will close the dialog box.
 
