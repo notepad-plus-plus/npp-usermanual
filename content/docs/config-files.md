@@ -252,6 +252,8 @@ Starting in v8.6.9.1, extra security was added to the shortcuts file (originally
 - In v8.9.7, this behavior was extended to also cover macros, so that running a macro would also trigger the HMAC verification.
     - If you have a scripting plugin like PythonScript or LuaScript, and one of your scripts runs menu commands, and/or has a shortcut assigned, this security warning may be triggered once as well.
 
+_NOTE_: After doing a **Run > Validate shortcuts.xml**, you should exit Notepad++ to get it to save the config file with the new HMAC signature, so that future runs will see that signature and recognize that `shortcuts.xml` has not been modified unexpectedly.  If you use multiple instances of Notepad++ (using `-multiInst` or the preference-equivalent), then you need to close all instances of Notepad++ but the main one, _then_ review `shortcuts.xml` and **Run > Validate shortcuts.xml**, then exit the last Notepad++; from now on, your first instance and any subsequently launched instances will all see the same signature.  (If you validate from the first instance, then launch new instances before N++ has been exited, the config file will still have the old HMAC signature, or no signature at all, so those new instances will still pester you.)
+
 ### v8.5.3 `shortcuts.xml` updates
 
 In Notepad++ v8.5.2 and earlier, if you had a "special character" in your macro or run-menu command -- whether it was in the name of the macro/command or in text that it uses -- then inside the XML, it would be stored as an XML entity. For example, `☺` would be stored as `&#x263a;` or `π` as `&#x03C0;` .
