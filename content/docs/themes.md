@@ -27,7 +27,9 @@ Theme and styler XML files need to be encoded as UTF-8 with no BOM (see [Config 
 
 ## Sharing Themes
 
-You may share a theme (or someone may share with you) in a similar method to creating a new theme: copy the theme file, give it an appropriate name, and put it in your `Themes\` subdirectory: it's the same whether you are sharing across multiple users on the same computer, sharing across local computers, or sharing over the internet.
+You may share a theme (or you may install a theme someone shared with you) in a similar method to creating a new theme: copy the theme file to an appropriate name (or download it), and put it in your `Themes\` subdirectory (see next paragraph for more on location): it's the same whether you are sharing across multiple users on the same computer, sharing across local computers, or sharing over the internet.  Once the file is in your Themes directory, you need to restart Notepad++ to allow it to see that the Theme is available in the Style Configurator.
+
+It is easy to just save the theme file in `%AppData%\Notepad++\Themes\` directory for a normal installation (or in your Cloud or `-settingsDir`, depending on your current [Config Files Location](../config-files/#configuration-files-location)).  Using [**Settings > Import > Import Style Themes…**](https://npp-user-manual.org/docs/preferences/#other-settings-menu-entries) will allow you to select your downloaded theme file and attempt to put it in `<installationDir>\themes\` (because that location might be in your `Program Files` or similarly-protected directory, you might need to be running Notepad++ "as Admin" for it to work).  Notepad++ checks both directories, when it starts, to build the list of Themes in the Style Configurator.
 
 Aside from the Themes that ship with Notepad++ when you install it, there is also an official [Notepad++ Themes Collection on GitHub](https://github.com/notepad-plus-plus/nppThemes), where you can make your Theme publicly available, or grab a Theme that others have shared.
 
