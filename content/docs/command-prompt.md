@@ -10,16 +10,14 @@ to control its startup and affect its behavior.
 ## Help usage
 
 ```
-notepad++ [--help] [-multiInst] [-noPlugin] [-l<Language>]
-  [-udl="My UDL Name"] [-L<langCode>] [-n<line>] [-c<column>] [-p<pos>]
-  [-x<left-pos>] [-y<TopPos>] [-monitor] [-nosession] [-notabbar]
-  [-ro] [-fullReadOnly] [-fullReadOnlySavingForbidden]
-  [-systemtray] [-loadingTime] [-alwaysOnTop] [-openSession] [-r]
-  [-qn="Easter Egg Name" | -qt="Text to Type" | -qf="D:\path to\file"]
-  [-qSpeed(1|2|3)] [-quickPrint] [-settingsDir="d:\your settings dir\"]
-  [-openFoldersAsWorkspace] [-titleAdd="additional title bar text"]
-  [-pluginMessage="text for plugin(s)"]
-  [filepath]
+notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
+    [-LlangCode] [-nLineNumber] [-cColumnNumber] [-pPosition] [-xLeftPos] [-yTopPos]
+    [-monitor] [-monitoringMode] [-nosession] [-notabbar] [-systemtray] [-loadingTime]
+    [-alwaysOnTop] [-ro] [-fullReadOnly] [-fullReadOnlySavingForbidden] [-openSession] [-r]
+    [-qn="Easter egg name" | -qt="a text to display." | -qf="D:\my quote.txt"]
+    [-qSpeed1|2|3] [-quickPrint] [-settingsDir="d:\your settings dir\"]
+    [-openFoldersAsWorkspace]  [-titleAdd="additional title bar text"]
+    [filePath]
 ```
 
 - `--help`: The help message for command line arguments. It will be shown before
@@ -151,6 +149,7 @@ code | file
 - `-x`: Move Notepad++ to indicated left side position (*LeftPos*) on the screen.
 - `-y`: Move Notepad++ to indicated top position (*TopPos*) on the screen.
 - `-monitor`: Open file with [file monitoring](../views/#live-file-monitoring) enabled.
+- `-monitoringMode`: Enable [Monitoring](../views/#live-file-monitoring) for all files opened in Notepad++ (new to v8.9.8)
 - `-nosession`: Launch Notepad++ without previous session.
 - `-notabbar`: Launch Notepad++ without tabbar.
 - `-ro`: Make the `filepath` read only.

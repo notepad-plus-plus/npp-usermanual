@@ -262,6 +262,8 @@ When in the Monitoring mode, Notepad++ will use an icon on the tab's title which
 
 The Monitoring feature is also similar to the File Status Auto-Detection settings in the [MISC preferences](../preferences/#misc), which influences whether Notepad++ will detect external changes in the open file(s) even without Monitoring active.
 
+Starting in v8.9.8, if `-monitoringMode` [command line argument](../command-prompt/) is used, all files opened in Notepad++ will be monitored (new documents, like `new 1` tabs, are exempt, because there is no underlying file to monitor for changes).
+
 ## Remembered Settings
 
 [↗](#remembered-settings "Remembered Setting"): Settings with this symbol next to them on this manual page are remembered from one run of Notepad++ to the next.

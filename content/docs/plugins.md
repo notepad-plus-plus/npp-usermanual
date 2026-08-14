@@ -16,7 +16,7 @@ files and simply removing or adding them is enough.
 
 ### Install using Plugins Admin
 
-The Plugins Admin allows you to easily install plugins that are in the
+The Plugins Admin tool allows you to easily install plugins that are in the
 Plugins List.  To do so, place a check mark next to the Plugin(s) you wish to
 install, then select the **Install** button.  (If you just click on the name
 of the plugin, without placing a check mark in the checkbox, it will give
@@ -25,15 +25,7 @@ you information on the plugin, but it will not allow you to click the
 
 ![](/docs/images/pluginsAdmin.png)
 
-The Plugins Admin has four tabs:
-
-- **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
-- **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
-- **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
-- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++:
-  - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
-
-The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
+The complete features of the Plugins Admin tool are described [below](#plugins-admin).
 
 ### Install plugin manually
 
@@ -80,6 +72,49 @@ subdirectory, you will need to get "elevated permission": If you are using Notep
 Import Plugins commands to install the plugin, you may need to re-run Notepad++ with Windows' "Run as Administrator"
 feature before doing the installation; if you are doing a manual installation, Windows may pop up the UAC dialog
 to get permission to write the file when you try to copy it into the right directory.
+
+## Plugins Admin
+
+The built-in **Plugins Admin** tool shows the list of available plugins, allows users
+to install new plugins and to update/remove installed plugins.
+It needs the [**Plugin List**](#plugin-list) (described in another section) to work.
+
+![](/docs/images/pluginsAdmin.png)
+
+The Plugins Admin has five tabs:
+
+- **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
+- **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
+- **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
+- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++:
+  - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
+- **Deactivated** ⇒ Shows plugins you had previously deactivated.
+
+The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
+
+Actions available through the Plugins
+- **Install**: See [Install using Plugins Admin (above)](#install-using-plugins-admin) for instructions on how to install.
+    - This button is visible when you are on the **Available** tab.  
+    - Checkmark the plugin(s) you want to install, and click **Install**.
+        - Notepad++ will restart after the plugin(s) are installed, and those plugins will be available.
+- **Remove**: Allows you to completely remove (uninstall) one or more plugins.
+    - This button is visible when you are in most tabs (except **Available** or **Updates**).
+    - Checkmark the plugin(s) you want to remove, and click **Remove**.
+        - Notepad++ will remove the plugin files from the `plugins\` hierarchy, and then restart; those plugins will no longer be listed in the **Installed** tab; but, if they are in the Plugins List, will be in **Available** again.
+- **Update**: Allows you to update to the most recent version of a plugin that the Plugin List knows about.
+    - This button is visible when you are in the **Updates** tab.
+    - Checkmark the plugin(s) you want to deactivate, and click **Update**.
+        - Notepad++ will install the more-recent version of the plugin, then restart.
+- **Deactivate**: Allows you to deactivate one or more plugins using the GUI.
+    - This button is visible when you are in the **Installed** tab.
+    - Checkmark the plugin(s) you want to deactivate, and click **Deactivate**.
+        - Notepad++ will move the plugin files to the `disabled\` subfolder, and then restart; those plugins will now be listed in the **Deactivated** tab, not the **Installed** tab.
+    - (Instead of using this button, you could manually move the plugin to the `disabled\` subfolder when Notepad++ is not running.)
+- **Activate**: allows you to re-activate one or more plugins that you had previously deactivated.
+    - This button is visible when you are in the **Deactivated** tab.
+    - Checkmark the plugin(s) you want to re-activate, and click **Activate**.
+        - Notepad++ will move the plugin files out of the `disabled\` subfolder, and then restart; those plugins will now be listed in the **Installed** tab, and will be active again.
+    - (Instead of using this button, you could manually move the plugin from the `disabled\` subfolder back to the normal plugins location when Notepad++ is not running.)
 
 ## How to develop a plugin
 
@@ -364,17 +399,11 @@ Each with different buffer length.
 is also present in the plugin config directory.
 Since, for whatever reason, this file might not be present, it is a good idea to check this in the setInfo callback and to react accordingly
 
-## Plugins Admin
-
-Built-in **Plugins Admin** shows the list of available plugins, allows users
-to install new plugins and to update/remove installed plugins.
-It needs **Plugin List** (see next section) to work.
-
 ## Plugin List
 
-A list in JSON format wrapped in a dll contains the most popular Notepad++ plugins.
-This list which is maintained by the team, is also an open source project hosted
-in the GitHub: https://github.com/notepad-plus-plus/nppPluginList/.
+The Plugin List is provided by a DLL that ships with Notepad++.
+It contains any plugins that have been submitted to the nppPluginList project. 
+This list, which is maintained by the Notepad++ development team, is a separate open source project hosted on GitHub at https://github.com/notepad-plus-plus/nppPluginList/.
 Any publicly-downloadable plugin is welcome to be submitted to the list.
 
 ### Test your plugins locally
