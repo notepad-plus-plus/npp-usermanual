@@ -85,10 +85,10 @@ The Plugins Admin has five tabs:
 
 - **Available** ⇒ Shows plugins you haven't yet installed, and gives an **Install** button
 - **Updates** ⇒ Shows plugins you have installed but that Plugins Admin knows have updates available, and gives an **Update** button
-- **Installed** ⇒ Shows plugins you have installed, and gives a **Remove** button
-- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++:
+- **Installed** ⇒ Shows plugins you have installed, and gives **Deactivate** and **Remove** buttons
+- **Incompatible** ⇒ Shows plugins you had previously installed but are no longer compatible with Notepad++, and gives a **Remove** button:
   - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
-- **Deactivated** ⇒ Shows plugins you had previously deactivated.
+- **Deactivated** ⇒ Shows plugins you had previously deactivated, and gives **Activate** and **Remove** buttons.
 
 The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
 
