@@ -105,7 +105,7 @@ Actions available through the Plugins
     - This button is visible when you are in the **Updates** tab.
     - Checkmark the plugin(s) you want to deactivate, and click **Update**.
         - Notepad++ will install the more-recent version of the plugin, then restart.
-- **Deactivate**: Allows you to deactivate one or more plugins using the GUI.
+- **Deactivate**: Allows you to deactivate one or more plugins using the GUI. Deactivated plugins remain in the program’s folder but are not loaded at startup, thereby reducing memory usage and decluttering the interface.
     - This button is visible when you are in the **Installed** tab.
     - Checkmark the plugin(s) you want to deactivate, and click **Deactivate**.
         - Notepad++ will move the plugin files to the `disabled\` subfolder, and then restart; those plugins will now be listed in the **Deactivated** tab, not the **Installed** tab.
