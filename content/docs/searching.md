@@ -747,8 +747,6 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
 * `(?<name>`_subset_`)` or `(?'name'`_subset_`)` ⇒ _Named Capture Group_: Names the value matched by _subset_ as the group _name_.  Please note that group names are case-sensitive.
 
-* `\g` and `\k` are functionally synonymous prefixes for _extended backreferences._ There is no semantic difference in Boost's implementation. They coexist for syntax-compatibility/historical reasons.
-
 * `\ℕ`, `\gℕ`, `\g{ℕ}`, `\g<ℕ>`, `\g'ℕ'`, `\kℕ`, `\k{ℕ}`, `\k<ℕ>` or `\k'ℕ'` ⇒ _Numbered Backreference:_ These syntaxes match the ℕth capture group earlier in the same expression.  (Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
     A regex can have multiple subgroups, so `\2`, `\3`, etc. can be used to match others (numbers advance left to right with the opening parenthesis of the group).  You can have as many capture groups as you need, and are not limited to only 9 groups (though some of the syntax variants can only reference groups 1-9; see the notes below, and use the syntaxes that explicitly allow multi-digit ℕ if you have more than 9 groups)
@@ -770,12 +768,13 @@ Anchors match a zero-length position in the line, rather than a particular chara
 
         * For negative ℕ, groups are counted backwards relative to the last group, so that `\g{-1}` is the last matched group, and `\g{-2}` is the next-to-last matched group.
 
-
             * Please, note the difference between absolute and relative backreferences. For instance, an exact four-letters word palindrome can be matched with :
 
                 * the regex `(?-i)\b(\w)(\w)\g{2}\g{1}\b`, when using absolute (positive) coordinates
 
                 * the regex `(?-i)\b(\w)(\w)\g{-1}\g{-2}\b`, when using relative (negative) coordinates
+
+        * `\g` and `\k` are functionally synonymous prefixes for _extended backreferences._ There is no semantic difference in Boost's implementation. They coexist for syntax-compatibility/historical reasons.
 
 * `\g{name}`, `\g<name>`, `\g'name'`, `\k{name}`, `\k<name>` or `\k'name'` ⇒ _Named Backreference_: The string matching the subexpression named _name_.  (As with the Numbered Backreferences above, these Named Backreferences are used to refer to the capture group contents only in the search/match expression; see the [Substitution Escape Sequences](#substitution-escape-sequences) for how to refer to capture groups in substitutions/replacements.)
 
