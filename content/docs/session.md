@@ -114,7 +114,7 @@ If you right click in the empty space in the Folder as Workspace panel (either i
 
 If there isn't any "empty space" to right-click on, you can either widen the panel (giving more empty space on the panel's toolbar) or you can collapse one or all of the folder listings (using the `﹀` by the folder name or the **Fold All** button on the toolbar) to show empty space at the bottom where you can right click.
 
-
+Symbolic links can cause problems with Folder as Workspacce performance, so v8.9.7 disabled the following of symbolic links; in v8.9.8, **[Settings > Preferences > MISC](../preferences/#misc) > `☐ Allow loading symlinks in Folder as Workspace panel`** was added to allow the user to decide whether to enable that feature or not.
 
 ## Project Panels
 

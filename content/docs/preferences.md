@@ -589,29 +589,29 @@ If you want to specify a search engine not listed, type the full URL, with the t
 
 A variety of settings that didn't fit elsewhere
 
-* **Document Switcher**
+- **Document Switcher**
     * `☐ Enable`: When checkmarked, using <kbd>Ctrl+Tab</kbd> will allow you to use the [Document Switcher popup](../user-interface/#document-switcher) to switch through all the open documents.
     * `☐ Enable MRU behavior`: It will default to selecting the most recently used file (or "MRU", for short) in the <kbd>Ctrl+Tab</kbd> list.
         - When checkmarked: <kbd>Ctrl+Tab</kbd> will take you to the most recently used document.  Also, if you close the active tab, it will activate the most recently used tab.
         - When not checkmarked: <kbd>Ctrl+Tab</kbd> will take you to the next tab in the Document Switcher menu (the tab to the right).  Also, if you close the active tab, it will activate the next tab in the Document Switcher menu (the tab to the right) or the last tab in the Document Switcher menu if the closed tab used to be the last tab.
-* **Document Peeker**
+- **Document Peeker**
     * `☐ Peek on tab`: If you hover over an inactive tab, it will give you a tiny "peek" at the document (a ultra-tiny font preview, similar to the document map), in a small popup near the tab bar.
     * `☐ Peek on document map`: If you hover over an inactive tab, it will change the Document Map (**View > Document Map**) pane to show the preview of that tab, rather than of the active document.
-* **File Status Auto-Detection**
+- **File Status Auto-Detection**
     * [pulldown]
         * `Enable`: For the active file only, will check periodically to see if the file has been updated on disk, and will prompt to ask if you want to reload the file from the disk, or keep the version that's currently in Notepad++.
         * `Enable for all open files`: For all active files, check periodically to see if the file has been updated on disk.
         * `Disable`: Will not check to see if the file has been updated on disk.
     * `☐ Update silently`: Instead of prompting, will automatically reload the file from disk.
     * `☐ Scroll to the last line after update`: Will scroll to the end of the file after reloading from disk (otherwise, the [caret](../editing/#caret-and-cursor "typing/insertion cursor") and scrolled-location stays where it was before the update).
-* **System Tray** dropdown
+- **System Tray** dropdown
     - `No action to` **system tray**: Neither minimizing Notepad++ nor closing Notepad++ will place the Notepad++ icon on the system tray.
     - `Minimize to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
     - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed. (New to v8.7.1.)
     - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is minimized or closed. (New to v8.7.2.)
     - The dropdown is new to v8.7.1.  In previous versions, there was just a checkbox for `☐ Minimize to system tray`, and there was no `Close to` option available.
     - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
-* **Direct Write rendering mode** dropdown
+- **Direct Write rendering mode** dropdown
     - DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
     - There are five options (third and fourth added v8.7.8, fifth in v8.7.9):
         - `GDI (most compatible)`: This version is "most compatible", but it's because it doesn't have any of the features available in the other DirectWrite choices.
@@ -629,18 +629,19 @@ A variety of settings that didn't fit elsewhere
       - Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
       - Some users notice performance issues when this is checkmarked; those affected should choose `GDI (most compatible)` (or uncheckmark the option in older versions).
       - Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
-* **Auto-updater** dropdown (more optoins starting in v8.8.2):
+- **Auto-updater** dropdown (more optoins starting in v8.8.2):
 	- `Disable`: Will not automatically check for updates.  You can still use **? > Update Notepad++** or download a newer installer from the [official downloads page](https://notepad-plus-plus.org/downloads/).
 	- `Enable on Notepad++ Startup`: Will automatically check for updates.  If one is available, it will ask if you would like to upgrade when Notepad++ first launches.
 	- `Enable on Notepad++ Exit`: Will automatically check for updates.  If one is avaialable, it will ask if you would like to upgrade when Notepad++ is closed.
 	- In v8.8.1 and earlier, this was just a checkbox: `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 	- See the section on [upgrading Notepad++](../upgrading/)
-* `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
-* `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
-* `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
-* `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
-* `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance-and-date) settings.
-* `Workspace file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance-and-date) settings.
+- `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
+- `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
+- `☐ Show only filename in title bar`: Use just the file name (instead of the full path) of the active file in the Notepad++ title bar.
+- `☐ Enable Save All confirm dialog`: When the Save All command is issued, will pop up a dialog to confirm you really want to save all: **Yes** will Save All; **No** will not save all _this time_, but will ask again next time; **Always yes** will save all _and_ will uncheck this preference so that Save All will stop asking for confirmation in the future.
+- `☐ Allow loading symlinks in Folder as Workspace panel`: For [Folder as Workspace](../session/#folder-as-workspace) is active, when this option is checkmarked, it will be able to follow symbolic links (but this may induce performance issues, which is why this option defaults to uncheckmarked); when this option is not checkmarked, Folder as Workspace will _not_ follow symbolic links. (New to v8.9.8)
+- `Session file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a session file, and open the files from that session, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance-and-date) settings.
+- `Workspace file ext.`: Enter a file extension (without the `.`).  When you open a file with this extension (whether from Windows file associations, or from the Notepad++ **File > Open** or similar), Notepad++ will treat the file as a workspace file, and open that workspace, rather than showing and editing the contents of the file.  This will honor the [Multi-Instance](#multi-instance-and-date) settings.
 
 ## Style Configurator
 
