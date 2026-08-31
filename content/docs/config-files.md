@@ -79,6 +79,8 @@ For the `config.xml` (which contains the settings from the GUI's **Settings > Pr
 # Specifics on Configuration Files
 
 ## The context menu: `contextMenu.xml`
+<a name="the-context-menu-contextmenu-xml"></a>
+
 
 <!-- http://web.archive.org/web/20190518131311/http://docs.notepad-plus-plus.org/index.php/Context_Menu -->
 
