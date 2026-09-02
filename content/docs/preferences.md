@@ -872,21 +872,21 @@ This menu shows the active syntax highlighter lexer (including [User Defined Lan
 
 The following settings are for rather specific needs and could cause some confusion if they are changed from default behavior. As a result they are not set via UI but in `config.xml`. Note that you should close Notepad++ then edit `config.xml` following the best practices in the [Editing Configuration Files](../config-files/#editing-configuration-files) section to prevent your modification from being erased or overwritten when Notepad++ exits.
 
-* Allow regex backward search: Backward regex searching is forbidden by default due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
+- Allow regex backward search: Backward regex searching is forbidden by default due to sometimes surprising results. However, if this feature is needed, you can set `regexBackward4PowerUser` attribute to `yes` in the `FindHistory` tag of `config.xml` to enable this option:
    ```
    <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="yes" regexBackward4PowerUser="yes">
    ```
    Simply add `regexBackward4PowerUser="yes"` if this option is absent.
 
-* Change the number of expressions that can be saved in the [Find/Replace](../searching/) dialog's Find, Replace, Filters, and Directory fields.  They are set in the `<FindHistory ...>` tag inside `config.xml`, using the attributes:
-    * `nbMaxFindHistoryFind` => changes the number of **Find what** entries that are saved in the history (0 .. 30, default = 10)
-    * `nbMaxFindHistoryReplace` => changes the number of **Replace with** entries that are saved in the history (0 .. 30, default = 10)
-    * `nbMaxFindHistoryPath` => changes the number of **Directory** entries that are saved in the history (0 .. 30, default = 10)
-    * `nbMaxFindHistoryFilter` => changes the number of **Filter(s)** entries that are saved in the history (0 .. 20, default = 10)
+- Change the number of expressions that can be saved in the [Find/Replace](../searching/) dialog's Find, Replace, Filters, and Directory fields.  They are set in the `<FindHistory ...>` tag inside `config.xml`, using the attributes:
+    - `nbMaxFindHistoryFind` => changes the number of **Find what** entries that are saved in the history (0 .. 30, default = 10)
+    - `nbMaxFindHistoryReplace` => changes the number of **Replace with** entries that are saved in the history (0 .. 30, default = 10)
+    - `nbMaxFindHistoryPath` => changes the number of **Directory** entries that are saved in the history (0 .. 30, default = 10)
+    - `nbMaxFindHistoryFilter` => changes the number of **Filter(s)** entries that are saved in the history (0 .. 20, default = 10)
 
-* Make the **Find in Files** Filter field automatically populate based on the file type / extension of the current file when you launch the dialog.  This can be set by changing the `<Find History ...>` tag inside `config.xml`, using the attribute `fifFilterFollowsDoc`: set it to `fifFilterFollowsDoc="yes"` to make Notepad++ automatically populate that Filter field every time you launch the **Find in Files** dialog (however, you can override that filter by typing a new filter; and changing the active tab or opening a new file after the dialog is already shown will _not_ update that field automatically); if it is set to `fifFilterFollowsDoc="no"` (default), then the Filter field will not change when you launch **Find in Files**, and will instead remember the last value you entered into the field (if any).
+- Make the **Find in Files** Filter field automatically populate based on the file type / extension of the current file when you launch the dialog.  This can be set by changing the `<Find History ...>` tag inside `config.xml`, using the attribute `fifFilterFollowsDoc`: set it to `fifFilterFollowsDoc="yes"` to make Notepad++ automatically populate that Filter field every time you launch the **Find in Files** dialog (however, you can override that filter by typing a new filter; and changing the active tab or opening a new file after the dialog is already shown will _not_ update that field automatically); if it is set to `fifFilterFollowsDoc="no"` (default), then the Filter field will not change when you launch **Find in Files**, and will instead remember the last value you entered into the field (if any).
 
-* Changing the command-line interpreter used:
+- Changing the command-line interpreter used:
     - Starting in v8.9.6.1, the `commandLineInterpreter` config mentioned below will _not_ work any more.  Instead, the [File menu](../files/#file-menu) and [Tab Bar context menu](../user-interface/#tab-bar-right-click-menu) that reference opening in `cmd` have added another entry to also open in PowerShell.
     - Through v8.9.6, **[File > Open Containing Folder](../files/#file-menu) > cmd** will launch the `cmd.exe` command-line interpreter by default.  If you have a preferred command-line interpreter (such as `powershell`), you can add another `<GUIConfig...>` tag inside the `<GUIConfigs>` section, like:
         ```
@@ -897,7 +897,8 @@ The following settings are for rather specific needs and could cause some confus
         <GUIConfig name="commandLineInterpreter">"C:\path\with spaces\to\cli.exe"</GUIConfig>
         ```
         This was removed in v8.9.6.1 for security reasons.
-* Control whether tab coloring follows theme or not:
+
+- Control whether tab coloring follows theme or not:
   - By default, in Light Mode, the tab colors will follow the theme's settings for **[Settings > Style Configurator > Global Styles](#global-styles) > Active tab text** foreground and **Inactive tabs** foreground and background colors; in Dark Mode, the tab colors will _not_ follow those settings (because many users use Dark themes that don't set that color, which would mess up the user interface for those users, and they wouldn't be able to fix it, because the style wouldn't be listed in the theme).
   - There are two hidden settings in the Dark Mode section of the XML (new in v8.4.8):
     ```
@@ -908,3 +909,11 @@ The following settings are for rather specific needs and could cause some confus
   - Also, the `darkTabIconSet` and `lightTabIconSet` attributes in that same tag (not shown) both have hidden option values available.
     - In the GUI, **[Settings > Preferences > General](#general) > Tab Bar > `☐ Alternate icons`** can be used to set whether you want the the alternate icons or not.
     - But by manually editing these attributes in the XML, you can also force it to use the icon set defined by the opposite mode (use the light icon set in Dark Mode, or the dark icon set in Light Mode).  Values can be `"0"` value for light icons,`"2"` for dark icons and, `"1"` is for alternate icons.
+
+- Control session network warning (new to v8.9.8)
+    - Starting in Notepad++ v8.9.8, if your active session (either `session.xml` or a manually loaded session XML) has a UNC-style path (like `\\hostname\sharename\path\file.ext`), Notepad++ will prompt you whether you want to skip that particular network path, load that path, always skip network paths, or always load network paths.  It should remember your "always" choice for this instance of Notepad++, and will save your choice to `<GUIConfig name="MISC" ... networkPathWarningMethod="#" ...>` in `config.xml`:
+        - `networkPathWarningMethod="0"`: will prompt next time
+        - `networkPathWarningMethod="1"`: will always skip loading network files from session files
+        - `networkPathWarningMethod="2"`: will always load network files from session files
+    - This option is not available through the GUI, so if you want to change your mind, you must edit `config.xml` (following the instructions for that file in [Editing Configuration Files](../config-files/#editing-configuration-files)) and change the value of this attribute.
+    - Changes to settings like that are saved to `config.xml` when Notepad++ exits (assuming your instance of Notepad++ is the one that has the permission to write to that config file), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
