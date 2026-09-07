@@ -47,102 +47,102 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
   quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
   should match an existing UDL.  Mutually exclusive with `-l` (UDL will take priority
   over standard syntax highlighter).  (new to v8.1.2)
-- `-L`: Apply indicated localization, *langCode* maps to the localization file name:
+- `-L`: <a name="langCodeList"></a>Apply indicated localization, *langCode* maps to the localization file name:
     {{< details "show Language Codes" >}}
-code | file
----|---
-`ab`, `abk` | `abkhazian.xml`
-`af` | `afrikaans.xml`
-`an` | `aragonese.xml`
-`ar`, `ar-dz`, `ar-bh`, `ar-eg`, `ar-iq`, `ar-jo`, `ar-kw`, `ar-lb`, `ar-ly`, `ar-ma`, `ar-om`, `ar-qa`, `ar-sa`, `ar-sy`, `ar-tn`, `ar-ae`, `ar-ye` | `arabic.xml`
-`az` | `azerbaijani.xml`
-`be` | `belarusian.xml`
-`bg` | `bulgarian.xml`
-`bn` | `bengali.xml`
-`br-fr` | `breton.xml`
-`bs` | `bosnian.xml`
-`ca` | `catalan.xml`
-`co`, `co-fr` | `corsican.xml`
-`cs` | `czech.xml`
-`cy-gb` | `welsh.xml`
-`da` | `danish.xml`
-`de`, `de-at`, `de-de`, `de-li`, `de-lu`, `de-ch` | `german.xml`
-`el` | `greek.xml`
-`eo` | `esperanto.xml`
-`es-ar` | `spanish_ar.xml`
-`es`, `es-bo`, `es-cl`, `es-co`, `es-cr`, `es-do`, `es-ec`, `es-sv`, `es-gt`, `es-hn`, `es-mx`, `es-ni`, `es-pa`, `es-py`, `es-pe`, `es-pr`, `es-es`, `es-uy`, `es-ve` | `spanish.xml`
-`et` | `estonian.xml`
-`eu` | `basque.xml`
-`exy` | `extremaduran.xml`
-`fa` | `farsi.xml`
-`fi` | `finnish.xml`
-`fr`, `fr-be`, `fr-ca`, `fr-fr`, `fr-lu`, `fr-mc`, `fr-ch` | `french.xml`
-`fur` | `friulian.xml`
-`ga` | `irish.xml`
-`gl` | `galician.xml`
-`gu` | `gujarati.xml`
-`he` | `hebrew.xml`
-`hi` | `hindi.xml`
-`hr` | `croatian.xml`
-`hu` | `hungarian.xml`
-`id` | `indonesian.xml`
-`it`, `it-ch` | `italian.xml`
-`ja` | `japanese.xml`
-`ka` | `georgian.xml`
-`kab` | `kabyle.xml` (spelling fixed to `kab` in v8.7.5; must use `keb` instead of `kab` in v8.7.4 and earlier)
-`kk` | `kazakh.xml`
-`kn` | `kannada.xml`
-`ko`, `ko-kp`, `ko-kr` | `korean.xml`
-`ku` | `kurdish.xml`
-`ky` | `kyrgyz.xml`
-`lb` | `luxembourgish.xml`
-`lij` | `ligurian.xml`
-`lt` | `lithuanian.xml`
-`lv` | `latvian.xml`
-`mk` | `macedonian.xml`
-`mn` | `mongolian.xml`
-`mr` | `marathi.xml`
-`ms` | `malay.xml`
-`ne`, `nep` | `nepali.xml`
-`nl`, `nl-be` | `dutch.xml`
-`nn` | `nynorsk.xml`
-`no`, `nb` | `norwegian.xml`
-`oc-aranes` | `aranese.xml`
-`oc` | `occitan.xml`
-`pa`, `pa-in` | `punjabi.xml`
-`pl` | `polish.xml`
-`pt-br` | `brazilian_portuguese.xml`
-`pt`, `pt-pt` | `portuguese.xml`
-`ro`, `ro-mo` | `romanian.xml`
-`ru`, `ru-mo` | `russian.xml`
-`sc` | `sardinian.xml`
-`sgs` | `samogitian.xml`
-`si` | `sinhala.xml`
-`sk` | `slovak.xml`
-`sl` | `slovenian.xml`
-`sq` | `albanian.xml`
-`sr-cyrl-ba`, `sr-cyrl-sp` | `serbianCyrillic.xml`
-`sr` | `serbian.xml`
-`sv` | `swedish.xml`
-`ta` | `tamil.xml`
-`te` | `telugu.xml`
-`tg-cyrl-tj` | `tajikCyrillic.xml`
-`th` | `thai.xml`
-`tl` | `tagalog.xml`
-`tr` | `turkish.xml`
-`tt` | `tatar.xml`
-`ug-cn` | `uyghur.xml`
-`uk` | `ukrainian.xml`
-`ur`, `ur-pk` | `urdu.xml`
-`uz-cyrl-uz` | `uzbekCyrillic.xml`
-`uz` | `uzbek.xml`
-`vec` | `venetian.xml`
-`vi`, `vi-vn` | `vietnamese.xml`
-`yue` | `hongKongCantonese.xml`
-`zh-tw`, `zh-hk`, `zh-sg` | `taiwaneseMandarin.xml`
-`zh`, `zh-cn` | `chineseSimplified.xml`
-`zu`, `zu-za` | `zulu.xml`
-    {{< /details >}}
+| code | localization filename | Notes |
+| ---|--- | --- |
+| `ab`, `abk` | `abkhazian.xml` | |
+| `af` | `afrikaans.xml` | |
+| `an` | `aragonese.xml` | |
+| `ar`, `ar-dz`, `ar-bh`, `ar-eg`, `ar-iq`, `ar-jo`, `ar-kw`, `ar-lb`, `ar-ly`, `ar-ma`, `ar-om`, `ar-qa`, `ar-sa`, `ar-sy`, `ar-tn`, `ar-ae`, `ar-ye` | `arabic.xml` | |
+| `az` | `azerbaijani.xml` | |
+| `be` | `belarusian.xml` | |
+| `bg` | `bulgarian.xml` | |
+| `bn` | `bengali.xml` | |
+| `br-fr` | `breton.xml` | |
+| `bs` | `bosnian.xml` | |
+| `ca` | `catalan.xml` | |
+| `co`, `co-fr` | `corsican.xml` | |
+| `cs` | `czech.xml` | |
+| `cy-gb` | `welsh.xml` | |
+| `da` | `danish.xml` | |
+| `de`, `de-at`, `de-de`, `de-li`, `de-lu`, `de-ch` | `german.xml` | |
+| `el` | `greek.xml` | |
+| `en`, `en-au`, `en-bz`, `en-ca`, `en-cb`, `en-gb`, `en-ie`, `en-jm`, `en-nz`, `en-ph`, `en-tt`, `en-us`, `en-za`, `en-zw` | `english.xml` | |
+| `eo` | `esperanto.xml` | |
+| `es-ar` | `spanish_ar.xml` | |
+| `es`, `es-bo`, `es-cl`, `es-co`, `es-cr`, `es-do`, `es-ec`, `es-sv`, `es-gt`, `es-hn`, `es-mx`, `es-ni`, `es-pa`, `es-py`, `es-pe`, `es-pr`, `es-es`, `es-uy`, `es-ve` | `spanish.xml` | |
+| `et` | `estonian.xml` | |
+| `eu` | `basque.xml` | |
+| `exy` | `extremaduran.xml` | |
+| `fa` | `farsi.xml` | |
+| `fi` | `finnish.xml` | |
+| `fr`, `fr-be`, `fr-ca`, `fr-fr`, `fr-lu`, `fr-mc`, `fr-ch` | `french.xml` | |
+| `fur` | `friulian.xml` | |
+| `ga` | `irish.xml` | |
+| `gl` | `galician.xml` | |
+| `gu` | `gujarati.xml` | |
+| `he` | `hebrew.xml` | |
+| `hi` | `hindi.xml` | |
+| `hr` | `croatian.xml` | |
+| `hu` | `hungarian.xml` | |
+| `id` | `indonesian.xml` | |
+| `it`, `it-ch` | `italian.xml` | |
+| `ja` | `japanese.xml` | |
+| `ka` | `georgian.xml` | |
+| `kab` | `kabyle.xml` | spelling fixed to `kab` in v8.7.5; must use `keb` instead of `kab` in v8.7.4 and earlier |
+| `kk` | `kazakh.xml` | |
+| `kn` | `kannada.xml` | |
+| `ko`, `ko-kp`, `ko-kr` | `korean.xml` | |
+| `ku` | `kurdish.xml` | |
+| `ky` | `kyrgyz.xml` | |
+| `lb` | `luxembourgish.xml` | |
+| `lij` | `ligurian.xml` | |
+| `lt` | `lithuanian.xml` | |
+| `lv` | `latvian.xml` | |
+| `mk` | `macedonian.xml` | |
+| `mn` | `mongolian.xml` | |
+| `mr` | `marathi.xml` | |
+| `ms` | `malay.xml` | |
+| `ne`, `nep` | `nepali.xml` | |
+| `nl`, `nl-be` | `dutch.xml` | |
+| `nn` | `nynorsk.xml` | |
+| `no`, `nb` | `norwegian.xml` | |
+| `oc-aranes` | `aranese.xml` | |
+| `oc` | `occitan.xml` | |
+| `pa`, `pa-in` | `punjabi.xml` | |
+| `pl` | `polish.xml` | |
+| `pt-br` | `brazilian_portuguese.xml` | |
+| `pt`, `pt-pt` | `portuguese.xml` | |
+| `ro`, `ro-mo` | `romanian.xml` | |
+| `ru`, `ru-mo` | `russian.xml` | |
+| `sc` | `sardinian.xml` | |
+| `sgs` | `samogitian.xml` | |
+| `si` | `sinhala.xml` | |
+| `sk` | `slovak.xml` | |
+| `sl` | `slovenian.xml` | |
+| `sq` | `albanian.xml` | |
+| `sr-cyrl-ba`, `sr-cyrl-sp` | `serbianCyrillic.xml` | |
+| `sr` | `serbian.xml` | |
+| `sv` | `swedish.xml` | |
+| `ta` | `tamil.xml` | |
+| `te` | `telugu.xml` | |
+| `tg-cyrl-tj` | `tajikCyrillic.xml` | |
+| `th` | `thai.xml` | |
+| `tl` | `tagalog.xml` | |
+| `tr` | `turkish.xml` | |
+| `tt` | `tatar.xml` | |
+| `ug-cn` | `uyghur.xml` | |
+| `uk` | `ukrainian.xml` | |
+| `ur`, `ur-pk` | `urdu.xml` | |
+| `uz-cyrl-uz` | `uzbekCyrillic.xml` | |
+| `uz` | `uzbek.xml` | |
+| `vec` | `venetian.xml` | |
+| `vi`, `vi-vn` | `vietnamese.xml` | |
+| `yue` | `hongKongCantonese.xml` | |
+| `zh-tw`, `zh-hk`, `zh-sg` | `taiwaneseMandarin.xml` | |
+| `zh`, `zh-cn` | `chineseSimplified.xml` | |
+| `zu`, `zu-za` | `zulu.xml` | |    {{< /details >}}
 - `-n`: Scroll to indicated line (*LineNumber*) on `filepath`.
 - `-c`: Scroll to indicated column (*ColumnNumber*) on `filepath`.
 - `-p`: Scroll to indicated 0 base position (*Position*) on `filepath`.
