@@ -52,6 +52,8 @@ If you have updated an existing translation to match the most recent version of 
 
 ### Available translations
 
+The following are many of the localizations ("translations") available in Notepad++.  Because of the difficulty of mapping flags to localization languages, the complete list of language codes and their associated localization filename can be found in the `-L` documentation in the [command-line arguments descriptions](../command-prompt/#langCodeList)
+
 <div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
