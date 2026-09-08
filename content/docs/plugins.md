@@ -464,7 +464,6 @@ depending on your architecture.
        1. Clone https://github.com/notepad-plus-plus/wingup if you haven't already
        2. Pull the most recent copy, if you haven't already
        3. Do a DEBUG build of the appropriate Win32 / x64 / ARM64
-       2. Download the most recent unofficial debug build.
     - Place the debug `GUP.exe` from **A** or **B** into your `<DebugDirectory>\updater`, overwriting the `GUP.exe` that is there.
 4. Get the JSON for nppPluginList:
     - If you have a fork of the nppPluginList repo (with a branch for making your copies), you can use the copies there.
