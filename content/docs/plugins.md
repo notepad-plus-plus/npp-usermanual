@@ -94,7 +94,7 @@ The Plugins Admin window also shows the Plugin List version and links to the Plu
 
 Actions available through the Plugins
 - **Install**: See [Install using Plugins Admin (above)](#install-using-plugins-admin) for instructions on how to install.
-    - This button is visible when you are on the **Available** tab.  
+    - This button is visible when you are on the **Available** tab.
     - Checkmark the plugin(s) you want to install, and click **Install**.
         - Notepad++ will restart after the plugin(s) are installed, and those plugins will be available.
 - **Remove**: Allows you to completely remove (uninstall) one or more plugins.
@@ -407,7 +407,7 @@ Since, for whatever reason, this file might not be present, it is a good idea to
 ## Plugin List
 
 The Plugin List is provided by a DLL that ships with Notepad++.
-It contains any plugins that have been submitted to the nppPluginList project. 
+It contains any plugins that have been submitted to the nppPluginList project.
 This list, which is maintained by the Notepad++ development team, is a separate open source project hosted on GitHub at https://github.com/notepad-plus-plus/nppPluginList/.
 Any publicly-downloadable plugin is welcome to be submitted to the list.
 
@@ -445,13 +445,34 @@ depending on your architecture.
       or if you are having difficulty finding the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> because they have moved,
       you can go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
       click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (that is, steps **B.** 4-6, above)
-3. Get the JSON for nppPluginList:
+3. Get a debug binary for the `GUP.exe` as well
+    - **A.** Download a debug build.
+        - **A.a**: Check for a debug asset on the most recent release:
+            - Look at https://github.com/notepad-plus-plus/wingup/releases/latest
+            - Download the appropriate `gup_exe_<XXX>_dbg` artifact, where `<XXX>` is one of the architectures (`win32`, `x64`, or `arm64`)
+        - **A.b**: Check for the most recent build on the "master" branch action history:
+            - Look at https://github.com/notepad-plus-plus/wingup/actions?query=branch%3Amaster
+            - Click on the most recent build with a <span style="color: green">green ✓</span>
+            - It should already be on the **🏠 Summary** page, so scroll down to the **Artifacts** section
+            - Download the appropriate `gup_exe_<XXX>_dbg` artifact, where `<XXX>` is one of the architectures (`win32`, `x64`, or `arm64`)
+        - **A.c**: If WinGUp release is still on v5.4.3, but the most recent branch-action build no longer has artifacts,
+            - Go to the _unofficial_ build of the v5.4.3 artifacts at https://github.com/pryrt/wingup/releases/tag/v5.4.3-dbg
+                - The user `pryrt` at GitHub is a contributor to this User Manual.  Whether you then trust that user to publish an unofficial debug build is up to you.
+            - Grab the appropriate `gup_exe_<XXX>_dbg.zip`, where `<XXX>` is one of the architectures (`win32`, `x64`, or `arm64`)
+        - _Note_: Whether you use **A.a**, **A.b**, or **A.c**, you may have to unblock the downloaded zip and/or the exe it contains: visit the **Properties** from the right-click context menu; if the **Unblock** option is shown, then click the checkbox and click **Apply** then **OK**.
+    - **B.** Build your own debug copy
+       1. Clone https://github.com/notepad-plus-plus/wingup if you haven't already
+       2. Pull the most recent copy, if you haven't already
+       3. Do a DEBUG build of the appropriate Win32 / x64 / ARM64
+       2. Download the most recent unofficial debug build.
+    - Place the debug `GUP.exe` from **A** or **B** into your `<DebugDirectory>\updater`, overwriting the `GUP.exe` that is there.
+4. Get the JSON for nppPluginList:
     - If you have a fork of the nppPluginList repo (with a branch for making your copies), you can use the copies there.
     - If you haven't done a fork yet (you will need to in order to create a PR), you can access them from https://github.com/notepad-plus-plus/nppPluginList/tree/master/src as well.
     - Grab the `pl.<XXX>.json` as appropriate, and save it as `<DebugDirectory>\Plugins\Config\nppPluginList.json`
-4. Edit `nppPluginList.json`, adding or updating the entry for your plugin per the rules in the next section, below.
-5. Launch the `<DebugDirectory>\notepad++.<XXX>.dbg.exe`.
-6. You should be able to use **Plugins > Plugins Admin** to install your new or updated plugin.
+5. Edit `nppPluginList.json`, adding or updating the entry for your plugin per the rules in the next section, below.
+6. Launch the `<DebugDirectory>\notepad++.<XXX>.dbg.exe`.
+7. You should be able to use **Plugins > Plugins Admin** to install your new or updated plugin.
 
 ### Rules for adding your plugins into list
 
