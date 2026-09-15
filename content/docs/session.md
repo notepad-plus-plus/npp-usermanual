@@ -79,33 +79,33 @@ If your active session (either `session.xml` or a manually loaded session XML) h
 - **Skip** that particular network path
 - **Always load from this server** to whitelist the server (new to v8.9.8.1)
     - When you choose this, Notepad++ will add an entry to `serverWhiteList.xml` with an entry like `<ServerAllowed path="ServerName1" />`.  There is no direct GUI access to this list (it's considered a "[preference for advanced users](../preferences/#preferences-for-advanced-users)"), so if you wish to remove servers from the whitelist, you need to edit that file (per [editing config file instructions](../config-files/#editing-configuration-files)), remove that entry, save the config file, then restart Notpead++ to get it to re-read the configuration.
-        - using `name="ServerName"` will just whitelist that server
-        - using `name="*"` will allow _any_ server (effectively, the "always load" option)
-        - using `name="!"` will mean that no server listed after this line will be included, despite being in the file (allowing you to effectively "comment out" the remaining servers in the list, without using XML comments; or stopping someone from adding a server you didn't desire by appending it)
-    - _Note_: in v8.9.8, this option was just **Load** for a particular file, without a server whitelist
+    - _Note_: in v8.9.8, this option was just **Load** for a particular file, without a server whitelist, and was stored in `config.xml` in a `<GUIConfig name="MISC ... networkPathWarningMethod="#" ...>` attribute, where `0` meant ask, `1` meant skip, and `2` meant load.
 - **Always skip network paths** if you never want to load network paths from session files
 - **Always load network paths** if you want to always load any network paths from session files
 
-It should remember your "always" choice for this instance of Notepad++, and will save your choice to `<GUIConfig name="MISC" ... networkPathWarningMethod="#" ...>` in `config.xml`:
+It should remember your "always" choice for this instance of Notepad++, and will save your choice to `<NetworkPathsAlwaysAction value="#" />` in `serverWhiteList.xml` (starting in v8.9.8.1) :
 
-- `networkPathWarningMethod="0"`: will prompt next time
-- `networkPathWarningMethod="1"`: will always skip loading network files from session files
-- `networkPathWarningMethod="2"`: will always load network files from session files
-- Since this choice is saved to the `config.xml`, Notepad++ saves this file as the application exits (in multi-instance mode, your instance must be the one that has permission to save the configuration), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
+- `value="?"`: will prompt next time
+- `value="!"`: will always skip loading network files from session files
+- `value="*"`: will always load network files from session files
+- Notepad++ saves this file as the application exits (in multi-instance mode, your instance must be the one that has permission to save the configuration), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
 
 #### Example `serverWhiteList.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <NotepadPlus>
+    <!--
+    ? ... Always ask. Default value.
+    ! ... Always skip network paths.
+    * ... Always load network paths.
+    -->
+    <NetworkPathsAlwaysAction value="?" />
     <ServerAllowed name="ServerName1" />
-    <ServerAllowed name="ServerName2" />
-    <ServerAllowed name="!" />
-    <ServerAllowed name="ServerName3" />
-</NotepadPlus>
-```
+    <ServerAllowed name="127.0.0.1" />
+</NotepadPlus>```
 
-This example allows ServerName1 and ServerName2, but not ServerName3 (because it follows the `!` entry).
+This example allows `ServerName1` and `127.0.0.1`, and will prompt for any other servers.
 
 ## Folder as Workspace
 
