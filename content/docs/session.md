@@ -88,7 +88,7 @@ It should remember your "always" choice for this instance of Notepad++, and will
 - `value="?"`: will prompt next time
 - `value="!"`: will always skip loading network files from session files
 - `value="*"`: will always load network files from session files
-- Notepad++ saves this file as the application exits (in multi-instance mode, your instance must be the one that has permission to save the configuration), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
+- Unlike many configuration files, Notepad++ saves this file immediately.
 
 #### Example `serverWhiteList.xml`
 
