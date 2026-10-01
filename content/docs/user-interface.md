@@ -22,12 +22,12 @@ The menu bar of Notepad++ has a variety of menus:
 
 Many of the commands from those menus can also be found elsewhere in the User Interface, so you can search this page for a specific term if you are looking for alternative access to a specific menu command.
 
-At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (Before v8.4.3, only the `X` existed in that area of the menu bar.  Starting in v8.4.5, these can be made hidden using [Settings > Preferences > General > Menu](../preferences/#general).)
+At the far right of the menu bar there are also icons `+` (to create a New file), `▼` (to choose from the open files), and `X` (which closes the active tab).  (These controls can be hidden using [Settings > Preferences > General > Menu](../preferences/#general).)
 
 ### Tools Menu
 
 This menu contains commands related to running [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) , including [MD5](https://en.wikipedia.org/wiki/MD5),
-[SHA-1](https://en.wikipedia.org/wiki/SHA-1), and the SHA-256 and SHA-512 algorithms from [SHA-2](https://en.wikipedia.org/wiki/SHA-2).  (SHA-1 and SHA-512 were added in v8.5.5.)  These are useful for comparing the hashes for downloaded files to officially-published hashes, and for generating those hashes for files that you are publishing.
+[SHA-1](https://en.wikipedia.org/wiki/SHA-1), and the SHA-256 and SHA-512 algorithms from [SHA-2](https://en.wikipedia.org/wiki/SHA-2).  These are useful for comparing the hashes for downloaded files to officially-published hashes, and for generating those hashes for files that you are publishing.
 
 For each function, there are 3 commands:
 
@@ -48,15 +48,15 @@ This menu allows various ways of activating and manipulating the tabs for open f
     - **Type Z to A**: reverse alphabetical order of the filetype (based on Language and extension)
     - **Content Length Ascending**: length of file content, shortest to longest
     - **Content Length Descending**: length of file content, longest to shortest
-    - **Modified Time Ascending**: time last modified, most recent at end (new to v8.8.6)
-    - **Modified Time Descending**: time last modified, most recent at beginning (new to v8.8.6)
+    - **Modified Time Ascending**: time last modified, most recent at end
+    - **Modified Time Descending**: time last modified, most recent at beginning
 - **Windows...**: Launches a dialog with a grid-based interface for accessing files opened in Notepad++
     - Clicking on a column's header in the grid will sort the grid based on that Attribute
         - Column `Name`: filename (or text displayed in the tab's title, for unsaved files)
         - Column `Path`: full path (drive, directory, and filename)
         - Column `Type`: file type (based on Language and extension)
         - Column `Size`: length of the content of the file
-        - Column `Modified time`: time that the file was last modified (new to v8.8.6)
+        - Column `Modified time`: time that the file was last modified
     - Buttons:
         - **Activate**: Makes the selected file(s) the active tab in Notepad++.
         - **Save**: Saves the selected file(s).
@@ -69,7 +69,7 @@ This menu allows various ways of activating and manipulating the tabs for open f
     - If there are two [Views](../views/) visible, this menu's file list will only show the files in the active [View](../views/).
 - Files: the rest of the main **Window** menu is the list of files currently open in Notepad++.
     - If there are too many, they won't all be accessible from the menu; use the **Windows...** action to launch the dialog to access the remaining files.
-    - Files that have unsaved edits will be marked with an `*` after the filename (new to v8.8.2).
+    - Files that have unsaved edits will be marked with an `*` after the filename.
     - If there are two [Views](../views/) visible, this menu's file list will only show the files in the active [View](../views/).
     - The file for the active tab (of the active [View](../views/)) will be marked with a checkmark `✔` icon.
 
@@ -99,18 +99,17 @@ The ```MOUSEWHEEL``` commands described require that the mouse pointer be hovere
 
 If the description says it will "wrap", it means that if you try to go beyond the last tab, it will next go to the first tab; and if you try to go before the first tab, it will next go to the last tab.  If the descriptions says it does "not wrap", then trying to go beyond the last tab or before the first tab will just stay at the last or first tab without wrapping.
 
-- The Tab Bar settings can be found at [**Settings > Preferences > Tab Bar**](../preferences/#tab-bar) (a sub-page of **General** settings before v8.8), including the options to **Hide** the Tab Bar or to **Lock** the Tab Bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
+- The Tab Bar settings can be found at [**Settings > Preferences > Tab Bar**](../preferences/#tab-bar), including the options to **Hide** the Tab Bar or to **Lock** the Tab Bar (so that tabs will not be movable from the Tab Bar, though they can still be reordered using keyboard shortcuts or menus).
 
 - If you click on a tab on the Tab Bar, that tab will become the active tab in the view.
 
 - If you hover over a tab on the Tab Bar, there will be hover text:
     - It will show the full file path for a file from the filesystem.
-    - If it's a new, unsaved tab, then the hover text will be the name of that tab
-		- Starting in v8.7.1, the hover text will also show the date-and-time when the new tab was created.
-		- The name of a new tab defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).
-			- Starting in v8.8.2, there is a preference in [**Settings > Preferences > New Document**](../preferences/#new-document) to allow using the first line of the document as the tab's name, instead of `new #` or similar.
-    - In v8.7.1 and newer, hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > Tab Bar](../preferences/#tab-bar)** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
-    - If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Change inactive tab color** is checked (known as **General > Tab Bar > ☐ Darken inactive tabs** prior to v8.8), hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    - If it's a new, unsaved tab, then the hover text will be the name of that tab and the date-and-time when the new tab was created.
+        - The name of a new tab defaults to `new #`, depending on language, but you can rename unsaved tabs even without having saved it to a true filename, and the hover will show the same text as seen in the tab's title).
+        - There is a preference in [**Settings > Preferences > New Document**](../preferences/#new-document) to allow using the first line of the document as the tab's name, instead of `new #` or similar.
+    - Hovering over an inactive tab may reveal the hollow pin icon (see the "to pin a tab" description, below) or the close icon (see "to close a tab" description, below), depending on the **[Settings > Preferences > Tab Bar](../preferences/#tab-bar)** settings for the **Show close button**, **Enable pin tab feature**, and **Show buttons on inactive tabs** checkboxes.
+    - If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Change inactive tab color** is checked, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
 
 - To switch between first and last tab, use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + ```MOUSEWHEEL``` on tabs. ```MOUSEWHEEL``` up will take to first tab while down will take to last tab.
   ![tabNavFirstLast](../images/tabNavFirstLast.gif)
@@ -152,18 +151,18 @@ If the description says it will "wrap", it means that if you try to go beyond th
 - To close a tab using the Tab Bar:
   1. If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Show close button on each tab** is checked, you can click the red ☒ on that tab to close that tab.
       - When set to show, the close button will always be visible on the active tab
-      - When set to show, in v8.7.2 and newer, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, its
+      - When set to show, the close button will be invisible on inactive tabs, though if you hover over the inactive tab, it appears
   2. If **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Double click to close document** is checked, you can double-click the tab's title to close that tab.
   ![tabNavCloseXDblClick](../images/tabNavCloseXDblClick.gif)
   3. You can middle-click on the tab's title to close that tab.
 
 - To pin a tab using the Tab Bar:
   1. Ensure **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Enable pin tab feature** is checkmarked.
-  2. Depending on the state of **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Enable pin tab feature** (new to v8.8), the behavior is different:
-     - If that setting is not checkmarked (this is the behavior prior to v8.8):
+  2. Depending on the state of **[Settings > Preferences > Tab Bar](../preferences/#tab-bar) > ☐ Enable pin tab feature**, the behavior is different:
+     - If that setting is not checkmarked:
         1. The active tab (and any tabs you hover over) will have a hollow "pin" icon.
         2. Clicking that hollow icon,  will "pin" the tab, which will change the icon to a filled-in "pin", and will move the tab to the left side of the Tab Bar (before any unpinned tabs, but after any tabs that are already pinned).
-     - If that setting is checkmarked (only available starting in v8.8):
+     - If that setting is checkmarked:
         1. You must use the [Tab Bar Right Click context menu](#tab-bar-right-click-menu) to `Pin` a tab.
         2. Once pinned, the Tab's icon will change to a filled-in "pin", and will move the tab to the left side of the Tab Bar (before any unpinned tabs, but after any tabs that are already pinned).
   3. Pinned tabs will show the filled-in pin icon whether or not they are active.
@@ -182,7 +181,7 @@ By default, the commands available in that context menu are described below.  If
   - `Close All to the Left`: Closes all files that are to the right of this file on the Tab Bar.
   - `Close All to the Right`: Closes all files that are to the left of this file on the Tab Bar.
   - `Close All Unchanged`: Closes all files that do not have unsaved changes (leaves only files that have unsaved changes).
-- `Pin` or `Unpin`: Pins or unpins the active tab, if **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked. (New in v8.7.3)
+- `Pin` or `Unpin`: Pins or unpins the active tab, if **[Settings > Preferences > General](../preferences/#general) > Tab Bar > ☐ Enable pin tab feature** is checkmarked.
 - `Save`: Saves the file (disabled/grayed out if there are no unsaved changes).
 - `Save As`: Allows you to save the current file under a new name.
 - `Open Into >`:
@@ -195,23 +194,23 @@ By default, the commands available in that context menu are described below.  If
 - `Move to Recycle Bin`: Deletes the current file (placing it safely in Window's Recycle Bin).
 - `Reload`: Reloads this file from disk.
 - `Print`: Prints this file.
-- `Read-Only in Notepad++`: Sets this file's Notepad++\-specific read-only flag (see more in the [**Edit** menu description](../editing/#edit-menu)) (renamed in v8.8.2).
-- `Read-Only Attribute in Windows`: Clears this file's read-only flag for the Windows OS (see more in the [**Edit** menu description](../editing/#edit-menu)) (renamed in v8.8.2).
+- `Read-Only in Notepad++`: Sets this file's Notepad++\-specific read-only flag (see more in the [**Edit** menu description](../editing/#edit-menu)).
+- `Read-Only Attribute in Windows`: Clears this file's read-only flag for the Windows OS (see more in the [**Edit** menu description](../editing/#edit-menu)).
 - `Copy to Clipboard >`
   - `Copy Full File Path`: Copies the full file path (drive, directory, and filename) to the Windows Clipboard.
   - `Copy Filename`: Copies just the filename (no drive or directory) to the Windows Clipboard.
   - `Copy Current Dir. Path`: Copies the file's directory (drive and directory, but not the  filename) to the Windows Clipboard.
 - `Move Document >`
-  - `Move to Start`: Moves the tab to be the first in the list of active tabs for the current view. (New to v8.6.1.)
-  - `Move to End`: Moves the tab to be the last in the list of active tabs for the current view. (New to v8.6.1.)
+  - `Move to Start`: Moves the tab to be the first in the list of active tabs for the current view.
+  - `Move to End`: Moves the tab to be the last in the list of active tabs for the current view.
   - `Move to Other View`: Moves the tab from one view to the other.
   - `Clone to Other View`: Makes a tab for the same file in the other view.
   - `Move to New Instance`: Moves the tab from this Notepad++ instance to a newly-created instance (only works on named files that have no unsaved changes).
   - `Open in New Instance`: Makes a tab in a new Notepad++ instance which contains the same file as this tab (only works on named files that have no unsaved changes).
-- `Apply Color to Tab >` (new to v8.4.6)
+- `Apply Color to Tab >`
   - `Apply Color #`: Applies the indicated color to the highlight portion of the Tab Bar.  (Applying a different color will _change_ the color, not combine the colors together.  Each tab can only have one color.)
   - `Remove Color`: Removes the color of the tab, returning to the default color scheme.
-  - Starting in v8.7, these colors can be user-defined using the [**Style Configurator > Global Styles > Tab color _n_** and **Tab color dark mode _n_**](../preferences/#global-styles) background color settings.
+  - These colors can be user-defined using the [**Style Configurator > Global Styles > Tab color _n_** and **Tab color dark mode _n_**](../preferences/#global-styles) background color settings.
 
 ## Toolbar
 
@@ -237,7 +236,7 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 - ![](../images/icons/standard/syncH.png)            ![](../images/icons/fluent/syncH.png)                   **Synchronize Horizontal Scrolling** ⇒ [**View > Synchronize Horizontal Scrolling**](../views/#synchronized-scrolling): Toggle locking of the two views together, horizontally.
 - ![](../images/icons/standard/wrap.png)             ![](../images/icons/fluent/wrap.png)                    **Word Wrap** ⇒ [**View > Word Wrap**](../views/#wrapping): Toggle whether or not long lines will be wrapped in the display.
 - ![](../images/icons/standard/allChars.png)         ![](../images/icons/fluent/allChars.png)                **Show All Characters** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle showing all special characters.
-    - Starting in v8.6.9, there is a drop-down menu available from this toolbar icon.  Clicking the button will still toggle from showing all to showing none.  But if you click the drop-down instead (or right click anywhere on the icon), you will see the full [**View > Show Symbol**](../views/#show-symbol) submenu, from which you can manually select which special characters to show and which not to.
+    - There is a drop-down menu available from this toolbar icon.  Clicking the button will still toggle from showing all to showing none.  But if you click the drop-down instead (or right click anywhere on the icon), you will see the full [**View > Show Symbol**](../views/#show-symbol) submenu, from which you can manually select which special characters to show and which not to.
 - ![](../images/icons/standard/indentGuide.png)      ![](../images/icons/fluent/indentGuide.png)             **Show Indent Guide** ⇒ [**View > Show Symbol > Show All Characters**](../views/#show-symbol): Toggle dotted vertical line `⸽` showing tabstops.
 - ![](../images/icons/standard/udl.png)              ![](../images/icons/fluent/udl.png)                     **Define Your Language** ⇒ [**Language > User Defined Language > Define Your Language**](..//user-defined-language-system/): Toggles dialog to define a User Defined Language ("UDL").
 - ![](../images/icons/standard/docMap.png)           ![](../images/icons/fluent/docMap.png)                  **Document Map** ⇒ [**View > Document Map**](../views/#panels): Toggles display of the Document Map panel.
@@ -253,7 +252,7 @@ There is a toolbar which has icons for various common tasks, which each run a sp
 
 Plugins can put additional buttons on the toolbar, to perform actions provided by those plugins.
 
-The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  You can hide or show individual toolbar buttons, as described in [Toolbar Icon Visibility](../config-files/#toolbar-icon-visibility-toolbarbuttonsconfxml) (new to v8.7.8).  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](../config-files/#toolbar-icon-customization).
+The toolbar settings can be found at [**Settings > Preferences > General > Toolbar**](../preferences/#general), including the option to **Hide** the toolbar.  You can hide or show individual toolbar buttons, as described in [Toolbar Icon Visibility](../config-files/#toolbar-icon-visibility-toolbarbuttonsconfxml).  And you can customize the icons used for those buttons, as described in [Toolbar Icon Customization](../config-files/#toolbar-icon-customization).
 
 If there are more buttons on your Toolbar than will fit in the current window width, you can access the missing button's actions through the `»` pulldown at the right edge of the Toolbar.
 
@@ -318,7 +317,7 @@ If the Notepad++ window is too narrow, the first section will be missing, as see
 
 ## System Tray
 
-When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray** (available starting in v8.7.1), then when you close Notepad++, it will move to the system tray.  When that preference is set to **Minimize / Close to system tray** (new to v8.7.2), either minimizing _or_ closing Notepad++ will move the application to the Windows system tray. You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).
+When the [Settings > Preferences > MISC](../preferences/#misc) are set to **Minimize to system tray**, then when you minimize Notepad++, the main Notepad++ window will be closed, and the Notepad++ icon will move from the Windows taskbar to the Windows system tray.  If those settings have **Close to system tray**, then when you close Notepad++, it will move to the system tray.  When that preference is set to **Minimize / Close to system tray**, either minimizing _or_ closing Notepad++ will move the application to the Windows system tray. You can also launch Notepad++ directly to the system tray using the [`-systemtray` command-line argument](../command-prompt/).
 
 When on the system tray, Notepad++ will not show up in the Windows <kbd>Alt+Tab</kbd> list of applications to switch between, nor will it show up in the main Task Manager's main Applications list; however, it will still show up tine Task Manager's Details list, which shows all the executable files running.
 

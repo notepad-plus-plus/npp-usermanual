@@ -6,7 +6,7 @@ weight: 9999
 
 ## Copyright
 
-Copyright (C) 2020 Don HO &lt;<don.h@free.fr>&gt;.
+Copyright (C) 2020 - 2026 Don HO &lt;<don.h@free.fr>&gt;.
 
 Additional authors include any contributors to the npp-usermanual
 repository at https://github.com/notepad-plus-plus/npp-usermanual

@@ -17,7 +17,7 @@ If the "default" state of an option is described, it means the state that the op
 
 ### General
 
-These affect the user interface (localization, toolbar, tab bar, and more).  In v8.8, the [Toolbar](#toolbar) and [Tab Bar](#tab-bar) sections were separated to their own sections.
+These affect the user interface (localization, toolbar, tab bar, and more).
 
 * **Localization**:
     * [pulldown]: Set the language for the Notepad++ user interface.
@@ -27,26 +27,23 @@ These affect the user interface (localization, toolbar, tab bar, and more).  In 
         * _NOTE_: After changing the Localization in this Preferences dialog, certain translatable strings, like the tooltip/hover text in dialog boxes, will not refresh until Notepad++ is restarted.  If it ever looks like your Localization didn't fully activate, try exiting all instances of Notepad++ then restarting the application.
 * **Menu**
     * `☐ Hide menu bar (use <kbd>Alt</kbd> or <kbd>F10</kbd> key to toggle)`: Sets the main menu bar (File, Edit, Search, ...) invisible; once invisible, it can be made temporarily visible by using the <kbd>Alt</kbd> or <kbd>F10</kbd> key.
-    * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible (new to v8.4.5).  Use this if you find the menu bar too "cluttered", or find those commands redundant.  Notepad++ must be restarted after checkmarking this option in order to see these; in v8.7.6, they can be hidden immediately (in prior versions, hiding them also required re-starting).
+    * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible.  Use this if you find the menu bar too "cluttered", or find those commands redundant.  Notepad++ must be restarted after checkmarking this option in order to see these; but when you hide them, it takes effect immediately.
 * **Status bar**:
     * `☐ Hide`: Without checkmarking this option, there will be a [status bar](../user-interface/#status-bar) along the bottom of the Notepad++ window showing information about the current document. The status bar will be hidden when this option is checkmarked.
-* **Document List Panel**:  (This section removed in v8.1.5.)
-    * `☐ Disable extension column`: Prior to v8.1.5, if checked, the [Document List](../views/#panels) panel will _not_ have the second column showing extensions (instead, the extension will be part of the Name column); in v8.1.5, this is controlled by right-clicking in the headers of the Document List panel.
-    * `☐ Show`: Prior to v8.1.3, this checkmark would toggle the Document List panel; in v8.1.3 and after, this is now controlled by the [View menu's "Document List" entry](../views/#panels).
 
 ### Toolbar
 
-These settings affect the appearance of the [Toolbar](../user-interface/#toolbar).  (Before v8.8, these Toolbar settings were a section of the [General](#general) settings above.)
+These settings affect the appearance of the [Toolbar](../user-interface/#toolbar).
 
 - `☐ Hide`: The icon-based [toolbar](../user-interface/#toolbar) will be hidden.
-- There is a radio-button set of choices for the icons (updated v8.0.0):
+- There is a radio-button set of choices for the icons:
     - `Fluent UI: small`: Uses small versions of the Fluent UI icons.
     - `Fluent UI: large`: Uses large versions of the Fluent UI icons.
     - `Filled Fluent UI: small`: Uses small versions of the Fluent UI icons, in a filled (or reverse-video) style.
     - `Filled Fluent UI: large`: Uses large versions of the Fluent UI icons, in a filled (or reverse-video) style.
-    - `Standard icons: small`: These are the small version of the traditional (pre-v8.0.0) icons.
+    - `Standard icons: small`: These are the small version of the traditional icons.
 
-In v8.8, a new section was added, for being able to change the colors of the Fluent UI icons:
+The following allow changing the colors of the Fluent UI icons:
 - **Colorization**:
     - `☐ Complete`: All the foreground in the Fluent UI icons are given the selected color.
     - `☐ Partial`: (default) Highlights in the foreground in the Fluent UI icons are given the selected color, but the rest of the foreground is black.
@@ -58,7 +55,7 @@ In v8.8, a new section was added, for being able to change the colors of the Flu
 
 ### Tab Bar
 
-These settings affect the appearance and behavior of the [Tab Bar](../user-interface/#tabs).  (Before v8.8, these Tab Bar settings were a section of the [General](#general) settings above.)
+These settings affect the appearance and behavior of the [Tab Bar](../user-interface/#tabs).
 
 - `☐ Hide`: The tab bar for the open files will not be visible.
 
@@ -68,7 +65,7 @@ These settings affect the appearance and behavior of the [Tab Bar](../user-inter
 - `☐ Lock (no drag and drop)`: Prevent the reordering of tabs by drag-and-drop on the tab bar (unselected, drag-and-drop on the tab bar will reorder tabs).
 - `☐ Double click to close document`: Allows double-clicking on the tab to close the file.
 - `☐ Exit on close the last tab`: If the last tab is closed, Notepad++ will exit (unselected, Notepad++ instead has one new file open).
-- `Max. tab label length: ____`: When set to ℕ>0, it will limit the number of characters for the tab title on the Tab Bar to ℕ, so if the length of the filename or tab title is less than ℕ, it will show in full, otherwise it will show a total of ℕ letters of the title (counting three characters for the `...` ellipsis at the end).  When set to `0`, there will be no limit.  (New to v8.8.8.)
+- `Max. tab label length: ____`: When set to ℕ>0, it will limit the number of characters for the tab title on the Tab Bar to ℕ, so if the length of the filename or tab title is less than ℕ, it will show in full, otherwise it will show a total of ℕ letters of the title (counting three characters for the `...` ellipsis at the end).  When set to `0`, there will be no limit.
 
 **Look & Feel**:
 - `☐ Reduce`: Make the tab bar vertical region and font size smaller.
@@ -77,20 +74,19 @@ These settings affect the appearance and behavior of the [Tab Bar](../user-inter
     - _Note_: In [Dark Mode](#dark-mode), the "saved" symbol (either the blue disk or the green checkmark) will _not_ be shown; the "edited" and "read-only" icons will be.
 - `☐ Change inactive tab color`: Change the background on inactive tabs to the color defined by **[Global Styles](#global-styles) > Inactive Tabs > Background Colour**.
     - Note: If this setting is not checkmarked, the chosen background color for inactive tabs will be ignored, and the active tab's background color will be used for inactive tabs instead.
-    - In v8.7.2 and newer, hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
+    - Hovering over an inactive tab will highlight that tab, as described in [User Interface > Tabs](../user-interface/#tabs).
     - Previously named `Darken inactive tabs`
 - `☐ Draw a coloured bar on active tab`: Indicate the active tab by adding a colored bar.
 - `☐ Show close button`: Add the close button to each tab's entry on the tab bar.
-    - In v8.7.6 and newer, if the option is checkmarked, Notepad++ shows the close button on the active tab or on all tabs (depending on `☐ Show buttons on inactive tabs` below); when this option is not checkmarked, no tabs show the close button
-    - In v8.7.2-8.7.5, it was `Show close button on each tab`, and it caused the close button to be hidden for inactive tabs, but can be made visible by hovering over the tab, as described in [User Interface > Tabs](../user-interface/#tabs).
-- `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details. (new in v8.7.2)
-- `☐ Show only pinned button`: When the pin tab feature is on and this setting is on, the "pin" icon will only be shown when it's pinned, but _not_ shown when it's not pinned. If this setting is off, a gray pin will be visible when the tab is not pinned.  When the pin tab feature is off, this option will be grayed out. (New in v8.8)
+    - If the option is checkmarked, Notepad++ shows the close button on the active tab or on all tabs (depending on `☐ Show buttons on inactive tabs` below); when this option is not checkmarked, no tabs show the close button
+- `☐ Enable pin tab feature`: Enables ability to "pin" tabs; see [User Interface > Tabs](../user-interface/#tabs) for details.
+- `☐ Show only pinned button`: When the pin tab feature is on and this setting is on, the "pin" icon will only be shown when it's pinned, but _not_ shown when it's not pinned. If this setting is off, a gray pin will be visible when the tab is not pinned.  When the pin tab feature is off, this option will be grayed out.
 - `☐ Show buttons on inactive tabs`: When checkmarked, the close button and pin tab icons will always be visible on all tabs, whether or not the tab is active (if their respective options, above, are also checkmarked); when not checkmarked, the close button and pin tab icons will be hidden on inactive tabs, and only visible on active tabs or when hovering over inactive tabs.
 
 
 ### Editing
 
-Starting in v8.6.3, the **Editing** section in the **Preferences** dialog was split into [**Editing 1**](#editing-1) and [**Editing 2**](#editing-2).  There was more re-arrangement in v8.6.5; check both tabs if you are having trouble finding a setting mentioned in one of those two groups of settings.
+The historic **Editing** section in the **Preferences** dialog was split into [**Editing 1**](#editing-1) and [**Editing 2**](#editing-2). Check both tabs if you are having trouble finding a setting mentioned in one of those two groups of settings.
 
 ### Editing 1
 
@@ -101,7 +97,6 @@ These influence editing ([carets](../editing/#caret-and-cursor "typing/insertion
     - `☐ Highlight Background`: Indicate the current line by highlighting the normal background color with the **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`.
     - `☐ Frame`: Indicate the current line by drawing a rectangle frame around the text of the current line, using the color defined by **Settings > Style Configurator > Global Styles > Current line background color** style's `Background colour`, and with the rectangle-line thickness defined by the **Width** slider.
         - **Width**: Use a slider to set the width (in pixels) for the lines of the rectangle frame for the current line.
-    - (In v8.4 and earlier, this multi-control section was just listed as `☐ Enable current line highlighting` in the list of checkboxes, and was the equivalent of `☐` being **None** and ☑ being **Highlight Background**.)
 * **[Caret](../editing/#caret-and-cursor "typing/insertion cursor") Settings**:
     * `Width`: [pulldown] Sets the width and shape of the typing [caret](../editing/#caret-and-cursor "typing/insertion cursor"):
         - `1`, `2`, `3`: Width (in pixels) of the vertical-bar-style typing [caret](../editing/#caret-and-cursor "typing/insertion cursor").
@@ -114,20 +109,20 @@ These influence editing ([carets](../editing/#caret-and-cursor "typing/insertion
     * `☐ Aligned`: Wraps from the last visible column to the same indent as the start of the unwrapped line.
     * `☐ Indent`: Wraps from the last visible column to the next level of indent compared to the start of the unwrapped line.
 * `☐ Enable smooth font`: Enables a font-smoothing algorithm from Windows, which may affect how smooth fonts are on some displays.
-* `☐ Enable virtual space`: Enables putting the [caret](../editing/#caret-and-cursor "typing/insertion cursor") beyond the end of the line (new to v8.4.3).  (Read more about this feature in [Editing > Virtual Space](../editing/#virtual-space).)
-* `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold (new to v8.4.2).
+* `☐ Enable virtual space`: Enables putting the [caret](../editing/#caret-and-cursor "typing/insertion cursor") beyond the end of the line.  (Read more about this feature in [Editing > Virtual Space](../editing/#virtual-space).)
+* `☐ Make current level folding/unfolding commands toggleable`: Enables the feature that causes the [**View** menu](../views/#folding)'s **Collapse/Uncollapse Current Level** commands to both toggle the state of folding for the current level (so doing the command twice will undo the action); when not checkmarked, the **Collapse** will only cause the current level to fold, and **Uncollapse** will only cause the current level to unfold.
 * `☐ Enable scrolling beyond last line`: Allows you to scroll (with scroll bar or mouse wheel) so that up to a page of blank space _after_ the last line is visible.  (When unchecked, scrolling to the end will put the last line of text as the bottom line in the window, when there are more lines of text than are visible in the window.)
 * `☐ Keep selection when right-click outside of selection`: Prevents right-click from canceling an active selection.
-* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.  (New preference in v8.6.3.)
-* `☐ Apply custom color to selected text foreground`: Allows the foreground color to be specified in **[Settings > Style Configurator > Language: `Global Styles`](#global-styles) > Style: `Selected text colour`**, rather than just the background color.  (New to v8.8.  Replaces the old zero-byte config file `enableSelectFgColor.xml`.)
+* `☐ Enable Copy/Cut Line without selection`: When checkmarked, will allow the [Context Aware Copy/Cut](../editing/#context-awareness) feature to have Copy/Cut shortcuts work with the whole line if there is no active selection.  When it's not checkmarked, doing a Copy or Cut without a selection will not affect the text or clipboard.
+* `☐ Apply custom color to selected text foreground`: Allows the foreground color to be specified in **[Settings > Style Configurator > Language: `Global Styles`](#global-styles) > Style: `Selected text colour`**, rather than just the background color.
 * `☐ Disable advanced scrolling feature (if you have touchpad problem)`: designed to help if you have a problem with your touchpad.
 * `☐ Disable selected text drag-and-drop`: When checkmarked, you will no longer be able to select text then drag-and-drop the selection to move that section of text in the document.  (This checkmark if you find yourself accidentally dragging selected text to a new location instead of starting a new selection, and want to prevent that accidental edit.)
 
 ### Editing 2
 
 - **Multi-Editing**:
-    - `☐ Enable Multi-Editing (Ctrl+Mouse Click/Selection)`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).  (This option was in **Editing** preferences originally; it was removed in v8.6-v8.6.2; but it returned in the new **Editing 2** preferences in v8.6.3.)
-        - `☐ Enable Column Selection to Multi-Editing`: When checkmarked, a Column Selection will be converted into a Multi-Selection to give added power.  When not checkmarked, Column Selections will be independent of Multi-Selections, so it will behave more like v8.6-and-earlier, or v8.6.1-8.6.2 with the `noColumnToMultiSelect.xml` config file.  This can only be checkmarked if  `☐ Enable Multi-Editing` is also checkmarked.  (New preference in v8.6.3.)
+    - `☐ Enable Multi-Editing (Ctrl+Mouse Click/Selection)`: Allows multiple selections not necessarily contiguous with each other by using <kbd>Ctrl+Mouse click</kbd> on the selection(s).
+        - `☐ Enable Column Selection to Multi-Editing`: When checkmarked, a Column Selection will be converted into a Multi-Selection to give added power.  When not checkmarked, Column Selections will be independent of Multi-Selections.  This can only be checkmarked if  `☐ Enable Multi-Editing` is also checkmarked.
 * **EOL (CRLF)**: Changes the rendering of the `CR`, `LF`, and `CRLF` characters when **View > Show Symbol > Show End of Line** or **Show All Characters** is checked:
     - **Default**: Old behavior (`CR` and `LF` in reverse-video boxes)
     - **Plain Text**: `CR`, `LF`, and `CRLF` look like normal text.
@@ -137,30 +132,27 @@ These influence editing ([carets](../editing/#caret-and-cursor "typing/insertion
     - **Codepoint**: The symbol will use the codepoint value from [this table](../views/#show-symbol), such as `U+00A0` for the "no-break space".
     - **Custom Color**: Opens the **[Style Configurator](#style-configurator)** dialog to edit **[Global Styles](#global-styles) > NPC custom color**
     - **Apply to C0, C1 & Unicode EOL**: Applies these Non-Printing Characters settings to the [C0 and C1 control codes](https://en.wikipedia.org/wiki/C0_and_C1_control_codes) as well as the Unicode "End of Line" characters for LINE SEPARATOR (U+2028: `LS`) and PARAGRAPH SEPARATOR (U+2029: `PS`)
-    - `☐ Prevent control character (C0 code) typing into document`: When checkmarked, if you hit a keyboard sequence like <kbd>Ctrl+E</kbd> which is not mapped to a shortcut, it will _not_ enter the ASCII control character equivalent.  With this uncheckmarked, the ASCII control character will be entered (and may be invisible, depending on your control-character settings here and in the [**View > Show Symbol >** menu](../views/#show-symbol).  (New preference in v8.6.5.)
+    - `☐ Prevent control character (C0 code) typing into document`: When checkmarked, if you hit a keyboard sequence like <kbd>Ctrl+E</kbd> which is not mapped to a shortcut, it will _not_ enter the ASCII control character equivalent.  With this uncheckmarked, the ASCII control character will be entered (and may be invisible, depending on your control-character settings here and in the [**View > Show Symbol >** menu](../views/#show-symbol).
 
 
 ### Dark Mode
 
-The Dark Mode feature (added in v8.0.0) is controlled here.
+The Dark Mode feature is controlled here.
 
-* `☐ Dark Mode` / `☐ Light Mode` / `☐ Follow Windows`: Chooses whether to use Dark Mode, Light Mode, or follow the Windows Dark/Light settings.  (Prior to v8.4.8, this was a single `☐ Enable Dark Mode` checkbox)
+* `☐ Dark Mode` / `☐ Light Mode` / `☐ Follow Windows`: Chooses whether to use Dark Mode, Light Mode, or follow the Windows Dark/Light settings.
     * When you enable Dark Mode:
-      * it will change the active theme to your previously-selected Dark mode theme (new to v8.4.8; previously it always switched to `DarkModeDefault`)
+      * it will change the active theme to your previously-selected Dark mode theme
         * _Reminder_: changing the theme does _not_ change your UDL colors, as discussed in the [UDL and Themes](../user-defined-language-system/#udl-and-themes) section.  If your UDL was colored to match some other theme, the colors will likely mismatch, and you will need to edit the UDL colors to make it match the DarkModeDefault theme.
       * it will change the coloring of the menu bar and toolbar (if visible)
-        * _Note_: In v8.0 - v8.1.1, you must exit Notepad++ completely and restart for full Dark Mode.  In v8.1.2 and newer, that is no longer necessary.
-      * it may change your [General > Toolbar](#general) settings to use one of the **Fluent UI** icon sets: if you already had a Fluent icon set selected, it will keep it; if you had the **Standard icons: small** selected, it will change to **Fluent UI: small** icons.  Starting in v8.4.8, it will remember this the next time you switch to Dark Mode.
+      * it may change your [General > Toolbar](#general) settings to use one of the **Fluent UI** icon sets: if you already had a Fluent icon set selected, it will keep it; if you had the **Standard icons: small** selected, it will change to **Fluent UI: small** icons.  It will remember this the next time you switch to Dark Mode.
       * When you run in Dark Mode, the saved-file icon will not show up on your Tab Bar, whether or not you have [Alternate Icons](#general "General > Tab Bar > Alternate Icons") checked.  However, a read-only file or an edited file will still show their icons (either different colored disks, or the lock icon and pencil icon, depending on Alternate Icons setting).
     * When you enable Light Mode:
-      * it will change the active theme to your previously-selected Light Mode theme (new to v8.4.8; previously it always switched to `Default (stylers.xml)`)
-        * _Note_: prior to v8.4.8, this was true even if you previously had a different theme selected before trying out Dark Mode.  In older versions, if you would like a different theme, you will have to manually change to that theme after changing from Dark Mode to Light Mode.
+      * it will change the active theme to your previously-selected Light Mode theme
       * it will change the coloring of the menu bar and toolbar (if visible)
         * _Note_: You must exit Notepad++ completely and restart in order to get the rest of the UI (like the top title bar) to be fully out of Dark Mode.
-      * Prior to v8.4.8, it would leave your [Toolbar](#general) settings with the same icon set as you had when you were in Dark Mode
-    * Notepad++ will track [Settings > Preferences > General](#general) settings for the **Tool Bar** and **Tab Bar** separately for Light Mode and Dark Mode, as well as [Settings > Style Configurator > Theme](#style-configurator) to allow you to have different tool bar icons or tab bar settings and themes in the different modes, so you can switch between them without having to manually make those changes (new to v8.4.8)
-* Tones: allow you to change the tone of the Dark Mode (new to v8.1.2)
-   * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs, as of v8.1.3. (In v8.1.2, the Tones affected the menus and the Find/Replace/Mark dialog, but not the other dialogs.)  The menu pulldown controls, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
+    * Notepad++ will track [Settings > Preferences > General](#general) settings for the **Tool Bar** and **Tab Bar** separately for Light Mode and Dark Mode, as well as [Settings > Style Configurator > Theme](#style-configurator) to allow you to have different tool bar icons or tab bar settings and themes in the different modes, so you can switch between them without having to manually make those changes.
+* Tones: allow you to change the tone of the Dark Mode.
+   * _Note_: Dark Mode Tones affect most of the user interface, including main menus and toolbars and most of the dialogs. The menu pulldown controls, as well as Windows-defined dialog boxes like **Open** and **Save**, have their colors defined by operating system settings, and Notepad++ Dark Mode settings _will not_ affect them.
    * `☐ Black`, `☐ Red`, `☐ Green`, `☐ Blue`, `☐ Purple`, `☐ Cyan`, `☐ Olive` => The dark color has a hint of that colored tone
    * `☐ Customized` => allows you to configure the tones of the individual components of the Dark Mode (even to the point of not being Dark anymore):
      * `Top` => choose the color of the menu bar and tool bar
@@ -171,11 +163,11 @@ The Dark Mode feature (added in v8.0.0) is controlled here.
      * `Text` => choose the color for the menu bar entry names, and other normal text for most dialog boxes
      * `Darker text` => choose the color for the darker text for most dialog boxes
      * `Disabled text` => choose the color for disabled items in most dialog boxes (often referred to as "grayed out" or "disabled")
-     * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog) (new to v8.1.3)
+     * `Link` => choose the color for link text in dialog boxes (for example the hyperlink URL in the User Defined Languages dialog)
      * `Edge` => choose the color for the vertical separator bars on tab bars (in the main window and in dialogs), and other edges (like the boxes around color selectors)
      * `Edge highlight` => choose the color for the border of a highlighted control
      * `Edge disabled` => choose the color for the border of a disabled control
-     * **Reset ⏷**: (New to v8.6.9)
+     * **Reset ⏷**:
        - Clicking the text side of the button will reset the Customized tone to the default Black tone settings.
        - Clicking the pull-down arrow ⏷ on the button will give you a menu to select one of the built-in tones: when you pick a name, it will then reset the Customized tone to the chosen name's tone settings.  For example, if you mostly want the Olive tone, but you want to change the `Link` color from yellow to bright green, you can select the Customized tone, **Reset ⏷** to `Olive`, then change the `Link` color.
 
@@ -213,7 +205,7 @@ These define the margin style, border width, and edge settings.
     * `☐ Display`: Shows the line numbers to the left of the text.
         * `☐ Dynamic width`: The line number display will adjust its width based on the number of digits needed.
         * `☐ Constant width`: The line number display will have enough width for any line number in the document.
-* **Padding**: (new to v8.0.0)
+* **Padding**:
     * **Left** will add _N_ pixels of padding between the left edge of the editor pane and the actual text (this is beyond the space allocated for the line numbering, and beyond the space allocated for the folding column).  A bigger number leaves more of a gap, and thus less room for actual text.
     * **Right** will add _N_ pixels of padding between the right edge of the editor pane and the actual text.  A bigger number leaves more of a gap, and thus less room for actual text.
     * The **Distraction Free** setting changes the borders when [**Distraction Free Mode**](../views/#application-views) is active; a bigger number means more of the screen width is allocated to distraction free text, and a smaller number means less of the screen width is allocated to distraction free text.
@@ -231,13 +223,13 @@ These define properties of new documents (end-of-line format, encoding, and synt
     - `UTF-8`: This can encode any of the Unicode characters; it uses a single 8-bit byte for codepoints under 128, and two or more bytes for other characters.
         - `☐ Apply to opened ANSI files`: If you open an ANSI file, this allows it to be "upgraded" to UTF-8.
     - `UTF-8 with BOM`: This is the same as UTF-8 encoding, but saves the file with an extra Unicode character U+FEFF "BOM" character (which is encoded as 3 bytes in the file), which some applications use as an indication that it's a UTF-8 file.
-    - `UTF-16 Big Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-significant byte first)  (Prior to v8.0.0, it was shown as `UCS-2`).
-    - `UTF-16 Little Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-significant byte first) (Prior to v8.0.0, it was shown as `UCS-2`).
+    - `UTF-16 Big Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Big Endian" refers to the order the two bytes will be written to disk (with most-significant byte first).
+    - `UTF-16 Little Endian with BOM`: This encodes characters (even those with codepoints under 128) with exactly two bytes. "Little Endian" refers to the order the two bytes will be written to disk (with least-significant byte first).
     - The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**).
     - _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
 - **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
-- `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line (new to v8.5.4).
-- `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab (new to v8.8.2).
+- `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line.
+- `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab.
 
 
 ### Default Directory
@@ -247,7 +239,7 @@ These affect open and save operations.
 * **Default Directory**:
     * `Follow current document`: Open/save dialogs will default to the current directory for the current file.
     * `Remember last used directory`: Open/save dialogs will remember the last directory you used in the dialog on subsequent uses of the dialogs (regardless of where the current file is located).  _Note_: The last used directory will only be updated when the **Open** or **Save** option is selected; if you **Cancel** or escape out of dialog, the last used directory will not be updated and will keep its previous value.
-        - In older versions, the last used directory is not remembered across runs of Notepad++: If you restart Notepad++, when you first initiate a **Save As**, it will prompt with the directory the `notepad++.exe` file is in.  But starting in v8.5.5, the active session file actually tracks that directory.
+        - The active session file actually tracks that last-used directory, so it will be remembered from one run of Notepad++ to another.
     * `___ ...`: this entry box with no label allows you to browse to a default directory, and all open/save dialogs will start in that directory
 * `☐ Open all files of folder instead of launching Folder as Workspace on folder dropping`: When checked, if you drag a folder from a Windows Explorer window, Notepad++ will open all the files individually; when unchecked, Notepad++ will use the Folder as Workspace feature when you drag the folder into Notepad++.
 
@@ -278,7 +270,7 @@ To unregister an extension, click it in the right column, and use the left arrow
 
 ### Language
 
-This affects the display of the main Language menu, and other language-specific settings. (However, the per-language indentation ("tab" vs "space") settings have moved to the new [**Indentation** section](#indentation) as of v8.7.)
+This affects the display of the main Language menu, and other language-specific settings. (The per-language indentation ("tab" vs "space") settings are in the [**Indentation** section](#indentation).)
 
 * **Language Menu**:
     * `☐ Make language menu compact` will make submenus for languages that start with the same letter.
@@ -290,10 +282,7 @@ This affects the display of the main Language menu, and other language-specific 
 
 ### Indentation
 
-These settings were all a part of the [**Language**](#language) settings before v8.7.
-
 * **Indent settings**:
-    * Previously called the "Tab settings" (before v8.6.9).
     * Language selector panel:
       - `[Default]` sets the tab behavior for the "default" condition.
       - `normal` sets the tab behavior for plain text.
@@ -307,13 +296,11 @@ These settings were all a part of the [**Language**](#language) settings before 
             ![](../images/edit-tab-stops.png)
 
             _The image has_ [**View > Show Symbol > Show Space and Tab**](../views/#show-symbol) _enabled to make the tab-characters vs space characters obvious._
-        - This option was previously called `☐ Replace by space`" (renamed in v8.6.9)
-    * `☐ Backspace key unindents instead of removing single space`: If this is checkmarked, typing <kbd>Backspace</kbd> key when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is in the spaces at the beginning of a line will cause the text of the line to shift to the next-earlier tab stop (deleting 1..ℕ spaces, where ℕ is the tab stop size; the number of spaces deleted will be sufficient to move it to the tab stop) -- this makes this <kbd>Backspace</kbd> behave similarly to using <kbd>Shift+Tab</kbd> to unindent. If the option is not checkmarked, typing <kbd>Backspace</kbd> key when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is in the spaces at the beginning of a line will just delete a single space character.  (New to v8.6.9.)
+    * `☐ Backspace key unindents instead of removing single space`: If this is checkmarked, typing <kbd>Backspace</kbd> key when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is in the spaces at the beginning of a line will cause the text of the line to shift to the next-earlier tab stop (deleting 1..ℕ spaces, where ℕ is the tab stop size; the number of spaces deleted will be sufficient to move it to the tab stop) -- this makes this <kbd>Backspace</kbd> behave similarly to using <kbd>Shift+Tab</kbd> to unindent. If the option is not checkmarked, typing <kbd>Backspace</kbd> key when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is in the spaces at the beginning of a line will just delete a single space character.
 * **Auto-indent**:
   - `☐ None`: If you hit <kbd>Enter</kbd> on a line that's indented, the next line will _not_ be indented.
   - `☐ Basic`: If you hit <kbd>Enter</kbd> on a line that's indented, the next line will be indented the same amount as the current line.
   - `☐ Advanced`: If you hit <kbd>Enter</kbd> on a line that's indented, the next line will usually be indented the same amount as the current line; but for programming languages that allow hierarchical blocks (like a `for(){...}` loop in C/C++), it can automatically add the extra indentation when you start a new block, and end the extra indentation when you close the block.
-  - This option was previously the `☐ Auto-indent` checkbox in the [**Auto-Completion** preferences](#auto-completion) (before v8.7), and would just allow choosing between automatically indenting or not, always using the "advanced" algorithm (so in older versions, you cannot force Basic-style auto-indentation).
   - _Note_: For either Basic or Advanced mode, if you hit <kbd>Enter</kbd> while the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is in the middle of an indented line, immediately before one or more space or tab characters (like between the `o` and the space in `two words`), the space(s) will get converted into the indentation character(s) for the new line (so in the example, `words` will be indented, but without the extra space).  It will, however, leave the [caret](../editing/#caret-and-cursor "typing/insertion cursor") at the start of the line, rather than immediately before the first non-space character on the line.  If you have some words, then a space, then the end-of-line, hitting <kbd>Enter</kbd> just before that space will create a new, indented line with the proper indentation, but the [caret](../editing/#caret-and-cursor "typing/insertion cursor") will be at the beginning of the line, and not indented (so if you don't have **View > Show Symbol > Show Space and Tab**, you might incorrectly think that auto-indent didn't work on that line).
 
 ### Highlighting
@@ -321,7 +308,6 @@ These settings were all a part of the [**Language**](#language) settings before 
 Affects the highlighting of the selected text, which is referred to by the menu entries as the "Token".
 
 * **Style All Occurrences of Token** (previously **Mark All**)
-    * _Note_: This section of the preferences was renamed with v8.1.4; it was known as **Mark All** in v8.0 - v8.1.3.
     * `☐ Match case`: Mark All will be case-sensitive.
     * `☐ Match whole word only`: Mark All will require a whole "word" (sequence of "word characters", as defined in the **Delimiter** preferences).
     * This setting section applies to the **Search** menu's **Mark All** submenu entries, and the equivalent [right-click Context Menu](../config-files/#the-context-menu-contextmenu-xml)'s **Style all occurrences of token** submenu entries, for applying "Style Tokens" to specific text.
@@ -373,21 +359,21 @@ Affects how the text is formatted when sent to the printer.
 Affects the operations found in the **Find** dialog tabs.
 
 - **When Find Dialog is Invoked**
-    - `Minimum Size for Auto-Checking 'In selection': _____`: Integer value used for deciding whether to automatically checkmark **☐ In Selection**.  (new to v8.5.8)
+    - `Minimum Size for Auto-Checking 'In selection': _____`: Integer value used for deciding whether to automatically checkmark **☐ In Selection**.
         - When a search function is initiated while a stream selection is active in the editor, the **☐ In Selection** option will become automatically checkmarked if this setting is not `0` and the number of characters in the selection is above the specified value. Additionally, if this setting is non-zero, the **☐ In selection** option will be automatically cleared when a search is initiated with no stream selection active in the editor. When the setting is `0`, the user will entirely control the state of the **☐ In selection** checkbox (that is, the program won't change the check state at all).
         - The default value is `1024` characters.
         - Allowed values: `0` characters is the smallest integer value allowed.  `1024` is the largest integer value allowed. If you enter an integer value greater than `1024` then the field value will change to `1024` immediately. If you attempt to enter a non-digit character (like a decimal point or a letter), the field will pop up an error message indicating that only digits are allowed to be entered.
-    - `☐ Fill Find Field with Selected Text`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field (reworded in v8.4.5; previously was `Don't fill find field...`)
-        - `_____: Max Characters to Auto-Fill Find Field from Selection`: Maximum number of selected characters in edit zone to fill automatically the "Find what" field when the <kbd>Ctrl-F</kbd> is triggered. Defaults to 1024; the maximum value is 16383, which is the maximum size of "Find what" field, limited by the system. (new to v8.8.6)
-        * `☐ Select Word Under [caret](../editing/#caret-and-cursor "typing/insertion cursor") when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the [caret](../editing/#caret-and-cursor "typing/insertion cursor"); when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.  (new to v8.4.5)
+    - `☐ Fill Find Field with Selected Text`: When checkmarked, invoking the Find Dialog will fill the **Find What** field with the currently-selected text; when not checkmarked, invoking the Find Dialog will not change the contents of the **Find What** field.
+        - `_____: Max Characters to Auto-Fill Find Field from Selection`: Maximum number of selected characters in edit zone to fill automatically the "Find what" field when the <kbd>Ctrl-F</kbd> is triggered. Defaults to 1024; the maximum value is 16383, which is the maximum size of "Find what" field, limited by the system.
+        - `☐ Select Word Under [caret](../editing/#caret-and-cursor "typing/insertion cursor") when Nothing Selected`: When checkmarked, invoking the Find Dialog with no active selection will fill the **Find What** field with the text under the [caret](../editing/#caret-and-cursor "typing/insertion cursor"); when not checkmarked, invoking the Find Dialog with no active selection will not change the contents of the **Find What** field; if the option above is not checkmarked, this option will be un-checkmarked and cannot be toggled.
     - _Note_: The fill will only occur if the size of the active selection is 1024 characters or less. This is a fixed value and is unrelated to the `Minimum Size for Auto-Checking 'In selection'` value.
-    - `☐ Fill Find in Files Directory Field Based On Active Document`: If this is checked, Notepad++ will initialize the Directory to the current document's directory when you first launch [**Find in Files**](../searching/#find-in-files-tab) dialog. (Note that "first launch" means that if you change the active tab while the dialog is still open, the Directory field will not change.)  If you manually change the directory (either through typing, or using the `...` button), it will search the newly-entered directory, rather than using the directory it defaulted to.  The next time you launch the dialog, it will update the default directory again (assuming the option is still checked).  And there is a **<<** button in the dialog which will re-populate the Directory field based on the active dialog, no matter the state of this option, and whether or not the active document has changed since the dialog was launched.  (This preference is new to v8.7.5, and replaces the **☐ Follow current doc** checkbox, which used to be present in the dialog in v8.7.4 and earlier.)
+    - `☐ Fill Find in Files Directory Field Based On Active Document`: If this is checked, Notepad++ will initialize the Directory to the current document's directory when you first launch [**Find in Files**](../searching/#find-in-files-tab) dialog. (Note that "first launch" means that if you change the active tab while the dialog is still open, the Directory field will not change.)  If you manually change the directory (either through typing, or using the `...` button), it will search the newly-entered directory, rather than using the directory it defaulted to.  The next time you launch the dialog, it will update the default directory again (assuming the option is still checked).  And there is a **<<** button in the dialog which will re-populate the Directory field based on the active dialog, no matter the state of this option, and whether or not the active document has changed since the dialog was launched.
 
 - `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: Changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change.
 - `☐ Find dialog remains open after search that outputs to results window`: Successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always.
 - `☐ Confirm Replace All in All Opened Documents`: When checked, **Replace All in All Opened Documents** will ask for confirmation.
-- `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the subsequent match (added v8.0.0).
-- `☐ Search Result window: show only one entry per found line`: When checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line (added v8.4.3).
+- `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the subsequent match.
+- `☐ Search Result window: show only one entry per found line`: When checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line.
 - `☐ Find in Files: Ignore unsaved changes in opened files`: When checked, the **Find in Files** will search the copy of the file on disk, rather than whatever copy might be open in Notepad++.  Without this checked, Notepad++ will search any unsaved changes instead of what's still on disk. (added v8.9.3).
 
 ### Backup
@@ -409,7 +395,7 @@ Defines whether or not to perform saving sessions, periodic backup, and backup o
           *  For _named_ files (existing or saved files that have recent edits) the name of the backup file (in the listed directory) is `filename.ext@yyyy-mm-dd_hhmmss`, where `filename.ext` is from the main file.  As soon as you manually save the file (so it’s written to disk in the real location), the backup goes away, because the purpose of the periodic backup is to save a copy of a file that you’ve edited but not saved. The timestamp part of the periodic-backup-name is based on the first automatic save after the last manual save. Example: if you saved a file at 8:10:00am, the backup would go away; then, at 8:12:30am, you type something but don’t save, so sometime within N seconds of that (8:12:30+N) it will periodic-backup-save and make a file with a timestamp about then – something like `filename.ext@2021-06-23_081234`. If you left for a while (or exited Notepad++ and reloaded) and came back at 12:34:56pm and typed another character, it would do it’s periodic-backup-save on that file again so the last-modified time of the backup would be updated), but the name of the periodic-backup file will remain the same.
           *  For _unnamed_ files (new files that haven't been saved) the name of the backup file (in the listed directory) is `new NNN@yyyy-mm-dd_hhmmss`, where `new NNN` matches the name listed in the tab title. Since `new NNN` files are by definition not manually saved, the timestamp in the periodic-backup filename is based on when it did the first periodic-backup-save for that unnamed file.
         * **WARNING**: The Notepad++ periodic backup feature in multi-instance setups will work only for the first Notepad++ instance; there will be no periodic backup for subsequent instances.
-    * `☐ Remember inaccessible files from past session`: Changes the behavior of how Notepad++ handles files that don't seem to exist when Notepad++ loads the session.  With the option checkmarked, sessions can remember files even if they don't exist any more, based on your reply to a dialog box; if it is not checkmarked, sessions will not remember missing files.  There is more about this behavior documented in [Sessions > Inaccessible Files](../session/#inaccessible-files).  (New to v8.6.)
+    * `☐ Remember inaccessible files from past session`: Changes the behavior of how Notepad++ handles files that don't seem to exist when Notepad++ loads the session.  With the option checkmarked, sessions can remember files even if they don't exist any more, based on your reply to a dialog box; if it is not checkmarked, sessions will not remember missing files.  There is more about this behavior documented in [Sessions > Inaccessible Files](../session/#inaccessible-files).
 * **Backup on save**
     - `☐ None`: No additional backup will be performed when the file is saved.
     - `☐ Simple backup`: It will save a copy of the existing file, with the same name and extension, but with `.bak` appended, in the location defined.
@@ -453,11 +439,11 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
     * `From _n_th character`: Must type at least _n_ characters before auto-completion activates.
         * If `☐ Enable auto-completion on each input` is unchecked, the _n_th character entry will be disabled (grayed out).
     * `☐ Ignore numbers`: Won't try to auto-complete when typing numbers.
-    * **Insert Selection**: v8.2.1 added a new section.
+    * **Insert Selection**:
         * `☐ TAB`: Toggles whether TAB will accept your choice.
         * `☐ ENTER`: Toggles whether ENTER will accept your choice.
-        * v8.2 and earlier behaved as if both have checkmarks; v8.2.1 and later defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
-    * `☐ Make auto-completion list brief`: when unchecked, once the auto-completion list pops up, the list will stay the same size even as you type additional letters, but the selection will move to the first word that matches all the characters typed; when checked, as you type more characters, the auto-completion list will shrink to only match words that match all the typed characters (new to v8.5; prior to v8.5, the list never shrank).
+        * Defaults to having TAB checkmarked but ENTER _not_ checkmarked, so the default behavior has changed.
+    * `☐ Make auto-completion list brief`: when unchecked, once the auto-completion list pops up, the list will stay the same size even as you type additional letters, but the selection will move to the first word that matches all the characters typed; when checked, as you type more characters, the auto-completion list will shrink to only match words that match all the typed characters.
         - Example: If you have `abc`, `acb`, and `add` in your auto-completion list and start auto-completion from the 1st character, when you type `a`, all three words will appear in the auto-completion list.  With this option unchecked (or in earlier versions of Notepad++), typing `d` next will just move the selection to `add`, but all three words will still be shown; with this option checked, once you type the `d`, only `add` will be shown in the list.
     * `☐ Function parameters hint on input`: For applicable programming languages, will provide hints on what to type in a function parameter list.
     * Please note that if you use [**Edit > Auto-Completion > ...** menu entries](../editing/#edit-menu) to activate the completion features, you can force function or word or parameter completion, even when those checkboxes are turned off in the settings, and even if there aren't enough characters typed to trigger the auto-completion.
@@ -471,8 +457,6 @@ Sets options for [auto-completion](../auto-completion/) of text, including word 
         * `☐ html/xml close tag`
         * `Matched pair [1,2,3]: __ __`: Define the open and close character(s) for three user-defined pairs.
 
-(If you are looking for the `☐ Auto-indent` option that used to be in this section of preferences, that has been moved to the [**Indentation** section](#indentation) of the preferences, starting in v8.7.)
-
 ### Multi-Instance and Date
 
 The **Multi-Instance** settings determine whether multiple instances of Notepad++ can be run simultaneously.
@@ -483,11 +467,11 @@ The Multi-Instance settings include:
 
 * `☐ Default (mono-instance)`: Every time you open a file from Windows, it will go into the single Notepad++ instance.  If you open a session file while Notepad++ is already open, the files from that session will be opened in addition to the files you already have open.
 * `☐ Always in multi-instance mode`: Every time you open a file from Windows, it will open a new instance of Notepad++.
-* `☐ Open session in a new instance (and save session automatically on exit)`: Each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. From Notepad++ v8.2, the loaded session in the new instance will be saved automatically while exiting the instance, if this option is set.
+* `☐ Open session in a new instance (and save session automatically on exit)`: Each session will open in a new instance, but multiple files can be opened in each session.  "Opening a session" can be done either by using **File > Load session...**, or (if you have set the [MISC > Session File ext](#misc)) by opening a file with that extension. The loaded session in the new instance will be saved automatically while exiting the instance, if this option is set.
 
 **WARNING**: If you select anything other than `Default (mono-instance)`, changed settings in one instance will _not_ influence the settings in the other instance, and only the changed settings in the _last_ instance closed will be saved to disk.
 
-The **Panel State and [-nosession]** checkboxes allow panel state to be remembered even when running in multi-instance mode or with `-nosession` (added v8.4.9).  Normally, when run with `-nosession`, or when subsequent instances are run, all panels start as "off" (because the new instance ignores the session file).  With each panel type that is checkmarked in these settings, Notepad++ will "remember" whether that panel was open in the previous session, even when the session is otherwise being ignored.  The panels available are Clipboard History, Document List, Character Panel, Folder as Workspace, Project Panels, Document Map, Function List, and a catchall for all Plugin panels.  For changes to these settings to take effect, Notepad++ must be restarted.
+The **Panel State and [-nosession]** checkboxes allow panel state to be remembered even when running in multi-instance mode or with `-nosession`.  Normally, when run with `-nosession`, or when subsequent instances are run, all panels start as "off" (because the new instance ignores the session file).  With each panel type that is checkmarked in these settings, Notepad++ will "remember" whether that panel was open in the previous session, even when the session is otherwise being ignored.  The panels available are Clipboard History, Document List, Character Panel, Folder as Workspace, Project Panels, Document Map, Function List, and a catchall for all Plugin panels.  For changes to these settings to take effect, Notepad++ must be restarted.
 
 The **Customize insert Date Time** settings will allow you to customize the time format inserted by [**Edit > Insert > Date Time (customized)**](../editing/#edit-menu).
 
@@ -545,7 +529,7 @@ Sets the characters that are considered part of a "word" for quick selections us
 
 ### Performance
 
-Some features may slow performance in large files. These features can be auto-disabled on opening a large file, using the settings in this section.  (This customization section is new to v8.4.7.  In previous versions, Notepad++ just quietly deactivated syntax highlighting on any files greater than 200MB, without user configurability.)
+Some features may slow performance in large files. These features can be auto-disabled on opening a large file, using the settings in this section.
 
 NOTE:
 1. Modifying options here requires you to re-open currently opened large files to get proper behavior.
@@ -607,33 +591,25 @@ A variety of settings that didn't fit elsewhere
 - **System Tray** dropdown
     - `No action to` **system tray**: Neither minimizing Notepad++ nor closing Notepad++ will place the Notepad++ icon on the system tray.
     - `Minimize to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
-    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed. (New to v8.7.1.)
-    - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is minimized or closed. (New to v8.7.2.)
-    - The dropdown is new to v8.7.1.  In previous versions, there was just a checkbox for `☐ Minimize to system tray`, and there was no `Close to` option available.
+    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed.
+    - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is minimized or closed.
     - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
 - **Direct Write rendering mode** dropdown
     - DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
-    - There are five options (third and fourth added v8.7.8, fifth in v8.7.9):
+    - There are five options:
         - `GDI (most compatible)`: This version is "most compatible", but it's because it doesn't have any of the features available in the other DirectWrite choices.
         - `DirectWrite (default)`: This is the "normal" DirectWrite mode.  This is the default for a new installation of Notepad++.
-        - `DirectWrite (retain frames)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (retain frames)" (new to v8.7.8).
-        - `DirectWrite (draw to GDI DC)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (draw to GDI DC)" (new to v8.7.8).
-        - `DirectWrite (DirectX 11)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (DirectX 11)" (new to v8.7.9).
+        - `DirectWrite (retain frames)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (retain frames)".
+        - `DirectWrite (draw to GDI DC)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (draw to GDI DC)".
+        - `DirectWrite (DirectX 11)`: Use this if it works best for you, or if you've been asked to try "DirectWrite (DirectX 11)".
         - If you have having trouble rendering certain glyphs for Unicode characters (like various Asian characters or emoji), or having trouble with other rendering issues, you may want to try each of the four settings, to see which works best for you.
         - _Note_: DirectWrite settings also affect whether a font can make use of its "ligature" features.
             - Some fonts, like [Fira Code](https://github.com/tonsky/FiraCode) and [Cascadia Code](https://github.com/microsoft/cascadia-code), have the ability to display the two character sequence `!=` ("not equal to" in many coding languages) as something that looks _similar_ to the single character `≠` ... but it's still really two characters (and you can even put the typing [caret](../editing/#caret-and-cursor "typing/insertion cursor") between the two characters, so it looks like it's "inside" the symbol); there are many other multi-character ligature equivalents in those coding fonts -- look at the documentation or web-page for your specific font to find out what ligatures (coding and otherwise) that it supports.
             - If you don't like the coding ligatures, you can either change to `GDI (most compatible)`, or you can change your [default font](#global-styles) to a font that doesn't have ligatures, like [Fira Mono](https://mozilla.github.io/Fira/) or [Cascadia Mono](https://github.com/microsoft/cascadia-code "same repo as Cascadia Code") (the non-code-ligature versions of the fonts mentioned above), or the Consolas font that Microsoft defaults for monospaced applications, or the Courier New that used to be the default monospaced font for Windows.
-    - Before v8.7.8, this was a checkbox: `☐ Use DirectWrite (May improve rendering special characters, need to restart Notepad++)`: Enables DirectWrite drawing.
-      - Unchecked is equivalent to the v8.7.8 `GDI (most compatible)`; checked is equivalent to v8.7.8 `DirectWrite (default)`.
-      - The modified rendering may affect the clarity or readability of the characters for some users or systems (for some users, it increases readability; for others, it decreases readability).
-      - Before v8.6, DirectWrite was off by default (this option was not checkmarked).  Since v8.6, DirectWrite has been on by default (this option is checkmarked).
-      - Some users notice performance issues when this is checkmarked; those affected should choose `GDI (most compatible)` (or uncheckmark the option in older versions).
-      - Staring in v8.6.9, this option will be automatically disabled on Windows Server (which cannot use DirectWrite).
-- **Auto-updater** dropdown (more optoins starting in v8.8.2):
+- **Auto-updater** dropdown:
 	- `Disable`: Will not automatically check for updates.  You can still use **? > Update Notepad++** or download a newer installer from the [official downloads page](https://notepad-plus-plus.org/downloads/).
 	- `Enable on Notepad++ Startup`: Will automatically check for updates.  If one is available, it will ask if you would like to upgrade when Notepad++ first launches.
 	- `Enable on Notepad++ Exit`: Will automatically check for updates.  If one is avaialable, it will ask if you would like to upgrade when Notepad++ is closed.
-	- In v8.8.1 and earlier, this was just a checkbox: `☐ Enable Notepad++ auto-updater`: Will automatically download updates from the official website, once the development team has decided it's time to push an update to users.  If unchecked, you will have to manually download the installer from the official website yourself.
 	- See the section on [upgrading Notepad++](../upgrading/)
 - `☐ Mute all sounds`: When unchecked, a sound will provide feedback on certain actions (example: a search action in [**Find / Replace dialog**](../searching/#dialog-based-searching) results in the text not being encountered); when checked, Notepad++ will remain silent for those actions.
 - `☐ Autodetect character encoding`: When opening a new file, try to algorithmically determine what character encoding should be used.  (Other Encoding settings can be found in the [New Document](#new-document) tab of the **Preferences** Dialog.)
@@ -649,7 +625,7 @@ The Style Configurator dialog has three regions: Select theme, language and styl
 
 The "Select theme:" pulldown allows you to select which theme you want.  [Themes](../themes/) are pre-defined sets of formatting rules, which often try to use a consistent color scheme between languages.
 
-The "Language:" pulldown (it was a selection list before v8.7.8) lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule to edit for the given language.
+The "Language:" pulldown lets you select whether you want to set the formatting for "Global Styles", or a specific [programming language](../programing-languages/) that you want to set the highlighting for.  The "Style:" selection list lets you select which highlighting rule to edit for the given language.
 
 On all but "Language: Global Styles", there will also be a "Default ext." box, which is an un-editable list of the default file extensions associated with that Language; and the "User ext." box, where you can add a user-defined list of additional extensions (space separated, don't use the . in the extension), which says which other extensions you want to apply this language's formatting to.  Two notes on changes to indidividual languages:
 
@@ -678,35 +654,34 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Indent guideline style** [background and foreground] ⇒ If **View > Show Symbol > Show Indent Guide** is checked, there will be a thin dotted line for every level of indent.  The foreground sets the color of the dots; the background sets the color of the non-dot portion.
 * **Brace highlight style** [background and foreground] ⇒ If you have text like `( blah )` or `[ blah ]` or `{ blah }` and move the [caret](../editing/#caret-and-cursor "typing/insertion cursor") onto one of the opening or closing parentheses, brackets, or braces, both the opening and closing character in the pair will be highlighted per this style.
 * **Bad brace colour** [background and foreground] ⇒ If you have a single unmatched or mismatched parenthesis `()`, bracket `[]`, or curly-brace `{}`, with the [caret](../editing/#caret-and-cursor "typing/insertion cursor") at that character, it will be highlighted as a "bad brace style" instead of using the "brace highlight style".
-* **Current line background colour** [background only] ⇒ The line containing the active editing [caret](../editing/#caret-and-cursor "typing/insertion cursor") will be marked using this background style.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Editing](#editing-1) so you can change **Current Line Indicator**.
+* **Current line background colour** [background only] ⇒ The line containing the active editing [caret](../editing/#caret-and-cursor "typing/insertion cursor") will be marked using this background style.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Editing](#editing-1) so you can change **Current Line Indicator**.
 * **Selected text colour** [background only] ⇒ Selected text will be indicated with this background. If [Preferences > Highlighting > Smart Highlighting](#highlighting) is checked, the "Smart Highlighting" style (below) will be colored overtop of the "Selected text colour".
-    - In v8.0 - v8.7.9, if the [configuration file `enableSelectFgColor.xml`](../config-files/#other-configuration-files) exists, then **Selected text colour** will honor the foreground color as well.
-    - In v8.8 and newer, if [Settings > Preferences > Editing 1 > `☐  Apply custom color to selected text foreground`](#editing-1) is checkmarked, then **Selected text colour** will honor the foreground color as well.
+    - If [Settings > Preferences > Editing 1 > `☐  Apply custom color to selected text foreground`](#editing-1) is checkmarked, then **Selected text colour** will honor the foreground color as well.
     - Otherwise, **Selected text colour** will only honor the background color setting, not the foreground color.
-* **Multi-selected text colour** [background only] ⇒ Text selected in "multi-select" mode will be indicated with this background. (New to v8.6)
-* **[Caret](../editing/#caret-and-cursor "typing/insertion cursor") colour** [foreground only] ⇒ This sets the color for the current-text-position [caret](../editing/#caret-and-cursor "typing/insertion cursor"), which will either be `|` for insert mode or `_` for overwrite mode.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Editing](#editing-1) so you can change **[caret](../editing/#caret-and-cursor "typing/insertion cursor") Settings**.
-* **Multi-edit [carets](../editing/#caret-and-cursor "typing/insertion cursor") colour** [foreground only] ⇒ This sets the color for the current-text-position [caret](../editing/#caret-and-cursor "typing/insertion cursor") in multi-selection mode. (New to v8.6)
-* **Edge colour** [foreground only] ⇒ Color for the vertical edge from [Preferences > Margins/Border/Edge](#margins-border-edge).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Vertical Edge Settings**.
-* **Line number margin** [background and foreground] ⇒ If **Line Number > Display** is checked in [Preferences > Margins/Border/Edge](#margins-border-edge), this sets the style for those line numbers.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Line Number** settings.
-* **Bookmark margin** [background] ⇒ The background of the Bookmark margin will be set to this color, if the margin is enabled.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Bookmark**.
-* **Change History margin** [background] ⇒ The background of the Change History margin will use this color, if the margin is enabled. (new to v8.4.6)  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Change History**.
-* **Change History modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been modified since the last save; the in-text change history underline will use the foreground color. (New to v8.6.5)
-* **Change History revert modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save and then edited to something different; the in-text change history underline will use the foreground color. (New to v8.6.5)
-* **Change History revert origin** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save; the in-text change history underline will use the foreground color. (New to v8.6.5)
-* **Change History saved** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been saved since the last time it was modified this session; the in-text change history underline will use the foreground color. (New to v8.6.5)
-* **Fold** [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is _not_ inside that folding-area.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
-* **Fold active** [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") _is_ inside that folding-area.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
-* **Fold margin** [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`).  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
+* **Multi-selected text colour** [background only] ⇒ Text selected in "multi-select" mode will be indicated with this background.
+* **[Caret](../editing/#caret-and-cursor "typing/insertion cursor") colour** [foreground only] ⇒ This sets the color for the current-text-position [caret](../editing/#caret-and-cursor "typing/insertion cursor"), which will either be `|` for insert mode or `_` for overwrite mode.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Editing](#editing-1) so you can change **[caret](../editing/#caret-and-cursor "typing/insertion cursor") Settings**.
+* **Multi-edit [carets](../editing/#caret-and-cursor "typing/insertion cursor") colour** [foreground only] ⇒ This sets the color for the current-text-position [caret](../editing/#caret-and-cursor "typing/insertion cursor") in multi-selection mode.
+* **Edge colour** [foreground only] ⇒ Color for the vertical edge from [Preferences > Margins/Border/Edge](#margins-border-edge).  If the Vertical Edge Settings are checked as Background Mode, this style's "foreground" color will be used as the background color for text that's beyond the edge.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Vertical Edge Settings**.
+* **Line number margin** [background and foreground] ⇒ If **Line Number > Display** is checked in [Preferences > Margins/Border/Edge](#margins-border-edge), this sets the style for those line numbers.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Line Number** settings.
+* **Bookmark margin** [background] ⇒ The background of the Bookmark margin will be set to this color, if the margin is enabled.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Bookmark**.
+* **Change History margin** [background] ⇒ The background of the Change History margin will use this color, if the margin is enabled. The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Display Change History**.
+* **Change History modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been modified since the last save; the in-text change history underline will use the foreground color.
+* **Change History revert modified** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save and then edited to something different; the in-text change history underline will use the foreground color.
+* **Change History revert origin** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for changes that have been undone since the last save; the in-text change history underline will use the foreground color.
+* **Change History saved** [background and foreground] ⇒ The Change History margin will show a bar with the foreground as the outline and the background as the center color for text that has been saved since the last time it was modified this session; the in-text change history underline will use the foreground color.
+* **Fold** [background and foreground] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is _not_ inside that folding-area.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
+* **Fold active** [foreground only] ⇒ If a given language has folding, this will give the color for the folding symbols (`⊞ ⊟ │ └`) when the [caret](../editing/#caret-and-cursor "typing/insertion cursor") _is_ inside that folding-area.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
+* **Fold margin** [background and foreground] ⇒ If a given language has folding, this will give the colors for the margin-region; it will be colored with a checkerboard-like pattern (a dense version of `░`).  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Margins/Border/Edge](#margins-border-edge) so you can change **Fold Margin Style**.
 * **White space symbol** [foreground only] ⇒ If **View > Show Symbol** settings have whitespace shown, then the tabs and whitespace symbols will use this foreground color.
-* **Smart Highlighting** [background only] ⇒ If [Smart Highlighting](#highlighting) is checked and active, this color will be applied to all matches.  This background color has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact color seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual color will be RGB=[155,255,155].)  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Highlighting](#highlighting) so you can change **Smart Highlighting**.
+* **Smart Highlighting** [background only] ⇒ If [Smart Highlighting](#highlighting) is checked and active, this color will be applied to all matches.  This background color has approximately 60% transparency compared to other backgrounds also applied on the same text, so the exact color seen will depend on other styles for this text, combined with this setting.  (For example, if you have a highlight of green RGB=[0,255,0], with a white RGB=[255,255,255] background, the actual color will be RGB=[155,255,155].)  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Highlighting](#highlighting) so you can change **Smart Highlighting**.
 * **Find Mark Style** [background only] ⇒ If you have used the **Search > Mark** dialog to mark text, this style will be applied to the background.  Like the "Smart Highlighting" style, this background has about 60% transparency, so the exact color seen will depend on other styles for this text, combined with this setting.
 * **Find status: Not found** [foreground only] ⇒ The color for the [Dialog-based searching](../searching/#dialog-based-searching) error messages (for example, when search term isn't found or regular expression isn't valid).
 * **Find status: Message** [foreground only] ⇒ The color for the [Dialog-based searching](../searching/#dialog-based-searching) result messages (for example, the number of occurrences found or replaced after a successful action).
 * **Find status: Search end reached** [foreground only] ⇒ The color for the [Dialog-based searching](../searching/#dialog-based-searching) search-end-reached messages (for example, when the search or replace reaches the end of the document).
-* **Mark Style _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ If you select text, then use **Search > Style All Occurrences of Token > Using *n*th Style**, it will use this background color for all text matching the current selection.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Highlighting](#highlighting) so you can change **Style All Occurrences of Token**.
+* **Mark Style _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ If you select text, then use **Search > Style All Occurrences of Token > Using *n*th Style**, it will use this background color for all text matching the current selection.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Highlighting](#highlighting) so you can change **Style All Occurrences of Token**.
 * **Incremental highlight all** [background only] ⇒ If you use the "Highlight all" feature of the **Search > Incremental Search**, the results will be colored based on this style.
-* **Tags match highlighting** [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for the opening and closing HTML/XML tags.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Highlighting](#highlighting) so you can change **Highlight Matching Tags**.
-* **Tags attribute** [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for attributes inside the HTML/XML tags.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Highlighting](#highlighting) so you can change **Highlight Matching Tags > Highlight tag attributes**.
+* **Tags match highlighting** [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for the opening and closing HTML/XML tags.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Highlighting](#highlighting) so you can change **Highlight Matching Tags**.
+* **Tags attribute** [background only] ⇒ If [Preferences > Highlighting > Highlight Matching Tags](#highlighting) is checked, this background color will be used for attributes inside the HTML/XML tags.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Highlighting](#highlighting) so you can change **Highlight Matching Tags > Highlight tag attributes**.
 * **Active tab focused indicator** [foreground only] ⇒  If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the active tab in the active view.
 * **Active tab unfocused indicator** [foreground only] ⇒ If [Preferences > General > Draw a coloured bar on active tab](#highlighting) is checked, and if both editor views are visible, this foreground color will be used for drawing a thick bar along the long edge of the tab name of the other inactive view's active tab.
 * **Active tab text** [foreground only] ⇒ Selects the color to be used for the filename displayed in the titlebar of the active tab.
@@ -714,22 +689,22 @@ Some of these styles apply to the background only, some apply to the foreground 
 * **Inactive tabs** [background and foreground] ⇒ Foreground: selects the color to be used for the filename text displayed in all inactive tabs.  Background: selects the color to be used to fill in the background of all inactive tabs.
   - Note: for the background setting to affect the inactive tabs, **[Preferences > General**](#general) > `☐ Darken inactive tabs`** must be checkmarked; otherwise, inactive tabs will use the same background color as the active tab instead of using the background color defined here.
   - Note: Applying tab colors will take precedence over the color from this setting.
-* **Tab color _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Light Mode. When a tab-color is applied to a tab, these take precedence over the active and inactive tab color settings in Light Mode. (Added v8.7)
-* **Tab color dark mode _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Dark Mode. When a tab-color is applied to a tab, these take precedence over the active and inactive tab color settings in Dark Mode. (Added v8.7)
-* **URL hovered** [foreground only] ⇒ If [Preferences > Cloud & Link > Clickable Link Settings > Enable](#cloud-link) is checked, when your mouse cursor is hovering over a URL, or if the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is inside the URL text, then the URL's foreground color will follow this setting.  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Cloud & Link](#cloud-link) so you can change **Clickable Link Settings**.
-* **Document map** [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor (this style is new to v8.1.5).
-* **EOL Custom Color** [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing-1).  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Editing](#editing-1) so you can change **EOL** settings.
-* **Non-printing characters Custom Color** [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing-1).  The "Go to settings" link[🛈](#gotosettings-footnote "improved in v8.8.4") will take you to [Preferences > Editing](#editing-1) so you can change **Non-Printing Characters** settings.  (Previously labled as **NPC Custom Color**.)
+* **Tab color _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Light Mode. When a tab-color is applied to a tab, these take precedence over the active and inactive tab color settings in Light Mode.
+* **Tab color dark mode _n_** (1 ≤ _n_ ≤ 5) [background only] ⇒ Selects the color to be used for the **[Tab Bar](../user-interface/#tab-bar-right-click-menu) > Apply Color to Tab** actions, for Dark Mode. When a tab-color is applied to a tab, these take precedence over the active and inactive tab color settings in Dark Mode.
+* **URL hovered** [foreground only] ⇒ If [Preferences > Cloud & Link > Clickable Link Settings > Enable](#cloud-link) is checked, when your mouse cursor is hovering over a URL, or if the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is inside the URL text, then the URL's foreground color will follow this setting.  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Cloud & Link](#cloud-link) so you can change **Clickable Link Settings**.
+* **Document map** [background and foreground] ⇒ The foreground color will be semi-transparently overlayed over the miniature version of text that's currently visible in the editor; the background color will be semi-transparently overlayed over the miniature version of the text that isn't currently visible in the editor.
+* **EOL Custom Color** [background and foreground] ⇒ Sets the colors for the `CR`, `LF`, and `CRLF` indicators, which are also influenced by the [**Settings > Preferences > Editing > EOL** settings](#editing-1).  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Editing](#editing-1) so you can change **EOL** settings.
+* **Non-printing characters Custom Color** [background and foreground] ⇒ Sets the colors for the symbols for the Non-Printing Characters, which are also influenced by the [**Settings > Preferences > Editing > Non-Printing Characters** settings](#editing-1).  The "Go to settings" link[🛈](#gotosettings-footnote "more details") will take you to [Preferences > Editing](#editing-1) so you can change **Non-Printing Characters** settings.  (Previously labled as **NPC Custom Color**.)
 * **Global override** [background and foreground] ⇒ This style has a series of checkboxes, which allow you to choose which attributes of the override-style will apply to everything; any that are checked will override even the per-language settings; any that are not checked will not use the global-override settings for that attribute.
    - Global override takes precedence over any other color or font defined elsewhere, and will mask any per-language settings.
    - Unless you want to turn off all syntax highlighting for all the programming languages, you likely don't want to use the `Global override` settings.
    - Do not use this if all you are trying to do is set the color for Normal Text files (`.txt`): for those, use the `Default style` (above, at the start of this list of Style entries).
-   - Starting in v8.7.1, there is a `What is Global override?` link which you can hover over to find out more about the global overrides; and new installations and new portable copies will have **Global override** at the _end_ of the list of **Global Styles** instead of the beginning, to better emphasize that **Global override** is more drastic than you usually need.
-       - If you upgrade from an older version of Notepad++ to v8.7.1 or newer, the **Global override** will not necessarily be moved to the end of the list.
+   - There is a `What is Global override?` link which you can hover over to find out more about the global overrides; and new installations and new portable copies will have **Global override** at the _end_ of the list of **Global Styles** instead of the beginning, to better emphasize that **Global override** is more drastic than you usually need.
+       - If you upgraded from an older version of Notepad++, the **Global override** will not necessarily be moved to the end of the list.
        - In such a case, or even if you are in an older version of Notepad++, you can edit [`%AppData%\Notepad++\stylers.xml` (or your active theme file)](../config-files/#highlighting-schemes-stylersxml) following the advice for [editing configuration files](../config-files/#editing-configuration-files), and move the `<WidgetStyle name="Global override" ... />` element from the top of the `<GlobalStyles>` section to the end of that section; after saving, exiting Notepad++, and restarting the app, **Global override** will be moved to the end of the list.
 
 <a name="gotosettings-footnote">🛈</a>: On the Styles that mention a "Go to settings" link, that link will open the correct panel of the [**Settings > Preferences**](#preferences) dialog;
-and, starting in v8.8.4, it will do a popup "speech bubble" or similar to indicate which is the correct setting on that preference panel.
+and, it will do a popup "speech bubble" or similar to indicate which is the correct setting on that preference panel.
 
 
 ### Search result styles
@@ -760,7 +735,7 @@ If you change a color in your Style Configurator, but the color doesn't change i
 
 ## Shortcut Mapper
 
-The Shortcut Mapper allows mapping specific key-combinations to specific actions inside Notepad++.  Starting in v8.7.6, the Shortcut Mapper will allow using the keys unique to the keyboard that was active when Notepad++ was started, and will properly display the character associated with that key (if the keyboard is changed, Notepad++ will have to be restarted to recognize the new keyboard); in all earlier versions, the only keys available were those from the en-US keyboard, and if the active keyboard had a different character associated with a given keycode, the en-US character shown in Notepad++ would be different from the key actually pressed on the keyboard for keyboard-specific keys.
+The Shortcut Mapper allows mapping specific key-combinations to specific actions inside Notepad++.  The Shortcut Mapper will allow using the keys unique to the keyboard that was active when Notepad++ was started, and will properly display the character associated with that key (if the keyboard is changed, Notepad++ will have to be restarted to recognize the new keyboard); in all earlier versions, the only keys available were those from the en-US keyboard, and if the active keyboard had a different character associated with a given keycode, the en-US character shown in Notepad++ would be different from the key actually pressed on the keyboard for keyboard-specific keys.
 
 The Shortcut Mapper dialog presents five tabs:
 
@@ -776,9 +751,9 @@ When selecting the command, there are generally two columns: Name and Shortcut. 
 
 The message area will tell you if there are "no shortcut conflicts for this item" (when the shortcut for the selected action is not used anywhere else; or it will give you the name of the tab, followed by the Name for the action, which uses the same shortcut as the currently-selected action.
 
-The **Filter** input box allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  There are no regular expression or wildcard syntax interpretations in the Filter. Starting in v8.1.3, this also filters based on Shortcut, except for `Scintilla commands` tab; starting in v8.6.5, the shortcut filters also work on `Scintilla commands`. Starting in v8.8.4, there is an **×** button which will clear the active filter so that the dialog shows all entries again (in earlier versions, you have to backspace or select-and-delete the filter text to get it back to un-filtered).
+The **Filter** input box allows you to enter a piece of literal text, and it will filter all the Names in the active tab for a given text substring, only listing the Names that contain that literal substring, ignoring case.  There are no regular expression or wildcard syntax interpretations in the Filter. This also filters based on Shortcut, not just Name. There is an **×** button which will clear the active filter so that the dialog shows all entries again (in earlier versions, you have to backspace or select-and-delete the filter text to get it back to un-filtered).
 
-Starting in v8.6.5, when you type multiple space-separated character sequences ("tokens") as your **Filter**, it will try to match each token separately, in the same entry.  When filtering, it will search all the displayed fields for the dialog (whether in "Name" or "Shortcut" or "Plugin" column).  All of the tokens must be matched somewhere in the entry, but they can be in any order.  Some examples:
+When you type multiple space-separated character sequences ("tokens") as your **Filter**, it will try to match each token separately, in the same entry.  When filtering, it will search all the displayed fields for the dialog (whether in "Name" or "Shortcut" or "Plugin" column).  All of the tokens must be matched somewhere in the entry, but they can be in any order.  Some examples:
 
 **Shortcut Mapper > Plugin commands**
 
@@ -817,13 +792,11 @@ The **Delete** button is usually disabled (grayed out).  However, in the `Macros
 
 The **Close** button will close the dialog box.
 
-_Please Note_: Notepad++ honors standard Windows behavior with keystrokes for menu accelerators: typing <kbd>Alt</kbd> with the first letter (or underlined letter) for a main menu entry will open that menu.  If you want to define <kbd>Alt+_Letter_</kbd> for some other action, you may do so using the **Shortcut Mapper**, and that accelerator will no longer work for the menu, but will instead access the action you mapped it to; undefining that new Mapper entry will allow Windows to treat that sequence as the accelerator again.  **Shortcut Mapper** cannot change or clear the Windows accelerator for a menu entry -- it can just preempt that accelerator key to use for something else.  (Because the `X` on the right of the menu bar, which closes the active tab, was created as a menu action on the main menu bar with the name "X" through version 8.4.2, its accelerator was therefore <kbd>Alt+X</kbd>; in v8.4.3, the name was changed to the symbol "✕" instead, so <kbd>Alt+X</kbd> will no longer activate that action; if you would like to make <kbd>Alt+X</kbd> work on v8.4.3-and-newer, you can go to the `Main menu` tab in the **Shortcut Mapper** and change the Shortcut for Close to <kbd>Alt+X</kbd> instead of the default <kbd>Ctrl+W</kbd>.)
+_Please Note_: Notepad++ honors standard Windows behavior with keystrokes for menu accelerators: typing <kbd>Alt</kbd> with the first letter (or underlined letter) for a main menu entry will open that menu.  If you want to define <kbd>Alt+_Letter_</kbd> for some other action, you may do so using the **Shortcut Mapper**, and that accelerator will no longer work for the menu, but will instead access the action you mapped it to; undefining that new Mapper entry will allow Windows to treat that sequence as the accelerator again.  **Shortcut Mapper** cannot change or clear the Windows accelerator for a menu entry -- it can just preempt that accelerator key to use for something else.  (Because the `✕` on the right of the menu bar, which closes the active tab, is not alphanumeric, it doesn't come with a default accelerator like <kbd>Alt+X</kbd>; if you would like to make <kbd>Alt+X</kbd> work, you can go to the `Main menu` tab in the **Shortcut Mapper** and change the Shortcut for Close to <kbd>Alt+X</kbd> instead of the default <kbd>Ctrl+W</kbd>.)
 
 ### Available Keys
 
-Starting in v8.7.6, the character pulldown list for Shortcut Mapper keys will list the normal ASCII characters; it should also recognize whatever keyboard was active when you started Notepad++, and for the keys unique to your location (be it US-english or French or Brazillian Portuguese or what have you), it should list any of those keys that are available for mapping in shortcuts.  (If you can switch between multiple keyboard configurations in your version of Windows, Notepad++ will use whichever layout was active when Notepad++ was run, so if you want to switch keyboards, you will have to exit Notepad++, switch the keyboard setting, then restart Notepad++.)
-
-Prior to v8.7.6, the character pulldown for Shortcut Mapper keys mostly matched a standard US keyboard (excepting the `<>` key, which US keyboards don't generally have).  It's not actually that _character_ that maps to Shortcut Mapper shortcut, but the underlying keyboard scancode, and how it maps to the Windows Virtual Key.  The Community Forum has a [FAQ](https://community.notepad-plus-plus.org/topic/19734/faq-list-of-notepad-key-combinations-available-for-shortcuts) which shows the full "Virtual Key" vs "US key description", showing which are available to the shortcut mapper (and which shortcuts are by default assigned to an action in Notepad++).  The FAQ also lists the equivalent keyboard keys for some major keyboards (including French, German, and Portuguese), and provides links to possible external websites that might help you figure out the mapping for your own keyboard.  (The pre-v8.7.6 was more confusing, because the shortcut listed in Notepad++ shows a different key than you actually have to type on your non-US keyboard; if this confuses you, it is highly recommended to upgrade to a newer Notepad++, so the Shortcut Mapper matches your active keyboard.)
+The character pulldown list for Shortcut Mapper keys will list the normal ASCII characters; it should also recognize whatever keyboard was active when you started Notepad++, and for the keys unique to your location (be it US-english or French or Brazillian Portuguese or what have you), it should list any of those keys that are available for mapping in shortcuts.  (If you can switch between multiple keyboard configurations in your version of Windows, Notepad++ will use whichever layout was active when Notepad++ was run, so if you want to switch keyboards, you will have to exit Notepad++, switch the keyboard setting, then restart Notepad++.)
 
 ### Configuration file: `shortcuts.xml`
 
@@ -900,7 +873,7 @@ The following settings are for rather specific needs and could cause some confus
 
 - Control whether tab coloring follows theme or not:
   - By default, in Light Mode, the tab colors will follow the theme's settings for **[Settings > Style Configurator > Global Styles](#global-styles) > Active tab text** foreground and **Inactive tabs** foreground and background colors; in Dark Mode, the tab colors will _not_ follow those settings (because many users use Dark themes that don't set that color, which would mess up the user interface for those users, and they wouldn't be able to fix it, because the style wouldn't be listed in the theme).
-  - There are two hidden settings in the Dark Mode section of the XML (new in v8.4.8):
+  - There are two hidden settings in the Dark Mode section of the XML:
     ```
     <GUIConfig name="DarkMode" ... darkTabUseTheme="no" ... lightTabUseTheme="yes" />
     ```

@@ -23,7 +23,7 @@ If there is no auto-triggered update available, the dialog will just inform you 
 If there is a new version, the Updater dialog will allow you to choose:
 - **Yes**: Run the update.
     - It will download the updater, ask if it's okay to close Notepad++, and the updater will run, asking you to confirm your settings, and update Notepad++.
-- **Yes (Silent)**: Run a truly-silent upgrade of Notepad++.  (New to v8.6.9.)
+- **Yes (Silent)**: Run a truly-silent upgrade of Notepad++.
     - It will close the running Notepad++ (and all instances in multi-instance mode), do the update (without requiring clicking all the **Next** buttons to keep the same installed-options as you already have), and automatically run an instance of the updated Notepad++ -- so a true "upgrade and continue" experience.
 - **No**: Don't run the installer at this time.
 - **Never**: Don't run the installer at this time, and don't ask again in the future.
