@@ -524,7 +524,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
     - If the errors occur, there should be some trace in "C:\temp\nppLogNetworkDriveIssue.log".
     - This log can be shared with the developers to help them improve Notepad++'s network handling (create an issue [here](https://github.com/notepad-plus-plus/notepad-plus-plus/issues) and attach the logfile along with your other details).
 
-- `serverWhiteList.xml`: Stores the whitelist for [Session Network Security choices](../session/#session-network-security)
+- `serverWhiteList.xml`: Stores the whitelist for [Session Network Security choices](../session/#session-network-security)  (new to v8.9.8.1)
 
 - `session.xml`: Stores the current [session](../session/) information. Overwritten on every exit of Notepad++ if [**Settings > Preferences > Backup > Remember current session for next launch**](../preferences/#backup) is enabled. If you want sessions that you control, use **File > Save Session...** to save it; the file is safe to edit; and you can reload that session at any time using **File > Load Session...**. This config file is confusing for its location: a normal installation will keep it in `%AppData%\Notepad++\`; and the `-settingsDir` will specify the folder where it will live; a portable installation (one with `doLocalConf.xml`) will keep `session.xml` in the same directory as `notepad++.exe`; but if you use the [Cloud settings](../preferences/#cloud), `session.xml` will _not_ honor that directory, and will instead go in either the AppData or the portable location.
 
