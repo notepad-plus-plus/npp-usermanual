@@ -46,7 +46,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
   highlighting `My UDL Name` active.  If the UDL name does not conain spaces, the
   quote marks aren't required around the name (like `-udl=MyUDL`). The UDL name
   should match an existing UDL.  Mutually exclusive with `-l` (UDL will take priority
-  over standard syntax highlighter).  (new to v8.1.2)
+  over standard syntax highlighter).
 - `-L`: <a name="langCodeList"></a>Apply indicated localization, *langCode* maps to the localization file name:
     {{< details "show Language Codes" >}}
 | code | localization filename | Notes |
@@ -90,7 +90,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 | `it`, `it-ch` | `italian.xml` | |
 | `ja` | `japanese.xml` | |
 | `ka` | `georgian.xml` | |
-| `kab` | `kabyle.xml` | spelling fixed to `kab` in v8.7.5; must use `keb` instead of `kab` in v8.7.4 and earlier |
+| `kab` | `kabyle.xml` | |
 | `kk` | `kazakh.xml` | |
 | `kn` | `kannada.xml` | |
 | `ko`, `ko-kp`, `ko-kr` | `korean.xml` | |
@@ -157,8 +157,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 - `-fullReadOnlySavingForbidden`: Open all files read-only by default, toggling the R/O off and saving is disabled.
 - `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray).
 - `-loadingTime`: Display Notepad++ loading time.
-    - Starting in v8.6.1, it shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
-    - In v8.6 or earlier, it just showed the total number of seconds for Notepad++ to load, without millisecond precision and without the listing of the times for individual loading stages.
+    - It shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
 - `-alwaysOnTop`: Make Notepad++ always on top.
 - `-openSession`: Open a session. `filepath` must be a session file.
 - `-r`: Open files recursively. This argument will be ignored if `filepath` contain no wildcard character.
@@ -171,8 +170,8 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 - `-openFoldersAsWorkspace`: Any paths listed as arguments will be opened under the [Folder as Workspace](session/#folder-as-workspace), rather than opening all the contained files individually.
     - If this option is used, _all_ paths will be interpreted under the rule, "if a path is a folder, put it in the **Folder As Workspace** panel, and don’t open any file-paths directly".  Thus, do not try to combine opening  individual documents _and_ a folder for **Folder As Workspace** in the same command-line, as the individual documents will not be opened.
     - This option will not influence an existing instance of Notepad++: if you run this command line while a single-instance setup of Notepad++ is already running, this will _not_ open the **Folder as Workspace** panel in that instance, nor will it add the folder(s) from the command-line to an already-open **Folder as Workspace** panel.
-- `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar (new to v8.0.0).
-- `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information (new to v8.4.2).
+- `-titleAdd="additional title bar text"`: Add a dash and a space and the supplied text to the right side of the application title bar.
+- `-pluginMessage="text for plugin(s)"`: If plugin developers need extra command line arguments, then users can add this option, and the plugin will be [notified](../plugin-communication/#NPPN_CMDLINEPLUGINMSG "NPPN_CMDLINEPLUGINMSG") that it can parse that string for extra information.
     - You can only give Notepad++ _one_ `-pluginMessage` argument.
     - If you have multiple pieces of information you want to pass to one or more plugins, they have to be joined together in that same single argument.
         - Each plugin will use the plugin name as the prefix for its sub-argument names.
@@ -225,26 +224,26 @@ The Notepad++ [installer executable](../getting-started/#install-notepad-using-t
 It also implements additional Notepad++\-specific options:
 
 - `/noUpdater`: Disables the N++ inherent automatic updates (it does not install the WinGUP & PluginsAdmin updating components).
-- `/closeRunningNpp`: Will (try to) close existing Notepad++ before installing the new version.  (New to v8.6.9.)
+- `/closeRunningNpp`: Will (try to) close existing Notepad++ before installing the new version.
     - It will first try a "nice" close request (using [WM_CLOSE](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-close)).
     - If the "nice" request wasn't successful after 5 seconds, it will kill the underlying process.
     - If Notepad++ has multiple instances opened, it will close all instances.
     - Note: As of now, this Notepad++ app closing enforcement functionality is limited only to the session in which the Notepad++ installer is running. So for a multi-user session environment, there still exists a possibility of an unexpected access denied fail while updating the Notepad++ app binaries (loaded & locked in another session).
-- `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++. (New to v8.6.9.)
+- `/runNppAfterSilentInstall`: After a silent install, it will automatically run the newly-installed Notepad++.
     - Only works if `/S` is also specified.
-- `/relaunchNppAfterSilentInstall`: If Notepad++ was running when silent install was initiated, it will automatically run the newly-installed Notepad++ after installation is complete. (New to v8.8.2.)
+- `/relaunchNppAfterSilentInstall`: If Notepad++ was running when silent install was initiated, it will automatically run the newly-installed Notepad++ after installation is complete.
     - Only works if `/S` is also specified.
 
 *Note* : The installer options are case sensitive: `/S` will do a silent installation, whereas `/s` will _not_.
 
 ### MSI Installer Options
 
-Starting with v8.8.8, there is an MSI version of the installer as well.  It is intended for IT departments to deploy Notepad++ across an organization.  Microsoft documents command-line options that can be used to influence MSI installation using [short-name options](https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options) and [long-name options](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options).
+There is an MSI version of the installer as well.  It is intended for IT departments to deploy Notepad++ across an organization.  Microsoft documents command-line options that can be used to influence MSI installation using [short-name options](https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options) and [long-name options](https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options).
 
 Notepad++'s MSI installer allows certain variables that can be passed in to the `msiexec` execution of the MSI, such as `msiexec /i Notepad++.msi NOUPDATER=1`.  Supported MSI variables include:
 
-- `NOUPDATER=1` : Prevents installation of the updater executable `gup.exe`. (v8.8.8)
-- `REBOOT=1` : Trigger reboot after installation. (v8.8.8)
-- `NPP_LANG=xyz` : Automatically choose the `xyz.xml` localization file during installation (where `xyz` is any valid localization filename, without the `.xml` extension).  (v8.9.4)
+- `NOUPDATER=1` : Prevents installation of the updater executable `gup.exe`.
+- `REBOOT=1` : Trigger reboot after installation.
+- `NPP_LANG=xyz` : Automatically choose the `xyz.xml` localization file during installation (where `xyz` is any valid localization filename, without the `.xml` extension).  (added in v8.9.4)
 
 (The version listed for a given option is the first version of the MSI installer to support that variable.)

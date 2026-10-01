@@ -13,7 +13,7 @@ Around 90 Programming Languages are supported by Notepad++:
 | AutoIt                 | AviSynth               | BaanC                  | Batch                  | BlitzBasic             |
 | C                      | C#                     | C++                    | CAML                   | CMake                  |
 | COBOL                  | CoffeeScript           | Csound                 | CSS                    | D                      |
-| Diff                   | Erlang                 | ErrorList              | EscapeSequence (ANSI)  | ESCRIPT                | 
+| Diff                   | Erlang                 | ErrorList              | EscapeSequence (ANSI)  | ESCRIPT                |
 | Forth                  | Fortran fixed form     | Fortran free form      | FreeBasic              | GDScript               |
 | Go                     | Gui4Cli                | Haskell                | Hollywood              | HTML                   |
 | ini                    | Inno Setup             | Intel HEX              | Internal Search        | Java                   |
@@ -37,10 +37,10 @@ If your beloved language is not in the list above, you can define it yourself ea
 [User Defined Languages System](../user-defined-language-system/).  If that doesn't meet your needs,
 you could write (or have someone else write) a [lexer plugin](../plugins/#building-a-lexer-plugin).
 
-Please note that in Notepad++ v8.3 and newer, Notepad++ has a feature will no longer perform syntax highlighting
+Please note that Notepad++ will no longer perform syntax highlighting (by default)
 on files that are over 200MB -- this prevents extreme performance slowdown caused by trying to
 syntax highlight extremely large files.  This threshold is configurable in
-[Settings > Preferences > Performance](../preferences/#performance) (starting in v8.4.7).
+[Settings > Preferences > Performance](../preferences/#performance).
 
 ### Notes on Specific Languages
 
@@ -57,7 +57,7 @@ If you manually pick **Language > J > JavaScript**, the active file will use the
 
 #### ErrorList
 
-The ErrorList language, available starting in v8.8.1, is useful for looking at logfiles, error output from compilers,
+The ErrorList language is useful for looking at logfiles, error output from compilers,
 and colorful terminal outputs (like from the Windows PowerShell window or a Linux shell window), or anything else which
 uses [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). The syntax highlighting for this language will
  include coloring the various error outputs, as well as applying the _foreground_ color specified from ANSI escape codes
@@ -71,14 +71,10 @@ character are not shown (or when **Show All Characters** is toggled off), then t
 hidden.  (This is different than in other lexers, where turning off the control character visibility would just hide the
  `ESC` character, but not the rest of the ANSI escape sequence.)
 
-In v8.8.1, this defaulted to applying the ErrorList lexer to files ending in `.err` or `.log`; in v8.8.2, this was changed
-to be just for `.err` (since there are so many different types of `.log` files).  However, if you installed from v8.8.1 and
-updated to v8.8.2 or newer, the `.log` will _not_ be taken out of your default list of extensions; to fix that, you can edit
+The ErrorList lexer defaults to just files ending in `.err`.  However, there was a release that also defaulted to `.log`: if your installation has that in the list, and you want to remove it, you can edit
 `%AppData%\Notepad++\langs.xml` (or appropriate path depending on your [config file location](../config-files/#configuration-files-location)),
 search for `"errorlist"`, and remove `log` from the `ext="err log"` to become `ext="err"`, then save `langs.xml` and restart
 Notepad++ (paying attention to the [editing configuration files](../config-files/#editing-configuration-files) instructions).
-If you had installed Notepad++ before v8.8.1, and want access to the ErrorList lexer, you will need to see [Configuration Files
-During Upgrades](../config-files/#configuration-files-during-upgrades).
 
 #### MS-DOS Style
 
@@ -89,7 +85,7 @@ OEM-US [encoding](../encoding/).  It also changes the line spacing to help the c
 and hardcodes the Lucida Console font to make sure that they are presented correctly.
 In older versions of the application, that font could not be changed (the
 **Style Configurator > Language: `DOS Style` > Style: `DEFAULT` > Font name: ___** is disabled);
-however, starting in v8.8.4, you can _manually_ edit the `stylers.xml` or your selected theme's XML if you add the `fontName` field to the XML:
+however, you can _manually_ edit the `stylers.xml` or your selected theme's XML if you add the `fontName` field to the XML:
 
 1. Following the advice on [Editing Configuration Files](../config-files/#editing-configuration-files), edit `%AppData%\Notepad++\stylers.xml`
    or your theme's XML (paying attention to your setup's [Configuration Files Location](../config-files/#configuration-files-location)).

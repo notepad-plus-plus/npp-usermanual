@@ -17,13 +17,13 @@ If the Shell Extension is already installed, the Notepad++ installer/updater mig
 
 #### Location and Name
 
-If you used the installer to get Notepad++, then the Shell Extension file will exist as a DLL in your Notepad++ installation folder hierarchy: in versions before Notepad++ v8.5.1, it will be in the same directory as notepad++.exe, named as `NppShell_##.dll` (with ## being something like `01` - `06`); in Notepad++ v8.5.1 and later, it is now found in the `contextMenu\` subfolder of the Notepad++ installation, and is named plainly `NppShell.dll`.
+If you used the installer to get Notepad++, then the Shell Extension file will exist as a `NppShell.dll` in the `contextMenu\` subfolder of the Notepad++ installation, and is named `NppShell.dll` (historically, it was named as `NppShell_##.dll` next to `notepad++.exe`, but you will not see that name unless you have not upgraded for years).
 
 #### Portable Notepad++
 
 If you didn't use the installer, the DLL does not come with the portable edition.  The reason that portable Notepad++ does not ship with the Shell Extension is that registering a DLL usually requires administrative privileges, and is inherently non-portable.  Also, there may be subtle issues that arise because the application is not in the expected directory.
 
-However, if you want to try to see if the Shell Extension will work for your particular portable circumstances, you are allowed (though success is not guaranteed or warrantied): you could download the installer, rename it to a `.zip`, and extract the Shell Extension DLL from that zip archive, which you can put in the correct location for your portable edition -- that is, alongside notepad++.exe for older versions, and in the `contextMenu\` subdirectory (which you may have to create yourself) for v8.5.1 and newer.  You would then have to register the DLL, as described below.
+However, if you want to try to see if the Shell Extension will work for your particular portable circumstances, you are allowed (though success is not guaranteed or warrantied): you could download the installer, rename it to a `.zip`, and extract the Shell Extension DLL from that zip archive, which you can put in the correct location for your portable edition -- that is, in the `contextMenu\` subdirectory.  You would then have to register the DLL, as described below.
 
 #### Manual Installation / Registration
 
@@ -31,19 +31,19 @@ If your installation process had problems with installing or updating the Shell 
 
 **To Install / Register**: Open a command shell (`cmd.exe` or PowerShell or your favorite alternative command line environment) in the same directory where the Shell Extension DLL resides.  Run one of the commands listed below.  Some users have had more success with one or the other, so if you get an error with one, you may have to try another to get it to work.  (In these commands, `NppShell.dll` is shown, but if you are using an older Notepad++, use the name that came with your version of Notepad++.)
 
-- `regsvr32 /i NppShell.dll` ⇒ This was the method recommended before Notepad++ v8.5.1
-- `regsvr32 NppShell.dll` ⇒ This has been successful for some users on v8.5.1 and newer, for whom the `/i` version did not work
+- `regsvr32 NppShell.dll`
+- `regsvr32 /i NppShell.dll`
 
 **To Uninstall / Unregister**: use the command below which corresponds to the install/register command you used above:
 
-- `regsvr32 /U /i NppShell.dll`
 - `regsvr32 /U NppShell.dll`
+- `regsvr32 /U /i NppShell.dll`
 
 ### Difficulties
 
 It should be noted that the Shell Extension can have difficulty loading a file into Notepad++ if Notepad++ is in Admin mode.
 
-In Windows 11, Microsoft significantly changed how Shell Extensions must be coded to get them to show up in the _main_ right-click menu.  In Notepad++ v8.5.1, Notepad++ has been working on improving its Shell Extension to get it to show **Edit with Notepad++** in the main right-click menu in Win 11, but different builds of Win 11 have subtly different behaviors.  If you are not seeing the entry, you might try using <kbd>Shift+F10</kbd> or <kbd>Shift+RightClick</kbd> instead of a normal <kbd>RightClick</kbd> to see if that shows the old-style Windows context-menu, and you might want to explore the alterntatives mentioned below.
+In Windows 11, Microsoft significantly changed how Shell Extensions must be coded to get them to show up in the _main_ right-click menu.  Notepad++ has improved its Shell Extension to get it to show **Edit with Notepad++** in the main right-click menu in Win 11, but different builds of Win 11 have subtly different behaviors.  If you are not seeing the entry, you might try using <kbd>Shift+F10</kbd> or <kbd>Shift+RightClick</kbd> instead of a normal <kbd>RightClick</kbd> to see if that shows the old-style Windows context-menu, and you might want to explore the alterntatives mentioned below.
 
 ## Alternatives
 
@@ -90,7 +90,7 @@ Windows Registry Editor Version 5.00
 
 ### Windows 11 Right-Click Workarounds
 
-Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11; though starting with v8.5.1, the installer should put the action in the main Windows 11 right-click menu again. If you don't see the entry, the Windows right click menu contains a **Show More Options** action which will bring up the classic right click context menu with the old actions; this can also be accessed using the <kbd>Shift+F10</kbd> shortcut or <kbd>Shift+RightClick</kbd> on a file instead of right-clicking, depending on which build of Win 11 you are using.
+Windows 11 hides the old right click menu, so even with a normal installation or if you've manually added those associations, the **Edit with Notepad++** might not be visible for you in Windows 11; however, Notepad++'s installer was updated, so it should put the action in the main Windows 11 right-click menu again. If you don't see the entry, the Windows right click menu contains a **Show More Options** action which will bring up the classic right click context menu with the old actions; this can also be accessed using the <kbd>Shift+F10</kbd> shortcut or <kbd>Shift+RightClick</kbd> on a file instead of right-clicking, depending on which build of Win 11 you are using.
 
 If that is not sufficient for you, https://www.tomshardware.com/how-to/windows-11-classic-context-menus describes a possible method of changing your registry[†](#registry-edit-warning "edit your registry at your own risk") to get the classic right click context menu by default again in Windows 11.
 
@@ -120,8 +120,7 @@ Windows Registry Editor Version 5.00
 ```
 (If your installation is not in `c:\Program Files\Notepad++`, you will have to adjust that script.)
 
-In v8.5, the Notepad++ installer would automatically add this `pintohome` workaround on Windows 11, as long as no other app is currently using the `pintohome` command; if there is already something else in that registry slot, Notepad++ will not overwrite it.  However, since this got rid of the Windows native "pin to home" feature for some Windows 11 users, v8.5.1 undid that change; instead, the installer was updated to add to the main Windows 11 right click, rather than being being relegated to the **Show More Options** sub-menu.
-
+There was a brief experiment with using this `pintohome` workaround on Windows 11 via the installer; however, in modern Notepad++, the installer was updated to add to the main Windows 11 right click, rather than being being relegated to the **Show More Options** sub-menu.
 
 ### Registry Edit Warning
 

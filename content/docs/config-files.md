@@ -130,7 +130,7 @@ In brief, the structure of the context menu file is as follows
 
 ## The context menu: `tabContextMenu.xml`
 
-Starting in v8.4.8, the [tab-bar context menu](../user-interface/#tab-bar-right-click-menu) (the popup menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
+The [tab-bar context menu](../user-interface/#tab-bar-right-click-menu) (the popup menu that you see when you right-click on the title of the tab in the tab bar) is user-configurable using the `tabContextMenu.xml` config file.
 
 The format is the same as the `contextMenu.xml` described [above](#context-menu-syntax-summary), except the "Intermediate Node" is `<TabContextMenu>` instead of `<ScintillaContextMenu>`.
 
@@ -156,7 +156,7 @@ If `shortcuts.xml` doesn't exist in the user configuration folder, Notepad++ wil
 
 ### Virtual Key Number
 
-All the types of commands in `shortcuts.xml` have a `key` attribute, which uses the Windows virtual key number as the value (Microsoft documentation on virtual keycodes can be found [here](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)). This keycode is _not_ necessarily the same as the ASCII code or Unicode codepoint. In standard English locales, the virtual key usually lines up with the ASCII code for the character, but that is not universally true. The list of base virtual key codes that Notepad++ uses in the GUI for shortcut definitions can be found `namedKeyArray[]` in `shortcut.cpp` (you can see one snapshot [here](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/e49ab3219ed48f1c7cbc61c60c50d031e607821a/PowerEditor/src/WinControls/shortcut/shortcut.cpp#L35-L221) -- if you then switch from the branch to the `master`, you can look for the most recent version of that list). Before v8.7.6, because of this reliance on OS-defined virtual keys, many letters available on non-US-english keyboards weren't displayed in the GUI shortcut dropdown (or were listed under the wrong key name, because it was using the US-english name for that keycode even when you had a different keyboard seetting); the Community Forum [FAQ: List of Notepad++ key combinations, available for shortcuts](https://community.notepad-plus-plus.org/topic/19734/faq-list-of-notepad-key-combinations-available-for-shortcuts) was developed to help users find the virtual key number for the key on their keyboard, and see what it would be listed as in the older shortut dropdown GUI.  In v8.7.6 and newer, Notepad++ correctly polls the operating system's keyboard settings when Notepad++ is run, and shows the correct keyboard character name for your keyboard, and will adjust the list to include extra keys from your keyboard for mapping, even if those keys aren't on the standard US-english keyboard.  Using keycodes that _aren't_ listed in the `namedKeyArray[]` is not recommended, as ones outside of that list might not work for you, or might work at first but be mangled by the GUI if you make use of the keyboard shortcut feature in the GUI.
+All the types of commands in `shortcuts.xml` have a `key` attribute, which uses the Windows virtual key number as the value (Microsoft documentation on virtual keycodes can be found [here](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)). This keycode is _not_ necessarily the same as the ASCII code or Unicode codepoint. In standard English locales, the virtual key usually lines up with the ASCII code for the character, but that is not universally true. The list of base virtual key codes that Notepad++ uses in the GUI for shortcut definitions can be found `namedKeyArray[]` in `shortcut.cpp` (you can see one snapshot [here](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/e49ab3219ed48f1c7cbc61c60c50d031e607821a/PowerEditor/src/WinControls/shortcut/shortcut.cpp#L35-L221) -- if you then switch from the branch to the `master`, you can look for the most recent version of that list). Notepad++ correctly polls the operating system's keyboard settings when Notepad++ is run, and shows the correct keyboard character name for your keyboard, and will adjust the list to include extra keys from your keyboard for mapping, even if those keys aren't on the standard US-english keyboard.  Using keycodes that _aren't_ listed in the `namedKeyArray[]` is not recommended, as ones outside of that list might not work for you, or might work at first but be mangled by the GUI if you make use of the keyboard shortcut feature in the GUI.
 
 The keycodes in the [Microsoft list](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes), or in the `shortcut.cpp` [source code](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/e49ab3219ed48f1c7cbc61c60c50d031e607821a/PowerEditor/src/WinControls/shortcut/shortcut.cpp#L35-L221), are listed in hexadecimal numerical format.  If you don't already have a tool to convert that to decimal for entry in your `key` attributes in `shortcuts.xml`: you can run `calc.exe` that comes with your Windows operating system, and the "Programmer" mode of the calculator app allows you to click on `Hex` to change to hexadecimal mode, then you can type or click the hex value from the source code, and it will translate it decimal next to the `Dec` in the app GUI; to get back to normal calculations, make sure to click on `Dec` again, or switch back to "Standard" or whatever calc.exe mode you normally use.  (For example, the `VK_DECIMAL` keycode `0x6E` represents the decimal-separator character on your numeric keypad (the `.`/`Delete` on most US keyboards); if you type the `6E` into `calc.exe` in `Hex` mode, you will see it's `110` in decimal, so `key="110"` would be what you'd need to enter in the `shortcuts.xml` to map that key.)
 
@@ -173,7 +173,7 @@ Position | Name | Value format | Meaning
 3  |  Alt  |  "yes"/"no"  |  The key being mapped to has the Alt modifier
 4  |  Shift  |  "yes"/"no"  |  The key being mapped to has the Shift modifier
 5  |  Key  |  integer  |  The base virtual key number, in the 1..255 range
-6  | FolderName | string | [optional] Can be used to group one or more macros into a named sub-menu (new to v8.4.8)
+6  | FolderName | string | [optional] Can be used to group one or more macros into a named sub-menu
 
 _Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file; it is not available in the Shortcut Mapper or any other GUI element.
 
@@ -215,7 +215,7 @@ When not empty, this node contains `<Command>` tags, which have the command stri
 | 3  |  Alt  |  "yes"/"no"  |  The key mapped to has the Alt modifier
 | 4  |  Shift  |  "yes"/"no"  |  The key mapped to has the Shift modifier
 | 5  |  Key  |  integer  |  The base virtual key number, in the 1 - 255 range
-| 6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu (new to v8.4.8)
+| 6  | FolderName | string | Can be used to group one or more Run menu entries into a named sub-menu
 
 _Note_: FolderName can only be entered by hand-editing the `shortcuts.xml` file; it is not available in the Shortcut Mapper or any other GUI element.
 
@@ -236,7 +236,7 @@ There are a number of Notepad++-specific variables available for Run commands, w
 | EXT_PART            | The extension (with the `.`)      | `.html`
 | CURRENT_WORD        | the active selection in Notepad++, or the word under the [caret](../editing/#caret-and-cursor "typing/insertion cursor") |
 | CURRENT_LINE        | the line number where the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `1`
-| CURRENT_LINESTR     | the text of the current line (added v8.3.2)  | `The quick brown fox jumps over the lazy dog`
+| CURRENT_LINESTR     | the text of the current line | `The quick brown fox jumps over the lazy dog`
 | CURRENT_COLUMN      | the column number where the [caret](../editing/#caret-and-cursor "typing/insertion cursor") is currently located in the editor window | `5`
 | NPP_DIRECTORY       | the directory where the `notepad++.exe` executable is located | `c:\Program Files\notepad++`
 | NPP_FULL_FILE_PATH  | the full path to the `notepad++.exe` | `c:\Program Files\notepad++\notepad++.exe`
@@ -248,7 +248,7 @@ If you want access to a Windows environment variable (like `TMP`), use the stand
 #### shortcuts.xml Security
 <a name="run-menu-security"></a>
 
-Starting in v8.6.9.1, extra security was added to the shortcuts file (originally, just for the Run-menu entries):
+Starting in v8.9.6.1, extra security was added to the shortcuts file (originally, just for the Run-menu entries):
 - In v8.9.6.1, any saved Run-menu entry that tried to execute outside certain trusted locations (the Windows and System32 directories from the OS, and Program Files), it would pop a warning dialog every time that Run-menu entry is chosen.
 - In v8.9.6.2, this behavior was modified: instead of prompting every time, the first time you run such an entry after `shortcuts.xml` has been modified, or the first time after updating from v8.9.6.1-or-earlier to v8.9.6.2-or-later, Notepad++ will warn you that `shortcuts.xml` has changed, will open the file so you can review it to make sure there were no unexpected changes; after you are sure, use **Run > Validate shortcuts.xml** to save a signature of the current `shortcuts.xml`, so that Notepad++ can detect changes.  After that, Notepad++ will allow you to execute such Run-menu entries without interruption (until `shortcuts.xml` is changed again).  To be clear, if the changes to `shortcuts.xml` come from within the GUI (saving a new Run-menu command, saving a new macro, updating a keyboard shortcut), Notepad++ will automatically save the new signature, so it won't prompt you; it is only if the `shortcuts.xml` is changed manually (by editing the XML text) that you will have to use **Run > Validate shortcuts.xml**: most users should only rarely (if ever) need to use that action, except one time after upgrading from v8.9.6.1-or-earlier to something v8.9.6.2-or-later.
 - In v8.9.7, this behavior was extended to also cover macros, so that running a macro would also trigger the HMAC verification.
@@ -256,19 +256,16 @@ Starting in v8.6.9.1, extra security was added to the shortcuts file (originally
 
 _NOTE_: After doing a **Run > Validate shortcuts.xml**, you should exit Notepad++ to get it to save the config file with the new HMAC signature, so that future runs will see that signature and recognize that `shortcuts.xml` has not been modified unexpectedly.  If you use multiple instances of Notepad++ (using `-multiInst` or the preference-equivalent), then you need to close all instances of Notepad++ but the main one, _then_ review `shortcuts.xml` and **Run > Validate shortcuts.xml**, then exit the last Notepad++; from now on, your first instance and any subsequently launched instances will all see the same signature.  (If you validate from the first instance, then launch new instances before N++ has been exited, the config file will still have the old HMAC signature, or no signature at all, so those new instances will still pester you.)
 
-### v8.5.3 `shortcuts.xml` updates
+### `shortcuts.xml` encoding and entities
+<a name="v853-shortcutsxml-updates"></a>
 
-In Notepad++ v8.5.2 and earlier, if you had a "special character" in your macro or run-menu command -- whether it was in the name of the macro/command or in text that it uses -- then inside the XML, it would be stored as an XML entity. For example, `☺` would be stored as `&#x263a;` or `π` as `&#x03C0;` .
+Notepad++ stores most characters in macros as actual UTF-8 encoded characters, and it treats nearly all entities as raw text.  Thus, `&#x03C0;` is interpreted as 8 characters, not an entity-representation of the underlying character.
 
-In Notepad++ v8.5.3, it changed to storing those characters as actual UTF-8 encoded characters, and it treats nearly all entities as raw text.  Thus, `&#x03C0;` is interpreted by v8.5.3  (and newer) as 8 characters, not an entity-representation of the underlying character.
-
-There are still a small number of entities that _will_ be recognized inside macros, even in v8.5.3 and newer:
+There are still a small number of entities that _will_ be recognized inside macros:
 
 * The 5 predefined XML named-entities: `&amp; &lt; &gt; &apos; &quot;`
 
 * Any of the hexadecimal entities that only include two hex digits, like `&#x0D;` and `&#x0A;` for `CR` and `LF`, and `&#x22;` for double-quotes.  This notation works for all ASCII codepoints from 1 (`&#x01;` for the `SOH` character) through 127 (`&#x7F;` for the `DEL` character)
-
-This change in interpretation may make it so your old macros or run-menu commands don't work as expected.  You can follow the instructions in the [Notepad++ Community Forum FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) to see how to update your `shortcuts.xml` to be compatible with Notepad++ v8.5.3 and newer.
 
 ## User Interface settings: `config.xml`
 
@@ -298,7 +295,7 @@ Position | Name | Value format | Meaning
 5  |  commentEnd  |  string  |  The character(s) that end a block comment when using the **[Edit > Comment/Uncomment](https://npp-user-manual.org/docs/editing/#edit-menu:~:text=columns%20is%20different.-,Comment/Uncomment,-%3E%20%E2%87%92%20submenu%20with) > Block Comment/Uncomment** actions. Set to "" if block comments are not supported for the current Language.
 6  |  exclude  |  `"yes"`/`"no"`  |  Set to `"yes"` to hide this Language from the Language menu; otherwise, set to `"no"` or don't include this attribute.  Reflects the **[Settings > Preferences > Language](../preferences/#language)** having the Language in the **Disabled** list (`"yes"`) vs **Available** list (`"no"`).
 7  |  tabSettings  |  integer  |  If present, the attribute value encodes the number of spaces a tab is equivalent to, reflecting **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings** for the active language. (More on this attribute, below)
-8  |  backspaceUnindent | `"yes"`/`"no"` | If present, reflects the state of the **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings > `☐ Backspace key unindents...`** checkbox.  (New to v8.6.9)
+8  |  backspaceUnindent | `"yes"`/`"no"` | If present, reflects the state of the **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings > `☐ Backspace key unindents...`** checkbox.
 
 The value used in the `tabSettings` attribute value depends on the **[Settings > Preferences > Indentation](../preferences/#indentation) > Indent Settings**:
 - If it is set to use `☑ Tab character`, then the value stored in this XML attribute is the same as in the preference's **Indent Size** value.
@@ -377,7 +374,7 @@ If you previously had a v7.9-or-earlier style function list entry in `functionLi
 
 ### Toolbar Icon Visibility: `toolbarButtonsConf.xml`
 
-This configuration file allows you to override the visibility of any of the default or plugin toolbar icons.  (New to v8.7.8)
+This configuration file allows you to override the visibility of any of the default or plugin toolbar icons.
 
 The installation directory comes with a file called `toolbarButtonsConf_example.xml`: you can copy that to `%APPDATA%\Notepad++\toolbarButtonsConf.xml` (or other appropriate [Config Files Location](#configuration-files-location)).  Once copied, edit `toolbarButtonsConf.xml`, edit it (see details below), and save, then restart Notepad++ to see the changes go into effect.
 
@@ -393,11 +390,9 @@ You can change the `hide="no"` to `hide="yes"` (or vice versa) on any of the `<B
 ### Toolbar Icon Customization
 <a name="toolbar-icon-customization-toolbariconsxml"></a>
 
-Notepad++ also allows customization of the icons used for the toolbar buttons (new to v8.4.2).  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.
+Notepad++ also allows customization of the icons used for the toolbar buttons.  This allows you do define your own set of icons to use on the toolbar, and is useful (for example) if none of the five different icon sets available through **Settings > Preferences > General > Toolbar** are sufficient for your needs.
 
-- In v8.4.2 - v8.7.9, the configuration file `toolbarIcons.xml` was used
-- In v8.8 and newer, this was merged into the `toolbarButtonsConf.xml` ([above](#toolbar-icon-visibility-toolbarbuttonsconfxml)), so the same will be used for both Toolbar Customization tasks.
-    - If you had `toolbarIcons.xml` in an earlier version, and you upgrade to v8.8 or newer, you will have to copy the `<ToolBarIcons icoFolderName="myAwesomeIcons" />` from the old `toolbarIcons.xml` file into `toolbarButtonsConf.xml`
+Originally, a separate configuration file was used, but it now makes use of the file `toolbarButtonsConf.xml` (described [above](#toolbar-icon-visibility-toolbarbuttonsconfxml)), using the element `<ToolBarIcons ... />`.
 
 Aside from the config file, you need to create icons. You will populate and place the configuration file and icon files as described below:
 
@@ -410,32 +405,24 @@ Aside from the config file, you need to create icons. You will populate and plac
 6. Now it is the magic moment: Relaunch Notepad++ and you'll see your icon set instead of the default icons.
    - This overrides the icons for any of the **Settings > Preferences > General > Toolbar** icon-set selections.
    - If you have **Settings > Preferences > General > Toolbar** set to any of the three "small" choices, it will scale the icon to 16x16; if you use one of the two "large" choices, it will scale to 32x32. So if you are going to use a "large" icon set, you should make sure the icons are defined as 32x32.
-   - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the v8.4.2-style `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), merge `toolbarIons.xml` into the `toolbarButtonsConf.xml` as described above, restart Notepad++, and you will have the pre-v8.0-style 32x32 "Big Icons" (but they are different icons than just a big version of the "standard icons", sorry).
+   - The [v8.4.2 release page](https://notepad-plus-plus.org/news/v842-released/) allows you to download a bundle that contains the legacy 32x32 icon set along with the v8.4.2-style `toolbarIcons.xml`; unzip that bundle into the directory described on that page (equivalent to the main configuration folder [Note 2]), merge `toolbarIons.xml` into the `toolbarButtonsConf.xml`, restart Notepad++, and you will have the pre-v8.0-style 32x32 "Big Icons" (but they are different icons than just a big version of the "standard icons", sorry).
    - Troubleshooting: if you started Notepad++ with one of the "small" choices selected but have 32x32 icons in your custom icons, it will scale them to 16x16, which is fine for small modes; but if you switch to a "large" option, it might scale the 16x16 back to 32x32 rather than using the true-32x32 from the icon file, which makes for a pixelated ("klunky") large icon: if this happens, leave it with "large" selected, then exit Notepad++ completely and restart: on the subsequent starts, it will use the full 32x32 resolution.
    - Transparency: To get part of the icon transparent, you need to make sure your icon editor is able to save in 32bpp mode (8-bits each for alpha/transparency, red, green, and blue).  Some icon editors only support 24bpp (no alpha/transparency information).  Alternately, some editors will allow you to use a 8bpp (256-color palette) with 1 of those 256 indexes allocated to transparency; using this format will allow creating much smaller `.ico` files, assuming 255 colors is sufficient for your icon needs.
    - Recommendation: Every `.ico` file used for custom toolbars should include a 16x16 image and a 32x32 image, with color depth set to either 32bpp or 8bpp-with-transparency, so that you have full control of the exact appearance on large and small toolbars, and allow transparent pixels.
 
 _Notes_:
 
-- Note 1:
-    - For v8.8 and newer, `toolbarButtonsConf.xml` will have:
-        ```xml
-        <?xml version="1.0" encoding="UTF-8" ?>
-        <NotepadPlus>
-            <ToolbarButtons>
-                ...
-            </ToolbarButtons>
-            <ToolBarIcons icoFolderName="myAwesomeIcons" />
-        </NotepadPlus>
-        ```
-        You can copy the example from `<installationDir>\toolbarButtonsConf_example.xml` to use as a start for `toolbarButtonsConf.xml`.  This example file has plenty of comments, to help you understand what's needed.
-    - The content of the v8.4.2-v8.7.9 `toolbarIcons.xml` is as follows:
-        ```xml
-        <?xml version="1.0" encoding="UTF-8" ?>
-        <NotepadPlus>
-            <ToolBarIcons icoFolderName="myAwesomeIcons" />
-        </NotepadPlus>
-        ```
+- Note 1: The `toolbarButtonsConf.xml` fill should contain:
+    ```xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <NotepadPlus>
+        <ToolbarButtons>
+            ...
+        </ToolbarButtons>
+        <ToolBarIcons icoFolderName="myAwesomeIcons" />
+    </NotepadPlus>
+    ```
+    You can copy the example from `<installationDir>\toolbarButtonsConf_example.xml` to use as a start for `toolbarButtonsConf.xml`.  This example file has plenty of comments, to help you understand what's needed.
 
 - Note 2: This is the same folder descibed in [Configuration Files Locations](#configuration-files-location) where `config.xml` goes, and will generally be the `%APPDATA%\Notepad++\` directory, unless you are using local configuration or cloud configuration or overriding the configuration directory with `-settingsDir`.
 
@@ -496,7 +483,7 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `contextMenu.model.xml`: If it exists, Notepad++ will use the `contextMenu.model.xml` from the installation directory as the default `contextMenu.xml` when creating a new per-user setup; if the `contextMenu.model.xml` does not exist in the installation directory, Notepad++ has a set of default internal values that it will use to populate the per-user `contextMenu.xml`.  This is useful if you have multiple users on the same PC, and want them all to start with the same context-menu choices when they first use Notepad++; it can also be used if you want to bundle your own customized Notepad++ installation directory to distribute to multiple PCs, then when each user first uses Notepad++ on the new computer, they will start with those values in their user `contextMenu.xml`.
 
-- `disableLineCopyCutDelete.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to not enable the [context-aware "line copy / cut / delete"](../editing/#context-awareness) feature in v8.6.1.  This file needs to be in `%AppData%\Notepad++\` for a normal installation, and in the portable directory for a local configuration.  The only version of Notepad++ to pay attention to this file is v8.6.1; in earlier or later versions, this file is ignored and meaningless.  (It was added because v8.6 had some strange behavior with the context-aware Cut/Copy/Paste, so v8.6.1 added a workaround for that difficulty by allowing users who had problems with it to disable the context-aware actions.  However, v8.6.2 fixed the underlying bug, so this workaround was no longer necessary and hence removed.)
+- `disableLineCopyCutDelete.xml`: This is a zero-byte file that is no longer used.
 
 - `disableNppAutoUpdate.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to disable auto-update, even when WinGUp (`gup.exe`) is still present.  (added v8.9.3)
     - This is useful for portable Notepad++, to disable auto-update, but still allow Plugins Admin to work.
@@ -504,19 +491,19 @@ You can have multiple icon set directories; to switch between icon sets, you jus
 
 - `doLocalConf.xml`: This is a zero-byte file that is used as an indicator to `notepad++.exe` to not go looking for `%AppData%`. This will only exist on local installations of Notepad++ (when you tell the installer to not use `%AppData%`, or when you install from the zipfile, or when you manually create the zero-byte file). This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.  (If this file is deleted, the instance will go back to using the normal `%AppData%` location the next time Notepad++ is run.)
 
-- `enableSelectFgColor.xml`: This is a zero-byte file that is just used as an indicator to the [**Settings > Style Configurator > Global Styles > Selected text color**](../preferences/#global-styles) to honor the foreground color, not just the background color. This config file _must_ go in the per-user `%AppData%\Notepad++` hierarchy or in the cloud settings folder or `-settingsDir` folder: it will _not_ be recognized if it's in the Notepad++ installation folder (unless `doLocalConf` is in effect). (Available on v8.0.0 - v8.7.9.  Replaced by **[Settings > Preferences > Editing 1](../preferences/#editing-1) > `☐ Apply custom color to selected text foreground`** in v8.8.)
+- `enableSelectFgColor.xml`: This is a zero-byte file that is no longer used.  Replaced by **[Settings > Preferences > Editing 1](../preferences/#editing-1) > `☐ Apply custom color to selected text foreground`**.
 
 - `nativeLang.xml`: If you make a selection in the [**Settings > Preferences > General > Localization**](../preferences/#general), Notepad++ will copy the appropriate `localization\*.xml` to `nativeLang.xml`.
 
-- `noColumnToMultiSelect.xml`: This is a zero-byte file that is used as an indicator to Notepad++ to not enable the [column-mode to multi-edit conversion](../editing/#multi-editing) feature (new to v8.6.1).  This file needs to be in `%AppData%\Notepad++\` for a normal installation and in the portable directory for a local configuration.  Starting in v8.6.3, this zero-byte file was replaced by [**Settings > Preferences > Editing 2 > ☐ Enable Column Selection to Multi-Editing**](../preferences/#editing-2); if you used `noColumnToMultiSelect.xml` in v8.6.1-v8.6.2, to maintain the same behavior, you will need to make sure the new setting is not checkmarked; as of v8.6.3, this file is ignored and does nothing.
+- `noColumnToMultiSelect.xml`: This is a zero-byte file that is no longer used.  Replaced by [**Settings > Preferences > Editing 2 > ☐ Enable Column Selection to Multi-Editing**](../preferences/#editing-2).
 
 - `noEasterEggs.xml`: This is a zero-byte file that is used as an indicator to `notepad++.exe` to not show the "Easter Eggs" when trying to access the **About Notepad++** dialog (accessed from the **?** menu or the default keyboard shortcut <kbd>F1</kbd>). This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder.  You can find out more about the Easter Eggs in the [Command Line Options](../command-prompt/) and [Ghost Typing](../ghost-typing/) descriptions.
 
-- `noRestartAutomatically.xml`: Starting in Notepad++ v8.5.8, Notepad++ is a [Restarable App](../other-resources/#restartable-app).  If you would like to _disable_ Notepad++ from being restartable, add an empty config file called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).  (See also [Undoing Portable](#undoing-portable), above.)
+- `noRestartAutomatically.xml`: Notepad++ is now a [Restarable App](../other-resources/#restartable-app).  If you would like to _disable_ Notepad++ from being restartable, add an empty config file called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).  (See also [Undoing Portable](#undoing-portable), above.)
 
-- `nppLogNulContentCorruptionIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` in the case of certain crashes, which can help the developers debug issues resulting from the crash. If you want to prohibit that logfile from being created, delete this config file; but that will mean that you will not be able to provide the useful information to the developers if a crash causes issues for you; delete at your own risk. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder. (New to v8.1.9.3.)  (No longer included as of v8.9.3.)
+- `nppLogNulContentCorruptionIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` in the case of certain crashes, which can help the developers debug issues resulting from the crash. If you want to prohibit that logfile from being created, delete this config file; but that will mean that you will not be able to provide the useful information to the developers if a crash causes issues for you; delete at your own risk. This config file _must_ go in the Notepad++ installation folder; it will not be recognized in the `%AppData%\Notepad++` hierarchy or in the cloud settings folder. (No longer included as of v8.9.3.)
 
-- `nppLogNetworkDriveIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `c:\temp\nppLogNetworkDriveIssue.log` in the case of certain network drive issues.  (New to v8.1.9.3.)
+- `nppLogNetworkDriveIssue.xml`: This is a zero-byte file that allows Notepad++ to write a logfile to `c:\temp\nppLogNetworkDriveIssue.log` in the case of certain network drive issues.
     - This should be used if you are getting "This file has been modified by another program" when dealing with network drives (like a Samba server, or other filesystems access by `\\machinename\path\`).
     - Create this zero-byte file either next to `notepad++.exe` or in the `%AppData%\Notepad++` directory.
     - Create directory `c:\temp\` if it doesn't exist.
@@ -536,14 +523,14 @@ You can have multiple icon set directories; to switch between icon sets, you jus
     - This file is created the first time you save a recorded macro after upgrading from Notepad++ v8.5.2 (or older) to Notepad++ v8.5.3 (or newer)
     - When this file is created, it will also create `shortcuts.xml.v8.5.2.backup`
     - After this file is created, Notepad++ won't check any more whether `shortcuts.xml` has been updated
-    - See [v8.5.3 `shortcuts.xml` updates](#v853-shortcutsxml-updates) (above) and this Notepad++ Community [FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
-    - As of v8.9.3, this is no longer used.
+    - See [`shortcuts.xml` encoding and entities](#v853-shortcutsxml-updates) (above) and [this Notepad++ Community FAQ entry](https://community.notepad-plus-plus.org/topic/24464/faq-desk-v8-5-3-and-newer-macros-and-run-menu-commands) for more details
+    - As of v8.9.3, this file is no longer used.
 
 ### Logfiles
 
 Notepad++ doesn't normally create logfiles.  However, there are some circumstances when it does:
-- As described above, if `nppLogNulContentCorruptionIssue.xml` exists, then the logfile `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` will be created during crash events. (New to v8.1.9.3.)
-- As described above, if `nppLogNetworkDriveIssue.xml` exists, then `c:\temp\nppLogNetworkDriveIssue.log` will be created during certain network drive issues. (New to v8.1.9.3.)
+- As described above, if `nppLogNulContentCorruptionIssue.xml` exists, then the logfile `%AppData%\Notepad++\nppLogNulContentCorruptionIssue.log` will be created during crash events.
+- As described above, if `nppLogNetworkDriveIssue.xml` exists, then `c:\temp\nppLogNetworkDriveIssue.log` will be created during certain network drive issues.
 - Starting in v8.9, security errors will be automatically logged to `%LOCALAPPDATA%\Notepad++\log\securityError.log`.
 
 ## Validating Config-File XML

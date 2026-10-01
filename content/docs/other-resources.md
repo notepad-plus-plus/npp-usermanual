@@ -5,7 +5,7 @@ weight: 210
 
 ## Restartable App
 
-Windows 10 and Windows 11 have a "restartable apps" feature (**Windows Start Button > Settings > Accounts > Sign In Options > Restart Apps**) which automatically saves the state of various "restartable apps" when you log out of Windows then back in.  Starting with v8.5.8, Notepad++ is now a "restartable app" -- so if you log out or reboot with Notepad++ running, and have that Windows setting active, then when you next log in, Notepad++ will reload right where you were.  If you would like to _disable_ Notepad++ from being restartable, add an empty [config file](../config-files/#other-configuration-files) called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).
+Windows 10 and Windows 11 have a "restartable apps" feature (**Windows Start Button > Settings > Accounts > Sign In Options > Restart Apps**) which automatically saves the state of various "restartable apps" when you log out of Windows then back in.  Notepad++ is a "restartable app" -- so if you log out or reboot with Notepad++ running, and have that Windows setting active, then when you next log in, Notepad++ will reload right where you were.  If you would like to _disable_ Notepad++ from being restartable, add an empty [config file](../config-files/#other-configuration-files) called `noRestartAutomatically.xml` into `%APPDATA%\Notepad++\` (for normal installations) or the Notepad++ installation directory (for other configuration settings).
 
 ## Notepad++ Cheat sheet
 
@@ -25,7 +25,7 @@ To get Notepad++ as the default application for a given filetype, you can use th
 
 ## Notepad Replacement
 
-Windows ships with the simple Notepad (`notepad.exe`) text editor as the default editor for text-based files. As a Notepad++ user, you probably want to set up Windows so that it usually uses Notepad++ for various filetypes instead. 
+Windows ships with the simple Notepad (`notepad.exe`) text editor as the default editor for text-based files. As a Notepad++ user, you probably want to set up Windows so that it usually uses Notepad++ for various filetypes instead.
 
 The _right_ way to use Notepad++ for a given filetype, from the Windows OS perspective, is to use the [Explorer Right-Click menu](#explorer-right-click-menu), especially using Windows' **Open With** to always use Notepad++ and/or pick it on a one-time-only basis, or using the **Edit with Notepad++** entry that Notepad++ installs for you, or following the ["Alternatives"](../shell-extension/#alternatives) described elsewhere.
 

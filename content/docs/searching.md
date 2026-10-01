@@ -30,23 +30,23 @@ There is a "Find" dialog box. This dialog box has one tab for each of the follow
 * **Mark** tab: Allows you to highlight all occurrences of the search target in the current document permanently.\
   It can be invoked directly with **Search > Mark** or the keyboard shortcut <kbd>Ctrl+M</kbd>.
 
-The dialog has a status bar along the bottom, which can show an error message (like if the regular expression is invalid), a success message (like the count of matches or replacements), or the end-of-document message (when the search or replace reaches the end of the document).  Starting in v8.7, the foreground colors for those status messages can be set using the **[Style Configurator > Global Styles]](../preferences/#global-styles)  > Find status: _XXX_** settings (where **_XXX_** will be `Not found` or `Message` or `Search end reached`).
+The dialog has a status bar along the bottom, which can show an error message (like if the regular expression is invalid), a success message (like the count of matches or replacements), or the end-of-document message (when the search or replace reaches the end of the document).  The foreground colors for those status messages can be set using the **[Style Configurator > Global Styles]](../preferences/#global-styles)  > Find status: _XXX_** settings (where **_XXX_** will be `Not found` or `Message` or `Search end reached`).
 
-Prior to v8.1.3, doing any of those keystrokes (<kbd>Ctrl+F</kbd>, <kbd>Ctrl+H</kbd>, <kbd>Ctrl+Shift+F</kbd>, or <kbd>Ctrl+M</kbd>) once would open the Find dialog or bring it into focus; from the main dialog, hitting <kbd>Ctrl+F</kbd> would re-center the dialog (no matter which tab of the dialog you were on); but you could not use the shortcuts for the other tabs to switch between the tabs.  In v8.1.3 through v8.3.2, once the dialog was active and in focus, hitting the keystrokes would switch between the tabs on that dialog; however, these versions of Notepad++ would _not_ re-center the dialog if you hit <kbd>Ctrl+F</kbd> again.  Starting in v8.3.3, the first hit of one of those shortcuts would bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog (as with v8.1.3), but hitting the shortcut for the tab you are already on will re-center the dialog (so <kbd>Ctrl+F</kbd> then <kbd>Ctrl+F</kbd> will center the Find dialog, <kbd>Ctrl+H</kbd> then <kbd>Ctrl+H</kbd> will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
+The first hit of one of those shortcuts (<kbd>Ctrl+F</kbd>, <kbd>Ctrl+H</kbd>, <kbd>Ctrl+Shift+F</kbd>, or <kbd>Ctrl+M</kbd>) will bring up the dialog or bring it into focus; from there, hitting one of the _other_ shortcuts would change tabs in the dialog, but hitting the shortcut for the tab you are already on will re-center the dialog (so <kbd>Ctrl+F</kbd> then <kbd>Ctrl+F</kbd> will center the Find dialog, <kbd>Ctrl+H</kbd> then <kbd>Ctrl+H</kbd> will re-center the Replace dialog, and so on), giving you the full functionality of both tab-switching and dialog-centering.
 
 Use of some "Find" family features can cause the window to close after a successful search (one or more "hits").  Some users dislike this and wish for the "Find" window to always remain open.  This may be achieved by use of the optional setting: **Settings > Preferences > Searching > ☐ Find dialog remains open after search that outputs to results window**.
 
 Search option choices made by the user are remembered across invocations of Notepad++.
 
-To get a smaller version of the Dialog, with many of the options hidden, use the **∧** button in the lower right corner; to show the full dialog again, use the **∨** button.  (new to v8.4.5)
+To get a smaller version of the Dialog, with many of the options hidden, use the **∧** button in the lower right corner; to show the full dialog again, use the **∨** button.
 
 ### Find / Replace tabs
 
 All the search dialogs have certain features in common, though some are not available (greyed out) under certain circumstances.
 
 * **Find what** edit box with dropdown history: This is the text you are searching for.
-    - Limited to 2046 bytes through v8.8.3; limited to 16383 bytes starting in v8.8.4.
-      - The dialog will warn you if you go beyond the limit (new to v8.8.4).
+    - Limited to 16383 bytes.
+      - The dialog will warn you if you go beyond the limit.
       - _Note_: The length limit is actually bytes, not characters.  For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.
 * **Replace with** edit box with dropdown history: This is the text that will replace what was matched.
 
@@ -86,13 +86,12 @@ The various action buttons available include:
 * **Close**: Closes the search dialog.
 
 * **Replace**: Replaces the currently-selected match.  (If no match is currently selected, it behaves like **Find Next** and just highlights the next match in the specified direction.)
-    * On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression. (The swap feature was added in v8.2.1.)
-    * Notepad++ v8.5.1 extends this swap feature: You can right-click on that button to choose one of three actions:
+    - On the **Replace** tab, there is an up-down arrow button **⇅** near the **Find what** and **Replace with** inputs which swaps the values of those two inputs, to make it easy to do the opposite replacement of the one that's active.  Please note that not all [regular expression substitution escapes](#substitutions) will have the same meaning when swapped into the search expression.
+    - Using the pull-down menu (▼) on the swap button, you can choose one of three actions:
         - **⇅ Swap Find with Replace**: Moves the **Find what** to **Replace with** input, and the old **Replace with** gets moved to the **Find what** input.
         - **⤵ Copy from Find to Replace**: Copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
         - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
         - After selecting an action from this menu, that action is immediately performed, and the button changes its icon to indicate the new mode for that button.
-    * Notepad++ v8.5.2 replaces the right-click menu with a pull-down menu (▼) on the swap button, to make it more obvious that it can be changed.
 * **Replace All**: With **☑ Wrap around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap around** unchecked, it searches from the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the [caret](../editing/#caret-and-cursor "typing/insertion cursor") (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
@@ -115,11 +114,11 @@ The above actions may be initiated via mouse by pressing the appropriate button,
 
 **Find Next** has a special way of being invoked by keyboard control.  Pressing <kbd>Enter</kbd> when the Find dialog has input focus will initiate the **Find Next** command in the direction indicated by **Backward direction**.  Pressing <kbd>Shift+Enter</kbd> when the Find dialog has input focus will run the **Find Next** in the ***opposite*** direction as that indicated by **Backward direction**.  Hovering over the **Find Next** button with the mouse will, after a slight delay, pop up a tool tip indicating *Use <kbd>Shift+Enter</kbd> to search in the opposite direction* as a reminder of this capability.
 
-When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the [caret](../editing/#caret-and-cursor "typing/insertion cursor") (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your [caret](../editing/#caret-and-cursor "typing/insertion cursor") is not "touching" a word and that there is no active selection when invoking the find-family command.  Starting in v8.8.4, the number of characters that will auto-fill using this feature can be adjusted by changing the value of [**Settings > Preferences > Searching > ____: Max Characters to Auto-Fill Find Field from Selection**](../preferences/#searching).
+When a find-family function is invoked via the Search menu, toolbar, or keyboard combination, the word at the [caret](../editing/#caret-and-cursor "typing/insertion cursor") (or the selected text, if any) is automatically copied into the **Find what** edit box.  This behavior cannot be disabled; it always happens.  To avoid this in a limited way, use the *mouse* to switch to an already-open Find dialog, or make sure your [caret](../editing/#caret-and-cursor "typing/insertion cursor") is not "touching" a word and that there is no active selection when invoking the find-family command.  The number of characters that will auto-fill using this feature can be adjusted by changing the value of [**Settings > Preferences > Searching > ____: Max Characters to Auto-Fill Find Field from Selection**](../preferences/#searching).
 
-Aside:  This auto-fill-find-field feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  Alternately, starting in v8.8.4, multi-line text can be pasted into the **Find what** or **Replace with** boxes.  Whichever method used to populate the field(s) with multi-line data, the line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
+Aside:  This auto-fill-find-field feature can be exploited to get multi-line data into the **Find what** edit box, impossible by merely typing into the box.  Simply select the multi-line text that you want to search for, and then call up the Find dialog via one of its functions.  The selected text will appear as usual in the **Find what** box.  Alternately, multi-line text can be pasted into the **Find what** or **Replace with** boxes.  Whichever method used to populate the field(s) with multi-line data, the line-ending character(s) won't be visible, but they will be there and will be matched when a search/replace action is initiated.
 
-A valid **Find what** edit box entry length ranges from 1 to ℕ=2046 bytes (v8.8.3 and earlier) or ℕ=16383 bytes (v8.8.4 and newer).  A valid **Replace with** edit box entry length ranges from 0 to ℕ bytes.  Any text entered/pasted into these fields beyond the ℕth byte is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.  (_Note_: The length is actually in bytes, not characters. For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.)
+A valid **Find what** edit box entry length ranges from 1 to ℕ=16383 bytes.  A valid **Replace with** edit box entry length ranges from 0 to ℕ bytes.  Any text entered/pasted into these fields beyond the ℕth byte is simply ignored when an action is invoked.  Note that a replacement operation with a zero-length **Replace with** box entry is effectively a deletion of the matched text.  (_Note_: The length is actually in bytes, not characters. For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.)
 
 Selecting **Search Mode** of **Regular expression** will cause the **Match whole word only** option to become unchecked and disabled (greyed out).  A possible workaround to allow doing this type of searches is to add `\b` to the beginning and end of your regular expression **Find what** text.
 
@@ -127,7 +126,7 @@ The **Find what** and **Replace with** edit boxes have a dropdown arrow which al
 
 The **In selection** option will automatically be chosen by Notepad++ if a Find dialog window is opened when more than 1024 characters occur in the active selection.  The selected text will also be placed in the **Find what** box.  Running a **Count** or **Replace All** action without making other changes to the search parameters will result in *Count: 1 match* or *Replace All: 1 occurrence was replaced*, respectively, which is likely not what was intended.  The proper resolution for this situation is to change the **Find what** text if the intention is to search within-selection, or deselect **In selection** if the intention is to search for a fairly long block of text.
 
-The status bar area of the Find dialog keeps the user informed of what occurred during an action.  For example, it might say *Mark: 1 match* or *Find: Invalid regular expression*.  Colors are used in the status bar for emphasis:  red for some sort of error; green or blue for various success or general information.  (Starting in v8.7, the foreground colors for those status messages can be set using the **[Style Configurator > Global Styles]](../preferences/#global-styles)  > Find status: _XXX_** settings (where **_XXX_** will be `Not found` or `Message` or `Search end reached`).)
+The status bar area of the Find dialog keeps the user informed of what occurred during an action.  For example, it might say *Mark: 1 match* or *Find: Invalid regular expression*.  Colors are used in the status bar for emphasis:  red for some sort of error; green or blue for various success or general information.  The foreground colors for those status messages can be set using the **[Style Configurator > Global Styles]](../preferences/#global-styles)  > Find status: _XXX_** settings (where **_XXX_** will be `Not found` or `Message` or `Search end reached`).
 
 Starting with v8.9.1, when you paste text into the **Find what** or **Replace with** boxes that has "invisible" characters (newline sequences, non-breaking or zero-width spaces, and similar), the status bar will warn you that *Invisible characters in pasted "Find what" or "Replace with" content* with a hover popup that explains in more detail, because those entry fields cannot show the special characters.  However, if the **Find what** is automatically populated with such text (if you have the text selected and invoke **Find** or **Replace**, and it auto-populates the field with that text), it will _not_ give the status bar message, even though those hidden characters are still present.
 
@@ -160,7 +159,7 @@ The **Filters** list is a space-separated list of wildcard expressions that cmd.
 * If you have a blank filter, it is implied to be `*.*`.
 * You can also exclude certain file patterns by prefixing the filter with a `!`;
 for example, **Filters:  `!*.bin *.*`** will exclude files matching `*.bin` from the search results, but include any other filename.
-* As of Notepad++ v8.2, you can also exclude particular folders from the search: The exclusion operator is always `!` at the beginning of the expression, so in order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
+* You can also exclude particular folders from the search: The exclusion operator is always `!` at the beginning of the expression, so in order to distinguish folder from file, `\` should be used as prefix of the folder name/pattern, following `!`. That allows the exclusion of the directories under the root directory you want to search (the 1st level of matched directories).
 If users need to exclude folders with the same name (or names matching the specific pattern) in all levels, the `+` should be put between `!` and `\` to exclude them recursively. For example:
     * `!\tests` will not search any files in the `tests` folder,
     * `!\bin*` will not search any files in the `bin` folder or `bin64` folder (or any other directory that matches `bin*`),
@@ -168,21 +167,18 @@ If users need to exclude folders with the same name (or names matching the speci
 
     *Note*: There is no opposite ("inclusive") version of the folder-exclusion syntax.  This means that other than checking **☐ In all sub-folders**, you cannot include specific folders in the search.  In particular, you cannot include specific subfolders of excluded folders (`!\skip \skip\exceptThis` will _not_ work to skip the `\skip` subfolder but to still search the `\skip\exceptThis` subfolder).
 
-* As of Notepad++ v8.2, if you hover your mouse cursor over the **Filters** label, a helpful popup will show example syntax to you.
+* If you hover your mouse cursor over the **Filters** label, a helpful popup will show example syntax to you.
 * Please also note that the PathMatchSpec() Windows API is being used for the **Filters**, as its behavior departs from cmd.exe wildcard parsing sometimes.
 To find only files that have no extension, you cannot just say `*.` despite this filter working in a Windows command prompt.  Instead, you can search for any file that _doesn't_ have at least one letter in the extension: `!*.?*`.
 
 The **Directory** is the containing folder for where to search.  It has three options that affect its behavior:
 
-* **<<** ⇒ This button will "fill directory field based on active document" (as the hover-text explains), so you can manually re-populate the Document field based on the current document, even if you have changed the document. (new to v8.7.5)
-* **☐ Follow current doc** ⇒ (removed v8.7.5) If checked, it will default to searching the folder that contains the current active document.
-    - If this option exists and is checked, it will initialize the Directory to "default" to the current document's directory when you first launch **Find in Files** dialog, or if you toggle the checkbox off and then back on. (Note that "first launch" means that if you change the active tab while the dialog is still open, the Directory field will not change.)  If you manually change the directory (either through typing, or using the `...` button), it will search the newly-entered directory, rather than using the directory it defaulted to.  The next time you launch the dialog, it will update the default directory again (assuming the option is still checked).
-    - The state of this checkbox is saved in a config file (the `fifFolderFollowsDoc` attribute in `config.xml`), so your choice for this option _is_ remembered from one run of Notepad++ to the next.
-    - In v8.7.5, this checkbox was moved and renamed to **[Settings > Preferences > Searching](../preferences/#searching) > ☐ Fill Find in Files Directory Field Based On Active Document**.
+* **<<** ⇒ This button will "fill directory field based on active document" (as the hover-text explains), so you can manually re-populate the Document field based on the current document, even if you have changed the document.
+    - To automatically populate this field, use the preference at **[Settings > Preferences > Searching](../preferences/#searching) > ☐ Fill Find in Files Directory Field Based On Active Document**.
 * **☐ In all sub-folders** ⇒ If checked, it will recursively search sub-folders of the given folder.
 * **☐ In hidden folders** ⇒ If checked, it will search hidden sub-folders as well as normally-visible sub-folders.
 
-If there is no **Directory** defined, Notepad++ will have nothing to search.  Starting in v8.7.6, if the **Directory** field is empty when you click **Find All**, Notepad++ will move the dialog input focus to the **Directory** field, to make it more clear that you need to tell it what directory to search.
+If there is no **Directory** defined, Notepad++ will have nothing to search.  If the **Directory** field is empty when you click **Find All**, Notepad++ will move the dialog input focus to the **Directory** field, to make it more clear that you need to tell it what directory to search.
 
 **Note**: During **Find in Files**, the contents of the editing-buffer in Notepad++ take priority over what's on disk for whether or not there is a match in a given file.  For example, assume that `editme.txt` originally just said `foo`, but that you have `editme.txt` open and have added the word `blah` but not yet saved it; if you **Find in Files** for `blah` in the directory that includes `editme.txt`, it will show that `editme.txt` contains a match, even though the file on disk does not, because Notepad++'s editing-buffer for that file _does_ contain the text.  To say it another way, if the file is being edited in Notepad++, the **Find in Files** search will use the content that Notepad++ sees, regardless of whether the saved file on your computer's filesystem contains a match.
 
@@ -260,7 +256,7 @@ If the source file lines are judged by Notepad++ to be too long when they are co
 
 If a search is conducted such that a match which spans two or more lines occurs, only the contents of the first line of that match is copied into the **Search results** window.  However, using a method to return to the editor window (e.g. pressing <kbd>Enter</kbd>) results in the correct selection of multi-line matching text there.
 
-Starting in v8.6.1, the header rows for each search include a shorthand notation for the search options that were active when that search was run.
+The header rows for each search include a shorthand notation for the search options that were active when that search was run.
 For example: `Search "foo" (1 hit in 1 file of 1 searched) [Normal: Case/Word]` .
 
 - The shorthand notation for the options is found between the square brackets at the end of the header. (In the example, `[Normal: Case/Word]`)
@@ -285,20 +281,18 @@ More precisely:
 
 *Tip*:  It is possible to select and copy a rectangular selection of data from the **Search results** window.  This is done using the usual <kbd>Shift+Alt+arrow</kbd> keys or by holding <kbd>Alt+LeftClick</kbd> and dragging with the mouse.  This is really only practical when using the <kbd>Ctrl+C</kbd> method of copying; **<kbd>RightClick</kbd> > Copy Selected Line(s)** doesn't work this way.
 
-In v8.7.5, the algorithm is standardized to:
+The algorithm is standardized to:
 - If the selection/[caret](../editing/#caret-and-cursor "typing/insertion cursor") intersects any `Line` line(s), copy only the intersected `Line` line(s).
 - If the selection/[caret](../editing/#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a "path" line, copy all of the child `Line` line(s) under that path line.
 - Finally, if the selection/[caret](../editing/#caret-and-cursor "typing/insertion cursor") is on a single line, and that line is a `Search` line, copy all of the child `Line` lines(s) under that search tree (which could contain many "path" subtrees, all with `Line` line(s) that would be copied).
 
 ##### Copying path(s) from the **Search results** window
 
-There is a capability to copy the list of files containing hits from past searches (v8.0.0 and later). The **Copy Selected Pathname(s)** context menu command (known as **Copy Pathname(s)** from v8.0.0 to v8.7.1) copies to the clipboard the full pathnames of all the files for any lines selected in **Search results**. The list copied to the clipboard will contain one line for each pathname. From v8.0.0 to v8.7.1, **Copy Pathname(s)** would copy all pathnames from all prior searches. Starting in v8.7.2, if you have selected search results that include a pathname line (even partially), or if the [caret](../editing/#caret-and-cursor "typing/insertion cursor") with no selected text is on one of the search result pathname lines, then this action will copy the pathname associated with each search result entry so selected. Running this action on never-saved files, like the `new 1` tabs (even if they've been manually renamed but not yet saved), will use the tab's name as the "pathname", since there is no filesystem path associated with such tabs. To mimic the behavior of **Copy Pathname(s)** from earlier software in v8.7.2 and later, select all text in search-results before running the action.
+There is a capability to copy the list of files containing hits from past searches. The **Copy Selected Pathname(s)** context menu command copies to the clipboard the full pathnames of all the files for any lines selected in **Search results**. The list copied to the clipboard will contain one line for each pathname. If you have selected search results that include a pathname line (even partially), or if the [caret](../editing/#caret-and-cursor "typing/insertion cursor") with no selected text is on one of the search result pathname lines, then this action will copy the pathname associated with each search result entry so selected. Running this action on never-saved files, like the `new 1` tabs (even if they've been manually renamed but not yet saved), will use the tab's name as the "pathname", since there is no filesystem path associated with such tabs. To mimic the behavior of **Copy Pathname(s)** from outdated versions of Notepad++, select all text in search-results before running the action.
 
 ##### Opening path(s) from the **Search results** window
 
-Prior to v8.7.2, the **Open all** command in the **Search Results** right-click context menu would open _all_ the files from your **Search Results** window.  If you had done multiple searches that were still listed in that window, _all_ of those files will be opened.  there was no way to open just a few of the files, or just the files from a particular search.
-
-Starting in v8.7.2, that **Open all** command was removed, and was replaced with **Open selected pathname(s)**, which will open the file(s) associated with selected search results, following the same selection/[caret](../editing/#caret-and-cursor "typing/insertion cursor") logic as **Copy Selected Pathname(s)** (described above); if the file is already opened, it will not be opened a second time (but it will activate that file's tab if there's only one in the selection).  If you want the old **Open all**-style behavior, you can use <kbd>Ctrl+A</kbd> (or **Select all**) then **Open selected pathname(s)**.
+The **Open selected pathname(s)** action, which will open the file(s) associated with selected search results, following the same selection/[caret](../editing/#caret-and-cursor "typing/insertion cursor") logic as **Copy Selected Pathname(s)** (described above); if the file is already opened, it will not be opened a second time (but it will activate that file's tab if there's only one in the selection).  If you want the old **Open all**-style behavior, you can use <kbd>Ctrl+A</kbd> (or **Select all**) then **Open selected pathname(s)**.
 
 ##### Other commands
 
@@ -310,7 +304,7 @@ The contents of the **Search results** tab are in the form of a tree.  When Note
 
 The user can fold/unfold "branches" of this tree.  To fold, click with the mouse on the little box symbol with an interior `-`, found to the left of each line.  After doing so, that part of the tree will be folded (removed from view) and the first line of the branch (remaining visible) will then show a `+` in the box symbol.  To unfold an individual item that has previously been folded (either by the user or by Notepad++'s automatic mechanism), simply click the box symbol with the `+`.  That branch will then be expanded and shown again.
 
-The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once. (These were called **Collapse all** and **Uncollapse all** before v8.4.6.)
+The **Fold all** and **Unfold all** commands perform the corresponding actions on all elements of the entire result history in the **Search results** window at once.
 
 ##### Searching in previously-found results (secondary searching)
 
@@ -413,7 +407,7 @@ These actions are also available by right-clicking on the Bookmark margin.
 
 ### Change History
 
-The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [**Settings > Preferences > Margins/Border/Edge > Change History**](../preferences/#margins-border-edge)).  (This menu was added in v8.5.5.)
+The **Search > Change History** menu allows you to easily navigate between the lines shown as changed by the Change History Margin (see [**Settings > Preferences > Margins/Border/Edge > Change History**](../preferences/#margins-border-edge)).
 
 - **Go to Next Change** - Move to the next line that is indicated as being changed.
 - **Go to Previous Change** - Move to the previous line that is indicated as being changed.
@@ -444,7 +438,7 @@ This command will show a small region at the bottom of the Notepad++, which has 
 - If the **☐ Count** checkbox is checked, the Incremental Search bar will display the number of matches, and the current index of the match (for example, `2/5` indicates it is currently highlighting the second of five matches). (New to v8.9.7.)
 - To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
 
-Starting in v8.6.1, the shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
+The shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
 
 ## Other Search-menu Commands
 
@@ -459,7 +453,7 @@ There are a few **Search**-menu commands that don't fit within other categories:
   - `You can't go further than`: This is the end of the file, in the current Line/Offset units.
   - **Go**: Moves the caret to the given location.
   - **I'm going nowhere**: Exits the dialog without moving the caret.  (This is the same as a **Cancel** action in most dialog boxes.)
-  - Starting in v8.7.6, you can copy the the numbers from the `You are here` and `You want to go to` fields by selecting the numbers and using `Ctrl+C` or the Right Click menu.
+  - You can copy the the numbers from the `You are here` and `You want to go to` fields by selecting the numbers and using `Ctrl+C` or the Right Click menu.
 - **Go to Matching Brace**: Allows parentheses and braces navigation.  If the caret is adjacent to the opening parenthesis `(` or bracket `[` or brace `{`, then this command will move the caret to just before the matching closing-character `)` or `]` or `}`; similarly, if the caret is on the closing character, the command will move the caret to just before the matching opening-character.  (The [**Style Configurator > Global Styles > Brace Highlight Style**](../preferences/#global-styles) will be used to highlight the opening and closing pairs of characters.)
 - **Select All In-between {} [] or ()**: Will select all the text in between a matching pair of braces `{}` or brackets `[]` or parentheses `()` if the command is activated when the caret is adjacent to one of those characters; the resulting selection will include the surrounding pair of braces, brackets, or parentheses.
 

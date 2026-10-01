@@ -90,7 +90,7 @@ The Plugins Admin has five tabs:
   - check with that plugin's website to see if they've released a version that is compatible that just hasn't made it to Plugins Admin yet
 - **Deactivated** ⇒ Shows plugins you had previously deactivated, and gives **Activate** and **Remove** buttons.
 
-The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository (new to v8.4.6).
+The Plugins Admin window also shows the Plugin List version and links to the Plugin List repository.
 
 Actions available through the Plugins
 - **Install**: See [Install using Plugins Admin (above)](#install-using-plugins-admin) for instructions on how to install.

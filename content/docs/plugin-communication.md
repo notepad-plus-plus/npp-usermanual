@@ -85,7 +85,7 @@ where:
 ---
 
 #### [2141] **NPPM_ADDSCNMODIFIEDFLAGS**
-*Add needed `SCN_MODIFIED` flags so your plugin will recieve the notification `SCN_MODIFIED` of these events for your specific treatments. (New to v8.7.7.)*
+*Add needed `SCN_MODIFIED` flags so your plugin will recieve the notification `SCN_MODIFIED` of these events for your specific treatments.*
 
 *By default, Notepad++ only forwards `SCN_MODIFIED` with the following 5 flags/events `SC_MOD_DELETETEXT | SC_MOD_INSERTTEXT | SC_PERFORMED_UNDO | SC_PERFORMED_REDO | SC_MOD_CHANGEINDICATOR` to plugins.*
 *If your plugin need to process other events of `SCN_MODIFIED`, you should add the flags you need by sending this message to Notepad++, just after recieving NPPN_READY.*
@@ -161,8 +161,6 @@ This function only makes sense if called on response to NPPN_TBMODIFICATION noti
 cmdID must be a command function id which the plugin registered via getFuncsArray previously.
 icon is a pointer to the toolbarIconsWithDarkMode structure.*
 
-*(Added in v8.0, replacing old NPPM_ADDTOOLBARICON)*
-
 **Parameters**:
 
 *wParam [in]*
@@ -211,7 +209,7 @@ then menu iten ID 46581, 46582, 46583 and 46584 are preserved by Notepad++, and 
 ---
 
 #### [2137] **NPPM_ALLOCATEINDICATOR**
-*Obtains a number of consecutive indicator IDs dynamically, with the guarantee of these IDs not clashing with Notepad++'s own internal indicator usage, nor usage by any other plugins that use this API to allocate their needed indicators. (new to v8.5.6)*
+*Obtains a number of consecutive indicator IDs dynamically, with the guarantee of these IDs not clashing with Notepad++'s own internal indicator usage, nor usage by any other plugins that use this API to allocate their needed indicators.*
 
 **Parameters**:
 
@@ -319,7 +317,6 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 
 #### [2136] **NPPM_DARKMODESUBCLASSANDTHEME**
 *Add support for generic dark mode.*
-*(New to v8.5.4)*
 
 **Parameters**:
 
@@ -354,9 +351,6 @@ If set (non NULL), it will be the parent window of this created Scintilla handle
 - Might not work properly in C# plugins.
 
 - It is important for the message to be sent _after_ controls are initialized, otherwise it may not affect all controls correctly.
-
-- For v8.5.4 - v8.8.1, this message did not affect some controls, including tabbed-interface controls, progress bars, and URL links;
-  starting in v8.8.2, those controls are included in the subclassing from this message.
 
 **Examples:**
 
@@ -561,9 +555,6 @@ name should be the same value as previously used to register the dialog.*
 *Sets the extension column in Document List panel.
 If disableOrNot is True, extension column is hidden otherwise it is visible.*
 
-*Known as `NPPM_DOCSWITCHERDISABLECOLUMN` in v8.1.2 and earlier.*
-*Known as `NPPM_DOCLISTDISABLECOLUMN` in v8.1.3 - v8.1.4.*
-
 **Parameters**:
 
 *wParam [in]*
@@ -578,7 +569,7 @@ If disableOrNot is True, extension column is hidden otherwise it is visible.*
 ---
 
 #### [2126] **NPPM_DOCLISTDISABLEPATHCOLUMN**
-*Sets the path column in Document List panel. (New to v8.1.5)
+*Sets the path column in Document List panel.
 If disableOrNot is True, path column is hidden otherwise it is visible.*
 
 **Parameters**:
@@ -647,7 +638,7 @@ view must be either 0 = main view or 1 = second view.*
 *Returns the bookmark marker ID.
 This allows plugins to choose an ID different from the bookmark marker ID, or to intentionally make use of the bookmark marker ID.
 The plugin authors are encouraged to use this API (instead of using the static number from Notepad++ source code) to get bookmark marker ID dynamically.
-It garantees plugins get always the right bookmark marker ID even it's been changed through the different Notepad++ versions. (New to v8.4.7)*
+It garantees plugins get always the right bookmark marker ID even it's been changed through the different Notepad++ versions.*
 
 **Parameters**:
 
@@ -763,7 +754,7 @@ Please see the enum LangType for all possible values.
 ---
 
 #### [2133] **NPPM_GETCURRENTCMDLINE**
-*Get the Current Command Line string. (New to v8.4.2).
+*Get the Current Command Line string.
 Users should call it with commandLineStr as NULL to get the required number of wchar_t (not including the terminating nul character),
 allocate commandLineStr buffer with the return value + 1, then call it again to get the current command line string.*
 
@@ -882,7 +873,7 @@ User is responsible to allocate a buffer which is large enough.*
 ---
 
 #### [2130] **NPPM_GETCURRENTMACROSTATUS**
-*Gets the current macro status (idle, recording, stopped, and playing back) as an enumeration class object. (Added v8.3.3)*
+*Gets the current macro status (idle, recording, stopped, and playing back) as an enumeration class object.*
 
 **Parameters**:
 
@@ -977,8 +968,7 @@ User is responsible to allocate a buffer which is large enough.*
 
 #### [2132] **NPPM_GETDARKMODECOLORS**
 *Retrieves the colors used in Dark Mode.
-User is responsible to allocate a buffer which is large enough.
-(Added v8.4.1; data structured updated v8.4.3)*
+User is responsible to allocate a buffer which is large enough.*
 
 **Parameters**:
 
@@ -1070,7 +1060,7 @@ _Notes: [data structure source](#caveat-on-data-structures)_
 
 #### [2127] **NPPM_GETEXTERNALLEXERAUTOINDENTMODE**
 *Get ExternalLexerAutoIndentMode for an installed external programming language.
-Puts that mode in the output object. (Added v8.3.3)*
+Puts that mode in the output object.*
 
 **Parameters**:
 
@@ -1108,7 +1098,7 @@ MAX_PATH is suggested to use.*
 ---
 
 #### [2142] **NPPM_GETTOOLBARICONSETCHOICE**
-*Get Notepad++ toobar icon set choice (Fluent UI: small, Fluent UI: large, Filled Fluent UI: small, Filled Fluent UI: large and Standard icons: small). (new to v8.8.2)*
+*Get Notepad++ toobar icon set choice (Fluent UI: small, Fluent UI: large, Filled Fluent UI: small, Filled Fluent UI: large and Standard icons: small).*
 
 **Parameters**:
 
@@ -1335,7 +1325,7 @@ sessionFileName should be a full path name of an xml file.*
 **Parameters**:
 
 *wParam [out]*
-: BOOL* isValidXML, if the lParam pointer is null, then this parameter will be ignored. TRUE if XML is valid, otherwise FALSE. (added in v8.6)
+: BOOL* isValidXML, if the lParam pointer is null, then this parameter will be ignored. TRUE if XML is valid, otherwise FALSE.
 
 *lParam [in]*
 : const wchar_t * sessionFileName
@@ -1400,10 +1390,10 @@ MAX_PATH is suggested to use.*
 *Retrieves the current Notepad++ version.
 The value is made up of 2 parts: the major version (the high word) and minor version (the low word).
 Note that this message is supported by the v4.7 or higher version; earlier versions return 0.
-v8.4.1 adds the ability to pad the result to make comparisons between versions like 8.4.1 and 8.5 easier
-(without the padding, they would have been 8|41 and 8|5, and since 5 is less than 41, it would have incorrectly shown up
-as 8.5 coming before 8.41; with the padding flag on, they will be 8|410 and 8|500, so 8.5 will properly
-come after 8.4.1).*
+It has the ability to pad the result to make comparisons between versions like `8.4.1` and `8.5` easier
+(without the padding, they would have been `8|41` and `8|5`, and since `5` is less than `41`, it would have incorrectly shown up
+as `8.5` coming before `8.41`; with the padding flag on, they will be `8|410` and `8|500`, so `8.5` will properly
+come after `8.4.1`).*
 
 **Parameters**:
 
@@ -1654,7 +1644,7 @@ _Notes: [data structure source](#caveat-on-data-structures)_
 ---
 
 #### [2138] **NPPM_GETTABCOLORID**
-*Gets the tab color id for the given view and tab index.  (New to v8.6.8)*
+*Gets the tab color id for the given view and tab index.*
 
 **Parameters**:
 
@@ -1775,7 +1765,7 @@ _Note_: There is no symmetric plugin command for setting the tab color. Plugins 
 ---
 
 #### [2129] **NPPM_ISAUTOINDENTON**
-*Checks the current Use Auto-Indentation setting in Notepad++ Preferences.  (Added v8.3.3)*
+*Checks the current Use Auto-Indentation setting in Notepad++ Preferences.*
 
 **Parameters**:
 
@@ -1793,8 +1783,6 @@ _Note_: There is no symmetric plugin command for setting the tab color. Plugins 
 #### [2110] **NPPM_ISDOCLISTSHOWN**
 *Checks the visibility of the Document List panel.*
 
-*Known as `NPPM_ISDOCSWITCHERSHOWN` in v8.1.2 and earlier.*
-
 **Parameters**:
 
 *wParam [in]*
@@ -1809,7 +1797,7 @@ _Note_: There is no symmetric plugin command for setting the tab color. Plugins 
 ---
 
 #### [2131] **NPPM_ISDARKMODEENABLED**
-*Notepad++ Dark Mode is enable.  (Added v8.4.1)*
+*Notepad++ Dark Mode is enable.*
 
 **Parameters**:
 
@@ -2242,7 +2230,7 @@ If value is True adds an additional sunken edge style to the Scintilla window el
 ---
 
 #### [2128] **NPPM_SETEXTERNALLEXERAUTOINDENTMODE**
-*Set ExternalLexerAutoIndentMode for an installed external programming language. (Added v8.3.3)*
+*Set ExternalLexerAutoIndentMode for an installed external programming language.*
 
 **Parameters**:
 
@@ -2336,7 +2324,7 @@ STATUSBAR_TYPING_MODE   5
 ---
 
 #### [2139] **NPPM_SETUNTITLEDNAME**
-*Rename the tab name for an untitled tab.  (New in v8.6.9.)*
+*Rename the tab name for an untitled tab.*
 
 **Parameters**:
 
@@ -2354,8 +2342,6 @@ STATUSBAR_TYPING_MODE   5
 #### [2109] **NPPM_SHOWDOCLIST**
 *Show or hide the Document List panel.
 If toShowOrNot is True, the Document List panel is shown otherwise it is hidden.*
-
-*Known as `NPPM_SHOWDOCSWITCHER` in v8.1.2 and earlier.*
 
 **Parameters**:
 
@@ -2469,7 +2455,7 @@ The general layout of the following notifications look like this
 ---
 
 #### [1028] **NPPN_CMDLINEPLUGINMSG**
-*To notify plugins that the new argument for plugins (via `-pluginMessage="YOUR_PLUGIN_ARGUMENT"` in [command line](../command-prompt/)) is available. (New to v8.4.2).*
+*To notify plugins that the new argument for plugins (via `-pluginMessage="YOUR_PLUGIN_ARGUMENT"` in [command line](../command-prompt/)) is available.*
 
 **Fields:**
 
@@ -2504,8 +2490,7 @@ To avoid the collisions among plugins, the following protocol should be followed
 ---
 
 #### [1027] **NPPN_DARKMODECHANGED**
-*To notify plugins that Dark Mode was changed (either enabled or disabled).
-(Added v8.4.1)*
+*To notify plugins that Dark Mode was changed (either enabled or disabled).*
 
 **Fields:**
 
@@ -2527,7 +2512,7 @@ To avoid the collisions among plugins, the following protocol should be followed
 ---
 
 #### [1029] **NPPN_EXTERNALLEXERBUFFER**
-*To notify lexer plugins that the buffer (in idFrom) is just applied to a external lexer. (New to v8.5).*
+*To notify lexer plugins that the buffer (in idFrom) is just applied to a external lexer.*
 
 **Fields:**
 
@@ -2714,17 +2699,16 @@ that was closed (including getting its path or other meta-information), the
 ---
 
 #### [1030] **NPPN_GLOBALMODIFIED**
-*To notify plugins that the current document is just modified by Replace All action.  (New in v8.6.5.)*
+*To notify plugins that the current document is just modified by Replace All action.*
 
-    // For solving the performance issue (from v8.6.4), Notepad++ doesn't trigger SCN_MODIFIED during Replace All action anymore.
+    // For solving the performance issue, Notepad++ doesn't trigger SCN_MODIFIED during Replace All action anymore.
     // As a result, the plugins which monitor SCN_MODIFIED should also monitor NPPN_GLOBALMODIFIED.
-    // This notification is implemented in Notepad++ v8.6.5.
 
 **Fields:**
 
 	code:		NPPN_FILESAVED
 	hwndFrom:	BufferID         // ID, not hwnd
-	idFrom:		0                // reserved for the future use; must be zero from v8.6.5
+	idFrom:		0                // reserved for the future use; must be zero
 
 ---
 
@@ -2749,7 +2733,7 @@ that was closed (including getting its path or other meta-information), the
 
 	code:		NPPN_NATIVELANGCHANGED
 	hwndFrom:	hwndNpp
-	idFrom:		0                    // reserved for the future use; must be zero from v8.6.5
+	idFrom:		0                    // reserved for the future use; must be zero
 
 ---
 
@@ -2831,7 +2815,7 @@ _Notes: [data structure source](#caveat-on-data-structures)_
 ---
 
 #### [1032] **NPPN_TOOLBARICONSETCHANGED**
-*To notify plugins that toolbar icon set selection has changed. (new to v8.8.2)*
+*To notify plugins that toolbar icon set selection has changed.*
 
 **Fields:**
 
