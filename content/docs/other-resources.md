@@ -63,6 +63,14 @@ reg delete HKCR\Applications\notepad.exe /v NoOpenWith /f
 
 **Note**: Windows 11 introduced UWP version of Notepad that use the same technique as described (but with undocumented [UseFilter](https://www.geoffchappell.com/studies/windows/win32/ntdll/api/rtl/rtlexec/openimagefileoptionskey.htm)) to replace the built-in Notepad. As UWP apps are started differently than regular apps, they cannot be replaced the same way and UWP Notepad must be uninstalled. Otherwise it would start when opening text files or when run from **Start Menu**. What\`s more, to be able to again use built-in Notepad (now redirected to Notepad++) to open text files the `NoOpenWith` registry value must be removed (based on [How to Restore Old Classic Notepad in Windows 11](https://www.winhelponline.com/blog/restore-old-classic-notepad-windows/)).
 
+Windows 11 is a moving target.  As of 2026-Oct-05, there are reports that some versions of Windows 11 (which don't have the `notepad.exe` stub) require extra changes; if you get the error `Windows cannot find 'notepad'. Make sure you typed the name correctly, and then try again.`, you might be able to overcome it using an elevated PowerShell:
+
+```
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\notepad.exe" /ve /d "C:\Program Files\Notepad++\notepad++.exe" /f
+
+New-Item -Path "C:\Windows\System32\notepad.exe" -ItemType File -Force
+```
+
 ### Additional Command-line Arguments
 
 If you want additional command-line arguments passed, you should put them _before_ the `-notepadStyleCmdline -z` (and they absolutely _cannot_ go after the `-z`, as the `-z` is what allows the `notepad.exe`-path argument that the Windows Operating System adds to the command to be ignored).  For example, if you wanted to use `-multiInst -nosession` to make each instance of Notepad++\-replacing-notepad open one instance per file, then it would be the following for Windows 7 - Windows 10 (or equivalent for the Windows 11 alternative):
