@@ -30,6 +30,9 @@ These affect the user interface (localization, toolbar, tab bar, and more).
     * `☐ Hide right shortcuts ＋ ▼ ✕ from the menu bar (Need to restart Notepad++)`: Makes the [＋ ▼ ✕](../other-resources/#menu-bar) resources invisible.  Use this if you find the menu bar too "cluttered", or find those commands redundant.  Notepad++ must be restarted after checkmarking this option in order to see these; but when you hide them, it takes effect immediately.
 * **Status bar**:
     * `☐ Hide`: Without checkmarking this option, there will be a [status bar](../user-interface/#status-bar) along the bottom of the Notepad++ window showing information about the current document. The status bar will be hidden when this option is checkmarked.
+-  **Dialog Font (Need to restart Notepad++)**: [new to v8.9.9]
+    - **Size** [pulldown]: Pick the font size for dialogs.
+    - **Name** [pulldown]: Pick the font for dialogs.
 
 ### Toolbar
 
@@ -228,6 +231,7 @@ These define properties of new documents (end-of-line format, encoding, and synt
     - The final drop-down allows picking one of the old-style character sets (similar to using the main Notepad++ menu to select **Encoding > character sets ...**).
     - _Note_: The [MISC > Autodetect character encoding](#misc) option will also affect Encoding of existing files.
 - **Default Language**: This pulldown sets whether new files will apply the styling for Normal Text, or use one of the programming-language syntax highlighting rules.  User Defined Languages cannot be selected as the Default Language.  The Default Language will be applied when a new file is created, and also when an existing file is opened whose type cannot be determined through the file extension or other means.
+    - As of v8.9.9, [User Defined Languages](../user-defined-language-system/) (UDLs) will be listed in the Default Language pulldown.  (If you create or import a new UDL, you may have to restart Notepad++ afterward to be able to choose it for this setting.)
 - `☐ Always open a new document in addition at startup`: With this checkmarked, Notepad++ will always open a new blank document when you start Notepad++, in addition to any active session or files from the command-line.
 - `☐ Use the first line of document as untitled tab name`: With this checkmarked, instead of using `new 1` or similar, Notepad++ will derive the [name of the tab](../user-interface/#tabs) from the first line of text in that tab.
 
@@ -371,8 +375,10 @@ Affects the operations found in the **Find** dialog tabs.
 
 - `☐ Use Monospaced font in Find dialog (Need to restart Notepad++)`: Changes the font from standard proportional font to a monospaced font in the text boxes in the **Find** dialog; requires restarting Notepad++ to change.
 - `☐ Find dialog remains open after search that outputs to results window`: Successful file-level searches cause the **Find** window to close; selecting this option keeps the window open always.
-- `☐ Confirm Replace All in All Opened Documents`: When checked, **Replace All in All Opened Documents** will ask for confirmation.
-- `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the subsequent match.
+- `☐ Confirm Replace All in All Opened Documents`: When checked, **Replace All in All Opened Documents** will ask for confirmation. (v8.9.8.1 and earlier)
+    - This setting moved to the [**Search > Replace** dialog](../searching/#find--replace-tabs), as an unlabeled checkbox next to the **Replace All in All Opened Documents** button. (v8.9.9)
+- `☐ Replace: Don't move to the following occurrence`: When checked and a match is selected, **Replace** will make the indicated substitution, but then will NOT automatically move the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the subsequent match. (v8.9.8.1 and earlier)
+    - This setting moved to the [**Search > Replace** dialog](../searching/#find--replace-tabs), as an unlabeled checkbox next to the **Replace** button. (v8.9.9)
 - `☐ Search Result window: show only one entry per found line`: When checked, the **Search Results Window** will only list each line once, even if the line has multiple matches; when unchecked, it will behave like older versions and list each line once for each match on that line.
 - `☐ Find in Files: Ignore unsaved changes in opened files`: When checked, the **Find in Files** will search the copy of the file on disk, rather than whatever copy might be open in Notepad++.  Without this checked, Notepad++ will search any unsaved changes instead of what's still on disk. (added v8.9.3).
 

@@ -270,7 +270,14 @@ If you hold down <kbd>Shift</kbd> (while still holding the <kbd>Ctrl</kbd> key t
 
 The Document Switcher functionality can also be achieved using just the mouse (if you have a scroll wheel): Right-click in the editing area for a tab and hold the right mouse button, then begin scrolling the mouse wheel (in either direction) to display the Document Switcher popup; further scrolling of the scroll wheel will change which tab is shown in bold in the list. Releasing the right mouse button will cause the tab that is currently bold to be activated. An alternate way to activate a tab using the mouse, while the right mouse button is still held and the Document Switcher is displayed, is to left-click on one of the tab names from the list, which will immediately make that entry bold, activate the tab, and close the popup (even though you haven't let go of the right mouse button yet).
 
-Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
+Starting in v8.9.9, <kbd>Esc</kbd> and <kbd>Ctrl+W</kbd> will dismiss Document Switcher, canceling any change in active document.
+
+- <kbd>Ctrl+W</kbd>: mnemonic = this is the same keystroke to close a document, so it should already be stored as "close" in your mind.  Since it uses the <kbd>Ctrl</kbd> key, it will work even when you're holding down the <kbd>Ctrl</kbd> key to have the Document Switcher open.
+    - This combo will work whether you access the Document Switcher by holding down the <kbd>Ctrl</kbd> key (because <kbd>Ctrl+W</kbd> includes the <kbd>Ctrl</kbd>) or access it by using the <kbd>Right-click + scroll wheel</kbd>
+- <kbd>Esc</kbd>: When you have used the <kbd>Right-click + scroll wheel</kbd> combo to activate the Document Switcher popup
+    - If you have <kbd>Ctrl</kbd> held down, as in the keyboard-based Document Switcher activation, <kbd>Esc</kbd> will not work (because it will trigger Windows OS's <kbd>Ctrl+Esc</kbd> functionality for that combo), so this _only_ works if you used the <kbd>Right-click + scroll wheel</kbd>.
+
+_Note_: Some users have wondered about a "yellow flash" they have seen when using Notepad++: If you <kbd>Ctrl+Tab</kbd> and then promptly release _both_ keys, it will immediately switch to the tab that is first made bold and will leave Document Switcher mode (since you released the <kbd>Ctrl</kbd> key).  Depending on how promptly you release, this may just briefly flash the yellow-background popup, not giving you a chance to read the popup's list of tabs.
 
 ## Scrolling in Panels
 

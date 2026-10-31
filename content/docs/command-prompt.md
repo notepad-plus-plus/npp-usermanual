@@ -32,7 +32,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
   `normal`, `actionscript`, `ada`, `asm`, `asn1`, `asp`, `autoit`, `avs`,
   `baanc`, `bash`, `batch`, `blitzbasic`, `c`, `caml`, `cmake`, `cobol`,
   `coffeescript`, `cpp`, `cs`, `csound`, `css`, `d`, `diff`, `erlang`,
-  `escript`, `forth`, `fortran`, `fortran77`, `freebasic`, `gdscript`, `go`,
+  `escript`, `fcST`, `forth`, `fortran`, `fortran77`, `freebasic`, `gdscript`, `go`,
   `gui4cli`, `haskell`, `hollywood`, `html`, `ihex`, `ini`, `inno`, `java`,
   `javascript`, `javascript`, `json`, `json5`, `jsp`, `kix`, `latex`, `lisp`,
   `makefile`, `matlab`, `mmixal`, `mssql`, `nfo`, `nim`, `nncrontab`, `nsis`,
