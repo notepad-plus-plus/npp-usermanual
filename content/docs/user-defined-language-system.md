@@ -32,6 +32,8 @@ When a UDL other than the default **User Defined Language** is selected in the p
 * **Remove** will delete the currently-selected UDL.
 * **Ext.: ____** will accept a list of zero or more extensions (without the period).  Files that match these extensions will be interpreted as belonging to the currently-selected UDL, and will be styled appropriately.  These extensions override the default extensions for pre-defined **Languages**, so if your UDL's extension conflicts with another language's extension, the UDL will take priority.  For example **Ext.: `md mkdn`** will associate `file.mkdn` or `something.md` with your selected UDL.
 
+_Note:_ Starting in v8.9.9, new UDLs (definitions started from the **Create new...** button, or when the default **User Defined Language** is selected and **Save As** button is used) will default to use the active [Theme](../themes/)'s foreground, transparent background, and no bold/italic/underline to start with.  (In v8.9.8.1 and earlier, regardless of theme or [Dark Mode](../preferences/#dark-mode), the UDL stylers would default to black text on white background, with bold/italic/underline all enabled.)
+
 ### UDL Configuration Tabs
 
 The "Details" links throughout this section will give additional information on how each of the fields in the UDL dialog will affect the syntax highlighting.  You should start with the [Details: Parsing](../udl/introduction/) to find out more on the order that UDL parsing occurs

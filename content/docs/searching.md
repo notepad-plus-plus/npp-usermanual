@@ -92,6 +92,8 @@ The various action buttons available include:
         - **⤵ Copy from Find to Replace**: Copies the **Find what** text to the **Replace with** input, but does not change the **Find what** input.
         - **⤴ Copy from Replace to Find**: Copies the **Replace with** text to the **Find what** input, but does not change the **Replace with** input.
         - After selecting an action from this menu, that action is immediately performed, and the button changes its icon to indicate the new mode for that button.
+    - **☐** When the unlabeled checkbox next the **Replace** button is checked, **Replace** will _not_ move to the next matching text. (new to v8.9.9.  In v8.9.8.1 and earlier, it was in [**Settings > Preferences > Searching**](../preferences/#searching) as `☐ Replace: Don't move to the following occurrence`)
+
 * **Replace All**: With **☑ Wrap around** checked, it makes one pass through the active document, from the very top to the very bottom, and replaces all occurrences found.  With **☐ Wrap around** unchecked, it searches from the [caret](../editing/#caret-and-cursor "typing/insertion cursor") to the end of the file (if **☐ Backward direction** is unchecked) or from the beginning of the file to the [caret](../editing/#caret-and-cursor "typing/insertion cursor") (if **☑ Backward direction** is checked) and replaces all occurrences found in that region.
     * NOTE: For regular expressions, this will be equivalent to running the regular expression multiple times, which is _not_ the same as running with the `/g` global flag enabled that is available in the regular expression engines of some programming-languages.
     * To clarify the **Replace All** results, depending on the condition of the various settings:
@@ -109,6 +111,7 @@ The various action buttons available include:
     * See more in [**Wrap around** section, below](#wrap-around).
 
 * **Replace All in All Opened Documents**: Same as **Replace All**, but goes through all the documents open in Notepad++, not just the active document.
+    - **☐** When the unlabeled checkbox next to the **Replace All in All Opened Documents** button is checked, **Replace All in All Opened Documents** will ask for confirmation. (new to v8.9.9.  In v8.9.8.1 and earlier, it was in [**Settings > Preferences > Searching**](../preferences/#searching) as `☐ Confirm Replace All in All Opened Documents`)
 
 The above actions may be initiated via mouse by pressing the appropriate button, or via special <kbd>Alt</kbd> key combinations.  Notepad++ can underline a single character in the text of *most* of the buttons (oftentimes, it is automatic; however, if you ever cannot see the underlines, then just press the <kbd>Alt</kbd> key, and they will appear).  Pressing <kbd>Alt</kbd> and one of the underlined characters will be the same as pressing the same button with the mouse, i.e., the chosen action will be initiated.  The <kbd>Alt</kbd> technique works for controls other than buttons as well, e.g., a checkbox control can be checked/unchecked via pressing its <kbd>Alt</kbd> key command.
 
@@ -437,8 +440,13 @@ This command will show a small region at the bottom of the Notepad++, which has 
 - If the **☐ Match case** checkbox is checked, the results will only match if case is exactly the same, otherwise case doesn't matter.
 - If the **☐ Count** checkbox is checked, the Incremental Search bar will display the number of matches, and the current index of the match (for example, `2/5` indicates it is currently highlighting the second of five matches). (New to v8.9.7.)
 - To the right of those checkboxes, a message about the results will occur: either the number of matches, a message that indicates that you've wrapped around to the top or bottom of the document, or "Phrase not found" if there are no matches.  When there are no matches, the **Find** box also changes color.
+- The far right of the bar has a control to move the bar to the top `˄` top or `˅` bottom (toggles between the two) (new to v8.9.9)
 
 The shortcut keys for **Find Next** and **Find Previous** (defaults are <kbd>F3</kbd> and <kbd>Shift+F3</kbd>, respectively) work when input focus is in the Incremental Search window, e.g. when you are typing into the Find box, and you want the editor to move to a different match. This avoids needing to reach for the mouse in order to press the **>** or **<** buttons to move between matches.
+
+Starting in v8.9.9, the Incremental Search Bar options will be remembered from one run to the next
+
+_Note:_ The horizontal position of all controls is fixed on this bar, and will not shift as you resize the window, so some controls may be "off screen" if you have a narrow enough Notepad++ window.  You may have to widen your window to access them, especially the result message and the `˄` top / `˅` bottom toggle button.
 
 ## Other Search-menu Commands
 
