@@ -101,6 +101,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 | `lt` | `lithuanian.xml` | |
 | `lv` | `latvian.xml` | |
 | `mk` | `macedonian.xml` | |
+| `ml` | `malayalam.xml` | |
 | `mn` | `mongolian.xml` | |
 | `mr` | `marathi.xml` | |
 | `ms` | `malay.xml` | |
