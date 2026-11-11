@@ -253,6 +253,10 @@ The following are many of the localizations ("translations") available in Notepa
 </div>
 
 <div align="center" style="margin: 20px; display: inline-block;">
+<a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/malayalam.xml" target="_blank"><img src="/docs/images/flags/fIndia.png" alt="" border="0" /><br/> Malayalam</a>
+</div>
+
+<div align="center" style="margin: 20px; display: inline-block;">
 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/installer/nativeLang/occitan.xml" target="_blank"><img src="/docs/images/flags/fOccitanie.png" alt="" border="0" /><br/> Occitan</a>
 </div>
 
