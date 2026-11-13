@@ -48,6 +48,10 @@ All the search dialogs have certain features in common, though some are not avai
     - Limited to 16383 bytes.
       - The dialog will warn you if you go beyond the limit.
       - _Note_: The length limit is actually bytes, not characters.  For example, in UTF-8 encoding, `Aé◊🎷` is four characters, but ten bytes.
+    - **☐** The unlabeled checkbox near the **Find what** field will highlight all matches of the current search in the active document while typing when it is checkmarked (new to v8.9.9.1).
+      - This shows a preview of the "live" matches: as you add or delete from the **Find what** field, the highlighted matches will update.
+      - To save time, it will only highlight in the visible screen (and one screen of text below), so that it doesn't have to process the whole document on large documents.
+
 * **Replace with** edit box with dropdown history: This is the text that will replace what was matched.
 
 * **☐ In selection**: If you have a region of text selected, and this option is checked, **Count**, **Replace All**, or **Mark All** will only operate within the selected text, rather than the whole document (other buttons, such as **Find Next**, will continue to work on the whole document).
