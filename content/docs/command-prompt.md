@@ -98,10 +98,11 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 | `ky` | `kyrgyz.xml` | |
 | `lb` | `luxembourgish.xml` | |
 | `lij` | `ligurian.xml` | |
+| `lo`, `lo-la` | `lao.xml` | v8.9.9.1 |
 | `lt` | `lithuanian.xml` | |
 | `lv` | `latvian.xml` | |
 | `mk` | `macedonian.xml` | |
-| `ml` | `malayalam.xml` | |
+| `ml` | `malayalam.xml` | v8.9.9 |
 | `mn` | `mongolian.xml` | |
 | `mr` | `marathi.xml` | |
 | `ms` | `malay.xml` | |
