@@ -597,8 +597,8 @@ A variety of settings that didn't fit elsewhere
 - **System Tray** dropdown
     - `No action to` **system tray**: Neither minimizing Notepad++ nor closing Notepad++ will place the Notepad++ icon on the system tray.
     - `Minimize to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ window is minimized.
-    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is closed.
-    - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of the task bar) when the Notepad++ application is minimized or closed.
+    - `Close to` **system tray**: Place the Notepad++ icon on the system tray (instead of exiting) when the Notepad++ application is closed.
+    - `Minimize / Close to` **system tray**: Place the Notepad++ icon on the system tray when the Notepad++ application is minimized or closed.
     - For more details on the System Tray behavior, see [User Interface > System Tray](../user-interface/#system-tray).
 - **Direct Write rendering mode** dropdown
     - DirectWrite will help in displaying characters even if the active font doesn't have a glyph.
