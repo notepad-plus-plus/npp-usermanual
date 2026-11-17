@@ -281,10 +281,9 @@ There are some non-UI options for advanced users, please check [**Preferences fo
 
 ## Keyword lists: `langs.xml`
 
-
 This file contains the keyword lists for syntax highlighting languages.
 
-**Attributes for the `<Language>` node**
+### Attributes for the `<Language>` node
 
 Position | Name | Value format | Meaning
 :--------|:-----|:-------------|:---
@@ -309,6 +308,10 @@ The order of the `ext` list here determines the order of extensions in the file-
 
 The `commentLine`, `commentStart`, and `commentEnd` attributes are used by the [Edit Menu](../editing/#edit-menu)'s **Comment/Uncomment** actions for adding or removing the comment syntax to the selected lines of text. These are independent of the selected [programming **Language**](../programing-languages/)'s syntax lexer, so changing these attributes will _not_ affect what code sections will get highlighted as comments by the active syntax highlighter. (Because of the way the Scintilla library that Notepad++ uses for the lexers, in order to change what gets highlighted as a comment, one would need to edit and re-compile the lexer for the chosen and then rebuild the Notepad++ project; in other words, it would have to be changed by the developers for a new release, not changed by the user in the `langs.xml` configuration file.)  These attributes can only define one type of line and block comments; if your language has multiple types of either, you will have to choose the _one_ type that you'd like Comment/Uncomment to work with.
 
+### Keeping `langs.xml` up-to-date
+
+Starting in v8.8.9, Notepad++ will compare the `langs.xml` to the most-recent `langs.model.xml`, and add in any missing information (new languages, new default extensions, new keyword groups, additional default keywords), so that your `langs.xml` will stay up-to-date.  (Internally, it uses the `modelDate` attribute of `langs.model.xml`'s `<NotepadPlus>` element, plus the filesystem last-modified-time of that file, as the decision-factor for whether to scan through the entire file.  Every time Notepad++ loads, it looks at the `modelDate` and `modelFileLastModifiedDate` attributes saved in the active `langs.xml`'s `<NotepadPlus>` element: if `langs.model.xml` is newer than those dates, Notepad++ will read the entire model file, and do the comparison to make sure your `langs.xml` is not missing any information; it will add any missing information, and update the `modelDate` and `modelFileLastModifiedDate` attributes to prevent unnecessary repeats of the same scan in the future.  You do not normally need to concern yourself with those attributes.  However, if you are submitting a PR to the Notepad++ code repository to update `langs.model.xml`, you will need to update its `modelDate` to get the submission accepted: use `modelDate="YYYYMMDD"` format. `modelFileLastModifiedDate` uses an internal numeric representation of the file timestamp, and is not something you need to manually change.)
+
 ## Highlighting schemes: `stylers.xml`
 
 This file sets the color scheme for the default theme. The other themes are stored in `themes\*.xml`, which follow the same format at `stylers.xml`. In general, use [**Settings > Style Configurator**](../preferences/#style-configurator) for easier maintenance of styles.
@@ -326,6 +329,9 @@ The `<WordsStyle>` `colorStyle` attribute decides whether to use the defined col
 - Set `colorStyle="1"`: this style will inherit the background color from the Default style, and use the `fgColor` value as the background color (equivalent to right-clicking the background color in the UDL styler dialog box)
 - Set `colorStyle="0"`: this style will inherit both the foreground and background colors from the Default style (equivalent to right-clicking both the foreground and background colors in the UDL styler dialog box)
 
+### Keeping `stylers.xml` and `themes\___.xml` up-to-date
+
+Starting in v8.8.9, Notepad++ will compare the active styler (`stylers.xml` or `themes\___.xml`) to the most-recent `stylers.model.xml`, and add in any missing information (new languages, new style elements, additional ), so that your active styler will stay up-to-date.  (Internally, it uses the `modelDate` attribute of `stylers.model.xml`'s `<NotepadPlus>` element, plus the filesystem last-modified-time of that file, as the decision-factor for whether to scan through the entire file.  Every time Notepad++ loads, it looks at the `modelDate` and `modelFileLastModifiedDate` attributes saved in the active styler file's `<NotepadPlus>` element: if `stylers.model.xml` is newer than those dates, Notepad++ will read the entire model file, and do the comparison to make sure your `langs.xml` is not missing any information; it will add any missing information, and update the `modelDate` and `modelFileLastModifiedDate` attributes to prevent unnecessary repeats of the same scan in the future.  You do not normally need to concern yourself with those attributes, as Notepad++ does the tracking and updating.  However, if you are submitting a PR to the Notepad++ code repository to update `stylers.model.xml` or `DarkModeDefault.xml`, you will need to update the `modelDate` to get the submission accepted: use `modelDate="YYYYMMDD"` format.  `modelFileLastModifiedDate` uses an internal numeric representation of the file timestamp, and is not something you need to manually change.)
 
 ## `Function List`
 
