@@ -2790,6 +2790,15 @@ _Notes: [data structure source](#caveat-on-data-structures)_
 	hwndFrom:	hwndNpp
 	idFrom:		0
 
+_Caveat:_ The [Plugin Template](https://github.com/npp-plugins/plugintemplate/) provides the dummy 
+`pluginCleanUp()` function that is triggered by DLL_PROCESS_DETACH from the OS, and plugin authors 
+should ensure that any cleanup they need is handled there.  This `NPPN_SHUTDOWN` is the notification
+Notepad++ sends when it's about to shut down normally... but Notepad++ cannot guarantee to send 
+this message (for example, in the event of an unusual shutdown, termination, or crash), so if you
+have something that's important to clean up when Notepad++ is exiting, `pluginCleanUp()` (if using
+the template, or your language's handling of DLL_PROCESS_DETACH, if you are not using the template)
+is where essential cleanup needs to happen.
+
 ---
 
 #### [1018] **NPPN_SNAPSHOTDIRTYFILELOADED**
