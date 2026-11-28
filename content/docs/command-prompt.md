@@ -157,7 +157,7 @@ notepad++ [--help] [-multiInst] [-noPlugin] [-lLanguage] [-udl="My UDL Name"]
 - `-ro`: Make the `filepath` read only.
 - `-fullReadOnly`: Open all files read-only by default, toggling the R/O off and saving is allowed.
 - `-fullReadOnlySavingForbidden`: Open all files read-only by default, toggling the R/O off and saving is disabled.
-- `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray).
+- `-systemtray`: Launch Notepad++ directly in [system tray](../user-interface/#system-tray), and make that instant of Notepad++ persist there.
 - `-loadingTime`: Display Notepad++ loading time.
     - It shows millisecond precision using the `##:##:##.###` (hour:minute:second.millisecond) format.  It separates the loading time into Notepad++ initialization, plugins loading time, session loading time, command-line-parameter parsing time, and the total loading time.
 - `-alwaysOnTop`: Make Notepad++ always on top.
